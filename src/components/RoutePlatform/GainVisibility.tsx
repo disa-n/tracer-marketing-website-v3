@@ -178,7 +178,7 @@ const GainVisibility = () => {
     }, [bottomVisualInView, bottomVisualControls, bottomImageControls, rectangle1Controls, rectangle2Controls])
 
     return (
-        <div className='relative flex w-full flex-col items-center justify-center overflow-hidden bg-[#FCFCFC] pt-[56px] text-black md:pt-[127px]'>
+        <div className='relative flex w-full flex-col items-center justify-center bg-[#FCFCFC] pt-[56px] text-black md:pt-[127px]'>
             <div className='absolute grid h-full w-full grid-cols-3 px-4 md:hidden'>
                 <div className='border-l border-[#E8E8E8]' />
                 <div className='border-x-[1px] border-[#E8E8E8]' />
