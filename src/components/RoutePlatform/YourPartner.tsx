@@ -14,7 +14,7 @@ const YourPartner = () => {
                                 Your partner <br className='md:hidden' /> in every step  <br className='hidden md:flex' /> of <br className='md:hidden' /> your infrastructure journey
                             </h2>
                             <p className='mt-5 font-britti-sans text-sm font-[400] text-c-off-white md:text-base'>
-                                From your first steps building new computational pipelines to optimizing existing <br className='hidden md:flex' /> AI models in the cloud, Tracer is your partner for your shift to digital and AI.
+                                From your first steps building new computational pipelines to optimising existing <br className='hidden md:flex' /> AI models in the cloud, Tracer is your partner for your shift to digital and AI.
                             </p>
                         </div>
                         <button className='mt-8 h-[48px] w-full cursor-pointer bg-[#E8E8E8] px-8 font-britti-sans text-base font-[400] text-c-black transition-all hover:opacity-80 md:mt-0 md:w-fit'>

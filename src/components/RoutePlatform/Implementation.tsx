@@ -7,16 +7,46 @@ import { motion, useAnimation, useInView } from 'framer-motion'
 const Implementation = () => {
     // Single ref and controls for unified animation trigger
     const sectionRef = useRef(null)
+    const monitoringRef = useRef(null)
 
     // Animation controls
     const textControls = useAnimation()
     const logoControls = useAnimation()
+    const monitoringImageControls = useAnimation()
+    const monitoringTextControls = useAnimation()
+
+    // Scroll direction tracking for monitoring section
+    const [lastScrollY, setLastScrollY] = React.useState(0)
+    const [scrollDirection, setScrollDirection] = React.useState('down')
+    const [hasImageAnimated, setHasImageAnimated] = React.useState(false)
 
     // Detect when section comes into view - single trigger for all animations
     const sectionInView = useInView(sectionRef, {
         amount: 0.1, // Trigger when 10% visible
         margin: "0px 0px 0px 0px"
     })
+
+    // Detect when monitoring section comes into view
+    const monitoringInView = useInView(monitoringRef, {
+        amount: 0.2, // Trigger when 20% visible
+        margin: "0px 0px 0px 0px"
+    })
+
+    // Track scroll direction
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY
+            if (currentScrollY > lastScrollY) {
+                setScrollDirection('down')
+            } else if (currentScrollY < lastScrollY) {
+                setScrollDirection('up')
+            }
+            setLastScrollY(currentScrollY)
+        }
+
+        window.addEventListener('scroll', handleScroll, { passive: true })
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [lastScrollY])
 
     // Handle all animations simultaneously
     useEffect(() => {
@@ -30,6 +60,24 @@ const Implementation = () => {
             logoControls.start("hidden")
         }
     }, [sectionInView, textControls, logoControls])
+
+    // Handle monitoring section animation with separate image and text behavior
+    useEffect(() => {
+        if (monitoringInView && scrollDirection === 'down' && !hasImageAnimated) {
+            // Images: Only trigger when scrolling down and coming into view for the first time
+            monitoringImageControls.start("visible")
+            setHasImageAnimated(true)
+        }
+
+        if (monitoringInView) {
+            // Text: Always animate when in view (can reset)
+            monitoringTextControls.start("visible")
+        } else {
+            // Text: Reset when out of view
+            monitoringTextControls.start("hidden")
+        }
+        // Images never reset once animated (only on page refresh)
+    }, [monitoringInView, scrollDirection, hasImageAnimated, monitoringImageControls, monitoringTextControls])
 
     // Animation variants for text elements (subtle rise, no fade)
     const textVariants = {
@@ -95,6 +143,42 @@ const Implementation = () => {
             }
         }
     })
+
+    // Individual monitoring image variants (expand from collapsed state - never reset)
+    const monitoringImageVariants = {
+        hidden: {
+            scaleY: 0.05,
+            transition: {
+                duration: 0.8,
+                ease: [0.6, 0, 0.38, 1]
+            }
+        },
+        visible: {
+            scaleY: 1,
+            transition: {
+                duration: 0.8,
+                ease: [0.6, 0, 0.38, 1]
+            }
+        }
+    }
+
+    // Text label variants (fade in - can reset)
+    const labelVariants = {
+        hidden: {
+            opacity: 0,
+            transition: {
+                duration: 0.6,
+                ease: [0.6, 0, 0.38, 1]
+            }
+        },
+        visible: {
+            opacity: 1,
+            transition: {
+                duration: 0.6,
+                ease: [0.6, 0, 0.38, 1]
+            }
+        }
+    }
     return (
         <div ref={sectionRef} className='w-full flex items-center justify-center border-b border-[#E8E8E8] flex-col relative text-black bg-c-off-white'>
             <div className='w-full h-full max-w-[1140px] grid grid-cols-3 absolute top-0 900:px-0 px-4'>
@@ -106,7 +190,7 @@ const Implementation = () => {
                 <motion.div
                     animate={textControls}
                     variants={textVariants}
-                    className='w-full flex items-start lg:gap-0 gap-4 lg:items-end lg:flex-row flex-col justify-between'
+                    className='w-full flex items-start lg:gap-0 gap-4 lg:items-baseline lg:flex-row flex-col justify-between'
                 >
                     <motion.h2
                         variants={textItemVariants}
@@ -122,12 +206,12 @@ const Implementation = () => {
                     </motion.h2>
                     <motion.div
                         variants={textItemVariants}
-                        className='max-w-[450px] text-c-black'
+                        className='max-w-[450px] text-c-black lg:mt-0 mt-4 relative -top-8'
                     >
                         <p className='font-[400] text-sm sm:text-[16px] font-britti-sans leading-[1.15] tracking-tight'>
-                            Tracer connects through 1 line of code straight with your kernel-level system. It works instantly once copied into your Docker file or outside the file.
+                            Tracer connects through 1 line of code straight to your kernel-level system. It works instantly once copied into your Docker file or outside the file.
                         </p>
-                        <p className='font-[400] mt-2 text-sm sm:text-[16px] font-britti-sans leading-[1.15] tracking-tight'>
+                        <p className='font-[400] mt-3 text-sm sm:text-[16px] font-britti-sans leading-[1.15] tracking-tight'>
                             Our integration platform enables real-time sharing of DevOps findings across all your systems, apps, and services, to support AI adoption and enable a new dawn of science.
                         </p>
                     </motion.div>
@@ -187,26 +271,94 @@ const Implementation = () => {
                     </motion.div>
                 </motion.div>
             </div>
-            <div className='w-full max-w-[1440px] px-4 pt-10 md:pt-12 pb-10 md:pb-24 z-[10]'>
-                <h2 className='font-[400] text-[20px] md:text-[32px] text-c-black font-britti-sans text-start md:text-end w-full leading-[1] tracking-tight'>
+            <div
+                ref={monitoringRef}
+                className='w-full max-w-[1440px] px-4 pt-10 md:pt-12 pb-10 md:pb-24 z-[10]'
+            >
+                <motion.h2
+                    animate={monitoringTextControls}
+                    variants={labelVariants}
+                    initial="hidden"
+                    className='font-[400] text-[20px] md:text-[32px] text-c-black font-britti-sans text-start md:text-end w-full leading-[1] tracking-tight'
+                >
                     Monitoring insights for the worldʼs most complex industries
-                </h2>
-                <div className='w-full mt-6 md:mt-[18px] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[0.16fr_0.21fr_0.27fr_0.36fr] gap-4 md:gap-2'>
-                    <div>
-                        <Image src={"/platform/m-1.webp"} alt='' width={500} height={500} className='w-full sm:h-auto h-[136px] md:object-fill object-cover' />
-                        <h3 className='mt-2 text-[24px] md:text-[40px] fobt-[400] tracking-tighter text-c-black leading-[1] font-britti-sans'>Automotive</h3>
+                </motion.h2>
+                <div className='w-full mt-6 md:mt-[18px] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[0.16fr_0.27fr_0.27fr_0.36fr] gap-4 md:gap-2'>
+                    {/* Static container for Automotive - stays at final expanded size */}
+                    <div className="min-h-[200px] md:min-h-[450px]">
+                        <motion.div
+                            animate={monitoringImageControls}
+                            variants={monitoringImageVariants}
+                            initial="hidden"
+                            className="overflow-hidden origin-top"
+                        >
+                            <Image src={"/platform/m-1.webp"} alt='' width={500} height={500} className='w-full h-auto object-cover' />
+                        </motion.div>
+                        <motion.h3
+                            animate={monitoringTextControls}
+                            variants={labelVariants}
+                            initial="hidden"
+                            className='mt-2 text-[24px] md:text-[40px] fobt-[400] tracking-tighter text-c-black leading-[1] font-britti-sans'
+                        >
+                            Automotive
+                        </motion.h3>
                     </div>
-                    <div>
-                        <Image src={"/platform/m-2.webp"} alt='' width={500} height={500} className='w-full sm:h-auto h-[136px] md:object-fill object-cover' />
-                        <h3 className='mt-2 text-[24px] md:text-[40px] fobt-[400] tracking-tighter text-c-black leading-[1] font-britti-sans'>Computational Fluid Dynamic</h3>
+                    {/* Static container for Computational Fluid Dynamic - stays at final expanded size */}
+                    <div className="min-h-[200px] md:min-h-[450px]">
+                        <motion.div
+                            animate={monitoringImageControls}
+                            variants={monitoringImageVariants}
+                            initial="hidden"
+                            className="overflow-hidden origin-top"
+                        >
+                            <Image src={"/platform/m-2.webp"} alt='' width={500} height={500} className='w-full h-auto object-cover' />
+                        </motion.div>
+                        <motion.h3
+                            animate={monitoringTextControls}
+                            variants={labelVariants}
+                            initial="hidden"
+                            className='mt-2 text-[24px] md:text-[40px] fobt-[400] tracking-tighter text-c-black leading-[1] font-britti-sans'
+                        >
+                            Computational Fluid Dynamic
+                        </motion.h3>
                     </div>
-                    <div>
-                        <Image src={"/platform/m-3.webp"} alt='' width={500} height={500} className='w-full sm:h-auto h-[136px] md:object-fill object-cover' />
-                        <h3 className='mt-2 text-[24px] md:text-[40px] fobt-[400] tracking-tighter text-c-black leading-[1] font-britti-sans'>Pharma & Biotech</h3>
+                    {/* Static container for Pharma & Biotech - stays at final expanded size */}
+                    <div className="min-h-[200px] md:min-h-[450px]">
+                        <motion.div
+                            animate={monitoringImageControls}
+                            variants={monitoringImageVariants}
+                            initial="hidden"
+                            className="overflow-hidden origin-top"
+                        >
+                            <Image src={"/platform/m-3.webp"} alt='' width={500} height={500} className='w-full h-auto object-cover' />
+                        </motion.div>
+                        <motion.h3
+                            animate={monitoringTextControls}
+                            variants={labelVariants}
+                            initial="hidden"
+                            className='mt-2 text-[24px] md:text-[40px] fobt-[400] tracking-tighter text-c-black leading-[1] font-britti-sans'
+                        >
+                            Pharma & Biotech
+                        </motion.h3>
                     </div>
-                    <div>
-                        <Image src={"/platform/m-4.webp"} alt='' width={500} height={500} className='w-full sm:h-auto h-[136px] md:object-fill object-cover' />
-                        <h3 className='mt-2 text-[24px] md:text-[40px] fobt-[400] tracking-tighter text-c-black leading-[1] font-britti-sans'>Aerospace</h3>
+                    {/* Static container for Aerospace - stays at final expanded size */}
+                    <div className="min-h-[200px] md:min-h-[450px]">
+                        <motion.div
+                            animate={monitoringImageControls}
+                            variants={monitoringImageVariants}
+                            initial="hidden"
+                            className="overflow-hidden origin-top"
+                        >
+                            <Image src={"/platform/m-4.webp"} alt='' width={500} height={500} className='w-full h-auto object-cover' />
+                        </motion.div>
+                        <motion.h3
+                            animate={monitoringTextControls}
+                            variants={labelVariants}
+                            initial="hidden"
+                            className='mt-2 text-[24px] md:text-[40px] fobt-[400] tracking-tighter text-c-black leading-[1] font-britti-sans'
+                        >
+                            Aerospace
+                        </motion.h3>
                     </div>
                 </div>
             </div>
