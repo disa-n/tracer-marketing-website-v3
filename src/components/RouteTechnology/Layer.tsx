@@ -243,12 +243,6 @@ function Layer() {
                   style={{ top: imageY }}
                 />
               </div>
-
-              {/* Corner brackets */}
-              <div className="absolute w-6 h-6 left-10 top-[612px]" style={{ outline: '1px #FCFCFC solid', outlineOffset: '-0.5px' }} />
-              <div className="absolute w-6 h-6 left-[676px] top-[636px] rotate-180" style={{ outline: '1px #FCFCFC solid', outlineOffset: '-0.5px' }} />
-              <div className="absolute w-6 h-6 left-[676px] top-[24.5px] rotate-180" style={{ outline: '1px #FCFCFC solid', outlineOffset: '-0.5px' }} />
-              <div className="absolute w-6 h-6 left-10 top-[0.5px]" style={{ outline: '1px #FCFCFC solid', outlineOffset: '-0.5px' }} />
             </div>
 
             {/* Scrolling content positioned to the right */}
