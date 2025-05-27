@@ -3,7 +3,7 @@ import React from 'react'
 
 const YourPartner = () => {
     return (
-        <div className='relative flex w-full items-center justify-center'>
+        <div className='relative flex w-full items-center justify-center bg-[#202020] z-20'>
             {/* shape black  */}
             <div className='absolute left-0 top-full z-[20] h-[45px] w-[112px] bg-c-black sm:h-[54px] sm:w-[448px]' />
             <div className='w-full max-w-[1440px] px-4 pb-3 pt-4 md:p-4'>
@@ -14,7 +14,7 @@ const YourPartner = () => {
                                 Your partner <br className='md:hidden' /> in every step  <br className='hidden md:flex' /> of <br className='md:hidden' /> your infrastructure journey
                             </h2>
                             <p className='mt-5 font-britti-sans text-sm font-[400] text-c-off-white md:text-base'>
-                                From your first steps building new computational pipelines to optimizing existing <br className='hidden md:flex' /> AI models in the cloud, Tracer is your partner for your shift to digital and AI.
+                                From your first steps building new computational pipelines to optimising existing <br className='hidden md:flex' /> AI models in the cloud, Tracer is your partner for your shift to digital and AI.
                             </p>
                         </div>
                         <button className='mt-8 h-[48px] w-full cursor-pointer bg-[#E8E8E8] px-8 font-britti-sans text-base font-[400] text-c-black transition-all hover:opacity-80 md:mt-0 md:w-fit'>
