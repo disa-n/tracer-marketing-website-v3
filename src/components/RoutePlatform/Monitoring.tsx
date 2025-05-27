@@ -105,9 +105,9 @@ const Monitoring = () => {
                         <h2 className='font-britti-sans text-[32px] font-[400] leading-[0.9] md:text-[40px]'>
                             One platform from monitoring <br className="hidden sm:flex" /> to insights, for scientists to executives
                         </h2>
-                        <p className='mt-4 max-w-[630px] font-britti-sans text-sm font-[400] text-c-off-white sm:text-base md:mt-8'>
+                        <p className='mt-4 max-w-[560px] font-britti-sans text-sm font-[400] leading-[1.1] text-c-off-white md:mt-3 md:text-[16px]'>
                             The Tracer Platform empowers teams across Data Science, Engineering,
-                            DevOps, and Machine Learning to monitor and optimise everything they build
+                            DevOps, and Machine Learning to monitor and optimize everything they build
                             and run in the cloud.
                         </p>
                         <button className='mt-8 h-[48px] w-full cursor-pointer bg-[#E8E8E8] px-8 font-britti-sans text-base font-[400] text-c-black sm:w-fit md:mt-10'>
@@ -118,20 +118,20 @@ const Monitoring = () => {
 
                 {/* Cards Container */}
                 <motion.div
-                    className='grid grid-cols-1 gap-0 lg:grid-cols-3 lg:gap-0 lg:h-auto'
+                    className='grid lg:grid-cols-3 gap-0 lg:h-auto'
                     variants={containerVariants}
                     initial="hidden"
                     animate={containerControls}
                 >
                     {/* First Card - No Animation */}
-                    <motion.div className='flex flex-col h-full w-full' variants={firstCardVariants}>
-                        <div className='w-full bg-white px-4 pt-4 md:px-6 lg:px-4 lg:pt-4'>
+                    <motion.div className='flex flex-col h-full' variants={firstCardVariants}>
+                        <div className='w-full bg-white px-4 pt-4 md:px-3 md:pt-3'>
                             <div className='h-[215px] w-full bg-main-background lg:h-[287px]'>
 
                             </div>
                         </div>
                         <div className='w-full flex flex-col bg-[#FCFCFC] text-black flex-1'>
-                            <div className='flex flex-col justify-between gap-12 border-b border-r border-[#E8E8E8] px-4 py-3 md:gap-20 md:px-6 md:py-3 lg:px-4 lg:py-3 h-full'>
+                            <div className='flex flex-col justify-between gap-12 border-b border-r border-[#E8E8E8] px-4 py-3 md:gap-20 md:p-3 h-full'>
                                 <div className='flex w-full items-center justify-between'>
                                     <p className='font-chakra-petch text-sm font-[400] text-c-black'>
                                         01–03
@@ -152,14 +152,14 @@ const Monitoring = () => {
                         </div>
                     </motion.div>
                     {/* Second Card - Slide Up Animation */}
-                    <motion.div className='flex flex-col h-full w-full' variants={secondCardVariants}>
-                        <div className='w-full border-l border-[#E8E8E8] bg-[#FCFCFC] px-4 pt-4 text-black md:px-6 md:pt-4 lg:px-4 lg:pt-4'>
+                    <motion.div className='flex flex-col h-full' variants={secondCardVariants}>
+                        <div className='w-full border-l border-[#E8E8E8] bg-[#FCFCFC] px-4 pt-4 text-black md:px-3 md:pt-3'>
                             <div className='h-[215px] w-full bg-main-background lg:h-[287px]'>
 
                             </div>
                         </div>
                         <div className='w-full flex flex-col bg-[#FCFCFC] text-black flex-1'>
-                            <div className='flex flex-col justify-between gap-12 border-x border-b border-[#E8E8E8] px-4 py-3 md:gap-20 md:px-6 md:py-3 lg:px-4 lg:py-3 h-full'>
+                            <div className='flex flex-col justify-between gap-12 border-x border-b border-[#E8E8E8] px-4 py-3 md:gap-20 md:p-3 h-full'>
                                 <div className='flex w-full items-center justify-between'>
                                     <p className='font-chakra-petch text-sm font-[400] text-c-black'>
                                         02–03
@@ -180,14 +180,14 @@ const Monitoring = () => {
                         </div>
                     </motion.div>
                     {/* Third Card - Slide Up Animation */}
-                    <motion.div className='flex flex-col h-full w-full' variants={thirdCardVariants}>
-                        <div className='w-full border-l border-[#E8E8E8] bg-[#FCFCFC] px-4 pt-4 md:px-6 md:pt-4 lg:px-4 lg:pt-4'>
+                    <motion.div className='flex flex-col h-full' variants={thirdCardVariants}>
+                        <div className='w-full border-l border-[#E8E8E8] bg-[#FCFCFC] px-4 pt-4 md:px-3 md:pt-3'>
                             <div className='h-[215px] w-full bg-main-background lg:h-[287px]'>
 
                             </div>
                         </div>
                         <div className='w-full flex flex-col bg-[#FCFCFC] text-black flex-1'>
-                            <div className='flex flex-col justify-between gap-12 border-x border-b border-[#E8E8E8] px-4 py-3 md:gap-20 md:px-6 md:py-3 lg:px-4 lg:py-3 h-full'>
+                            <div className='flex flex-col justify-between gap-12 border-x border-b border-[#E8E8E8] px-4 py-3 md:gap-20 md:p-3 h-full'>
                                 <div className='flex w-full items-center justify-between'>
                                     <p className='font-chakra-petch text-sm font-[400] text-c-black'>
                                         03–03
