@@ -30,16 +30,14 @@ const AnimatedCard = ({
         once: true // Only trigger once, don't reset
     })
 
-    // Card animation variants with smoother, longer animation
+    // Card animation variants with smoother, longer animation (no fade)
     const cardVariants = {
         hidden: {
             y: 60, // Slightly longer distance for more dramatic effect
-            opacity: 0.6, // Start more faded
             scale: 0.95 // Slight scale effect for smoothness
         },
         visible: {
             y: 0,
-            opacity: 1,
             scale: 1,
             transition: {
                 duration: 0.8, // Longer duration for smoothness
