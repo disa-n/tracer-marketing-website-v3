@@ -3,7 +3,7 @@ import React from 'react'
 
 const YourPartner = () => {
     return (
-        <div className='relative flex w-full items-center justify-center'>
+        <div className='relative flex w-full items-center justify-center bg-[#202020] z-20'>
             {/* shape black  */}
             <div className='absolute left-0 top-full z-[20] h-[45px] w-[112px] bg-c-black sm:h-[54px] sm:w-[448px]' />
             <div className='w-full max-w-[1440px] px-4 pb-3 pt-4 md:p-4'>
