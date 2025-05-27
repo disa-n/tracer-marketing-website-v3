@@ -184,7 +184,7 @@ const GainVisibility = () => {
                 <div className='border-x-[1px] border-[#E8E8E8]' />
                 <div className='border-r border-[#E8E8E8]' />
             </div>
-            <div className='z-[10] w-full max-w-[1440px] px-4'>
+            <div className='relative z-[10] w-full max-w-[1440px] px-4'>
                 <motion.div
                     ref={textRef}
                     animate={textControls}
@@ -252,13 +252,13 @@ const GainVisibility = () => {
                 animate={bottomVisualControls}
                 variants={bottomVisualVariants}
                 initial="hidden"
-                className='relative h-[216px] w-full md:h-[346px] overflow-visible'
+                className='relative h-[216px] w-full md:h-[346px] overflow-visible z-[5]'
             >
                 <motion.div
                     animate={bottomImageControls}
                     variants={bottomImageVariants}
                     initial="hidden"
-                    className='absolute bottom-[-60px] left-[-180px] md:bottom-[-105px] md:left-[-35px] -z-10'
+                    className='absolute bottom-[-60px] left-[-180px] md:bottom-[-105px] md:left-[-35px] z-0'
                 >
                     <Image src={"/platform/engine-shape.webp"} alt='engine-shape.webp' width={600} height={600} className='w-full max-w-[350px] shrink-0 md:max-w-[550px]' />
                 </motion.div>
