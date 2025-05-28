@@ -1,11 +1,154 @@
 'use client'
 
-import React from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
+import { motion, useAnimation, useInView } from 'framer-motion'
 
 function WhyWeExist() {
+  // State to track if cards animation has played
+  const [cardsAnimated, setCardsAnimated] = useState(false)
+
+  // Refs and controls for card animations
+  const cardsRef = useRef(null)
+  const moonshotRef = useRef(null)
+
+  // Detect when cards come into view
+  const cardsInView = useInView(cardsRef, {
+    amount: 0.2, // Trigger when 20% visible
+    margin: "0px 0px 0px 0px"
+  })
+
+  // Detect when moonshot section comes into view
+  const moonshotInView = useInView(moonshotRef, {
+    amount: 0.2, // Trigger when 20% visible
+    margin: "0px 0px 0px 0px"
+  })
+
+  const cardsControls = useAnimation()
+  const moonshotControls = useAnimation()
+  const rectangleControls = useAnimation()
+  const textControls = useAnimation()
+
+  // Animation variants for cards (rise into place, no fade)
+  const cardVariants = {
+    hidden: {
+      y: 120 // Start 120px below (lower starting point)
+    },
+    visible: {
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1]
+      }
+    }
+  }
+
+  // Animation variants for second card (staggered)
+  const cardVariantsStaggered = {
+    hidden: {
+      y: 120 // Start 120px below (same as first card)
+    },
+    visible: {
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1],
+        delay: 0.2 // 0.2 second delay after first card
+      }
+    }
+  }
+
+  // Animation variants for moonshot background (rise in place)
+  const moonshotVariants = {
+    hidden: {
+      y: 40 // Start 40px below (reduced for smoother feel)
+    },
+    visible: {
+      y: 0,
+      transition: {
+        duration: 1.0, // Slightly longer for smoothness
+        ease: [0.25, 0.1, 0.25, 1] // Smoother easing curve
+      }
+    }
+  }
+
+  // Animation variants for rectangle (rise with background, then shrink smoothly)
+  const rectangleVariants = {
+    hidden: {
+      y: 40, // Start 40px below (same as background)
+      width: 430, // Start slightly wider (400 + 30, less dramatic)
+      height: 110, // Start slightly taller (100 + 10, less dramatic)
+      transformOrigin: "top right"
+    },
+    visible: {
+      y: 0, // Rise to final position with background
+      width: 400, // Final width
+      height: 100, // Final height
+      transition: {
+        y: {
+          duration: 1.0, // Match background duration
+          ease: [0.25, 0.1, 0.25, 1]
+        },
+        width: {
+          duration: 0.6, // Shorter, smoother shrink
+          ease: [0.25, 0.1, 0.25, 1],
+          delay: 0.6 // Start shrinking before rise completes for overlap
+        },
+        height: {
+          duration: 0.6, // Shorter, smoother shrink
+          ease: [0.25, 0.1, 0.25, 1],
+          delay: 0.6 // Start shrinking before rise completes for overlap
+        }
+      }
+    }
+  }
+
+  // Animation variants for text elements (slide up from below, staggered after background)
+  const textVariants = {
+    hidden: {
+      y: 60 // Start 60px below
+    },
+    visible: {
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1],
+        delay: 0.4 // Start after background begins moving
+      }
+    }
+  }
+
+  // Handle scroll-based animation - only play once, no reset
+  useEffect(() => {
+    if (cardsInView && !cardsAnimated) {
+      cardsControls.start("visible")
+      setCardsAnimated(true)
+    }
+  }, [cardsInView, cardsAnimated, cardsControls, setCardsAnimated])
+
+  useEffect(() => {
+    if (moonshotInView) {
+      moonshotControls.start("visible")
+      rectangleControls.start("visible")
+      textControls.start("visible")
+    } else {
+      moonshotControls.start("hidden")
+      rectangleControls.start("hidden")
+      textControls.start("hidden")
+    }
+  }, [moonshotInView, moonshotControls, rectangleControls, textControls])
+
   return (
-    <div className="w-full flex flex-col justify-start items-start gap-12">
+    <div className="w-full flex flex-col justify-start items-start gap-16">
+      {/* Top vertical gridline */}
+      <div
+        className="w-full bg-[#E8E8E8]"
+        style={{
+          height: 1,
+          zIndex: 2
+        }}
+      />
+
       {/* Section Title */}
       <div
         className="text-[#202020] font-britti-sans font-medium break-words relative"
@@ -13,16 +156,17 @@ function WhyWeExist() {
           width: 453,
           fontSize: 40,
           lineHeight: '38px',
-          zIndex: 10
+          zIndex: 10,
+          letterSpacing: '-1.5px'
         }}
       >
         Why We Exist
       </div>
 
       {/* Cards Container */}
-      <div className="w-full flex justify-start items-center gap-6 relative" style={{ zIndex: 10 }}>
+      <div ref={cardsRef} className="w-full flex justify-start items-center gap-6 relative" style={{ zIndex: 10 }}>
         {/* Mission Card */}
-        <div
+        <motion.div
           className="relative bg-[#FCFCFC] overflow-hidden"
           style={{
             width: 454,
@@ -30,6 +174,9 @@ function WhyWeExist() {
             outline: '1px #E8E8E8 solid',
             outlineOffset: '-1px'
           }}
+          animate={cardsControls}
+          variants={cardVariants}
+          initial="hidden"
         >
           {/* Mission Icon - Rocket SVG */}
           <div
@@ -66,7 +213,8 @@ function WhyWeExist() {
             <div className="w-full text-[#202020] font-britti-sans font-normal break-words"
               style={{
                 fontSize: 40,
-                lineHeight: '38px'
+                lineHeight: '38px',
+                letterSpacing: '-1.5px'
               }}
             >
               Mission
@@ -87,10 +235,10 @@ function WhyWeExist() {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Goal Card */}
-        <div
+        <motion.div
           className="relative bg-[#FCFCFC] overflow-hidden"
           style={{
             width: 454,
@@ -98,6 +246,9 @@ function WhyWeExist() {
             outline: '1px #E8E8E8 solid',
             outlineOffset: '-1px'
           }}
+          animate={cardsControls}
+          variants={cardVariantsStaggered}
+          initial="hidden"
         >
           {/* Goal Icon - Trophy SVG */}
           <div
@@ -134,7 +285,8 @@ function WhyWeExist() {
             <div className="w-full text-[#202020] font-britti-sans font-normal break-words"
               style={{
                 fontSize: 40,
-                lineHeight: '38px'
+                lineHeight: '38px',
+                letterSpacing: '-1.5px'
               }}
             >
               Goal
@@ -148,7 +300,7 @@ function WhyWeExist() {
               To make high-performance computing as accessible and impactful as cloud computing has been for software.
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Background rectangle element - intersecting with moonshot */}
@@ -156,7 +308,7 @@ function WhyWeExist() {
         className="relative w-full"
         style={{
           height: 60,
-          marginTop: 48
+          marginTop: -30
         }}
       >
         {/* Gridlines extending over rectangle area */}
@@ -165,7 +317,7 @@ function WhyWeExist() {
           className="absolute bg-[#E8E8E8]"
           style={{
             width: 1,
-            height: '100%',
+            height: '90%',
             left: 234,
             top: 0,
             zIndex: 2
@@ -177,7 +329,7 @@ function WhyWeExist() {
           className="absolute bg-[#E8E8E8]"
           style={{
             width: 1,
-            height: '100%',
+            height: '90%',
             left: 554,
             top: 0,
             zIndex: 2
@@ -189,7 +341,7 @@ function WhyWeExist() {
           className="absolute bg-[#E8E8E8]"
           style={{
             width: 1,
-            height: '100%',
+            height: '90%',
             left: 874,
             top: 0,
             zIndex: 2
@@ -201,46 +353,49 @@ function WhyWeExist() {
           className="absolute bg-[#E8E8E8]"
           style={{
             width: 1,
-            height: '100%',
+            height: '90%',
             left: 1194,
             top: 0,
             zIndex: 2
           }}
         />
 
-        <div
+        <motion.div
           className="absolute bg-[#202020] overflow-hidden"
           style={{
-            width: 400,
-            height: 100,
-            right: 0,
+            left: 'calc(-50vw + 50%)',
             top: 85,
             zIndex: 5
           }}
+          animate={rectangleControls}
+          variants={rectangleVariants}
+          initial="hidden"
         />
       </div>
 
       {/* Moonshot Section */}
-      <div
-        className="relative w-full bg-[#202020] overflow-hidden"
+      <motion.div
+        ref={moonshotRef}
+        className="relative w-screen bg-[#202020] overflow-hidden"
         style={{
-          height: 320,
-          marginTop: 48
+          minHeight: 275,
+          paddingBottom: 56,
+          marginTop: 10,
+          marginBottom: -9,
+          marginLeft: 'calc(-50vw + 50%)',
+          marginRight: 'calc(-50vw + 50%)',
+          paddingLeft: 'calc(50vw - 50% + 16px)',
+          paddingRight: 'calc(50vw - 50% + 16px)',
+          zIndex: 10
         }}
+        animate={moonshotControls}
+        variants={moonshotVariants}
+        initial="hidden"
       >
-        {/* Top right black rectangle */}
-        <div
-          className="absolute bg-[#202020] overflow-hidden"
-          style={{
-            width: 454,
-            height: 212,
-            right: 20,
-            top: 30
-          }}
-        />
+
 
         {/* Moonshot Title */}
-        <div
+        <motion.div
           className="absolute text-[#FCFCFC] font-britti-sans font-normal break-words"
           style={{
             width: 800,
@@ -249,12 +404,15 @@ function WhyWeExist() {
             fontSize: 40,
             lineHeight: '48px'
           }}
+          animate={textControls}
+          variants={textVariants}
+          initial="hidden"
         >
           Our Moonshot
-        </div>
+        </motion.div>
 
         {/* Moonshot Description */}
-        <div
+        <motion.div
           className="absolute flex flex-col justify-center text-[#FCFCFC] font-britti-sans font-normal break-words"
           style={{
             width: 669,
@@ -263,10 +421,25 @@ function WhyWeExist() {
             fontSize: 16,
             lineHeight: '17px'
           }}
+          animate={textControls}
+          variants={{
+            hidden: {
+              y: 400 // Start completely off-screen below
+            },
+            visible: {
+              y: 0,
+              transition: {
+                duration: 0.8,
+                ease: [0.25, 0.1, 0.25, 1],
+                delay: 0.6 // Slightly later than title
+              }
+            }
+          }}
+          initial="hidden"
         >
           Just as cloud computing revolutionised web and mobile applications over the past 10 years, we believe it&apos;s time for scientists and engineers to experience a similar transformation, and get their turn to ask: &ldquo;what can I do with all this immense power?&rdquo;
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   )
 }
