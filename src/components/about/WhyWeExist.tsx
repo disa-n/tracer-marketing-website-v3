@@ -164,15 +164,67 @@ function WhyWeExist() {
       </div>
 
       {/* Cards Container */}
-      <div ref={cardsRef} className="w-full flex justify-start items-center gap-6 relative" style={{ zIndex: 10 }}>
+      <div ref={cardsRef} className="relative" style={{ width: 1408, height: 720, zIndex: 10 }}>
+        {/* Gridlines extending through card area */}
+        {/* Vertical line 1 */}
+        <div
+          className="absolute bg-[#E8E8E8]"
+          style={{
+            width: 1,
+            height: '150%',
+            left: 234,
+            top: 0,
+            zIndex: 2
+          }}
+        />
+
+        {/* Vertical line 2 */}
+        <div
+          className="absolute bg-[#E8E8E8]"
+          style={{
+            width: 1,
+            height: '150%',
+            left: 554,
+            top: 0,
+            zIndex: 2
+          }}
+        />
+
+        {/* Vertical line 3 */}
+        <div
+          className="absolute bg-[#E8E8E8]"
+          style={{
+            width: 1,
+            height: '150%',
+            left: 874,
+            top: 0,
+            zIndex: 2
+          }}
+        />
+
+        {/* Vertical line 4 */}
+        <div
+          className="absolute bg-[#E8E8E8]"
+          style={{
+            width: 1,
+            height: '150%',
+            left: 1194,
+            top: 0,
+            zIndex: 2
+          }}
+        />
+
         {/* Mission Card */}
         <motion.div
-          className="relative bg-[#FCFCFC] overflow-hidden"
+          className="absolute bg-[#FCFCFC] overflow-hidden"
           style={{
-            width: 454,
+            width: 600,
             height: 320,
+            left: 0,
+            top: 0,
             outline: '1px #E8E8E8 solid',
-            outlineOffset: '-1px'
+            outlineOffset: '-1px',
+            zIndex: 5
           }}
           animate={cardsControls}
           variants={cardVariants}
@@ -205,7 +257,7 @@ function WhyWeExist() {
           <div
             className="absolute flex flex-col justify-start items-start gap-2"
             style={{
-              width: 358,
+              width: 520,
               left: 16,
               top: 119
             }}
@@ -222,7 +274,7 @@ function WhyWeExist() {
             <div
               className="text-[#202020] font-britti-sans font-normal break-words"
               style={{
-                width: 383,
+                width: 520,
                 fontSize: 16,
                 lineHeight: '17px'
               }}
@@ -239,12 +291,15 @@ function WhyWeExist() {
 
         {/* Goal Card */}
         <motion.div
-          className="relative bg-[#FCFCFC] overflow-hidden"
+          className="absolute bg-[#FCFCFC] overflow-hidden"
           style={{
-            width: 454,
+            width: 600,
             height: 320,
+            left: 'max(16px, min(720px, calc(100vw - 616px)))',
+            top: 350,
             outline: '1px #E8E8E8 solid',
-            outlineOffset: '-1px'
+            outlineOffset: '-1px',
+            zIndex: 5
           }}
           animate={cardsControls}
           variants={cardVariantsStaggered}
@@ -277,7 +332,7 @@ function WhyWeExist() {
           <div
             className="absolute flex flex-col justify-start items-start gap-2"
             style={{
-              width: 358,
+              width: 520,
               left: 16,
               top: 119
             }}
@@ -291,8 +346,9 @@ function WhyWeExist() {
             >
               Goal
             </div>
-            <div className="w-full text-[#202020] font-britti-sans font-normal break-words"
+            <div className="text-[#202020] font-britti-sans font-normal break-words"
               style={{
+                width: 520,
                 fontSize: 16,
                 lineHeight: '17px'
               }}
@@ -308,64 +364,15 @@ function WhyWeExist() {
         className="relative w-full"
         style={{
           height: 60,
-          marginTop: -30
+          marginTop: -20
         }}
       >
-        {/* Gridlines extending over rectangle area */}
-        {/* Vertical line 1 */}
-        <div
-          className="absolute bg-[#E8E8E8]"
-          style={{
-            width: 1,
-            height: '90%',
-            left: 234,
-            top: 0,
-            zIndex: 2
-          }}
-        />
-
-        {/* Vertical line 2 */}
-        <div
-          className="absolute bg-[#E8E8E8]"
-          style={{
-            width: 1,
-            height: '90%',
-            left: 554,
-            top: 0,
-            zIndex: 2
-          }}
-        />
-
-        {/* Vertical line 3 */}
-        <div
-          className="absolute bg-[#E8E8E8]"
-          style={{
-            width: 1,
-            height: '90%',
-            left: 874,
-            top: 0,
-            zIndex: 2
-          }}
-        />
-
-        {/* Vertical line 4 */}
-        <div
-          className="absolute bg-[#E8E8E8]"
-          style={{
-            width: 1,
-            height: '90%',
-            left: 1194,
-            top: 0,
-            zIndex: 2
-          }}
-        />
-
         <motion.div
           className="absolute bg-[#202020] overflow-hidden"
           style={{
             left: 'calc(-50vw + 50%)',
-            top: 85,
-            zIndex: 5
+            top: 30,
+            zIndex: 10
           }}
           animate={rectangleControls}
           variants={rectangleVariants}
@@ -378,9 +385,9 @@ function WhyWeExist() {
         ref={moonshotRef}
         className="relative w-screen bg-[#202020] overflow-hidden"
         style={{
-          minHeight: 275,
+          minHeight: 350,
           paddingBottom: 56,
-          marginTop: 10,
+          marginTop: -40,
           marginBottom: -9,
           marginLeft: 'calc(-50vw + 50%)',
           marginRight: 'calc(-50vw + 50%)',
@@ -396,11 +403,11 @@ function WhyWeExist() {
 
         {/* Moonshot Title */}
         <motion.div
-          className="absolute text-[#FCFCFC] font-britti-sans font-normal break-words"
+          className="absolute text-[#FCFCFC] font-britti-sans font-normal break-words text-center"
           style={{
-            width: 800,
-            left: 16,
-            top: 56,
+            width: '100%',
+            left: 0,
+            top: 96,
             fontSize: 40,
             lineHeight: '48px'
           }}
@@ -413,11 +420,11 @@ function WhyWeExist() {
 
         {/* Moonshot Description */}
         <motion.div
-          className="absolute flex flex-col justify-center text-[#FCFCFC] font-britti-sans font-normal break-words"
+          className="absolute flex flex-col justify-center text-[#FCFCFC] font-britti-sans font-normal break-words text-center"
           style={{
-            width: 669,
-            left: 16,
-            top: 127,
+            width: '100%',
+            left: 0,
+            top: 167,
             fontSize: 16,
             lineHeight: '17px'
           }}
@@ -429,7 +436,7 @@ function WhyWeExist() {
             visible: {
               y: 0,
               transition: {
-                duration: 0.8,
+                duration: 1.2,
                 ease: [0.25, 0.1, 0.25, 1],
                 delay: 0.6 // Slightly later than title
               }
@@ -437,7 +444,11 @@ function WhyWeExist() {
           }}
           initial="hidden"
         >
-          Just as cloud computing revolutionised web and mobile applications over the past 10 years, we believe it&apos;s time for scientists and engineers to experience a similar transformation, and get their turn to ask: &ldquo;what can I do with all this immense power?&rdquo;
+          Just as cloud computing revolutionised web and mobile applications over the past 10 years, we believe it&apos;s time for scientists and engineers to experience a similar transformation and ask:
+
+          <p className="mt-5 font-semibold">
+  &ldquo;What can I do with all this immense power?&rdquo;
+</p>
         </motion.div>
       </motion.div>
     </div>

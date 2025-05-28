@@ -1,9 +1,74 @@
 'use client'
 
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import Image from 'next/image'
+import { motion, useAnimation, useInView } from 'framer-motion'
 
 function TwoWorlds() {
+  // Refs for animation triggers
+  const titleRef = useRef(null)
+  const imageRef = useRef(null)
+
+  // Animation controls
+  const titleControls = useAnimation()
+  const imageControls = useAnimation()
+
+  // Detect when elements come into view
+  const titleInView = useInView(titleRef, {
+    amount: 0.1, // Trigger when 10% visible
+    margin: "0px 0px 0px 0px"
+  })
+
+  const imageInView = useInView(imageRef, {
+    amount: 0.1, // Trigger when 10% visible
+    margin: "0px 0px 0px 0px"
+  })
+
+  // Animation variants for title (fade-in)
+  const titleVariants = {
+    hidden: {
+      opacity: 0
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1]
+      }
+    }
+  }
+
+  // Animation variants for image (slide up, no fade)
+  const imageVariants = {
+    hidden: {
+      y: 100 // Start 100px below
+    },
+    visible: {
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.6, 0, 0.38, 1]
+      }
+    }
+  }
+
+  // Handle scroll-based animation with reset when out of view
+  useEffect(() => {
+    if (titleInView) {
+      titleControls.start("visible")
+    } else {
+      titleControls.start("hidden")
+    }
+  }, [titleInView, titleControls])
+
+  useEffect(() => {
+    if (imageInView) {
+      imageControls.start("visible")
+    } else {
+      imageControls.start("hidden")
+    }
+  }, [imageInView, imageControls])
+
   return (
     <section
       className="relative w-full bg-[#FCFCFC] overflow-hidden"
@@ -13,13 +78,17 @@ function TwoWorlds() {
       }}
     >
       {/* Background Image - Right Side */}
-      <div
+      <motion.div
+        ref={imageRef}
+        animate={imageControls}
+        variants={imageVariants}
+        initial="hidden"
         className="absolute overflow-hidden"
         style={{
-          left: '10%',
-          top: '-1%',
-          width: '97%',
-          height: '105%',
+          left: '8%',
+          bottom: -120,
+          width: '100%',
+          height: 680,
           zIndex: 1
         }}
       >
@@ -27,24 +96,29 @@ function TwoWorlds() {
           src="/About us/tracer-ball.svg"
           alt="Tracer Ball"
           fill
-          className="object-contain"
+          className="object-contain object-bottom"
         />
-      </div>
+      </motion.div>
 
       {/* Main Title */}
-      <div
-        className="absolute text-[#202020] font-britti-sans font-normal break-words"
+      <motion.div
+        ref={titleRef}
+        animate={titleControls}
+        variants={titleVariants}
+        initial="hidden"
+        className="absolute text-[#202020] font-britti-sans font-medium break-words"
         style={{
           width: 'min(597px, 46vw)', // Responsive width that shrinks with viewport
           maxWidth: '597px', // Original max width
-          left: 16,
-          top: 56,
-          fontSize: 'clamp(24px, 3.2vw, 40px)', // Responsive font size: min 24px, max 40px
-          lineHeight: 'clamp(22px, 3vw, 38px)' // Responsive line height: min 22px, max 38px
+          left: 12,
+          top: 86,
+          fontSize: 'clamp(30px, 4.2vw, 48px)', // Responsive font size: min 24px, max 40px
+          lineHeight: 'clamp(22px, 3vw, 38px)', // Responsive line height: min 22px, max 38px
+          letterSpacing: 'clamp(-2px, -0.3vw, -4px)'
         }}
       >
         The Best of Two Worlds
-      </div>
+      </motion.div>
 
       {/* Mini-heading - Right half only: 001, tracer, FOUNDERs */}
       <div
@@ -111,14 +185,14 @@ function TwoWorlds() {
 
       {/* Description Text - Responsive */}
       <div
-        className="absolute flex flex-col justify-center text-[#202020] font-britti-sans font-normal break-words"
+        className="absolute flex flex-col text-[#202020] font-britti-sans font-normal break-words"
         style={{
           width: '46%', // Responsive width to stay in left half
           maxWidth: '669px', // Original max width
           left: 16,
-          top: 117,
-          fontSize: 'clamp(14px, 1.1vw, 16px)', // Responsive font size
-          lineHeight: 'clamp(15px, 1.2vw, 17px)' // Responsive line height
+          top: 170,
+          fontSize: 'clamp(14px, 1.2vw, 16px)', // Responsive, targeting moonshot size
+          lineHeight: 'clamp(15px, 1.3vw, 17px)' // Responsive, targeting moonshot line height
         }}
       >
        <p className="mb-4">
@@ -141,7 +215,8 @@ function TwoWorlds() {
           left: 458,
           top: 445,
           transform: 'rotate(180deg)',
-          transformOrigin: 'top left'
+          transformOrigin: 'top left',
+          zIndex:12
         }}
       />
 
@@ -154,7 +229,8 @@ function TwoWorlds() {
           left: 529,
           top: 524,
           transform: 'rotate(180deg)',
-          transformOrigin: 'top left'
+          transformOrigin: 'top left',
+          zIndex:12
         }}
       />
 
