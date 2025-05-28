@@ -283,7 +283,7 @@ function WhyWeExist() {
                 To revolutionise how scientists and engineers leverage high-performance computing by making observability seamless, insightful, and transformative.
               </p>
               <p>
-                We empower innovation in regulated industries, enabling breakthroughs that redefine what&apos;s possible in research, design, and engineering.
+                We empower innovation in regulated industries, enabling breakthroughs that redefine what&apos;s possible in scientific research, design, and engineering.
               </p>
             </div>
           </div>
@@ -353,7 +353,7 @@ function WhyWeExist() {
                 lineHeight: '17px'
               }}
             >
-              To make high-performance computing as accessible and impactful as cloud computing has been for software.
+              To make high-performance computing as accessible and impactful for science as cloud computing has been for software.
             </div>
           </div>
         </motion.div>

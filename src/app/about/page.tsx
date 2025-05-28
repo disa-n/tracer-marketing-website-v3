@@ -1,6 +1,7 @@
 import HeroSection from '../../components/about/HeroSection'
 import WhyWeExist from '../../components/about/WhyWeExist'
 import TwoWorlds from '../../components/about/TwoWorlds'
+import Culture from '../../components/about/Culture'
 
 export default function AboutPage() {
   return (
@@ -65,6 +66,11 @@ export default function AboutPage() {
       {/* Two Worlds Section */}
       <section className="relative w-full">
         <TwoWorlds />
+      </section>
+
+      {/* Culture Section */}
+      <section className="relative w-full">
+        <Culture />
       </section>
     </main>
   );

@@ -196,13 +196,13 @@ function TwoWorlds() {
         }}
       >
        <p className="mb-4">
-    Founded in 2023 by Vincent Hus and Laura Bogaert, Tracer brings together deep technical expertise and sharp business acumen.
+    Tracer was founded in 2023 by Vincent Hus and Laura Bogaert, who set out to change the way scientists understand and manage their computational workloads.
   </p>
   <p className="mb-4">
-    Vincent, an expert in software and biomechanical engineering, and Laura, a McKinsey alum specialising in bioinformatics and pharma, are the perfect storm of innovation.
+    Vincent, an engineer working at the intersection of software and biomechanics, kept running into infrastructure issues that slowed his work. Laura, advising leading life sciences organisations at McKinsey, saw those same slowdowns across the industry.
   </p>
   <p className="mb-4">
-    Together, they joined forces to lead the next wave of computational infrastructure and build the world&apos;s first verticalised observability platform.
+    Driven by their shared frustration, they joined forces to build the world’s first verticalised observability platform, purpose-built for scientific computing.
   </p>
       </div>
 
@@ -233,7 +233,16 @@ function TwoWorlds() {
           zIndex:12
         }}
       />
-
+<div
+        className="absolute bg-[#404040]"
+        style={{
+          width: 1,
+          height: '20%',
+          left: 250,
+          top: 405,
+          zIndex: 13
+        }}
+      />
       {/* Gridlines */}
       {/* Top Horizontal Gridline */}
       <div
