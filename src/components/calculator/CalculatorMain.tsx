@@ -57,7 +57,7 @@ const CalculatorMain: React.FC = () => {
         ))}
       </div>
 
-      <div className="mb-4 sm:mb-6 p-2 sm:p-3 rounded border border-gray-600 overflow-x-auto text-xs sm:text-sm">
+      <div className="mb-4 sm:mb-6 p-2 sm:p-3 rounded border border-gray-600 text-xs sm:text-sm">
         <div className="flex justify-between items-center text-gray-400">
           {assumptions.map((item, index) => (
             <React.Fragment key={index}>

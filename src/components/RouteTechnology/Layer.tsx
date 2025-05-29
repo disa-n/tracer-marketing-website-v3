@@ -211,7 +211,7 @@ function Layer() {
         {/* Anchored viewport - user stays here while content flows through */}
         <div className="w-full h-screen flex items-center justify-center bg-[#202020] sticky top-0">
           {/* Fixed frame container - this is where user is anchored */}
-          <div className="relative">
+          <div className="relative" style={{ transform: 'translateX(-300px)' }}>
             {/* Title positioned above frame */}
             <div
               className="absolute text-[#FCFCFC] text-base font-chakra-petch uppercase"
@@ -226,12 +226,12 @@ function Layer() {
 
             {/* Main frame container */}
             <div
-              className="relative w-[716px] h-[636px]"
+              className="relative w-[640px] h-[636px]"
               style={{ outline: '1px #404040 solid', outlineOffset: '-1px' }}
             >
               {/* Image viewport window */}
               <div
-                className="absolute w-[604px] h-[604px] left-[56px] top-4 bg-[#202020] overflow-hidden"
+                className="absolute w-[528px] h-[604px] left-[56px] top-4 bg-[#202020] overflow-hidden"
                 style={{ outline: '1px #404040 solid', outlineOffset: '-1px' }}
               >
                 {/* Scrolling image */}
@@ -239,7 +239,7 @@ function Layer() {
                   ref={imageContainerRef}
                   src="/technology/four-layers-image.png"
                   alt="Four Layers Technology Stack"
-                  className="absolute w-[478px] h-[2020px] left-[63px]"
+                  className="absolute w-[450px] h-[2020px] left-[63px]"
                   style={{ top: imageY }}
                 />
               </div>
@@ -249,7 +249,7 @@ function Layer() {
             <motion.div
               className="absolute w-[478px]"
               style={{
-                left: '736px',
+                left: '700px',
                 top: contentY
               }}
             >

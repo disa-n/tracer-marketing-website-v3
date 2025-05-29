@@ -1,5 +1,8 @@
+'use client'
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import ComingSoon from "@/components/shared/ComingSoon";
 
 type ResourceItem = {
   slug: string;
@@ -69,15 +72,29 @@ const resourceItems: ResourceItem[] = [
 ];
 
 export default function ResourcesPage() {
+  const [isComingSoon, setIsComingSoon] = useState(false);
+
+  useEffect(() => {
+    setIsComingSoon(window.location.hostname.includes("localhost") ? false : true);
+
+    // alternative way to do it:
+    // setIsComingSoon(process.env.NODE_ENV === "development" ? false : true);
+
+  }, []);
+
+  if(!isComingSoon) {
+    return <ComingSoon />
+  }
+
   return (
     <main className="w-full min-h-screen pt-20 px-4 md:px-8 max-w-7xl mx-auto">
       <div className="py-12">
         <h1 className="text-4xl font-bold mb-4">Enterprise Observability Resources</h1>
         <p className="text-lg mb-12 max-w-3xl">
-          Explore our collection of guides, case studies, whitepapers, and tools to help you implement 
+          Explore our collection of guides, case studies, whitepapers, and tools to help you implement
           and optimize enterprise observability in your high-performance computing environment.
         </p>
-        
+
         <div className="flex flex-wrap gap-4 mb-12">
           <button className="px-4 py-2 bg-blue-600 text-white rounded-full">All Resources</button>
           <button className="px-4 py-2 bg-gray-100 text-gray-800 rounded-full hover:bg-gray-200">Whitepapers</button>
@@ -85,7 +102,7 @@ export default function ResourcesPage() {
           <button className="px-4 py-2 bg-gray-100 text-gray-800 rounded-full hover:bg-gray-200">Webinars</button>
           <button className="px-4 py-2 bg-gray-100 text-gray-800 rounded-full hover:bg-gray-200">Guides</button>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {resourceItems.map((resource) => (
             <Link href={`/resources/${resource.slug}`} key={resource.slug}>
@@ -94,10 +111,10 @@ export default function ResourcesPage() {
                   <div className="absolute top-0 right-0 z-10 bg-blue-600 text-white px-3 py-1 text-sm font-medium">
                     {resource.category}
                   </div>
-                  <Image 
-                    src={resource.image} 
-                    alt={resource.title} 
-                    fill 
+                  <Image
+                    src={resource.image}
+                    alt={resource.title}
+                    fill
                     className="object-cover"
                   />
                 </div>
@@ -153,7 +170,7 @@ export default function ResourcesPage() {
             </Link>
           ))}
         </div>
-        
+
         <div className="mt-12 text-center">
           <button className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
             Load More Resources
