@@ -21,29 +21,18 @@ const ComingSoon = () => {
         <div className="relative z-10 flex flex-col justify-center min-h-screen px-4 md:px-16 lg:px-[65px]">
 
           {/* Main Heading */}
-          <div className="mb-4 lg:mb-6">
-            <h1 className="text-c-black font-britti-sans font-[400] text-[48px] leading-[48px] md:text-[72px] md:leading-[72px] lg:text-[104px] lg:leading-[104px]">
+          <div className="mb-4 lg:mb-6 ml-8 md:ml-16 lg:ml-24 max-w-fit">
+            <h1 className="text-c-black font-britti-sans font-[400] text-[32px] leading-[32px] md:text-[48px] md:leading-[48px] lg:text-[64px] lg:leading-[64px] text-left">
               Coming Soon...
             </h1>
           </div>
 
           {/* Subheading */}
-          <div className="max-w-[800px]">
-            <p className="text-c-black font-britti-sans font-[400] text-[20px] leading-[24px] md:text-[28px] md:leading-[32px] lg:text-[40px] lg:leading-[38px] whitespace-nowrap">
+          <div className="max-w-[800px] ml-8 md:ml-16 lg:ml-24">
+            <p className="text-c-black font-britti-sans font-[400] text-[16px] leading-[20px] md:text-[20px] md:leading-[24px] lg:text-[24px] lg:leading-[28px] whitespace-nowrap text-left">
               The page you&apos;re looking for is under construction
             </p>
           </div>
-        </div>
-
-        {/* Tracer Logo - positioned at bottom center */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-          <Image
-            src="/shared/tracer-logo-black.png"
-            alt="Tracer Logo"
-            width={123}
-            height={29}
-            className="w-full max-w-[123px] h-auto"
-          />
         </div>
 
         {/* T-Asset Robot Image - Responsive */}

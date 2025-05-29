@@ -13,7 +13,7 @@ export default function AboutPage() {
         className="absolute bg-[#E8E8E8]"
         style={{
           width: 1,
-          height: 'calc(80vh + 720px)',
+          height: 'calc(100vh + 1200px)',
           left: 250,
           top: 0,
           zIndex: 1
@@ -25,7 +25,7 @@ export default function AboutPage() {
         className="absolute bg-[#E8E8E8]"
         style={{
           width: 1,
-          height: 'calc(80vh + 720px)',
+          height: 'calc(100vh + 1200px)',
           left: 570,
           top: 0,
           zIndex: 1
@@ -37,7 +37,7 @@ export default function AboutPage() {
         className="absolute bg-[#E8E8E8]"
         style={{
           width: 1,
-          height: 'calc(80vh + 720px)',
+          height: 'calc(100vh + 1200px)',
           left: 890,
           top: 0,
           zIndex: 1
@@ -49,7 +49,7 @@ export default function AboutPage() {
         className="absolute bg-[#E8E8E8]"
         style={{
           width: 1,
-          height: 'calc(80vh + 720px)',
+          height: 'calc(100vh + 1200px)',
           left: 1210,
           top: 0,
           zIndex: 1

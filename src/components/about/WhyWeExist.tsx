@@ -76,14 +76,14 @@ function WhyWeExist() {
   const rectangleVariants = {
     hidden: {
       y: 40, // Start 40px below (same as background)
-      width: 430, // Start slightly wider (400 + 30, less dramatic)
-      height: 110, // Start slightly taller (100 + 10, less dramatic)
+      width: "min(430px, 90vw)", // Responsive width
+      height: "min(110px, 15vw)", // Responsive height
       transformOrigin: "top right"
     },
     visible: {
       y: 0, // Rise to final position with background
-      width: 400, // Final width
-      height: 100, // Final height
+      width: "min(400px, 85vw)", // Responsive final width
+      height: "min(100px, 12vw)", // Responsive final height
       transition: {
         y: {
           duration: 1.0, // Match background duration
@@ -139,240 +139,88 @@ function WhyWeExist() {
   }, [moonshotInView, moonshotControls, rectangleControls, textControls])
 
   return (
-    <div className="w-full flex flex-col justify-start items-start gap-16">
+    <div className="w-full flex flex-col justify-start items-start gap-8 lg:gap-16 px-4 lg:px-0">
       {/* Top vertical gridline */}
-      <div
-        className="w-full bg-[#E8E8E8]"
-        style={{
-          height: 1,
-          zIndex: 2
-        }}
-      />
+      <div className="w-full bg-[#E8E8E8] h-px z-[2]" />
 
       {/* Section Title */}
-      <div
-        className="text-[#202020] font-britti-sans font-medium break-words relative"
-        style={{
-          width: 453,
-          fontSize: 40,
-          lineHeight: '38px',
-          zIndex: 10,
-          letterSpacing: '-1.5px'
-        }}
-      >
+      <div className="text-[#202020] font-britti-sans font-medium break-words relative z-10 text-2xl sm:text-3xl lg:text-[40px] leading-tight lg:leading-[38px] tracking-tight lg:tracking-[-1.5px] max-w-full lg:max-w-[453px]">
         Why We Exist
       </div>
 
       {/* Cards Container */}
-      <div ref={cardsRef} className="relative" style={{ width: 1408, height: 720, zIndex: 10 }}>
-        {/* Gridlines extending through card area */}
-        {/* Vertical line 1 */}
-        <div
-          className="absolute bg-[#E8E8E8]"
-          style={{
-            width: 1,
-            height: '150%',
-            left: 234,
-            top: 0,
-            zIndex: 2
-          }}
-        />
-
-        {/* Vertical line 2 */}
-        <div
-          className="absolute bg-[#E8E8E8]"
-          style={{
-            width: 1,
-            height: '150%',
-            left: 554,
-            top: 0,
-            zIndex: 2
-          }}
-        />
-
-        {/* Vertical line 3 */}
-        <div
-          className="absolute bg-[#E8E8E8]"
-          style={{
-            width: 1,
-            height: '150%',
-            left: 874,
-            top: 0,
-            zIndex: 2
-          }}
-        />
-
-        {/* Vertical line 4 */}
-        <div
-          className="absolute bg-[#E8E8E8]"
-          style={{
-            width: 1,
-            height: '150%',
-            left: 1194,
-            top: 0,
-            zIndex: 2
-          }}
-        />
-
-        {/* Mission Card */}
-        <motion.div
-          className="absolute bg-[#FCFCFC] overflow-hidden"
-          style={{
-            width: 600,
-            height: 320,
-            left: 0,
-            top: 0,
-            outline: '1px #E8E8E8 solid',
-            outlineOffset: '-1px',
-            zIndex: 5
-          }}
-          animate={cardsControls}
-          variants={cardVariants}
-          initial="hidden"
-        >
-          {/* Mission Icon - Rocket SVG */}
-          <div
-            className="absolute overflow-hidden"
-            style={{
-              width: 48,
-              height: 48,
-              left: 20,
-              top: 20
-            }}
+      <div ref={cardsRef} className="relative w-full max-w-7xl mx-auto z-10">
+        {/* Cards Layout - Responsive Grid */}
+        <div className="flex flex-col gap-8 lg:gap-16 lg:h-[720px] lg:relative min-h-[600px] lg:min-h-[720px]">
+          {/* Mission Card */}
+          <motion.div
+            className="bg-[#FCFCFC] border border-[#E8E8E8] p-4 lg:p-5 flex flex-col gap-4 lg:gap-6 z-[5] lg:absolute lg:w-[600px] lg:h-[320px] lg:left-[30px] lg:top-0"
+            animate={cardsControls}
+            variants={cardVariants}
+            initial="hidden"
           >
-            <Image
-              src="/About us/rocket.svg"
-              alt="Mission Rocket"
-              width={39}
-              height={39}
-              className="absolute"
-              style={{
-                left: 4.5,
-                top: 4.5
-              }}
-            />
-          </div>
+            {/* Mission Icon - Rocket SVG */}
+            <div className="w-12 h-12 flex items-center justify-center">
+              <Image
+                src="/About us/rocket.svg"
+                alt="Mission Rocket"
+                width={39}
+                height={39}
+              />
+            </div>
 
-          {/* Mission Content */}
-          <div
-            className="absolute flex flex-col justify-start items-start gap-2"
-            style={{
-              width: 520,
-              left: 16,
-              top: 119
-            }}
-          >
-            <div className="w-full text-[#202020] font-britti-sans font-normal break-words"
-              style={{
-                fontSize: 40,
-                lineHeight: '38px',
-                letterSpacing: '-1.5px'
-              }}
-            >
-              Mission
+            {/* Mission Content */}
+            <div className="flex flex-col gap-2 lg:gap-4 flex-1 lg:mt-[75px]">
+              <h3 className="text-[#202020] font-britti-sans font-normal text-2xl sm:text-3xl lg:text-[40px] leading-tight lg:leading-[38px] tracking-tight lg:tracking-[-1.5px]">
+                Mission
+              </h3>
+              <div className="text-[#202020] font-britti-sans font-normal text-sm sm:text-base lg:text-[16px] leading-relaxed lg:leading-[17px] space-y-4">
+                <p>
+                  To revolutionise how scientists and engineers leverage high-performance computing by making observability seamless, insightful, and transformative.
+                </p>
+                <p>
+                  We empower innovation in regulated industries, enabling breakthroughs that redefine what&apos;s possible in scientific research, design, and engineering.
+                </p>
+              </div>
             </div>
-            <div
-              className="text-[#202020] font-britti-sans font-normal break-words"
-              style={{
-                width: 520,
-                fontSize: 16,
-                lineHeight: '17px'
-              }}
-            >
-              <p style={{ marginBottom: '16px' }}>
-                To revolutionise how scientists and engineers leverage high-performance computing by making observability seamless, insightful, and transformative.
-              </p>
-              <p>
-                We empower innovation in regulated industries, enabling breakthroughs that redefine what&apos;s possible in scientific research, design, and engineering.
-              </p>
-            </div>
-          </div>
-        </motion.div>
+          </motion.div>
 
-        {/* Goal Card */}
-        <motion.div
-          className="absolute bg-[#FCFCFC] overflow-hidden"
-          style={{
-            width: 600,
-            height: 320,
-            left: 'max(16px, min(720px, calc(100vw - 616px)))',
-            top: 350,
-            outline: '1px #E8E8E8 solid',
-            outlineOffset: '-1px',
-            zIndex: 5
-          }}
-          animate={cardsControls}
-          variants={cardVariantsStaggered}
-          initial="hidden"
-        >
-          {/* Goal Icon - Trophy SVG */}
-          <div
-            className="absolute overflow-hidden"
-            style={{
-              width: 46,
-              height: 46,
-              left: 21,
-              top: 21
-            }}
+          {/* Goal Card */}
+          <motion.div
+            className="bg-[#FCFCFC] border border-[#E8E8E8] p-4 lg:p-5 flex flex-col gap-4 lg:gap-6 z-[5] lg:absolute lg:w-[590px] lg:h-[320px] lg:right-[20px] lg:top-[350px]"
+            animate={cardsControls}
+            variants={cardVariantsStaggered}
+            initial="hidden"
           >
-            <Image
-              src="/About us/trophy.svg"
-              alt="Goal Trophy"
-              width={37}
-              height={37}
-              className="absolute"
-              style={{
-                left: 4.47,
-                top: 4.31
-              }}
-            />
-          </div>
+            {/* Goal Icon - Trophy SVG */}
+            <div className="w-12 h-12 flex items-center justify-center">
+              <Image
+                src="/About us/trophy.svg"
+                alt="Goal Trophy"
+                width={37}
+                height={37}
+              />
+            </div>
 
-          {/* Goal Content */}
-          <div
-            className="absolute flex flex-col justify-start items-start gap-2"
-            style={{
-              width: 520,
-              left: 16,
-              top: 119
-            }}
-          >
-            <div className="w-full text-[#202020] font-britti-sans font-normal break-words"
-              style={{
-                fontSize: 40,
-                lineHeight: '38px',
-                letterSpacing: '-1.5px'
-              }}
-            >
-              Goal
+            {/* Goal Content */}
+            <div className="flex flex-col gap-2 lg:gap-4 flex-1 lg:mt-[75px]">
+              <h3 className="text-[#202020] font-britti-sans font-normal text-2xl sm:text-3xl lg:text-[40px] leading-tight lg:leading-[38px] tracking-tight lg:tracking-[-1.5px]">
+                Goal
+              </h3>
+              <div className="text-[#202020] font-britti-sans font-normal text-sm sm:text-base lg:text-[16px] leading-relaxed lg:leading-[17px]">
+                To make high-performance computing as accessible and impactful for science as cloud computing has been for software.
+              </div>
             </div>
-            <div className="text-[#202020] font-britti-sans font-normal break-words"
-              style={{
-                width: 520,
-                fontSize: 16,
-                lineHeight: '17px'
-              }}
-            >
-              To make high-performance computing as accessible and impactful for science as cloud computing has been for software.
-            </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Background rectangle element - intersecting with moonshot */}
-      <div
-        className="relative w-full"
-        style={{
-          height: 60,
-          marginTop: -20
-        }}
-      >
+      <div className="relative w-full h-15 -mt-5 lg:-mt-5">
         <motion.div
-          className="absolute bg-[#202020] overflow-hidden"
+          className="absolute bg-[#202020] top-7 z-10"
           style={{
-            left: 'calc(-50vw + 50%)',
-            top: 30,
-            zIndex: 10
+            left: 'calc(-50vw + 50%)'
           }}
           animate={rectangleControls}
           variants={rectangleVariants}
@@ -383,34 +231,20 @@ function WhyWeExist() {
       {/* Moonshot Section */}
       <motion.div
         ref={moonshotRef}
-        className="relative w-screen bg-[#202020] overflow-hidden"
+        className="relative w-screen bg-[#202020] overflow-hidden min-h-[350px] pb-14 -mt-10 -mb-2 -mx-4 lg:-mx-0 px-4 lg:px-16 z-10"
         style={{
-          minHeight: 350,
-          paddingBottom: 56,
-          marginTop: -40,
-          marginBottom: -9,
           marginLeft: 'calc(-50vw + 50%)',
           marginRight: 'calc(-50vw + 50%)',
           paddingLeft: 'calc(50vw - 50% + 16px)',
-          paddingRight: 'calc(50vw - 50% + 16px)',
-          zIndex: 10
+          paddingRight: 'calc(50vw - 50% + 16px)'
         }}
         animate={moonshotControls}
         variants={moonshotVariants}
         initial="hidden"
       >
-
-
         {/* Moonshot Title */}
         <motion.div
-          className="absolute text-[#FCFCFC] font-britti-sans font-normal break-words text-center"
-          style={{
-            width: '100%',
-            left: 0,
-            top: 96,
-            fontSize: 40,
-            lineHeight: '48px'
-          }}
+          className="text-[#FCFCFC] font-britti-sans font-normal text-center pt-16 lg:pt-24 text-2xl sm:text-3xl lg:text-[40px] leading-tight lg:leading-[48px]"
           animate={textControls}
           variants={textVariants}
           initial="hidden"
@@ -420,14 +254,7 @@ function WhyWeExist() {
 
         {/* Moonshot Description */}
         <motion.div
-          className="absolute flex flex-col justify-center text-[#FCFCFC] font-britti-sans font-normal break-words text-center"
-          style={{
-            width: '100%',
-            left: 0,
-            top: 167,
-            fontSize: 16,
-            lineHeight: '17px'
-          }}
+          className="flex flex-col justify-center text-[#FCFCFC] font-britti-sans font-normal text-center mt-8 lg:mt-12 px-4 lg:px-0 text-sm sm:text-base lg:text-[16px] leading-relaxed lg:leading-[17px] max-w-4xl mx-auto"
           animate={textControls}
           variants={{
             hidden: {
@@ -447,8 +274,8 @@ function WhyWeExist() {
           Just as cloud computing revolutionised web and mobile applications over the past 10 years, we believe it&apos;s time for scientists and engineers to experience a similar transformation and ask:
 
           <p className="mt-5 font-semibold">
-  &ldquo;What can I do with all this immense power?&rdquo;
-</p>
+            &ldquo;What can I do with all this immense power?&rdquo;
+          </p>
         </motion.div>
       </motion.div>
     </div>
