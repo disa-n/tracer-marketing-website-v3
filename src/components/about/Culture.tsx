@@ -28,6 +28,8 @@ function Culture() {
   useEffect(() => {
     if (titleInView) {
       titleControls.start("visible")
+    } else {
+      titleControls.start("hidden")
     }
   }, [titleInView, titleControls])
 
@@ -79,15 +81,15 @@ function Culture() {
     },
     {
       title: "Fun & Fearlessness",
-      description: "The best work happens when you’re having fun and taking on real challenges."
+      description: "The best work happens when you’re having fun and taking on big challenges."
     },
     {
       title: "Hard Work",
-      description: "We work really hard, but live a life worth living– and take epic holidays)"
+      description: "We work really hard, but live a life worth living– and take epic holidays"
     },
     {
       title: "Experiment",
-      description: "We experiment relentlessly in pursuit of truth, learn fast and iterate faster."
+      description: "We experiment relentlessly in pursuit of truth, learn fast, and iterate faster."
     },
     {
       title: "Meritocracy",
@@ -165,16 +167,25 @@ function Culture() {
         style={{
           width: 1300,
           left: 16,
-          top: 86,
+          top: 60,
           fontSize: 96,
           lineHeight: '80px',
           zIndex: 10
         }}
         animate={titleControls}
-        initial={{ y: 60 }}
+        initial={{ y: 60, opacity: 0 }}
         variants={{
+          hidden: {
+            y: 60,
+            opacity: 0,
+            transition: {
+              duration: 0.6,
+              ease: [0.25, 0.1, 0.25, 1]
+            }
+          },
           visible: {
             y: 0,
+            opacity: 1,
             transition: {
               duration: 0.8,
               ease: [0.25, 0.1, 0.25, 1]
@@ -201,7 +212,7 @@ function Culture() {
         {cultureValues.slice(0, 3).map((value, index) => (
           <div
             key={value.title}
-            className={`absolute bg-[#202020] overflow-hidden culture-card-${index}`}
+            className={`absolute bg-[#202020] overflow-hidden culture-card culture-card-${index}`}
             style={{
               width: 350,
               height: 212,
@@ -225,7 +236,12 @@ function Culture() {
               }}
             >
               <Image
-                src="/placeholder-icon.svg"
+                src={
+                  value.title === "Passion" ? "/About us/passion.svg" :
+                  value.title === "Intelligence" ? "/About us/intelligence.svg" :
+                  value.title === "Fun & Fearlessness" ? "/About us/fun.svg" :
+                  "/placeholder-icon.svg"
+                }
                 alt={`${value.title} Icon`}
                 width={56}
                 height={56}
@@ -270,7 +286,7 @@ function Culture() {
         {cultureValues.slice(3, 6).map((value, index) => (
           <div
             key={value.title}
-            className={`absolute bg-[#202020] overflow-hidden culture-card-bottom-${index}`}
+            className={`absolute bg-[#202020] overflow-hidden culture-card culture-card-bottom-${index}`}
             style={{
               width: 350,
               height: 212,
@@ -293,7 +309,12 @@ function Culture() {
               }}
             >
               <Image
-                src="/placeholder-icon.svg"
+                src={
+                  value.title === "Hard Work" ? "/About us/hardwork.svg" :
+                  value.title === "Experiment" ? "/About us/exp.svg" :
+                  value.title === "Meritocracy" ? "/About us/meritocracy.svg" :
+                  "/placeholder-icon.svg"
+                }
                 alt={`${value.title} Icon`}
                 width={56}
                 height={56}

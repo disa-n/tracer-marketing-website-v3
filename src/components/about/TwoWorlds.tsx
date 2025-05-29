@@ -8,10 +8,12 @@ function TwoWorlds() {
   // Refs for animation triggers
   const titleRef = useRef(null)
   const imageRef = useRef(null)
+  const rectanglesRef = useRef<HTMLDivElement>(null)
 
   // Animation controls
   const titleControls = useAnimation()
   const imageControls = useAnimation()
+  const rectanglesControls = useAnimation()
 
   // Detect when elements come into view
   const titleInView = useInView(titleRef, {
@@ -24,13 +26,20 @@ function TwoWorlds() {
     margin: "0px 0px 0px 0px"
   })
 
-  // Animation variants for title (fade-in)
+  const rectanglesInView = useInView(rectanglesRef, {
+    amount: 0.1, // Trigger when 10% visible
+    margin: "0px 0px 0px 0px"
+  })
+
+  // Animation variants for title (fade-in + slide up)
   const titleVariants = {
     hidden: {
-      opacity: 0
+      opacity: 0,
+      y: 60 // Start 60px below
     },
     visible: {
       opacity: 1,
+      y: 0,
       transition: {
         duration: 0.8,
         ease: [0.25, 0.1, 0.25, 1]
@@ -45,6 +54,34 @@ function TwoWorlds() {
     },
     visible: {
       y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.6, 0, 0.38, 1]
+      }
+    }
+  }
+
+  // Animation variants for rectangle 1 (start slightly longer, shorten into position)
+  const rectangle1Variants = {
+    hidden: {
+      width: 520 // Start slightly longer
+    },
+    visible: {
+      width: 458, // Shrink to final size
+      transition: {
+        duration: 0.8,
+        ease: [0.6, 0, 0.38, 1]
+      }
+    }
+  }
+
+  // Animation variants for rectangle 2 (start slightly longer, shorten into position)
+  const rectangle2Variants = {
+    hidden: {
+      width: 600 // Start slightly longer
+    },
+    visible: {
+      width: 529, // Shrink to final size
       transition: {
         duration: 0.8,
         ease: [0.6, 0, 0.38, 1]
@@ -68,6 +105,17 @@ function TwoWorlds() {
       imageControls.start("hidden")
     }
   }, [imageInView, imageControls])
+
+  useEffect(() => {
+    console.log('Rectangle animation state changed:', rectanglesInView)
+    if (rectanglesInView) {
+      console.log('Starting visible animation')
+      rectanglesControls.start("visible")
+    } else {
+      console.log('Starting hidden animation')
+      rectanglesControls.start("hidden")
+    }
+  }, [rectanglesInView, rectanglesControls])
 
   return (
     <section
@@ -206,30 +254,31 @@ function TwoWorlds() {
   </p>
       </div>
 
-      {/* Decorative Rectangle 1 */}
-      <div
+      {/* Decorative Rectangle 1 - Shorter rectangle on top */}
+      <motion.div
+        ref={rectanglesRef}
+        animate={rectanglesControls}
+        variants={rectangle1Variants}
+        initial="hidden"
         className="absolute bg-[#202020] overflow-hidden"
         style={{
-          width: 458,
           height: 41,
-          left: 458,
-          top: 445,
-          transform: 'rotate(180deg)',
-          transformOrigin: 'top left',
+          left: 0,
+          top: 405,
           zIndex:12
         }}
       />
 
-      {/* Decorative Rectangle 2 */}
-      <div
+      {/* Decorative Rectangle 2 - Longer rectangle below */}
+      <motion.div
+        animate={rectanglesControls}
+        variants={rectangle2Variants}
+        initial="hidden"
         className="absolute bg-[#202020] overflow-hidden"
         style={{
-          width: 529,
           height: 79,
-          left: 529,
-          top: 524,
-          transform: 'rotate(180deg)',
-          transformOrigin: 'top left',
+          left: 0,
+          top: 446, // Position below the first rectangle (405 + 41 = 446)
           zIndex:12
         }}
       />
