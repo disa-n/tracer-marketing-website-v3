@@ -3,6 +3,7 @@ import WhyWeExist from '../../components/about/WhyWeExist'
 import TwoWorlds from '../../components/about/TwoWorlds'
 import Culture from '../../components/about/Culture'
 import Hiring from '../../components/about/Hiring'
+import LetsConnect from '../../components/about/LetsConnect'
 
 export default function AboutPage() {
   return (
@@ -77,6 +78,11 @@ export default function AboutPage() {
       {/* Hiring Section */}
       <section className="relative w-full">
         <Hiring />
+      </section>
+
+      {/* Let's Connect Section */}
+      <section className="relative w-full">
+        <LetsConnect />
       </section>
     </main>
   );

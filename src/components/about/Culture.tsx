@@ -85,7 +85,7 @@ function Culture() {
     },
     {
       title: "Hard Work",
-      description: "We work really hard, but live a life worth living– and take epic holidays"
+      description: "We work really hard, but live a life worth living– and take epic holidays."
     },
     {
       title: "Experiment",
@@ -170,7 +170,8 @@ function Culture() {
           top: 60,
           fontSize: 96,
           lineHeight: '80px',
-          zIndex: 10
+          zIndex: 10,
+          letterSpacing: 'clamp(-2px, -0.3vw, -4px)'
         }}
         animate={titleControls}
         initial={{ y: 60, opacity: 0 }}

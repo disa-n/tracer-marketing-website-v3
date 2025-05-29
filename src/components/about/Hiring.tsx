@@ -124,7 +124,8 @@ function Hiring() {
                    xl:w-[597px] xl:left-[720px] xl:text-left xl:text-[48px] xl:leading-[38px]"
         style={{
           top: 64,
-          zIndex: 10
+          zIndex: 10,
+          letterSpacing: 'clamp(-2px, -0.3vw, -4px)'
         }}
       >
         Join Our Growing Team

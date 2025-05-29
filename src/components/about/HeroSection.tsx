@@ -44,7 +44,7 @@ function HeroSection() {
         style={{
           left: 'clamp(400px, 30vw, 600px)',
           top: 'clamp(-30px, -10vh, -80px)',
-          width: 'clamp(1400px, 70vw, 1800px)',
+          width: 'calc(100vw - clamp(400px, 30vw, 600px))',
           height: 'calc(80vh + 95px)',
           zIndex: 5
         }}
@@ -57,10 +57,10 @@ function HeroSection() {
           style={{
             position: 'absolute',
             left: '0',
-            top: '0',
+            top: 'clamp(15px, 1vh, 25px)',
             width: '6000px',
             height: 'auto',
-            transform: 'scale(1.3)',
+            transform: 'scale(1.5)',
             transformOrigin: 'left top'
           }}
         />

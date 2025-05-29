@@ -337,7 +337,7 @@ function TwoWorlds() {
       <div
         className="absolute"
         style={{
-          width: '50%', // From center to right edge
+          width: '75%', // Extended from center to 75% of the way across
           height: 1,
           backgroundColor: '#E8E8E8',
           left: '50%',

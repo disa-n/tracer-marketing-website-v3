@@ -140,8 +140,14 @@ function WhyWeExist() {
 
   return (
     <div className="w-full flex flex-col justify-start items-start gap-8 lg:gap-16 px-4 lg:px-0">
-      {/* Top vertical gridline */}
-      <div className="w-full bg-[#E8E8E8] h-px z-[2]" />
+      {/* Top horizontal gridline */}
+      <div
+        className="bg-[#E8E8E8] h-px z-[2]"
+        style={{
+          width: '100vw',
+          marginLeft: 'calc(-50vw + 50%)'
+        }}
+      />
 
       {/* Section Title */}
       <div className="text-[#202020] font-britti-sans font-medium break-words relative z-10 text-2xl sm:text-3xl lg:text-[40px] leading-tight lg:leading-[38px] tracking-tight lg:tracking-[-1.5px] max-w-full lg:max-w-[453px]">

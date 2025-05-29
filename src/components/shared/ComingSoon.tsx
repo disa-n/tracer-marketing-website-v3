@@ -3,6 +3,64 @@ import Image from 'next/image';
 const ComingSoon = () => {
   return (
     <div className="w-full min-h-screen relative bg-[#FCFCFC] overflow-hidden">
+      {/* Responsive styles for the robot image */}
+      <style jsx>{`
+        .robot-image {
+          position: absolute;
+          z-index: 5;
+        }
+
+        /* Mobile */
+        @media (max-width: 639px) {
+          .robot-image {
+            right: -50px;
+            top: 350px;
+            width: 400px;
+            height: 480px;
+          }
+        }
+
+        /* Small tablets */
+        @media (min-width: 640px) and (max-width: 767px) {
+          .robot-image {
+            right: -80px;
+            top: 350px;
+            width: 420px;
+            height: 500px;
+          }
+        }
+
+        /* Medium tablets */
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .robot-image {
+            right: -120px;
+            top: 300px;
+            width: 650px;
+            height: 700px;
+          }
+        }
+
+        /* Large screens */
+        @media (min-width: 1024px) and (max-width: 1279px) {
+          .robot-image {
+            right: -200px;
+            top: 250px;
+            width: 900px;
+            height: 950px;
+          }
+        }
+
+        /* Extra large screens */
+        @media (min-width: 1280px) {
+          .robot-image {
+            right: -280px;
+            top: 200px;
+            width: 1100px;
+            height: 1150px;
+          }
+        }
+      `}</style>
+
       {/* Background container with max-width constraint */}
       <div className="relative mx-auto max-w-[1440px] w-full min-h-screen">
 
@@ -36,16 +94,12 @@ const ComingSoon = () => {
         </div>
 
         {/* T-Asset Robot Image - Responsive */}
-        <div className="absolute
-          right-[50px] bottom-0 w-[250px] h-[300px]
-          sm:right-[50px] sm:bottom-0 sm:w-[250px] sm:h-[300px]
-          md:right-[0px] md:bottom-0 md:w-[400px] md:h-[450px]
-          lg:right-[-50px] lg:bottom-0 lg:w-[550px] lg:h-[600px]
-          xl:right-[-100px] xl:bottom-0 xl:w-[750px] xl:h-[800px]">
+        <div className="robot-image">
           <Image
-            src="/Coming soon/T-Asset-Robot.svg"
+            src={`/Coming soon/T-Asset-Robot.svg?v=${Date.now()}`}
             alt="Tracer Asset Robot"
             fill
+            style={{ objectFit: 'contain' }}
           />
         </div>
       </div>
