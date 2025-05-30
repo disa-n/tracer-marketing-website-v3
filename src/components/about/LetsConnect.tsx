@@ -1,10 +1,13 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 
 function LetsConnect() {
   // State for responsive behavior
   const [isMobile, setIsMobile] = useState(false)
+  // State for animation
+  const [isVisible, setIsVisible] = useState(false)
+  const titleRef = useRef<HTMLDivElement>(null)
 
   // Handle responsive behavior
   useEffect(() => {
@@ -20,6 +23,35 @@ function LetsConnect() {
 
     return () => {
       window.removeEventListener('resize', checkScreenSize)
+    }
+  }, [])
+
+  // Handle scroll animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true)
+          } else {
+            setIsVisible(false)
+          }
+        })
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px'
+      }
+    )
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current)
+    }
+
+    return () => {
+      if (titleRef.current) {
+        observer.unobserve(titleRef.current)
+      }
     }
   }, [])
 
@@ -59,11 +91,17 @@ function LetsConnect() {
         >
           {/* Title */}
           <div
-            className="text-white font-britti-sans font-normal break-words
+            ref={titleRef}
+            className={`text-white font-britti-sans font-normal break-words
                        text-[48px] leading-[44px] w-full
                        md:text-[64px] md:leading-[58px]
                        lg:text-[80px] lg:leading-[72px]
-                       xl:text-[96px] xl:leading-[80px] xl:w-[697px]"
+                       xl:text-[96px] xl:leading-[80px] xl:w-[697px]
+                       transition-all duration-1000 ease-out
+                       ${isVisible
+                         ? 'translate-x-0 opacity-100'
+                         : '-translate-x-20 opacity-0'
+                       }`}
             style={{
               position: isMobile ? 'relative' : 'absolute',
               left: 0,

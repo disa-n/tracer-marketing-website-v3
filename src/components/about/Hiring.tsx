@@ -187,7 +187,8 @@ function Hiring() {
           position: 'absolute',
           width: 1314,
           height: 740,
-          right: 500,
+          // More left-skewed positioning for xxl screens (1536px+)
+          right: window.innerWidth >= 1536 ? 1000 : 500,
           bottom: -200,
           zIndex: 2
         }}

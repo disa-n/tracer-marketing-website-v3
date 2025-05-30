@@ -82,7 +82,7 @@ export default function ResourcesPage() {
 
   }, []);
 
-  if(!isComingSoon) {
+  if(isComingSoon) {
     return <ComingSoon />
   }
 

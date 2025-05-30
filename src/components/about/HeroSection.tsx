@@ -1,9 +1,49 @@
 'use client'
 
-import React from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
+import { motion, useAnimation, useInView } from 'framer-motion'
 
 function HeroSection() {
+  // Animation refs and controls for description only
+  const descriptionRef = useRef(null)
+
+  // Animation controls
+  const descriptionControls = useAnimation()
+
+  // State to track if animation has played
+  const [descriptionAnimated, setDescriptionAnimated] = useState(false)
+
+  // Detect when description comes into view
+  const descriptionInView = useInView(descriptionRef, {
+    amount: 0.3,
+    margin: "0px 0px 0px 0px"
+  })
+
+  // Animation variants for text rising up
+  const textVariants = {
+    hidden: {
+      y: 60, // Start 60px below
+      opacity: 0
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1]
+      }
+    }
+  }
+
+  // Handle scroll-based animation - only play once, no reset
+  useEffect(() => {
+    if (descriptionInView && !descriptionAnimated) {
+      descriptionControls.start("visible")
+      setDescriptionAnimated(true)
+    }
+  }, [descriptionInView, descriptionAnimated, descriptionControls])
+
   return (
     <section className="relative w-full h-[80vh]">
       {/* Main heading */}
@@ -23,7 +63,11 @@ function HeroSection() {
       </div>
 
       {/* Description text */}
-      <div
+      <motion.div
+        ref={descriptionRef}
+        animate={descriptionControls}
+        variants={textVariants}
+        initial="hidden"
         className="absolute flex flex-col justify-center text-[#202020] font-britti-sans font-normal break-words px-4 sm:px-6 lg:px-4"
         style={{
           width: 'min(642px, calc(100vw - 32px))',
@@ -36,7 +80,7 @@ function HeroSection() {
         }}
       >
         Tracer is an advanced observability platform for high-performance computing (HPC) systems in regulated industries. We help scientists and engineers to run, maintain, and optimise supercomputing software solutions.
-      </div>
+      </motion.div>
 
       {/* Background image container */}
       <div

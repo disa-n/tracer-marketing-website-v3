@@ -14,7 +14,7 @@ const ComingSoon = () => {
         @media (max-width: 639px) {
           .robot-image {
             right: -50px;
-            top: 350px;
+            top: 330px;
             width: 400px;
             height: 480px;
           }
@@ -24,7 +24,7 @@ const ComingSoon = () => {
         @media (min-width: 640px) and (max-width: 767px) {
           .robot-image {
             right: -80px;
-            top: 350px;
+            top: 330px;
             width: 420px;
             height: 500px;
           }
@@ -34,7 +34,7 @@ const ComingSoon = () => {
         @media (min-width: 768px) and (max-width: 1023px) {
           .robot-image {
             right: -120px;
-            top: 300px;
+            top: 280px;
             width: 650px;
             height: 700px;
           }
@@ -44,7 +44,7 @@ const ComingSoon = () => {
         @media (min-width: 1024px) and (max-width: 1279px) {
           .robot-image {
             right: -200px;
-            top: 250px;
+            top: 230px;
             width: 900px;
             height: 950px;
           }
@@ -54,7 +54,7 @@ const ComingSoon = () => {
         @media (min-width: 1280px) {
           .robot-image {
             right: -280px;
-            top: 200px;
+            top: 180px;
             width: 1100px;
             height: 1150px;
           }
