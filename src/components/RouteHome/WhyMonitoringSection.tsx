@@ -149,7 +149,7 @@ const WhyMonitoringSection = () => {
               animate={firstImageControls}
             >
               <Image
-                src={"/home/monitoring-solution.webp"}
+                src={"/home/monitoring-solution.svg"}
                 alt="Monitoring solution"
                 width={1416}
                 height={520}
@@ -166,7 +166,7 @@ const WhyMonitoringSection = () => {
               animate={secondImageControls}
             >
               <Image
-                src={"/home/better-information-image.webp"}
+                src={"/home/orange-dna.svg"}
                 alt="Better information"
                 width={453}
                 height={382}
