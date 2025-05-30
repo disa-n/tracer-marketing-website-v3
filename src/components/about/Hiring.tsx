@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { motion, useAnimation, useInView } from 'framer-motion'
 
 function Hiring() {
@@ -155,31 +156,33 @@ function Hiring() {
       </div>
 
       {/* CTA Button */}
-      <div
-        className="absolute bg-[#E8E8E8] hiring-button hover:bg-[#D8D8D8] transition-colors duration-200
-                   left-4 top-[240px] inline-flex justify-center items-center cursor-pointer w-fit
-                   md:left-8 md:top-[250px]
-                   lg:left-auto lg:right-8 lg:top-[230px]
-                   xl:left-[720px] xl:top-[223px]"
-        style={{
-          paddingLeft: 32,
-          paddingRight: 32,
-          paddingTop: 16,
-          paddingBottom: 16,
-          gap: 8,
-          zIndex: 10
-        }}
-      >
+      <Link href="/coming-soon">
         <div
-          className="text-[#202020] font-britti-sans font-normal break-words whitespace-nowrap"
+          className="absolute bg-[#E8E8E8] hiring-button hover:bg-[#D8D8D8] transition-colors duration-200
+                     left-4 top-[240px] inline-flex justify-center items-center cursor-pointer w-fit
+                     md:left-8 md:top-[250px]
+                     lg:left-auto lg:right-8 lg:top-[230px]
+                     xl:left-[720px] xl:top-[223px]"
           style={{
-            fontSize: 16,
-            lineHeight: '17px'
+            paddingLeft: 32,
+            paddingRight: 32,
+            paddingTop: 16,
+            paddingBottom: 16,
+            gap: 8,
+            zIndex: 10
           }}
         >
-          View Role Details & Apply Now
+          <div
+            className="text-[#202020] font-britti-sans font-normal break-words whitespace-nowrap"
+            style={{
+              fontSize: 16,
+              lineHeight: '17px'
+            }}
+          >
+            View Role Details & Apply Now
+          </div>
         </div>
-      </div>
+      </Link>
 
       {/* Background Image */}
       <motion.div

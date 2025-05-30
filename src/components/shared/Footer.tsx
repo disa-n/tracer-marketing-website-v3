@@ -29,10 +29,10 @@ const Footer = () => {
                                     <Link href="/resources">Resources</Link>
                                 </li>
                                 <li className="cursor-pointer transition-all hover:opacity-80">
-                                    <Link href="/policies">Terms & Conditions</Link>
+                                    <Link href="/terms-and-conditions">Terms & Conditions</Link>
                                 </li>
                                 <li className="cursor-pointer transition-all hover:opacity-80">
-                                    <Link href="/policies">Cookies Policy</Link>
+                                    <Link href="/cookies">Cookies Policy</Link>
                                 </li>
                             </ul>
                         </div>

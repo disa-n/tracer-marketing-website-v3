@@ -96,9 +96,22 @@ export default function ScheduleDemoPage() {
   };
 
   return (
-    <div className="flex min-h-screen w-full flex-col lg:flex-row bg-white">
+    <div className="flex min-h-screen w-full flex-col lg:flex-row bg-white relative">
+      {/* Background container with max-width constraint */}
+      <div className="absolute inset-0 mx-auto max-w-[1440px] w-full">
+        {/* Vertical Gridlines */}
+        <div className="pointer-events-none absolute inset-0 z-0">
+          {[12, 37, 62, 87].map((percent, index) => (
+            <div
+              key={index}
+              className="absolute top-0 h-full w-[0.25px] bg-[#E8E8E8]"
+              style={{ left: `${percent}%`, transform: 'translateX(-50%)' }}
+            />
+          ))}
+        </div>
+      </div>
       {/* Left Side: Form */}
-      <div className="flex-1 flex items-center justify-center p-6 md:p-8 lg:p-16">
+      <div className="flex-1 flex items-center justify-center p-6 md:p-8 lg:p-16 relative z-10">
         <div className="w-full max-w-md space-y-8">
           {/* Heading Section */}
           <div className="space-y-4">
@@ -169,7 +182,7 @@ export default function ScheduleDemoPage() {
       </div>
 
       {/* Right Side: Image */}
-      <div className="relative flex-1 lg:flex items-center justify-center hidden overflow-hidden">
+      <div className="relative flex-1 lg:flex items-center justify-center hidden overflow-hidden z-10">
         <div className="absolute inset-0 flex items-center justify-center">
           <Image
             src="/shared/T-Asset-Globe.svg"
