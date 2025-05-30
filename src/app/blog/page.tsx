@@ -21,17 +21,11 @@ export default function BlogPage() {
   const [isComingSoon, setIsComingSoon] = useState(true); // Default to true for SSR
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setIsComingSoon(window.location.hostname.includes("localhost") ? false : true);
-    } else {
-      // Default to coming soon during SSR
-      setIsComingSoon(true);
-    }
-
-    // alternative way to do it:
-    // setIsComingSoon(process.env.NODE_ENV === "development" ? false : true);
-
+    // Use environment variable instead of window.location
+    setIsComingSoon(process.env.NODE_ENV === "development" ? false : true);
   }, []);
+
+  console.log("Current isComingSoon state:", isComingSoon);
 
   if(isComingSoon) {
     return <ComingSoon />

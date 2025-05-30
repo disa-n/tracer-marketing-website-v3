@@ -1,5 +1,6 @@
 "use client"
 import Image from "next/image"
+import Link from "next/link"
 
 const Footer = () => {
 
@@ -22,19 +23,16 @@ const Footer = () => {
                             </h4>
                             <ul className="mt-4 space-y-2 font-britti-sans text-[16px] font-[400] leading-[1] text-c-black md:mt-10 md:text-[20px]">
                                 <li className="cursor-pointer transition-all hover:opacity-80">
-                                    About
+                                    <Link href="/about">About</Link>
                                 </li>
                                 <li className="cursor-pointer transition-all hover:opacity-80">
-                                    Blog
+                                    <Link href="/resources">Resources</Link>
                                 </li>
                                 <li className="cursor-pointer transition-all hover:opacity-80">
-                                    Resources
+                                    <Link href="/policies">Terms & Conditions</Link>
                                 </li>
                                 <li className="cursor-pointer transition-all hover:opacity-80">
-                                    Terms & Conditions
-                                </li>
-                                <li className="cursor-pointer transition-all hover:opacity-80">
-                                    Cookies Policy
+                                    <Link href="/policies">Cookies Policy</Link>
                                 </li>
                             </ul>
                         </div>
@@ -44,22 +42,13 @@ const Footer = () => {
                             </h4>
                             <ul className="mt-4 space-y-2 font-britti-sans text-[16px] font-[400] leading-[1] text-c-black md:mt-10 md:text-[20px]">
                                 <li className="cursor-pointer transition-all hover:opacity-80">
-                                    Platform
+                                    <Link href="/platform">Platform</Link>
                                 </li>
                                 <li className="cursor-pointer transition-all hover:opacity-80">
-                                    Changelog
+                                    <Link href="/coming-soon">Changelog</Link>
                                 </li>
                                 <li className="cursor-pointer transition-all hover:opacity-80">
-                                    Technology
-                                </li>
-                                <li className="cursor-pointer transition-all hover:opacity-80">
-                                    Performance
-                                </li>
-                                <li className="cursor-pointer transition-all hover:opacity-80">
-                                    Intelligence
-                                </li>
-                                <li className="cursor-pointer transition-all hover:opacity-80">
-                                    Debug
+                                    <Link href="/technology">Technology</Link>
                                 </li>
                             </ul>
                         </div>
@@ -74,7 +63,7 @@ const Footer = () => {
                 </div>
                 <div className="flex w-full items-center justify-start border-y-[1px] border-[#E8E8E8] py-3 md:h-[32px]">
                     <p className="font-britti-sans text-sm font-[400] leading-[1.3] text-[#868686]">
-                        2025 Tracer.cloud Inc | A US Delaware Corporation, registered at 9 Wall Street, Suite 168 New York, NY 10005
+                        2025 Tracer.cloud Inc | A US Delaware Corporation, registered at 9 Wall Street, Suite 168 New York, NY 10005
                     </p>
                 </div>
             </div>

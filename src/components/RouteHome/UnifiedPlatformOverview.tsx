@@ -1,12 +1,18 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import Image from "next/image";
 import UnifiedPlatformCard from "./UnifiedPlatformCard";
 import UnifiedPlatformCardLg from "./UnifiedPlatformCardLg";
 
 const UnifiedPlatformOverview = () => {
+  const router = useRouter();
+
+  const handleTalkToExpert = () => {
+    router.push('/demo');
+  };
   // Animation variant for the mobile background image rising into place
   const imageVariants = {
     hidden: {
@@ -55,7 +61,7 @@ const UnifiedPlatformOverview = () => {
                 </div>
               </div>
               <div className="hidden sm:block">
-                <PrimaryButton title="Talk to an Expert" className="text-[#202020]" />
+                <PrimaryButton title="Talk to an Expert" className="text-[#202020]" onClick={handleTalkToExpert} />
               </div>
             </div>
 
@@ -84,7 +90,7 @@ const UnifiedPlatformOverview = () => {
               </div>
 
               <div className="absolute bottom-0 left-0 right-0 p-4 sm:hidden">
-                <PrimaryButton title="Talk to an Expert" />
+                <PrimaryButton title="Talk to an Expert" onClick={handleTalkToExpert} />
               </div>
             </div>
           </div>

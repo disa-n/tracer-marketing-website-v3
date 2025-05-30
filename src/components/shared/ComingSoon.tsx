@@ -1,4 +1,5 @@
-import Image from 'next/image';
+"use client"
+import Image from 'next/image'
 
 const ComingSoon = () => {
   return (
@@ -96,7 +97,7 @@ const ComingSoon = () => {
         {/* T-Asset Robot Image - Responsive */}
         <div className="robot-image">
           <Image
-            src={`/Coming soon/T-Asset-Robot.svg?v=${Date.now()}`}
+            src="/Coming soon/T-Asset-Robot.svg"
             alt="Tracer Asset Robot"
             fill
             style={{ objectFit: 'contain' }}

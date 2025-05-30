@@ -119,9 +119,9 @@ function TwoWorlds() {
 
   return (
     <section
-      className="relative w-full bg-[#FCFCFC] overflow-hidden"
+      className="relative w-full bg-[#FCFCFC] overflow-hidden z-20
+                 h-[600px] sm:h-[550px] md:h-[500px] lg:h-[486px] xl:h-[486px] 2xl:h-[486px]"
       style={{
-        height: 486, // End where bottom-left rectangle ends (445 + 41 = 486)
         marginTop: -55 // Move section up to align with end of moonshot section
       }}
     >
@@ -131,14 +131,10 @@ function TwoWorlds() {
         animate={imageControls}
         variants={imageVariants}
         initial="hidden"
-        className="absolute overflow-hidden"
-        style={{
-          left: '8%',
-          bottom: -120,
-          width: '100%',
-          height: 680,
-          zIndex: 1
-        }}
+        className="absolute overflow-hidden w-full z-[5]
+                   left-[35%] sm:left-[30%] md:left-[28%] lg:left-[25%] xl:left-[30%] 2xl:left-[35%]
+                   -bottom-[140px] sm:-bottom-[160px] md:-bottom-[240px] lg:-bottom-[340px] xl:-bottom-[420px] 2xl:-bottom-[460px]
+                   h-[400px] sm:h-[450px] md:h-[500px] lg:h-[750px] xl:h-[800px] 2xl:h-[900px]"
       >
         <Image
           src="/About us/tracer-ball.svg"
@@ -260,7 +256,7 @@ function TwoWorlds() {
         animate={rectanglesControls}
         variants={rectangle1Variants}
         initial="hidden"
-        className="absolute bg-[#202020] overflow-hidden"
+        className="absolute bg-[#202020] overflow-hidden hidden lg:block"
         style={{
           height: 41,
           left: 0,
@@ -274,7 +270,7 @@ function TwoWorlds() {
         animate={rectanglesControls}
         variants={rectangle2Variants}
         initial="hidden"
-        className="absolute bg-[#202020] overflow-hidden"
+        className="absolute bg-[#202020] overflow-hidden hidden lg:block"
         style={{
           height: 79,
           left: 0,
@@ -283,7 +279,7 @@ function TwoWorlds() {
         }}
       />
 <div
-        className="absolute bg-[#404040]"
+        className="absolute bg-[#404040] hidden lg:block"
         style={{
           width: 1,
           height: '20%',

@@ -4,8 +4,16 @@ import { motion } from 'framer-motion';
 import PrimaryButton from "../ui/PrimaryButton";
 import { infraData, InfraItem } from "./data/infraData";
 import Image from "next/image";
+import { useDemo } from "../ScheduleDemo";
 
 const InfrastructureReview = () => {
+  const { openDemo } = useDemo();
+
+  const handleDemoClick = () => {
+    console.log('Demo button clicked!');
+    openDemo();
+  };
+
   // Animation variant for title fade-in
   const titleVariants = {
     hidden: {
@@ -90,7 +98,11 @@ const InfrastructureReview = () => {
                       </motion.p>
                     </div>
                     <div className="w-[136px] md:w-[147px]">
-                      <PrimaryButton title="Get a Demo" className="bg-[#E8E8E8] text-[#202020] border-none hover:bg-[#e0e0e0] whitespace-nowrap" />
+                      <PrimaryButton
+                        title="Get a Demo"
+                        className="bg-[#E8E8E8] text-[#202020] border-none hover:bg-[#e0e0e0] whitespace-nowrap"
+                        onClick={handleDemoClick}
+                      />
                     </div>
                   </div>
                 </div>

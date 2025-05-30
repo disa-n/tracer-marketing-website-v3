@@ -3,8 +3,12 @@
 import Image from "next/image"
 import { motion, useAnimation, useInView } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
+import { useDemo } from '../ScheduleDemo'
 
 const Monitoring = () => {
+    // Demo functionality
+    const { openDemo } = useDemo()
+
     // Refs and controls for scroll-based animation
     const containerRef = useRef(null)
     const endTriggerRef = useRef(null)
@@ -14,17 +18,25 @@ const Monitoring = () => {
 
     useEffect(() => {
         const handleResize = () => {
-            setWindowWidth(window.innerWidth)
+            if (typeof window !== 'undefined') {
+                setWindowWidth(window.innerWidth)
+            }
         }
 
         // Set initial width
         handleResize()
 
         // Add event listener
-        window.addEventListener('resize', handleResize)
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', handleResize)
+        }
 
         // Cleanup
-        return () => window.removeEventListener('resize', handleResize)
+        return () => {
+            if (typeof window !== 'undefined') {
+                window.removeEventListener('resize', handleResize)
+            }
+        }
     }, [])
 
     // Detect when cards come into view
@@ -162,7 +174,10 @@ const Monitoring = () => {
                                 DevOps, and Machine Learning to monitor and optimise everything they build
                                 and run in the cloud.
                             </p>
-                            <button className='mt-8 h-[48px] w-full cursor-pointer bg-[#E8E8E8] px-8 font-britti-sans text-base font-[400] text-c-black sm:w-fit md:mt-10'>
+                            <button
+                                onClick={openDemo}
+                                className='mt-8 h-[48px] w-full cursor-pointer bg-[#E8E8E8] px-8 font-britti-sans text-base font-[400] text-c-black transition-all hover:opacity-80 sm:w-fit md:mt-10'
+                            >
                                 Talk to an Expert
                             </button>
                         </div>

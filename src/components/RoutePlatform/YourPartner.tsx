@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const YourPartner = () => {
@@ -17,9 +18,9 @@ const YourPartner = () => {
                                 From your first steps building new computational pipelines to optimising existing <br className='hidden md:flex' /> AI models in the cloud, Tracer is your partner for your shift to digital and AI.
                             </p>
                         </div>
-                        <button className='mt-8 h-[48px] w-full cursor-pointer bg-[#E8E8E8] px-8 font-britti-sans text-base font-[400] text-c-black transition-all hover:opacity-80 md:mt-0 md:w-fit'>
+                        <Link href="/technology" className='mt-8 h-[48px] w-full cursor-pointer bg-[#E8E8E8] px-8 font-britti-sans text-base font-[400] text-c-black transition-all hover:opacity-80 md:mt-0 md:w-fit flex items-center justify-center'>
                             See our Technology
-                        </button>
+                        </Link>
                         <div className='mt-12 md:hidden'>
                             <ul className='space-y-4 text-sm font-[400] text-c-off-white'>
                                 <li className='space-x-2.5'>

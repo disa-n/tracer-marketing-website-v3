@@ -33,6 +33,8 @@ export default function HeroSection() {
 
   // This effect runs on component mount and handles the animation
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     setAnimate(true);
 
     // This is the key part: add an event listener for page visibility changes

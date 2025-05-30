@@ -72,15 +72,13 @@ const resourceItems: ResourceItem[] = [
 ];
 
 export default function ResourcesPage() {
-  const [isComingSoon, setIsComingSoon] = useState(false);
+  const [isComingSoon, setIsComingSoon] = useState(true);
 
   useEffect(() => {
-    setIsComingSoon(window.location.hostname.includes("localhost") ? false : true);
-
-    // alternative way to do it:
-    // setIsComingSoon(process.env.NODE_ENV === "development" ? false : true);
-
+    setIsComingSoon(process.env.NODE_ENV === "development" ? false : true);
   }, []);
+
+  console.log("Current isComingSoon state:", isComingSoon);
 
   if(isComingSoon) {
     return <ComingSoon />
