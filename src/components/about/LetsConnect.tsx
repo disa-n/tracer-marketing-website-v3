@@ -12,17 +12,23 @@ function LetsConnect() {
   // Handle responsive behavior
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth < 1280) // xl breakpoint
+      if (typeof window !== 'undefined') {
+        setIsMobile(window.innerWidth < 1280) // xl breakpoint
+      }
     }
 
     // Check initial screen size
     checkScreenSize()
 
     // Add event listener for resize
-    window.addEventListener('resize', checkScreenSize)
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', checkScreenSize)
+    }
 
     return () => {
-      window.removeEventListener('resize', checkScreenSize)
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', checkScreenSize)
+      }
     }
   }, [])
 
@@ -147,7 +153,11 @@ function LetsConnect() {
               Reach out to{' '}
               <span
                 className="underline cursor-pointer hover:opacity-80 transition-opacity duration-200"
-                onClick={() => window.open('mailto:careers@tracer.cloud', '_blank')}
+                onClick={() => {
+                  if (typeof window !== 'undefined') {
+                    window.open('mailto:careers@tracer.cloud', '_blank')
+                  }
+                }}
               >
                 careers@tracer.cloud
               </span>

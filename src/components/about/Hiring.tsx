@@ -7,6 +7,7 @@ import { motion, useAnimation, useInView } from 'framer-motion'
 function Hiring() {
   // State for responsive behavior
   const [isMobile, setIsMobile] = useState(false)
+  const [windowWidth, setWindowWidth] = useState(1280) // Default to desktop width
 
   // Animation refs and controls for image
   const imageRef = useRef(null)
@@ -30,17 +31,25 @@ function Hiring() {
   // Handle responsive behavior
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth < 1280) // xl breakpoint
+      if (typeof window !== 'undefined') {
+        const width = window.innerWidth
+        setWindowWidth(width)
+        setIsMobile(width < 1280) // xl breakpoint
+      }
     }
 
     // Check initial screen size
     checkScreenSize()
 
     // Add event listener for resize
-    window.addEventListener('resize', checkScreenSize)
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', checkScreenSize)
+    }
 
     return () => {
-      window.removeEventListener('resize', checkScreenSize)
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', checkScreenSize)
+      }
     }
   }, [])
 
@@ -178,17 +187,17 @@ function Hiring() {
         className="hiring-image"
         style={isMobile ? {
           position: 'absolute',
-          width: window.innerWidth >= 1024 && window.innerWidth < 1280 ? 1200 : 1100, // Larger sizes for both views
-          height: window.innerWidth >= 1024 && window.innerWidth < 1280 ? 680 : 620, // Proportional height increase
-          left: window.innerWidth >= 1024 && window.innerWidth < 1280 ? -400 : -350,
-          top: window.innerWidth >= 1024 && window.innerWidth < 1280 ? 280 : 320, // Move up in intermediate view
+          width: windowWidth >= 1024 && windowWidth < 1280 ? 1200 : 1100, // Larger sizes for both views
+          height: windowWidth >= 1024 && windowWidth < 1280 ? 680 : 620, // Proportional height increase
+          left: windowWidth >= 1024 && windowWidth < 1280 ? -400 : -350,
+          top: windowWidth >= 1024 && windowWidth < 1280 ? 280 : 320, // Move up in intermediate view
           zIndex: 2
         } : {
           position: 'absolute',
           width: 1314,
           height: 740,
           // More left-skewed positioning for xxl screens (1536px+)
-          right: window.innerWidth >= 1536 ? 1000 : 500,
+          right: windowWidth >= 1536 ? 1000 : 500,
           bottom: -200,
           zIndex: 2
         }}

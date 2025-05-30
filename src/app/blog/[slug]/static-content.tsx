@@ -5,21 +5,27 @@ import ComingSoon from '@/components/shared/ComingSoon';
 
 // Simple static content for test posts
 export default function StaticContent({ slug }: { slug: string }) {
-  const [isComingSoon, setIsComingSoon] = useState(false);
+  const [isComingSoon, setIsComingSoon] = useState(true); // Default to true for SSR
 
   useEffect(() => {
-    const hostname = window.location.hostname;
-    const isLocalhost = hostname.includes("localhost");
+    if (typeof window !== 'undefined') {
+      const hostname = window.location.hostname;
+      const isLocalhost = hostname.includes("localhost");
 
-    console.log("Current hostname:", hostname);
-    console.log("Is localhost:", isLocalhost);
+      console.log("Current hostname:", hostname);
+      console.log("Is localhost:", isLocalhost);
 
-    if (isLocalhost) {
-      setIsComingSoon(false);
-      console.log("Setting isComingSoon to false (localhost)");
+      if (isLocalhost) {
+        setIsComingSoon(false);
+        console.log("Setting isComingSoon to false (localhost)");
+      } else {
+        setIsComingSoon(true);
+        console.log("Setting isComingSoon to true (production)");
+      }
     } else {
+      // Default to coming soon during SSR
       setIsComingSoon(true);
-      console.log("Setting isComingSoon to true (production)");
+      console.log("Setting isComingSoon to true (SSR)");
     }
 
     // alternative way to do it:
