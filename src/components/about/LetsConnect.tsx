@@ -44,13 +44,14 @@ function LetsConnect() {
       }
     )
 
-    if (titleRef.current) {
-      observer.observe(titleRef.current)
+    const currentRef = titleRef.current
+    if (currentRef) {
+      observer.observe(currentRef)
     }
 
     return () => {
-      if (titleRef.current) {
-        observer.unobserve(titleRef.current)
+      if (currentRef) {
+        observer.unobserve(currentRef)
       }
     }
   }, [])
@@ -109,7 +110,7 @@ function LetsConnect() {
               marginBottom: isMobile ? 32 : 0
             }}
           >
-            Let's Connect!
+            Let&apos;s Connect!
           </div>
 
           {/* Description Container */}
