@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Chakra_Petch } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
+import { DemoModalProvider } from "@/components/ScheduleDemo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,9 +35,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${chakra_petch.variable} antialiased min-h-screen`}
       >
-        <Header />
-        {children}
-        <Footer />
+        <DemoModalProvider>
+          <Header />
+          {children}
+          <Footer />
+        </DemoModalProvider>
       </body>
     </html>
   );

@@ -111,7 +111,7 @@ const ModernMonitoringPlatform = () => {
             <motion.span
               animate={textControls}
               initial={{ opacity: 0, scale: 0.8 }}
-              className="text-center text-base uppercase leading-none tracking-[-0.01em] md:text-xl whitespace-nowrap mx-4"
+              className="text-center text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl uppercase leading-none tracking-[-0.01em] whitespace-nowrap mx-4"
             >
               meet the{" "}
               <span style={{

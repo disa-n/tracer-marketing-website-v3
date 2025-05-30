@@ -2,12 +2,42 @@
 
 import Image from "next/image"
 import { motion, useAnimation, useInView } from 'framer-motion'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { useDemo } from '../ScheduleDemo'
 
 const Monitoring = () => {
+    // Demo functionality
+    const { openDemo } = useDemo()
+
     // Refs and controls for scroll-based animation
     const containerRef = useRef(null)
     const endTriggerRef = useRef(null)
+
+    // Track window width to disable animation reset on small screens
+    const [windowWidth, setWindowWidth] = useState(0)
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (typeof window !== 'undefined') {
+                setWindowWidth(window.innerWidth)
+            }
+        }
+
+        // Set initial width
+        handleResize()
+
+        // Add event listener
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', handleResize)
+        }
+
+        // Cleanup
+        return () => {
+            if (typeof window !== 'undefined') {
+                window.removeEventListener('resize', handleResize)
+            }
+        }
+    }, [])
 
     // Detect when cards come into view
     const cardsVisible = useInView(containerRef, {
@@ -23,17 +53,44 @@ const Monitoring = () => {
 
     const containerControls = useAnimation()
 
+    // Check if screen is small (50% or less)
+    const isSmallScreen = windowWidth <= 960
+
+    // Calculate proportional height for cards based on viewport width
+    const getCardHeight = () => {
+        if (windowWidth <= 960) return '215px'
+        if (windowWidth <= 1024) return '215px'
+        if (windowWidth <= 1280) return '250px'
+        if (windowWidth <= 1440) return '287px'
+        // For xxl screens (>1440px), scale proportionally
+        // Base ratio: 287px at 1440px = 0.199 ratio
+        const baseRatio = 287 / 1440
+        const proportionalHeight = Math.min(windowWidth * baseRatio, 400) // Cap at 400px
+        return `${Math.round(proportionalHeight)}px`
+    }
+
+    // Calculate proportional height for extended background area
+    const getExtendedAreaHeight = () => {
+        if (windowWidth <= 1024) return '430px'
+        if (windowWidth <= 1440) return '574px'
+        // For xxl screens (>1440px), scale proportionally
+        // Base ratio: 574px at 1440px = 0.399 ratio
+        const baseRatio = 574 / 1440
+        const proportionalHeight = Math.min(windowWidth * baseRatio, 800) // Cap at 800px
+        return `${Math.round(proportionalHeight)}px`
+    }
+
     // Animation variants for staggered slide-up effect with slower transitions
     const containerVariants = {
         hidden: {
             transition: {
-                staggerChildren: 0.5, // Slower stagger for reverse animation
+                staggerChildren: isSmallScreen ? 0 : 0.5, // No stagger on small screens
                 staggerDirection: -1, // Reverse the stagger order when going to hidden
             }
         },
         visible: {
             transition: {
-                staggerChildren: 0.5, // Slower stagger for forward animation
+                staggerChildren: isSmallScreen ? 0 : 0.5, // No stagger on small screens
             }
         }
     }
@@ -44,37 +101,37 @@ const Monitoring = () => {
         visible: {}
     }
 
-    // Second card slides up into place - increased drop distance, slower animation
+    // Second card slides up into place - disabled on small screens
     const secondCardVariants = {
         hidden: {
-            y: 250, // Increased staircase position: +250px down from final position
+            y: isSmallScreen ? 0 : 250, // No animation on small screens
             transition: {
-                duration: 1.5, // Slower reverse animation
+                duration: isSmallScreen ? 0 : 1.5, // No duration on small screens
                 ease: [0.6, 0, 0.38, 1]
             }
         },
         visible: {
             y: 0, // Final aligned position
             transition: {
-                duration: 1.5, // Slower forward animation
+                duration: isSmallScreen ? 0 : 1.5, // No duration on small screens
                 ease: [0.6, 0, 0.38, 1]
             }
         }
     }
 
-    // Third card slides up into place - increased drop distance, slower animation
+    // Third card slides up into place - disabled on small screens
     const thirdCardVariants = {
         hidden: {
-            y: 500, // Increased staircase position: +500px down from final position
+            y: isSmallScreen ? 0 : 500, // No animation on small screens
             transition: {
-                duration: 1.5, // Slower reverse animation
+                duration: isSmallScreen ? 0 : 1.5, // No duration on small screens
                 ease: [0.6, 0, 0.38, 1]
             }
         },
         visible: {
             y: 0, // Final aligned position
             transition: {
-                duration: 1.5, // Slower forward animation
+                duration: isSmallScreen ? 0 : 1.5, // No duration on small screens
                 ease: [0.6, 0, 0.38, 1]
             }
         }
@@ -82,43 +139,57 @@ const Monitoring = () => {
 
     // Handle scroll-based animation with reverse functionality
     useEffect(() => {
-        console.log('Scroll state:', { cardsVisible, pastEnd })
+        console.log('Scroll state:', { cardsVisible, pastEnd, windowWidth })
+
+        // Check if screen is 50% or less of typical desktop width (assuming 1920px as full screen)
+        const isSmallScreen = windowWidth <= 960 // 50% of 1920px
 
         if (cardsVisible && !pastEnd) {
             console.log('Cards in view - staying visible (aligned)')
             containerControls.start("visible")
-        } else if (pastEnd) {
-            console.log('Past end - animating to hidden (staggered)')
+        } else if (pastEnd && !isSmallScreen) {
+            console.log('Past end - animating to hidden (staggered) - large screen only')
             containerControls.start("hidden")
-        } else if (!cardsVisible) {
-            console.log('Cards out of view - animating to hidden (staggered)')
+        } else if (!cardsVisible && !isSmallScreen) {
+            console.log('Cards out of view - animating to hidden (staggered) - large screen only')
             containerControls.start("hidden")
+        } else if (isSmallScreen) {
+            console.log('Small screen detected - keeping animations visible')
+            containerControls.start("visible")
         }
-    }, [cardsVisible, pastEnd, containerControls])
+    }, [cardsVisible, pastEnd, containerControls, windowWidth])
     return (
         <div ref={containerRef} className='relative flex w-full flex-col items-center justify-center overflow-hidden'>
             <Image src={"/platform/monitoting-section-img.png"} alt="monitoting-section-img" width={955} height={800} className="absolute right-0 top-0 w-full max-w-[500px] -translate-y-14 translate-x-32 md:translate-x-20 md:translate-y-0 lg:max-w-[800px] lg:translate-x-32 1300:max-w-[955px] 1300:translate-x-40" />
-            <div className='z-[10] w-full max-w-[1440px] border-b border-[#E8E8E8]'>
+            <div className='z-[10] w-full border-b border-[#E8E8E8]'>
                 {/* Header Section - Transparent background to show background image */}
-                <div className='pt-30 w-full px-4 pb-4 md:px-6 md:pb-12 md:pt-14'>
-                    <div className='w-full max-w-[685px] text-c-off-white'>
-                        <h2 className='font-britti-sans text-[32px] font-[400] leading-[0.9] md:text-[40px]'>
-                            One platform from monitoring <br className="hidden sm:flex" /> to insights, for scientists to executives
-                        </h2>
-                        <p className='mt-4 max-w-[560px] font-britti-sans text-sm font-[400] leading-[1.1] text-c-off-white md:mt-3 md:text-[16px]'>
-                            The Tracer Platform empowers teams across Data Science, Engineering,
-                            DevOps, and Machine Learning to monitor and optimize everything they build
-                            and run in the cloud.
-                        </p>
-                        <button className='mt-8 h-[48px] w-full cursor-pointer bg-[#E8E8E8] px-8 font-britti-sans text-base font-[400] text-c-black sm:w-fit md:mt-10'>
-                            Talk to an Expert
-                        </button>
+                <div className='w-full flex justify-center'>
+                    <div className='w-full max-w-[1440px] pt-30 px-4 pb-4 md:px-6 md:pb-12 md:pt-14'>
+                        <div className='w-full max-w-[685px] text-c-off-white'>
+                            <h2 className='font-britti-sans text-[32px] font-[400] leading-[0.9] md:text-[40px]'>
+                                One platform from monitoring <br className="hidden sm:flex" /> to insights, for scientists to executives
+                            </h2>
+                            <p className='mt-4 max-w-[560px] font-britti-sans text-sm font-[400] leading-[1.1] text-c-off-white md:mt-3 md:text-[16px]'>
+                                The Tracer Platform empowers teams across Data Science, Engineering,
+                                DevOps, and Machine Learning to monitor and optimise everything they build
+                                and run in the cloud.
+                            </p>
+                            <button
+                                onClick={openDemo}
+                                className='mt-8 h-[48px] w-full cursor-pointer bg-[#E8E8E8] px-8 font-britti-sans text-base font-[400] text-c-black transition-all hover:opacity-80 sm:w-fit md:mt-10'
+                            >
+                                Talk to an Expert
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 {/* Cards Container */}
                 <motion.div
-                    className='grid lg:grid-cols-3 gap-0 lg:h-auto'
+                    className='grid grid-cols-1 gap-0 h-auto w-full'
+                    style={{
+                        gridTemplateColumns: windowWidth > 960 ? 'repeat(3, 1fr)' : '1fr'
+                    }}
                     variants={containerVariants}
                     initial="hidden"
                     animate={containerControls}
@@ -126,8 +197,16 @@ const Monitoring = () => {
                     {/* First Card - No Animation */}
                     <motion.div className='flex flex-col h-full' variants={firstCardVariants}>
                         <div className='w-full bg-white px-4 pt-4 md:px-3 md:pt-3'>
-                            <div className='h-[215px] w-full bg-main-background lg:h-[287px]'>
-
+                            <div className='h-[215px] w-full bg-main-background relative'
+                                 style={{
+                                     height: getCardHeight()
+                                 }}>
+                                <Image
+                                    src="/platform/predict-and-optimise.svg"
+                                    alt="Predict and optimise compute requirements"
+                                    fill
+                                    className="object-cover object-top-left"
+                                />
                             </div>
                         </div>
                         <div className='w-full flex flex-col bg-[#FCFCFC] text-black flex-1'>
@@ -154,8 +233,16 @@ const Monitoring = () => {
                     {/* Second Card - Slide Up Animation */}
                     <motion.div className='flex flex-col h-full' variants={secondCardVariants}>
                         <div className='w-full border-l border-[#E8E8E8] bg-[#FCFCFC] px-4 pt-4 text-black md:px-3 md:pt-3'>
-                            <div className='h-[215px] w-full bg-main-background lg:h-[287px]'>
-
+                            <div className='h-[215px] w-full bg-main-background relative'
+                                 style={{
+                                     height: getCardHeight()
+                                 }}>
+                                <Image
+                                    src="/platform/total-visibility.svg"
+                                    alt="Total visibility into computational infrastructure"
+                                    fill
+                                    className="object-cover object-top-left"
+                                />
                             </div>
                         </div>
                         <div className='w-full flex flex-col bg-[#FCFCFC] text-black flex-1'>
@@ -182,8 +269,16 @@ const Monitoring = () => {
                     {/* Third Card - Slide Up Animation */}
                     <motion.div className='flex flex-col h-full' variants={thirdCardVariants}>
                         <div className='w-full border-l border-[#E8E8E8] bg-[#FCFCFC] px-4 pt-4 md:px-3 md:pt-3'>
-                            <div className='h-[215px] w-full bg-main-background lg:h-[287px]'>
-
+                            <div className='h-[215px] w-full bg-main-background relative'
+                                 style={{
+                                     height: getCardHeight()
+                                 }}>
+                                <Image
+                                    src="/platform/fix-issues.svg"
+                                    alt="Fix issues instantly"
+                                    fill
+                                    className="object-cover object-top-left"
+                                />
                             </div>
                         </div>
                         <div className='w-full flex flex-col bg-[#FCFCFC] text-black flex-1'>
@@ -213,7 +308,7 @@ const Monitoring = () => {
                 <div ref={endTriggerRef} className='w-full h-0'></div>
 
                 {/* White background for extended area */}
-                <div className='w-full h-[430px] lg:h-[574px] bg-[#FCFCFC]'></div>
+                <div className='w-full bg-[#FCFCFC]' style={{ height: getExtendedAreaHeight() }}></div>
             </div>
         </div>
     )

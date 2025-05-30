@@ -88,7 +88,7 @@ const Approach = () => {
                                 New Opportunities
                             </h3>
                             <p className='mt-2 text-c-black font-[400] font-britti-sans text-sm md:text-[16px] leading-[1.1]'>
-                                AI’s full potential relies on fast experimentation, achievable only through optimized tooling and precise information
+                                AI’s full potential relies on fast experimentation, achievable only through optimised tooling and precise information
                             </p>
                         </div>
                     </motion.div>

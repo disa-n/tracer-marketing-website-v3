@@ -73,14 +73,14 @@ const ChallengeCard = ({ challenge, index }: { challenge: CoreChallenge; index: 
         {(index === 1 || index === 3) && <div className="hidden h-20 w-full border-b border-[#404040] lg:block" />}
         <div ref={ref} className="m-4 overflow-hidden border border-[#404040] relative">
           {/* Image container */}
-          <div className="relative overflow-hidden">
+          <div className={`relative overflow-hidden ${index === 2 ? 'h-[229px]' : index === 3 ? 'h-[284px]' : 'h-[259px]'}`}>
             {/* The actual image */}
             <Image
-              width={477}
-              height={259}
+              width={index === 2 ? 553 : index === 3 ? 477 : 477}
+              height={index === 2 ? 229 : index === 3 ? 284 : 259}
               src={challenge.imageUrl}
               alt={challenge.title}
-              className="block w-full"
+              className="block w-full h-full object-cover"
             />
 
             {/* Mask that covers the bottom portion of the image */}

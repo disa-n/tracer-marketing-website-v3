@@ -1,7 +1,12 @@
+'use client'
+
 import Image from 'next/image'
 import React from 'react'
+import { useDemo } from '../ScheduleDemo'
 
 const Cta = () => {
+    const { openDemo } = useDemo()
+
     return (
         <div className='flex w-full flex-col items-center justify-center gap-6 bg-[#FCFCFC] text-c-black md:gap-8'>
             <div className='flex w-full max-w-[1440px] flex-col items-start justify-between px-4 pt-6 md:flex-row md:items-end md:pt-[64px]'>
@@ -13,7 +18,10 @@ const Cta = () => {
                         Ready to see Tracer <br className='sm:hidden' /> in action?
                     </h2>
                 </div>
-                <button className='mt-6 h-[48px] w-full shrink-0 cursor-pointer bg-[#E8E8E8] px-8 font-britti-sans text-sm font-[400] text-c-black transition-all hover:opacity-80 sm:text-base md:mt-0 md:w-fit'>
+                <button
+                    onClick={openDemo}
+                    className='mt-6 h-[48px] w-full shrink-0 cursor-pointer bg-[#E8E8E8] px-8 font-britti-sans text-sm font-[400] text-c-black transition-all hover:opacity-80 sm:text-base md:mt-0 md:w-fit'
+                >
                     Talk to an Expert
                 </button>
             </div>

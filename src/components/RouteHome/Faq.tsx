@@ -6,6 +6,8 @@ import { faqData, FaqItem } from "./data/faqData";
 const Faq = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
+  if (true) return null; // ← This hides the component
+
   const toggleIndex = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };

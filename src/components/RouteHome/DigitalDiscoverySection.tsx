@@ -128,6 +128,38 @@ const ImagePanel = ({ src, caption, index }: { src: string; caption: string; ind
 };
 
 export default function DigitalDiscoverySection() {
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      if (typeof window !== 'undefined') {
+        setWindowWidth(window.innerWidth);
+      }
+    };
+
+    // Set initial width
+    checkScreenSize();
+
+    // Update width on resize
+    const handleResize = () => {
+      if (typeof window !== 'undefined') {
+        setWindowWidth(window.innerWidth);
+      }
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+    }
+
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', handleResize);
+      }
+    };
+  }, []);
+
+  const shouldShowRectangle = typeof window !== 'undefined' && windowWidth > (window.screen.width * 0.65);
+
   return (
     <section id="digitalDiscovery" className="relative overflow-hidden bg-[#FCFCFC]">
       {/* Dark grey rectangle in the top right */}
@@ -280,18 +312,20 @@ export default function DigitalDiscoverySection() {
       </div>
 
       {/* Bottom-left reveal bar (full-width section, no side margin) */}
-      <motion.div
-        className="absolute bottom-0 left-0 bg-[#202020] origin-left h-[60px] md:h-[90px] z-10"
-        initial={{ width: "20vw" }}
-        whileInView={{
-          width: "36.75vw",
-          transition: {
-            duration: 0.8,
-            ease: [0.6, 0, 0.38, 1]
-          }
-        }}
-        viewport={{ once: false, amount: 0.8 }}
-      />
+      {shouldShowRectangle && (
+        <motion.div
+          className="absolute bottom-0 left-0 bg-[#202020] origin-left h-[60px] md:h-[90px] z-10"
+          initial={{ width: "20vw" }}
+          whileInView={{
+            width: "36.75vw",
+            transition: {
+              duration: 0.8,
+              ease: [0.6, 0, 0.38, 1]
+            }
+          }}
+          viewport={{ once: false, amount: 0.8 }}
+        />
+      )}
     </section>
-);
+  );
 }

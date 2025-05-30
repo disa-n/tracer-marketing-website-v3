@@ -1,5 +1,9 @@
+'use client';
+
 import Link from "next/link";
 import Image from "next/image";
+import { useState, useEffect } from 'react';
+import ComingSoon from '@/components/shared/ComingSoon';
 
 type BlogPost = {
   slug: string;
@@ -13,7 +17,19 @@ type BlogPost = {
   };
 };
 
-export default async function BlogPage() {
+export default function BlogPage() {
+  const [isComingSoon, setIsComingSoon] = useState(true); // Default to true for SSR
+
+  useEffect(() => {
+    // Use environment variable instead of window.location
+    setIsComingSoon(process.env.NODE_ENV === "development" ? false : true);
+  }, []);
+
+  console.log("Current isComingSoon state:", isComingSoon);
+
+  if(isComingSoon) {
+    return <ComingSoon />
+  }
   // Use static data instead of dynamic imports
   const posts: BlogPost[] = [
     {
