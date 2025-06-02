@@ -68,7 +68,7 @@ const NavigationBar = () => {
                 <Sheet>
                     <SheetTrigger asChild>
                         <button className='flex 800:hidden'>
-                            <Image src={"/shared/menu.svg"} alt='menu' width={24} height={24} />
+                            <Image src={"/shared/menu-icon.svg"} alt='menu' width={24} height={24} />
                         </button>
                     </SheetTrigger>
                     <SheetContent side={"right"} className='w-full'>
