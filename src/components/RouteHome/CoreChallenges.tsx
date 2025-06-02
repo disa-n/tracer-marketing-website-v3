@@ -1,24 +1,30 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import { challenges, CoreChallenge } from "./data/CoreChallenges";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 // Challenge Card Component
-const ChallengeCard = ({ challenge, index }: { challenge: CoreChallenge; index: number }) => {
+const ChallengeCard = ({ challenge, index, shouldAnimate = true }: { challenge: CoreChallenge; index: number; shouldAnimate?: boolean }) => {
   const controls = useAnimation();
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
 
   React.useEffect(() => {
+    if (!shouldAnimate) {
+      // If animations are disabled, set mask to final state (hidden)
+      controls.start({ height: '0%' });
+      return;
+    }
+
     if (isInView) {
       controls.start({ height: '0%', transition: { duration: 0.8, ease: [0.6, 0, 0.38, 1] } });
     } else {
       controls.set({ height: '85%' });
     }
-  }, [isInView, controls]);
+  }, [isInView, controls, shouldAnimate]);
 
   const imageDimensions = [
     { w: 477, h: 259 },
@@ -75,6 +81,27 @@ const ChallengeCard = ({ challenge, index }: { challenge: CoreChallenge; index: 
 };
 
 const CoreChallengeSection = () => {
+  const [shouldAnimate, setShouldAnimate] = useState(true);
+
+  // Effect to handle window resize and determine if animations should be enabled
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      const screenWidth = window.screen.width;
+      // Disable animations when window is 50% or less of screen width
+      setShouldAnimate(width > screenWidth * 0.5);
+    };
+
+    // Set initial values
+    handleResize();
+
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <section className="bg-c-black py-6 overflow-hidden">
       <h2 className="mx-auto mb-4 max-w-[1440px] pl-6 text-[clamp(1.25rem,5vw,2rem)] leading-none lg:pl-6 text-[#FCFCFC]">
@@ -83,7 +110,7 @@ const CoreChallengeSection = () => {
       <div className="relative mx-auto max-w-[1440px] border-[#404040] px-4 lg:border-y lg:border-l 1440:px-0">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-0">
           {challenges.map((challenge, index) => (
-            <ChallengeCard key={challenge.id} challenge={challenge} index={index} />
+            <ChallengeCard key={challenge.id} challenge={challenge} index={index} shouldAnimate={shouldAnimate} />
           ))}
         </div>
       </div>

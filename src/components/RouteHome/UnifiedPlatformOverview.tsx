@@ -1,10 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import PrimaryButton from "@/components/ui/PrimaryButton";
-import Image from "next/image";
-import UnifiedPlatformCard from "./UnifiedPlatformCard";
 import UnifiedPlatformCardLg from "./UnifiedPlatformCardLg";
 
 const UnifiedPlatformOverview = () => {
@@ -12,22 +9,6 @@ const UnifiedPlatformOverview = () => {
 
   const handleTalkToExpert = () => {
     router.push('/demo');
-  };
-  // Animation variant for the mobile background image rising into place
-  const imageVariants = {
-    hidden: {
-      opacity: 0,
-      y: 50
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 1.0,
-        ease: [0.6, 0, 0.38, 1],
-        delay: 0.8 // Delay to let cards animate first
-      }
-    }
   };
 
   return (
@@ -61,36 +42,16 @@ const UnifiedPlatformOverview = () => {
                 </div>
               </div>
               <div className="hidden sm:block">
-                <PrimaryButton title="Talk to an Expert" className="text-[#202020]" onClick={handleTalkToExpert} />
+                <PrimaryButton title="Talk to an Expert" className="bg-[#E8E8E8] text-[#202020]" onClick={handleTalkToExpert} />
               </div>
             </div>
 
             <div className="relative">
-              <div className="hidden lg:block">
-                <UnifiedPlatformCardLg />
-              </div>
-
-              <div className="lg:hidden">
-                <UnifiedPlatformCard />
-                <motion.div
-                  className="relative h-[280px] w-full lg:hidden [@media(min-width:375px)]:h-[300px]"
-                  variants={imageVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.3 }}
-                >
-                  <Image
-                    src="/home/unified-bg-bottom-sm.png"
-                    alt="unified-bg-bottom"
-                    fill
-                    className=""
-                    priority
-                  />
-                </motion.div>
-              </div>
+              {/* Use the responsive UnifiedPlatformCardLg component for all screen sizes */}
+              <UnifiedPlatformCardLg />
 
               <div className="absolute bottom-0 left-0 right-0 p-4 sm:hidden">
-                <PrimaryButton title="Talk to an Expert" onClick={handleTalkToExpert} />
+                <PrimaryButton title="Talk to an Expert" className="bg-[#E8E8E8] text-[#202020]" onClick={handleTalkToExpert} />
               </div>
             </div>
           </div>

@@ -188,8 +188,6 @@ function Layer() {
                     organisation
                   </span>
                 </div>
-                <div className="h-[10px] bg-white"></div>
-                <div className="flex h-[10px] w-[80%] justify-self-end bg-white"></div>
               </div>
             </div>
           </div>
