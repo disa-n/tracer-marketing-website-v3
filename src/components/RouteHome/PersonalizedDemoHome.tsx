@@ -20,7 +20,7 @@ const PersonalizedDemoHome = () => {
                   Ready to see Tracer in action?
                 </h3>
               </div>
-              <button 
+              <button
                 onClick={openDemo}
                 className="flex h-[48px] w-full cursor-pointer items-center justify-center bg-[#E8E8E8] px-8 py-3 font-britti-sans text-sm font-normal text-[#202020] hover:bg-[#E8E8E8]/80 sm:w-auto md:h-[49px] md:text-base"
               >
@@ -34,8 +34,8 @@ const PersonalizedDemoHome = () => {
         <Image
           src="/home/demo-home-car.png"
           alt="demo-car"
-          layout="fill"
-          objectFit="cover"
+          fill
+          className="object-cover"
           priority
         />
         <div className="absolute right-0 top-0 h-[45px] w-[31%] bg-[#FCFCFC] md:h-[54px]"></div>

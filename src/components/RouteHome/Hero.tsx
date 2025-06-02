@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { motion, Variants } from 'framer-motion';
 import Image from 'next/image';
 
+
 // Animation configuration
 const animationConfig = { delay: 0.001, duration: 1.8, ease: [0.6, 0, 0.38, 1] };
 
@@ -16,20 +17,22 @@ const headingVariant: Variants = {
 const subheadingVariant = headingVariant;
 const paragraphVariant = headingVariant;
 
-// Slide diagonally from top-left into place
+// Slide diagonally from top-left into place - responsive positioning
 const imageVariant: Variants = {
   hidden: { x: -200, y: -250 },
-  visible: { x: 0, y: -55, transition: { ...animationConfig, duration: 2.2 } },
+  visible: {
+    x: 0,
+    y: 0, // Keep image within section bounds
+    transition: { ...animationConfig, duration: 2.2 }
+  },
 };
 
-const linesVariant: Variants = {
-  hidden: { pathLength: 0 },
-  visible: { pathLength: 1, transition: animationConfig },
-};
+
 
 export default function HeroSection() {
   const [animate, setAnimate] = useState(false);
   const [refreshKey, setRefreshKey] = useState(Date.now());
+  const [windowWidth, setWindowWidth] = useState(0);
 
   // This effect runs on component mount and handles the animation
   useEffect(() => {
@@ -67,16 +70,43 @@ export default function HeroSection() {
     };
   }, []);
 
+  // Window resize effect for responsive gridlines
+  useEffect(() => {
+    const checkScreenSize = () => {
+      if (typeof window !== 'undefined') {
+        setWindowWidth(window.innerWidth);
+      }
+    };
+
+    // Set initial width
+    checkScreenSize();
+
+    // Update width on resize
+    const handleResize = () => {
+      if (typeof window !== 'undefined') {
+        setWindowWidth(window.innerWidth);
+      }
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+    }
+
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', handleResize);
+      }
+    };
+  }, []);
+
+  const shouldShowGridlines = windowWidth > 768; // Hide gridlines on mobile/small screens
+
   return (
     <section
       key={refreshKey}
       className="h-[640px] bg-black text-white lg:h-[800px]"
     >
       <motion.div
-        className="relative flex h-full flex-col items-center justify-center overflow-hidden lg:block bg-[url(/home/hero-bg-lines.svg)] bg-contain bg-center bg-repeat-y mx-auto max-w-[1440px] w-full"
-        variants={linesVariant}
-        initial="hidden"
-        animate={animate ? 'visible' : 'hidden'}
       >
 
         {/* HEADINGS */}
@@ -84,9 +114,9 @@ export default function HeroSection() {
           variants={headingVariant}
           initial="hidden"
           animate={animate ? 'visible' : 'hidden'}
-          className="relative z-10 font-chakra-petch text-[clamp(3.5rem,10vw,8.5rem)] font-medium leading-none
-                     md:-translate-y-1/2 md:leading-normal
-                     lg:absolute lg:left-4 lg:top-1/2 lg:font-normal lg:-tracking-[9px]"
+          className="relative z-10 font-chakra-petch text-[clamp(3.5rem,10vw,8.5rem)] font-medium leading-none pt-[120px] px-6
+                     md:-translate-y-1/2 md:leading-normal md:pt-0 md:px-4
+                     lg:absolute lg:left-4 lg:top-1/2 xl:top-[30%] 2xl:top-[15%] lg:font-normal lg:-tracking-[9px]"
         >
           Accelerating
         </motion.h1>
@@ -95,9 +125,9 @@ export default function HeroSection() {
           variants={subheadingVariant}
           initial="hidden"
           animate={animate ? 'visible' : 'hidden'}
-          className="relative z-10 font-chakra-petch text-[clamp(3.5rem,10vw,8.5rem)] font-medium leading-none
-                     md:-translate-y-1/2
-                     lg:absolute lg:bottom-0 lg:right-4 lg:text-right lg:font-normal lg:leading-[104px] lg:-tracking-[10px]"
+          className="relative z-10 font-chakra-petch text-[clamp(3.5rem,10vw,8.5rem)] font-medium leading-none pt-4 pl-6
+                     md:-translate-y-1/2 md:pt-0 md:pl-0
+                     lg:absolute lg:bottom-0 xl:bottom-[120px] 2xl:bottom-[220px] lg:right-4 lg:text-right lg:font-normal lg:leading-[104px] lg:-tracking-[10px]"
         >
           the New Dawn <br className="hidden md:block" /> of AI in Science
         </motion.h2>
@@ -106,7 +136,7 @@ export default function HeroSection() {
           variants={paragraphVariant}
           initial="hidden"
           animate={animate ? 'visible' : 'hidden'}
-          className="relative z-10 font-chakra-petch text-base lg:absolute lg:bottom-40 lg:left-4"
+          className="relative z-10 font-chakra-petch text-base px-6 pt-8 md:px-2 md:pt-0 lg:absolute lg:bottom-40 xl:bottom-[160px] 2xl:bottom-[260px] lg:left-8"
         >
           <p className="mt-4 text-sm md:max-w-[453px] md:text-base">
             Tracer combines cutting-edge technological advances with the deep
@@ -120,18 +150,58 @@ export default function HeroSection() {
           variants={imageVariant}
           initial="hidden"
           animate={animate ? 'visible' : 'hidden'}
-          className="absolute left-0 top-[70px] z-[2] w-full md:bottom-auto md:left-auto md:right-auto md:top-[50px]"
+          className="absolute left-0 top-[20px] z-[7] w-full h-full md:top-[50px] lg:top-[60px] xl:top-[-60px] 2xl:top-[-80px] overflow-hidden"
         >
           <Image
             src="/home/hero.png"
             alt="hero"
             width={1416}
             height={808}
-            className="h-full w-full scale-[3.5] md:scale-100"
+            className="h-full w-full scale-[1.8] md:scale-100 lg:scale-95 xl:scale-90 object-contain object-center"
           />
         </motion.div>
 
-
+{/* Static Vertical Gridlines - Hidden on mobile/small screens */}
+{shouldShowGridlines && (
+  <>
+    <div
+      className="absolute bg-[#404040] h-[120vh] md:h-[140vh] lg:h-[160vh] xl:h-[180vh]"
+      style={{
+        width: 1,
+        left: 250,
+        top: 0,
+        zIndex: 0, // lower than your animated elements
+      }}
+    />
+    <div
+      className="absolute bg-[#404040] h-[120vh] md:h-[140vh] lg:h-[160vh] xl:h-[180vh]"
+      style={{
+        width: 1,
+        left: 570,
+        top: 0,
+        zIndex: 0,
+      }}
+    />
+    <div
+      className="absolute bg-[#404040] h-[95vh] md:h-[95vh] lg:h-[117vh] xl:h-[107vh]"
+      style={{
+        width: 1,
+        left: 890,
+        top: 0,
+        zIndex: 6,
+      }}
+    />
+    <div
+      className="absolute bg-[#404040] h-[80vh] md:h-[100vh] lg:h-[117vh] xl:h-[117vh]"
+      style={{
+        width: 1,
+        left: 1210,
+        top: 0,
+        zIndex: 6,
+      }}
+    />
+  </>
+)}
 
 
       </motion.div>

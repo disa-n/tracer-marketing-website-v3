@@ -1,59 +1,31 @@
 'use client';
 
-import React from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useAnimation, useInView } from 'framer-motion';
 import { challenges, CoreChallenge } from "./data/CoreChallenges";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 // Challenge Card Component
 const ChallengeCard = ({ challenge, index }: { challenge: CoreChallenge; index: number }) => {
-  // Animation controls
   const controls = useAnimation();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { amount: 0.3 });
 
-  // Reference to track when element is in view
-  const ref = React.useRef<HTMLDivElement>(null);
-
-  // Set up intersection observer to trigger animation
   React.useEffect(() => {
-    const currentRef = ref.current; // Store ref.current in a variable to use in cleanup
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        // When element enters viewport
-        if (entries[0].isIntersecting) {
-          // Start the animation
-          controls.start({
-            height: '0%',
-            transition: {
-              duration: 0.8,
-              ease: [0.6, 0, 0.38, 1],
-              type: "tween" // Ensures animation completes
-            }
-          });
-        }
-        // When element leaves viewport
-        else {
-          // Reset the animation state for when we scroll back
-          controls.set({ height: '85%' });
-        }
-      },
-      {
-        threshold: 0.1, // Lower threshold to detect earlier
-        rootMargin: "-10% 0px" // Slightly offset to ensure proper triggering
-      }
-    );
-
-    if (currentRef) {
-      observer.observe(currentRef);
+    if (isInView) {
+      controls.start({ height: '0%', transition: { duration: 0.8, ease: [0.6, 0, 0.38, 1] } });
+    } else {
+      controls.set({ height: '85%' });
     }
+  }, [isInView, controls]);
 
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, [controls]);
+  const imageDimensions = [
+    { w: 477, h: 259 },
+    { w: 477, h: 259 },
+    { w: 553, h: 229 },
+    { w: 477, h: 284 }
+  ][index];
 
   return (
     <div className="md:flex">
@@ -66,24 +38,24 @@ const ChallengeCard = ({ challenge, index }: { challenge: CoreChallenge; index: 
         </span>
       </div>
       <div className={cn(
-          "flex-1 border-x border-b border-t border-[#404040] lg:border-b-0",
-          (index === 0 || index === 1 || index === 3) && "lg:border-t-0"
-        )}
-      >
+        "flex-1 border-x border-b border-t border-[#404040] lg:border-b-0",
+        (index === 0 || index === 1 || index === 3) && "lg:border-t-0"
+      )}>
         {(index === 1 || index === 3) && <div className="hidden h-20 w-full border-b border-[#404040] lg:block" />}
         <div ref={ref} className="m-4 overflow-hidden border border-[#404040] relative">
           {/* Image container */}
-          <div className={`relative overflow-hidden ${index === 2 ? 'h-[229px]' : index === 3 ? 'h-[284px]' : 'h-[259px]'}`}>
-            {/* The actual image */}
+          <div className={`relative overflow-hidden h-[${imageDimensions.h}px]`}>
             <Image
-              width={index === 2 ? 553 : index === 3 ? 477 : 477}
-              height={index === 2 ? 229 : index === 3 ? 284 : 259}
               src={challenge.imageUrl}
               alt={challenge.title}
+              width={imageDimensions.w}
+              height={imageDimensions.h}
+              loading={index === 0 ? "eager" : "lazy"}
+              priority={index === 0}
               className="block w-full h-full object-cover"
             />
 
-            {/* Mask that covers the bottom portion of the image */}
+            {/* Mask animation */}
             <motion.div
               className="absolute left-0 right-0 bottom-0 bg-c-black"
               initial={{ height: '85%' }}

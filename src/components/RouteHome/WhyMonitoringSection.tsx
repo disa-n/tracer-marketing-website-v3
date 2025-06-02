@@ -149,7 +149,7 @@ const WhyMonitoringSection = () => {
               animate={firstImageControls}
             >
               <Image
-                src={"/home/monitoring-solution.svg"}
+                src={"/home/monitoring-solution.webp"}
                 alt="Monitoring solution"
                 width={1416}
                 height={520}
@@ -165,13 +165,17 @@ const WhyMonitoringSection = () => {
               initial={{ x: "-25%" }}
               animate={secondImageControls}
             >
-              <Image
-                src={"/home/orange-dna.svg"}
-                alt="Better information"
-                width={453}
-                height={382}
-                className="h-auto w-full"
-              />
+              <div className="relative w-full aspect-[453/382]">
+  <Image
+    src="/home/orange-dna.webp"
+    alt="Better information"
+    fill
+    quality={100}
+    sizes="(min-width: 768px) 453px, 100vw"
+    className="object-contain"
+    priority
+  />
+</div>
             </motion.div>
 
             <div className="w-full max-w-[700px] flex-1 px-6">
