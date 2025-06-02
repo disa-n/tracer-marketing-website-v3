@@ -28,21 +28,33 @@ export default function BlogCard({
       : [];
 
   return (
-    <Link href={`/blog/${slug}`}>
-      <div className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
-        <div className="relative h-48 w-full">
-          <Image src={ogImage} alt={title} fill className="object-cover" />
+    <div className="border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col min-h-[500px] z-[2] bg-[#FCFCFC]">
+        <div className="relative h-56 w-full">
+          <Image
+            src={ogImage || "https://placehold.co/400x224"}
+            alt={title}
+            fill
+            className="object-cover"
+          />
         </div>
-        <div className="p-6 flex-1 flex flex-col">
+        <div className="pt-4 px-4 pb-8 flex-1 flex flex-col">
           <div className="flex items-center mb-4">
-            <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full uppercase font-semibold tracking-wide">
+            <span className="font-chakra-petch text-sm font-normal uppercase leading-[19px] text-[#202020]">
               {tag}
             </span>
-            <span className="text-gray-500 text-sm ml-auto">{date}</span>
+            <span className="font-chakra-petch text-sm font-normal uppercase leading-[19px] text-[#202020] ml-auto">{date}</span>
           </div>
-          <h2 className="text-xl font-semibold mb-2">{title}</h2>
-          <p className="text-gray-600 mb-4 flex-1">{description}</p>
-          {authors.length > 0 && (
+          <Link href={`/blog/${slug}`}>
+            <h2 className="text-xl font-semibold mb-1 hover:text-gray-700 transition-colors cursor-pointer">{title}</h2>
+          </Link>
+          <p className="text-gray-600 mb-8 flex-1">{description}</p>
+          {slug === 'kenta-hackathon' ? (
+            <Link href="/blog/KenyaPage" className="mt-auto">
+              <div className="font-chakra-petch text-sm font-normal uppercase leading-[19px] text-[#202020] hover:text-[#404040] transition-colors cursor-pointer">
+                FOLLOW THE JOURNEY →
+              </div>
+            </Link>
+          ) : authors.length > 0 ? (
             <div className="flex items-center mt-auto">
               <div className="flex -space-x-2">
                 {authors.map((a, index) => (
@@ -57,9 +69,8 @@ export default function BlogCard({
               </div>
               <span className="ml-2 text-sm text-gray-500">{authors.join(", ")}</span>
             </div>
-          )}
+          ) : null}
         </div>
       </div>
-    </Link>
   );
 }

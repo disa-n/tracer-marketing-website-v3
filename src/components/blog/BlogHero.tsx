@@ -37,12 +37,12 @@ export default function BlogHero() {
       <div
         style={{
           width: '100%',
-          height: '500px',
-          minHeight: '500px',
+          height: '350px',
+          minHeight: '350px',
           position: 'relative',
-          background: '#FCFCFC',
           top: 40,
-          overflow: 'hidden'
+          overflow: 'hidden',
+          zIndex: 0
         }}
       >
         {/* Description Text */}
@@ -71,7 +71,7 @@ export default function BlogHero() {
               style={{
                 width: 335,
                 left: 16,
-                top: 242,
+                top: 220,
                 position: 'absolute',
                 justifyContent: 'space-between',
                 alignItems: 'center',
@@ -127,7 +127,7 @@ export default function BlogHero() {
                 paddingTop: 7.24,
                 paddingBottom: 7.24,
                 left: 350,
-                top: 242,
+                top: 220,
                 position: 'absolute',
                 background: '#202020',
                 overflow: 'hidden',
@@ -170,7 +170,7 @@ export default function BlogHero() {
           <div
             style={{
               left: 16,
-              top: 242,
+              top: 180,
               position: 'absolute',
               color: '#22c55e',
               fontSize: 17.50,
@@ -187,12 +187,13 @@ export default function BlogHero() {
           style={{
             left: 613,
             top: 56,
-            position: 'absolute'
+            position: 'absolute',
+            zIndex: 1
           }}
-          src="https://placehold.co/758x426"
+          src="https://placehold.co/600x280"
           alt="Blog hero placeholder"
-          width={758}
-          height={426}
+          width={600}
+          height={280}
         />
       </div>
     </div>
