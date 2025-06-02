@@ -7,7 +7,7 @@ const nextConfig = {
 
   // ✅ Add image domains config here
   images: {
-    domains: ['tracer.bio', 'tracer.cloud'],
+    domains: ['tracer.bio', 'tracer.cloud', 'placehold.co'],
   },
 }
 
