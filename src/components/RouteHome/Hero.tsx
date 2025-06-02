@@ -114,9 +114,12 @@ export default function HeroSection() {
           variants={headingVariant}
           initial="hidden"
           animate={animate ? 'visible' : 'hidden'}
-          className="relative z-10 font-chakra-petch text-[clamp(3.5rem,10vw,8.5rem)] font-medium leading-none pt-[120px] px-6
-                     md:-translate-y-1/2 md:leading-normal md:pt-0 md:px-4
-                     lg:absolute lg:left-4 lg:top-1/2 xl:top-[30%] 2xl:top-[15%] lg:font-normal lg:-tracking-[9px]"
+          className="relative z-10 font-chakra-petch text-[clamp(3.5rem,8vw,7rem)] font-medium leading-none
+                     pt-[120px] px-6
+                     md:pt-[140px] md:px-8 md:leading-normal
+                     lg:absolute lg:left-8 lg:top-[25%] lg:font-normal lg:-tracking-[6px]
+                     xl:top-[20%] xl:-tracking-[8px]
+                     2xl:top-[15%] 2xl:-tracking-[9px]"
         >
           Accelerating
         </motion.h1>
@@ -125,9 +128,12 @@ export default function HeroSection() {
           variants={subheadingVariant}
           initial="hidden"
           animate={animate ? 'visible' : 'hidden'}
-          className="relative z-10 font-chakra-petch text-[clamp(3.5rem,10vw,8.5rem)] font-medium leading-none pt-4 pl-6
-                     md:-translate-y-1/2 md:pt-0 md:pl-0
-                     lg:absolute lg:bottom-0 xl:bottom-[120px] 2xl:bottom-[220px] lg:right-4 lg:text-right lg:font-normal lg:leading-[104px] lg:-tracking-[10px]"
+          className="relative z-10 font-chakra-petch text-[clamp(3.5rem,8vw,7rem)] font-medium leading-none
+                     pt-6 pl-8 pr-6
+                     md:pt-8 md:pl-12 md:pr-8
+                     lg:absolute lg:bottom-[25%] lg:right-8 lg:text-right lg:font-normal lg:leading-[104px] lg:-tracking-[6px] lg:pl-0 lg:pr-0
+                     xl:bottom-[20%] xl:-tracking-[8px]
+                     2xl:bottom-[35%] 2xl:-tracking-[9px]"
         >
           the New Dawn <br className="hidden md:block" /> of AI in Science
         </motion.h2>
@@ -136,9 +142,13 @@ export default function HeroSection() {
           variants={paragraphVariant}
           initial="hidden"
           animate={animate ? 'visible' : 'hidden'}
-          className="relative z-10 font-chakra-petch text-base px-6 pt-8 md:px-2 md:pt-0 lg:absolute lg:bottom-40 xl:bottom-[160px] 2xl:bottom-[260px] lg:left-8"
+          className="relative z-10 font-chakra-petch text-base
+                     px-6 pt-8
+                     md:px-8 md:pt-12
+                     lg:absolute lg:bottom-[8%] lg:left-8 lg:pt-0
+                     2xl:bottom-[30%]"
         >
-          <p className="mt-4 text-sm md:max-w-[453px] md:text-base">
+          <p className="text-sm md:text-base md:max-w-[453px] lg:max-w-[500px]">
             Tracer combines cutting-edge technological advances with the deep
             understanding of scientific industries to give insights into
             enterprises&apos; digital and AI acceleration.
@@ -150,14 +160,14 @@ export default function HeroSection() {
           variants={imageVariant}
           initial="hidden"
           animate={animate ? 'visible' : 'hidden'}
-          className="absolute left-0 top-[20px] z-[7] w-full h-full md:top-[50px] lg:top-[60px] xl:top-[-60px] 2xl:top-[-80px] overflow-hidden"
+          className="absolute left-0 top-[20px] z-[7] w-full h-[80%] sm:h-[85%] md:h-[90%] lg:h-full lg:top-[60px] xl:top-[-60px] 2xl:top-[-80px] overflow-hidden"
         >
           <Image
             src="/home/hero.png"
             alt="hero"
             width={1416}
             height={808}
-            className="h-full w-full scale-[1.8] md:scale-100 lg:scale-95 xl:scale-90 object-contain object-center"
+            className="h-full w-full scale-[1.2] sm:scale-[1.1] md:scale-[0.95] lg:scale-95 xl:scale-90 object-contain object-center"
           />
         </motion.div>
 
@@ -183,7 +193,7 @@ export default function HeroSection() {
       }}
     />
     <div
-      className="absolute bg-[#404040] h-[95vh] md:h-[95vh] lg:h-[117vh] xl:h-[107vh]"
+      className="absolute bg-[#404040] h-[640px] lg:h-[800px]"
       style={{
         width: 1,
         left: 890,
@@ -192,7 +202,7 @@ export default function HeroSection() {
       }}
     />
     <div
-      className="absolute bg-[#404040] h-[80vh] md:h-[100vh] lg:h-[117vh] xl:h-[117vh]"
+      className="absolute bg-[#404040] h-[640px] lg:h-[800px]"
       style={{
         width: 1,
         left: 1210,

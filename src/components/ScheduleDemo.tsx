@@ -185,7 +185,7 @@ export default function ScheduleDemoPage() {
       <div className="relative flex-1 lg:flex items-center justify-center hidden overflow-hidden z-10">
         <div className="absolute inset-0 flex items-center justify-center">
           <Image
-            src="/shared/T-Asset-Globe.svg"
+            src="/shared/T-Asset-Globe.webp"
             alt="Globe Visual"
             width={1200}
             height={1200}
