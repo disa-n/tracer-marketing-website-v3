@@ -1,10 +1,32 @@
 'use client'
 
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { motion, useAnimation, useInView } from 'framer-motion'
 
 function Culture() {
+  // State for responsive behavior based on 50% screen width
+  const [isMobileView, setIsMobileView] = useState(false)
+
+  // Effect to handle window resize and determine if animations should be disabled
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth
+      const screenWidth = window.screen.width
+      // Disable animations when window is 50% or less of screen width
+      setIsMobileView(width <= screenWidth * 0.5)
+    }
+
+    // Set initial values
+    handleResize()
+
+    // Add event listener
+    window.addEventListener('resize', handleResize)
+
+    // Cleanup
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   // Animation refs and controls
   const titleRef = useRef(null)
   const rectanglesRef = useRef(null)
@@ -177,10 +199,10 @@ function Culture() {
         initial={{ y: 60, opacity: 0 }}
         variants={{
           hidden: {
-            y: 60,
-            opacity: 0,
+            y: isMobileView ? 0 : 60, // No slide animation in mobile
+            opacity: isMobileView ? 1 : 0, // No fade-in animation in mobile
             transition: {
-              duration: 0.6,
+              duration: isMobileView ? 0 : 0.6, // No animation duration in mobile
               ease: [0.25, 0.1, 0.25, 1]
             }
           },
@@ -188,7 +210,7 @@ function Culture() {
             y: 0,
             opacity: 1,
             transition: {
-              duration: 0.8,
+              duration: isMobileView ? 0 : 0.8, // No animation duration in mobile
               ease: [0.25, 0.1, 0.25, 1]
             }
           }

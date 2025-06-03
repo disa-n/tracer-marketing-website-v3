@@ -2,13 +2,15 @@
 
 import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { motion, useAnimation, useInView } from 'framer-motion'
 
 function Hiring() {
   // State for responsive behavior
   const [isMobile, setIsMobile] = useState(false)
   const [windowWidth, setWindowWidth] = useState(1280) // Default to desktop width
+
+  // State for animation control based on 50% screen width
+  const [isMobileView, setIsMobileView] = useState(false)
 
   // Animation refs and controls for image
   const imageRef = useRef(null)
@@ -34,8 +36,11 @@ function Hiring() {
     const checkScreenSize = () => {
       if (typeof window !== 'undefined') {
         const width = window.innerWidth
+        const screenWidth = window.screen.width
         setWindowWidth(width)
         setIsMobile(width < 1280) // xl breakpoint
+        // Disable animations when window is 50% or less of screen width
+        setIsMobileView(width <= screenWidth * 0.5)
       }
     }
 
@@ -156,7 +161,11 @@ function Hiring() {
       </div>
 
       {/* CTA Button */}
-      <Link href="/coming-soon">
+     <a
+  href="https://jobs.ashbyhq.com/tracer"
+  target="_blank"
+  rel="noopener noreferrer"
+>
         <div
           className="absolute bg-[#E8E8E8] hiring-button hover:bg-[#D8D8D8] transition-colors duration-200
                      left-4 top-[240px] inline-flex justify-center items-center cursor-pointer w-fit
@@ -182,7 +191,7 @@ function Hiring() {
             View Role Details & Apply Now
           </div>
         </div>
-      </Link>
+      </a>
 
       {/* Background Image */}
       <motion.div
@@ -208,12 +217,12 @@ function Hiring() {
         initial="hidden"
         variants={{
           hidden: {
-            x: isMobile ? -150 : -250
+            x: isMobileView ? 0 : (isMobile ? -150 : -250) // No slide animation in mobile view
           },
           visible: {
             x: 0,
             transition: {
-              duration: 1.4,
+              duration: isMobileView ? 0 : 1.4, // No animation duration in mobile view
               ease: [0.25, 0.1, 0.25, 1]
             }
           }

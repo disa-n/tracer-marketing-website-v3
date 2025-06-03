@@ -1,10 +1,32 @@
 'use client'
 
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { motion, useAnimation, useInView } from 'framer-motion'
 
 function TwoWorlds() {
+  // State for responsive behavior based on 50% screen width
+  const [isMobileView, setIsMobileView] = useState(false)
+
+  // Effect to handle window resize and determine if animations should be disabled
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth
+      const screenWidth = window.screen.width
+      // Disable animations when window is 50% or less of screen width
+      setIsMobileView(width <= screenWidth * 0.5)
+    }
+
+    // Set initial values
+    handleResize()
+
+    // Add event listener
+    window.addEventListener('resize', handleResize)
+
+    // Cleanup
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   // Refs for animation triggers
   const titleRef = useRef(null)
   const imageRef = useRef(null)
@@ -31,59 +53,59 @@ function TwoWorlds() {
     margin: "0px 0px 0px 0px"
   })
 
-  // Animation variants for title (fade-in + slide up)
+  // Animation variants for title (fade-in + slide up) - desktop only
   const titleVariants = {
     hidden: {
-      opacity: 0,
-      y: 60 // Start 60px below
+      opacity: isMobileView ? 1 : 0, // No fade-in animation in mobile
+      y: isMobileView ? 0 : 60 // No slide animation in mobile
     },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: isMobileView ? 0 : 0.8, // No animation duration in mobile
         ease: [0.25, 0.1, 0.25, 1]
       }
     }
   }
 
-  // Animation variants for image (slide up, no fade)
+  // Animation variants for image (slide up, no fade) - desktop only
   const imageVariants = {
     hidden: {
-      y: 100 // Start 100px below
+      y: isMobileView ? 0 : 100 // No slide animation in mobile
     },
     visible: {
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: isMobileView ? 0 : 0.8, // No animation duration in mobile
         ease: [0.6, 0, 0.38, 1]
       }
     }
   }
 
-  // Animation variants for rectangle 1 (start slightly longer, shorten into position)
+  // Animation variants for rectangle 1 (start slightly longer, shorten into position) - desktop only
   const rectangle1Variants = {
     hidden: {
-      width: 520 // Start slightly longer
+      width: isMobileView ? 458 : 520 // Start at final size in mobile
     },
     visible: {
       width: 458, // Shrink to final size
       transition: {
-        duration: 0.8,
+        duration: isMobileView ? 0 : 0.8, // No animation duration in mobile
         ease: [0.6, 0, 0.38, 1]
       }
     }
   }
 
-  // Animation variants for rectangle 2 (start slightly longer, shorten into position)
+  // Animation variants for rectangle 2 (start slightly longer, shorten into position) - desktop only
   const rectangle2Variants = {
     hidden: {
-      width: 600 // Start slightly longer
+      width: isMobileView ? 529 : 600 // Start at final size in mobile
     },
     visible: {
       width: 529, // Shrink to final size
       transition: {
-        duration: 0.8,
+        duration: isMobileView ? 0 : 0.8, // No animation duration in mobile
         ease: [0.6, 0, 0.38, 1]
       }
     }
