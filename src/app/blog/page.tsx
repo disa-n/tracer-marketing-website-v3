@@ -31,17 +31,6 @@ export default function BlogPage() {
         author: 'Team Tracer',
       },
     },
-    {
-      slug: 'test-post-2',
-      metadata: {
-        title: 'Test Post 2',
-        date: '2024-04-15',
-        description: 'This is another test post.',
-        tag: 'Example',
-        ogImage: '/placeholder-icon.svg',
-        author: 'Jane Smith',
-      },
-    },
   ];
 
   posts.sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime());
