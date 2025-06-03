@@ -29,7 +29,7 @@ export const challenges: CoreChallenge[] = [
     number: "03",
     title: "Inefficient tools",
     description:
-      "Legacy systems lack the insights needed to debug, optimize, or even pinpoint performance bottlenecks",
+      "Legacy systems lack the insights needed to debug, optimise, or even pinpoint performance bottlenecks",
     imageUrl: "/home/core-challenge-3.webp",
   },
   {

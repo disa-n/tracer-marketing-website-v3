@@ -1,0 +1,105 @@
+export const metadata = {
+  title: 'Hackathon Day One: Kicking off in Nairobi',
+  date: 'Mon, 2 June',
+  description: 'A hackathon kick-off note from Laura, our COO, and records from our first day in Nairobi, Kenya.',
+  author: 'Team Tracer',
+  tag: 'Blog',
+  readTime: '5 min read',
+  ogImage: '/Blog/globe-preview-image.webp',
+  template: 'default'
+};
+
+_Habari from Nairobi, Kenya!_
+
+In accordance with our team values of “having fun while working hard”, we are taking the team to Kenya for our annual offsite!
+
+The week is split between 5 days of work and 3 days of fun (safari!) — so before we can enjoy the sun and animals, we are going to launch our first beta 🎉
+
+These next five days, we will work ‘in the open’, posting about our progress daily and aiming to ship our biggest product release yet.
+
+### ❓What are we building?
+
+Tracer is building an observability platform for highly compute-intense pipelines.
+
+We are the first pipeline monitoring system that lives in your operating system. This creates:
+
+- Unprecedented depth of understanding what your pipelines are doing  
+- Faster and more accurate problem solving  
+- Huge optimisation visibility  
+
+Resulting in **huge cost and efficiency gains 💪**
+
+This week, we want to enable anybody — whether working on a Mac, in the cloud, or using AWS Batch — to install and run Tracer.
+
+We have a lot to do, but this first day is already looking promising 🚀
+
+Stay tuned!
+
+*Laura*
+
+<br />
+<hr style={{ borderTop: '2px solid #D9D9D9', margin: '40px 0' }} />
+<br />
+
+
+## Day 1: Monday June 2
+
+Today, the team focused hard on:
+
+1. Simplifying a lot of engineering so we can iterate even faster  
+2. Building out most of the onboarding front-end and text  
+3. Adding local environment support for MacOS  
+
+---
+
+### 1. Simplifying engineering
+
+Here, we focused on simplifying our codebase, reducing costs, and speeding up our iteration cycle.
+
+- The `tracer init` code — required before running a pipeline — is now interactive, allowing for personalisation of pipeline name, environment, user name, and other tags.  
+- We also improved the Tracer pipelines repo for easier user navigation.  
+- We removed 55% of code from installation scripts, merged dev and prod scripts into one (reducing 450 lines of code), and reduced our database costs from **$14,700/month** to **$52.50/month**.  
+
+---
+
+### 2. Building onboarding flow
+
+Today’s goal was to build as many pieces of the onboarding flow as possible — making sure it is frictionless and allows for many different options.
+
+- We finished all onboarding documentation apart from the Docker-system (engineers will finish this tonight).  
+- The Clerk login is now shipped (this took time due to issues in their docs).  
+
+> ❗Today is the first day the full Tracer team knows how to code 😎  
+> All non-engineers are using the Augment AI code tool integrated into VSCode — and it’s working amazingly.
+
+**Shoutout to Paul**, who didn’t know how to code this morning and was able to design, code, and ship the onboarding flow by evening 💪
+
+![Tracer login screen](/Blog/Tracer_login.png)
+
+We have a new version of the Tracer login page using Clerk.  
+On the right, there’s a preview of the dashboard’s graph functionalities to view cost and pipeline metrics in real time.
+
+On the left, we clarify how quickly you can get started with Tracer — including integrations with **Nextflow**, **AWS Batch**, **GitHub**, and now **MacOS**.
+
+![Login Preview](/Blog/Tracer-connect.png)
+
+Tomorrow, we’ll put the final pieces together and make sure all options are clearly explained.
+
+---
+
+### 3. Adding local environment support for MacOS
+
+The team worked late, hackathon-style, to enable Tracer to run locally on MacOS.
+
+We faced setbacks — it seemed impossible to work with Nextflow pipelines — but we prevailed 💪
+
+Tracer now runs locally on MacOS using the `procfile` system as a data source.
+
+This means users can now explore how Tracer works with **Nextflow on MacOS** before deploying to remote servers, AWS Batch, or HPC clusters.
+
+We have a lot left to do, but the first day of our hackathon has been a success!
+
+Onwards,
+*The Tracer Team*
+
+
