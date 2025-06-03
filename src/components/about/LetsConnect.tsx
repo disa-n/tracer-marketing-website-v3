@@ -104,10 +104,12 @@ function LetsConnect() {
                        md:text-[64px] md:leading-[58px]
                        lg:text-[80px] lg:leading-[72px]
                        xl:text-[96px] xl:leading-[80px] xl:w-[697px]
-                       transition-all duration-1000 ease-out
-                       ${isVisible
+                       ${!isMobile ? 'transition-all duration-1000 ease-out' : ''}
+                       ${!isMobile && isVisible
                          ? 'translate-x-0 opacity-100'
-                         : '-translate-x-20 opacity-0'
+                         : !isMobile
+                         ? '-translate-x-20 opacity-0'
+                         : 'translate-x-0 opacity-100'
                        }`}
             style={{
               position: isMobile ? 'relative' : 'absolute',

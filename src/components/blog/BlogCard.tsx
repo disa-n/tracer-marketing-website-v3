@@ -44,11 +44,11 @@ export default function BlogCard({
             </span>
             <span className="font-chakra-petch text-sm font-normal uppercase leading-[19px] text-[#202020] ml-auto">{date}</span>
           </div>
-          <Link href={slug === 'kenta-hackathon' ? '/blog/KenyaPage' : `/blog/${slug}`}>
+          <Link href={slug === 'kenya-hackathon' ? '/blog/KenyaPage' : `/blog/${slug}`}>
             <h2 className="font-britti-sans text-xl font-medium mb-4 text-[#202020] hover:text-gray-700 transition-colors cursor-pointer">{title}</h2>
           </Link>
           <p className="font-britti-sans text-gray-600 mb-6 flex-1 leading-snug">{description}</p>
-          {slug === 'kenta-hackathon' ? (
+          {slug === 'kenya-hackathon' ? (
             <Link href="/blog/KenyaPage" className="mt-auto">
               <div className="font-chakra-petch text-sm font-normal uppercase leading-[19px] text-[#202020] hover:text-[#404040] transition-colors cursor-pointer">
                 FOLLOW THE JOURNEY →

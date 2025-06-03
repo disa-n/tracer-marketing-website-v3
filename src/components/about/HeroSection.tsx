@@ -108,15 +108,15 @@ function HeroSection() {
       <div
         className="absolute hidden sm:block overflow-hidden"
         style={{
-          left: 'clamp(400px, 30vw, 600px)',
+          left: 'clamp(400px, 45vw, 1050px)',
           top: 'clamp(-30px, -10vh, -80px)',
-          width: 'calc(100vw - clamp(400px, 30vw, 600px))',
+          width: 'calc(100vw - clamp(400px, 45vw, 1050px))',
           height: 'calc(80vh + 95px)',
           zIndex: 5
         }}
       >
         <Image
-          src="/About us/Tracer-brain.png"
+          src="/About us/Tracer-brain.webp"
           alt="Tracer Brain"
           width={13000}
           height={1825}

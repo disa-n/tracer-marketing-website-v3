@@ -1,3 +1,8 @@
+
+export const metadata = {
+  title: "Meet Tracer",
+  description: "Tracer combines deep scientific knowledge and cutting-edge tech to accelerate AI adoption in industry.",
+};
 import AboutTracer from "@/components/RouteHome/AboutTracer";
 import CoreChallengeSection from "@/components/RouteHome/CoreChallenges";
 import DataPrivacyNotice from "@/components/RouteHome/DataPrivacyNotice";

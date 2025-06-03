@@ -1,10 +1,32 @@
 'use client'
 
 import Image from 'next/image'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { motion, useAnimation, useInView } from 'framer-motion'
 
 const Approach = () => {
+    // State for responsive behavior based on 50% screen width
+    const [isMobileView, setIsMobileView] = useState(false)
+
+    // Effect to handle window resize and determine if animations should be disabled
+    useEffect(() => {
+        const handleResize = () => {
+            const width = window.innerWidth
+            const screenWidth = window.screen.width
+            // Disable animations when window is 50% or less of screen width
+            setIsMobileView(width <= screenWidth * 0.5)
+        }
+
+        // Set initial values
+        handleResize()
+
+        // Add event listener
+        window.addEventListener('resize', handleResize)
+
+        // Cleanup
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
+
     // Refs and controls for scroll-based animation
     const containerRef = useRef(null)
 
@@ -16,31 +38,31 @@ const Approach = () => {
 
     const containerControls = useAnimation()
 
-    // Animation variants for staggered slide-up effect from left to right
+    // Animation variants for staggered slide-up effect from left to right - disabled in mobile view
     const containerVariants = {
         hidden: {
             transition: {
-                staggerChildren: 0.3, // Stagger for reverse animation
+                staggerChildren: isMobileView ? 0 : 0.3, // No stagger in mobile view
             }
         },
         visible: {
             transition: {
-                staggerChildren: 0.3, // Increased delay for more noticeable left-to-right stagger
+                staggerChildren: isMobileView ? 0 : 0.3, // No stagger in mobile view
             }
         }
     }
 
     const cardVariants = {
         hidden: {
-            y: 150, // Slightly higher starting position
-            opacity: 0, // Start invisible
+            y: isMobileView ? 0 : 150, // No slide animation in mobile view
+            opacity: isMobileView ? 1 : 0, // No fade animation in mobile view
         },
         visible: {
             y: 0,
-            opacity: 1, // Fade to full visibility
+            opacity: 1,
             transition: {
-                y: { duration: 0.8, ease: [0.6, 0, 0.38, 1] }, // Original duration
-                opacity: { duration: 1.2, ease: "easeOut" } // Even slower fade-in
+                y: { duration: isMobileView ? 0 : 0.8, ease: [0.6, 0, 0.38, 1] }, // No duration in mobile view
+                opacity: { duration: isMobileView ? 0 : 1.2, ease: "easeOut" } // No duration in mobile view
             }
         }
     }

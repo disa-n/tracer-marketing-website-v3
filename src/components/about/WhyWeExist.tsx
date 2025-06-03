@@ -5,16 +5,15 @@ import Image from 'next/image'
 import { motion, useAnimation, useInView } from 'framer-motion'
 
 function WhyWeExist() {
-  // State for responsive behavior based on 50% screen width
+  // State for responsive behavior - disable animations on mobile
   const [isMobileView, setIsMobileView] = useState(false)
 
   // Effect to handle window resize and determine if animations should be disabled
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth
-      const screenWidth = window.screen.width
-      // Disable animations when window is 50% or less of screen width
-      setIsMobileView(width <= screenWidth * 0.5)
+      // Disable animations on mobile view (768px and below)
+      setIsMobileView(width <= 768)
     }
 
     // Set initial values
@@ -286,14 +285,14 @@ function WhyWeExist() {
           animate={textControls}
           variants={{
             hidden: {
-              y: 400 // Start completely off-screen below
+              y: isMobileView ? 0 : 400 // No slide animation in mobile
             },
             visible: {
               y: 0,
               transition: {
-                duration: 1.2,
+                duration: isMobileView ? 0 : 1.2, // No animation duration in mobile
                 ease: [0.25, 0.1, 0.25, 1],
-                delay: 0.6 // Slightly later than title
+                delay: isMobileView ? 0 : 0.6 // No delay in mobile
               }
             }
           }}

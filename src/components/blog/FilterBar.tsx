@@ -25,33 +25,34 @@ export default function FilterBar({ onFilterChange, activeFilter = 'Blogs' }: Fi
   };
 
   return (
-    <div className="w-full h-full justify-start items-center gap-[14px] inline-flex">
+    <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-[14px]">
       {filters.map((filter) => {
         const isActive = selectedFilter === filter;
         const isAllResources = filter === 'All Resources';
-        
+
         return (
           <button
             key={filter}
             onClick={() => handleFilterClick(filter)}
             className={`
-              px-[11.59px] py-[7.24px] overflow-hidden 
-              flex-col justify-start items-start gap-[7.24px] inline-flex
+              px-[11.59px] py-[7.24px] overflow-hidden
+              flex-col justify-center items-center gap-[7.24px] flex
               transition-colors duration-200 hover:opacity-80
-              ${isActive 
-                ? 'bg-[#202020] outline outline-[0.72px] outline-[#E8E8E8] outline-offset-[-0.72px]' 
+              min-h-[44px] w-full
+              ${isActive
+                ? 'bg-[#202020] outline outline-[0.72px] outline-[#E8E8E8] outline-offset-[-0.72px]'
                 : 'bg-[#FCFCFC] outline outline-[0.72px] outline-[#E8E8E8] outline-offset-[-0.72px]'
               }
-              ${isAllResources && !isActive 
-                ? 'outline-[1px] outline-offset-[-1px]' 
+              ${isAllResources && !isActive
+                ? 'outline-[1px] outline-offset-[-1px]'
                 : ''
               }
             `}
           >
-            <div className="flex-col justify-start items-start gap-[5.79px] flex">
-              <div 
+            <div className="flex-col justify-center items-center gap-[5.79px] flex">
+              <div
                 className={`
-                  text-[17.50px] font-normal leading-[27.52px] break-words
+                  text-[17.50px] font-normal leading-[27.52px] break-words text-center
                   ${isActive ? 'text-white' : 'text-[#202020]'}
                 `}
                 style={{ fontFamily: 'Britti Sans' }}

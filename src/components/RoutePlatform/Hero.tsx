@@ -6,21 +6,43 @@ import { motion, Variants, useInView } from 'framer-motion'
 // Animation configuration - more visible for testing
 const animationConfig = { delay: 0.1, duration: 2.0, ease: [0.25, 0.1, 0.25, 1] }
 
-// Image animation variant - slides in from the left (no fade)
-const imageVariant: Variants = {
-    hidden: { x: -300 },
-    visible: { x: 0, transition: animationConfig },
-}
-
-// Rectangle animation variant - starts larger and shrinks into place
-const rectangleVariant: Variants = {
-    hidden: { scale: 1.15 },
-    visible: { scale: 1, transition: animationConfig },
-}
-
 const Hero = () => {
     const ref = useRef(null)
     const [imageAnimated, setImageAnimated] = useState(false)
+
+    // State for responsive behavior based on 50% screen width
+    const [isMobileView, setIsMobileView] = useState(false)
+
+    // Effect to handle window resize and determine if animations should be disabled
+    useEffect(() => {
+        const handleResize = () => {
+            const width = window.innerWidth
+            const screenWidth = window.screen.width
+            // Disable animations when window is 50% or less of screen width
+            setIsMobileView(width <= screenWidth * 0.5)
+        }
+
+        // Set initial values
+        handleResize()
+
+        // Add event listener
+        window.addEventListener('resize', handleResize)
+
+        // Cleanup
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
+
+    // Image animation variant - slides in from the left (no fade) - disabled in mobile view
+    const imageVariant: Variants = {
+        hidden: { x: isMobileView ? 0 : -300 },
+        visible: { x: 0, transition: isMobileView ? { duration: 0 } : animationConfig },
+    }
+
+    // Rectangle animation variant - starts larger and shrinks into place - disabled in mobile view
+    const rectangleVariant: Variants = {
+        hidden: { scale: isMobileView ? 1 : 1.15 },
+        visible: { scale: 1, transition: isMobileView ? { duration: 0 } : animationConfig },
+    }
 
     // Rectangle animation resets on scroll
     const isInView = useInView(ref, {
