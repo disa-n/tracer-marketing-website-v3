@@ -67,7 +67,7 @@ export const unifiedCardDataLg: UnifiedCardData[] = [
     description:
       "Gain real-time, granular insights into every workload and process, independent of coding language, cloud structure, or location",
     lineImage: "/home/line-35.svg",
-    containerStyle: "absolute left-4 top-[150px] xl:left-[35px] xl:top-[210px]",
+    containerStyle: "absolute left-4 top-[80px] xl:left-[35px] xl:top-[120px]",
     lineImageStyle:
       "absolute bottom-[-77px] left-[-1px] z-30 xl:bottom-[-105px] w-[240px] xl:w-[323px]",
   },

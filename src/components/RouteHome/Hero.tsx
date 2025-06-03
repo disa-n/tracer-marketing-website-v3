@@ -7,86 +7,67 @@ import Image from 'next/image';
 // Animation configuration
 const animationConfig = { delay: 0.001, duration: 1.8, ease: [0.6, 0, 0.38, 1] };
 
-// Animation variants
 const headingVariant: Variants = {
   hidden: { x: -50, y: -50 },
   visible: { x: 0, y: 0, transition: animationConfig },
 };
-
 const subheadingVariant = headingVariant;
 const paragraphVariant = headingVariant;
 
-// Slide diagonally from top-left into place
 const imageVariant: Variants = {
   hidden: { x: -200, y: -250 },
-  visible: { x: 0, y: -55, transition: { ...animationConfig, duration: 2.2 } },
-};
-
-const linesVariant: Variants = {
-  hidden: { pathLength: 0 },
-  visible: { pathLength: 1, transition: animationConfig },
+  visible: { x: 0, y: 0, transition: { ...animationConfig, duration: 2.2 } },
 };
 
 export default function HeroSection() {
   const [animate, setAnimate] = useState(false);
   const [refreshKey, setRefreshKey] = useState(Date.now());
+  const [windowWidth, setWindowWidth] = useState(0);
 
-  // This effect runs on component mount and handles the animation
   useEffect(() => {
     if (typeof window === 'undefined') return;
-
     setAnimate(true);
 
-    // This is the key part: add an event listener for page visibility changes
-    // This will detect when the user refreshes the page or returns to it
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'visible') {
-        // Reset animation state
         setAnimate(false);
-        // Force remount by changing the key
         setRefreshKey(Date.now());
-        // Small timeout to ensure animation reset
         setTimeout(() => setAnimate(true), 50);
       }
     };
 
-    // Add event listener for page visibility changes
     document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('beforeunload', () => setAnimate(false));
 
-    // Also handle page refresh using beforeunload
-    const handleBeforeUnload = () => {
-      setAnimate(false);
-    };
-
-    window.addEventListener('beforeunload', handleBeforeUnload);
-
-    // Cleanup event listeners on unmount
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
-      window.removeEventListener('beforeunload', handleBeforeUnload);
+      window.removeEventListener('beforeunload', () => {});
     };
   }, []);
 
-  return (
-    <section
-      key={refreshKey}
-      className="h-[640px] bg-black text-white lg:h-[800px]"
-    >
-      <motion.div
-        className="relative flex h-full flex-col items-center justify-center overflow-hidden lg:block bg-[url(/home/hero-bg-lines.svg)] bg-contain bg-center bg-repeat-y mx-auto max-w-[1440px] w-full"
-        variants={linesVariant}
-        initial="hidden"
-        animate={animate ? 'visible' : 'hidden'}
-      >
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
+  const shouldShowGridlines = windowWidth > 768;
+
+  return (
+    <section key={refreshKey} className="h-[640px] lg:h-[800px] bg-black text-white">
+      <motion.div
+        className="relative flex h-full flex-col items-center justify-center overflow-hidden lg:block mx-auto max-w-[1440px] w-full"
+      >
         {/* HEADINGS */}
         <motion.h1
           variants={headingVariant}
           initial="hidden"
           animate={animate ? 'visible' : 'hidden'}
-          className="relative z-10 font-chakra-petch text-[clamp(3.5rem,10vw,8.5rem)] font-medium leading-none
-                     md:-translate-y-1/2 md:leading-normal
-                     lg:absolute lg:left-4 lg:top-1/2 lg:font-normal lg:-tracking-[9px]"
+          className="relative z-10 font-chakra-petch text-[clamp(3.5rem,10vw,8.5rem)] font-medium leading-none pt-[120px] pl-8 pr-6
+                     md:-translate-y-1/2 md:leading-normal md:pt-0 md:px-4
+                     lg:absolute lg:left-4 lg:top-[60%] xl:top-[30%] 2xl:top-[25%] lg:font-normal lg:-tracking-[9px]"
         >
           Accelerating
         </motion.h1>
@@ -95,9 +76,9 @@ export default function HeroSection() {
           variants={subheadingVariant}
           initial="hidden"
           animate={animate ? 'visible' : 'hidden'}
-          className="relative z-10 font-chakra-petch text-[clamp(3.5rem,10vw,8.5rem)] font-medium leading-none
-                     md:-translate-y-1/2
-                     lg:absolute lg:bottom-0 lg:right-4 lg:text-right lg:font-normal lg:leading-[104px] lg:-tracking-[10px]"
+          className="relative z-10 font-chakra-petch text-[clamp(3.5rem,10vw,8.5rem)] font-medium leading-none pt-4 pl-8
+                     md:-translate-y-1/2 md:pt-0 md:pl-0
+                     lg:absolute lg:bottom-0 xl:bottom-[120px] 2xl:bottom-[180px] lg:right-4 lg:text-right lg:font-normal lg:leading-[104px] lg:-tracking-[10px]"
         >
           the New Dawn <br className="hidden md:block" /> of AI in Science
         </motion.h2>
@@ -106,7 +87,7 @@ export default function HeroSection() {
           variants={paragraphVariant}
           initial="hidden"
           animate={animate ? 'visible' : 'hidden'}
-          className="relative z-10 font-chakra-petch text-base lg:absolute lg:bottom-40 lg:left-4"
+          className="relative z-10 font-chakra-petch text-base px-6 pt-8 md:px-2 md:pt-0 lg:absolute lg:bottom-40 xl:bottom-[160px] 2xl:bottom-[220px] lg:left-8"
         >
           <p className="mt-4 text-sm md:max-w-[453px] md:text-base">
             Tracer combines cutting-edge technological advances with the deep
@@ -120,20 +101,29 @@ export default function HeroSection() {
           variants={imageVariant}
           initial="hidden"
           animate={animate ? 'visible' : 'hidden'}
-          className="absolute left-0 top-[70px] z-[2] w-full md:bottom-auto md:left-auto md:right-auto md:top-[50px]"
+          className="absolute left-0 top-[20px] z-[7] w-full h-[80%] sm:h-[85%] md:h-[90%] lg:h-full lg:top-[60px] xl:top-[-60px] 2xl:top-[0px] overflow-hidden"
         >
           <Image
             src="/home/hero.png"
             alt="hero"
             width={1416}
             height={808}
-            className="h-full w-full scale-[3.5] md:scale-100"
+            className="h-full w-full scale-[1.2] sm:scale-[1.1] md:scale-[0.95] lg:scale-95 xl:scale-90 object-contain object-center"
           />
         </motion.div>
 
-
-
-
+        {/* GRIDLINES */}
+        {shouldShowGridlines && (
+          <>
+            {[250, 570, 890, 1210].map((left, i) => (
+              <div
+                key={i}
+                className={`absolute bg-[#404040] ${i < 2 ? 'h-[160vh]' : 'h-[640px] lg:h-[800px]'}`}
+                style={{ width: 1, left, top: 0, zIndex: i < 2 ? 0 : 6 }}
+              />
+            ))}
+          </>
+        )}
       </motion.div>
     </section>
   );

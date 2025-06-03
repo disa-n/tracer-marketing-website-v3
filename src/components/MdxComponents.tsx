@@ -1,7 +1,7 @@
 'use client';
 
 import type { MDXComponents } from 'mdx/types'
-import Image, { ImageProps } from 'next/image'
+import Image from 'next/image'
 import Link from 'next/link'
 
 // This file allows you to provide custom React components
@@ -13,16 +13,16 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Allows customizing built-in components, e.g. to add styling.
     h1: ({ children }) => (
-      <h1 className="text-4xl font-bold mt-8 mb-4">{children}</h1>
+      <h1 className="text-4xl font-bold mt-8 mb-4 text-[#202020] font-britti-sans">{children}</h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-3xl font-semibold mt-6 mb-3">{children}</h2>
+      <h2 className="text-3xl font-semibold mt-6 mb-3 text-[#202020] font-britti-sans">{children}</h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-2xl font-semibold mt-5 mb-2">{children}</h3>
+      <h3 className="text-2xl font-semibold mt-5 mb-2 text-[#202020] font-britti-sans">{children}</h3>
     ),
     p: ({ children }) => (
-      <p className="my-4 text-gray-700 leading-relaxed">{children}</p>
+      <p className="my-4 text-[#202020] leading-relaxed font-britti-sans">{children}</p>
     ),
     a: ({ href, children }) => (
       <Link href={href || '#'} className="text-blue-600 hover:underline">
@@ -30,26 +30,28 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </Link>
     ),
     ul: ({ children }) => (
-      <ul className="list-disc pl-6 my-4">{children}</ul>
+      <ul className="list-disc pl-6 my-4 text-[#202020] font-britti-sans">{children}</ul>
     ),
     ol: ({ children }) => (
-      <ol className="list-decimal pl-6 my-4">{children}</ol>
+      <ol className="list-decimal pl-6 my-4 text-[#202020] font-britti-sans">{children}</ol>
     ),
     li: ({ children }) => (
-      <li className="mb-1">{children}</li>
+      <li className="mb-1 text-[#202020] font-britti-sans">{children}</li>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="border-l-4 border-gray-200 pl-4 py-2 my-4 italic">
+      <blockquote className="border-l-4 border-[#E8E8E8] pl-4 py-2 my-4 italic text-[#202020] font-britti-sans bg-[#F8F8F8]">
         {children}
       </blockquote>
     ),
     img: (props) => (
       <Image
+        src={props.src || ''}
+        alt={props.alt || 'Blog image'}
+        width={props.width || 800}
+        height={props.height || 400}
         sizes="100vw"
         style={{ width: '100%', height: 'auto' }}
         className="rounded-lg my-6"
-        {...(props as ImageProps)}
-        alt={props.alt || 'Blog image'}
       />
     ),
     code: ({ children }) => (

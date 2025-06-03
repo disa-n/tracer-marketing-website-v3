@@ -14,7 +14,7 @@ export const challenges: CoreChallenge[] = [
     title: "No visibility into digitalisation",
     description:
       "No structured way to measure ROI, track progress, or identify the areas to double down on AI investments",
-    imageUrl: "/home/core-challenge-1.svg",
+    imageUrl: "/home/core-challenge-1.webp",
   },
   {
     id: "challenge-2",
@@ -22,15 +22,15 @@ export const challenges: CoreChallenge[] = [
     title: "Information lost between teams",
     description:
       "Metadata and crucial context get lost during handovers—leading to confusion, rework, and slower collaboration",
-    imageUrl: "/home/core-challenge-2.svg",
+    imageUrl: "/home/core-challenge-2.webp",
   },
   {
     id: "challenge-3",
     number: "03",
     title: "Inefficient tools",
     description:
-      "Legacy systems lack the insights needed to debug, optimize, or even pinpoint performance bottlenecks",
-    imageUrl: "/home/core-challenge-3.svg",
+      "Legacy systems lack the insights needed to debug, optimise, or even pinpoint performance bottlenecks",
+    imageUrl: "/home/core-challenge-3.webp",
   },
   {
     id: "challenge-4",
@@ -38,6 +38,6 @@ export const challenges: CoreChallenge[] = [
     title: "Lack of cost attribution",
     description:
       "Cloud spend is opaque. Manual tagging is unreliable. Itʼs hard to predict budgets or connect spend to value ",
-    imageUrl: "/home/core-challenge-4.svg",
+    imageUrl: "/home/core-challenge-4.webp",
   },
 ];

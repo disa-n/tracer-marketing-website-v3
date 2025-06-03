@@ -1,9 +1,9 @@
 'use client';
 
-import Link from "next/link";
-import Image from "next/image";
-import { useState, useEffect } from 'react';
-import ComingSoon from '@/components/shared/ComingSoon';
+import BlogHero from '@/components/blog/BlogHero';
+import BlogIntro from '@/components/blog/BlogIntro';
+import FilterBar from '@/components/blog/FilterBar';
+import BlogGrid from '@/components/blog/BlogGrid';
 
 type BlogPost = {
   slug: string;
@@ -18,106 +18,104 @@ type BlogPost = {
 };
 
 export default function BlogPage() {
-  const [isComingSoon, setIsComingSoon] = useState(true); // Default to true for SSR
 
-  useEffect(() => {
-    // Use environment variable instead of window.location
-    setIsComingSoon(process.env.NODE_ENV === "development" ? false : true);
-  }, []);
-
-  console.log("Current isComingSoon state:", isComingSoon);
-
-  if(isComingSoon) {
-    return <ComingSoon />
-  }
-  // Use static data instead of dynamic imports
   const posts: BlogPost[] = [
     {
-      slug: 'test-post-1',
+      slug: 'kenta-hackathon',
       metadata: {
-        title: 'Test Post 1',
-        date: '2024-05-01',
-        description: 'This is a test post with static content instead of MDX.',
-        tag: 'Testing',
-        ogImage: '/images/default-blog.png',
-        author: 'John Doe'
-      }
+        title: 'Kenya Hackathon 2025',
+        date: '02 Jun 2025',
+        description: "We flew to Kenya for a week-long hackathon to accelerate Tracer's growth. The goal? Drive verified user activations through a Reddit launch. From back-end tooling to interface polish, we're all-in - coding, designing, and shipping, with a 'swing for the fences' mindset.",
+        tag: 'Blog',
+        ogImage: '/Blog/kenya.webp',
+        author: 'Team Tracer',
+      },
     },
-    {
-      slug: 'test-post-2',
-      metadata: {
-        title: 'Test Post 2',
-        date: '2024-04-15',
-        description: 'This is another test post with static content instead of MDX.',
-        tag: 'Example',
-        ogImage: '/images/default-blog.png',
-        author: 'Jane Smith'
-      }
-    }
   ];
 
-  // Sort posts by date (newest first)
-  posts.sort((a, b) => {
-    return new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime();
-  });
+  posts.sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime());
 
   return (
-    <main className="w-full min-h-screen pt-20 px-4 md:px-8 max-w-7xl mx-auto">
-      <h1 className="text-4xl font-bold mb-8">Tracer Blog</h1>
-      <p className="text-lg mb-12">Latest updates, insights, and announcements from the Tracer team</p>
+    <main className="w-full min-h-screen pt-20 bg-[#FCFCFC] relative">
+      {/* Horizontal Gridline - Where hero section ends */}
+      <div
+        className="absolute left-0 w-full bg-[#E8E8E8] pointer-events-none"
+        style={{
+          height: 1,
+          top: 'calc(80px + 128px + 40px + 390px)', // pt-20 + pt-32 + title margin + hero container (350px + 40px top offset)
+          zIndex: 1,
+        }}
+      />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {posts.map((post) => {
-          // Convert author to array
-          const authors = post.metadata.author ?
-            (typeof post.metadata.author === 'string' ?
-              post.metadata.author.split(/,\s*and\s*|,\s*|\s+and\s+/).map(a => a.trim()) :
-              post.metadata.author) :
-            [];
+      {/* Horizontal Gridline - Where vertical gridlines start */}
+      <div
+        className="absolute left-0 w-full bg-[#E8E8E8] pointer-events-none"
+        style={{
+          height: 1,
+          top: 'calc(95px + 60px + 135px)', // Same position as vertical gridlines start
+          zIndex: 1,
+        }}
+      />
 
-          return (
-            <Link href={`/blog/${post.slug}`} key={post.slug}>
-              <div className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
-                <div className="relative h-48 w-full">
-                  <Image
-                    src={post.metadata.ogImage || '/images/default-blog.png'}
-                    alt={post.metadata.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <div className="flex items-center mb-4">
-                    <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full uppercase font-semibold tracking-wide">
-                      {post.metadata.tag || 'general'}
-                    </span>
-                    <span className="text-gray-500 text-sm ml-auto">{post.metadata.date}</span>
-                  </div>
-                  <h2 className="text-xl font-semibold mb-2">{post.metadata.title}</h2>
-                  <p className="text-gray-600 mb-4 flex-1">{post.metadata.description}</p>
-                  {authors.length > 0 && (
-                    <div className="flex items-center mt-auto">
-                      <div className="flex -space-x-2">
-                        {authors.map((author, index) => (
-                          <div
-                            key={index}
-                            className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-xs font-medium border-2 border-white"
-                            title={author}
-                          >
-                            {author.charAt(0)}
-                          </div>
-                        ))}
-                      </div>
-                      <span className="ml-2 text-sm text-gray-500">
-                        {authors.join(", ")}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </Link>
-          );
-        })}
+      {/* Vertical Gridlines - Visible in background of subscribe section */}
+      <div className="absolute left-0 w-full pointer-events-none" style={{ top: 'calc(95px + 60px + 135px)', height: 'calc(100% - 224px)' }}>
+        {/* Gridline 1 */}
+        <div
+          className="absolute bg-[#E8E8E8]"
+          style={{
+            width: 1,
+            left: 250,
+            top: 0,
+            height: '96%',
+            zIndex: 1,
+          }}
+        />
+        {/* Gridline 2 */}
+        <div
+          className="absolute bg-[#E8E8E8]"
+          style={{
+            width: 1,
+            left: 570,
+            top: 0,
+            height: '96%',
+            zIndex: 1,
+          }}
+        />
+        {/* Gridline 3 */}
+        <div
+          className="absolute bg-[#E8E8E8]"
+          style={{
+            width: 1,
+            left: 890,
+            top: 0,
+            height: '96%',
+            zIndex: 1,
+          }}
+        />
+        {/* Gridline 4 */}
+        <div
+          className="absolute bg-[#E8E8E8]"
+          style={{
+            width: 1,
+            left: 1210,
+            top: 0,
+            height: '96%',
+            zIndex: 1,
+          }}
+        />
+      </div>
+
+      <div className="px-4 md:px-8 max-w-7xl xxl:max-w-none xxl:px-16 mx-auto relative z-10">
+      <BlogHero />
+      <div className="mt-12">
+        <BlogIntro />
+      </div>
+      <div className="mt-12">
+        <FilterBar />
+      </div>
+      <div className="mt-16">
+        <BlogGrid posts={posts} />
+      </div>
       </div>
     </main>
   );

@@ -1,13 +1,28 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
+import { getAllBlogPosts, getBlogPost } from '@/data/blogPosts';
 
-// Temporary hardcoded version for testing
 export async function generateStaticParams() {
-  // Using hardcoded values instead of dynamic file system operations
-  return [
+  // Generate params for all blog posts (both static and MDX)
+  const posts = getAllBlogPosts();
+  const staticParams = posts.map((post) => ({
+    slug: post.slug,
+  }));
+
+  // Add known MDX files
+  const mdxParams = [
+    { slug: 'introducing-tracer-pt-1' },
+    { slug: 'introducing-tracer-pt-2' },
+    { slug: 'experimenting-with-tracer-pt-3' },
+    { slug: 'error-detection-with-tracer-pt-4' },
+    { slug: 'tracer-use-case101' },
     { slug: 'test-post-1' },
     { slug: 'test-post-2' },
+    { slug: 'sample-mdx-post' },
+    { slug: 'kenya-day-one' },
   ];
+
+  return [...staticParams, ...mdxParams];
 }
 
 export async function generateMetadata({
@@ -20,23 +35,15 @@ export async function generateMetadata({
     const resolvedParams = await params;
     const slug = resolvedParams.slug;
 
-    // For hardcoded test posts, return static metadata
-    if (slug === 'test-post-1') {
-      return {
-        title: 'Test Post 1',
-        description: 'Description for test post 1',
-        openGraph: {
-          images: ['https://example.com/image1.png'],
-        },
-      };
-    }
+    // Get blog post data
+    const post = getBlogPost(slug);
 
-    if (slug === 'test-post-2') {
+    if (post) {
       return {
-        title: 'Test Post 2',
-        description: 'Description for test post 2',
+        title: post.title,
+        description: post.description,
         openGraph: {
-          images: ['https://example.com/image2.png'],
+          images: [post.imageSrc],
         },
       };
     }
@@ -62,8 +69,9 @@ export async function generateMetadata({
   }
 }
 
-// Import the static content component
+// Import the content components
 import StaticContent from './static-content';
+import MDXContent from './mdx-content';
 
 // Page component with params as Promise to match Next.js 15 internal type
 export default async function BlogPost({
@@ -76,12 +84,28 @@ export default async function BlogPost({
     const resolvedParams = await params;
     const slug = resolvedParams.slug;
 
-    // Use the static content component
-    return (
-      <article className="max-w-4xl mx-auto px-4 py-12">
-        <StaticContent slug={slug} />
-      </article>
-    );
+    // Check if this is a known MDX file from our static list
+    const mdxSlugs = [
+      'introducing-tracer-pt-1',
+      'introducing-tracer-pt-2',
+      'experimenting-with-tracer-pt-3',
+      'error-detection-with-tracer-pt-4',
+      'tracer-use-case101',
+      'test-post-1',
+      'test-post-2',
+      'sample-mdx-post',
+      'kenya-day-one'
+    ];
+
+    const hasMDX = mdxSlugs.includes(slug);
+    console.log(`Slug ${slug} ${hasMDX ? 'is' : 'is not'} in MDX list`);
+
+    // Render MDX content if available, otherwise use static content
+    if (hasMDX) {
+      return <MDXContent slug={slug} />;
+    } else {
+      return <StaticContent slug={slug} />;
+    }
   } catch (error) {
     console.error("Error loading blog post:", error);
     notFound();

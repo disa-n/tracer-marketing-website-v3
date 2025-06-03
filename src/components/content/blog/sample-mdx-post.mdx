@@ -1,0 +1,81 @@
+---
+title: 'Sample MDX Blog Post with Template'
+date: 'Mon, 25 June'
+description: 'This is a sample MDX blog post demonstrating how to use templates with MDX content.'
+author: 'Team Tracer'
+tag: 'Tutorial'
+readTime: '3 min read'
+ogImage: '/Blog/globe-preview-image.webp'
+template: 'default'
+---
+
+export const metadata = {
+  title: 'Building with Supabase UI Library',
+  date: 'Mon, 02 June',
+  description: 'Exploring the powerful capabilities of Supabase UI Library and how it transforms the way we build modern web applications with seamless database integration.',
+  author: 'Team Tracer',
+  tag: 'Development',
+  readTime: '5 min read',
+  ogImage: '/Blog/globe-preview-image.webp',
+  template: 'default'
+};
+
+# Sample MDX Blog Post with Template
+
+Welcome to this sample MDX blog post! This demonstrates how you can write blog posts using MDX (Markdown + JSX) while still using the template system.
+
+## What is MDX?
+
+MDX allows you to write JSX directly in your Markdown files. This means you can:
+
+- Use React components
+- Create interactive content
+- Maintain the simplicity of Markdown
+
+## Template System
+
+This post is using the **minimal** template, which you can see specified in the frontmatter above. You can choose from:
+
+- `default` - Standard blog layout
+- `minimal` - Clean, typography-focused
+- `magazine` - Two-column layout
+- `technical` - Code-friendly design
+
+## Interactive Example
+
+You can even include React components in your MDX:
+
+<div style={{
+  background: '#f5f5f5',
+  padding: '20px',
+  borderRadius: '8px',
+  margin: '20px 0'
+}}>
+  <h3 style={{ margin: '0 0 10px 0' }}>Interactive Component</h3>
+  <p style={{ margin: 0 }}>This is a custom React component embedded in MDX!</p>
+</div>
+
+## Code Examples
+
+```javascript
+// You can include code blocks
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+
+console.log(greet('MDX'));
+```
+
+## Conclusion
+
+MDX with templates gives you the best of both worlds - easy content authoring with powerful design control.
+
+To create your own MDX blog post:
+
+1. Create a new `.mdx` file in `src/components/content/blog/`
+2. Add the frontmatter with metadata
+3. Export the metadata object
+4. Write your content in Markdown/MDX
+5. Choose your template in the metadata
+
+That's it! Your post will automatically use the template system.

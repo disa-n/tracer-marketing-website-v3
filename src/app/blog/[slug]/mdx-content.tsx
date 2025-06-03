@@ -2,20 +2,37 @@
 
 import React from 'react';
 import { MDXProviderWrapper } from '@/components/MdxProvider';
+import BlogPostTemplate from '@/components/blog/BlogPostTemplate';
 
 interface MDXContentProps {
   slug: string;
 }
 
+interface MDXModule {
+  default: React.ComponentType;
+  metadata?: {
+    title: string;
+    date: string;
+    description: string;
+    author?: string;
+    tag?: string;
+    readTime?: string;
+    ogImage?: string;
+    template?: 'default' | 'minimal' | 'magazine' | 'technical';
+  };
+}
+
 export default function MDXContent({ slug }: MDXContentProps) {
   const [Component, setComponent] = React.useState<React.ComponentType | null>(null);
+  const [metadata, setMetadata] = React.useState<MDXModule['metadata'] | null>(null);
   const [error, setError] = React.useState(false);
 
   React.useEffect(() => {
     // Dynamic import in useEffect to ensure client-side execution
     import(`@/components/content/blog/${slug}.mdx`)
-      .then((module) => {
+      .then((module: MDXModule) => {
         setComponent(() => module.default);
+        setMetadata(module.metadata || null);
       })
       .catch((err) => {
         console.error(`Error loading MDX file: ${slug}.mdx`, err);
@@ -32,7 +49,7 @@ export default function MDXContent({ slug }: MDXContentProps) {
     );
   }
 
-  if (!Component) {
+  if (!Component || !metadata) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-12">
         <div className="animate-pulse">
@@ -49,11 +66,31 @@ export default function MDXContent({ slug }: MDXContentProps) {
     );
   }
 
+  // Create a blog post object from MDX metadata
+  const blogPost = {
+    slug,
+    title: metadata.title,
+    date: metadata.date,
+    imageSrc: metadata.ogImage || '',
+    description: metadata.description,
+    author: metadata.author,
+    tag: metadata.tag,
+    readTime: metadata.readTime,
+    content: '' // Content will be rendered by the MDX component
+  };
+
+  // Get the template from metadata, default to 'default'
+  const template = metadata.template || 'default';
+
   return (
-    <article className="max-w-4xl mx-auto px-4 py-12">
-      <MDXProviderWrapper>
-        <Component />
-      </MDXProviderWrapper>
-    </article>
+    <BlogPostTemplate
+      post={blogPost}
+      template={template}
+      mdxContent={
+        <MDXProviderWrapper>
+          <Component />
+        </MDXProviderWrapper>
+      }
+    />
   );
 }

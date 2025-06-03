@@ -27,7 +27,7 @@ function ReadyToSee() {
       <div className='relative mt-8 w-full'>
         <div className='absolute right-0 top-0 z-10 hidden h-12 w-96 bg-white md:block'></div>
         <Image src="/technology/ready-to-seeeee.png" alt='ReadyToSee' width={1200} height={600} className='hidden w-full md:block' />
-        <Image src="/technology/readyToSee-mobile.png" alt="ReadyToSeeMobile" width={600} height={400} className='block w-full md:hidden' />
+        <Image src="/technology/readyToSee-mobile.webp" alt="ReadyToSeeMobile" width={600} height={400} className='block w-full md:hidden' />
       </div>
     </div>
   )
