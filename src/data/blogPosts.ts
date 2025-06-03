@@ -27,7 +27,7 @@ export const blogPosts: Record<string, BlogPost> = {
     title: 'Hackathon Day Two: Tuesday, June 3rd',
     date: 'Tue, 03 June',
     imageSrc: '/Blog/Tues-cubes.webp',
-    description: 'Kenya day two: Tracer runs natively on Mac ARM, the blog goes live, and we\'re learning why having the right foundation matters.',
+    description: 'Kenya Day Two: Tracer runs natively on Mac ARM, the blog goes live, and we\'re learning why having the right foundation matters.',
     author: 'Team Tracer',
     tag: 'Backend',
     readTime: '8 min read',
