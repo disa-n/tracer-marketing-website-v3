@@ -5,6 +5,28 @@ import Image from 'next/image'
 import { motion, useAnimation, useInView } from 'framer-motion'
 
 function HeroSection() {
+  // State for responsive behavior based on 50% screen width
+  const [isMobileView, setIsMobileView] = useState(false)
+
+  // Effect to handle window resize and determine if animations should be disabled
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth
+      const screenWidth = window.screen.width
+      // Disable animations when window is 50% or less of screen width
+      setIsMobileView(width <= screenWidth * 0.5)
+    }
+
+    // Set initial values
+    handleResize()
+
+    // Add event listener
+    window.addEventListener('resize', handleResize)
+
+    // Cleanup
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   // Animation refs and controls for description only
   const descriptionRef = useRef(null)
 
@@ -20,17 +42,17 @@ function HeroSection() {
     margin: "0px 0px 0px 0px"
   })
 
-  // Animation variants for text rising up
+  // Animation variants for text rising up (desktop only)
   const textVariants = {
     hidden: {
-      y: 60, // Start 60px below
-      opacity: 0
+      y: isMobileView ? 0 : 60, // No slide animation in mobile
+      opacity: isMobileView ? 1 : 0 // No fade-in animation in mobile
     },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.8,
+        duration: isMobileView ? 0 : 0.8, // No animation duration in mobile
         ease: [0.25, 0.1, 0.25, 1]
       }
     }

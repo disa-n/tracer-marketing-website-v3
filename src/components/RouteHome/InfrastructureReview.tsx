@@ -5,24 +5,47 @@ import PrimaryButton from "../ui/PrimaryButton";
 import { infraData, InfraItem } from "./data/infraData";
 import Image from "next/image";
 import { useDemo } from "../ScheduleDemo";
+import { useState, useEffect } from 'react';
 
 const InfrastructureReview = () => {
   const { openDemo } = useDemo();
+
+  // State for responsive behavior based on 50% screen width
+  const [isMobileView, setIsMobileView] = useState(false);
+
+  // Effect to handle window resize and determine if animations should be disabled
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      const screenWidth = window.screen.width;
+      // Disable animations when window is 50% or less of screen width
+      setIsMobileView(width <= screenWidth * 0.5);
+    };
+
+    // Set initial values
+    handleResize();
+
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleDemoClick = () => {
     console.log('Demo button clicked!');
     openDemo();
   };
 
-  // Animation variant for title fade-in
+  // Animation variant for title fade-in (desktop only)
   const titleVariants = {
     hidden: {
-      opacity: 0
+      opacity: isMobileView ? 1 : 0 // No fade-in animation in mobile
     },
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.8,
+        duration: isMobileView ? 0 : 0.8, // No animation duration in mobile
         ease: [0.6, 0, 0.38, 1]
       }
     }

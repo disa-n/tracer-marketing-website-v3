@@ -30,24 +30,24 @@ const UnifiedPlatformCardLg = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Animation variants for staggered fade-in from left
+  // Animation variants for staggered fade-in from left (desktop only)
   const containerVariants = {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.4, // Delay between each card animation
+        staggerChildren: isStackedLayout ? 0 : 0.4, // No stagger delay in mobile
       }
     }
   };
 
   const cardVariants = {
     hidden: {
-      opacity: 0
+      opacity: isStackedLayout ? 1 : 0 // No fade-in animation in mobile
     },
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.8,
+        duration: isStackedLayout ? 0 : 0.8, // No animation duration in mobile
         ease: [0.6, 0, 0.38, 1]
       }
     }
@@ -55,32 +55,32 @@ const UnifiedPlatformCardLg = () => {
 
   const lineVariants = {
     hidden: {
-      opacity: 0,
-      scale: 0.8
+      opacity: isStackedLayout ? 1 : 0, // No fade-in animation in mobile
+      scale: isStackedLayout ? 1 : 0.8 // No scale animation in mobile
     },
     visible: {
       opacity: 1,
       scale: 1,
       transition: {
-        duration: 0.6,
+        duration: isStackedLayout ? 0 : 0.6, // No animation duration in mobile
         ease: [0.6, 0, 0.38, 1],
-        delay: 0.2 // Lines appear slightly after the card
+        delay: isStackedLayout ? 0 : 0.2 // No delay in mobile
       }
     }
   };
 
   const backgroundImageVariants = {
     hidden: {
-      opacity: 0,
-      y: 60
+      opacity: isStackedLayout ? 1 : 0, // No fade-in animation in mobile
+      y: isStackedLayout ? 0 : 60 // No slide animation in mobile
     },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 1.2,
+        duration: isStackedLayout ? 0 : 1.2, // No animation duration in mobile
         ease: [0.6, 0, 0.38, 1],
-        delay: 1.0 // Delay to let cards and lines animate first
+        delay: isStackedLayout ? 0 : 1.0 // No delay in mobile
       }
     }
   };
@@ -191,13 +191,10 @@ const UnifiedPlatformCardLg = () => {
         </div>
       </div>
 
-      {/* Mobile Background Image - Full window width */}
+      {/* Mobile Background Image - Full window width (no animations) */}
       {isStackedLayout && (
-        <motion.div
+        <div
           className="relative w-full"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
           style={{
             height: `${Math.max(400, windowWidth * 0.8)}px`,
             marginLeft: 'calc(-50vw + 50%)',
@@ -212,7 +209,7 @@ const UnifiedPlatformCardLg = () => {
             className="object-cover object-center"
             priority
           />
-        </motion.div>
+        </div>
       )}
     </motion.div>
   );

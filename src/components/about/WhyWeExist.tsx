@@ -5,6 +5,28 @@ import Image from 'next/image'
 import { motion, useAnimation, useInView } from 'framer-motion'
 
 function WhyWeExist() {
+  // State for responsive behavior based on 50% screen width
+  const [isMobileView, setIsMobileView] = useState(false)
+
+  // Effect to handle window resize and determine if animations should be disabled
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth
+      const screenWidth = window.screen.width
+      // Disable animations when window is 50% or less of screen width
+      setIsMobileView(width <= screenWidth * 0.5)
+    }
+
+    // Set initial values
+    handleResize()
+
+    // Add event listener
+    window.addEventListener('resize', handleResize)
+
+    // Cleanup
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   // State to track if cards animation has played
   const [cardsAnimated, setCardsAnimated] = useState(false)
 
@@ -29,55 +51,55 @@ function WhyWeExist() {
   const rectangleControls = useAnimation()
   const textControls = useAnimation()
 
-  // Animation variants for cards (rise into place, no fade)
+  // Animation variants for cards (rise into place, no fade) - desktop only
   const cardVariants = {
     hidden: {
-      y: 120 // Start 120px below (lower starting point)
+      y: isMobileView ? 0 : 120 // No slide animation in mobile
     },
     visible: {
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: isMobileView ? 0 : 0.8, // No animation duration in mobile
         ease: [0.25, 0.1, 0.25, 1]
       }
     }
   }
 
-  // Animation variants for second card (staggered)
+  // Animation variants for second card (staggered) - desktop only
   const cardVariantsStaggered = {
     hidden: {
-      y: 120 // Start 120px below (same as first card)
+      y: isMobileView ? 0 : 120 // No slide animation in mobile
     },
     visible: {
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: isMobileView ? 0 : 0.8, // No animation duration in mobile
         ease: [0.25, 0.1, 0.25, 1],
-        delay: 0.2 // 0.2 second delay after first card
+        delay: isMobileView ? 0 : 0.2 // No delay in mobile
       }
     }
   }
 
-  // Animation variants for moonshot background (rise in place)
+  // Animation variants for moonshot background (rise in place) - desktop only
   const moonshotVariants = {
     hidden: {
-      y: 40 // Start 40px below (reduced for smoother feel)
+      y: isMobileView ? 0 : 40 // No slide animation in mobile
     },
     visible: {
       y: 0,
       transition: {
-        duration: 1.0, // Slightly longer for smoothness
+        duration: isMobileView ? 0 : 1.0, // No animation duration in mobile
         ease: [0.25, 0.1, 0.25, 1] // Smoother easing curve
       }
     }
   }
 
-  // Animation variants for rectangle (rise with background, then shrink smoothly)
+  // Animation variants for rectangle (rise with background, then shrink smoothly) - desktop only
   const rectangleVariants = {
     hidden: {
-      y: 40, // Start 40px below (same as background)
-      width: "min(430px, 90vw)", // Responsive width
-      height: "min(110px, 15vw)", // Responsive height
+      y: isMobileView ? 0 : 40, // No slide animation in mobile
+      width: isMobileView ? "min(400px, 85vw)" : "min(430px, 90vw)", // Start at final size in mobile
+      height: isMobileView ? "min(100px, 12vw)" : "min(110px, 15vw)", // Start at final size in mobile
       transformOrigin: "top right"
     },
     visible: {
@@ -86,34 +108,34 @@ function WhyWeExist() {
       height: "min(100px, 12vw)", // Responsive final height
       transition: {
         y: {
-          duration: 1.0, // Match background duration
+          duration: isMobileView ? 0 : 1.0, // No animation duration in mobile
           ease: [0.25, 0.1, 0.25, 1]
         },
         width: {
-          duration: 0.6, // Shorter, smoother shrink
+          duration: isMobileView ? 0 : 0.6, // No animation duration in mobile
           ease: [0.25, 0.1, 0.25, 1],
-          delay: 0.6 // Start shrinking before rise completes for overlap
+          delay: isMobileView ? 0 : 0.6 // No delay in mobile
         },
         height: {
-          duration: 0.6, // Shorter, smoother shrink
+          duration: isMobileView ? 0 : 0.6, // No animation duration in mobile
           ease: [0.25, 0.1, 0.25, 1],
-          delay: 0.6 // Start shrinking before rise completes for overlap
+          delay: isMobileView ? 0 : 0.6 // No delay in mobile
         }
       }
     }
   }
 
-  // Animation variants for text elements (slide up from below, staggered after background)
+  // Animation variants for text elements (slide up from below, staggered after background) - desktop only
   const textVariants = {
     hidden: {
-      y: 60 // Start 60px below
+      y: isMobileView ? 0 : 60 // No slide animation in mobile
     },
     visible: {
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: isMobileView ? 0 : 0.8, // No animation duration in mobile
         ease: [0.25, 0.1, 0.25, 1],
-        delay: 0.4 // Start after background begins moving
+        delay: isMobileView ? 0 : 0.4 // No delay in mobile
       }
     }
   }
