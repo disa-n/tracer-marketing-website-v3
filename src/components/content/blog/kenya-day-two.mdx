@@ -1,0 +1,88 @@
+export const metadata = {
+  title: 'Hackathon Day Two: Tuesday, June 3rd',
+  date: 'Tue, 3 June',
+  description: 'Kenya day two: Tracer runs natively on Mac ARM, the blog goes live, and we\'re learning why having the right foundation matters.',
+  author: 'Team Tracer',
+  tag: 'Blog',
+  readTime: '5 min read',
+  ogImage: '/Blog/Tues-cubes.webp',
+  template: 'default'
+};
+
+After yesterday’s sprint to simplify our engineering stack and build the onboarding flow, today’s focus was all about **pushing Tracer further into the hands of users — especially those on Mac ARM devices.**
+
+We tackled tricky system integration challenges, refined our onboarding user experience, and landed some valuable development lessons that will shape how we build for the rest of the week.
+
+---
+
+### 1. Minimal Nextflow Pipelines for Mac (ARM64)
+
+**Bioinformatics containers on ARM Macs don’t work well.** So we took a different approach.
+
+Today we shipped **a minimal Nextflow pipeline that runs out of the box on Mac ARM64 using Conda**, avoiding the complexity and compatibility issues of containers. It:
+
+✅ works natively on Mac ARM with Conda  
+✅ doesn’t use Docker-in-Docker (which breaks)  
+✅ is fully integrated with Tracer for local runs  
+
+You can try it [here](https://github.com/Tracer-Cloud/tracer-test-pipelines-bioinformatics/tree/main/pipelines/nextflow/macos-arm64-conda-minimal) ⚡️
+
+Tomorrow, we’ll package this with the Tracer client for the smoothest onboarding yet
+
+---
+
+### 2. Minimal Pipelines, Maximum Learning
+
+After a bit of trial and error, **we landed on the smallest possible working setup for Nextflow on Mac.**
+
+The goal was to make something that:
+
+- Runs easily without containers  
+- Works with Tracer’s `procfile` system  
+- Shows the full observability power of Tracer from a local machine  
+
+💡 **Today’s lesson (from Vincent):**  
+> If something takes more than 45 minutes without progress, cut it and find a simpler path.  
+
+That mindset saved us hours! 😎
+
+---
+
+### 3. New Blog Site, Built from Scratch
+
+Today **we officially launched the Tracer blog** — the very site you're reading this on — thanks to **Portia**, who built and shipped the full blog frontend herself 👏
+
+It’s clean, fast, and built directly into our site so we can easily post updates, product notes, and hackathon progress without relying on third-party tools.
+
+**Well done Portia!** It looks fantastic and sets the stage for everything to come 🚀
+
+<iframe
+  src="https://www.loom.com/embed/6bbf205f11934543bdbabeff319f7b3e"
+  frameBorder="0"
+  allowFullScreen
+  width="100%"
+  height="400"
+  style={{ marginTop: '1.5rem', marginBottom: '1.5rem' }}
+/>
+
+---
+
+### 4. A Slight Detour: Rebuilding the Onboarding Flow in Next.js
+
+While most of the team focused on pipelines and platform support, we also discovered something unexpected today:
+
+The onboarding page we built yesterday was written in raw HTML, CSS, and JavaScript 😅
+
+It worked. We built it **VERY fast**...  but it wasn’t quite aligned with our frontend stack, which is built on **Next.js and Tailwind**.
+
+So today we rolled up our sleeves and began rebuilding the onboarding UI properly inside the Next.js app — using the correct component structure and styling conventions 💪
+
+This sets us up to scale faster and keep everything consistent across the platform. It also means fewer one-off fixes and a lot less inline CSS 🎯
+
+**Lesson learned:  Even during hackathon week, starting with the right foundation saves time in the long run** 🚀
+
+---
+
+See you tomorrow!  
+
+*The Tracer Team*

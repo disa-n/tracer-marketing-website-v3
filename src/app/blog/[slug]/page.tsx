@@ -20,6 +20,7 @@ export async function generateStaticParams() {
     { slug: 'test-post-2' },
     { slug: 'sample-mdx-post' },
     { slug: 'kenya-day-one' },
+    { slug: 'kenya-day-two' },
   ];
 
   return [...staticParams, ...mdxParams];
@@ -94,7 +95,8 @@ export default async function BlogPost({
       'test-post-1',
       'test-post-2',
       'sample-mdx-post',
-      'kenya-day-one'
+      'kenya-day-one',
+      'kenya-day-two'
     ];
 
     const hasMDX = mdxSlugs.includes(slug);
