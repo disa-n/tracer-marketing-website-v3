@@ -68,7 +68,7 @@ export default function BlogPostTemplate({ post, template = 'default', mdxConten
 
           {/* Hero Image */}
           {post.imageSrc && (
-            <div className="w-full h-[400px] relative mb-4 mt-4 rounded-lg overflow-hidden">
+            <div className="w-full h-[400px] relative mb-4 mt-4 bg-[#FCFCFC] overflow-hidden">
               <Image
                 src={post.imageSrc}
                 alt={post.title}
@@ -103,7 +103,7 @@ export default function BlogPostTemplate({ post, template = 'default', mdxConten
 
         {/* Hero Image */}
         {post.imageSrc && (
-          <div className="w-full h-[300px] relative mb-12">
+          <div className="w-full h-[300px] relative mb-12 bg-[#FCFCFC] overflow-hidden">
             <Image
               src={post.imageSrc}
               alt={post.title}
@@ -149,7 +149,7 @@ export default function BlogPostTemplate({ post, template = 'default', mdxConten
 
               {/* Hero Image */}
               {post.imageSrc && (
-                <div className="w-full h-[200px] relative mt-8">
+                <div className="w-full h-[200px] relative mt-8 bg-[#FCFCFC] overflow-hidden">
                   <Image
                     src={post.imageSrc}
                     alt={post.title}
@@ -205,7 +205,7 @@ export default function BlogPostTemplate({ post, template = 'default', mdxConten
 
         {/* Hero Image */}
         {post.imageSrc && (
-          <div className="w-full h-[350px] relative mb-12 border border-[#E8E8E8]">
+          <div className="w-full h-[350px] relative mb-12 bg-[#FCFCFC] overflow-hidden">
             <Image
               src={post.imageSrc}
               alt={post.title}

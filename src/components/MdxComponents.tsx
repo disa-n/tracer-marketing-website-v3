@@ -51,7 +51,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         height={props.height || 400}
         sizes="100vw"
         style={{ width: '100%', height: 'auto' }}
-        className="rounded-lg my-6"
+        className="my-6"
       />
     ),
     code: ({ children }) => (
