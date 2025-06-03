@@ -1,10 +1,32 @@
 'use client'
 
 import Image from 'next/image'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { motion, useAnimation, useInView } from 'framer-motion'
 
 const Implementation = () => {
+    // State for responsive behavior based on 50% screen width
+    const [isMobileView, setIsMobileView] = useState(false)
+
+    // Effect to handle window resize and determine if animations should be disabled
+    useEffect(() => {
+        const handleResize = () => {
+            const width = window.innerWidth
+            const screenWidth = window.screen.width
+            // Disable animations when window is 50% or less of screen width
+            setIsMobileView(width <= screenWidth * 0.5)
+        }
+
+        // Set initial values
+        handleResize()
+
+        // Add event listener
+        window.addEventListener('resize', handleResize)
+
+        // Cleanup
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
+
     // Single ref and controls for unified animation trigger
     const sectionRef = useRef(null)
     const monitoringRef = useRef(null)
@@ -79,102 +101,102 @@ const Implementation = () => {
         // Images never reset once animated (only on page refresh)
     }, [monitoringInView, scrollDirection, hasImageAnimated, monitoringImageControls, monitoringTextControls])
 
-    // Animation variants for text elements (subtle rise, no fade)
+    // Animation variants for text elements (subtle rise, no fade) - disabled in mobile view
     const textVariants = {
         hidden: {
-            y: 30,
+            y: isMobileView ? 0 : 30,
             transition: {
-                duration: 0.8,
+                duration: isMobileView ? 0 : 0.8,
                 ease: [0.25, 0.1, 0.25, 1]
             }
         },
         visible: {
             y: 0,
             transition: {
-                duration: 0.8,
+                duration: isMobileView ? 0 : 0.8,
                 ease: [0.25, 0.1, 0.25, 1],
-                staggerChildren: 0.2
+                staggerChildren: isMobileView ? 0 : 0.2
             }
         }
     }
 
     const textItemVariants = {
         hidden: {
-            y: 30
+            y: isMobileView ? 0 : 30
         },
         visible: {
             y: 0,
             transition: {
-                duration: 0.8,
+                duration: isMobileView ? 0 : 0.8,
                 ease: [0.25, 0.1, 0.25, 1]
             }
         }
     }
 
-    // Animation variants for logo grid (staggered left to right)
+    // Animation variants for logo grid (staggered left to right) - disabled in mobile view
     const logoGridVariants = {
         hidden: {
             transition: {
-                staggerChildren: 0.2, // Slower stagger
-                staggerDirection: -1 // Reverse stagger for hiding
+                staggerChildren: isMobileView ? 0 : 0.2, // No stagger in mobile view
+                staggerDirection: -1
             }
         },
         visible: {
             transition: {
-                staggerChildren: 0.2 // Slower left to right stagger
+                staggerChildren: isMobileView ? 0 : 0.2 // No stagger in mobile view
             }
         }
     }
 
-    // Individual logo animation variants with less dramatic starting positions
+    // Individual logo animation variants with less dramatic starting positions - disabled in mobile view
     const createLogoVariants = (startY: number) => ({
         hidden: {
-            y: Math.min(startY * 0.3, 120), // Reduce dramatic effect, cap at 120px
+            y: isMobileView ? 0 : Math.min(startY * 0.3, 120), // No slide animation in mobile view
             transition: {
-                duration: 1.2, // Slower animation
+                duration: isMobileView ? 0 : 1.2, // No duration in mobile view
                 ease: [0.25, 0.1, 0.25, 1]
             }
         },
         visible: {
             y: 0,
             transition: {
-                duration: 1.2, // Slower animation
+                duration: isMobileView ? 0 : 1.2, // No duration in mobile view
                 ease: [0.25, 0.1, 0.25, 1]
             }
         }
     })
 
-    // Individual monitoring image variants (expand from collapsed state - never reset)
+    // Individual monitoring image variants (expand from collapsed state - never reset) - disabled in mobile view
     const monitoringImageVariants = {
         hidden: {
-            scaleY: 0.05,
+            scaleY: isMobileView ? 1 : 0.05, // No scale animation in mobile view
             transition: {
-                duration: 0.8,
+                duration: isMobileView ? 0 : 0.8, // No duration in mobile view
                 ease: [0.6, 0, 0.38, 1]
             }
         },
         visible: {
             scaleY: 1,
             transition: {
-                duration: 0.8,
+                duration: isMobileView ? 0 : 0.8, // No duration in mobile view
                 ease: [0.6, 0, 0.38, 1]
             }
         }
     }
 
-    // Text label variants (fade in - can reset)
+    // Text label variants (fade in - can reset) - disabled in mobile view
     const labelVariants = {
         hidden: {
-            opacity: 0,
+            opacity: isMobileView ? 1 : 0, // No fade animation in mobile view
             transition: {
-                duration: 0.6,
+                duration: isMobileView ? 0 : 0.6, // No duration in mobile view
                 ease: [0.6, 0, 0.38, 1]
             }
         },
         visible: {
             opacity: 1,
             transition: {
-                duration: 0.6,
+                duration: isMobileView ? 0 : 0.6, // No duration in mobile view
                 ease: [0.6, 0, 0.38, 1]
             }
         }

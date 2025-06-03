@@ -81,6 +81,7 @@ const Monitoring = () => {
     }
 
     // Animation variants for staggered slide-up effect with slower transitions
+    // Completely disabled on mobile screens
     const containerVariants = {
         hidden: {
             transition: {
@@ -101,61 +102,67 @@ const Monitoring = () => {
         visible: {}
     }
 
-    // Second card slides up into place - disabled on small screens
+    // Second card slides up into place - completely disabled on mobile screens
     const secondCardVariants = {
         hidden: {
-            y: isSmallScreen ? 0 : 250, // No animation on small screens
+            y: isSmallScreen ? 0 : 250, // No animation on mobile screens
             transition: {
-                duration: isSmallScreen ? 0 : 1.5, // No duration on small screens
+                duration: isSmallScreen ? 0 : 1.5, // No duration on mobile screens
                 ease: [0.6, 0, 0.38, 1]
             }
         },
         visible: {
             y: 0, // Final aligned position
             transition: {
-                duration: isSmallScreen ? 0 : 1.5, // No duration on small screens
+                duration: isSmallScreen ? 0 : 1.5, // No duration on mobile screens
                 ease: [0.6, 0, 0.38, 1]
             }
         }
     }
 
-    // Third card slides up into place - disabled on small screens
+    // Third card slides up into place - completely disabled on mobile screens
     const thirdCardVariants = {
         hidden: {
-            y: isSmallScreen ? 0 : 500, // No animation on small screens
+            y: isSmallScreen ? 0 : 500, // No animation on mobile screens
             transition: {
-                duration: isSmallScreen ? 0 : 1.5, // No duration on small screens
+                duration: isSmallScreen ? 0 : 1.5, // No duration on mobile screens
                 ease: [0.6, 0, 0.38, 1]
             }
         },
         visible: {
             y: 0, // Final aligned position
             transition: {
-                duration: isSmallScreen ? 0 : 1.5, // No duration on small screens
+                duration: isSmallScreen ? 0 : 1.5, // No duration on mobile screens
                 ease: [0.6, 0, 0.38, 1]
             }
         }
     }
 
     // Handle scroll-based animation with reverse functionality
+    // Completely disabled on mobile screens
     useEffect(() => {
         console.log('Scroll state:', { cardsVisible, pastEnd, windowWidth })
 
         // Check if screen is 50% or less of typical desktop width (assuming 1920px as full screen)
         const isSmallScreen = windowWidth <= 960 // 50% of 1920px
 
+        // On mobile screens, keep animations in visible state (no animations)
+        if (isSmallScreen) {
+            console.log('Mobile screen detected - animations disabled, keeping visible state')
+            containerControls.start("visible")
+            return
+        }
+
+        // Desktop animation logic
         if (cardsVisible && !pastEnd) {
             console.log('Cards in view - staying visible (aligned)')
             containerControls.start("visible")
-        } else if (pastEnd && !isSmallScreen) {
-            console.log('Past end - animating to hidden (staggered) - large screen only')
+        } else if (pastEnd) {
+            console.log('Past end - animating to hidden (staggered) - desktop only')
             containerControls.start("hidden")
-        } else if (!cardsVisible && !isSmallScreen) {
-            console.log('Cards out of view - animating to hidden (staggered) - large screen only')
+        } else if (!cardsVisible) {
+            console.log('Cards out of view - animating to hidden (staggered) - desktop only')
             containerControls.start("hidden")
-        } else if (isSmallScreen) {
-            console.log('Small screen detected - keeping animations visible')
-            containerControls.start("visible")
         }
     }, [cardsVisible, pastEnd, containerControls, windowWidth])
     return (

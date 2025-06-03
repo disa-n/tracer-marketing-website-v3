@@ -1,3 +1,6 @@
+export const metadata = {
+  title: "Tracer | About",
+  description: "Tracer combines deep scientific knowledge and cutting-edge tech to accelerate AI adoption in industry.",}
 import HeroSection from '../../components/about/HeroSection'
 import WhyWeExist from '../../components/about/WhyWeExist'
 import TwoWorlds from '../../components/about/TwoWorlds'

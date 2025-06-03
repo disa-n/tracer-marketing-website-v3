@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { motion, useAnimation, useInView } from 'framer-motion'
 
 // Individual Card component with its own scroll detection
@@ -23,6 +23,28 @@ const AnimatedCard = ({
     const cardRef = useRef(null)
     const cardControls = useAnimation()
 
+    // State for responsive behavior based on 50% screen width
+    const [isMobileView, setIsMobileView] = useState(false)
+
+    // Effect to handle window resize and determine if animations should be disabled
+    useEffect(() => {
+        const handleResize = () => {
+            const width = window.innerWidth
+            const screenWidth = window.screen.width
+            // Disable animations when window is 50% or less of screen width
+            setIsMobileView(width <= screenWidth * 0.5)
+        }
+
+        // Set initial values
+        handleResize()
+
+        // Add event listener
+        window.addEventListener('resize', handleResize)
+
+        // Cleanup
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
+
     // Detect when this specific card comes into view (once only)
     const cardInView = useInView(cardRef, {
         amount: 0, // Trigger as soon as any part of the card is visible
@@ -30,20 +52,20 @@ const AnimatedCard = ({
         once: true // Only trigger once, don't reset
     })
 
-    // Card animation variants with smoother, longer animation (no fade)
+    // Card animation variants with smoother, longer animation (no fade) - disabled in mobile view
     const cardVariants = {
         hidden: {
-            y: 60, // Slightly longer distance for more dramatic effect
-            scale: 0.95 // Slight scale effect for smoothness
+            y: isMobileView ? 0 : 60, // No slide animation in mobile view
+            scale: isMobileView ? 1 : 0.95 // No scale animation in mobile view
         },
         visible: {
             y: 0,
             scale: 1,
             transition: {
-                duration: 0.8, // Longer duration for smoothness
-                delay: delay, // Stagger delay
-                ease: [0.25, 0.1, 0.25, 1], // Smoother easing curve
-                type: "spring", // Spring animation for natural feel
+                duration: isMobileView ? 0 : 0.8, // No duration in mobile view
+                delay: isMobileView ? 0 : delay, // No delay in mobile view
+                ease: [0.25, 0.1, 0.25, 1],
+                type: "spring",
                 stiffness: 100,
                 damping: 15
             }
