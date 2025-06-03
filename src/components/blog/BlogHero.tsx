@@ -190,7 +190,7 @@ export default function BlogHero() {
             position: 'absolute',
             zIndex: 1
           }}
-          src="https://placehold.co/600x280"
+          src="/Blog/T-chip.webp"
           alt="Blog hero placeholder"
           width={600}
           height={280}

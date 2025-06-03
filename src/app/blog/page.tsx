@@ -1,11 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import BlogHero from '@/components/blog/BlogHero';
 import BlogIntro from '@/components/blog/BlogIntro';
 import FilterBar from '@/components/blog/FilterBar';
 import BlogGrid from '@/components/blog/BlogGrid';
-import ComingSoon from '@/components/shared/ComingSoon';
 
 type BlogPost = {
   slug: string;
@@ -20,13 +18,6 @@ type BlogPost = {
 };
 
 export default function BlogPage() {
-  const [isComingSoon, setIsComingSoon] = useState(true);
-
-  useEffect(() => {
-    setIsComingSoon(process.env.NODE_ENV === 'development' ? false : true);
-  }, []);
-
-  if (isComingSoon) return <ComingSoon />;
 
   const posts: BlogPost[] = [
     {

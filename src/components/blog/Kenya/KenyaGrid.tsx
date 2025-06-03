@@ -25,11 +25,17 @@ function KenyaGridItem({ date, description, imageSrc, caption }: KenyaGridItemPr
         </div>
 
         {/* Action Buttons */}
-        <div className="space-y-4">
+        <div className="space-y-4 mt-16">
           {/* Watch Video Button */}
           <div className="flex items-center">
-            <div className="w-4 h-[18px] mr-6 overflow-hidden">
-              <div className="w-4 h-[11.25px] mt-[3.38px] bg-white" />
+            <div className="w-4 h-[18px] mr-6 flex items-center justify-center">
+              <Image
+                src="/Blog/play.svg"
+                alt="Play"
+                width={16}
+                height={16}
+                className="w-4 h-4"
+              />
             </div>
             <div className="text-[#898989] text-[12.80px] font-normal font-chakra-petch leading-5">
               Watch video
@@ -38,8 +44,14 @@ function KenyaGridItem({ date, description, imageSrc, caption }: KenyaGridItemPr
 
           {/* X Space Button */}
           <div className="flex items-center">
-            <div className="w-4 h-[18px] mr-6 overflow-hidden">
-              <div className="w-[15.30px] h-4 ml-[0.85px] mt-[1.55px] bg-white" />
+            <div className="w-4 h-[18px] mr-6 flex items-center justify-center">
+              <Image
+                src="/Blog/mic.svg"
+                alt="Microphone"
+                width={16}
+                height={16}
+                className="w-4 h-4"
+              />
             </div>
             <div className="text-[#898989] text-[12.80px] font-normal font-chakra-petch leading-5">
               X Space
@@ -50,21 +62,16 @@ function KenyaGridItem({ date, description, imageSrc, caption }: KenyaGridItemPr
 
       {/* Right Section - Image Container */}
       <div className="w-[741.35px] h-[260px] left-[667px] top-[34px] absolute bg-[#171717] overflow-hidden rounded border border-[#242424]">
-        <div className="w-[2218.05px] h-[208px] left-[2px] top-[2px] absolute">
-          <div className="w-[739.35px] h-[202.87px] left-0 top-0 absolute overflow-hidden">
-            {imageSrc && (
-              <Image
-                className="w-[1144px] h-[763px] absolute"
-                style={{ left: '29px', top: '-201px' }}
-                src={imageSrc}
-                alt={caption || 'Hackathon image'}
-                width={1144}
-                height={763}
-              />
-            )}
-          </div>
-          <div className="w-[739.35px] h-[208px] left-[0.01px] top-0 absolute opacity-90" />
-          <div className="w-[739.35px] h-[208px] left-[0.01px] top-0 absolute bg-gradient-to-r from-[#171717] via-[#171717] to-transparent" style={{ background: 'linear-gradient(90deg, #171717 0%, #171717 20%, rgba(0, 0, 0, 0) 75%)' }} />
+        <div className="w-full h-full relative">
+          {imageSrc && (
+            <Image
+              src={imageSrc}
+              alt={caption || 'Hackathon image'}
+              fill
+              className="object-cover"
+            />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#171717] via-[#171717] to-transparent" style={{ background: 'linear-gradient(90deg, #171717 0%, #171717 20%, rgba(0, 0, 0, 0) 75%)' }} />
         </div>
 
         {/* Caption Section */}
@@ -96,31 +103,31 @@ export default function KenyaGrid({ items }: KenyaGridProps) {
     {
       date: "Mon, 02 June",
       description: "Placeholder Description Text",
-      imageSrc: "https://placehold.co/1144x763",
+      imageSrc: "/Blog/globe-preview-image.webp",
       caption: "Supabase UI Library"
     },
     {
       date: "Tue, 03 June",
       description: "Placeholder Description Text",
-      imageSrc: "https://placehold.co/1144x763",
+      imageSrc: "/Blog/Tues-cubes.webp",
       caption: "Backend Development"
     },
     {
       date: "Wed, 04 June",
       description: "Placeholder Description Text",
-      imageSrc: "https://placehold.co/1144x763",
+      imageSrc: "/Blog/Weds-plane.webp",
       caption: "Frontend & Design"
     },
     {
       date: "Thu, 05 June",
       description: "Placeholder Description Text",
-      imageSrc: "https://placehold.co/1144x763",
+      imageSrc: "/Blog/Thurs-superconductor.webp",
       caption: "Integration & Testing"
     },
     {
       date: "Fri, 06 June",
       description: "Placeholder Description Text",
-      imageSrc: "https://placehold.co/1144x763",
+      imageSrc: "/Blog/Fri-wheel.webp",
       caption: "Launch Day"
     }
   ];

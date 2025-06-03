@@ -7,7 +7,7 @@ export default function KenyaHero() {
         {/* Hero Content - Positioned at top */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start min-h-[500px]">
           {/* Left Column - Text Content */}
-          <div className="space-y-6 pt-4">
+          <div className="space-y-6 pt-14">
             {/* Main Title */}
             <div className="w-full">
               <h1 className="text-neutral-50 text-5xl lg:text-6xl font-normal font-chakra-petch leading-tight">
@@ -18,20 +18,19 @@ export default function KenyaHero() {
             </div>
 
             {/* Description Text */}
-            <div className="w-full max-w-[400px]">
-              <p className="text-zinc-500 text-lg font-normal font-britti-sans leading-relaxed">
-                Tracer combines cutting-edge technological advances with the deep understanding of scientific industries to give insights into enterprises&apos; digital and AI acceleration.
-              </p>
+            <div className="w-full max-w-[570px]">
+              <p className="text-zinc-500 text-lg font-normal font-britti-sans leading-snug">
+                We flew to Kenya for a week-long hackathon to accelerate Tracer&apos;s growth. The goal? Drive verified user activations through a Reddit launch. Follow our journey below. </p>
             </div>
           </div>
 
           {/* Right Column - Hero Image */}
           <div className="relative h-[400px] lg:h-[500px] w-full">
             <Image
-              src="https://placehold.co/1496x997"
+              src="/Blog/Space_Drone.webp"
               alt="Kenya Hackathon 2025"
               fill
-              className="object-contain object-center"
+              className="object-cover object-center"
               priority
             />
           </div>
