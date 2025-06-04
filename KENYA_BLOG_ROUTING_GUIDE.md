@@ -12,18 +12,24 @@ The Kenya hackathon page displays a grid of daily entries. Each card is fully cl
 
 ```
 src/
-├── components/blog/Kenya/
-│   ├── KenyaGrid.tsx              # Main grid component with clickable cards
-│   └── KenyaHero.tsx              # Hero section
+├── components/blog/
+│   ├── BlogCard.tsx               # Blog preview cards (with smart routing)
+│   ├── BlogGrid.tsx               # Blog grid layout
+│   └── Kenya/
+│       ├── KenyaGrid.tsx          # Main grid component with clickable cards
+│       └── KenyaHero.tsx          # Hero section
 ├── components/content/blog/
 │   ├── kenya-day-one.mdx          # Day 1 blog post
 │   ├── kenya-day-two.mdx          # Day 2 blog post
 │   ├── kenya-day-three.mdx        # Day 3 blog post (create when ready)
 │   └── ...                       # Additional days
-├── app/blog/[slug]/
-│   ├── page.tsx                   # Dynamic route handler
-│   ├── mdx-content.tsx            # MDX renderer
-│   └── static-content.tsx         # Static content renderer
+├── app/blog/
+│   ├── page.tsx                   # Main blog listing page
+│   ├── BlogPageClient.tsx         # Blog page client component
+│   └── [slug]/
+│       ├── page.tsx               # Dynamic route handler
+│       ├── mdx-content.tsx        # MDX renderer
+│       └── static-content.tsx     # Static content renderer
 ├── app/coming-soon/
 │   └── page.tsx                   # Coming soon page
 └── data/
@@ -53,12 +59,27 @@ export const metadata = {
 Write your blog post content using Markdown and JSX...
 ```
 
-### Step 2: Update the Kenya Grid Component
+### Step 2: Update Both Grid Components
+
+**A. Update the Kenya Grid Component**
 
 In `src/components/blog/Kenya/KenyaGrid.tsx`, add your new slug to the `mdxSlugs` array:
 
 ```typescript
 // Check if this post has MDX content (exists)
+const mdxSlugs = [
+  'kenya-day-one',
+  'kenya-day-two',
+  'kenya-day-three',    // ← Add your new post here
+  // Add more as they're created
+];
+```
+
+**B. Update the Blog Card Component**
+
+In `src/components/blog/BlogCard.tsx`, add your new slug to the `mdxSlugs` array:
+
+```typescript
 const mdxSlugs = [
   'kenya-day-one',
   'kenya-day-two',
@@ -149,16 +170,20 @@ const linkHref = hasContent ? `/blog/${slug}` : '/coming-soon';
 ## Features
 
 ### Clickable Cards
-- **Desktop**: Entire card is clickable with hover effects
-- **Mobile**: Full card clickability maintained
-- **Hover effects**: Subtle background color change (`hover:bg-[#252525]`)
+- **Kenya Grid**: Entire daily entry cards are clickable with hover effects
+- **Blog Preview**: Kenya hackathon card on main blog page is fully clickable
+- **Desktop & Mobile**: Full card clickability maintained across all screen sizes
+- **Hover effects**: Subtle background color changes for better UX
 
 ### Smart Routing
-- Automatically detects if content exists
+- Automatically detects if content exists for Kenya day posts
 - Routes to appropriate destination (blog post vs coming soon)
 - No manual URL management needed
+- Works across both Kenya grid and blog preview pages
 
 ### Status Indicators
+- **Kenya Grid**: Shows "Blog post" vs "Coming soon" text
+- **Blog Preview**: Maintains "FOLLOW THE JOURNEY →" text for Kenya hackathon card
 - Visual feedback shows whether content is available
 - Consistent user experience across all cards
 
@@ -190,10 +215,24 @@ const linkHref = hasContent ? `/blog/${slug}` : '/coming-soon';
 
 - [ ] Create MDX file in `src/components/content/blog/`
 - [ ] Add slug to `mdxSlugs` array in `KenyaGrid.tsx`
+- [ ] Add slug to `mdxSlugs` array in `BlogCard.tsx`
 - [ ] Add slug to `generateStaticParams` in `/blog/[slug]/page.tsx`
 - [ ] Add slug to runtime `mdxSlugs` array in `/blog/[slug]/page.tsx`
 - [ ] Verify metadata exists in `blogPosts.ts`
-- [ ] Test the routing locally
+- [ ] Test the routing locally (both Kenya page and main blog page)
 - [ ] Check that images are accessible
 
-Following this guide ensures smooth routing and a consistent user experience for the Kenya hackathon blog posts.
+## Additional Notes
+
+### Blog Preview Page Integration
+The main blog listing page (`/blog`) now also uses smart routing for Kenya-related posts. The Kenya hackathon card will:
+- Always route to `/blog/KenyaPage` (the main Kenya page)
+- Individual Kenya day posts (if added to the main blog) will use the same smart routing logic
+
+### Consistent Experience
+Both the Kenya grid page and the main blog preview page now provide:
+- Full card clickability
+- Smart routing based on content availability
+- Consistent hover effects and visual feedback
+
+Following this guide ensures smooth routing and a consistent user experience for the Kenya hackathon blog posts across all pages.

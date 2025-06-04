@@ -27,8 +27,33 @@ export default function BlogCard({
       ? author
       : [];
 
+  // Smart routing logic for Kenya hackathon
+  const getCardLink = () => {
+    if (slug === 'kenya-hackathon') {
+      return '/blog/KenyaPage';
+    }
+
+    // Check if this is a Kenya day post that might not have content yet
+    const kenyaDayMatch = slug.match(/^kenya-day-(\w+)$/);
+    if (kenyaDayMatch) {
+      const mdxSlugs = [
+        'kenya-day-one',
+        'kenya-day-two'
+        // Add more as they're created
+      ];
+      const hasContent = mdxSlugs.includes(slug);
+      return hasContent ? `/blog/${slug}` : '/coming-soon';
+    }
+
+    // Default blog post routing
+    return `/blog/${slug}`;
+  };
+
+  const cardLink = getCardLink();
+
   return (
-    <div className="border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col min-h-[550px] z-[2] bg-[#FCFCFC]">
+    <Link href={cardLink} className="block h-full">
+      <div className="border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col min-h-[550px] z-[2] bg-[#FCFCFC] cursor-pointer">
         <div className="relative h-56 w-full">
           <Image
             src={ogImage || "https://placehold.co/400x224"}
@@ -44,16 +69,14 @@ export default function BlogCard({
             </span>
             <span className="font-chakra-petch text-sm font-normal uppercase leading-[19px] text-[#202020] ml-auto">{date}</span>
           </div>
-          <Link href={slug === 'kenya-hackathon' ? '/blog/KenyaPage' : `/blog/${slug}`}>
-            <h2 className="font-britti-sans text-xl font-medium mb-4 text-[#202020] hover:text-gray-700 transition-colors cursor-pointer">{title}</h2>
-          </Link>
+          <h2 className="font-britti-sans text-xl font-medium mb-4 text-[#202020] hover:text-gray-700 transition-colors">{title}</h2>
           <p className="font-britti-sans text-gray-600 mb-6 flex-1 leading-snug">{description}</p>
           {slug === 'kenya-hackathon' ? (
-            <Link href="/blog/KenyaPage" className="mt-auto">
-              <div className="font-chakra-petch text-sm font-normal uppercase leading-[19px] text-[#202020] hover:text-[#404040] transition-colors cursor-pointer">
+            <div className="mt-auto">
+              <div className="font-chakra-petch text-sm font-normal uppercase leading-[19px] text-[#202020] hover:text-[#404040] transition-colors">
                 FOLLOW THE JOURNEY →
               </div>
-            </Link>
+            </div>
           ) : authors.length > 0 ? (
             <div className="flex items-center mt-auto">
               <div className="flex -space-x-2">
@@ -72,5 +95,6 @@ export default function BlogCard({
           ) : null}
         </div>
       </div>
+    </Link>
   );
 }
