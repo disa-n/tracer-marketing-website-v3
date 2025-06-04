@@ -1,6 +1,6 @@
 
 export const metadata = {
-  title: "Meet Tracer",
+  title: "Meet Tracer - The Observability Platform for AI-driven Science",
   description: "Tracer combines deep scientific knowledge and cutting-edge tech to accelerate AI adoption in industry.",
 };
 import AboutTracer from "@/components/RouteHome/AboutTracer";

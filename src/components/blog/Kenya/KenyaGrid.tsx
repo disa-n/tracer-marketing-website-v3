@@ -13,10 +13,20 @@ type KenyaGridItemProps = {
 
 
 function KenyaGridItem({ date, description, imageSrc, caption, slug }: KenyaGridItemProps) {
+  // Check if this post has MDX content (exists)
+  const mdxSlugs = [
+    'kenya-day-one',
+    'kenya-day-two'
+    // Add 'kenya-day-three', 'kenya-day-four', 'kenya-day-five' as they're created
+  ];
+
+  const hasContent = mdxSlugs.includes(slug);
+  const linkHref = hasContent ? `/blog/${slug}` : '/coming-soon';
+
   return (
     <div className="w-full bg-[#202020] border-t border-b border-[#303030] lg:h-80">
       {/* Desktop Layout - 2 columns */}
-      <div className="hidden lg:flex lg:relative lg:h-80">
+      <Link href={linkHref} className="hidden lg:flex lg:relative lg:h-80 cursor-pointer hover:bg-[#252525] transition-colors">
         {/* Left Section */}
         <div className="w-[514px] left-0 top-[34px] absolute">
           {/* Date */}
@@ -82,12 +92,9 @@ function KenyaGridItem({ date, description, imageSrc, caption, slug }: KenyaGrid
           {/* Caption Section */}
           <div className="w-[369.68px] h-[52px] left-[2px] top-[158px] absolute">
             <div className="w-[305.68px] h-6 left-[32px] top-[24px] absolute">
-              <Link
-                href={`/blog/${slug}`}
-                className="left-[24px] top-[2px] absolute flex justify-center flex-col text-[#B4B4B4] text-[12.80px] font-normal font-chakra-petch leading-5 hover:text-white transition-colors cursor-pointer"
-              >
-                Blog post
-              </Link>
+              <div className="left-[24px] top-[2px] absolute flex justify-center flex-col text-[#B4B4B4] text-[12.80px] font-normal font-chakra-petch leading-5">
+                {hasContent ? 'Blog post' : 'Coming soon'}
+              </div>
               <div className="w-4 h-6 left-0 top-0 absolute overflow-hidden">
                 <div className="w-3 h-3 left-[2px] top-[6px] absolute border border-white" />
                 <div className="w-[9.33px] h-[9.33px] left-[5.33px] top-[5.34px] absolute border border-white" />
@@ -98,10 +105,10 @@ function KenyaGridItem({ date, description, imageSrc, caption, slug }: KenyaGrid
             </div>
           </div>
         </div>
-      </div>
+      </Link>
 
       {/* Mobile Layout - Stacked */}
-      <div className="lg:hidden p-6 space-y-6">
+      <Link href={linkHref} className="lg:hidden p-6 space-y-6 block cursor-pointer hover:bg-[#252525] transition-colors">
         {/* Text Content Section */}
         <div className="space-y-4">
           {/* Date */}
@@ -171,19 +178,16 @@ function KenyaGridItem({ date, description, imageSrc, caption, slug }: KenyaGrid
                 <div className="w-3 h-3 mt-1.5 ml-0.5 border border-white" />
                 <div className="w-[9.33px] h-[9.33px] -mt-2 ml-1.5 border border-white" />
               </div>
-              <Link
-                href={`/blog/${slug}`}
-                className="text-[#B4B4B4] text-[12.80px] font-normal font-chakra-petch leading-5 hover:text-white transition-colors cursor-pointer"
-              >
-                Blog post
-              </Link>
+              <div className="text-[#B4B4B4] text-[12.80px] font-normal font-chakra-petch leading-5">
+                {hasContent ? 'Blog post' : 'Coming soon'}
+              </div>
             </div>
             <div className="text-[#B4B4B4] text-[16.70px] font-normal font-azeret-mono leading-7">
               {caption || 'Placeholder Caption'}
             </div>
           </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }
