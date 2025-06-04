@@ -96,7 +96,9 @@ export default async function BlogPost({
       'test-post-2',
       'sample-mdx-post',
       'kenya-day-one',
-      'kenya-day-two'
+      'kenya-day-two',
+      'kenya-day-three'
+
     ];
 
     const hasMDX = mdxSlugs.includes(slug);

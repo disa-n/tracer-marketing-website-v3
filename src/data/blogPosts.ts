@@ -38,10 +38,10 @@ export const blogPosts: Record<string, BlogPost> = {
     title: 'Hackathon Day Three: Wednesday, June 4th',
     date: 'Wed, 04 June',
     imageSrc: '/Blog/Weds-hover.webp',
-    description: 'Notes from the third day of our Kenya hackathon.',
+    description: 'Kenya Day Three: A well-earned break, a tour through Nairobi\'s rich history, and rooftop views before diving back into build mode.',
     author: 'Team Tracer',
-    tag: 'Frontend',
-    readTime: '6 min read',
+    tag: 'Culture',
+    readTime: '5 min read',
     content: ``
   },
   'kenya-day-four': {
