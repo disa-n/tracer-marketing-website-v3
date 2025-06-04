@@ -1,3 +1,15 @@
+import Image from 'next/image';
+import Link from 'next/link';
+
+// First, define the KenyaGridItemProps interface
+interface KenyaGridItemProps {
+  date: string;
+  description: string;
+  imageSrc: string;
+  caption: string;
+  slug: string;
+}
+
 export default function KenyaGridItem({ date, description, imageSrc, caption, slug }: KenyaGridItemProps) {
   console.log(`Rendering KenyaGridItem with slug: ${slug}`);
   
