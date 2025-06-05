@@ -108,49 +108,49 @@ function KenyaGridItem({ date, description, imageSrc, caption, slug }: KenyaGrid
       </Link>
 
       {/* Mobile Layout - Stacked */}
-      <Link href={linkHref} className="lg:hidden p-6 space-y-6 block cursor-pointer hover:bg-[#252525] transition-colors">
+      <Link href={linkHref} className="lg:hidden p-4 sm:p-6 space-y-4 sm:space-y-6 block cursor-pointer hover:bg-[#252525] transition-colors">
         {/* Text Content Section */}
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {/* Date */}
-          <div className="text-white text-[13.20px] font-normal font-chakra-petch uppercase leading-5 tracking-[1.60px]">
+          <div className="text-white text-[clamp(11px,2.5vw,13.2px)] font-normal font-chakra-petch uppercase leading-5 tracking-[1.60px]">
             {date}
           </div>
 
           {/* Description Text */}
-          <div className="text-[#888888] text-[18.36px] font-normal font-britti-sans leading-relaxed">
+          <div className="text-[#888888] text-[clamp(16px,4vw,18.36px)] font-normal font-britti-sans leading-relaxed">
             {description}
           </div>
 
           {/* Action Buttons */}
-          <div className="space-y-4 pt-4">
+          <div className="space-y-3 sm:space-y-4 pt-3 sm:pt-4">
             {/* Watch Video Button */}
             <div className="flex items-center">
-              <div className="w-4 h-[18px] mr-6 flex items-center justify-center">
+              <div className="w-3 sm:w-4 h-[16px] sm:h-[18px] mr-4 sm:mr-6 flex items-center justify-center">
                 <Image
                   src="/Blog/play.svg"
                   alt="Play"
                   width={16}
                   height={16}
-                  className="w-4 h-4"
+                  className="w-3 sm:w-4 h-3 sm:h-4"
                 />
               </div>
-              <div className="text-[#898989] text-[12.80px] font-normal font-chakra-petch leading-5">
+              <div className="text-[#898989] text-[clamp(11px,2.5vw,12.8px)] font-normal font-chakra-petch leading-5">
                 Watch video
               </div>
             </div>
 
             {/* X Space Button */}
             <div className="flex items-center">
-              <div className="w-4 h-[18px] mr-6 flex items-center justify-center">
+              <div className="w-3 sm:w-4 h-[16px] sm:h-[18px] mr-4 sm:mr-6 flex items-center justify-center">
                 <Image
                   src="/Blog/mic.svg"
                   alt="Microphone"
                   width={16}
                   height={16}
-                  className="w-4 h-4"
+                  className="w-3 sm:w-4 h-3 sm:h-4"
                 />
               </div>
-              <div className="text-[#898989] text-[12.80px] font-normal font-chakra-petch leading-5">
+              <div className="text-[#898989] text-[clamp(11px,2.5vw,12.8px)] font-normal font-chakra-petch leading-5">
                 X Space
               </div>
             </div>
@@ -158,7 +158,7 @@ function KenyaGridItem({ date, description, imageSrc, caption, slug }: KenyaGrid
         </div>
 
         {/* Image Section */}
-        <div className="w-full h-[200px] bg-[#171717] overflow-hidden rounded border border-[#242424] relative">
+        <div className="w-full h-[180px] sm:h-[200px] bg-[#171717] overflow-hidden rounded border border-[#242424] relative">
           <div className="w-full h-full relative">
             {imageSrc && (
               <Image
@@ -172,17 +172,17 @@ function KenyaGridItem({ date, description, imageSrc, caption, slug }: KenyaGrid
           </div>
 
           {/* Caption Section - Mobile */}
-          <div className="absolute bottom-4 left-4 right-4">
-            <div className="flex items-center space-x-3 mb-2">
-              <div className="w-4 h-6 overflow-hidden">
-                <div className="w-3 h-3 mt-1.5 ml-0.5 border border-white" />
-                <div className="w-[9.33px] h-[9.33px] -mt-2 ml-1.5 border border-white" />
+          <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4">
+            <div className="flex items-center space-x-2 sm:space-x-3 mb-2">
+              <div className="w-3 sm:w-4 h-5 sm:h-6 overflow-hidden">
+                <div className="w-2.5 sm:w-3 h-2.5 sm:h-3 mt-1 sm:mt-1.5 ml-0.5 border border-white" />
+                <div className="w-[8px] sm:w-[9.33px] h-[8px] sm:h-[9.33px] -mt-1.5 sm:-mt-2 ml-1 sm:ml-1.5 border border-white" />
               </div>
-              <div className="text-[#B4B4B4] text-[12.80px] font-normal font-chakra-petch leading-5">
+              <div className="text-[#B4B4B4] text-[clamp(11px,2.5vw,12.8px)] font-normal font-chakra-petch leading-5">
                 {hasContent ? 'Blog post' : 'Coming soon'}
               </div>
             </div>
-            <div className="text-[#B4B4B4] text-[16.70px] font-normal font-azeret-mono leading-7">
+            <div className="text-[#B4B4B4] text-[clamp(14px,3.5vw,16.7px)] font-normal font-azeret-mono leading-6 sm:leading-7">
               {caption || 'Placeholder Caption'}
             </div>
           </div>
@@ -211,7 +211,7 @@ export default function KenyaGrid({ items }: KenyaGridProps) {
   const gridItems = items || defaultItems;
 
   return (
-    <div className="w-full max-w-[1408px] mx-auto px-4">
+    <div className="w-full max-w-[1408px] mx-auto px-3 sm:px-4">
       {gridItems.map((item, index) => (
         <KenyaGridItem
           key={index}

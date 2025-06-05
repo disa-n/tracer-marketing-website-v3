@@ -26,10 +26,10 @@ const NavigationBar = () => {
     };
 
     return (
-        <div className='w-full flex items-center px-4 pt-4 justify-center fixed top-0 left-0 z-[200] text-black'>
+        <div className='w-full flex items-center px-3 sm:px-4 pt-4 justify-center fixed top-0 left-0 z-[200] text-black'>
             <div className={`w-full max-w-[1408px] 1600:max-w-[1500px] 1700:max-w-[1600px] 1800:max-w-[1700px] 1900:max-w-[1800px] 1920:max-w-[1900px] bg-[#303030]/50 backdrop-blur-[12px] flex items-center justify-between h-[65px] p-2 transition-opacity duration-300 ${isSheetOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
                 <Link href={"/"}>
-                    <Image src={"/shared/tracer-logo.png"} alt='tracer-logo.png' width={150} height={50} className='w-full shrink-0 max-w-[123px]' />
+                    <Image src={"/shared/tracer-logo.png"} alt='tracer-logo.png' width={150} height={50} className='w-full shrink-0 max-w-[100px] sm:max-w-[123px]' />
                 </Link>
 
                 {/* Desktop Navigation */}
@@ -77,33 +77,33 @@ const NavigationBar = () => {
                 {/* Mobile Navigation */}
                 <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                     <SheetTrigger asChild>
-                        <button className='flex 800:hidden'>
-                            <Image src={"/shared/menu-icon.svg"} alt='menu' width={24} height={24} />
+                        <button className='flex 800:hidden p-1'>
+                            <Image src={"/shared/menu-icon.svg"} alt='menu' width={20} height={20} className="w-5 h-5 sm:w-6 sm:h-6" />
                         </button>
                     </SheetTrigger>
                     <SheetContent side={"right"} className='w-full bg-[#303030]/90 backdrop-blur-[200px] flex flex-col'>
                         <SheetHeader>
                             <SheetTitle>
                                 <Link href={"/"} onClick={handleNavLinkClick}>
-                                    <Image src={"/shared/tracer-logo.png"} alt='tracer-logo.png' width={150} height={50} className='w-full shrink-0 max-w-[123px]' />
+                                    <Image src={"/shared/tracer-logo.png"} alt='tracer-logo.png' width={150} height={50} className='w-full shrink-0 max-w-[100px] sm:max-w-[123px]' />
                                 </Link>
                             </SheetTitle>
                         </SheetHeader>
                         <div className='flex flex-col flex-grow'></div>
-                        <div className='flex flex-col gap-8 px-4 pb-8'>
-                            <Link href={"/platform"} className='font-britti-sans text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all' onClick={handleNavLinkClick}>
+                        <div className='flex flex-col gap-6 sm:gap-8 px-4 pb-8'>
+                            <Link href={"/platform"} className='font-britti-sans text-xl sm:text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all' onClick={handleNavLinkClick}>
                                 Product
                             </Link>
-                            <Link href={"/technology"} className='font-britti-sans text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all' onClick={handleNavLinkClick}>
+                            <Link href={"/technology"} className='font-britti-sans text-xl sm:text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all' onClick={handleNavLinkClick}>
                                 Technology
                             </Link>
-                            <Link href={"/about"} className='font-britti-sans text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all' onClick={handleNavLinkClick}>
+                            <Link href={"/about"} className='font-britti-sans text-xl sm:text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all' onClick={handleNavLinkClick}>
                                 About
                             </Link>
-                            <Link href={"/blog"} className='font-britti-sans text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all' onClick={handleNavLinkClick}>
+                            <Link href={"/blog"} className='font-britti-sans text-xl sm:text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all' onClick={handleNavLinkClick}>
                                 Blog
                             </Link>
-                            <Link href={"/resources"} className='font-britti-sans text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all' onClick={handleNavLinkClick}>
+                            <Link href={"/resources"} className='font-britti-sans text-xl sm:text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all' onClick={handleNavLinkClick}>
                                 Resources
                             </Link>
                         </div>
