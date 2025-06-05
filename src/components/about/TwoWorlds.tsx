@@ -73,10 +73,12 @@ function TwoWorlds() {
   // Animation variants for image (slide up, no fade) - desktop only
   const imageVariants = {
     hidden: {
-      y: isMobileView ? 0 : 100 // No slide animation in mobile
+      y: isMobileView ? 0 : 100, // No slide animation in mobile
+      opacity: isMobileView ? 1 : 1 // Always visible on mobile
     },
     visible: {
       y: 0,
+      opacity: 1,
       transition: {
         duration: isMobileView ? 0 : 0.8, // No animation duration in mobile
         ease: [0.6, 0, 0.38, 1]
@@ -122,12 +124,15 @@ function TwoWorlds() {
   }, [titleInView, titleControls])
 
   useEffect(() => {
-    if (imageInView) {
-      imageControls.start("visible")
-    } else {
-      imageControls.start("hidden")
+    // Only animate on desktop (mobile uses static positioning)
+    if (!isMobileView) {
+      if (imageInView) {
+        imageControls.start("visible")
+      } else {
+        imageControls.start("hidden")
+      }
     }
-  }, [imageInView, imageControls])
+  }, [imageInView, imageControls, isMobileView])
 
   useEffect(() => {
     console.log('Rectangle animation state changed:', rectanglesInView)
@@ -142,31 +147,50 @@ function TwoWorlds() {
 
   return (
     <section
-      className="relative w-full bg-[#FCFCFC] overflow-hidden z-20
-                 h-[600px] sm:h-[550px] md:h-[500px] lg:h-[486px] xl:h-[486px] 2xl:h-[486px]"
+      className={`relative w-full bg-[#FCFCFC] z-20 ${
+        isMobileView ? 'overflow-visible' : 'overflow-hidden'
+      } h-[600px] sm:h-[550px] md:h-[500px] lg:h-[486px] xl:h-[486px] 2xl:h-[486px]`}
       style={{
         marginTop: -55 // Move section up to align with end of moonshot section
       }}
     >
-      {/* Background Image - Desktop: Right Side, Mobile: Bottom */}
-      <motion.div
-        ref={imageRef}
-        animate={imageControls}
-        variants={imageVariants}
-        initial="hidden"
-        className={`absolute overflow-hidden w-full z-[5] ${
-          isMobileView
-            ? 'left-0 -bottom-[75%] h-[400px]' // Mobile: full width, bottom positioned, only top quarter visible
-            : 'left-[35%] sm:left-[30%] md:left-[28%] lg:left-[25%] xl:left-[30%] 2xl:left-[35%] -bottom-[140px] sm:-bottom-[160px] md:-bottom-[240px] lg:-bottom-[340px] xl:-bottom-[420px] 2xl:-bottom-[460px] h-[400px] sm:h-[450px] md:h-[500px] lg:h-[750px] xl:h-[800px] 2xl:h-[900px]'
-        }`}
-      >
-        <Image
-          src="/About us/tracer-ball.svg"
-          alt="Tracer Ball"
-          fill
-          className="object-contain object-bottom"
-        />
-      </motion.div>
+      {/* Background Image - Conditional rendering for mobile vs desktop */}
+      {isMobileView ? (
+        // Mobile: Simple positioned image at bottom, moved up slightly
+        <div
+          className="absolute left-0 w-full z-[1]"
+          style={{
+            bottom: '-200px', // Moved up from -300px to -200px so more of the image is visible
+            height: '400px'
+          }}
+        >
+          <Image
+            src="/About us/tracer-ball.svg"
+            alt="Tracer Ball"
+            fill
+            className="object-contain object-top"
+          />
+        </div>
+      ) : (
+        // Desktop: Animated image on right side
+        <motion.div
+          ref={imageRef}
+          animate={imageControls}
+          variants={imageVariants}
+          initial="hidden"
+          className="absolute overflow-hidden w-full z-[5]
+                     left-[35%] sm:left-[30%] md:left-[28%] lg:left-[25%] xl:left-[30%] 2xl:left-[35%]
+                     -bottom-[140px] sm:-bottom-[160px] md:-bottom-[240px] lg:-bottom-[340px] xl:-bottom-[420px] 2xl:-bottom-[460px]
+                     h-[400px] sm:h-[450px] md:h-[500px] lg:h-[750px] xl:h-[800px] 2xl:h-[900px]"
+        >
+          <Image
+            src="/About us/tracer-ball.svg"
+            alt="Tracer Ball"
+            fill
+            className="object-contain object-bottom"
+          />
+        </motion.div>
+      )}
 
       {/* Main Title */}
       <motion.div
