@@ -206,7 +206,16 @@ export default async function KenyaGrid({ items }: KenyaGridProps) {
   // Get blog posts from centralized data
   const blogPosts = await getAllBlogPosts();
 
-  const defaultItems: KenyaGridItemProps[] = blogPosts.map(post => ({
+  // Filter to only show Kenya day posts (day-one, day-two, day-three)
+  const kenyaDayPosts = blogPosts.filter(post =>
+    post.slug.startsWith('kenya-day-') &&
+    ['kenya-day-one', 'kenya-day-two', 'kenya-day-three'].includes(post.slug)
+  );
+
+  // Sort by date (oldest first) - Day One → Day Two → Day Three
+  kenyaDayPosts.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+  const defaultItems: KenyaGridItemProps[] = kenyaDayPosts.map(post => ({
     date: post.date,
     description: post.description,
     imageSrc: post.ogImage || post.imageSrc,
