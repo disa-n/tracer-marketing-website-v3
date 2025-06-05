@@ -17,8 +17,9 @@ function KenyaGridItem({ date, description, imageSrc, caption, slug }: KenyaGrid
   // Check if this post has MDX content (exists)
   const mdxSlugs = [
     'kenya-day-one',
-    'kenya-day-two'
-    // Add 'kenya-day-three', 'kenya-day-four', 'kenya-day-five' as they're created
+    'kenya-day-two',
+    'kenya-day-three'
+    // Add 'kenya-day-four', 'kenya-day-five' as they're created
   ];
 
   const hasContent = mdxSlugs.includes(slug);
