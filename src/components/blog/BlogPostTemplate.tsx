@@ -45,10 +45,10 @@ export default function BlogPostTemplate({ post, template = 'default', mdxConten
           <div className="mb-3">
             {/* Date and Author */}
             <div className="font-chakra-petch uppercase text-sm text-[#868686] leading-[19px] mb-2 flex flex-wrap items-center">
-              <span>{post.date}</span>
+              <span className="mr-1">{post.date}</span>
               {post.author && (
                 <span className="flex items-center whitespace-nowrap">
-                  {" • "}
+                  <span className="mx-1">•</span>
                   <span className="mx-1">By</span>
                   <AuthorDisplay author={post.author} />
                 </span>
