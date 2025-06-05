@@ -44,17 +44,17 @@ export const blogPosts: Record<string, BlogPost> = {
     readTime: '5 min read',
     content: ``
   },
-  // 'kenya-day-four': {
-  //   slug: 'kenya-day-four',
-  //   title: 'Hackathon Day Four: Thursday, June 5th',
-  //   date: 'Thu, 05 June',
-  //   imageSrc: '/Blog/Thurs-superconductor.webp',
-  //   description: 'Notes from the fourth day of our Kenya hackathon.',
-  //   author: 'Team Tracer',
-  //   tag: 'Testing',
-  //   readTime: '7 min read',
-  //   content: ``
-  // },
+  'kenya-day-four': {
+    slug: 'kenya-day-four',
+    title: 'Hackathon Day Four: Thursday, June 5th',
+    date: 'Thu, 05 June',
+    imageSrc: '/Blog/Thurs-superconductor.webp',
+    description: 'Tracer’s beta launch is nearly here - today we shipped onboarding, fallback tracing, branch-based installs, and better OOM insights.',
+    author: 'Team Tracer',
+    tag: 'blog',
+    readTime: '5 min read',
+    content: ``
+  },
   // 'kenya-day-five': {
   //   slug: 'kenya-day-five',
   //   title: 'Hackathon Day Five: Thursday, June 5th',
