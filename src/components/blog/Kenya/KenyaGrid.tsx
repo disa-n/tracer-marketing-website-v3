@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { getAllBlogPosts } from '@/app/blog/blogPosts';
+import { getAllBlogPosts } from '@/lib/blog-registry';
 
 // Flag to control visibility of action buttons
 const showActionButtons = false;
@@ -202,14 +202,14 @@ type KenyaGridProps = {
   items?: KenyaGridItemProps[];
 };
 
-export default function KenyaGrid({ items }: KenyaGridProps) {
+export default async function KenyaGrid({ items }: KenyaGridProps) {
   // Get blog posts from centralized data
-  const blogPosts = getAllBlogPosts();
+  const blogPosts = await getAllBlogPosts();
 
   const defaultItems: KenyaGridItemProps[] = blogPosts.map(post => ({
     date: post.date,
     description: post.description,
-    imageSrc: post.imageSrc,
+    imageSrc: post.ogImage || post.imageSrc,
     caption: post.title,
     slug: post.slug
   }));

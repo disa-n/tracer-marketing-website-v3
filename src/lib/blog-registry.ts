@@ -58,34 +58,141 @@ export function getAllMDXSlugs(): readonly string[] {
 }
 
 /**
- * Load metadata from an MDX file
+ * Static metadata for MDX posts (to avoid server-side import issues)
+ */
+const MDX_METADATA: Record<string, BlogPostMetadata> = {
+  'introducing-tracer-pt-1': {
+    slug: 'introducing-tracer-pt-1',
+    title: 'Introducing Tracer (Part 1)',
+    date: 'January 21, 2024',
+    description: 'We\'re working in stealth on a new startup called Tracer. We wanted to share more about the product, the journey so far, and the "why" behind it.',
+    author: 'Team Tracer',
+    tag: 'product',
+    readTime: '5 min read',
+    template: 'default'
+  },
+  'introducing-tracer-pt-2': {
+    slug: 'introducing-tracer-pt-2',
+    title: 'Introducing Tracer (Part 2)',
+    date: 'February 15, 2024',
+    description: 'Software complexity sparks hard-to-solve questions in computational biology. Observability should be tailor-made to biology.',
+    author: 'Team Tracer',
+    tag: 'product',
+    readTime: '6 min read',
+    template: 'default'
+  },
+  'experimenting-with-tracer-pt-3': {
+    slug: 'experimenting-with-tracer-pt-3',
+    title: 'Experimenting with Tracer (Part 3)',
+    date: 'March 10, 2024',
+    description: 'Tracer provides real-time insights into ChIP-Seq data analysis. Data size gradients allow thresholding of data-sizes and tools with Tracer.',
+    author: 'Team Tracer',
+    tag: 'experiment',
+    readTime: '8 min read',
+    template: 'default'
+  },
+  'error-detection-with-tracer-pt-4': {
+    slug: 'error-detection-with-tracer-pt-4',
+    title: 'Error Detection with Tracer (Part 4)',
+    date: 'March 25, 2024',
+    description: 'Tracer is able to assess and pin-point errors in tools involved in ChIP-Seq analysis. Use of an incorrect genome file disrupts the creation of a complete genome index.',
+    author: 'Team Tracer',
+    tag: 'experiment',
+    readTime: '7 min read',
+    template: 'default'
+  },
+  'tracer-use-case101': {
+    slug: 'tracer-use-case101',
+    title: 'Tracer Use Case 101',
+    date: 'April 5, 2024',
+    description: 'A bioinformatician\'s tale: How Tracer helps track, log, and visualize bioinformatics workflows in real-time, identifying pipeline issues and pinpointing errors.',
+    author: 'Team Tracer',
+    tag: 'use-case',
+    readTime: '6 min read',
+    template: 'default'
+  },
+  'test-post-1': {
+    slug: 'test-post-1',
+    title: 'Test Post 1',
+    date: 'January 1, 2024',
+    description: 'Description for test post 1',
+    author: 'Team Tracer',
+    tag: 'test',
+    readTime: '2 min read',
+    template: 'default'
+  },
+  'test-post-2': {
+    slug: 'test-post-2',
+    title: 'Test Post 2',
+    date: 'January 2, 2024',
+    description: 'Description for test post 2',
+    author: 'Team Tracer',
+    tag: 'test',
+    readTime: '3 min read',
+    template: 'default'
+  },
+  'sample-mdx-post': {
+    slug: 'sample-mdx-post',
+    title: 'Sample MDX Blog Post with Template',
+    date: 'Mon, 25 June',
+    description: 'This is a sample MDX blog post demonstrating how to use templates with MDX content.',
+    author: 'Team Tracer',
+    tag: 'development',
+    readTime: '3 min read',
+    ogImage: '/Blog/globe-preview-image.webp',
+    template: 'default'
+  },
+  'kenya-day-one': {
+    slug: 'kenya-day-one',
+    title: 'Hackathon Day One: Monday, June 2nd',
+    date: 'Mon, 2 June',
+    description: 'A hackathon kick-off note from Laura, our COO, and records from our first day in Nairobi, Kenya.',
+    author: 'Team Tracer',
+    tag: 'blog',
+    readTime: '5 min read',
+    ogImage: '/Blog/day1-city-view.webp',
+    template: 'default'
+  },
+  'kenya-day-two': {
+    slug: 'kenya-day-two',
+    title: 'Hackathon Day Two: Tuesday, June 3rd',
+    date: 'Tue, 3 June',
+    description: 'Kenya Day Two: Tracer runs natively on Mac ARM, the blog goes live, and we\'re learning why having the right foundation matters.',
+    author: 'Team Tracer',
+    tag: 'blog',
+    readTime: '8 min read',
+    ogImage: '/Blog/day2-tracer-working.webp',
+    template: 'default'
+  },
+  'kenya-day-three': {
+    slug: 'kenya-day-three',
+    title: 'Hackathon Day Three: Wednesday, June 4th',
+    date: 'Wed, 4 June',
+    description: 'Kenya Day Three: A well-earned break, a tour through Nairobi\'s rich history, and rooftop views before diving back into build mode.',
+    author: 'Team Tracer',
+    tag: 'blog',
+    readTime: '5 min read',
+    ogImage: '/Blog/day3-tracer-rooftop.webp',
+    template: 'default'
+  },
+};
+
+/**
+ * Load metadata from an MDX file (server-safe)
  */
 export async function loadMDXMetadata(slug: string): Promise<BlogPostMetadata | null> {
-  try {
-    const module = await import(`@/components/content/blog/${slug}.mdx`);
-    const metadata = module.metadata;
-    
-    if (!metadata) {
-      console.warn(`No metadata found for MDX post: ${slug}`);
-      return null;
-    }
+  // Use static metadata to avoid server-side import issues
+  const metadata = MDX_METADATA[slug];
 
-    return {
-      slug,
-      title: metadata.title,
-      date: metadata.date,
-      description: metadata.description,
-      author: metadata.author,
-      tag: metadata.tag,
-      readTime: metadata.readTime,
-      ogImage: metadata.ogImage,
-      template: metadata.template,
-      imageSrc: metadata.ogImage, // For backward compatibility
-    };
-  } catch (error) {
-    console.error(`Error loading MDX metadata for ${slug}:`, error);
+  if (!metadata) {
+    console.warn(`No metadata found for MDX post: ${slug}`);
     return null;
   }
+
+  return {
+    ...metadata,
+    imageSrc: metadata.ogImage, // For backward compatibility
+  };
 }
 
 /**

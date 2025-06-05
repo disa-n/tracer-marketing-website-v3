@@ -15,11 +15,12 @@ This file is the **ONLY** place where:
 
 ### Key Features
 
-1. **Automatic Discovery**: Automatically loads metadata from MDX files
+1. **Server-Safe Metadata**: Uses static metadata to avoid server-side import issues
 2. **Unified Interface**: Both MDX and static posts use the same interface
 3. **Type Safety**: Full TypeScript support with proper types
 4. **Centralized Management**: One place to add/remove blog posts
 5. **Consistent Tags**: All tags are automatically standardized to lowercase
+6. **Build Optimization**: No dynamic imports during build time
 
 ## How It Works
 
@@ -49,6 +50,24 @@ const MDX_BLOG_POSTS = [
   // ... existing posts
   'your-post',
 ] as const;
+```
+
+3. **Add the metadata** to the `MDX_METADATA` object in `src/lib/blog-registry.ts`:
+```typescript
+const MDX_METADATA: Record<string, BlogPostMetadata> = {
+  // ... existing posts
+  'your-post': {
+    slug: 'your-post',
+    title: 'Your Post Title',
+    date: 'January 1, 2024',
+    description: 'Your post description',
+    author: 'Team Tracer',
+    tag: 'your-tag',
+    readTime: '5 min read',
+    ogImage: '/Blog/your-image.webp',
+    template: 'default'
+  },
+};
 ```
 
 That's it! The post will automatically appear everywhere.
