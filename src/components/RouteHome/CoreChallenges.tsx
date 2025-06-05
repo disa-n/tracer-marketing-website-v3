@@ -37,7 +37,7 @@ const ChallengeCard = ({ challenge, index, shouldAnimate = true }: { challenge: 
     <div className="md:flex">
       <div className="tracking-[-9px] border border-b-0 border-[#404040] font-chakra-petch text-[40px] md:w-44 md:border-0 md:text-center md:text-[112px] text-[#FCFCFC]">
         <span className="inline-block w-20 border-r border-[#404040] p-2 text-center md:hidden">
-          {challenge.number}
+          <span className="tracking-[0.03em]">{challenge.number}</span>
         </span>
         <span className={cn("hidden md:inline-block", index === 1 && "mt-20", index === 3 && "mt-20")}>
           {challenge.number}
