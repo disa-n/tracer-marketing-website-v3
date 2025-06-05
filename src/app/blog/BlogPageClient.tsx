@@ -1,9 +1,11 @@
 'use client';
 
+import React from 'react';
 import BlogHero from '@/components/blog/BlogHero';
 import BlogIntro from '@/components/blog/BlogIntro';
 import FilterBar from '@/components/blog/FilterBar';
 import BlogGrid from '@/components/blog/BlogGrid';
+import { getBlogPostsForClient } from '@/lib/blog-registry';
 
 type BlogPost = {
   slug: string;
@@ -18,54 +20,57 @@ type BlogPost = {
 };
 
 export default function BlogPageClient() {
-  const posts: BlogPost[] = [
-    {
-      slug: 'kenya-hackathon',
-      metadata: {
-        title: 'Kenya Hackathon 2025',
-        date: '02 Jun 2025',
-        description: "We flew to Kenya for a week-long hackathon to accelerate Tracer's growth. The goal? Drive verified user activations through a Reddit launch. From back-end tooling to interface polish, we're all-in - coding, designing, and shipping, with a 'swing for the fences' mindset.",
-        tag: 'Blog',
-        ogImage: '/Blog/kenya.webp',
-        author: 'Team Tracer',
-      },
-    },
-    {
-      slug: 'kenya-day-one',
-      metadata: {
-        title: 'Hackathon Day One: Monday, June 2nd',
-        date: 'Mon, 2 June',
-        description: 'A hackathon kick-off note from Laura, our COO, and records from our first day in Nairobi, Kenya.',
-        tag: 'Blog',
-        ogImage: '/Blog/day1-city-view.webp',
-        author: 'Laura',
-      },
-    },
-    {
-      slug: 'kenya-day-two',
-      metadata: {
-        title: 'Hackathon Day Two: Tuesday, June 3rd',
-        date: 'Tue, 3 June',
-        description: 'Kenya Day Two: Tracer runs natively on Mac ARM, the blog goes live, and we\'re learning why having the right foundation matters.',
-        tag: 'Blog',
-        ogImage: '/Blog/day2-tracer-working.webp',
-        author: 'Team Tracer',
-      },
-    },
-    {
-      slug: 'kenya-day-three',
-      metadata: {
-        title: 'Hackathon Day Three: Wednesday, June 4th',
-        date: 'Wed, 4 June',
-        description: 'Kenya Day Three: A well-earned break, a tour through Nairobi\'s rich history, and rooftop views before diving back into build mode.',
-        tag: 'Blog',
-        ogImage: '/Blog/day3-tracer-rooftop.webp',
-        author: 'Team Tracer',
-      },
-    },
-  ];
+  const [posts, setPosts] = React.useState<BlogPost[]>([]);
+  const [loading, setLoading] = React.useState(true);
 
-  posts.sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime());
+  React.useEffect(() => {
+    async function loadPosts() {
+      try {
+        const blogPosts = await getBlogPostsForClient();
+
+        // Filter to only show Kenya-related posts
+        const kenyaPosts = blogPosts.filter(post =>
+          post.slug.startsWith('kenya-day-')
+        );
+
+        // Add the kenya-hackathon post manually since it's not in MDX
+        const kenyaHackathonPost = {
+          slug: 'kenya-hackathon',
+          metadata: {
+            title: 'Kenya Hackathon 2025',
+            date: '02 Jun 2025',
+            description: "We flew to Kenya for a week-long hackathon to accelerate Tracer's growth. The goal? Drive verified user activations through a Reddit launch. From back-end tooling to interface polish, we're all-in - coding, designing, and shipping, with a 'swing for the fences' mindset.",
+            tag: 'blog',
+            ogImage: '/Blog/kenya.webp',
+            author: 'Team Tracer',
+          },
+        };
+
+        const allPosts = [kenyaHackathonPost, ...kenyaPosts];
+        allPosts.sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime());
+
+        setPosts(allPosts);
+      } catch (error) {
+        console.error('Error loading blog posts:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadPosts();
+  }, []);
+
+  if (loading) {
+    return (
+      <main className="w-full min-h-screen pt-20 bg-[#FCFCFC] relative">
+        <div className="px-4 md:px-8 max-w-7xl xxl:max-w-none xxl:px-16 mx-auto relative z-10">
+          <div className="flex items-center justify-center min-h-[400px]">
+            <div className="text-[#202020]">Loading blog posts...</div>
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="w-full min-h-screen pt-20 bg-[#FCFCFC] relative">
