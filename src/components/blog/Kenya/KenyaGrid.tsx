@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { getAllBlogPosts } from '@/data/blogPosts';
+import { getAllBlogPosts } from '@/app/blog/blogPosts';
 
 // Flag to control visibility of action buttons
 const showActionButtons = false;
@@ -12,8 +12,6 @@ type KenyaGridItemProps = {
   caption?: string;
   slug: string;
 };
-
-
 
 function KenyaGridItem({ date, description, imageSrc, caption, slug }: KenyaGridItemProps) {
   // Check if this post has MDX content (exists)
