@@ -1,10 +1,12 @@
 export const metadata = {
   title: "Tracer | Kenya Hackathon 2025",
-  description: "Tracer combines deep scientific knowledge and cutting-edge tech to accelerate AI adoption in industry.",}
+  description: "Tracer combines deep scientific knowledge and cutting-edge tech to accelerate AI adoption in industry.",
+};
+
 import KenyaHero from '@/components/blog/Kenya/KenyaHero';
 import KenyaGrid from '@/components/blog/Kenya/KenyaGrid';
 
-export default function KenyaPage() {
+export default function KenyaHackathonOverview() {
   return (
     <main className="w-full min-h-screen bg-[#202020] text-[#FCFCFC] relative">
       {/* Hero Section */}

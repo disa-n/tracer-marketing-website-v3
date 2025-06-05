@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { BlogPost } from '@/data/blogPosts';
+import { BlogPost } from '@/app/blog/blogPosts';
 import AuthorDisplay from './AuthorDisplay';
 
 interface BlogPostTemplateProps {

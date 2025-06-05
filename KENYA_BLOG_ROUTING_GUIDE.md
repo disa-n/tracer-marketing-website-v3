@@ -26,6 +26,8 @@ src/
 ├── app/blog/
 │   ├── page.tsx                   # Main blog listing page
 │   ├── BlogPageClient.tsx         # Blog page client component
+│   ├── kenyahackathonoverview/    # Kenya hackathon overview page
+│   │   └── page.tsx               # Kenya hackathon main page
 │   └── [slug]/
 │       ├── page.tsx               # Dynamic route handler
 │       ├── mdx-content.tsx        # MDX renderer
@@ -226,7 +228,7 @@ const linkHref = hasContent ? `/blog/${slug}` : '/coming-soon';
 
 ### Blog Preview Page Integration
 The main blog listing page (`/blog`) now also uses smart routing for Kenya-related posts. The Kenya hackathon card will:
-- Always route to `/blog/KenyaPage` (the main Kenya page)
+- Always route to `/blog/kenyahackathonoverview` (the main Kenya page)
 - Individual Kenya day posts (if added to the main blog) will use the same smart routing logic
 
 ### Consistent Experience

@@ -30,7 +30,7 @@ export default function BlogCard({
   // Smart routing logic for Kenya hackathon
   const getCardLink = () => {
     if (slug === 'kenya-hackathon') {
-      return '/blog/KenyaPage';
+      return '/blog/kenyahackathonoverview';
     }
 
     // Check if this is a Kenya day post that might not have content yet
@@ -38,7 +38,8 @@ export default function BlogCard({
     if (kenyaDayMatch) {
       const mdxSlugs = [
         'kenya-day-one',
-        'kenya-day-two'
+        'kenya-day-two',
+        'kenya-day-three'
         // Add more as they're created
       ];
       const hasContent = mdxSlugs.includes(slug);

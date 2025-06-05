@@ -2,40 +2,62 @@
 
 import React, { useState, useEffect } from 'react';
 import ComingSoon from '@/components/shared/ComingSoon';
-import { getBlogPost } from '@/data/blogPosts';
+import { getBlogPost } from '@/lib/blog-registry';
 import BlogPostTemplate from '@/components/blog/BlogPostTemplate';
 
 // Simple static content for test posts
 export default function StaticContent({ slug }: { slug: string }) {
   const [isComingSoon, setIsComingSoon] = useState(true); // Default to true for SSR
+  const [post, setPost] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const hostname = window.location.hostname;
-      const isLocalhost = hostname.includes("localhost");
+    async function loadPost() {
+      try {
+        if (typeof window !== 'undefined') {
+          const hostname = window.location.hostname;
+          const isLocalhost = hostname.includes("localhost");
 
-      console.log("Current hostname:", hostname);
-      console.log("Is localhost:", isLocalhost);
+          console.log("Current hostname:", hostname);
+          console.log("Is localhost:", isLocalhost);
 
-      if (isLocalhost) {
-        setIsComingSoon(false);
-        console.log("Setting isComingSoon to false (localhost)");
-      } else {
-        setIsComingSoon(true);
-        console.log("Setting isComingSoon to true (production)");
+          if (isLocalhost) {
+            setIsComingSoon(false);
+            console.log("Setting isComingSoon to false (localhost)");
+          } else {
+            setIsComingSoon(true);
+            console.log("Setting isComingSoon to true (production)");
+          }
+        } else {
+          // Default to coming soon during SSR
+          setIsComingSoon(true);
+          console.log("Setting isComingSoon to true (SSR)");
+        }
+
+        // If not coming soon, load the blog post data
+        if (!isComingSoon) {
+          const blogPost = await getBlogPost(slug);
+          setPost(blogPost);
+        }
+      } catch (error) {
+        console.error('Error loading blog post:', error);
+      } finally {
+        setLoading(false);
       }
-    } else {
-      // Default to coming soon during SSR
-      setIsComingSoon(true);
-      console.log("Setting isComingSoon to true (SSR)");
     }
 
-    // alternative way to do it:
-    // process.env.NODE_ENV === "development" ? setIsComingSoon(false) : setIsComingSoon(true);
-
-  }, []);
+    loadPost();
+  }, [slug, isComingSoon]);
 
   console.log("Current isComingSoon state:", isComingSoon);
+
+  if (loading) {
+    return (
+      <div className="max-w-4xl mx-auto px-4 py-12">
+        <div className="text-[#202020]">Loading...</div>
+      </div>
+    );
+  }
 
   if(isComingSoon) {
     console.log("Rendering ComingSoon component");
@@ -43,9 +65,6 @@ export default function StaticContent({ slug }: { slug: string }) {
   }
 
   console.log("Rendering blog content for slug:", slug);
-
-  // Get the blog post data
-  const post = getBlogPost(slug);
 
   if (!post) {
     return (
@@ -56,6 +75,19 @@ export default function StaticContent({ slug }: { slug: string }) {
     );
   }
 
+  // Convert the blog post to the format expected by BlogPostTemplate
+  const templatePost = {
+    slug: post.slug,
+    title: post.title,
+    date: post.date,
+    imageSrc: post.ogImage || post.imageSrc || '',
+    description: post.description,
+    author: post.author,
+    tag: post.tag,
+    readTime: post.readTime,
+    content: post.content || ''
+  };
+
   // You can change the template here: 'default', 'minimal', 'magazine', 'technical'
-  return <BlogPostTemplate post={post} template="default" />;
+  return <BlogPostTemplate post={templatePost} template="default" />;
 }
