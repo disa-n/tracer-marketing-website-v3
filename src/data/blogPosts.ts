@@ -29,7 +29,7 @@ export const blogPosts: Record<string, BlogPost> = {
     imageSrc: '/Blog/day2-tracer-working.webp',
     description: 'Kenya Day Two: Tracer runs natively on Mac ARM, the blog goes live, and we\'re learning why having the right foundation matters.',
     author: 'Team Tracer',
-    tag: 'Backend',
+    tag: 'Blog',
     readTime: '8 min read',
     content: ``
   },
@@ -40,7 +40,7 @@ export const blogPosts: Record<string, BlogPost> = {
     imageSrc: '/Blog/day3-tracer-rooftop.webp',
     description: 'Kenya Day Three: A well-earned break, a tour through Nairobi\'s rich history, and rooftop views before diving back into build mode.',
     author: 'Team Tracer',
-    tag: 'Culture',
+    tag: 'Blog',
     readTime: '5 min read',
     content: ``
   },
@@ -51,7 +51,7 @@ export const blogPosts: Record<string, BlogPost> = {
     imageSrc: '/Blog/Thurs-superconductor.webp',
     description: 'Notes from the fourth day of our Kenya hackathon.',
     author: 'Team Tracer',
-    tag: 'Testing',
+    tag: 'Blog',
     readTime: '7 min read',
     content: ``
   },
@@ -62,7 +62,7 @@ export const blogPosts: Record<string, BlogPost> = {
     imageSrc: '/Blog/Fri-wheel.webp',
     description: 'Notes from the fifth day of our Kenya hackathon.',
     author: 'Team Tracer',
-    tag: 'DevOps',
+    tag: 'Blog',
     readTime: '9 min read',
     content: ``
   }
