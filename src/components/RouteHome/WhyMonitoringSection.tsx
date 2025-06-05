@@ -23,9 +23,10 @@ const WhyMonitoringSection = () => {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      const screenWidth = window.screen.width;
-      // Disable animations when window is 50% or less of screen width
-      setShouldAnimate(width > screenWidth * 0.5);
+      // Disable animations on mobile devices (width <= 768px) or when window is 50% or less of screen width
+      const isMobile = width <= 768;
+      const isNarrowWindow = width <= (window.screen.width * 0.5);
+      setShouldAnimate(!isMobile && !isNarrowWindow);
     };
 
     // Set initial values

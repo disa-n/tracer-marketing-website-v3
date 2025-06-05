@@ -12,9 +12,10 @@ function Culture() {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth
-      const screenWidth = window.screen.width
-      // Disable animations when window is 50% or less of screen width
-      setIsMobileView(width <= screenWidth * 0.5)
+      // Disable animations on mobile devices (width <= 768px) or when window is 50% or less of screen width
+      const isMobileDevice = width <= 768;
+      const isNarrowWindow = width <= (window.screen.width * 0.5);
+      setIsMobileView(isMobileDevice || isNarrowWindow)
     }
 
     // Set initial values
@@ -130,9 +131,20 @@ function Culture() {
         marginRight: 'calc(-50vw + 50%)',
         paddingLeft: 'calc(50vw - 50% + 16px)',
         paddingRight: 'calc(50vw - 50% + 16px)',
-        zIndex: 10
+        zIndex: 30, // Increased z-index to ensure it covers the TwoWorlds image
+        position: 'relative' // Ensure stacking context
       }}
     >
+      {/* Extra background coverage to ensure no image bleed-through */}
+      <div
+        className="absolute w-full bg-[#202020]"
+        style={{
+          top: -100, // Extend above the section
+          left: 0,
+          height: 200, // Cover potential overlap area
+          zIndex: 25
+        }}
+      />
       {/* Background Gridlines */}
       {/* Vertical line 1 */}
       <div
