@@ -53,8 +53,10 @@ const Monitoring = () => {
 
     const containerControls = useAnimation()
 
-    // Check if screen is small (50% or less)
-    const isSmallScreen = windowWidth <= 960
+    // Check if screen is mobile device (width <= 768px) or 50% or less of screen width
+    const isMobileDevice = windowWidth <= 768;
+    const isNarrowWindow = windowWidth <= (typeof window !== 'undefined' ? window.screen.width * 0.5 : 960);
+    const isSmallScreen = isMobileDevice || isNarrowWindow
 
     // Calculate proportional height for cards based on viewport width
     const getCardHeight = () => {
@@ -143,8 +145,10 @@ const Monitoring = () => {
     useEffect(() => {
         console.log('Scroll state:', { cardsVisible, pastEnd, windowWidth })
 
-        // Check if screen is 50% or less of typical desktop width (assuming 1920px as full screen)
-        const isSmallScreen = windowWidth <= 960 // 50% of 1920px
+        // Check if screen is mobile device (width <= 768px) or 50% or less of screen width
+        const isMobileDevice = windowWidth <= 768;
+        const isNarrowWindow = windowWidth <= (window.screen.width * 0.5);
+        const isSmallScreen = isMobileDevice || isNarrowWindow
 
         // On mobile screens, keep animations in visible state (no animations)
         if (isSmallScreen) {
