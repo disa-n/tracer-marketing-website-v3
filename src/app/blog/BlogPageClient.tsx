@@ -30,6 +30,39 @@ export default function BlogPageClient() {
         author: 'Team Tracer',
       },
     },
+    {
+      slug: 'kenya-day-one',
+      metadata: {
+        title: 'Hackathon Day One: Monday, June 2nd',
+        date: 'Mon, 2 June',
+        description: 'A hackathon kick-off note from Laura, our COO, and records from our first day in Nairobi, Kenya.',
+        tag: 'Blog',
+        ogImage: '/Blog/day1-city-view.webp',
+        author: 'Team Tracer',
+      },
+    },
+    {
+      slug: 'kenya-day-two',
+      metadata: {
+        title: 'Hackathon Day Two: Tuesday, June 3rd',
+        date: 'Tue, 3 June',
+        description: 'Kenya Day Two: Tracer runs natively on Mac ARM, the blog goes live, and we\'re learning why having the right foundation matters.',
+        tag: 'Backend',
+        ogImage: '/Blog/day2-tracer-working.webp',
+        author: 'Team Tracer',
+      },
+    },
+    {
+      slug: 'kenya-day-three',
+      metadata: {
+        title: 'Hackathon Day Three: Wednesday, June 4th',
+        date: 'Wed, 4 June',
+        description: 'Kenya Day Three: A well-earned break, a tour through Nairobi\'s rich history, and rooftop views before diving back into build mode.',
+        tag: 'Culture',
+        ogImage: '/Blog/day3-tracer-rooftop.webp',
+        author: 'Team Tracer',
+      },
+    },
   ];
 
   posts.sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime());
@@ -110,7 +143,7 @@ export default function BlogPageClient() {
         <BlogIntro />
       </div>
       <div className="mt-12">
-        <FilterBar />
+        <FilterBar showFilters={false} />
       </div>
       <div className="mt-16">
         <BlogGrid posts={posts} />

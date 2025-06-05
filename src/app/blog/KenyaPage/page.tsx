@@ -10,9 +10,9 @@ export default function KenyaPage() {
       {/* Hero Section */}
       <KenyaHero />
 
-      {/* Daily Highlights Grid */}
-      <section className="py-16">
-        <div className="max-w-[1408px] mx-auto px-4 mb-8">
+      {/* Daily Highlights Grid - Negative margin to overlap with hero */}
+      <section className="py-8 mt-[-100px] relative z-10">
+        <div className="max-w-[1408px] mx-auto px-4 mb-6">
           <h2 className="font-chakra-petch text-2xl md:text-3xl font-medium text-[#FCFCFC]">
             DAILY ENTRIES
           </h2>

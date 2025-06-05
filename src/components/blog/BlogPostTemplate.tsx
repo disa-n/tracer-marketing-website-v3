@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { BlogPost } from '@/data/blogPosts';
+import AuthorDisplay from './AuthorDisplay';
 
 interface BlogPostTemplateProps {
   post: BlogPost;
@@ -43,10 +44,14 @@ export default function BlogPostTemplate({ post, template = 'default', mdxConten
           {/* Top Metadata Block */}
           <div className="mb-3">
             {/* Date and Author */}
-            <div className="font-chakra-petch uppercase text-sm text-[#868686] leading-[19px] mb-2">
-              {post.date}
+            <div className="font-chakra-petch uppercase text-sm text-[#868686] leading-[19px] mb-2 flex flex-wrap items-center">
+              <span>{post.date}</span>
               {post.author && (
-                <span> • By {post.author}</span>
+                <span className="flex items-center whitespace-nowrap">
+                  {" • "}
+                  <span className="mx-1">By</span>
+                  <AuthorDisplay author={post.author} />
+                </span>
               )}
             </div>
           </div>
@@ -97,7 +102,7 @@ export default function BlogPostTemplate({ post, template = 'default', mdxConten
         {/* Meta info */}
         <div className="flex items-center gap-6 mb-12 text-[#888888] text-sm font-chakra-petch">
           <span>{post.date}</span>
-          {post.author && <span>By {post.author}</span>}
+          {post.author && <span>By <AuthorDisplay author={post.author} /></span>}
           {post.readTime && <span>{post.readTime}</span>}
         </div>
 
@@ -143,7 +148,7 @@ export default function BlogPostTemplate({ post, template = 'default', mdxConten
               
               <div className="space-y-4 text-[#888888] text-sm font-chakra-petch">
                 <div>Published: {post.date}</div>
-                {post.author && <div>Author: {post.author}</div>}
+                {post.author && <div>Author: <AuthorDisplay author={post.author} /></div>}
                 {post.readTime && <div>Read time: {post.readTime}</div>}
               </div>
 
@@ -198,7 +203,7 @@ export default function BlogPostTemplate({ post, template = 'default', mdxConten
           </p>
           
           <div className="flex items-center gap-6 text-sm font-mono text-[#888888]">
-            {post.author && <span>Author: {post.author}</span>}
+            {post.author && <span>Author: <AuthorDisplay author={post.author} /></span>}
             {post.readTime && <span>Est. reading time: {post.readTime}</span>}
           </div>
         </div>
