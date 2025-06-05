@@ -206,10 +206,10 @@ export default async function KenyaGrid({ items }: KenyaGridProps) {
   // Get blog posts from centralized data
   const blogPosts = await getAllBlogPosts();
 
-  // Filter to only show Kenya day posts (day-one, day-two, day-three)
+  // Filter to only show Kenya day posts (day-one, day-two, day-three, day-four)
   const kenyaDayPosts = blogPosts.filter(post =>
     post.slug.startsWith('kenya-day-') &&
-    ['kenya-day-one', 'kenya-day-two', 'kenya-day-three'].includes(post.slug)
+    ['kenya-day-one', 'kenya-day-two', 'kenya-day-three', 'kenya-day-four'].includes(post.slug)
   );
 
   // Sort by date (oldest first) - Day One → Day Two → Day Three

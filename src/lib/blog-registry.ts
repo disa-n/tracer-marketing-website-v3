@@ -28,7 +28,7 @@ export interface BlogPost extends BlogPostMetadata {
 // This is the ONLY place where MDX slugs should be listed
 const MDX_BLOG_POSTS = [
   'introducing-tracer-pt-1',
-  'introducing-tracer-pt-2', 
+  'introducing-tracer-pt-2',
   'experimenting-with-tracer-pt-3',
   'error-detection-with-tracer-pt-4',
   'tracer-use-case101',
@@ -38,6 +38,7 @@ const MDX_BLOG_POSTS = [
   'kenya-day-one',
   'kenya-day-two',
   'kenya-day-three',
+  'kenya-day-four',
 ] as const;
 
 // Type for MDX blog post slugs
@@ -147,7 +148,7 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
     title: 'Hackathon Day One: Monday, June 2nd',
     date: 'Mon, 2 June',
     description: 'A hackathon kick-off note from Laura, our COO, and records from our first day in Nairobi, Kenya.',
-    author: 'Team Tracer',
+    author: 'Laura',
     tag: 'blog',
     readTime: '5 min read',
     ogImage: '/Blog/day1-city-view.webp',
@@ -173,6 +174,17 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
     tag: 'blog',
     readTime: '5 min read',
     ogImage: '/Blog/day3-tracer-rooftop.webp',
+    template: 'default'
+  },
+  'kenya-day-four': {
+    slug: 'kenya-day-four',
+    title: 'Hackathon Day Four: Thursday, June 5th',
+    date: 'Thu, 5 June',
+    description: 'Tracer\'s beta launch is nearly here - today we shipped onboarding, fallback tracing, branch-based installs, and better OOM insights.',
+    author: 'Team Tracer',
+    tag: 'blog',
+    readTime: '7 min read',
+    ogImage: '/Blog/day4-tracer-hardwork.webp',
     template: 'default'
   },
 };

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import AuthorDisplay from './AuthorDisplay';
 
 type BlogCardProps = {
   slug: string;
@@ -39,7 +40,8 @@ export default function BlogCard({
       const mdxSlugs = [
         'kenya-day-one',
         'kenya-day-two',
-        'kenya-day-three'
+        'kenya-day-three',
+        'kenya-day-four'
         // Add more as they're created
       ];
       const hasContent = mdxSlugs.includes(slug);
@@ -80,18 +82,26 @@ export default function BlogCard({
             </div>
           ) : authors.length > 0 ? (
             <div className="flex items-center mt-auto">
-              <div className="flex -space-x-2">
-                {authors.map((a, index) => (
-                  <div
-                    key={index}
-                    className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gray-300 flex items-center justify-center text-xs font-medium border-2 border-white"
-                    title={a}
-                  >
-                    {a.charAt(0)}
+              {authors.length === 1 ? (
+                <div className="text-xs sm:text-sm text-gray-500">
+                  <AuthorDisplay author={authors[0]} />
+                </div>
+              ) : (
+                <>
+                  <div className="flex -space-x-2">
+                    {authors.map((a, index) => (
+                      <div
+                        key={index}
+                        className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gray-300 flex items-center justify-center text-xs font-medium border-2 border-white"
+                        title={a}
+                      >
+                        {a.charAt(0)}
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-              <span className="ml-2 text-xs sm:text-sm text-gray-500">{authors.join(", ")}</span>
+                  <span className="ml-2 text-xs sm:text-sm text-gray-500">{authors.join(", ")}</span>
+                </>
+              )}
             </div>
           ) : null}
         </div>

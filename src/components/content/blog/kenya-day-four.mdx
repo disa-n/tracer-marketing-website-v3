@@ -1,0 +1,92 @@
+import Image from 'next/image'
+
+export const metadata = {
+  title: 'Hackathon Day Four: Thursday, June 5th',
+  date: 'Thu, 5 June',
+  description: 'Tracer’s beta launch is nearly here - today we shipped onboarding, fallback tracing, branch-based installs, and better OOM insights.',
+  author: 'Team Tracer',
+  tag: 'blog',
+  readTime: '7 min read',
+  ogImage: '/Blog/day4-tracer-hardwork.webp',
+  template: 'default'
+};
+
+export const meta = {
+  title: "Tracer Dev Log — Day 4: June 5",
+  description: "Tracer’s beta launch is nearly here — today we shipped onboarding, fallback tracing, branch-based installs, and better OOM insights.",
+  date: "2025-06-05",
+}
+
+## Day 4: Thursday, June 5
+
+**Work-work-work!** Today was all about the final sprints toward getting our **Beta version live** and making sure every piece of the Tracer experience is ready to demo. The team spent the day heads-down, testing everything from onboarding to local pipeline runs.
+
+By midnight, our full **Tracer demo** will be up and running. Here’s what we shipped today to get us there:
+
+### 1. New Onboarding Page Live on Sandbox
+
+Because of **Laura**’s efforts last night, the team woke up with a brand new sandbox onboarding page live!
+It only took 30 changed files, 6,445 insertions and 21,169 deletions! Our hard work is becoming more visual now, thanks to our new kick-ass front-end page!
+
+![Onboarding page](/Blog/onboarding.webp)
+
+![Terminal view](/Blog/terminal.webp)
+
+### 2. eBPF Fallback
+
+The Tracer client now falls back to traditional system polling when eBPF isn’t available:
+
+- ✅ Works inside Docker containers (even without sudo)
+- ✅ Supports both ARM and x86 EC2 instances
+- ✅ Preserves full observability during fallback mode
+
+This makes tracing more robust in constrained environments and ensures Tracer runs smoothly even when kernel features are unavailable.
+
+**Thank you David!!**
+
+### 3. Branch-Specific Binary Installation
+
+To simplify testing and avoid overwriting shared binaries, we’ve added **support for branch-based installs** via our installation script.
+
+**Latest dev release:**
+```bash
+curl -sSL https://install.tracer.cloud/installation-script-development.sh | bash -s dev && source ~/.bashrc
+```
+
+**Specific feature branch:**
+```bash
+curl -sSL https://install.tracer.cloud/installation-script-development.sh | bash -s feature/branch-name && source ~/.bashrc
+```
+
+**Latest stable release:**
+```bash
+curl -sSL https://install.tracer.cloud/installation-script-development.sh | bash && source ~/.bashrc
+```
+
+### 4. Better Debugging with Out of Memory Visibility
+
+We’ve improved how **Out of Memory (OOM) errors** are tracked in Grafana:
+
+- ✅ Shown as a status in the general overview  
+- ✅ Identified at the pipeline level  
+- ✅ Clearly marked as “Exit reason: OOM” in the individual run view
+
+This allows users to quickly identify when a pipeline failed due to memory limits, without going through logs.
+**Shout out to Arne!**
+
+![Grafana OOM tracking](/Blog/grafana-oom.webp)
+
+### 5. Sandbox App Improvements
+
+After running some tests, we encountered some issues with the **Sandbox sign-in and sign-up**.  
+However, because of **Vincent**’s wizardry, the sandbox flow is now fully functional again.
+
+We’ve also completed a migration to the new **Next.js app router folder structure**, which helps with:
+
+- ✅ Cleaner and more predictable routing  
+- ✅ Fewer Git merge conflicts  
+- ✅ Easier frontend scaling across the team
+
+Onward to launch!
+ 
+*The Tracer Team*
