@@ -38,7 +38,7 @@ export default function BlogPageClient() {
         description: 'A hackathon kick-off note from Laura, our COO, and records from our first day in Nairobi, Kenya.',
         tag: 'Blog',
         ogImage: '/Blog/day1-city-view.webp',
-        author: 'Team Tracer',
+        author: 'Laura',
       },
     },
     {
