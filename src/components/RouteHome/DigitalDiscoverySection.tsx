@@ -171,10 +171,11 @@ export default function DigitalDiscoverySection() {
     const checkScreenSize = () => {
       if (typeof window !== 'undefined') {
         const width = window.innerWidth;
-        const screenWidth = window.screen.width;
         setWindowWidth(width);
-        // Disable animations when window is 50% or less of screen width
-        setShouldAnimate(width > screenWidth * 0.5);
+        // Disable animations on mobile devices (width <= 768px) or when window is 50% or less of screen width
+        const isMobile = width <= 768;
+        const isNarrowWindow = width <= (window.screen.width * 0.5);
+        setShouldAnimate(!isMobile && !isNarrowWindow);
       }
     };
 
@@ -185,10 +186,11 @@ export default function DigitalDiscoverySection() {
     const handleResize = () => {
       if (typeof window !== 'undefined') {
         const width = window.innerWidth;
-        const screenWidth = window.screen.width;
         setWindowWidth(width);
-        // Disable animations when window is 50% or less of screen width
-        setShouldAnimate(width > screenWidth * 0.5);
+        // Disable animations on mobile devices (width <= 768px) or when window is 50% or less of screen width
+        const isMobile = width <= 768;
+        const isNarrowWindow = width <= (window.screen.width * 0.5);
+        setShouldAnimate(!isMobile && !isNarrowWindow);
       }
     };
 
@@ -203,7 +205,7 @@ export default function DigitalDiscoverySection() {
     };
   }, []);
 
-  const shouldShowRectangle = typeof window !== 'undefined' && windowWidth > (window.screen.width * 0.65);
+  const shouldShowRectangle = typeof window !== 'undefined' && windowWidth > 768 && windowWidth > (window.screen.width * 0.65);
   const shouldShowGridlines = windowWidth > 768; // Hide gridlines on mobile/small screens
 
   return (
