@@ -5,9 +5,14 @@ import { useState } from 'react';
 interface FilterBarProps {
   onFilterChange?: (filter: string) => void;
   activeFilter?: string;
+  showFilters?: boolean; // New prop to control visibility
 }
 
-export default function FilterBar({ onFilterChange, activeFilter = 'Blogs' }: FilterBarProps) {
+export default function FilterBar({ 
+  onFilterChange, 
+  activeFilter = 'Blogs', 
+  showFilters = true // Default to true for backward compatibility
+}: FilterBarProps) {
   const [selectedFilter, setSelectedFilter] = useState(activeFilter);
 
   const filters = [
@@ -23,6 +28,11 @@ export default function FilterBar({ onFilterChange, activeFilter = 'Blogs' }: Fi
     setSelectedFilter(filter);
     onFilterChange?.(filter);
   };
+
+  // If showFilters is false, return null or an empty fragment
+  if (!showFilters) {
+    return null;
+  }
 
   return (
     <>

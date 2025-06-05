@@ -2,6 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getAllBlogPosts } from '@/data/blogPosts';
 
+// Flag to control visibility of action buttons
+const showActionButtons = false;
+
 type KenyaGridItemProps = {
   date: string;
   description: string;
@@ -40,39 +43,41 @@ function KenyaGridItem({ date, description, imageSrc, caption, slug }: KenyaGrid
           </div>
 
           {/* Action Buttons */}
-          <div className="space-y-4 mt-16">
-            {/* Watch Video Button */}
-            <div className="flex items-center">
-              <div className="w-4 h-[18px] mr-6 flex items-center justify-center">
-                <Image
-                  src="/Blog/play.svg"
-                  alt="Play"
-                  width={16}
-                  height={16}
-                  className="w-4 h-4"
-                />
+          {showActionButtons && (
+            <div className="space-y-4 mt-16">
+              {/* Watch Video Button */}
+              <div className="flex items-center">
+                <div className="w-4 h-[18px] mr-6 flex items-center justify-center">
+                  <Image
+                    src="/Blog/play.svg"
+                    alt="Play"
+                    width={16}
+                    height={16}
+                    className="w-4 h-4"
+                  />
+                </div>
+                <div className="text-[#898989] text-[12.80px] font-normal font-chakra-petch leading-5">
+                  Watch video
+                </div>
               </div>
-              <div className="text-[#898989] text-[12.80px] font-normal font-chakra-petch leading-5">
-                Watch video
-              </div>
-            </div>
 
-            {/* X Space Button */}
-            <div className="flex items-center">
-              <div className="w-4 h-[18px] mr-6 flex items-center justify-center">
-                <Image
-                  src="/Blog/mic.svg"
-                  alt="Microphone"
-                  width={16}
-                  height={16}
-                  className="w-4 h-4"
-                />
-              </div>
-              <div className="text-[#898989] text-[12.80px] font-normal font-chakra-petch leading-5">
-                X Space
+              {/* X Space Button */}
+              <div className="flex items-center">
+                <div className="w-4 h-[18px] mr-6 flex items-center justify-center">
+                  <Image
+                    src="/Blog/mic.svg"
+                    alt="Microphone"
+                    width={16}
+                    height={16}
+                    className="w-4 h-4"
+                  />
+                </div>
+                <div className="text-[#898989] text-[12.80px] font-normal font-chakra-petch leading-5">
+                  X Space
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Right Section - Image Container */}
@@ -122,39 +127,41 @@ function KenyaGridItem({ date, description, imageSrc, caption, slug }: KenyaGrid
           </div>
 
           {/* Action Buttons */}
-          <div className="space-y-3 sm:space-y-4 pt-3 sm:pt-4">
-            {/* Watch Video Button */}
-            <div className="flex items-center">
-              <div className="w-3 sm:w-4 h-[16px] sm:h-[18px] mr-4 sm:mr-6 flex items-center justify-center">
-                <Image
-                  src="/Blog/play.svg"
-                  alt="Play"
-                  width={16}
-                  height={16}
-                  className="w-3 sm:w-4 h-3 sm:h-4"
-                />
+          {showActionButtons && (
+            <div className="space-y-4 pt-4">
+              {/* Watch Video Button */}
+              <div className="flex items-center">
+                <div className="w-4 h-[18px] mr-6 flex items-center justify-center">
+                  <Image
+                    src="/Blog/play.svg"
+                    alt="Play"
+                    width={16}
+                    height={16}
+                    className="w-4 h-4"
+                  />
+                </div>
+                <div className="text-[#898989] text-[12.80px] font-normal font-chakra-petch leading-5">
+                  Watch video
+                </div>
               </div>
-              <div className="text-[#898989] text-[clamp(11px,2.5vw,12.8px)] font-normal font-chakra-petch leading-5">
-                Watch video
-              </div>
-            </div>
 
-            {/* X Space Button */}
-            <div className="flex items-center">
-              <div className="w-3 sm:w-4 h-[16px] sm:h-[18px] mr-4 sm:mr-6 flex items-center justify-center">
-                <Image
-                  src="/Blog/mic.svg"
-                  alt="Microphone"
-                  width={16}
-                  height={16}
-                  className="w-3 sm:w-4 h-3 sm:h-4"
-                />
-              </div>
-              <div className="text-[#898989] text-[clamp(11px,2.5vw,12.8px)] font-normal font-chakra-petch leading-5">
-                X Space
+              {/* X Space Button */}
+              <div className="flex items-center">
+                <div className="w-4 h-[18px] mr-6 flex items-center justify-center">
+                  <Image
+                    src="/Blog/mic.svg"
+                    alt="Microphone"
+                    width={16}
+                    height={16}
+                    className="w-4 h-4"
+                  />
+                </div>
+                <div className="text-[#898989] text-[12.80px] font-normal font-chakra-petch leading-5">
+                  X Space
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Image Section */}

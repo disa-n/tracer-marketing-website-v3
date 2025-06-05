@@ -15,6 +15,12 @@ export default function BlogPreviewCard({
   category,
   image,
 }: BlogPreviewCardProps) {
+  // Check if this is one of the Kenya day posts (1-3)
+  const isKenyaDayPost = title.toLowerCase().includes('day one') || 
+                         title.toLowerCase().includes('day two') || 
+                         title.toLowerCase().includes('day three');
+  const imagePosition = isKenyaDayPost ? 'object-right' : 'object-center';
+
   return (
     <div className="bg-[#171717] border border-[#242424] rounded-lg overflow-hidden hover:border-[#303030] transition-colors">
       <div className="relative h-48 w-full">
@@ -22,7 +28,7 @@ export default function BlogPreviewCard({
           src={image || "https://placehold.co/400x240"}
           alt={title}
           fill
-          className="object-cover"
+          className={`object-cover ${imagePosition}`}
         />
       </div>
       <div className="p-6">

@@ -15,6 +15,8 @@ import { useState } from 'react'
 const NavigationBar = () => {
     const { openDemo } = useDemo();
     const [isSheetOpen, setIsSheetOpen] = useState(false);
+    // Add a flag to control visibility of Resources link
+    const showResourcesLink = false; // Set to false to hide, true to show
 
     const handleDemoClick = () => {
         openDemo();
@@ -47,9 +49,11 @@ const NavigationBar = () => {
                         <Link href={"/blog"} className='hover:text-white/60 transition-all'>
                             Blog
                         </Link>
-                        <Link href={"/resources"} className='hover:text-white/60 transition-all'>
-                            Resources
-                        </Link>
+                        {showResourcesLink && (
+                            <Link href={"/resources"} className='hover:text-white/60 transition-all'>
+                                Resources
+                            </Link>
+                        )}
                     </div>
                     <div className="flex items-center gap-4 h-full">
                         {/* Try for Free button wrapper */}
@@ -103,9 +107,11 @@ const NavigationBar = () => {
                             <Link href={"/blog"} className='font-britti-sans text-xl sm:text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all' onClick={handleNavLinkClick}>
                                 Blog
                             </Link>
-                            <Link href={"/resources"} className='font-britti-sans text-xl sm:text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all' onClick={handleNavLinkClick}>
-                                Resources
-                            </Link>
+                            {showResourcesLink && (
+                                <Link href={"/resources"} className='font-britti-sans text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all' onClick={handleNavLinkClick}>
+                                    Resources
+                                </Link>
+                            )}
                         </div>
                         <SheetFooter className="flex flex-col gap-4 px-4 pb-4">
                             <Link

@@ -26,7 +26,7 @@ export default function KenyaHero() {
 
           {/* Right Column - Hero Image - Extends to page edge */}
           <div className="absolute top-0 right-0 h-[650px] lg:h-[750px] overflow-hidden" style={{ left: '50%', width: 'calc(100vw - 50%)' }}>
-            <div className="absolute top-0 left-0 w-full h-[500px] lg:h-[600px] transform scale-125 -translate-x-20 translate-y-4">
+            <div className="absolute top-0 left-0 w-full h-[500px] lg:h-[600px] transform scale-125 -translate-x-20 translate-y-20">
               <Image
                 src="/Blog/Space_Drone.webp"
                 alt="Kenya Hackathon 2025"
