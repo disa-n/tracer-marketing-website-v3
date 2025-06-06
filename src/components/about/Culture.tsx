@@ -142,7 +142,7 @@ function Culture() {
           top: -100, // Extend above the section
           left: 0,
           height: 200, // Cover potential overlap area
-          zIndex: 25
+          zIndex: 1
         }}
       />
       {/* Background Gridlines */}
