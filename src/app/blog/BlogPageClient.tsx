@@ -1,9 +1,11 @@
 'use client';
 
+import React from 'react';
 import BlogHero from '@/components/blog/BlogHero';
 import BlogIntro from '@/components/blog/BlogIntro';
 import FilterBar from '@/components/blog/FilterBar';
 import BlogGrid from '@/components/blog/BlogGrid';
+import { getBlogPostsForClient } from '@/lib/blog-registry';
 
 type BlogPost = {
   slug: string;
@@ -18,54 +20,113 @@ type BlogPost = {
 };
 
 export default function BlogPageClient() {
-  const posts: BlogPost[] = [
-    {
-      slug: 'kenya-hackathon',
-      metadata: {
-        title: 'Kenya Hackathon 2025',
-        date: '02 Jun 2025',
-        description: "We flew to Kenya for a week-long hackathon to accelerate Tracer's growth. The goal? Drive verified user activations through a Reddit launch. From back-end tooling to interface polish, we're all-in - coding, designing, and shipping, with a 'swing for the fences' mindset.",
-        tag: 'Blog',
-        ogImage: '/Blog/kenya.webp',
-        author: 'Team Tracer',
-      },
-    },
-    {
-      slug: 'kenya-day-one',
-      metadata: {
-        title: 'Hackathon Day One: Monday, June 2nd',
-        date: '02 Jun 2025',
-        description: 'A hackathon kick-off note from Laura, our COO, and records from our first day in Nairobi, Kenya.',
-        tag: 'Blog',
-        ogImage: '/Blog/day1-city-view.webp',
-        author: 'Laura',
-      },
-    },
-    {
-      slug: 'kenya-day-two',
-      metadata: {
-        title: 'Hackathon Day Two: Tuesday, June 3rd',
-        date: '03 Jun 2025',
-        description: 'Kenya Day Two: Tracer runs natively on Mac ARM, the blog goes live, and we\'re learning why having the right foundation matters.',
-        tag: 'Blog',
-        ogImage: '/Blog/day2-tracer-working.webp',
-        author: 'Team Tracer',
-      },
-    },
-    {
-      slug: 'kenya-day-three',
-      metadata: {
-        title: 'Hackathon Day Three: Wednesday, June 4th',
-        date: '04 Jun 2025',
-        description: 'Kenya Day Three: A well-earned break, a tour through Nairobi\'s rich history, and rooftop views before diving back into build mode.',
-        tag: 'Blog',
-        ogImage: '/Blog/day3-tracer-rooftop.webp',
-        author: 'Team Tracer',
-      },
-    },
-  ];
+  const [posts, setPosts] = React.useState<BlogPost[]>([]);
+  const [loading, setLoading] = React.useState(true);
 
-  posts.sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime());
+  React.useEffect(() => {
+    async function loadPosts() {
+      try {
+        const blogPosts = await getBlogPostsForClient();
+        
+        // Create the Kenya Hackathon post
+        const kenyaHackathonPost = {
+          slug: 'kenya-hackathon',
+          metadata: {
+            title: 'Kenya Hackathon 2025',
+            date: '02 Jun 2025',
+            description: "We flew to Kenya for a week-long hackathon to accelerate Tracer's growth. The goal? Drive verified user activations through a Reddit launch. From back-end tooling to interface polish, we're all-in - coding, designing, and shipping, with a 'swing for the fences' mindset.",
+            tag: 'blog',
+            ogImage: '/Blog/kenya.webp',
+            author: 'Team Tracer',
+          },
+        };
+        
+        // Filter to only show specific posts (Kenya days 1-4)
+        const allowedSlugs = ['kenya-day-one', 'kenya-day-two', 'kenya-day-three', 'kenya-day-four'];
+        const filteredPosts = blogPosts.filter(post => 
+          allowedSlugs.includes(post.slug) && post.slug !== 'kenya-hackathon'
+        );
+        
+        // Format dates to ensure consistent style (date, month, year)
+        const formattedPosts = filteredPosts.map(post => {
+          // Parse the date and reformat it
+          let formattedDate = post.metadata.date;
+          try {
+            // Try to extract the date components from various formats
+            let dateObj;
+            
+            // Handle formats like "Mon, 2 June" or "Monday, 2 June"
+            const dayDateMatch = post.metadata.date.match(/(?:\w+,\s*)?(\d+)\s+(\w+)(?:\s+(\d{4}))?/);
+            if (dayDateMatch) {
+              const day = parseInt(dayDateMatch[1]);
+              const monthName = dayDateMatch[2];
+              const year = dayDateMatch[3] || '2025'; // Default to 2025 if year is not specified
+              
+              // Convert month name to month number
+              const months = ['january', 'february', 'march', 'april', 'may', 'june', 
+                             'july', 'august', 'september', 'october', 'november', 'december'];
+              const monthIndex = months.findIndex(m => m.toLowerCase() === monthName.toLowerCase());
+              
+              if (monthIndex !== -1) {
+                dateObj = new Date(parseInt(year), monthIndex, day);
+              }
+            }
+            
+            // If the above parsing failed, try standard date parsing
+            if (!dateObj || isNaN(dateObj.getTime())) {
+              dateObj = new Date(post.metadata.date);
+            }
+            
+            // Format the date if we successfully parsed it
+            if (dateObj && !isNaN(dateObj.getTime())) {
+              const date = dateObj.getDate().toString().padStart(2, '0'); // Add leading zero if needed
+              const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+                             'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+              const month = months[dateObj.getMonth()];
+              const year = dateObj.getFullYear();
+              formattedDate = `${date} ${month} ${year}`;
+            }
+          } catch (e) {
+            console.error('Error formatting date:', e);
+          }
+          
+          return {
+            ...post,
+            metadata: {
+              ...post.metadata,
+              date: formattedDate
+            }
+          };
+        });
+        
+        // Sort filtered posts by date (oldest to newest)
+        formattedPosts.sort((a, b) => new Date(a.metadata.date).getTime() - new Date(b.metadata.date).getTime());
+        
+        // Combine with Kenya Hackathon post first
+        const allPosts = [kenyaHackathonPost, ...formattedPosts];
+        
+        setPosts(allPosts);
+      } catch (error) {
+        console.error('Error loading blog posts:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadPosts();
+  }, []);
+
+  if (loading) {
+    return (
+      <main className="w-full min-h-screen pt-20 bg-[#FCFCFC] relative">
+        <div className="px-4 md:px-8 max-w-7xl xxl:max-w-none xxl:px-16 mx-auto relative z-10">
+          <div className="flex items-center justify-center min-h-[400px]">
+            <div className="text-[#202020]">Loading blog posts...</div>
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="w-full min-h-screen pt-20 bg-[#FCFCFC] relative">

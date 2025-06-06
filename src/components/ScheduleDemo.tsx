@@ -189,7 +189,7 @@ export default function ScheduleDemoPage() {
             {/* Submit */}
             <button
               type="submit"
-              className="w-full h-[42px] md:h-[49px] bg-[#202020] text-[#FCFCFC] text-base md:text-lg font-['Britti_Sans'] mt-8 hover:bg-[#303030] transition-colors"
+              className="w-full h-[42px] md:h-[49px] bg-[#202020] text-[#FCFCFC] text-base md:text-lg font-['Britti_Sans'] mt-8 hover:bg-[#404040] transition-colors cursor-pointer"
             >
               Submit
             </button>

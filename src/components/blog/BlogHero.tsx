@@ -155,9 +155,9 @@ export default function BlogHero() {
           <div
             style={{
               left: 16,
-              top: 180,
+              top: 220,
               position: 'absolute',
-              color: '#22c55e',
+              color: '#FB82E9',
               fontSize: 'clamp(14px, 3vw, 17.5px)',
               fontFamily: 'Britti Sans',
               fontWeight: '400'

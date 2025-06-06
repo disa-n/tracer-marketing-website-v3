@@ -18,8 +18,9 @@ function KenyaGridItem({ date, description, imageSrc, caption, slug }: KenyaGrid
   const mdxSlugs = [
     'kenya-day-one',
     'kenya-day-two',
-    'kenya-day-three'
-    // Add 'kenya-day-four', 'kenya-day-five' as they're created
+    'kenya-day-three',
+    'kenya-day-four'
+    // Add 'kenya-day-five' as they're created
   ];
 
   const hasContent = mdxSlugs.includes(slug);
@@ -203,47 +204,25 @@ type KenyaGridProps = {
 };
 
 export default async function KenyaGrid({ items }: KenyaGridProps) {
-  // Get blog posts from centralized data, but filter to only Kenya hackathon posts
+  // Get blog posts from centralized data, but filter to only Kenya hackathon related posts
   const blogPosts = await getAllBlogPosts();
 
-  // Filter to only show Kenya hackathon related posts
+  // Filter to only show Kenya hackathon related posts (any slug starting with 'kenya-')
   const kenyaPosts = blogPosts.filter(post =>
-    post.slug.startsWith('kenya-') || post.slug === 'kenya-hackathon'
+    post.slug.startsWith('kenya-')
   );
 
-  // Sort Kenya posts chronologically (June 2nd first, then 3rd, 4th, etc.)
-  const sortedKenyaPosts = kenyaPosts.sort((a, b) => {
-    // Define the desired order for Kenya posts
-    const order = [
-      'kenya-day-one',    // June 2nd
-      'kenya-day-two',    // June 3rd
-      'kenya-day-three',  // June 4th
-      'kenya-day-four',   // June 5th
-      'kenya-day-five',   // June 6th
-    ];
-
-    const indexA = order.indexOf(a.slug);
-    const indexB = order.indexOf(b.slug);
-
-    // If both posts are in our defined order, sort by that order
-    if (indexA !== -1 && indexB !== -1) {
-      return indexA - indexB;
-    }
-
-    // If only one is in the order, prioritize it
-    if (indexA !== -1) return -1;
-    if (indexB !== -1) return 1;
-
-    // For any other posts, fall back to date sorting
-    return new Date(a.date).getTime() - new Date(b.date).getTime();
-  });
+  // Sort Kenya posts strictly by date ascending (oldest first)
+  const sortedKenyaPosts = kenyaPosts.sort(
+    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+  );
 
   const defaultItems: KenyaGridItemProps[] = sortedKenyaPosts.map(post => ({
     date: post.date,
     description: post.description,
     imageSrc: post.ogImage || post.imageSrc,
     caption: post.title,
-    slug: post.slug
+    slug: post.slug,
   }));
 
   const gridItems = items || defaultItems;
@@ -263,4 +242,5 @@ export default async function KenyaGrid({ items }: KenyaGridProps) {
     </div>
   );
 }
+
 

@@ -56,7 +56,7 @@ export default function HeroSection() {
   const shouldShowGridlines = windowWidth > 768;
 
   return (
-    <section key={refreshKey} className="h-[640px] lg:h-[800px] bg-black text-white">
+    <section key={refreshKey} className="h-[640px] lg:h-[800px] text-white" style={{ backgroundColor: '#202020' }}>
       <motion.div
         className="relative flex h-full flex-col items-center justify-center overflow-hidden lg:block mx-auto max-w-[1440px] w-full"
       >
@@ -65,22 +65,22 @@ export default function HeroSection() {
           variants={headingVariant}
           initial="hidden"
           animate={animate ? 'visible' : 'hidden'}
-          className="relative z-10 font-chakra-petch text-[clamp(3.5rem,10vw,8.5rem)] font-medium leading-none pt-[120px] pl-8 pr-6
-                     md:-translate-y-1/2 md:leading-normal md:pt-0 md:px-4
-                     lg:absolute lg:left-4 lg:top-[60%] xl:top-[30%] 2xl:top-[25%] lg:font-normal lg:-tracking-[9px]"
+          className="relative z-10 font-chakra-petch text-[clamp(3.5rem,10vw,8.5rem)] font-medium leading-[0.9] pt-[120px] pl-8 pr-6
+                     md:-translate-y-1/2 md:leading-[0.95] md:pt-0 md:px-4
+                     lg:absolute lg:left-4 lg:top-[60%] xl:top-[30%] 2xl:top-[25%] lg:font-normal lg:-tracking-[9px] lg:leading-[0.9]"
         >
-          Accelerating
+          The First Pipeline<br />Monitoring System
         </motion.h1>
 
         <motion.h2
           variants={subheadingVariant}
           initial="hidden"
           animate={animate ? 'visible' : 'hidden'}
-          className="relative z-10 font-chakra-petch text-[clamp(3.5rem,10vw,8.5rem)] font-medium leading-none pt-4 pl-8
+          className="relative z-10 font-chakra-petch text-[clamp(2.8rem,8vw,6.8rem)] font-medium leading-none pt-4 pl-8
                      md:-translate-y-1/2 md:pt-0 md:pl-0
                      lg:absolute lg:bottom-0 xl:bottom-[120px] 2xl:bottom-[180px] lg:right-4 lg:text-right lg:font-normal lg:leading-[104px] lg:-tracking-[10px]"
         >
-          the New Dawn <br className="hidden md:block" /> of AI in Science
+          That Lives in the OS
         </motion.h2>
 
         <motion.div
@@ -94,6 +94,25 @@ export default function HeroSection() {
             understanding of scientific industries to give insights into
             enterprises&apos; digital and AI acceleration.
           </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3 mt-6 md:max-w-[453px]">
+            <a
+              href="https://sandbox.tracer.cloud/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-gray-200 text-black font-medium hover:bg-gray-300 transition-colors text-sm md:text-base text-center"
+            >
+              Start For Free
+            </a>
+            <a
+              href="/platform"
+              className="px-6 py-3 bg-black text-white font-medium hover:bg-gray-900 transition-colors text-sm md:text-base flex items-center justify-center gap-2"
+            >
+              Learn More
+              <span className="text-lg">→</span>
+            </a>
+          </div>
         </motion.div>
 
         {/* HERO IMAGE */}
