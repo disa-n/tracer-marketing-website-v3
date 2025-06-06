@@ -213,7 +213,8 @@ export default function DigitalDiscoverySection() {
       {/* Dark grey rectangle in the top right */}
       {shouldAnimate ? (
         <motion.div
-          className="absolute top-0 right-0 h-[46px] md:h-[70px] bg-black origin-right z-5"
+          className="absolute top-0 right-0 h-[46px] md:h-[70px] origin-right z-5"
+          style={{ backgroundColor: '#202020' }}
           initial={{ width: "50%" }}
           whileInView={{
             width: "35%",
@@ -227,8 +228,8 @@ export default function DigitalDiscoverySection() {
          </motion.div>
       ) : (
         <div
-          className="absolute top-0 right-0 h-[46px] md:h-[70px] bg-black origin-right z-5"
-          style={{ width: "35%" }}
+          className="absolute top-0 right-0 h-[46px] md:h-[70px] origin-right z-5"
+          style={{ width: "35%", backgroundColor: '#202020' }}
         >
         </div>
       )}

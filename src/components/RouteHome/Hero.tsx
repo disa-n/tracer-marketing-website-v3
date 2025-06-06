@@ -56,7 +56,7 @@ export default function HeroSection() {
   const shouldShowGridlines = windowWidth > 768;
 
   return (
-    <section key={refreshKey} className="h-[640px] lg:h-[800px] bg-black text-white">
+    <section key={refreshKey} className="h-[640px] lg:h-[800px] text-white" style={{ backgroundColor: '#202020' }}>
       <motion.div
         className="relative flex h-full flex-col items-center justify-center overflow-hidden lg:block mx-auto max-w-[1440px] w-full"
       >
@@ -107,7 +107,7 @@ export default function HeroSection() {
             </a>
             <a
               href="/platform"
-              className="px-6 py-3 bg-gray-700 text-white font-medium hover:bg-gray-800 transition-colors text-sm md:text-base flex items-center justify-center gap-2"
+              className="px-6 py-3 bg-black text-white font-medium hover:bg-gray-900 transition-colors text-sm md:text-base flex items-center justify-center gap-2"
             >
               Learn More
               <span className="text-lg">→</span>
