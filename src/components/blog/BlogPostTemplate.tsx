@@ -15,9 +15,9 @@ export default function BlogPostTemplate({ post, template = 'default', mdxConten
 
   // Helper function to render content (MDX or HTML)
   const renderContent = () => {
-    // Body content styling: font-britti-sans, text-[16px], leading-[25px], text-[#202020]
+    // Body content styling: font-britti-sans, text-[16px], leading-[25px], text-[#CCCCCC]
     // Headings (h2): text-[24px], mt-8 mb-4
-    const proseClasses = "prose prose-lg max-w-none prose-headings:font-britti-sans prose-h1:text-[16px] prose-h1:leading-[25px] prose-h1:font-normal prose-h1:text-[#202020] prose-h1:mb-4 prose-h1:break-words prose-h2:text-[24px] prose-h2:text-[#202020] prose-h2:leading-[25px] prose-h2:font-normal prose-h2:mt-8 prose-h2:mb-4 prose-h2:break-words prose-h3:text-[16px] prose-h3:text-[#202020] prose-h3:font-normal prose-h3:mb-4 prose-h3:break-words prose-h4:text-[16px] prose-h4:text-[#202020] prose-h4:font-normal prose-h4:mb-4 prose-h4:break-words prose-h5:text-[16px] prose-h5:text-[#202020] prose-h5:font-normal prose-h5:mb-4 prose-h5:break-words prose-h6:text-[16px] prose-h6:text-[#202020] prose-h6:font-normal prose-h6:mb-4 prose-h6:break-words prose-p:font-britti-sans prose-p:text-[16px] prose-p:text-[#202020] prose-p:leading-[25px] prose-p:font-normal prose-p:mb-4 prose-p:break-words prose-ul:font-britti-sans prose-ul:text-[16px] prose-ul:text-[#202020] prose-ul:leading-[25px] prose-ol:font-britti-sans prose-ol:text-[16px] prose-ol:text-[#202020] prose-ol:leading-[25px] prose-li:mb-2 prose-li:text-[16px] prose-li:text-[#202020] prose-li:leading-[25px] prose-li:font-normal prose-li:break-words prose-strong:font-normal prose-strong:text-[#202020] prose-em:italic prose-em:text-[#202020] prose-a:text-[#202020] prose-a:underline hover:prose-a:no-underline prose-a:break-words";
+    const proseClasses = "prose prose-lg max-w-none prose-headings:font-britti-sans prose-h1:text-[16px] prose-h1:leading-[25px] prose-h1:font-normal prose-h1:text-[#CCCCCC] prose-h1:mb-4 prose-h1:break-words prose-h2:text-[24px] prose-h2:text-[#CCCCCC] prose-h2:leading-[25px] prose-h2:font-normal prose-h2:mt-8 prose-h2:mb-4 prose-h2:break-words prose-h3:text-[16px] prose-h3:text-[#CCCCCC] prose-h3:font-normal prose-h3:mb-4 prose-h3:break-words prose-h4:text-[16px] prose-h4:text-[#CCCCCC] prose-h4:font-normal prose-h4:mb-4 prose-h4:break-words prose-h5:text-[16px] prose-h5:text-[#CCCCCC] prose-h5:font-normal prose-h5:mb-4 prose-h5:break-words prose-h6:text-[16px] prose-h6:text-[#CCCCCC] prose-h6:font-normal prose-h6:mb-4 prose-h6:break-words prose-p:font-britti-sans prose-p:text-[16px] prose-p:text-[#CCCCCC] prose-p:leading-[25px] prose-p:font-normal prose-p:mb-4 prose-p:break-words prose-ul:font-britti-sans prose-ul:text-[16px] prose-ul:text-[#CCCCCC] prose-ul:leading-[25px] prose-ol:font-britti-sans prose-ol:text-[16px] prose-ol:text-[#CCCCCC] prose-ol:leading-[25px] prose-li:mb-2 prose-li:text-[16px] prose-li:text-[#CCCCCC] prose-li:leading-[25px] prose-li:font-normal prose-li:break-words prose-strong:font-normal prose-strong:text-[#CCCCCC] prose-em:italic prose-em:text-[#CCCCCC] prose-a:text-[#CCCCCC] prose-a:underline hover:prose-a:no-underline prose-a:break-words";
 
     if (mdxContent) {
       return (
@@ -37,7 +37,7 @@ export default function BlogPostTemplate({ post, template = 'default', mdxConten
   // Default template (clean reference layout)
   if (template === 'default') {
     return (
-      <div className="bg-[#FCFCFC] w-full min-h-screen">
+      <div className="bg-[#202020] w-full min-h-screen">
         {/* Centered container with all blog content */}
         <div className="max-w-[928px] mx-auto px-4 md:px-6 pt-28 pb-12">
 
@@ -59,13 +59,13 @@ export default function BlogPostTemplate({ post, template = 'default', mdxConten
           {/* Title and Intro */}
           <div className="mb-4">
             {/* Title */}
-            <h1 className="font-britti-sans text-[40px] text-[#202020] mb-3">
+            <h1 className="font-britti-sans text-[40px] text-[#FCFCFC] mb-3">
               {post.title}
             </h1>
 
             {/* Intro */}
             {post.description && (
-              <p className="font-britti-sans text-[22px] leading-[25px] text-[#202020]">
+              <p className="font-britti-sans text-[22px] leading-[25px] text-[#CCCCCC]">
                 {post.description}
               </p>
             )}
@@ -73,7 +73,7 @@ export default function BlogPostTemplate({ post, template = 'default', mdxConten
 
           {/* Hero Image */}
           {post.imageSrc && (
-            <div className="w-full h-[400px] relative mb-4 mt-4 bg-[#FCFCFC] overflow-hidden">
+            <div className="w-full h-[400px] relative mb-4 mt-4 bg-[#202020] overflow-hidden">
               <Image
                 src={post.imageSrc}
                 alt={post.title}

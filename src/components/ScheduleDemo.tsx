@@ -43,6 +43,7 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { supabase } from '@/lib/supabaseClient'; // ✅ Supabase client import
 
 interface FormData {
   name: string;
@@ -90,9 +91,23 @@ export default function ScheduleDemoPage() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // ✅ Updated: submit to demo_enquiries (no quotes needed)
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+
+    const { name, email, jobTitle } = formData;
+
+    const { error } = await supabase
+      .from('demo_enquiries')
+      .insert([{ name, email, job_title: jobTitle }]);
+
+    if (error) {
+      console.error('Supabase insert error:', error.message);
+      return;
+    }
+
+    setFormData({ name: '', email: '', jobTitle: '' });
+    alert('Thanks! We’ve received your enquiry.');
   };
 
   return (
@@ -110,6 +125,7 @@ export default function ScheduleDemoPage() {
           ))}
         </div>
       </div>
+
       {/* Left Side: Form */}
       <div className="flex-1 flex items-center justify-center p-6 md:p-8 lg:p-16 relative z-10">
         <div className="w-full max-w-md space-y-8">
@@ -173,7 +189,7 @@ export default function ScheduleDemoPage() {
             {/* Submit */}
             <button
               type="submit"
-              className="w-full h-[42px] md:h-[49px] bg-[#202020] text-[#FCFCFC] text-base md:text-lg font-['Britti_Sans'] mt-8 hover:bg-[#303030] transition-colors"
+              className="w-full h-[42px] md:h-[49px] bg-[#202020] text-[#FCFCFC] text-base md:text-lg font-['Britti_Sans'] mt-8 hover:bg-[#404040] transition-colors cursor-pointer"
             >
               Submit
             </button>
@@ -196,3 +212,4 @@ export default function ScheduleDemoPage() {
     </div>
   );
 }
+
