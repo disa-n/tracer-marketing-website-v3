@@ -179,7 +179,7 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
   'kenya-day-four': {
     slug: 'kenya-day-four',
     title: 'Hackathon Day Four: Thursday, June 5th',
-    date: 'Thu, 5 June',
+    date: '05 Jun 2025',
     description: 'Tracer\'s beta launch is nearly here - today we shipped onboarding, fallback tracing, branch-based installs, and better OOM insights.',
     author: 'Team Tracer',
     tag: 'blog',

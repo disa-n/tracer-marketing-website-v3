@@ -18,8 +18,9 @@ function KenyaGridItem({ date, description, imageSrc, caption, slug }: KenyaGrid
   const mdxSlugs = [
     'kenya-day-one',
     'kenya-day-two',
-    'kenya-day-three'
-    // Add 'kenya-day-four', 'kenya-day-five' as they're created
+    'kenya-day-three',
+    'kenya-day-four'
+    // Add 'kenya-day-five' as they're created
   ];
 
   const hasContent = mdxSlugs.includes(slug);
@@ -212,7 +213,7 @@ export default async function KenyaGrid({ items }: KenyaGridProps) {
     ['kenya-day-one', 'kenya-day-two', 'kenya-day-three', 'kenya-day-four'].includes(post.slug)
   );
 
-  // Sort by date (oldest first) - Day One → Day Two → Day Three
+  // Sort by date (oldest first) - Day One → Day Two → Day Three → Day Four
   kenyaDayPosts.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
   const defaultItems: KenyaGridItemProps[] = kenyaDayPosts.map(post => ({
