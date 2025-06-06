@@ -146,7 +146,7 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
   'kenya-day-one': {
     slug: 'kenya-day-one',
     title: 'Hackathon Day One: Monday, June 2nd',
-    date: 'Mon, 2 June',
+    date: '02 Jun 2025',
     description: 'A hackathon kick-off note from Laura, our COO, and records from our first day in Nairobi, Kenya.',
     author: 'Laura',
     tag: 'blog',
@@ -157,7 +157,7 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
   'kenya-day-two': {
     slug: 'kenya-day-two',
     title: 'Hackathon Day Two: Tuesday, June 3rd',
-    date: 'Tue, 3 June',
+    date: '03 Jun 2025',
     description: 'Kenya Day Two: Tracer runs natively on Mac ARM, the blog goes live, and we\'re learning why having the right foundation matters.',
     author: 'Team Tracer',
     tag: 'blog',
@@ -168,7 +168,7 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
   'kenya-day-three': {
     slug: 'kenya-day-three',
     title: 'Hackathon Day Three: Wednesday, June 4th',
-    date: 'Wed, 4 June',
+    date: '04 Jun 2025',
     description: 'Kenya Day Three: A well-earned break, a tour through Nairobi\'s rich history, and rooftop views before diving back into build mode.',
     author: 'Team Tracer',
     tag: 'blog',
