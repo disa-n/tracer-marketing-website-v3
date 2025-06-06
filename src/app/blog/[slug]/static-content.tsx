@@ -2,13 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import ComingSoon from '@/components/shared/ComingSoon';
-import { getBlogPost, BlogPost } from '@/lib/blog-registry';
+import { getBlogPost } from '@/lib/blog-registry';
 import BlogPostTemplate from '@/components/blog/BlogPostTemplate';
 
 // Simple static content for test posts
 export default function StaticContent({ slug }: { slug: string }) {
   const [isComingSoon, setIsComingSoon] = useState(true); // Default to true for SSR
-  const [post, setPost] = useState<BlogPost | null>(null);
+  const [post, setPost] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

@@ -2,14 +2,24 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { supabase } from '@/lib/supabaseClient';
 
 export default function BlogHero() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // For now, just simulate submission
+
+    const { error } = await supabase
+      .from('email_signups')
+      .insert([{ email }]);
+
+    if (error) {
+      console.error('Supabase insert error:', error.message);
+      return;
+    }
+
     setSubmitted(true);
     setEmail('');
   };

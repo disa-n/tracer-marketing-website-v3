@@ -17,6 +17,7 @@ export interface BlogPostMetadata {
   ogImage?: string;
   template?: 'default' | 'minimal' | 'magazine' | 'technical';
   imageSrc?: string; // For backward compatibility
+  published?: boolean; // Controls visibility on blog pages
 }
 
 export interface BlogPost extends BlogPostMetadata {

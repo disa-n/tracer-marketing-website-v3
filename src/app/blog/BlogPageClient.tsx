@@ -34,7 +34,7 @@ export default function BlogPageClient() {
       slug: 'kenya-day-one',
       metadata: {
         title: 'Hackathon Day One: Monday, June 2nd',
-        date: 'Mon, 2 June',
+        date: '02 Jun 2025',
         description: 'A hackathon kick-off note from Laura, our COO, and records from our first day in Nairobi, Kenya.',
         tag: 'Blog',
         ogImage: '/Blog/day1-city-view.webp',
@@ -45,7 +45,7 @@ export default function BlogPageClient() {
       slug: 'kenya-day-two',
       metadata: {
         title: 'Hackathon Day Two: Tuesday, June 3rd',
-        date: 'Tue, 3 June',
+        date: '03 Jun 2025',
         description: 'Kenya Day Two: Tracer runs natively on Mac ARM, the blog goes live, and we\'re learning why having the right foundation matters.',
         tag: 'Blog',
         ogImage: '/Blog/day2-tracer-working.webp',
@@ -56,7 +56,7 @@ export default function BlogPageClient() {
       slug: 'kenya-day-three',
       metadata: {
         title: 'Hackathon Day Three: Wednesday, June 4th',
-        date: 'Wed, 4 June',
+        date: '04 Jun 2025',
         description: 'Kenya Day Three: A well-earned break, a tour through Nairobi\'s rich history, and rooftop views before diving back into build mode.',
         tag: 'Blog',
         ogImage: '/Blog/day3-tracer-rooftop.webp',
