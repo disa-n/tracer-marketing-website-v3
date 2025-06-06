@@ -65,9 +65,9 @@ export default function HeroSection() {
           variants={headingVariant}
           initial="hidden"
           animate={animate ? 'visible' : 'hidden'}
-          className="relative z-10 font-chakra-petch text-[clamp(3.5rem,10vw,8.5rem)] font-medium leading-none pt-[120px] pl-8 pr-6
-                     md:-translate-y-1/2 md:leading-normal md:pt-0 md:px-4
-                     lg:absolute lg:left-4 lg:top-[60%] xl:top-[30%] 2xl:top-[25%] lg:font-normal lg:-tracking-[9px]"
+          className="relative z-10 font-chakra-petch text-[clamp(3.5rem,10vw,8.5rem)] font-medium leading-[0.9] pt-[120px] pl-8 pr-6
+                     md:-translate-y-1/2 md:leading-[0.95] md:pt-0 md:px-4
+                     lg:absolute lg:left-4 lg:top-[60%] xl:top-[30%] 2xl:top-[25%] lg:font-normal lg:-tracking-[9px] lg:leading-[0.9]"
         >
           The First Pipeline<br />Monitoring System
         </motion.h1>
@@ -94,6 +94,25 @@ export default function HeroSection() {
             understanding of scientific industries to give insights into
             enterprises&apos; digital and AI acceleration.
           </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3 mt-6 md:max-w-[453px]">
+            <a
+              href="https://sandbox.tracer.cloud/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-gray-200 text-black font-medium hover:bg-gray-300 transition-colors text-sm md:text-base text-center"
+            >
+              Start For Free
+            </a>
+            <a
+              href="/platform"
+              className="px-6 py-3 bg-gray-700 text-white font-medium hover:bg-gray-800 transition-colors text-sm md:text-base flex items-center justify-center gap-2"
+            >
+              Learn More
+              <span className="text-lg">→</span>
+            </a>
+          </div>
         </motion.div>
 
         {/* HERO IMAGE */}
