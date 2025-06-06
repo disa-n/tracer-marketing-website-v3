@@ -69,18 +69,18 @@ export default function HeroSection() {
                      md:-translate-y-1/2 md:leading-normal md:pt-0 md:px-4
                      lg:absolute lg:left-4 lg:top-[60%] xl:top-[30%] 2xl:top-[25%] lg:font-normal lg:-tracking-[9px]"
         >
-          Accelerating
+          The First Pipeline<br />Monitoring System
         </motion.h1>
 
         <motion.h2
           variants={subheadingVariant}
           initial="hidden"
           animate={animate ? 'visible' : 'hidden'}
-          className="relative z-10 font-chakra-petch text-[clamp(3.5rem,10vw,8.5rem)] font-medium leading-none pt-4 pl-8
+          className="relative z-10 font-chakra-petch text-[clamp(2.8rem,8vw,6.8rem)] font-medium leading-none pt-4 pl-8
                      md:-translate-y-1/2 md:pt-0 md:pl-0
                      lg:absolute lg:bottom-0 xl:bottom-[120px] 2xl:bottom-[180px] lg:right-4 lg:text-right lg:font-normal lg:leading-[104px] lg:-tracking-[10px]"
         >
-          the New Dawn <br className="hidden md:block" /> of AI in Science
+          That Lives in the OS
         </motion.h2>
 
         <motion.div
