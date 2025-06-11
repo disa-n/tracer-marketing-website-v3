@@ -9,4 +9,14 @@ const withMDX = require('@next/mdx')({
 module.exports = withMDX({
   // Your existing Next.js config
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'placehold.co',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
 });
