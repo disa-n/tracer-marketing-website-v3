@@ -26,7 +26,7 @@ const Footer = () => {
                                     <Link href="/about">About</Link>
                                 </li>
                                 <li className="cursor-pointer transition-all hover:opacity-80">
-                                    <Link href="/resources">Resources</Link>
+                                    <Link href="/blog">Resources</Link>
                                 </li>
                                 <li className="cursor-pointer transition-all hover:opacity-80">
                                     <Link href="/terms-and-conditions">Terms & Conditions</Link>

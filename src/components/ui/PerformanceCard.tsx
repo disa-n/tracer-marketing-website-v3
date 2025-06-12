@@ -18,7 +18,7 @@ export default function PerformanceCard({
   pushTextDown = false,
 }: PerformanceCardProps) {
   return (
-    <div className="w-full h-[450px] md:aspect-[4/3] bg-[#202020] border border-[#474747] flex flex-col">
+    <div className="w-full h-[520px] md:aspect-[4/3] bg-[#202020] border border-[#474747] flex flex-col">
       {/* Top Half: Visual Preview */}
       <div className="relative bg-[#141414] h-[240px] md:flex-[3] flex-shrink-0">
         {/* Preview Image */}
