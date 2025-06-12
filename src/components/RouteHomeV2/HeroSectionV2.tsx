@@ -9,7 +9,7 @@ export default function HeroSectionV2() {
         <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-12 xl:gap-16 2xl:gap-20 min-h-screen">
 
           {/* Left Column - Text Content */}
-          <div className="flex flex-col justify-center py-16 sm:py-20 lg:py-24 xl:py-32">
+          <div className="flex flex-col justify-center pt-24 pb-16 sm:py-20 lg:py-24 xl:py-32">
 
             {/* Main Heading */}
             <h1 className="font-chakra-petch text-[#FCFCFC] leading-[0.9] mb-4 sm:mb-6 lg:mb-8

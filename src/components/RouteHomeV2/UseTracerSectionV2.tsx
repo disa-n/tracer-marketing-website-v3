@@ -13,7 +13,7 @@ export default function UseTracerSectionV2() {
             <div className="flex flex-col justify-center pt-20 pb-14 sm:pt-20 sm:pb-18 lg:pt-24 lg:pb-22 xl:pt-28 xl:pb-30">
               <div className="max-w-4xl ml-0 lg:ml-0 xl:ml-0 2xl:ml-28">
               {/* Top Quote */}
-              <p className="text-xl text-neutral-400 font-normal tracking-tight font-britti mb-4">
+              <p className="text-[20px] leading-[22px] text-neutral-400 font-normal tracking-tight font-britti mb-4">
                 &ldquo;We can&apos;t tell what&apos;s working or where things are falling apart.&rdquo;
               </p>
 

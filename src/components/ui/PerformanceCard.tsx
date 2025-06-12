@@ -1,11 +1,12 @@
 import Image from "next/image";
 
 type PerformanceCardProps = {
-  indexLabel: string;         // e.g. '02–03'
+  indexLabel: string;         // e.g. '01–03'
   sectionLabel: string;       // e.g. 'TRACER PERFORMANCE'
-  title: string;              // e.g. 'Total visibility into computational Infrastructure'
+  title: string;              // e.g. 'Predict and optimise compute requirements'
   description: string;        // Supporting paragraph
   previewImage?: string;      // Optional preview image URL for top half
+  pushTextDown?: boolean;     // Optional prop to add extra top margin to text content
 };
 
 export default function PerformanceCard({
@@ -14,11 +15,12 @@ export default function PerformanceCard({
   title,
   description,
   previewImage,
+  pushTextDown = false,
 }: PerformanceCardProps) {
   return (
-    <div className="w-[912px] bg-[#202020] border border-[#474747] flex flex-col">
-      {/* Top Half: Preview Area */}
-      <div className="relative bg-[#141414] h-[456px] flex-shrink-0">
+    <div className="w-full h-[450px] bg-[#202020] border border-[#474747] flex flex-col">
+      {/* Top Half: Visual Preview */}
+      <div className="relative bg-[#3a3a3a] h-[240px] flex-shrink-0">
         {/* Preview Image */}
         {previewImage && (
           <Image
@@ -28,33 +30,29 @@ export default function PerformanceCard({
             className="object-cover"
           />
         )}
-        
-        {/* Index Label - Top Left */}
-        <div className="absolute top-6 left-6">
-          <span className="font-chakra-petch text-[#888888] text-sm uppercase leading-[19px]">
+      </div>
+
+      {/* Bottom Half: Text Block */}
+      <div className="p-6 flex flex-col gap-2">
+        {/* Labels on same line under image - full width */}
+        <div className="flex justify-between items-center mb-4">
+          <span className="text-[#888888] text-[14px] font-chakra-petch uppercase">
             {indexLabel}
           </span>
-        </div>
-        
-        {/* Section Label - Bottom Right */}
-        <div className="absolute bottom-6 right-6">
-          <span className="font-chakra-petch text-[#888888] text-sm uppercase leading-[19px]">
+          <span className="text-[#888888] text-[14px] font-chakra-petch uppercase">
             {sectionLabel}
           </span>
         </div>
-      </div>
-      
-      {/* Bottom Half: Text Block */}
-      <div className="px-8 pt-6 pb-8 flex flex-col space-y-4">
-        {/* Title */}
-        <h3 className="font-britti-sans text-white text-[32px] font-normal leading-[30px]">
-          {title}
-        </h3>
-        
-        {/* Description */}
-        <p className="font-britti-sans text-[#888888] text-base font-normal leading-[17px]">
-          {description}
-        </p>
+
+        {/* Title and description - constrained width */}
+        <div className="max-w-xl">
+          <h3 className={`text-white text-[28px] leading-[28px] font-normal font-britti mb-4 ${pushTextDown ? 'mt-1 md:mt-4' : ''}`}>
+            {title}
+          </h3>
+          <p className="text-[#888888] text-[14px] leading-[16px] font-normal font-britti">
+            {description}
+          </p>
+        </div>
       </div>
     </div>
   );

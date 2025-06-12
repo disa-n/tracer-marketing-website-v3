@@ -84,29 +84,13 @@ export default function ProductPreviewSectionV2() {
           </div>
         </div>
 
-        {/* Outer Container - Figma Specifications */}
+        {/* Outer Container - Responsive */}
         <div className="w-full flex justify-center">
-          <div
-            className="bg-[#202020] relative"
-            style={{
-              width: '1379px',
-              height: '724px',
-              border: '4px solid #404040',
-              borderRadius: '2px',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
-            }}
-          >
+          <div className="bg-[#202020] relative w-full max-w-[1379px] border-4 border-[#404040] rounded-sm shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+               style={{ aspectRatio: '1379/724' }}>
             {/* Inner Preview Box */}
-            <div
-              className="bg-[#141414] absolute left-1/2 transform -translate-x-1/2 overflow-hidden"
-              style={{
-                width: '1319.66px',
-                height: '679.06px',
-                top: '22px',
-                borderRadius: '5px'
-              }}
-            >
-              <div className="w-full h-full flex items-center justify-center p-4">
+            <div className="bg-[#141414] absolute inset-[22px] rounded-[5px] overflow-hidden">
+              <div className="w-full h-full flex items-center justify-center p-2 md:p-4">
                 <Image
                   src={activeTabData.imageUrl}
                   alt={`${activeTabData.label} preview`}

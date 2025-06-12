@@ -1,124 +1,79 @@
 'use client';
 
 import React from 'react';
+import PerformanceCard from '../ui/PerformanceCard';
 
 export default function FixAnythingSection() {
   return (
-    <section className="bg-[#202020] pt-16 mt-16">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-20 xl:px-32">
-
-        {/* Section Heading */}
+    <section className="relative bg-[#202020] pt-24 pb-24">
+      <div className="absolute inset-0 z-0 pointer-events-none hidden sm:block">
+        <div className="w-full h-full max-w-[1600px] mx-auto flex justify-between">
+          <div className="w-0 h-full opacity-50 outline outline-[0.25px] outline-offset-[-0.125px] outline-[#404040]" />
+          <div className="w-0 h-full opacity-50 outline outline-[0.25px] outline-offset-[-0.125px] outline-[#404040]" />
+          <div className="w-0 h-full opacity-50 outline outline-[0.25px] outline-offset-[-0.125px] outline-[#404040]" />
+          <div className="w-0 h-full opacity-50 outline outline-[0.25px] outline-offset-[-0.125px] outline-[#404040]" />
+        </div>
+      </div>
+      {/* Section Heading - aligned with cards */}
+      <div className="relative z-10 max-w-[1600px] mx-auto px-2 sm:px-4 lg:px-6 xl:px-8 2xl:px-16">
         <div className="mb-12">
-          <h2 className="text-[#FCFCFC] text-[48px] font-medium leading-[50px] mb-2 text-left font-britti">
-            See and Fix Anything. Instantly.
-          </h2>
-          <p className="text-[#888888] text-[20px] leading-[22px] font-normal text-left font-britti">
-            Tracer helps you effortlessly monitor tools, runs, and infrastructure with visual clarity and actionable diagnostics.
-          </p>
+          <div className="max-w-4xl ml-0 lg:ml-0 xl:ml-0 2xl:-ml-10">
+            <h2 className="text-[#FCFCFC] text-[48px] font-normal leading-[50px] mb-2 text-left font-britti max-w-fit">
+              See and Fix Anything. Instantly.
+            </h2>
+            <p className="text-[#888888] text-[20px] leading-[22px] font-normal text-left font-britti max-w-fit">
+              Tracer helps you effortlessly monitor tools, runs, and infrastructure with visual clarity and actionable diagnostics.
+            </p>
+          </div>
         </div>
+      </div>
 
-        {/* Feature Card Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-          {/* Card 1 */}
-          <div className="bg-[#202020] border border-[#474747] flex flex-col">
-            {/* Top Half: Visual Preview */}
-            <div className="relative bg-[#3a3a3a] h-[240px] flex-shrink-0">
-              {/* Top right corner label */}
-              <div className="absolute top-4 right-4">
-                <span className="text-[#888888] text-[14px] font-chakra uppercase">
-                  TRACER PERFORMANCE
-                </span>
-              </div>
-
-              {/* Bottom left corner index */}
-              <div className="absolute bottom-4 left-4">
-                <span className="text-[#888888] text-[14px] font-chakra uppercase">
-                  01–03
-                </span>
-              </div>
-            </div>
-
-            {/* Bottom Half: Text Block */}
-            <div className="p-6 flex flex-col gap-2">
-              <h3 className="text-white text-[32px] leading-[30px] font-normal font-britti">
-                Predict and optimise compute requirements
-              </h3>
-              <p className="text-[#888888] text-[16px] leading-[17px] font-normal font-britti">
-                Forecast the exact running time and compute needs of your pipelines. Further optimise your underutilised instances and increase the usage of AI models in a cost-efficient manner.
-              </p>
-            </div>
+      {/* Feature Card Grid - full width with equal padding */}
+      <div className="relative z-10 max-w-[1600px] mx-auto px-2 sm:px-4 lg:px-6 xl:px-8 2xl:px-16">
+        <div className="space-y-8">
+          {/* Mobile: Stacked layout, MD+: First card full width */}
+          <div className="w-full">
+            <PerformanceCard
+              indexLabel="01–03"
+              sectionLabel="TRACER PERFORMANCE"
+              title="Predict and optimise compute requirements"
+              description="Forecast the exact running time and compute needs of your pipelines. Further optimise your underutilised instances and increase the usage of AI models in a cost-efficient manner."
+              pushTextDown={true}
+            />
           </div>
 
-          {/* Card 2 */}
-          <div className="bg-[#202020] border border-[#474747] flex flex-col">
-            {/* Top Half: Visual Preview */}
-            <div className="relative bg-[#3a3a3a] h-[240px] flex-shrink-0">
-              {/* Top right corner label */}
-              <div className="absolute top-4 right-4">
-                <span className="text-[#888888] text-[14px] font-chakra uppercase">
-                  TRACER PERFORMANCE
-                </span>
-              </div>
+          {/* Mobile: Stacked layout, MD+: Two cards side by side */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <PerformanceCard
+              indexLabel="02–03"
+              sectionLabel="TRACER INTELLIGENCE"
+              title="Total visibility into computational Infrastructure"
+              description="Gain real-time, highly granular insights into every workload and process, independent of coding language or framework, including highly parallelised processes across instances."
+            />
 
-              {/* Bottom left corner index */}
-              <div className="absolute bottom-4 left-4">
-                <span className="text-[#888888] text-[14px] font-chakra uppercase">
-                  02–03
-                </span>
-              </div>
-            </div>
-
-            {/* Bottom Half: Text Block */}
-            <div className="p-6 flex flex-col gap-2">
-              <h3 className="text-white text-[32px] leading-[30px] font-normal font-britti">
-                Total visibility into computational Infrastructure
-              </h3>
-              <p className="text-[#888888] text-[16px] leading-[17px] font-normal font-britti">
-                Gain real-time, highly granular insights into every workload and process, independent of coding language or framework, including highly parallelised processes across instances.
-              </p>
-            </div>
+            <PerformanceCard
+              indexLabel="03–03"
+              sectionLabel="TRACER DEBUG"
+              title="Fix issues instantly"
+              description="Gain deep insights into the root causes of bugs across all analyses, recognise the error type, and solve instantly."
+              pushTextDown={true}
+            />
           </div>
+        </div>
+      </div>
 
-          {/* Card 3 */}
-          <div className="bg-[#202020] border border-[#474747] flex flex-col">
-            {/* Top Half: Visual Preview */}
-            <div className="relative bg-[#3a3a3a] h-[240px] flex-shrink-0">
-              {/* Top right corner label */}
-              <div className="absolute top-4 right-4">
-                <span className="text-[#888888] text-[14px] font-chakra uppercase">
-                  TRACER PERFORMANCE
-                </span>
-              </div>
-
-              {/* Bottom left corner index */}
-              <div className="absolute bottom-4 left-4">
-                <span className="text-[#888888] text-[14px] font-chakra uppercase">
-                  03–03
-                </span>
-              </div>
-            </div>
-
-            {/* Bottom Half: Text Block */}
-            <div className="p-6 flex flex-col gap-2">
-              <h3 className="text-white text-[32px] leading-[30px] font-normal font-britti">
-                Fix issues instantly
-              </h3>
-              <p className="text-[#888888] text-[16px] leading-[17px] font-normal font-britti">
-                Gain deep insights into the root causes of bugs across all analyses, recognise the error type, and solve instantly.
-              </p>
-            </div>
+      {/* CTA Button - aligned with cards */}
+      <div className="relative z-10 max-w-[1600px] mx-auto px-2 sm:px-4 lg:px-6 xl:px-8 2xl:px-16">
+        <div className="mt-12 text-left">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <button className="w-full bg-[#E8E8E8] text-[#202020] font-britti text-[16px] leading-[17px] px-8 py-4">
+              See our Technology →
+            </button>
+            <div></div>
+            <div></div>
+            <div></div>
           </div>
-
         </div>
-
-        {/* CTA Button */}
-        <div className="mt-12 text-left md:text-center lg:text-right">
-          <button className="bg-[#E8E8E8] text-[#202020] font-britti text-[16px] leading-[17px] px-8 py-4">
-            See our Technology →
-          </button>
-        </div>
-
       </div>
     </section>
   );
