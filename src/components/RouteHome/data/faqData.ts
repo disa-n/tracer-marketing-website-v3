@@ -27,13 +27,13 @@ export const faqData: FaqItem[] = [
     id: "004",
     question: "How long does it take to set up Tracer?",
     answer:
-      "The platform is launched by integrating our one line of code **[TO BE FINALISED]**",
+      "The platform is launched by integrating one line of code.",
   },
   {
     id: "005",
     question: "How is Tracer different from other observability companies?",
     answer:
-      "Tracer uses the latest technological advances to **[TO BE FINALISED]**",
+      "Tracer uses the latest technological advances to extract rich information directly from the operating system, offering unprecedented visibility into complex scientific pipelines.",
   },
   {
     id: "006",
