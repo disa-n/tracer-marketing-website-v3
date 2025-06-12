@@ -102,7 +102,7 @@ export default function TotalVisibilitySection() {
                 />
 
                 {/* Overlaid Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#1b1b1b] to-transparent">
+                <div className="absolute bottom-0 left-0 right-0 pt-32 pb-6 px-6 bg-gradient-to-t from-[#1b1b1b] to-transparent">
                   <div className="max-w-[700px]">
                     <p className="font-britti-sans text-[#CCCCCC] text-[16px] leading-[20px]">
                       Full error visibility at the system level—automatically collected, instantly actionable.
@@ -131,7 +131,7 @@ export default function TotalVisibilitySection() {
                 />
 
               {/* Overlaid Content - starts at left edge of image */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#1b1b1b] to-transparent">
+              <div className="absolute bottom-0 left-0 right-0 pt-32 pb-6 px-6 bg-gradient-to-t from-[#1b1b1b] to-transparent">
                 <div className="max-w-[700px]">
                   {/* Section Title */}
                   <h2 className="font-britti-sans font-normal text-[#FCFCFC] mb-3 text-[28px] leading-[32px] 600:text-[32px] 600:leading-[36px]">
@@ -160,7 +160,7 @@ export default function TotalVisibilitySection() {
               />
 
               {/* Overlaid Content - starts at left edge of image */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#1b1b1b] to-transparent">
+              <div className="absolute bottom-0 left-0 right-0 pt-32 pb-6 px-6 bg-gradient-to-t from-[#1b1b1b] to-transparent">
                 <div className="max-w-[700px]">
                   {/* Section Title */}
                   <h2 className="font-britti-sans font-normal text-[#FCFCFC] mb-3 text-[28px] leading-[32px] 600:text-[32px] 600:leading-[36px]">

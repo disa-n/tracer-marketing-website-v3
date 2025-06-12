@@ -48,7 +48,7 @@ export default function FixAnythingSection() {
             <PerformanceCard
               indexLabel="02–03"
               sectionLabel="TRACER INTELLIGENCE"
-              title="Total visibility into computational Infrastructure"
+              title="Total visibility into computational infrastructure"
               description="Gain real-time, highly granular insights into every workload and process, independent of coding language or framework, including highly parallelised processes across instances."
               previewImage="/home/Tracer-Intel.webp"
             />
@@ -69,7 +69,7 @@ export default function FixAnythingSection() {
         <div className="mt-12 text-left">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <Link href="/technology" className="block w-full">
-  <button className="w-full bg-[#E8E8E8] text-[#202020] font-britti text-[16px] leading-[17px] px-8 py-4 hover:bg-[#e0e0e0] cursor-pointer">
+  <button className="w-full min-w-fit bg-[#E8E8E8] text-[#202020] font-britti text-[16px] leading-[17px] px-8 py-4 hover:bg-[#e0e0e0] cursor-pointer whitespace-nowrap">
     See our Technology →
   </button>
 </Link>
