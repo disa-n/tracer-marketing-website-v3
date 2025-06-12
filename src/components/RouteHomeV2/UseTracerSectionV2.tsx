@@ -1,8 +1,19 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 
 export default function UseTracerSectionV2() {
+  const scrollToFixAnything = () => {
+    const fixAnythingSection = document.getElementById('fix-anything-section');
+    if (fixAnythingSection) {
+      fixAnythingSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <section className="bg-[#FCFCFC]">
       <div className="flex flex-col lg:flex-row">
@@ -64,9 +75,14 @@ export default function UseTracerSectionV2() {
         {/* Right Column: Image + Footer - flush to viewport edge with white background */}
         <div className="flex-1 lg:min-w-0 bg-[#FCFCFC] pt-16 lg:pt-20 flex flex-col">
           {/* Image container - flush right with white background */}
-          <div className="flex justify-end pr-0 -mt-10 mb-8">
-            <div className="w-full lg:w-3/4 aspect-[3/2] bg-gray-400 flex items-center justify-center text-white font-medium">
-              GLOBE PLACEHOLDER
+          <div className="flex justify-end pr-0 -mt-10 lg:mt-8 xl:mt-2 2xl:mt-0 mb-8">
+            <div className="w-full lg:w-3/4 aspect-[3/2] relative">
+              <Image
+                src="/home/Globe-Image.webp"
+                alt="Globe visualization"
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
 
@@ -74,7 +90,11 @@ export default function UseTracerSectionV2() {
           <div className="flex justify-end pr-0 mt-auto">
             <div className="w-full lg:w-3/4">
               <div className="bg-[#202020] h-16 w-full flex items-center justify-start pl-3">
-                <div className="w-8 h-12 bg-white flex items-center justify-center">
+                <button
+                  onClick={scrollToFixAnything}
+                  className="w-8 h-12 bg-white flex items-center justify-center hover:bg-gray-100 transition-colors duration-200 cursor-pointer"
+                  aria-label="Scroll to See and Fix Anything section"
+                >
                   <svg
                     width="16"
                     height="16"
@@ -91,7 +111,7 @@ export default function UseTracerSectionV2() {
                       strokeLinejoin="round"
                     />
                   </svg>
-                </div>
+                </button>
               </div>
             </div>
           </div>

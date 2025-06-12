@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import GridLines from '@/components/shared/GridLines';
 
 export default function HeroSectionV2() {
@@ -8,8 +9,8 @@ export default function HeroSectionV2() {
       <div className="relative z-10 max-w-[1600px] mx-auto px-2 sm:px-4 lg:px-6 xl:px-8">
         <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-12 xl:gap-16 2xl:gap-20 min-h-screen">
 
-          {/* Left Column - Text Content */}
-          <div className="flex flex-col justify-center pt-24 pb-16 sm:py-20 lg:py-24 xl:py-32">
+          {/* Left Column - Text Content (Desktop) / Order 1 on Mobile */}
+          <div className="relative z-20 flex flex-col justify-center pt-24 pb-16 sm:py-20 lg:py-24 xl:py-32 order-1 lg:order-1">
 
             {/* Main Heading */}
             <h1 className="font-chakra-petch text-[#FCFCFC] leading-[0.9] mb-4 sm:mb-6 lg:mb-8
@@ -60,15 +61,17 @@ export default function HeroSectionV2() {
             </div>
           </div>
 
-          {/* Right Column - Image */}
-          <div className="flex items-center justify-center py-8 lg:py-16">
-            <div className="w-full max-w-lg lg:max-w-none">
-              {/* Temporary placeholder - replace with your actual image */}
-              <div className="w-full aspect-square bg-gray-600 rounded-lg flex items-center justify-center">
-                <span className="text-gray-300 text-lg font-medium text-center">
-                  Image Placeholder<br />
-                  <span className="text-sm">600x600</span>
-                </span>
+          {/* Right Column - Image - Order 2 on mobile */}
+          <div className="flex items-center justify-center py-8 lg:py-16 lg:justify-end lg:pr-0 order-2 lg:order-2">
+            <div className="w-full max-w-xs sm:max-w-sm lg:max-w-lg lg:ml-auto mx-auto lg:mx-0">
+              <div className="w-full aspect-square relative lg:scale-[1.7] xl:scale-[2.1] 2xl:scale-[2.6] lg:translate-x-16 xl:translate-x-24 2xl:translate-x-32">
+                <Image
+                  src="/home/Space_Satellite_2.webp"
+                  alt="Space Satellite"
+                  fill
+                  className="object-contain"
+                  priority
+                />
               </div>
             </div>
           </div>
