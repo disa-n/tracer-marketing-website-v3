@@ -37,6 +37,9 @@ const NavigationBar = () => {
                 {/* Desktop Navigation */}
                 <div className='h-full hidden 800:flex items-center justify-center gap-10'>
                     <div className='flex items-center justify-center h-full gap-8 !font-[400] font-britti-sans text-base text-[#FCFCFC]'>
+                        <Link href={"/why-monitoring"} className='hover:text-white/60 transition-all'>
+                            Why Monitoring
+                        </Link>
                         <Link href={"/platform"} className='hover:text-white/60 transition-all'>
                             Product
                         </Link>
@@ -95,6 +98,9 @@ const NavigationBar = () => {
                         </SheetHeader>
                         <div className='flex flex-col flex-grow'></div>
                         <div className='flex flex-col gap-6 sm:gap-8 px-4 pb-8'>
+                            <Link href={"/why-monitoring"} className='font-britti-sans text-xl sm:text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all' onClick={handleNavLinkClick}>
+                                Why Monitoring
+                            </Link>
                             <Link href={"/platform"} className='font-britti-sans text-xl sm:text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all' onClick={handleNavLinkClick}>
                                 Product
                             </Link>

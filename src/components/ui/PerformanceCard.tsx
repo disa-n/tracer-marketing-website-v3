@@ -27,7 +27,7 @@ export default function PerformanceCard({
             src={previewImage}
             alt={title}
             fill
-            className="object-contain"
+            className="object-cover"
           />
         )}
       </div>
