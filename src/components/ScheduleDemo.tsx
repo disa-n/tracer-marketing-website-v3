@@ -174,7 +174,7 @@ export default function ScheduleDemoPage() {
             {/* Job Title */}
             <div className="space-y-2">
               <label className="text-[14px] text-[#888888] font-['Chakra_Petch'] uppercase">
-                What is your job title
+                What is your job title?
               </label>
               <input
                 type="text"
