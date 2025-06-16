@@ -166,7 +166,7 @@ function WhyWeExist() {
       <GridLinesLight />
 
       {/* Section Title */}
-      <div className="mt-8 2xl:ml-15 text-[#202020] font-britti-sans font-medium break-words relative z-10 text-2xl sm:text-3xl lg:text-[40px] leading-tight lg:leading-[38px] tracking-tight lg:tracking-[-1.5px] max-w-full lg:max-w-[453px]">
+      <div className="mt-8 xl:ml-15 2xl:ml-15 text-[#202020] font-britti-sans font-medium break-words relative z-10 text-2xl sm:text-3xl lg:text-[40px] leading-tight lg:leading-[38px] tracking-tight lg:tracking-[-1.5px] max-w-full lg:max-w-[453px]">
         Why We Exist
       </div>
 
