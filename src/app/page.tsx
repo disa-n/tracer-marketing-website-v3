@@ -9,8 +9,24 @@ import FaqV2 from '@/components/RouteHomeV2/faqV2';
 import PersonalisedDemoV2 from '@/components/RouteHomeV2/PersonalisedDemoV2';
 
 export const metadata = {
-  title: "Meet Tracer - The Observability Platform for AI-driven Science",
-  description: "Tracer combines deep scientific knowledge and cutting-edge tech to accelerate AI adoption in industry.",
+  title: "Pipeline Observability for AI‑Driven Science | Tracer",
+  description:
+    "Tracer provides real-time visibility into computational workloads, enabling scientist-engineers to monitor, debug, and optimize complex pipelines.",
+  keywords: [
+    "scientific pipeline monitoring",
+    "observability for HPC",
+    "bioinformatics pipeline troubleshooting",
+    "cloud compute cost monitoring",
+    "real-time pipeline visibility",
+    "observability for bioinformatics",
+    "pipeline performance issues",
+    "scientific computing observability",
+    "debug scientific pipelines",
+    "nextflow job failed",
+    "snakemake error handling",
+    "slurm job monitoring",
+
+  ],
 };
 
 export default function HomePage() {
