@@ -49,8 +49,8 @@ const NavigationBar = () => {
                         <Link href={"/about"} className='hover:text-white/60 transition-all'>
                             About
                         </Link>
-                        <Link href={"/blog"} className='hover:text-white/60 transition-all'>
-                            Blog
+                        <Link href={"/resources"} className='hover:text-white/60 transition-all'>
+                            Resources
                         </Link>
                         {showResourcesLink && (
                             <Link href={"/resources"} className='hover:text-white/60 transition-all'>
@@ -110,8 +110,8 @@ const NavigationBar = () => {
                             <Link href={"/about"} className='font-britti-sans text-xl sm:text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all' onClick={handleNavLinkClick}>
                                 About
                             </Link>
-                            <Link href={"/blog"} className='font-britti-sans text-xl sm:text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all' onClick={handleNavLinkClick}>
-                                Blog
+                            <Link href={"/resources"} className='font-britti-sans text-xl sm:text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all' onClick={handleNavLinkClick}>
+                                Resources
                             </Link>
                             {showResourcesLink && (
                                 <Link href={"/resources"} className='font-britti-sans text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all' onClick={handleNavLinkClick}>

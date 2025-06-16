@@ -31,7 +31,7 @@ export default function BlogCard({
   // Smart routing logic for Kenya hackathon
   const getCardLink = () => {
     if (slug === 'kenya-hackathon') {
-      return '/blog/kenyahackathonoverview';
+      return '/resources/kenyahackathonoverview';
     }
 
     // Check if this is a Kenya day post that might not have content yet
@@ -45,11 +45,11 @@ export default function BlogCard({
         // Add more as they're created
       ];
       const hasContent = mdxSlugs.includes(slug);
-      return hasContent ? `/blog/${slug}` : '/coming-soon';
+      return hasContent ? `/resources/${slug}` : '/coming-soon';
     }
 
     // Default blog post routing
-    return `/blog/${slug}`;
+    return `/resources/${slug}`;
   };
 
   const cardLink = getCardLink();

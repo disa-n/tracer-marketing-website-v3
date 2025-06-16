@@ -17,10 +17,11 @@ export const navItems: NavItem[] = [
     name: "About",
     link: "/about",
   },
-  {
-    name: "Blog",
-    link: "/blog",
-  },
+  // Old configuration (commented out for backup):
+  // {
+  //   name: "Blog",
+  //   link: "/blog",
+  // },
   {
     name: "Resources",
     link: "/resources",

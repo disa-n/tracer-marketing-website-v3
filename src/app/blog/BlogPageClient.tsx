@@ -1,6 +1,8 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import BlogHero from '@/components/blog/BlogHero';
 import BlogIntro from '@/components/blog/BlogIntro';
 import FilterBar from '@/components/blog/FilterBar';
@@ -209,6 +211,47 @@ export default function BlogPageClient() {
       <div className="mt-16">
         <BlogGrid posts={posts} />
       </div>
+
+      {/* Utility Tools Section */}
+      <div className="mt-20">
+        <div className="self-stretch text-[#202020] text-[48px] font-normal leading-[46px] break-words ml-4 mb-8" style={{ fontFamily: 'Britti Sans' }}>
+          Tools
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <Link href="/tools/reverse-complement" className="block h-full">
+            <div className="border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col min-h-[clamp(410px,55vw,480px)] z-[2] bg-[#FCFCFC] cursor-pointer">
+              <div className="relative h-48 sm:h-56 w-full bg-gradient-to-br from-[#F8F8F8] to-[#E8E8E8]">
+                {/* DNA Asset Image */}
+                <Image
+                  src="/Blog/T-DNA-Pink.webp"
+                  alt="DNA asset preview"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="pt-4 px-4 pb-4 sm:pt-6 sm:px-6 sm:pb-6 flex-1 flex flex-col">
+                <div className="flex items-center mb-4 sm:mb-6">
+                  <span className="font-chakra-petch text-xs sm:text-sm font-normal uppercase leading-[19px] text-[#202020]">
+                    Tool
+                  </span>
+                </div>
+                <h2 className="font-britti-sans text-lg sm:text-xl font-medium mb-3 sm:mb-4 text-[#202020] hover:text-gray-700 transition-colors leading-tight">
+                  Reverse Complement Generator
+                </h2>
+                <p className="font-britti-sans text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 flex-1 leading-snug">
+                  Paste a sequence and get its reverse, complement, or both.
+                </p>
+                <div className="mt-auto">
+                  <div className="font-chakra-petch text-xs sm:text-sm font-normal uppercase leading-[19px] text-[#202020] hover:text-[#404040] transition-colors">
+                    USE TOOL →
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
+      </div>
+
       </div>
     </main>
   );
