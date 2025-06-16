@@ -11,7 +11,6 @@ import Link from 'next/link'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    // Allows customizing built-in components, e.g. to add styling.
     h1: ({ children }) => (
       <h1 className="text-4xl font-bold mt-8 mb-4 text-[#CCCCCC] font-britti-sans">{children}</h1>
     ),
@@ -67,3 +66,4 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ...components,
   }
 }
+
