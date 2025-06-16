@@ -3,6 +3,7 @@
 import React, { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { motion, useAnimation, useInView } from 'framer-motion'
+import { GridLinesLight } from '@/components/shared/GridLines'
 
 function WhyWeExist() {
   // State for responsive behavior - disable animations on mobile
@@ -160,18 +161,12 @@ function WhyWeExist() {
   }, [moonshotInView, moonshotControls, rectangleControls, textControls])
 
   return (
-    <div className="w-full flex flex-col justify-start items-start gap-8 lg:gap-16 px-4 lg:px-0">
-      {/* Top horizontal gridline */}
-      <div
-        className="bg-[#E8E8E8] h-px z-[2]"
-        style={{
-          width: '100vw',
-          marginLeft: 'calc(-50vw + 50%)'
-        }}
-      />
+    <div className="relative w-full flex flex-col justify-start items-start gap-8 lg:gap-8 px-4 lg:px-0">
+      {/* Light Gridlines */}
+      <GridLinesLight />
 
       {/* Section Title */}
-      <div className="text-[#202020] font-britti-sans font-medium break-words relative z-10 text-2xl sm:text-3xl lg:text-[40px] leading-tight lg:leading-[38px] tracking-tight lg:tracking-[-1.5px] max-w-full lg:max-w-[453px]">
+      <div className="mt-8 xl:ml-15 2xl:ml-15 text-[#202020] font-britti-sans font-medium break-words relative z-10 text-2xl sm:text-3xl lg:text-[40px] leading-tight lg:leading-[38px] tracking-tight lg:tracking-[-1.5px] max-w-full lg:max-w-[453px]">
         Why We Exist
       </div>
 
