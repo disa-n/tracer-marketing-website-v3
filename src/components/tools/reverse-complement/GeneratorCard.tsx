@@ -54,7 +54,7 @@ export default function GeneratorCard({
   };
 
   return (
-    <div className="border border-neutral-200 bg-[#FCFCFC] p-8 lg:p-12 relative z-20">
+    <div className="border border-neutral-200 bg-[#FCFCFC] pt-4 px-8 pb-8 lg:pt-6 lg:px-12 lg:pb-12 relative z-20">
       {/* Main Card Content */}
       <div className="flex flex-col lg:flex-row gap-6 lg:items-start justify-between">
         

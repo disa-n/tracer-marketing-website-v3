@@ -74,10 +74,10 @@ export default function Generator() {
   };
 
   return (
-    <section className="relative bg-[#FCFCFC] py-12 lg:py-20">
+    <section className="relative bg-[#FCFCFC] pb-12 lg:pb-20">
       <GridLinesLight />
 
-      <div className="max-w-[1600px] mx-auto px-4 md:px-8 lg:px-20 xl:px-16 2xl:px-8">
+      <div className="max-w-[1600px] mx-auto px-4 md:px-8 lg:px-20 xl:px-16 2xl:px-8 -mt-8 lg:mt-0">
         <GeneratorCard
           inputValue={input}
           setInputValue={setInput}
