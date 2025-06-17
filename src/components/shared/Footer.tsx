@@ -32,6 +32,9 @@ const Footer = () => {
                                     <Link href="/terms-and-conditions">Terms & Conditions</Link>
                                 </li>
                                 <li className="cursor-pointer transition-all hover:opacity-80">
+                                    <Link href="/privacy-policy">Privacy Policy</Link>
+                                </li>
+                                <li className="cursor-pointer transition-all hover:opacity-80">
                                     <Link href="/cookies">Cookies Policy</Link>
                                 </li>
                             </ul>
