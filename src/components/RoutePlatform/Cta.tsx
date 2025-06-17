@@ -9,7 +9,7 @@ const Cta = () => {
 
     return (
         <div className='flex w-full flex-col items-center justify-center gap-6 bg-[#FCFCFC] text-c-black md:gap-8'>
-            <div className='flex w-full max-w-[1440px] flex-col items-start justify-between px-4 pt-6 md:flex-row md:items-end md:pt-[64px]'>
+            <div className='flex w-full max-w-[1440px] flex-col items-start justify-between px-4 md:flex-row md:items-end'>
                 <div className='flex flex-col items-start'>
                     <p className='font-chakra-petch text-[14px] font-[400] uppercase leading-[1] text-c-black sm:text-[16px]'>
                         get a personalised demo

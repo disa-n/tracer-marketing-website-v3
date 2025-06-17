@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
-import ResourcesPageClient from './ResourcesPageClient';
+import BlogPageClient from '../blog/BlogPageClient';
 
 export const metadata: Metadata = {
   title: 'Tracer | Resources',
-  description: 'Explore our collection of guides, case studies, whitepapers, and tools to help you implement enterprise observability.',
+  description: 'Explore our latest blog posts, whitepapers, case studies, and resources.',
 };
 
 export default function ResourcesPage() {
-  return <ResourcesPageClient />;
+  return <BlogPageClient />;
 }

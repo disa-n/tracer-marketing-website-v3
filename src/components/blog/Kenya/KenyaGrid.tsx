@@ -24,7 +24,7 @@ function KenyaGridItem({ date, description, imageSrc, caption, slug }: KenyaGrid
   ];
 
   const hasContent = mdxSlugs.includes(slug);
-  const linkHref = hasContent ? `/blog/${slug}` : '/coming-soon';
+  const linkHref = hasContent ? `/resources/${slug}` : '/coming-soon';
 
   return (
     <div className="w-full bg-[#202020] border-t border-b border-[#303030] lg:h-80">
