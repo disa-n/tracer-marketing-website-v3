@@ -172,9 +172,9 @@ export default function BlogHero() {
           <Image
             style={{
               right: 'clamp(20px, 5vw, 100px)',
-              top: 36,
+              top: -10,
               position: 'absolute',
-              zIndex: 1
+              zIndex: 10
             }}
             src="/Blog/T-chip.webp"
             alt="Blog hero placeholder"

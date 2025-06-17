@@ -149,13 +149,13 @@ export default function BlogPageClient() {
         </div>
 
         {/* Tools Section - Now comes first */}
-        <div className="mt-4 relative">
-          {/* GridLines for Tools section - start at the horizontal line */}
-          <div className="absolute inset-0 top-0 h-full">
+        <div className="relative -mt-5">
+          {/* GridLines for Tools section - start at the horizontal line and extend to blog section */}
+          <div className="absolute inset-0 -top-[20px] h-[calc(100%+80px+20px)]">
             <GridLinesLight />
           </div>
 
-          <div className="relative z-10">
+          <div className="relative z-10 pt-8">
             <div className="self-stretch text-[#202020] font-normal leading-[46px] break-words ml-4 mb-8" style={{
               fontFamily: 'Britti Sans',
               fontSize: 'clamp(32px,8vw,64px)'
@@ -199,7 +199,7 @@ export default function BlogPageClient() {
         </div>
 
         {/* Blog Section - Now comes second with title and description */}
-        <div className="mt-20 relative">
+        <div className="relative">
           {/* GridLines for Blog section - continue from Tools section */}
           <div className="absolute inset-0 top-0 h-full">
             <GridLinesLight />
