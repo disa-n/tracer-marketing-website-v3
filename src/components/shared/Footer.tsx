@@ -11,7 +11,7 @@ const Footer = () => {
 
     return (
         <div className='flex w-full flex-col items-center justify-center bg-[#FCFCFC]'>
-            <div className="w-full max-w-[1440px] px-3 sm:px-4">
+            <div className="w-full px-4 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
                 <div className="flex w-full flex-col items-end justify-between gap-[48px] sm:gap-[72px] pb-3 pt-[32px] md:flex-row md:items-start md:gap-0 md:pb-[168px]">
                     <div className="grid w-full grid-cols-2 gap-8 sm:gap-12 text-c-black md:w-fit md:grid-cols-[240px_224px_144px] md:gap-0">
                         <div className="col-span-2 md:col-span-1">
@@ -28,15 +28,6 @@ const Footer = () => {
                                 <li className="cursor-pointer transition-all hover:opacity-80">
                                     <Link href="/resources">Resources</Link>
                                 </li>
-                                <li className="cursor-pointer transition-all hover:opacity-80">
-                                    <Link href="/terms-and-conditions">Terms & Conditions</Link>
-                                </li>
-                                <li className="cursor-pointer transition-all hover:opacity-80">
-                                    <Link href="/privacy-policy">Privacy Policy</Link>
-                                </li>
-                                <li className="cursor-pointer transition-all hover:opacity-80">
-                                    <Link href="/cookies">Cookies Policy</Link>
-                                </li>
                             </ul>
                         </div>
                         <div>
@@ -45,13 +36,16 @@ const Footer = () => {
                             </h4>
                             <ul className="mt-3 sm:mt-4 space-y-2 font-britti-sans text-[14px] sm:text-[16px] font-[400] leading-[1.2] text-c-black md:mt-10 md:text-[20px]">
                                 <li className="cursor-pointer transition-all hover:opacity-80">
+                                    <Link href="/why-monitoring">Why Monitoring</Link>
+                                </li>
+                                <li className="cursor-pointer transition-all hover:opacity-80">
                                     <Link href="/platform">Platform</Link>
                                 </li>
                                 <li className="cursor-pointer transition-all hover:opacity-80">
-                                    <Link href="/coming-soon">Changelog</Link>
+                                    <Link href="/technology">Technology</Link>
                                 </li>
                                 <li className="cursor-pointer transition-all hover:opacity-80">
-                                    <Link href="/technology">Technology</Link>
+                                    <Link href="/coming-soon">Changelog</Link>
                                 </li>
                             </ul>
                         </div>
@@ -65,8 +59,8 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="flex w-full items-center justify-start border-y-[1px] border-[#E8E8E8] py-3 md:h-[32px]">
-                    <p className="font-britti-sans text-xs sm:text-sm font-[400] leading-[1.3] text-[#868686]">
-                        2025 Tracer.cloud Inc | A US Delaware Corporation, registered at 9 Wall Street, Suite 168 New York, NY 10005
+                    <p className="font-britti-sans text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm 2xl:text-sm font-[400] leading-[1.3] text-[#868686]">
+                        2025 Tracer.cloud Inc | A US Delaware Corporation, registered at 9 Wall Street, Suite 168 New York, NY 10005 | <Link href="/terms-and-conditions" className="hover:opacity-80 transition-all">Terms & Conditions</Link> | <Link href="/privacy-policy" className="hover:opacity-80 transition-all">Privacy Policy</Link> | <Link href="/cookies" className="hover:opacity-80 transition-all">Cookies Policy</Link>
                     </p>
                 </div>
             </div>

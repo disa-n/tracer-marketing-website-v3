@@ -8,15 +8,15 @@ const PersonalizedDemoHome = () => {
 
   return (
     <section className="bg-[#FCFCFC]">
-      <div className="mx-auto max-w-[1440px]">
+      <div className="mx-auto w-full">
         <div className="pt-6 sm:pt-16">
-          <div className="px-4">
+          <div className="px-4 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
             <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end sm:gap-2 xl:gap-0">
               <div className="space-y-2 md:space-y-4">
-                <span className="font-chakra-petch text-sm font-normal uppercase leading-[19px] tracking-[-1%] text-background md:text-base">
+                <span className="font-chakra-petch text-sm sm:text-sm md:text-sm lg:text-sm xl:text-sm 2xl:text-base font-normal uppercase leading-[19px] tracking-[-1%] text-background">
                   get a personalised demo
                 </span>
-                <h3 className="font-britti-sans text-[32px] font-normal leading-[30px] tracking-[-2%] text-background lg:text-[56px] lg:leading-[56px]">
+                <h3 className="font-britti-sans text-[32px] sm:text-[32px] md:text-[56px] lg:text-[56px] xl:text-[56px] 2xl:text-[56px] font-normal leading-[30px] tracking-[-2%] text-background lg:leading-[56px]">
                   Ready to see Tracer in action?
                 </h3>
               </div>

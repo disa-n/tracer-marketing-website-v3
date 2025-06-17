@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import BlogPageClient from '../blog/BlogPageClient';
 
 export const metadata: Metadata = {
-  title: 'Tracer | Resources',
-  description: 'Explore our latest blog posts, whitepapers, case studies, and resources.',
+  title: 'Resources | Tracer',
+  description: 'Explore our latest blog posts, whitepapers, case studies, and helper tools to support bioinformatic workflows.',
 };
 
 export default function ResourcesPage() {

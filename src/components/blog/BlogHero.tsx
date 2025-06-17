@@ -48,7 +48,7 @@ export default function BlogHero() {
       >
         {/* Description Text */}
         <div
-          className="absolute left-4 top-[54px] text-[#202020] font-['Britti_Sans'] font-normal break-words
+          className="absolute left-4 top-[34px] text-[#202020] font-['Britti_Sans'] font-normal break-words
                      w-[calc(100%-32px)] max-w-[515px]
                      text-[clamp(24px,5vw,40px)] leading-[1.1] tracking-[-0.01em]"
         >
@@ -60,7 +60,7 @@ export default function BlogHero() {
           <form onSubmit={handleSubmit}>
             {/* Email Input */}
             <div
-              className="absolute left-4 top-[220px] flex justify-between items-center"
+              className="absolute left-4 top-[180px] flex justify-between items-center"
               style={{
                 width: 'min(calc(100vw - 180px), 250px)'
               }}
@@ -108,7 +108,7 @@ export default function BlogHero() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="absolute top-[220px] cursor-pointer"
+              className="absolute top-[180px] cursor-pointer"
               style={{
                 paddingLeft: 'clamp(20px, 4vw, 30px)',
                 paddingRight: 'clamp(20px, 4vw, 30px)',
@@ -155,7 +155,7 @@ export default function BlogHero() {
           <div
             style={{
               left: 16,
-              top: 220,
+              top: 180,
               position: 'absolute',
               color: '#FB82E9',
               fontSize: 'clamp(14px, 3vw, 17.5px)',
@@ -172,7 +172,7 @@ export default function BlogHero() {
           <Image
             style={{
               right: 'clamp(20px, 5vw, 100px)',
-              top: 56,
+              top: 36,
               position: 'absolute',
               zIndex: 1
             }}

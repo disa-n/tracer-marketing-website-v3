@@ -4,9 +4,9 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import BlogHero from '@/components/blog/BlogHero';
-import BlogIntro from '@/components/blog/BlogIntro';
 import FilterBar from '@/components/blog/FilterBar';
 import BlogGrid from '@/components/blog/BlogGrid';
+import { GridLinesLight } from '@/components/shared/GridLines';
 import { getBlogPostsForClient } from '@/lib/blog-registry';
 
 type BlogPost = {
@@ -132,126 +132,100 @@ export default function BlogPageClient() {
 
   return (
     <main className="w-full min-h-screen pt-20 bg-[#FCFCFC] relative">
-      {/* Horizontal Gridline - Where hero section ends */}
-      <div
-        className="absolute left-0 w-full bg-[#E8E8E8] pointer-events-none"
-        style={{
-          height: 1,
-          top: 'calc(80px + 128px + 40px + 390px)', // pt-20 + pt-32 + title margin + hero container (350px + 40px top offset)
-          zIndex: 1,
-        }}
-      />
-
-      {/* Horizontal Gridline - Where vertical gridlines start */}
-      <div
-        className="absolute left-0 w-full bg-[#E8E8E8] pointer-events-none"
-        style={{
-          height: 1,
-          top: 'calc(95px + 60px + 135px)', // Same position as vertical gridlines start
-          zIndex: 1,
-        }}
-      />
-
-      {/* Vertical Gridlines - Visible in background of subscribe section */}
-      <div className="absolute left-0 w-full pointer-events-none" style={{ top: 'calc(95px + 60px + 135px)', height: 'calc(100% - 224px)' }}>
-        {/* Gridline 1 */}
-        <div
-          className="absolute bg-[#E8E8E8]"
-          style={{
-            width: 1,
-            left: 250,
-            top: 0,
-            height: '96%',
-            zIndex: 1,
-          }}
-        />
-        {/* Gridline 2 */}
-        <div
-          className="absolute bg-[#E8E8E8]"
-          style={{
-            width: 1,
-            left: 570,
-            top: 0,
-            height: '96%',
-            zIndex: 1,
-          }}
-        />
-        {/* Gridline 3 */}
-        <div
-          className="absolute bg-[#E8E8E8]"
-          style={{
-            width: 1,
-            left: 890,
-            top: 0,
-            height: '96%',
-            zIndex: 1,
-          }}
-        />
-        {/* Gridline 4 */}
-        <div
-          className="absolute bg-[#E8E8E8]"
-          style={{
-            width: 1,
-            left: 1210,
-            top: 0,
-            height: '96%',
-            zIndex: 1,
-          }}
-        />
-      </div>
-
       <div className="px-4 md:px-8 max-w-7xl xxl:max-w-none xxl:px-16 mx-auto relative z-10">
-      <BlogHero />
-      <div className="mt-12">
-        <BlogIntro />
-      </div>
-      <div className="mt-12">
-        <FilterBar showFilters={false} />
-      </div>
-      <div className="mt-16">
-        <BlogGrid posts={posts} />
-      </div>
+        {/* Hero Section with GridLines */}
+        <div className="relative" style={{ transform: 'translateY(-20px)' }}>
+          {/* GridLines positioned behind hero section only */}
+          <div className="absolute inset-0 -top-20 h-[calc(100%+80px)]">
+            <GridLinesLight />
+          </div>
 
-      {/* Utility Tools Section */}
-      <div className="mt-20">
-        <div className="self-stretch text-[#202020] text-[48px] font-normal leading-[46px] break-words ml-4 mb-8" style={{ fontFamily: 'Britti Sans' }}>
-          Tools
+          <div className="relative z-10">
+            <BlogHero />
+          </div>
+
+          {/* Horizontal line at bottom of hero section - extends across full page */}
+          <div className="absolute bottom-0 left-1/2 w-screen h-px bg-[#E8E8E8] transform -translate-x-1/2"></div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          <Link href="/tools/reverse-complement" className="block h-full">
-            <div className="border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col min-h-[clamp(410px,55vw,480px)] z-[2] bg-[#FCFCFC] cursor-pointer">
-              <div className="relative h-48 sm:h-56 w-full bg-gradient-to-br from-[#F8F8F8] to-[#E8E8E8]">
-                {/* DNA Asset Image */}
-                <Image
-                  src="/Blog/T-DNA-Pink.webp"
-                  alt="DNA asset preview"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="pt-4 px-4 pb-4 sm:pt-6 sm:px-6 sm:pb-6 flex-1 flex flex-col">
-                <div className="flex items-center mb-4 sm:mb-6">
-                  <span className="font-chakra-petch text-xs sm:text-sm font-normal uppercase leading-[19px] text-[#202020]">
-                    Tool
-                  </span>
-                </div>
-                <h2 className="font-britti-sans text-lg sm:text-xl font-medium mb-3 sm:mb-4 text-[#202020] hover:text-gray-700 transition-colors leading-tight">
-                  Reverse Complement Generator
-                </h2>
-                <p className="font-britti-sans text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 flex-1 leading-snug">
-                  Paste a sequence and get its reverse, complement, or both.
-                </p>
-                <div className="mt-auto">
-                  <div className="font-chakra-petch text-xs sm:text-sm font-normal uppercase leading-[19px] text-[#202020] hover:text-[#404040] transition-colors">
-                    USE TOOL →
+
+        {/* Tools Section - Now comes first */}
+        <div className="mt-4 relative">
+          {/* GridLines for Tools section - start at the horizontal line */}
+          <div className="absolute inset-0 top-0 h-full">
+            <GridLinesLight />
+          </div>
+
+          <div className="relative z-10">
+            <div className="self-stretch text-[#202020] font-normal leading-[46px] break-words ml-4 mb-8" style={{
+              fontFamily: 'Britti Sans',
+              fontSize: 'clamp(32px,8vw,64px)'
+            }}>
+              Tools
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              <Link href="/tools/reverse-complement" className="block h-full">
+                <div className="border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col min-h-[clamp(410px,55vw,480px)] z-[2] bg-[#FCFCFC] cursor-pointer">
+                  <div className="relative h-48 sm:h-56 w-full bg-gradient-to-br from-[#F8F8F8] to-[#E8E8E8]">
+                    {/* DNA Asset Image */}
+                    <Image
+                      src="/Blog/T-DNA-Pink.webp"
+                      alt="DNA asset preview"
+                      fill
+                      className="object-cover"
+                    />
                   </div>
+                  <div className="pt-4 px-4 pb-4 sm:pt-6 sm:px-6 sm:pb-6 flex-1 flex flex-col">
+                    <div className="flex items-center mb-4 sm:mb-6">
+                      <span className="font-chakra-petch text-xs sm:text-sm font-normal uppercase leading-[19px] text-[#202020]">
+                        Tool
+                      </span>
+                    </div>
+                    <h2 className="font-britti-sans text-lg sm:text-xl font-medium mb-3 sm:mb-4 text-[#202020] hover:text-gray-700 transition-colors leading-tight">
+                      Reverse Complement Generator
+                    </h2>
+                    <p className="font-britti-sans text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 flex-1 leading-snug">
+                      Paste a sequence and get its reverse, complement, or both.
+                    </p>
+                    <div className="mt-auto">
+                      <div className="font-chakra-petch text-xs sm:text-sm font-normal uppercase leading-[19px] text-[#202020] hover:text-[#404040] transition-colors">
+                        USE TOOL →
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Blog Section - Now comes second with title and description */}
+        <div className="mt-20 relative">
+          {/* GridLines for Blog section - continue from Tools section */}
+          <div className="absolute inset-0 top-0 h-full">
+            <GridLinesLight />
+          </div>
+
+          <div className="relative z-10">
+            {/* Blog Title and Description - Using exact styling from BlogIntro */}
+            <div className="w-full h-full flex flex-col justify-start items-start gap-10 pt-16 pl-4">
+              <div className="self-stretch flex flex-col justify-start items-start gap-4">
+                <div className="self-stretch text-[#202020] text-[48px] font-normal leading-[46px] break-words" style={{ fontFamily: 'Britti Sans' }}>
+                  Tracer Blog
+                </div>
+                <div className="self-stretch text-[#202020] text-[18px] font-normal leading-[20px] break-words" style={{ fontFamily: 'Britti Sans' }}>
+                  Insights, announcements, and technical deep-dives from the Tracer team. Stay up to date on platform updates, real-world use cases, and best practices in high-performance compute and observability.
                 </div>
               </div>
             </div>
-          </Link>
-        </div>
-      </div>
 
+            <div className="mt-12">
+              <FilterBar showFilters={false} />
+            </div>
+            <div className="mt-16">
+              <BlogGrid posts={posts} />
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   );
