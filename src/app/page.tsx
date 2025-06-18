@@ -9,7 +9,7 @@ import FaqV2 from '@/components/RouteHomeV2/faqV2';
 import PersonalisedDemoV2 from '@/components/RouteHomeV2/PersonalisedDemoV2';
 
 export const metadata = {
-  title: "Pipeline Observability for AI‑Driven Science | Tracer",
+  title: "Pipeline Observability for Scientific Computing | Tracer",
   description:
     "Tracer provides real-time visibility into computational workloads, enabling scientist-engineers to monitor, debug, and optimize complex pipelines.",
   keywords: [

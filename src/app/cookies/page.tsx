@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Tracer | Cookie Policy",
+  title: "Cookie Policy | Tracer",
   description: "Learn about how Tracer uses cookies and manages your privacy preferences.",
 };
 

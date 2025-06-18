@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Tracer | Terms and Conditions",
-  description: "Read Tracer's terms and conditions for using our observability platform and services.",
+  title: "Terms & Conditions | Tracer",
+  description: "Read Tracer's terms and conditions for using our website.",
 };
 
 import TermsAndConditions from "@/components/TermsAndConditions";

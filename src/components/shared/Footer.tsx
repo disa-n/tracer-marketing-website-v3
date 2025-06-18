@@ -60,7 +60,7 @@ const Footer = () => {
                 </div>
                 <div className="flex w-full items-center justify-start border-y-[1px] border-[#E8E8E8] py-3 md:h-[32px]">
                     <p className="font-britti-sans text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm 2xl:text-sm font-[400] leading-[1.3] text-[#868686]">
-                        2025 Tracer.cloud Inc | A US Delaware Corporation, registered at 9 Wall Street, Suite 168 New York, NY 10005 | <Link href="/terms-and-conditions" className="hover:opacity-80 transition-all">Terms & Conditions</Link> | <Link href="/privacy-policy" className="hover:opacity-80 transition-all">Privacy Policy</Link> | <Link href="/cookies" className="hover:opacity-80 transition-all">Cookies Policy</Link>
+                        2025 The Forge Software Inc. | A US Delaware Corporation, registered at 9 Wall Street, Suite 168 New York, NY 10005 | <Link href="/terms-and-conditions" className="hover:opacity-80 transition-all">Terms & Conditions</Link> | <Link href="/privacy-policy" className="hover:opacity-80 transition-all">Privacy Policy</Link> | <Link href="/cookies" className="hover:opacity-80 transition-all">Cookies Policy</Link>
                     </p>
                 </div>
             </div>

@@ -13,7 +13,7 @@ const TermsAndConditions = () => {
         <section className="max-w-[800px] flex flex-col gap-12 text-base leading-relaxed font-normal">
           <p>
             These Terms and Conditions (&quot;Terms&quot;) constitute a legally binding agreement between you
-            (&quot;User&quot; or &quot;you&quot;) and Tracer.cloud Inc., a Delaware corporation, with its principal place of
+            (&quot;User&quot; or &quot;you&quot;) and The Forge Software Inc., a Delaware corporation, with its principal place of
             business located at 9 Wall Street, Suite 168, New York, NY 10005, United States
             (&quot;Tracer&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;). By accessing or using the Tracer website (the &quot;Site&quot;), you
             agree to be bound by these Terms. If you do not accept these Terms in their entirety, you must
@@ -38,7 +38,7 @@ const TermsAndConditions = () => {
 
           <div className="space-y-4">
             <h2 className="text-xl md:text-2xl lg:text-3xl font-normal mb-6">2. Intellectual Property</h2>
-            <p>All rights, title, and interest in and to the Site and its contents are and shall remain the exclusive property of Tracer.cloud Inc. or its licensors. All rights not expressly granted are reserved by Tracer.</p>
+            <p>All rights, title, and interest in and to the Site and its contents are and shall remain the exclusive property of The Forge Software Inc. or its licensors. All rights not expressly granted are reserved by Tracer.</p>
             <p>You may not reproduce, modify, distribute, create derivative works from, or publicly display any content from the Site without our prior written consent.</p>
           </div>
 
@@ -73,7 +73,7 @@ const TermsAndConditions = () => {
             <p>If you have any questions about these Terms, please contact us at:</p>
             <ul className="mt-4 ml-4 space-y-2">
               <li><strong>Email:</strong> founders@tracer.cloud</li>
-              <li><strong>Address:</strong> Tracer.cloud Inc., 9 Wall Street, Suite 168, New York, NY 10005</li>
+              <li><strong>Address:</strong> The Forge Software Inc., 9 Wall Street, Suite 168, New York, NY 10005</li>
             </ul>
           </div>
         </section>
