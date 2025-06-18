@@ -66,7 +66,7 @@ export const TOOLS = [
 ] as const;
 
 export const BLOG_CONFIG = {
-  allowedSlugs: ['kenya-day-one', 'kenya-day-two', 'kenya-day-three', 'kenya-day-four'],
+  allowedSlugs: ['kenya-day-one', 'kenya-day-two', 'kenya-day-three', 'kenya-day-four'] as string[],
   kenyaHackathonPost: {
     slug: 'kenya-hackathon',
     metadata: {

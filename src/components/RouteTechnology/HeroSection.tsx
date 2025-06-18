@@ -10,13 +10,7 @@ function HeroSection() {
     </>
   )
 
-  const subtitle = (
-    <>
-      Tracer uses cutting-edge technology to bring observability to complex scientific pipelines.
-      <br />
-      By extracting real-time system-level data, Tracer turns what was initially a black box into clear, actionable insights.
-    </>
-  )
+  const subtitle = "Tracer uses cutting-edge technology to bring observability to complex scientific pipelines. By extracting real-time system-level data, Tracer turns what was initially a black box into clear, actionable insights."
 
   return (
     <div className="technology-hero-wrapper">
