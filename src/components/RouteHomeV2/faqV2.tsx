@@ -43,7 +43,7 @@ const Faq = () => {
   return (
     <section className="bg-[#202020]">
       <div className="px-4 md:px-8 lg:px-12">
-        <div className="max-w-[1400px] w-full">
+        <div className="mx-auto w-full">
           <div className="container_fluid">
             <div className="py-10 md:py-8">
               <h2 className="font-chakra-petch text-[48px] font-normal leading-[40px] tracking-[-4%] text-foreground xl:text-[120px] xl:leading-[98px]">
