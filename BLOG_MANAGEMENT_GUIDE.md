@@ -155,7 +155,7 @@ return <BlogPostTemplate post={post} template="your-new-template" />;
 src/
 ├── data/
 │   └── blogPosts.ts              # Centralized blog data
-├── app/blog/
+├── app/resources/
 │   ├── [slug]/
 │   │   ├── page.tsx              # Dynamic route handler
 │   │   └── static-content.tsx    # Blog post renderer

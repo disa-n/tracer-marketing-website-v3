@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Tracer | The Observability Platform for AI-driven Science",
-  description: "Tracer combines deep scientific knowledge and cutting-edge tech to accelerate AI adoption in industry.",}
+  title: "The Go-To Pipeline Monitoring Tool | Tracer",
+  description: "Tracer's platform offers deep visibility into pipeline performance, cost, and usage. Learn more about our tool here.",}
 import Approach from "@/components/RoutePlatform/Approach";
 import Cta from "@/components/RoutePlatform/Cta";
 import GainVisibility from "@/components/RoutePlatform/GainVisibility";

@@ -52,7 +52,7 @@ const MDX_BLOG_POSTS = [
 ```
 
 ### 4. Test
-Visit: `http://localhost:3000/blog/your-slug`
+Visit: `http://localhost:3000/resources/your-slug`
 
 ---
 
@@ -64,7 +64,7 @@ Visit: `http://localhost:3000/blog/your-slug`
 | Images | `public/Blog/` |
 | Templates | `src/components/blog/BlogPostTemplate.tsx` |
 | Registry | `src/lib/blog-registry.ts` |
-| Routing | `src/app/blog/[slug]/page.tsx` |
+| Routing | `src/app/resources/[slug]/page.tsx` |
 
 ---
 

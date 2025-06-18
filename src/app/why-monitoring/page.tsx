@@ -2,7 +2,7 @@ import Hero from "@/components/WhyMonitoring/hero";
 import CoreChallengesSection from "@/components/WhyMonitoring/CoreChallengesSection";
 import WhyMonitoringTitle from "@/components/WhyMonitoring/WhyMonitoringTitle";
 import WhyMonitoringCardGrid from "@/components/WhyMonitoring/WhyMonitoringCardGrid";
-import HowTracerWorksSection from "@/components/shared/HowTracerWorksSection";
+import HowTracerWorksSection from "@/components/WhyMonitoring/HowTracerWorksSection";
 import PersonalisedDemoV2 from "@/components/RouteHomeV2/PersonalisedDemoV2";
 
 export const metadata = {

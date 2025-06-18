@@ -213,7 +213,7 @@ export async function loadMDXMetadata(slug: string): Promise<BlogPostMetadata | 
  */
 export async function loadStaticBlogPosts(): Promise<BlogPost[]> {
   try {
-    const { getAllBlogPosts } = await import('@/app/blog/blogPosts');
+    const { getAllBlogPosts } = await import('@/data/blogPosts');
     const staticPosts = getAllBlogPosts();
     
     return staticPosts.map(post => ({

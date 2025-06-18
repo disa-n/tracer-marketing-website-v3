@@ -49,8 +49,8 @@ export async function generateMetadata({
 }
 
 // Import the content components
-import StaticContent from '../../blog/[slug]/static-content';
-import MDXContent from '../../blog/[slug]/mdx-content';
+import StaticContent from './static-content';
+import MDXContent from './mdx-content';
 
 // Page component with params as Promise to match Next.js 15 internal type
 export default async function BlogPost({
