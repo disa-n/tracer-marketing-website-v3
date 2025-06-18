@@ -11,8 +11,7 @@ const PersonalizedDemoHome = () => {
       <div className="mx-auto w-full">
         <div className="pt-6 sm:pt-16">
           <div className="px-4 md:px-8 lg:px-12">
-            <div className="max-w-[1400px] w-full">
-            <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end sm:gap-2 xl:gap-0">
+              <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end sm:gap-2 xl:gap-0">
               <div className="space-y-2 md:space-y-4">
                 <span className="font-chakra-petch text-sm sm:text-sm md:text-sm lg:text-sm xl:text-sm 2xl:text-base font-normal uppercase leading-[19px] tracking-[-1%] text-background">
                   get a personalised demo
@@ -21,13 +20,14 @@ const PersonalizedDemoHome = () => {
                   Ready to see Tracer in action?
                 </h3>
               </div>
-              <button
-                onClick={openDemo}
-                className="flex h-[48px] w-full cursor-pointer items-center justify-center bg-[#E8E8E8] px-8 py-3 font-britti-sans text-sm font-normal text-[#202020] hover:bg-[#E8E8E8]/80 sm:w-auto md:h-[49px] md:text-base"
-              >
-                Talk to an Expert
-              </button>
-            </div>
+              <div className="flex sm:justify-end">
+                <button
+                  onClick={openDemo}
+                  className="flex h-[48px] w-full shrink-0 cursor-pointer items-center justify-center bg-[#E8E8E8] px-8 py-3 font-britti-sans text-sm font-normal text-[#202020] hover:bg-[#E8E8E8]/80 sm:w-auto md:h-[49px] md:text-base"
+                >
+                  Talk to an Expert
+                </button>
+              </div>
             </div>
           </div>
         </div>

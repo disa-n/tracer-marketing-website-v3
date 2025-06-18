@@ -8,7 +8,7 @@ export default function PrivacyPolicyText() {
           June 17, 2025
         </p>
         <p className="text-base leading-[17px]">
-          This Privacy Notice for Tracer.cloud Inc. (doing business as Tracer) (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;), describes how and why we might access, collect, store, use, and/or share (&ldquo;process&rdquo;) your personal information when you use our services (&ldquo;Services&rdquo;),
+          This Privacy Notice for The Forge Software Inc. (doing business as Tracer) (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;), describes how and why we might access, collect, store, use, and/or share (&ldquo;process&rdquo;) your personal information when you use our services (&ldquo;Services&rdquo;),
           <br /><br />
           including when you:
           <br /><br />
@@ -244,7 +244,7 @@ export default function PrivacyPolicyText() {
         <p className="text-base leading-[17px]">
           If you have questions or comments about this notice, you may email us at founders@tracer.cloud or contact us by post at:
           <br /><br />
-          Tracer.cloud Inc.<br />
+          The Forge Software Inc.<br />
           9 Wall St suite 168, New York, NY 10005, USA<br />
           New York, NY 10005<br />
           United States

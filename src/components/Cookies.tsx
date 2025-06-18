@@ -7,7 +7,6 @@ function CookiesPolicyPage() {
         <h1 className="text-[104px] leading-[88px] font-normal">Cookies Policy</h1>
 
         <section className="space-y-10 max-w-[800px]">
-          <h2 className="text-[56px] leading-[48px] font-normal">Cookies Policy</h2>
           <p className="text-base leading-[17px]">
             Our Cookies Policy was last updated in May 2025.
           </p>
@@ -32,7 +31,7 @@ function CookiesPolicyPage() {
             <h3 className="text-[32px] leading-[30px] font-normal">Definitions</h3>
             <p className="text-base leading-[17px]">
               For the purposes of this Cookies Policy:
-              <br /><br />&quot;Company&quot; (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Cookies Policy) refers to Tracer.
+              <br /><br />&quot;Company&quot; (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Cookies Policy) refers to The Forge Software Inc., doing business as "Tracer".
               <br /><br />&quot;Cookies&quot; means small files that are placed on Your computer, mobile device or any other device by a website, containing details of your browsing history on that website among its many uses.
               <br /><br />&quot;Website&quot; refers to Tracer, accessible from https://tracer.bio.
               <br /><br />&quot;You&quot; means the individual accessing or using the Website, or a company, or any legal entity on behalf of which such individual is accessing or using the Website, as applicable.

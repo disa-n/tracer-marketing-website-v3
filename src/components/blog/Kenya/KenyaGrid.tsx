@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { getAllBlogPosts } from '@/lib/blog-registry';
+import { BLOG_CONFIG } from '@/lib/constants';
 
 // Flag to control visibility of action buttons
 const showActionButtons = false;
@@ -14,16 +15,8 @@ type KenyaGridItemProps = {
 };
 
 function KenyaGridItem({ date, description, imageSrc, caption, slug }: KenyaGridItemProps) {
-  // Check if this post has MDX content (exists)
-  const mdxSlugs = [
-    'kenya-day-one',
-    'kenya-day-two',
-    'kenya-day-three',
-    'kenya-day-four'
-    // Add 'kenya-day-five' as they're created
-  ];
-
-  const hasContent = mdxSlugs.includes(slug);
+  // Check if this post has MDX content (exists) using the centralized config
+  const hasContent = BLOG_CONFIG.allowedSlugs.includes(slug);
   const linkHref = hasContent ? `/resources/${slug}` : '/coming-soon';
 
   return (
@@ -204,12 +197,12 @@ type KenyaGridProps = {
 };
 
 export default async function KenyaGrid({ items }: KenyaGridProps) {
-  // Get blog posts from centralized data, but filter to only Kenya hackathon related posts
+  // Get blog posts from centralized data, but filter to only allowed Kenya hackathon posts
   const blogPosts = await getAllBlogPosts();
 
-  // Filter to only show Kenya hackathon related posts (any slug starting with 'kenya-')
+  // Filter to only show allowed Kenya hackathon posts (using BLOG_CONFIG.allowedSlugs)
   const kenyaPosts = blogPosts.filter(post =>
-    post.slug.startsWith('kenya-')
+    BLOG_CONFIG.allowedSlugs.includes(post.slug)
   );
 
   // Sort Kenya posts strictly by date ascending (oldest first)

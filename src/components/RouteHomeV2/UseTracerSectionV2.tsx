@@ -21,8 +21,8 @@ export default function UseTracerSectionV2() {
         {/* Right Column: Image + Footer - flush to viewport edge with white background - Last on mobile */}
         <div className="flex-1 lg:min-w-0 bg-[#FCFCFC] pt-0 lg:pt-20 flex flex-col order-2 lg:order-2">
           {/* Image container - flush right with white background */}
-          <div className="flex justify-end pr-0 mt-0 lg:-mt-6 xl:-mt-10 2xl:-mt-16 mb-0">
-            <div className="w-full lg:w-3/4 aspect-[3/2] relative">
+          <div className="flex justify-end pr-0 mt-0 lg:mt-10 xl:mt-6 2xl:mt-8 mb-0">
+            <div className="w-full lg:w-3/4 relative aspect-[3/2] lg:translate-y-3 2xl:aspect-[5/3] 2xl:-translate-y-14">
               <Image
                 src="/home/Globe-Image.webp"
                 alt="Globe visualization"
