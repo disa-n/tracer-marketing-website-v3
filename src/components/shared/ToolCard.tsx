@@ -25,7 +25,7 @@ export default function ToolCard({
 }: ToolCardProps) {
   return (
     <Link href={href} className={`block h-full ${className}`}>
-      <div className="border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col min-h-[clamp(380px,45vw,450px)] z-[2] bg-[#FCFCFC] cursor-pointer">
+      <div className="border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col min-h-[clamp(450px,60vw,550px)] z-[2] bg-[#FCFCFC] cursor-pointer">
         <div className="relative h-48 sm:h-56 w-full bg-gradient-to-br from-[#F8F8F8] to-[#E8E8E8]">
           <Image
             src={imageSrc}

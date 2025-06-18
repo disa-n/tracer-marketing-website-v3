@@ -19,6 +19,7 @@ export default function GeneratorCard({
 }: GeneratorCardProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [showCopyFeedback, setShowCopyFeedback] = useState(false);
 
   const validateInput = (input: string): boolean => {
     // Remove FASTA headers (lines starting with >)
@@ -39,6 +40,18 @@ export default function GeneratorCard({
       onTransform(inputValue, transformationType);
     } else {
       setErrorMessage('🧬 Oops! That doesn\'t look like DNA. We only accept A, T, C, and G. Please try again.');
+    }
+  };
+
+  const handleCopyOutput = async () => {
+    if (outputValue) {
+      try {
+        await navigator.clipboard.writeText(outputValue);
+        setShowCopyFeedback(true);
+        setTimeout(() => setShowCopyFeedback(false), 2000);
+      } catch (err) {
+        console.error('Failed to copy text: ', err);
+      }
     }
   };
 
@@ -100,14 +113,40 @@ export default function GeneratorCard({
         </div>
 
         {/* Right Column - Output */}
-        <div className="flex-1">
+        <div className="flex-1 relative">
           <label className="block text-[#888888] uppercase font-chakra-petch text-base mb-2">
             OUTPUT:
           </label>
-          <div
-            className="w-full h-[220px] bg-[#f8f8f8] border border-neutral-300 p-4 text-base font-britti-sans text-[#202020] opacity-90 overflow-auto"
-          >
-            {outputValue}
+          <div className="relative">
+            <div
+              className="w-full h-[220px] bg-[#f8f8f8] border border-neutral-300 p-4 text-base font-britti-sans text-[#202020] opacity-90 overflow-auto"
+            >
+              {outputValue}
+            </div>
+            {outputValue && !showCopyFeedback && (
+              <div className="absolute top-4 right-4">
+                <button
+                  onClick={handleCopyOutput}
+                  className="cursor-pointer hover:opacity-70 transition-opacity"
+                  title="Copy output"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888888" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                  </svg>
+                </button>
+              </div>
+            )}
+            {showCopyFeedback && (
+              <div className="absolute inset-0 flex items-center justify-center bg-[#f8f8f8] bg-opacity-90">
+                <div className="flex flex-col items-center animate-fade-in">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#888888" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20,6 9,17 4,12"/>
+                  </svg>
+                  <span className="text-lg text-[#888888] font-chakra-petch mt-2">Copied!</span>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -118,7 +157,7 @@ export default function GeneratorCard({
         <div className="relative inline-block ml-0.5">
           <button
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="text-base font-britti-sans text-[#202020] border border-neutral-300 pl-3 pr-8 py-2 text-left bg-white relative"
+            className="text-base font-britti-sans text-[#202020] border border-neutral-300 pl-3 pr-8 py-2 text-left bg-white relative cursor-pointer"
           >
             {transformationType}
             <span className="absolute right-2 top-1/2 transform -translate-y-1/2">▼</span>
