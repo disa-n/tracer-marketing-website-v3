@@ -21,7 +21,7 @@ export default function UseTracerSectionV2() {
         {/* Right Column: Image + Footer - flush to viewport edge with white background - Last on mobile */}
         <div className="flex-1 lg:min-w-0 bg-[#FCFCFC] pt-0 lg:pt-20 flex flex-col order-2 lg:order-2">
           {/* Image container - flush right with white background */}
-          <div className="flex justify-end pr-0 mt-0 lg:mt-8 xl:mt-2 2xl:mt-0 mb-0">
+          <div className="flex justify-end pr-0 mt-0 lg:-mt-6 xl:-mt-10 2xl:-mt-16 mb-0">
             <div className="w-full lg:w-3/4 aspect-[3/2] relative">
               <Image
                 src="/home/Globe-Image.webp"
@@ -65,9 +65,9 @@ export default function UseTracerSectionV2() {
 
         {/* Left Column: Text Content - contained within max-w container - First on mobile */}
         <div className="w-full lg:w-auto order-1 lg:order-1">
-          <div className="max-w-[1600px] mx-auto px-2 sm:px-4 lg:px-6 xl:px-8 2xl:px-16">
-            <div className="flex flex-col justify-center pt-10 pb-8 sm:pt-14 sm:pb-18 lg:pt-24 lg:pb-22 xl:pt-28 xl:pb-30">
-              <div className="max-w-4xl ml-0 lg:ml-0 xl:ml-0 2xl:ml-28">
+          <div className="flex flex-col justify-center pt-10 pb-8 sm:pt-14 sm:pb-18 lg:pt-24 lg:pb-22 xl:pt-28 xl:pb-30">
+            <div className="px-4 md:px-8 lg:px-12">
+              <div className="max-w-[1400px] w-full">
               {/* Top Quote */}
               <p className="text-[20px] leading-[22px] text-neutral-400 font-normal tracking-tight font-britti mb-4">
                 &ldquo;We can&apos;t tell what&apos;s working or where things are falling apart.&rdquo;

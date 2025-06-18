@@ -1,5 +1,6 @@
 import React from 'react';
 import { GridLinesLight } from '@/components/shared/GridLines';
+import StyledLayoutWrapper from '@/components/shared/StyledLayoutWrapper';
 
 interface SectionProps {
   children: React.ReactNode;
@@ -24,8 +25,8 @@ const backgroundClasses = {
 
 const maxWidthClasses = {
   full: 'w-full',
-  container: 'px-4 md:px-8 lg:px-12 lg:max-w-[1400px] mx-auto',
-  narrow: 'px-4 md:px-8 max-w-4xl mx-auto'
+  container: 'lg:max-w-[1400px] mx-auto',
+  narrow: 'max-w-4xl mx-auto'
 };
 
 export default function Section({ 
@@ -39,9 +40,19 @@ export default function Section({
   return (
     <section className={`relative ${backgroundClasses[background]} ${paddingClasses[padding]} ${className}`}>
       {showGridLines && <GridLinesLight />}
-      
+
       <div className={`relative z-10 ${maxWidthClasses[maxWidth]}`}>
-        {children}
+        {maxWidth === 'container' ? (
+          <StyledLayoutWrapper>
+            {children}
+          </StyledLayoutWrapper>
+        ) : maxWidth === 'narrow' ? (
+          <StyledLayoutWrapper>
+            {children}
+          </StyledLayoutWrapper>
+        ) : (
+          children
+        )}
       </div>
     </section>
   );

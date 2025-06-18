@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { GridLinesLight } from '@/components/shared/GridLines';
+import StyledLayoutWrapper from '@/components/shared/StyledLayoutWrapper';
 
 export default function Hero() {
   return (
@@ -11,10 +12,10 @@ export default function Hero() {
       <div className="w-full relative z-10">
 
         {/* Two-column layout */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:min-h-screen py-16 pt-24 lg:py-28 px-4 lg:px-8 xl:px-20 2xl:px-32">
-
-          {/* Left Column - Text Content (removed negative margins causing overflow) */}
-          <div className="w-full lg:w-1/2 lg:pr-10 xl:pr-16 2xl:pr-24 2xl:-ml-15">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:min-h-screen py-16 pt-24 lg:py-28">
+          <StyledLayoutWrapper>
+            {/* Left Column - Text Content (removed negative margins causing overflow) */}
+            <div className="w-full lg:w-1/2 lg:pr-10 xl:pr-16 2xl:pr-24 2xl:-ml-15">
   {/* Main Heading */}
   <h1 className="font-chakra-petch text-[#202020] font-normal mb-6 lg:mb-16 xl:mb-20
                  text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-8xl 2xl:text-[100px]
@@ -47,6 +48,7 @@ export default function Hero() {
             </div>
           </div>
 
+          </StyledLayoutWrapper>
         </div>
       </div>
 

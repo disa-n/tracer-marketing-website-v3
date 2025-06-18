@@ -59,6 +59,7 @@ export default function HeroSectionV2() {
                 <span className="text-lg sm:text-xl">→</span>
               </a>
             </div>
+
           </div>
 
           {/* Right Column - Image - Order 1 on mobile */}

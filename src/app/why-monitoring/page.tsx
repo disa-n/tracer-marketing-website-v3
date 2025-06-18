@@ -7,7 +7,7 @@ import PersonalisedDemoV2 from "@/components/RouteHomeV2/PersonalisedDemoV2";
 
 export const metadata = {
   title: "Why Monitoring | Tracer",
-  description: "Understand the importance of monitoring in AI-driven scientific workflows and how Tracer provides comprehensive observability solutions.",
+  description: "Understand the importance of monitoring in AI-driven scientific workflows and how Tracer provides comprehensive visibility into your pipelines.",
 }
 
 export default function WhyMonitoringPage() {

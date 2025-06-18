@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { GridLinesLight } from '@/components/shared/GridLines';
 
 export default function TotalVisibilitySection() {
   const [activeTab, setActiveTab] = useState<'traditional' | 'tracer'>('traditional');
@@ -13,16 +12,12 @@ export default function TotalVisibilitySection() {
       <div className="w-96 h-16 bg-[#202020] relative z-50 hidden sm:block"></div>
 
       <div className="pt-16 relative">
-        <div className="absolute inset-0 -top-15 h-[114%]">
-          <GridLinesLight />
-        </div>
-
         {/* Main Content Container - aligned with FixAnythingSection */}
-        <div className="relative z-10 max-w-[1600px] mx-auto px-2 sm:px-4 lg:px-6 xl:px-8 2xl:px-16">
-
-        {/* Introductory Content */}
-        <div className="mb-16">
-          <div className="max-w-4xl ml-0 lg:ml-0 xl:ml-0 2xl:-ml-10">
+        <div className="relative z-10">
+          <div className="px-4 md:px-8 lg:px-12">
+            <div className="max-w-[1400px] w-full">
+              {/* Introductory Content */}
+              <div className="mb-16">
             {/* Main Heading */}
             <h1 className="font-britti-sans font-normal text-[#202020] mb-6 break-words tracking-tight text-left text-[48px] leading-[50px] 600:text-[56px] 600:leading-[64px] 1300:text-[80px] 1300:leading-[72px] max-w-fit">
               Total Visibility.<br />
@@ -33,13 +28,15 @@ export default function TotalVisibilitySection() {
             <p className="font-britti-sans text-[#888888] text-left text-[16px] leading-[22px] 600:text-[20px] 600:leading-[22px] max-w-fit">
               Tracer delivers unmatched visibility, speed, and accuracy for high-performance scientific computing — built from the ground up for the unique demands of research pipelines, not generic infrastructure.
             </p>
+              </div>
+            </div>
           </div>
         </div>
 
       </div>
 
       {/* Tabbed Interface - visible on mobile and tablet (below md) */}
-      <div className="relative z-10 max-w-[1600px] mx-auto px-2 sm:px-4 lg:px-6 xl:px-8 2xl:px-16 md:hidden">
+      <div className="relative z-10 max-w-[1800px] mx-auto px-2 sm:px-4 lg:px-6 xl:px-8 2xl:px-16 md:hidden">
         {/* Tab Headers */}
         <div className="flex mb-6">
           <button
@@ -69,7 +66,7 @@ export default function TotalVisibilitySection() {
           {/* Traditional Monitoring Tools Content */}
           {activeTab === 'traditional' && (
             <div className="w-full">
-              <div className="relative w-screen h-[500px] bg-[#141414] -mx-2 sm:-mx-4">
+              <div className="relative w-screen h-[700px] bg-[#141414] -mx-2 sm:-mx-4">
                 {/* Traditional Diagram Image */}
                 <Image
                   src="/home/Traditional-Tool-Diagram.webp"
@@ -92,7 +89,7 @@ export default function TotalVisibilitySection() {
           {/* Tracer Content */}
           {activeTab === 'tracer' && (
             <div className="w-full">
-              <div className="relative w-screen h-[500px] bg-[#141414] -mx-2 sm:-mx-4">
+              <div className="relative w-screen h-[700px] bg-[#141414] -mx-2 sm:-mx-4">
                 {/* Tracer Diagram Image */}
                 <Image
                   src="/home/Tracer-Diagram.webp"
@@ -116,13 +113,13 @@ export default function TotalVisibilitySection() {
       </div>
 
       {/* Side-by-Side Layout - visible from md breakpoint up */}
-      <div className="relative z-10 max-w-[1600px] mx-auto px-2 sm:px-4 lg:px-6 xl:px-8 2xl:px-16 hidden md:block">
+      <div className="relative z-10 max-w-[1800px] mx-auto px-2 sm:px-4 lg:px-6 xl:px-8 2xl:px-16 hidden md:block">
         <div className="flex flex-row gap-20">
 
           {/* Left Column - Traditional Monitoring Tools */}
           <div className="flex-1">
             {/* Placeholder Image Box with overlaid text */}
-            <div className="relative w-full h-[650px] xl:h-[750px] bg-[#141414] mb-6">
+            <div className="relative w-full h-[800px] xl:h-[900px] bg-[#141414] mb-6">
                <Image
                   src="/home/Traditional-Tool-Diagram.webp"
                   alt="Traditional system diagram showing incomplete error visibility"
@@ -150,7 +147,7 @@ export default function TotalVisibilitySection() {
           {/* Right Column - Tracer */}
           <div className="flex-1">
             {/* Tracer Image Box with overlaid text */}
-            <div className="relative w-full h-[650px] xl:h-[750px] bg-[#141414] mb-6">
+            <div className="relative w-full h-[800px] xl:h-[900px] bg-[#141414] mb-6">
               {/* Tracer Diagram Image */}
               <Image
                 src="/home/Tracer-Diagram.webp"
@@ -176,7 +173,6 @@ export default function TotalVisibilitySection() {
             </div>
           </div>
         </div>
-      </div>
       </div>
     </section>
   );
