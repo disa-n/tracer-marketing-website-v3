@@ -12,56 +12,47 @@ export default function StaticContent({ slug }: { slug: string }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function loadPost() {
+    const loadPost = async () => {
       try {
-        if (typeof window !== 'undefined') {
-          const hostname = window.location.hostname;
-          const isLocalhost = hostname.includes("localhost");
-
-          console.log("Current hostname:", hostname);
-          console.log("Is localhost:", isLocalhost);
-
-          if (isLocalhost) {
-            setIsComingSoon(false);
-            console.log("Setting isComingSoon to false (localhost)");
-          } else {
-            setIsComingSoon(true);
-            console.log("Setting isComingSoon to true (production)");
-          }
-        } else {
-          // Default to coming soon during SSR
-          setIsComingSoon(true);
-          console.log("Setting isComingSoon to true (SSR)");
-        }
-
-        // If not coming soon, load the blog post data
-        if (!isComingSoon) {
-          const blogPost = await getBlogPost(slug);
+        const blogPost = await getBlogPost(slug);
+        if (blogPost) {
           setPost(blogPost);
+          setIsComingSoon(false);
+        } else {
+          setIsComingSoon(true);
         }
       } catch (error) {
-        console.error('Error loading blog post:', error);
+        console.error("Error loading blog post:", error);
+        setIsComingSoon(true);
       } finally {
         setLoading(false);
       }
-    }
+    };
 
     loadPost();
-  }, [slug, isComingSoon]);
+  }, [slug]);
 
-  console.log("Current isComingSoon state:", isComingSoon);
-
+  // Show loading state during SSR and initial client load
   if (loading) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-12">
-        <div className="text-[#202020]">Loading...</div>
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 rounded w-3/4 mb-6"></div>
+          <div className="h-4 bg-gray-200 rounded w-full mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-full mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-5/6 mb-8"></div>
+          <div className="h-64 bg-gray-200 rounded mb-8"></div>
+          <div className="h-4 bg-gray-200 rounded w-full mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-full mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-4/5"></div>
+        </div>
       </div>
     );
   }
 
-  if(isComingSoon) {
-    console.log("Rendering ComingSoon component");
-    return <ComingSoon />
+  // Show coming soon if no post found
+  if (isComingSoon) {
+    return <ComingSoon />;
   }
 
   console.log("Rendering blog content for slug:", slug);
@@ -88,6 +79,10 @@ export default function StaticContent({ slug }: { slug: string }) {
     content: post.content || ''
   };
 
-  // You can change the template here: 'default', 'minimal', 'magazine', 'technical'
-  return <BlogPostTemplate post={templatePost} template="default" />;
+  return (
+    <BlogPostTemplate
+      post={templatePost}
+      template="default"
+    />
+  );
 }

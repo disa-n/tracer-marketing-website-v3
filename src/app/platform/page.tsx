@@ -1,6 +1,6 @@
 export const metadata = {
   title: "The Go-To Pipeline Monitoring Tool | Tracer",
-  description: "Tracer's product offers deep visibility into pipeline performance, cost, and usage. Learn more about the tool here.",}
+  description: "Tracer's platform offers deep visibility into pipeline performance, cost, and usage. Learn more about our tool here.",}
 import Approach from "@/components/RoutePlatform/Approach";
 import Cta from "@/components/RoutePlatform/Cta";
 import GainVisibility from "@/components/RoutePlatform/GainVisibility";

@@ -23,7 +23,7 @@ src/
 │   ├── kenya-day-two.mdx          # Day 2 blog post
 │   ├── kenya-day-three.mdx        # Day 3 blog post (create when ready)
 │   └── ...                       # Additional days
-├── app/blog/
+├── app/resources/
 │   ├── page.tsx                   # Main blog listing page
 │   ├── BlogPageClient.tsx         # Blog page client component
 │   ├── kenyahackathonoverview/    # Kenya hackathon overview page
@@ -92,7 +92,7 @@ const mdxSlugs = [
 
 ### Step 3: Update the Blog Routing
 
-In `src/app/blog/[slug]/page.tsx`, add your slug to both arrays:
+In `src/app/resources/[slug]/page.tsx`, add your slug to both arrays:
 
 **A. Add to `generateStaticParams` function:**
 ```typescript
@@ -156,7 +156,7 @@ const linkHref = hasContent ? `/blog/${slug}` : '/coming-soon';
 - Cards show **"Coming soon"** if content doesn't exist yet
 
 ### 4. Route Resolution
-- **With content**: `/blog/kenya-day-one` → Renders MDX content
+- **With content**: `/resources/kenya-day-one` → Renders MDX content
 - **Without content**: `/coming-soon` → Shows coming soon page
 
 ## Current Status
@@ -196,7 +196,7 @@ const linkHref = hasContent ? `/blog/${slug}` : '/coming-soon';
 - Verify the `Link` component is properly wrapping the card content
 
 ### Routes to Coming Soon Instead of Blog Post
-- Ensure slug is added to both arrays in `/blog/[slug]/page.tsx`
+- Ensure slug is added to both arrays in `/resources/[slug]/page.tsx`
 - Check that the MDX file exists and has the correct filename
 - Verify the slug matches exactly (case-sensitive)
 
@@ -218,8 +218,8 @@ const linkHref = hasContent ? `/blog/${slug}` : '/coming-soon';
 - [ ] Create MDX file in `src/components/content/blog/`
 - [ ] Add slug to `mdxSlugs` array in `KenyaGrid.tsx`
 - [ ] Add slug to `mdxSlugs` array in `BlogCard.tsx`
-- [ ] Add slug to `generateStaticParams` in `/blog/[slug]/page.tsx`
-- [ ] Add slug to runtime `mdxSlugs` array in `/blog/[slug]/page.tsx`
+- [ ] Add slug to `generateStaticParams` in `/resources/[slug]/page.tsx`
+- [ ] Add slug to runtime `mdxSlugs` array in `/resources/[slug]/page.tsx`
 - [ ] Verify metadata exists in `blogPosts.ts`
 - [ ] Test the routing locally (both Kenya page and main blog page)
 - [ ] Check that images are accessible

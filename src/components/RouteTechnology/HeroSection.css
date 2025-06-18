@@ -1,0 +1,28 @@
+/* Custom styling for Technology Hero Section */
+
+/* Mobile view only - center image at top */
+@media (max-width: 1023px) {
+  .technology-hero-wrapper .flex.items-center.justify-center.mt-8 {
+    justify-content: center !important;
+    margin-top: 1rem !important;
+    order: -1 !important;
+  }
+}
+
+/* Desktop view - position image on right */
+.technology-hero-wrapper .lg\:flex-1.lg\:justify-center.lg\:order-2 {
+  justify-content: flex-end !important;
+  padding-right: 2rem;
+}
+
+.technology-hero-wrapper .lg\:scale-\[1\.8\].lg\:-translate-x-8 {
+  transform: scale(0.5) translateX(8px) !important;
+}
+
+.technology-hero-wrapper .xl\:scale-\[3\.2\].xl\:-translate-x-16 {
+  transform: scale(0.7) translateX(16px) !important;
+}
+
+.technology-hero-wrapper .\32 xl\:scale-\[4\.0\].\32 xl\:-translate-x-20 {
+  transform: scale(0.9) translateX(24px) !important;
+}

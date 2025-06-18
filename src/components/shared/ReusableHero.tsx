@@ -70,7 +70,7 @@ export default function ReusableHero({ title, subtitle, showEmailSignup = false,
         )}
 
         {/* Text Content Column - Appears second on mobile, left on desktop */}
-        <div className="relative z-10 flex flex-col justify-center px-4 md:px-8 lg:px-12 pt-8 pb-8 lg:py-20 lg:max-w-[1400px] lg:w-full lg:order-1">
+        <div className={`relative z-10 flex flex-col justify-center px-4 md:px-8 lg:px-12 pt-8 pb-8 lg:py-20 lg:max-w-[1400px] lg:w-full lg:order-1 ${className}`}>
 
           {/* Main Heading */}
           <h1 className="font-chakra-petch text-[#202020] leading-[0.9] mb-6 lg:mb-8 tracking-tight

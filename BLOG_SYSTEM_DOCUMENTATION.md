@@ -11,7 +11,7 @@ The Tracer marketing website uses an **MDX-based blog system** (Markdown + JSX) 
 The blog system uses Next.js dynamic routing with the following structure:
 
 ```
-/blog/[slug] → src/app/blog/[slug]/page.tsx
+/resources/[slug] → src/app/resources/[slug]/page.tsx
 ```
 
 **Key Components:**
@@ -33,7 +33,7 @@ graph TD
 
 ```
 src/
-├── app/blog/
+├── app/resources/
 │   ├── page.tsx                      # Blog listing page
 │   ├── BlogPageClient.tsx            # Client-side blog grid
 │   └── [slug]/
