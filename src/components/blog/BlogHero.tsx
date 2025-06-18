@@ -25,163 +25,71 @@ export default function BlogHero() {
   };
 
   return (
-    <div className="w-full pt-32 md:pt-10">
-      {/* Main Title */}
-      <div
-        className="w-full text-[#202020] font-['Britti_Sans'] font-normal break-words ml-4 mt-10
-                   text-[clamp(48px,12vw,104px)] leading-[0.85] tracking-[-0.02em]"
-      >
-        Resources
-      </div>
+    <div className="w-full pt-16 md:pt-8 lg:pt-24 xl:pt-20 2xl:pt-16">
+      <div className="px-4 md:px-8 lg:px-12 w-full">
 
-      {/* Hero Section with Subscription */}
-      <div
-        style={{
-          width: '100%',
-          height: '350px',
-          minHeight: '350px',
-          position: 'relative',
-          top: 40,
-          overflow: 'hidden',
-          zIndex: 0
-        }}
-      >
-        {/* Description Text */}
         <div
-          className="absolute left-4 top-[34px] text-[#202020] font-['Britti_Sans'] font-normal break-words
-                     w-[calc(100%-32px)] max-w-[515px]
-                     text-[clamp(24px,5vw,40px)] leading-[1.1] tracking-[-0.01em]"
+          className="text-[#202020] font-['Britti_Sans'] font-normal break-words mt-4 md:mt-6 lg:mt-8 xl:mt-6 2xl:mt-4
+                     text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[104px]
+                     leading-[0.85] tracking-[-0.02em]"
         >
-          The latest updates from Tracer. See our changelog for more product updates.
+          Resources
         </div>
 
-        {/* Subscription Form */}
-        {!submitted ? (
-          <form onSubmit={handleSubmit}>
-            {/* Email Input */}
+        <div className="w-full mt-6 md:mt-8 lg:mt-8 xl:mt-6 2xl:mt-4 flex flex-col lg:flex-row lg:justify-between lg:items-start lg:gap-8 pb-16 md:pb-20 lg:pb-0">
+          {/* Left Content */}
+          <div className="flex-1">
             <div
-              className="absolute left-4 top-[180px] flex justify-between items-center"
-              style={{
-                width: 'min(calc(100vw - 180px), 250px)'
-              }}
+              className="text-[#202020] font-['Britti_Sans'] font-normal break-words max-w-[515px] mb-8
+                         text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[40px]
+                         leading-[1.1] tracking-[-0.01em]"
             >
-              <div
-                className="w-full"
-                style={{
-                  paddingTop: 7.24,
-                  paddingBottom: 7.24,
-                  paddingLeft: 20,
-                  paddingRight: 60,
-                  background: '#F5F5F5',
-                  overflow: 'hidden',
-                  outline: '0.72px #E8E8E8 solid',
-                  outlineOffset: '-0.72px',
-                  flexDirection: 'column',
-                  justifyContent: 'flex-start',
-                  alignItems: 'flex-start',
-                  gap: 7.24,
-                  display: 'inline-flex'
-                }}
-              >
-                <input
-                  type="email"
-                  placeholder="Enter your e-mail"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  style={{
-                    width: '100%',
-                    height: 28,
-                    background: 'transparent',
-                    border: 'none',
-                    outline: 'none',
-                    color: '#202020',
-                    fontSize: 'clamp(14px, 3vw, 17.5px)',
-                    fontFamily: 'Britti Sans',
-                    fontWeight: '400',
-                    lineHeight: '27.52px'
-                  }}
-                />
-              </div>
+              The latest updates from Tracer. See our changelog for more product updates.
             </div>
 
-            {/* Submit Button */}
-            <button
-              type="submit"
-              className="absolute top-[180px] cursor-pointer"
-              style={{
-                paddingLeft: 'clamp(20px, 4vw, 30px)',
-                paddingRight: 'clamp(20px, 4vw, 30px)',
-                paddingTop: 7.24,
-                paddingBottom: 7.24,
-                left: 'min(calc(100vw - 140px), 266px)',
-                background: '#202020',
-                overflow: 'hidden',
-                outline: '0.72px #E8E8E8 solid',
-                outlineOffset: '-0.72px',
-                flexDirection: 'column',
-                justifyContent: 'flex-start',
-                alignItems: 'flex-start',
-                gap: 7.24,
-                display: 'inline-flex',
-                border: 'none'
-              }}
-            >
-              <div
-                style={{
-                  flexDirection: 'column',
-                  justifyContent: 'flex-start',
-                  alignItems: 'flex-start',
-                  gap: 5.79,
-                  display: 'flex'
-                }}
-              >
-                <div
-                  style={{
-                    color: '#FCFCFC',
-                    fontSize: 'clamp(14px, 3vw, 17.5px)',
-                    fontFamily: 'Britti Sans',
-                    fontWeight: '400',
-                    lineHeight: '27.52px',
-                    wordWrap: 'break-word'
-                  }}
-                >
-                  Get Updates
-                </div>
-              </div>
-            </button>
-          </form>
-        ) : (
-          <div
-            style={{
-              left: 16,
-              top: 180,
-              position: 'absolute',
-              color: '#FB82E9',
-              fontSize: 'clamp(14px, 3vw, 17.5px)',
-              fontFamily: 'Britti Sans',
-              fontWeight: '400'
-            }}
-          >
-            Thanks! You&apos;re subscribed.
-          </div>
-        )}
+            {!submitted ? (
+              <form onSubmit={handleSubmit}>
+                <div className="flex items-center">
+                  <div
+                    className="flex-1 max-w-[250px] px-5 py-2 bg-[#F5F5F5] outline outline-[0.72px] outline-[#E8E8E8] outline-offset-[-0.72px] flex items-center"
+                  >
+                    <input
+                      type="email"
+                      placeholder="Enter your e-mail"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full bg-transparent border-none outline-none text-[#202020] font-['Britti_Sans'] text-sm md:text-base"
+                    />
+                  </div>
 
-        {/* Placeholder Image - Hidden on mobile, responsive on larger screens */}
-        <div className="hidden lg:block">
-          <Image
-            style={{
-              right: 'clamp(20px, 5vw, 100px)',
-              top: -10,
-              position: 'absolute',
-              zIndex: 10
-            }}
-            src="/Blog/T-chip.webp"
-            alt="Blog hero placeholder"
-            width={600}
-            height={280}
-            className="max-w-[clamp(300px, 40vw, 600px)] h-auto"
-          />
+                  <button
+                    type="submit"
+                    className="ml-1 px-5 py-2 bg-[#202020] text-[#FCFCFC] outline outline-[0.72px] outline-[#E8E8E8] outline-offset-[-0.72px] font-['Britti_Sans'] text-sm md:text-base whitespace-nowrap"
+                  >
+                    Get Updates
+                  </button>
+                </div>
+              </form>
+            ) : (
+              <div
+                className="text-[#FB82E9] font-['Britti_Sans'] text-sm md:text-base mt-4"
+              >
+                Thanks! You&apos;re subscribed.
+              </div>
+            )}
+          </div>
+
+          {/* Right Image */}
+          <div className="hidden lg:block relative flex-shrink-0">
+            <Image
+              src="/Blog/T-chip.webp"
+              alt="Blog hero placeholder"
+              width={600}
+              height={280}
+              className="max-w-[clamp(300px,40vw,600px)] h-auto z-30 translate-y-[60px]"
+            />
+          </div>
         </div>
       </div>
     </div>
