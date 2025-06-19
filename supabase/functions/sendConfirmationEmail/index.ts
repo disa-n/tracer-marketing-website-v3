@@ -27,7 +27,7 @@ serve(async (req) => {
       html: `
         <p>${name ? `Hi ${name},` : 'Hi!'}</p>
         <p>Thanks for your interest in Tracer! You can book a call with our team <a href="https://calendly.com/tracerlaura/meeting-with-laura">here</a>, or we’ll be in touch shortly to arrange a time that suits you.</p>
-        <p>In the meantime, feel free to explore our <a href="https://tracer.cloud">website</a> for more information about how we can give you full visibility into your computational pipelines.</p>
+        <p>In the meantime, feel free to explore our <a href="https://tracer.cloud">website</a> for more information about how we can offer full visibility into your computational pipelines.</p>
         <p>The Tracer Team</p>
 
        <div style="margin-top: 30px; border-top: 1px solid #ddd; padding-top: 20px; font-family: Arial, sans-serif; font-size: 14px; color: #555; display: flex; align-items: center; gap: 15px;">
