@@ -28,7 +28,7 @@ export const blogPosts: Record<string, BlogPost> = {
     date: 'Tue, 03 June',
     imageSrc: '/Blog/day2-tracer-working.webp',
     description: 'Kenya Day Two: Tracer runs natively on Mac ARM, the blog goes live, and we\'re learning why having the right foundation matters.',
-    author: 'Team Tracer',
+    author: 'Paul',
     tag: 'Blog',
     readTime: '8 min read',
     content: ``
@@ -39,7 +39,7 @@ export const blogPosts: Record<string, BlogPost> = {
     date: 'Wed, 04 June',
     imageSrc: '/Blog/day3-tracer-rooftop.webp',
     description: 'Kenya Day Three: A well-earned break, a tour through Nairobi\'s rich history, and rooftop views before getting back into build mode.',
-    author: 'Team Tracer',
+    author: 'Paul',
     tag: 'Blog',
     readTime: '5 min read',
     content: ``
@@ -50,7 +50,7 @@ export const blogPosts: Record<string, BlogPost> = {
     date: 'Thu, 05 June',
     imageSrc: '/Blog/Thurs-superconductor.webp',
     description: 'Notes from the fourth day of our Kenya hackathon.',
-    author: 'Team Tracer',
+    author: 'Isolde',
     tag: 'Blog',
     readTime: '7 min read',
     content: ``

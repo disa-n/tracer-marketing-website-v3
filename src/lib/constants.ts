@@ -67,14 +67,26 @@ export const TOOLS = [
 
 export const BLOG_CONFIG = {
   allowedSlugs: ['kenya-day-one', 'kenya-day-two', 'kenya-day-three', 'kenya-day-four'] as string[],
+  allowedBiweeklySlugs: ['biweekly-roundup-1'] as string[],
   kenyaHackathonPost: {
     slug: 'kenya-hackathon',
     metadata: {
       title: 'Kenya Hackathon 2025',
       date: '02 Jun 2025',
       description: "We flew to Kenya for a week-long hackathon to accelerate Tracer's growth. The goal? Drive verified user activations through a Reddit launch. From back-end tooling to interface polish, we're all-in - coding, designing, and shipping, with a 'swing for the fences' mindset.",
-      tag: 'blog',
+      tag: 'SERIES',
       ogImage: '/Blog/kenya.webp',
+      author: 'Team Tracer',
+    },
+  },
+  biweeklyRoundupsPost: {
+    slug: 'biweekly-roundups',
+    metadata: {
+      title: 'Bi-weekly Roundups',
+      date: '19 Jun 2025',
+      description: "Stay up to date with Tracer's latest company and product updates through our bi-weekly roundups. Get insights into our product evolution, company milestones, and behind-the-scenes updates from the team.",
+      tag: 'SERIES',
+      ogImage: '/Blog/T-Asset-Organic_Shape.png',
       author: 'Team Tracer',
     },
   },

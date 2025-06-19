@@ -1,7 +1,7 @@
 'use client'
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import React from "react";
 import ComingSoon from "@/components/shared/ComingSoon";
 
 type ResourceItem = {
@@ -72,13 +72,8 @@ const resourceItems: ResourceItem[] = [
 ];
 
 export default function ResourcesPageClient() {
-  const [isComingSoon, setIsComingSoon] = useState(true);
-
-  useEffect(() => {
-    setIsComingSoon(process.env.NODE_ENV === "development" ? false : true);
-  }, []);
-
-  console.log("Current isComingSoon state:", isComingSoon);
+  // Always show ComingSoon in production, show content in development
+  const isComingSoon = process.env.NODE_ENV !== "development";
 
   if(isComingSoon) {
     return <ComingSoon />

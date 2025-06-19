@@ -7,11 +7,14 @@ import BlogPostTemplate from '@/components/blog/BlogPostTemplate';
 
 // Simple static content for test posts
 export default function StaticContent({ slug }: { slug: string }) {
+  const [mounted, setMounted] = useState(false);
   const [isComingSoon, setIsComingSoon] = useState(true); // Default to true for SSR
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setMounted(true);
+
     const loadPost = async () => {
       try {
         const blogPost = await getBlogPost(slug);
@@ -33,7 +36,7 @@ export default function StaticContent({ slug }: { slug: string }) {
   }, [slug]);
 
   // Show loading state during SSR and initial client load
-  if (loading) {
+  if (!mounted || loading) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-12">
         <div className="animate-pulse">

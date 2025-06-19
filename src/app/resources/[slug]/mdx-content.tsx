@@ -23,11 +23,14 @@ interface MDXModule {
 }
 
 export default function MDXContent({ slug }: MDXContentProps) {
+  const [mounted, setMounted] = React.useState(false);
   const [Component, setComponent] = React.useState<React.ComponentType | null>(null);
   const [metadata, setMetadata] = React.useState<MDXModule['metadata'] | null>(null);
   const [error, setError] = React.useState(false);
 
   React.useEffect(() => {
+    setMounted(true);
+
     // Dynamic import in useEffect to ensure client-side execution
     import(`@/components/content/blog/${slug}.mdx`)
       .then((module: MDXModule) => {
@@ -49,7 +52,7 @@ export default function MDXContent({ slug }: MDXContentProps) {
     );
   }
 
-  if (!Component || !metadata) {
+  if (!mounted || !Component || !metadata) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-12">
         <div className="animate-pulse">

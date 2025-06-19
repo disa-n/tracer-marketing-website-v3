@@ -1,0 +1,143 @@
+export const metadata = {
+  title: 'Roundup #1: June 2025',
+  date: 'June 20, 2025',
+  description: 'Our first bi-weekly roundup covering product updates, team milestones, and technical insights from the Tracer team.',
+  author: 'Isolde',
+  tag: 'blog',
+  readTime: '4 min read',
+  ogImage: '/Blog/Header-Roundup1.jpeg',
+  template: 'default'
+};
+
+import VideoPlayer from '@/components/blog/VideoPlayer';
+
+
+**Friday, June 20**
+
+On Wednesday June 11th, the team arrived back in London from Nairobi at 6am, but just a few hours later, we were already back at it - working hard to improve the sandbox onboarding page we launched in Kenya!
+
+This means that the last two weeks at Tracer have been all about reducing user friction, improving efficiency and creating an easy-to-use demo for 4 different user environments.
+
+This week, we also welcomed our 3 new summer interns!
+
+🧑‍💻 **Vaibhav** - software engineer intern
+
+👨‍💻 **Baekhan** - software engineer intern
+
+👩‍💻 **Amberley** - founder's associate intern
+
+We're super excited to have them on board and you'll see why soon, because they've already started shipping some awesome things!
+
+Let's dive in 👇
+
+---
+
+## 1. Interactive Grafana Tutorial is Live
+
+Big one from **Arne**:
+
+The **Grafana walkthrough** now runs directly inside the sandbox!
+
+It helps first-time users explore pipeline metrics, run summaries, and error logs without needing to dig through docs.
+
+A huge step for user education and onboarding speed! 🙌
+
+![Grafana Tutorial](/Blog/Update1-Roundup1.png)
+
+
+
+---
+
+## 2. UI/UX Improvements in Sandbox & Grafana
+
+3 design and UI/UX upgrades that make a big difference for user guidance and learning:
+
+- Thanks to **Paul**, users now see a **4-step visual guide** right after logging in
+- **Isolde** shipped an **FAQ section** on the sandbox landing page sandbox via a **'Learn more'** button
+- **Vincent** removed Clerk's email verification to streamline the demo experience and make sign-in as close to one-click as possible
+
+This makes first use much more intuitive.
+
+<div className="flex flex-col md:flex-row gap-4 my-6">
+  <div className="flex-1">
+    ![4-step visual guide](/Blog/Update2a-Roundup1.png)
+  </div>
+  <div className="flex-1">
+    ![FAQ section](/Blog/Update2b-Roundup1.png)
+  </div>
+</div>
+
+---
+
+## 3. CLI + Server Resilience
+
+**Vaibhav** added a mechanism to **free up the Tracer server** if the CLI gets stuck to improve system reliability. He also made `tracer init` more interactive and verbose (pending merge), making configuration easier for new users.
+
+---
+
+## 4. RNASeq tool recognitions
+
+Thanks to **Michele**, Tracer's tool recognition drastically improved! It can now identify >95% of RNASeq tools!
+
+Big win! 🧬
+
+![RNASeq Tools Recognition](/Blog/Update4-Roundup1.png)
+
+---
+
+## 5. Pipeline Setup Now Supports Pixi, Conda & Spack 🧪
+
+You can now run `rnaseq_full` pipelines with **Pixi**, **Conda**, or **Spack**, including in **GitHub Codespaces**, **macOS**, and all major **Linux distros**.
+
+With `pixi install && pixi run rnaseq`, setup takes **under 2 minutes**, and Pixi is now **preinstalled** in Codespaces for easy access, all thanks to **Vaibhav**!
+
+---
+
+## 6. Analytics Dashboard Just Got Smarter
+
+**David & Isolde** shipped some updates to our analytics funnel!
+
+- Back-end conversion metrics in all environments
+- Weekly cohort charts for improvements in user activation over time
+- Middleware now accepts events from CLI installs using internal API keys
+
+We now fully understand where users drop off, and why. Plus we can follow how this improves over new iterations of the onboarding page ⚡
+
+![Analytics Dashboard](/Blog/Update6-Roundup1.png)
+
+---
+
+## 7. Rust-Based Tracer Installer: Merged & Live!
+
+Big milestone on two fronts for the new **Rust-based Tracer installer,** shout out to **David**!
+
+✅ **Live on Sandbox Onboarding**: The installer is also fully deployed on the sandbox onboarding page, featuring environment detection, root/dependency validation, binary handling, and analytics events (`INSTALL_SCRIPT_STARTED` / `COMPLETED`).
+
+✅ **Merged into `main`**: The new Rust binary installer is now part of the codebase. This brings more reliable installs, easier debugging, and fewer setup issues. Minor validation is ongoing (e.g. `sudo` on macOS), with `chmod` improvements coming soon.
+
+Together, these updates mark a major leap in how Tracer is installed. Smoother for users, better for the team.
+
+---
+
+## 8. New Tool on the Website: Reverse Complement Generator
+
+**Portia** built and shipped a sleek new tool for bioinformaticians on our site!
+
+👉 [Reverse Complement Generator](https://www.tracer.bio/tools/reverse-complement)
+
+Paste any DNA sequence, and get the reverse, complement, or reverse complement in one click.
+It's clean, fast, and surprisingly fun to use.
+
+<VideoPlayer src="/Blog/R-C-Generator-video.mp4" />
+
+---
+
+To end our week in style, **Laura & Vincent** treated the team to dinner and drinks on the rooftop! A glass of prosecco anyone? 🥂
+
+This was also the perfect way to say goodbye to our spring intern (me)!
+
+That's a wrap for now! We'll speak to you after 2 weeks for our next update!
+
+Can't wait to see what we'll have in store for you then!
+
+— Isolde

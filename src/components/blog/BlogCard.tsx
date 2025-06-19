@@ -28,10 +28,14 @@ export default function BlogCard({
       ? author
       : [];
 
-  // Smart routing logic for Kenya hackathon
+  // Smart routing logic for directories and posts
   const getCardLink = () => {
     if (slug === 'kenya-hackathon') {
       return '/resources/kenyahackathonoverview';
+    }
+
+    if (slug === 'biweekly-roundups') {
+      return '/resources/biweeklyroundupsoverview';
     }
 
     // Check if this is a Kenya day post that might not have content yet
@@ -42,6 +46,17 @@ export default function BlogCard({
         'kenya-day-two',
         'kenya-day-three',
         'kenya-day-four'
+        // Add more as they're created
+      ];
+      const hasContent = mdxSlugs.includes(slug);
+      return hasContent ? `/resources/${slug}` : '/coming-soon';
+    }
+
+    // Check if this is a bi-weekly roundup post that might not have content yet
+    const biweeklyMatch = slug.match(/^biweekly-roundup-(\d+)$/);
+    if (biweeklyMatch) {
+      const mdxSlugs = [
+        'biweekly-roundup-1'
         // Add more as they're created
       ];
       const hasContent = mdxSlugs.includes(slug);
@@ -78,6 +93,12 @@ export default function BlogCard({
             <div className="mt-auto">
               <div className="font-chakra-petch text-xs sm:text-sm font-normal uppercase leading-[19px] text-[#202020] hover:text-[#404040] transition-colors">
                 FOLLOW THE JOURNEY →
+              </div>
+            </div>
+          ) : slug === 'biweekly-roundups' ? (
+            <div className="mt-auto">
+              <div className="font-chakra-petch text-xs sm:text-sm font-normal uppercase leading-[19px] text-[#202020] hover:text-[#404040] transition-colors">
+                SEE ALL TRACER UPDATES →
               </div>
             </div>
           ) : authors.length > 0 ? (
