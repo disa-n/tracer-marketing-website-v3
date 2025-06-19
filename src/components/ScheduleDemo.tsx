@@ -93,22 +93,47 @@ export default function ScheduleDemoPage() {
 
   // ✅ Updated: submit to demo_enquiries (no quotes needed)
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const { name, email, jobTitle } = formData;
+  const { name, email, jobTitle } = formData;
 
-    const { error } = await supabase
-      .from('demo_enquiries')
-      .insert([{ name, email, job_title: jobTitle }]);
+  // 1. Save to Supabase
+  const { error } = await supabase
+    .from('demo_enquiries')
+    .insert([{ name, email, job_title: jobTitle }]);
 
-    if (error) {
-      console.error('Supabase insert error:', error.message);
-      return;
-    }
+  if (error) {
+    console.error('Supabase insert error:', error.message);
+    return;
+  }
 
-    setFormData({ name: '', email: '', jobTitle: '' });
-    alert('Thanks! We’ve received your enquiry.');
-  };
+  // 2. Call Supabase Edge Function to send email
+ try {
+  const response = await fetch('https://onvjbefrerpcecjbmipw.supabase.co/functions/v1/sendConfirmationEmail', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+       'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9udmpiZWZyZXJwY2VjamJtaXB3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkyMTY3ODksImV4cCI6MjA2NDc5Mjc4OX0._hO_UZc2d8MDTv-ksndlLOMfAE5flc-3docFuVYyw-g',
+    },
+    body: JSON.stringify({
+      email,
+      name,
+      jobTitle,
+    }),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error('Edge Function error:', response.status, errorText);
+  }
+} catch (err) {
+  console.error('Fetch failed:', err);
+}
+
+  // 3. Clear form and show alert
+  setFormData({ name: '', email: '', jobTitle: '' });
+  alert('Thanks! We’ve received your enquiry.');
+};
 
   return (
     <div className="flex min-h-screen w-full flex-col lg:flex-row bg-white relative">
