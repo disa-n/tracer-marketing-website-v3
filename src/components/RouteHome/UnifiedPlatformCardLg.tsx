@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { unifiedCardDataLg } from "./data/unifiedPlatformData";
 import Image from "next/image";
 import { useState, useEffect } from 'react';
@@ -32,7 +32,7 @@ const UnifiedPlatformCardLg = () => {
   }, []);
 
   // Animation variants for staggered fade-in from left (desktop only)
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: {},
     visible: {
       transition: {
@@ -41,7 +41,7 @@ const UnifiedPlatformCardLg = () => {
     }
   };
 
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: {
       opacity: isStackedLayout ? 1 : 0 // No fade-in animation in mobile
     },
@@ -49,12 +49,12 @@ const UnifiedPlatformCardLg = () => {
       opacity: 1,
       transition: {
         duration: isStackedLayout ? 0 : 0.8, // No animation duration in mobile
-        ease: [0.6, 0, 0.38, 1]
+        ease: "easeOut"
       }
     }
   };
 
-  const lineVariants = {
+  const lineVariants: Variants = {
     hidden: {
       opacity: isStackedLayout ? 1 : 0, // No fade-in animation in mobile
       scale: isStackedLayout ? 1 : 0.8 // No scale animation in mobile
@@ -64,13 +64,13 @@ const UnifiedPlatformCardLg = () => {
       scale: 1,
       transition: {
         duration: isStackedLayout ? 0 : 0.6, // No animation duration in mobile
-        ease: [0.6, 0, 0.38, 1],
+        ease: "easeOut",
         delay: isStackedLayout ? 0 : 0.2 // No delay in mobile
       }
     }
   };
 
-  const backgroundImageVariants = {
+  const backgroundImageVariants: Variants = {
     hidden: {
       opacity: isStackedLayout ? 1 : 0, // No fade-in animation in mobile
       y: isStackedLayout ? 0 : 60 // No slide animation in mobile
@@ -80,7 +80,7 @@ const UnifiedPlatformCardLg = () => {
       y: 0,
       transition: {
         duration: isStackedLayout ? 0 : 1.2, // No animation duration in mobile
-        ease: [0.6, 0, 0.38, 1],
+        ease: "easeOut",
         delay: isStackedLayout ? 0 : 1.0 // No delay in mobile
       }
     }

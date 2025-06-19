@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { GridLines3Dark } from '@/components/shared/GridLines'
 import { Copy } from 'lucide-react'
-import { motion, useAnimation, useInView } from 'framer-motion'
+import { motion, useAnimation, useInView, type Variants } from 'framer-motion'
 
 const OneLineImplementation = () => {
   const sectionRef = useRef(null)
@@ -23,16 +23,15 @@ const OneLineImplementation = () => {
     }
   }, [isInView, armControls])
 
-  const armVariants = {
+  const armVariants: Variants = {
     initial: {
       rotate: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
+      transition: { duration: 0.8 }
     },
     swing: {
       rotate: [0, 10, -5, 5, 0],
       transition: {
         duration: 2.5,
-        ease: "easeInOut",
         times: [0, 0.3, 0.6, 0.8, 1]
       }
     }
@@ -114,7 +113,7 @@ const OneLineImplementation = () => {
                     <span className="text-orange-400"> | </span>
                     <span className="text-yellow-400">TRACER_USER_ID</span>
                     <span className="text-orange-400">=</span>
-                    <span className="text-[#888888]">"API-KEY"</span>
+                    <span className="text-[#888888]">&quot;API-KEY&quot;</span>
                     <span className="text-[#888888]"> bash -s </span>
                     <span className="text-orange-400">&&</span>
                     <span className="text-blue-400"> source</span>

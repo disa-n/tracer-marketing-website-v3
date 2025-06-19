@@ -140,7 +140,7 @@ const ProductFeaturesDeepDive = () => {
           <div className="mb-12 lg:mb-16">
             <h2 className="font-britti-sans text-[48px] font-normal leading-[52px] tracking-[-0.01em] text-black mb-6">
               Explore The Power Behind<br />
-              Tracer's Observability Layers
+              Tracer&apos;s Observability Layers
             </h2>
             <p className="font-britti-sans text-[16px] font-normal leading-[20px] text-[#888888] max-w-2xl">
               Get a closer look at the core features powering real-time observability, cost tracking, and smarter pipeline decisions.

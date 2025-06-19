@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
-import { motion, useAnimation, useInView } from 'framer-motion'
+import { motion, useAnimation, useInView, type Variants } from 'framer-motion'
 
 const Approach = () => {
     // State for responsive behavior based on 50% screen width
@@ -40,7 +40,7 @@ const Approach = () => {
     const containerControls = useAnimation()
 
     // Animation variants for staggered slide-up effect from left to right - disabled in mobile view
-    const containerVariants = {
+    const containerVariants: Variants = {
         hidden: {
             transition: {
                 staggerChildren: isMobileView ? 0 : 0.3, // No stagger in mobile view
@@ -53,7 +53,7 @@ const Approach = () => {
         }
     }
 
-    const cardVariants = {
+    const cardVariants: Variants = {
         hidden: {
             y: isMobileView ? 0 : 150, // No slide animation in mobile view
             opacity: isMobileView ? 1 : 0, // No fade animation in mobile view
@@ -62,7 +62,7 @@ const Approach = () => {
             y: 0,
             opacity: 1,
             transition: {
-                y: { duration: isMobileView ? 0 : 0.8, ease: [0.6, 0, 0.38, 1] }, // No duration in mobile view
+                y: { duration: isMobileView ? 0 : 0.8, ease: "easeOut" }, // No duration in mobile view
                 opacity: { duration: isMobileView ? 0 : 1.2, ease: "easeOut" } // No duration in mobile view
             }
         }

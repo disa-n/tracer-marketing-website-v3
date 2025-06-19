@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
-import { motion, useAnimation, useInView } from 'framer-motion'
+import { motion, useAnimation, useInView, type Variants } from 'framer-motion'
 
 // Individual Card component with its own scroll detection
 const AnimatedCard = ({
@@ -53,7 +53,7 @@ const AnimatedCard = ({
     })
 
     // Card animation variants with smoother, longer animation (no fade) - disabled in mobile view
-    const cardVariants = {
+    const cardVariants: Variants = {
         hidden: {
             y: isMobileView ? 0 : 60, // No slide animation in mobile view
             scale: isMobileView ? 1 : 0.95 // No scale animation in mobile view
@@ -64,10 +64,7 @@ const AnimatedCard = ({
             transition: {
                 duration: isMobileView ? 0 : 0.8, // No duration in mobile view
                 delay: isMobileView ? 0 : delay, // No delay in mobile view
-                ease: [0.25, 0.1, 0.25, 1],
-                type: "spring",
-                stiffness: 100,
-                damping: 15
+                ease: "easeInOut"
             }
         }
     }
@@ -123,7 +120,7 @@ const GainVisibility = () => {
     const rectangle2Controls = useAnimation()
 
     // Animation variants for subtle slide-up effect
-    const textVariants = {
+    const textVariants: Variants = {
         hidden: {
             y: 30, // Shorter distance than other animations
             opacity: 0.8
@@ -133,19 +130,19 @@ const GainVisibility = () => {
             opacity: 1,
             transition: {
                 duration: 0.6, // Faster than other animations
-                ease: [0.6, 0, 0.38, 1]
+                ease: "easeOut"
             }
         }
     }
 
     // Animation variants for bottom visual container (no movement)
-    const bottomVisualVariants = {
+    const bottomVisualVariants: Variants = {
         hidden: {},
         visible: {}
     }
 
     // Animation variants for bottom image (slide from left to final position)
-    const bottomImageVariants = {
+    const bottomImageVariants: Variants = {
         hidden: {
             x: -30 // Start 30px to the left
         },
@@ -153,14 +150,14 @@ const GainVisibility = () => {
             x: 0, // End at original position
             transition: {
                 duration: 0.8,
-                ease: [0.6, 0, 0.38, 1],
+                ease: "easeOut",
                 delay: 0.2
             }
         }
     }
 
     // Animation variants for rectangles (width shrinking)
-    const rectangleVariants = {
+    const rectangleVariants: Variants = {
         hidden: {
             width: "var(--start-width)", // Start at larger width
             transformOrigin: "right" // Shrink from the right side
@@ -169,7 +166,7 @@ const GainVisibility = () => {
             width: "var(--final-width)", // Shrink to final smaller width
             transition: {
                 duration: 1.0,
-                ease: [0.6, 0, 0.38, 1],
+                ease: "easeOut",
                 delay: 0.4
             }
         }

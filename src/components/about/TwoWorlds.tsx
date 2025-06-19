@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
-import { motion, useAnimation, useInView } from 'framer-motion'
+import { motion, useAnimation, useInView, type Variants } from 'framer-motion'
 
 function TwoWorlds() {
   // State for responsive behavior based on 50% screen width
@@ -55,7 +55,7 @@ function TwoWorlds() {
   })
 
   // Animation variants for title (fade-in + slide up) - desktop only
-  const titleVariants = {
+  const titleVariants: Variants = {
     hidden: {
       opacity: isMobileView ? 1 : 0, // No fade-in animation in mobile
       y: isMobileView ? 0 : 60 // No slide animation in mobile
@@ -65,13 +65,13 @@ function TwoWorlds() {
       y: 0,
       transition: {
         duration: isMobileView ? 0 : 0.8, // No animation duration in mobile
-        ease: [0.25, 0.1, 0.25, 1]
+        ease: "easeInOut"
       }
     }
   }
 
   // Animation variants for image (slide up, no fade) - desktop only
-  const imageVariants = {
+  const imageVariants: Variants = {
     hidden: {
       y: isMobileView ? 0 : 100, // No slide animation in mobile
       opacity: isMobileView ? 1 : 1 // Always visible on mobile
@@ -81,13 +81,13 @@ function TwoWorlds() {
       opacity: 1,
       transition: {
         duration: isMobileView ? 0 : 0.8, // No animation duration in mobile
-        ease: [0.6, 0, 0.38, 1]
+        ease: "easeOut"
       }
     }
   }
 
   // Animation variants for rectangle 1 (start slightly longer, shorten into position) - desktop only
-  const rectangle1Variants = {
+  const rectangle1Variants: Variants = {
     hidden: {
       width: isMobileView ? 458 : 520 // Start at final size in mobile
     },
@@ -95,13 +95,13 @@ function TwoWorlds() {
       width: 458, // Shrink to final size
       transition: {
         duration: isMobileView ? 0 : 0.8, // No animation duration in mobile
-        ease: [0.6, 0, 0.38, 1]
+        ease: "easeOut"
       }
     }
   }
 
   // Animation variants for rectangle 2 (start slightly longer, shorten into position) - desktop only
-  const rectangle2Variants = {
+  const rectangle2Variants: Variants = {
     hidden: {
       width: isMobileView ? 529 : 600 // Start at final size in mobile
     },
@@ -109,7 +109,7 @@ function TwoWorlds() {
       width: 529, // Shrink to final size
       transition: {
         duration: isMobileView ? 0 : 0.8, // No animation duration in mobile
-        ease: [0.6, 0, 0.38, 1]
+        ease: "easeOut"
       }
     }
   }

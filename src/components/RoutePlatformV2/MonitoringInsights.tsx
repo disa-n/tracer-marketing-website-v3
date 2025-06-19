@@ -1,31 +1,9 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react'
-import { motion, useAnimation, useInView } from 'framer-motion'
+import React, { useEffect, useRef } from 'react'
+import { motion, useAnimation, useInView, type Variants } from 'framer-motion'
 import Image from 'next/image'
 
 const MonitoringInsights = () => {
-    // State for responsive behavior based on 50% screen width
-    const [isMobileView, setIsMobileView] = useState(false)
-
-    // Effect to handle window resize and determine if animations should be disabled
-    useEffect(() => {
-        const handleResize = () => {
-            const width = window.innerWidth
-            // Disable animations on mobile devices (width <= 768px) or when window is 50% or less of screen width
-            const isMobileDevice = width <= 768;
-            const isNarrowWindow = width <= (window.screen.width * 0.5);
-            setIsMobileView(isMobileDevice || isNarrowWindow)
-        }
-
-        // Set initial values
-        handleResize()
-
-        // Add event listener
-        window.addEventListener('resize', handleResize)
-
-        // Cleanup
-        return () => window.removeEventListener('resize', handleResize)
-    }, [])
 
     // Refs for monitoring section
     const monitoringRef = useRef(null)
@@ -80,30 +58,30 @@ const MonitoringInsights = () => {
     }, [monitoringInView, scrollDirection, hasImageAnimated, monitoringImageControls, monitoringTextControls])
 
     // Animation variants for monitoring section
-    const monitoringImageVariants = {
+    const monitoringImageVariants: Variants = {
         hidden: {
             scaleY: 0,
             transition: {
                 duration: 0.9,
-                ease: [0.25, 0.1, 0.25, 1]
+                ease: "easeInOut"
             }
         },
         visible: {
             scaleY: 1,
             transition: {
                 duration: 0.9,
-                ease: [0.25, 0.1, 0.25, 1]
+                ease: "easeInOut"
             }
         }
     }
 
-    const labelVariants = {
+    const labelVariants: Variants = {
         hidden: {
             opacity: 0,
             y: 20,
             transition: {
                 duration: 0.6,
-                ease: [0.25, 0.1, 0.25, 1]
+                ease: "easeInOut"
             }
         },
         visible: {
@@ -111,7 +89,7 @@ const MonitoringInsights = () => {
             y: 0,
             transition: {
                 duration: 0.6,
-                ease: [0.25, 0.1, 0.25, 1],
+                ease: "easeInOut",
                 delay: 0.3
             }
         }

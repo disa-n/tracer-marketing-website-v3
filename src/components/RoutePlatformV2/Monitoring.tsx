@@ -1,7 +1,7 @@
 'use client'
 
 import Image from "next/image"
-import { motion, useAnimation, useInView } from 'framer-motion'
+import { motion, useAnimation, useInView, type Variants } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { useDemo } from '../ScheduleDemo'
 
@@ -84,7 +84,7 @@ const Monitoring = () => {
 
     // Animation variants for staggered slide-up effect with slower transitions
     // Completely disabled on mobile screens
-    const containerVariants = {
+    const containerVariants: Variants = {
         hidden: {
             transition: {
                 staggerChildren: isSmallScreen ? 0 : 0.5, // No stagger on small screens
@@ -99,43 +99,43 @@ const Monitoring = () => {
     }
 
     // First card has no animation (stays in place as reference point)
-    const firstCardVariants = {
+    const firstCardVariants: Variants = {
         hidden: {},
         visible: {}
     }
 
     // Second card slides up into place - completely disabled on mobile screens
-    const secondCardVariants = {
+    const secondCardVariants: Variants = {
         hidden: {
             y: isSmallScreen ? 0 : 250, // No animation on mobile screens
             transition: {
                 duration: isSmallScreen ? 0 : 1.5, // No duration on mobile screens
-                ease: [0.6, 0, 0.38, 1]
+                ease: "easeOut"
             }
         },
         visible: {
             y: 0, // Final aligned position
             transition: {
                 duration: isSmallScreen ? 0 : 1.5, // No duration on mobile screens
-                ease: [0.6, 0, 0.38, 1]
+                ease: "easeOut"
             }
         }
     }
 
     // Third card slides up into place - completely disabled on mobile screens
-    const thirdCardVariants = {
+    const thirdCardVariants: Variants = {
         hidden: {
             y: isSmallScreen ? 0 : 500, // No animation on mobile screens
             transition: {
                 duration: isSmallScreen ? 0 : 1.5, // No duration on mobile screens
-                ease: [0.6, 0, 0.38, 1]
+                ease: "easeOut"
             }
         },
         visible: {
             y: 0, // Final aligned position
             transition: {
                 duration: isSmallScreen ? 0 : 1.5, // No duration on mobile screens
-                ease: [0.6, 0, 0.38, 1]
+                ease: "easeOut"
             }
         }
     }

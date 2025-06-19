@@ -1,11 +1,11 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { unifiedPlatformData } from "./data/unifiedPlatformData";
 
 const UnifiedPlatformCard = () => {
   // Animation variants for staggered fade-in from left
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: {},
     visible: {
       transition: {
@@ -14,7 +14,7 @@ const UnifiedPlatformCard = () => {
     }
   };
 
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: {
       opacity: 0
     },
@@ -22,7 +22,7 @@ const UnifiedPlatformCard = () => {
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: [0.6, 0, 0.38, 1]
+        ease: "easeOut"
       }
     }
   };
