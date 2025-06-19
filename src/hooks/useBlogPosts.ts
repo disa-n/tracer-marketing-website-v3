@@ -14,8 +14,13 @@ export type BlogPost = {
   };
 };
 
+export type BlogData = {
+  directories: BlogPost[];
+  posts: BlogPost[];
+};
+
 export function useBlogPosts() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [data, setData] = useState<BlogData>({ directories: [], posts: [] });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -24,13 +29,16 @@ export function useBlogPosts() {
       try {
         const blogPosts = await getBlogPostsForClient();
         
-        // Create the Kenya Hackathon post
+        // Create directory posts
         const kenyaHackathonPost: BlogPost = BLOG_CONFIG.kenyaHackathonPost;
+        const biweeklyRoundupsPost: BlogPost = BLOG_CONFIG.biweeklyRoundupsPost;
 
-        // Filter to only show specific posts (Kenya days 1-4)
-        const allowedSlugs = BLOG_CONFIG.allowedSlugs;
-        const filteredPosts = blogPosts.filter(post => 
-          allowedSlugs.includes(post.slug) && post.slug !== 'kenya-hackathon'
+        // Filter to only show specific posts (Kenya days 1-4 and bi-weekly roundups)
+        const allowedSlugs = [...BLOG_CONFIG.allowedSlugs, ...(BLOG_CONFIG.allowedBiweeklySlugs || [])];
+        const filteredPosts = blogPosts.filter(post =>
+          allowedSlugs.includes(post.slug) &&
+          post.slug !== 'kenya-hackathon' &&
+          post.slug !== 'biweekly-roundups'
         );
         
         // Format dates to ensure consistent style (date, month, year)
@@ -80,13 +88,14 @@ export function useBlogPosts() {
           };
         });
         
-        // Sort filtered posts by date (oldest to newest)
-        formattedPosts.sort((a, b) => new Date(a.metadata.date).getTime() - new Date(b.metadata.date).getTime());
-        
-        // Combine with Kenya Hackathon post first
-        const allPosts = [kenyaHackathonPost, ...formattedPosts];
-        
-        setPosts(allPosts);
+        // Sort filtered posts by date (newest to oldest for individual posts)
+        formattedPosts.sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime());
+
+        // Separate directories and individual posts
+        const directories = [biweeklyRoundupsPost, kenyaHackathonPost]; // Newest first
+        const posts = formattedPosts;
+
+        setData({ directories, posts });
       } catch (err) {
         console.error('Error loading blog posts:', err);
         setError('Failed to load blog posts');
@@ -98,5 +107,5 @@ export function useBlogPosts() {
     loadPosts();
   }, []);
 
-  return { posts, loading, error };
+  return { data, loading, error };
 }

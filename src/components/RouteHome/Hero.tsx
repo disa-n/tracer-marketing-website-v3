@@ -21,12 +21,17 @@ const imageVariant: Variants = {
 
 export default function HeroSection() {
   const [animate, setAnimate] = useState(false);
-  const [refreshKey, setRefreshKey] = useState(Date.now());
-  const [windowWidth, setWindowWidth] = useState(0);
+  const [refreshKey, setRefreshKey] = useState(0);
+
+  const [shouldShowGridlines, setShouldShowGridlines] = useState(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
     setAnimate(true);
+
+
+    // Check window size after hydration
+    setShouldShowGridlines(window.innerWidth > 768);
 
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'visible') {
@@ -36,24 +41,20 @@ export default function HeroSection() {
       }
     };
 
+    const handleResize = () => {
+      setShouldShowGridlines(window.innerWidth > 768);
+    };
+
     document.addEventListener('visibilitychange', handleVisibilityChange);
     window.addEventListener('beforeunload', () => setAnimate(false));
+    window.addEventListener('resize', handleResize);
 
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('beforeunload', () => {});
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const shouldShowGridlines = windowWidth > 768;
 
   return (
     <section key={refreshKey} className="h-[640px] lg:h-[800px] text-white" style={{ backgroundColor: '#202020' }}>

@@ -40,7 +40,7 @@
 
 'use client';
 
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient'; // ✅ Supabase client import
@@ -58,10 +58,20 @@ interface DemoContextType {
 const DemoContext = createContext<DemoContextType | undefined>(undefined);
 
 export function DemoModalProvider({ children }: { children: ReactNode }) {
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
 
+  // Ensure this only runs on the client
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const value = {
-    openDemo: () => router.push('/demo')
+    openDemo: () => {
+      if (mounted) {
+        router.push('/demo');
+      }
+    }
   };
 
   return (

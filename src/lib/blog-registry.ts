@@ -40,6 +40,7 @@ const MDX_BLOG_POSTS = [
   'kenya-day-two',
   'kenya-day-three',
   'kenya-day-four',
+  'biweekly-roundup-1',
 ] as const;
 
 // Type for MDX blog post slugs
@@ -160,7 +161,7 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
     title: 'Hackathon Day Two: Tuesday, June 3rd',
     date: '03 Jun 2025',
     description: 'Kenya Day Two: Tracer runs natively on Mac ARM, the blog goes live, and we\'re learning why having the right foundation matters.',
-    author: 'Team Tracer',
+    author: 'Paul',
     tag: 'blog',
     readTime: '8 min read',
     ogImage: '/Blog/day2-tracer-working.webp',
@@ -171,7 +172,7 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
     title: 'Hackathon Day Three: Wednesday, June 4th',
     date: '04 Jun 2025',
     description: 'Kenya Day Three: A well-earned break, a tour through Nairobi\'s rich history, and rooftop views before diving back into build mode.',
-    author: 'Team Tracer',
+    author: 'Paul',
     tag: 'blog',
     readTime: '5 min read',
     ogImage: '/Blog/day3-tracer-rooftop.webp',
@@ -182,10 +183,21 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
     title: 'Hackathon Day Four: Thursday, June 5th',
     date: '05 Jun 2025',
     description: 'Tracer\'s beta launch is nearly here - today we shipped onboarding, fallback tracing, branch-based installs, and better OOM insights.',
-    author: 'Team Tracer',
+    author: 'Isolde',
     tag: 'blog',
     readTime: '7 min read',
     ogImage: '/Blog/day4-tracer-hardwork.webp',
+    template: 'default'
+  },
+  'biweekly-roundup-1': {
+    slug: 'biweekly-roundup-1',
+    title: 'Roundup #1',
+    date: 'June 20, 2025',
+    description: 'Our first bi-weekly roundup covering product updates, team milestones, and technical insights from the Tracer team.',
+    author: 'Isolde',
+    tag: 'blog',
+    readTime: '4 min read',
+    ogImage: '/Blog/Header-Roundup1.jpeg',
     template: 'default'
   },
 };

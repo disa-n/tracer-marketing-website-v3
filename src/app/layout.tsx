@@ -30,11 +30,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const bodyClasses = [
+    geistSans.variable,
+    geistMono.variable,
+    chakra_petch.variable,
+    'antialiased',
+    'min-h-screen'
+  ].join(' ');
+
   return (
-    <html lang="en" className="dark">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${chakra_petch.variable} antialiased min-h-screen`}
-      >
+    <html lang="en">
+      <body className={bodyClasses}>
         <DemoModalProvider>
           <Header />
           {children}
