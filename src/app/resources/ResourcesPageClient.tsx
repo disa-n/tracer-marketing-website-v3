@@ -149,12 +149,12 @@ export default function ResourcesPageClient() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
                         </svg>
                       )}
-                      <span className="text-sm text-gray-600">{resource.type.charAt(0).toUpperCase() + resource.type.slice(1)}</span>
+                      <span className="text-sm text-[#888888]">{resource.type.charAt(0).toUpperCase() + resource.type.slice(1)}</span>
                     </div>
                     <span className="text-gray-500 text-sm ml-auto">{resource.date}</span>
                   </div>
                   <h2 className="text-xl font-semibold mb-2">{resource.title}</h2>
-                  <p className="text-gray-600 mb-4 flex-1">{resource.description}</p>
+                  <p className="text-[#888888] mb-4 flex-1">{resource.description}</p>
                   <div className="mt-auto">
                     <span className="inline-flex items-center text-blue-600 font-medium">
                       Access Resource

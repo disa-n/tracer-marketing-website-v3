@@ -5,8 +5,7 @@ import './HeroSection.css'
 function HeroSection() {
   const title = (
     <>
-      Extraordinary HPC Performance <br className='hidden xl:flex' />
-      For Extraordinary Science
+      HPC Performance For Groundbreaking Science
     </>
   )
 

@@ -13,8 +13,7 @@ export default function HeroSectionV2() {
           <div className="relative z-20 flex flex-col justify-center pt-24 pb-16 sm:py-20 lg:py-24 xl:py-32 order-2 lg:order-1">
 
             {/* Main Heading */}
-            <h1 className="font-chakra-petch text-[#FCFCFC] leading-[0.9] mb-4 sm:mb-6 lg:mb-8
-                           text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-7xl 2xl:text-[90px]">
+            <h1 className="font-chakra-petch text-[48px] !font-[400] leading-[0.9] tracking-tighter text-[#FCFCFC] sm:text-[70px] 1100:text-[80px] 1300:text-[104px] mb-4 sm:mb-6 lg:mb-8">
               <span className="lg:whitespace-nowrap">The First Pipeline</span><br className="hidden lg:block" />{" "}
               <span className="lg:whitespace-nowrap">Monitoring System</span>
             </h1>
@@ -48,7 +47,7 @@ export default function HeroSectionV2() {
               </a>
 
               <a
-                href="/platform"
+                href="/product"
                 className="w-full sm:w-[200px] inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4
                            bg-[#626161] text-[#FCFCFC] font-medium
                            hover:bg-gray-500 transition-colors duration-200

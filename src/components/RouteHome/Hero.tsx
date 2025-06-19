@@ -106,7 +106,7 @@ export default function HeroSection() {
               Start For Free
             </a>
             <a
-              href="/platform"
+              href="/product"
               className="px-6 py-3 bg-black text-white font-medium hover:bg-gray-900 transition-colors text-sm md:text-base flex items-center justify-center gap-2"
             >
               Learn More

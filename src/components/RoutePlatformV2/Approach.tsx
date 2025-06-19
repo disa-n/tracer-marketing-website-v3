@@ -1,0 +1,144 @@
+'use client'
+
+import Image from 'next/image'
+import React, { useEffect, useRef, useState } from 'react'
+import { motion, useAnimation, useInView } from 'framer-motion'
+import { GridLines3 } from '@/components/shared/GridLines'
+
+const Approach = () => {
+    // State for responsive behavior based on 50% screen width
+    const [isMobileView, setIsMobileView] = useState(false)
+
+    // Effect to handle window resize and determine if animations should be disabled
+    useEffect(() => {
+        const handleResize = () => {
+            const width = window.innerWidth
+            // Disable animations on mobile devices (width <= 768px) or when window is 50% or less of screen width
+            const isMobileDevice = width <= 768;
+            const isNarrowWindow = width <= (window.screen.width * 0.5);
+            setIsMobileView(isMobileDevice || isNarrowWindow)
+        }
+
+        // Set initial values
+        handleResize()
+
+        // Add event listener
+        window.addEventListener('resize', handleResize)
+
+        // Cleanup
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
+
+    // Refs and controls for scroll-based animation
+    const containerRef = useRef(null)
+
+    // Detect when cards come into view
+    const cardsVisible = useInView(containerRef, {
+        amount: 0.2, // Trigger when 20% visible (same as original)
+        margin: "0px 0px 0px 0px"
+    })
+
+    const containerControls = useAnimation()
+
+    // Animation variants for staggered slide-up effect from left to right - disabled in mobile view
+    const containerVariants = {
+        hidden: {
+            transition: {
+                staggerChildren: isMobileView ? 0 : 0.3, // No stagger in mobile view
+            }
+        },
+        visible: {
+            transition: {
+                staggerChildren: isMobileView ? 0 : 0.3, // No stagger in mobile view
+            }
+        }
+    }
+
+    const cardVariants = {
+        hidden: {
+            y: isMobileView ? 0 : 150, // No slide animation in mobile view
+            opacity: isMobileView ? 1 : 0, // No fade animation in mobile view
+        },
+        visible: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                y: { duration: isMobileView ? 0 : 0.8, ease: [0.6, 0, 0.38, 1] }, // No duration in mobile view
+                opacity: { duration: isMobileView ? 0 : 1.2, ease: "easeOut" } // No duration in mobile view
+            }
+        }
+    }
+
+    // Handle scroll-based animation with reset when out of view
+    useEffect(() => {
+        if (cardsVisible) {
+            containerControls.start("visible")
+        } else {
+            containerControls.start("hidden")
+        }
+    }, [cardsVisible, containerControls])
+
+    return (
+        <div className='bg-white pt-10 pb-4 md:py-[72px] w-full text-black border-t border-[#E8E8E8] flex items-center relative justify-center flex-col'>
+            <GridLines3 />
+            <div className='w-full flex z-[10]  flex-col items-center justify-center max-w-[1800px] 900:px-8 px-6'>
+                <div className='w-full  pb-8 md:pb-12 font-[400] font-britti-sans text-[32px] md:text-[40px] text-[#202020] leading-[0.9]'>
+                    The dawn of AI <br className='sm:hidden ' /> in science <br className='sm:flex hidden' /> requires <br className='sm:hidden ' />a new approach
+                </div>
+                <motion.div
+                    ref={containerRef}
+                    className='grid 900:grid-cols-3 bg-white min-h-[120px] w-full gap-4 md:gap-6'
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate={containerControls}
+                >
+                    <motion.div
+                        className='border border-[#E8E8E8] p-4 flex flex-col gap-4 md:gap-[20px] items-start justify-between'
+                        variants={cardVariants}
+                    >
+                        <Image src={"/platform/icons/setting-icon.svg"} alt='setting-icon' width={65} height={65} className='shrink-0 aspect-square w-full max-w-[40px] sm:max-w-[56px]' />
+                        <div className=''>
+                            <h3 className='text-c-black font-[400] font-britti-sans text-[24px] md:text-[40px] leading-[1.1]'>
+                                New Opportunities
+                            </h3>
+                            <p className='mt-2 text-c-black font-[400] font-britti-sans text-sm md:text-[16px] leading-[1.1]'>
+                                AI’s full potential relies on fast experimentation, achievable only through optimised tooling and precise information
+                            </p>
+                        </div>
+                    </motion.div>
+                    <motion.div
+                        className='border border-[#E8E8E8] p-4 flex flex-col gap-4 md:gap-[20px] items-start justify-between'
+                        variants={cardVariants}
+                    >
+                        <Image src={"/platform/icons/currency-dollar.svg"} alt='currency-dollar' width={65} height={65} className='shrink-0 aspect-square w-full max-w-[40px] sm:max-w-[56px]' />
+                        <div className=''>
+                            <h3 className='text-c-black font-[400] text-[24px] font-britti-sans md:text-[40px] leading-[1.1]'>
+                                New Costs
+                            </h3>
+                            <p className='mt-2 text-c-black font-[400] font-britti-sans text-sm md:text-[16px] leading-[1.1]'>
+                                AI supercomputing costs are skyrocketing, making efficiency crucial to sustain scientific progress
+                            </p>
+                        </div>
+                    </motion.div>
+                    <motion.div
+                        className='border border-[#E8E8E8] p-4 flex flex-col gap-4 md:gap-[20px] items-start justify-between'
+                        variants={cardVariants}
+                    >
+                        <Image src={"/platform/icons/arrows-pointing-out.svg"} alt='arrows-pointing-out' width={65} height={65} className='shrink-0 aspect-square w-full max-w-[40px] sm:max-w-[56px]' />
+                        <div className=''>
+                            <h3 className='text-c-black font-[400] font-britti-sans text-[24px] md:text-[40px] leading-[1.1]'>
+                                New Scale
+                            </h3>
+                            <p className='mt-2 text-c-black font-[400] font-britti-sans text-sm md:text-[16px] leading-[1.1]'>
+                                Computational advancements require managing increasingly complex and dynamic computing architectures
+                            </p>
+                        </div>
+                    </motion.div>
+
+                </motion.div>
+            </div>
+        </div>
+    )
+}
+
+export default Approach

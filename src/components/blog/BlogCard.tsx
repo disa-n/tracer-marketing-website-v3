@@ -73,7 +73,7 @@ export default function BlogCard({
             <span className="font-chakra-petch text-xs sm:text-sm font-normal uppercase leading-[19px] text-[#202020] ml-auto">{date}</span>
           </div>
           <h2 className="font-britti-sans text-lg sm:text-xl font-medium mb-3 sm:mb-4 text-[#202020] hover:text-gray-700 transition-colors leading-tight">{title}</h2>
-          <p className="font-britti-sans text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 flex-1 leading-snug">{description}</p>
+          <p className="font-britti-sans text-sm sm:text-base text-[#888888] mb-4 sm:mb-6 flex-1 leading-snug">{description}</p>
           {slug === 'kenya-hackathon' ? (
             <div className="mt-auto">
               <div className="font-chakra-petch text-xs sm:text-sm font-normal uppercase leading-[19px] text-[#202020] hover:text-[#404040] transition-colors">

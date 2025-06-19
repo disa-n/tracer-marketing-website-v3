@@ -27,8 +27,7 @@ export default function Hero() {
         <div className="relative z-10 flex flex-col justify-center px-4 md:px-8 lg:px-12 pt-8 pb-8 lg:py-20 lg:max-w-[1400px] lg:w-full lg:order-1">
 
           {/* Main Heading */}
-          <h1 className="font-chakra-petch text-[#202020] leading-[0.9] mb-6 lg:mb-8 tracking-tight
-                         text-[56px] sm:text-[64px] md:text-[72px] lg:text-[72px] xl:text-[80px] 2xl:text-[100px]">
+          <h1 className="font-chakra-petch text-[48px] !font-[400] leading-[0.9] tracking-tighter text-[#202020] sm:text-[70px] 1100:text-[80px] 1300:text-[104px] mb-6 lg:mb-8">
             Monitoring Matters<br />More Than Ever
           </h1>
 
