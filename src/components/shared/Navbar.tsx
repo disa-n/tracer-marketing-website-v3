@@ -40,7 +40,7 @@ const NavigationBar = () => {
                         <Link href={"/why-monitoring"} className='hover:text-white/60 transition-all'>
                             Why Monitoring
                         </Link>
-                        <Link href={"/platform"} className='hover:text-white/60 transition-all'>
+                        <Link href={"/product"} className='hover:text-white/60 transition-all'>
                             Product
                         </Link>
                         <Link href={"/technology"} className='hover:text-white/60 transition-all'>
@@ -101,7 +101,7 @@ const NavigationBar = () => {
                             <Link href={"/why-monitoring"} className='font-britti-sans text-xl sm:text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all' onClick={handleNavLinkClick}>
                                 Why Monitoring
                             </Link>
-                            <Link href={"/platform"} className='font-britti-sans text-xl sm:text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all' onClick={handleNavLinkClick}>
+                            <Link href={"/product"} className='font-britti-sans text-xl sm:text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all' onClick={handleNavLinkClick}>
                                 Product
                             </Link>
                             <Link href={"/technology"} className='font-britti-sans text-xl sm:text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all' onClick={handleNavLinkClick}>

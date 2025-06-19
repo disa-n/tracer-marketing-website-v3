@@ -1,11 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { motion, Variants } from 'framer-motion';
+import { motion, Variants, type Transition } from 'framer-motion';
 import Image from 'next/image';
 
 // Animation configuration
-const animationConfig = { delay: 0.001, duration: 1.8, ease: [0.6, 0, 0.38, 1] };
+const animationConfig: Transition = { delay: 0.001, duration: 1.8, ease: "easeOut" };
 
 const headingVariant: Variants = {
   hidden: { x: -50, y: -50 },
@@ -107,7 +107,7 @@ export default function HeroSection() {
               Start For Free
             </a>
             <a
-              href="/platform"
+              href="/product"
               className="px-6 py-3 bg-black text-white font-medium hover:bg-gray-900 transition-colors text-sm md:text-base flex items-center justify-center gap-2"
             >
               Learn More

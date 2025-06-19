@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
-import { motion, useAnimation, useInView } from 'framer-motion'
+import { motion, useAnimation, useInView, type Variants } from 'framer-motion'
 
 function HeroSection() {
   // State for responsive behavior based on 50% screen width
@@ -43,7 +43,7 @@ function HeroSection() {
   })
 
   // Animation variants for text rising up (desktop only)
-  const textVariants = {
+  const textVariants: Variants = {
     hidden: {
       y: isMobileView ? 0 : 60, // No slide animation in mobile
       opacity: isMobileView ? 1 : 0 // No fade-in animation in mobile
@@ -53,7 +53,7 @@ function HeroSection() {
       opacity: 1,
       transition: {
         duration: isMobileView ? 0 : 0.8, // No animation duration in mobile
-        ease: [0.25, 0.1, 0.25, 1]
+        ease: "easeInOut"
       }
     }
   }

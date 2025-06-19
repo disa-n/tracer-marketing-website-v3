@@ -39,7 +39,7 @@ const Footer = () => {
                                     <Link href="/why-monitoring">Why Monitoring</Link>
                                 </li>
                                 <li className="cursor-pointer transition-all hover:opacity-80">
-                                    <Link href="/platform">Platform</Link>
+                                    <Link href="/product">Product</Link>
                                 </li>
                                 <li className="cursor-pointer transition-all hover:opacity-80">
                                     <Link href="/technology">Technology</Link>

@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
-import { motion, useAnimation, useInView } from 'framer-motion'
+import { motion, useAnimation, useInView, type Variants } from 'framer-motion'
 import { GridLinesLight } from '@/components/shared/GridLines'
 
 function WhyWeExist() {
@@ -52,7 +52,7 @@ function WhyWeExist() {
   const textControls = useAnimation()
 
   // Animation variants for cards (rise into place, no fade) - desktop only
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: {
       y: isMobileView ? 0 : 120 // No slide animation in mobile
     },
@@ -60,13 +60,13 @@ function WhyWeExist() {
       y: 0,
       transition: {
         duration: isMobileView ? 0 : 0.8, // No animation duration in mobile
-        ease: [0.25, 0.1, 0.25, 1]
+        ease: "easeInOut"
       }
     }
   }
 
   // Animation variants for second card (staggered) - desktop only
-  const cardVariantsStaggered = {
+  const cardVariantsStaggered: Variants = {
     hidden: {
       y: isMobileView ? 0 : 120 // No slide animation in mobile
     },
@@ -74,14 +74,14 @@ function WhyWeExist() {
       y: 0,
       transition: {
         duration: isMobileView ? 0 : 0.8, // No animation duration in mobile
-        ease: [0.25, 0.1, 0.25, 1],
+        ease: "easeInOut",
         delay: isMobileView ? 0 : 0.2 // No delay in mobile
       }
     }
   }
 
   // Animation variants for moonshot background (rise in place) - desktop only
-  const moonshotVariants = {
+  const moonshotVariants: Variants = {
     hidden: {
       y: isMobileView ? 0 : 40 // No slide animation in mobile
     },
@@ -89,13 +89,13 @@ function WhyWeExist() {
       y: 0,
       transition: {
         duration: isMobileView ? 0 : 1.0, // No animation duration in mobile
-        ease: [0.25, 0.1, 0.25, 1] // Smoother easing curve
+        ease: "easeInOut" // Smoother easing curve
       }
     }
   }
 
   // Animation variants for rectangle (rise with background, then shrink smoothly) - desktop only
-  const rectangleVariants = {
+  const rectangleVariants: Variants = {
     hidden: {
       y: isMobileView ? 0 : 40, // No slide animation in mobile
       width: isMobileView ? "min(400px, 85vw)" : "min(430px, 90vw)", // Start at final size in mobile
@@ -109,16 +109,16 @@ function WhyWeExist() {
       transition: {
         y: {
           duration: isMobileView ? 0 : 1.0, // No animation duration in mobile
-          ease: [0.25, 0.1, 0.25, 1]
+          ease: "easeInOut"
         },
         width: {
           duration: isMobileView ? 0 : 0.6, // No animation duration in mobile
-          ease: [0.25, 0.1, 0.25, 1],
+          ease: "easeInOut",
           delay: isMobileView ? 0 : 0.6 // No delay in mobile
         },
         height: {
           duration: isMobileView ? 0 : 0.6, // No animation duration in mobile
-          ease: [0.25, 0.1, 0.25, 1],
+          ease: "easeInOut",
           delay: isMobileView ? 0 : 0.6 // No delay in mobile
         }
       }
@@ -126,7 +126,7 @@ function WhyWeExist() {
   }
 
   // Animation variants for text elements (slide up from below, staggered after background) - desktop only
-  const textVariants = {
+  const textVariants: Variants = {
     hidden: {
       y: isMobileView ? 0 : 60 // No slide animation in mobile
     },
@@ -134,7 +134,7 @@ function WhyWeExist() {
       y: 0,
       transition: {
         duration: isMobileView ? 0 : 0.8, // No animation duration in mobile
-        ease: [0.25, 0.1, 0.25, 1],
+        ease: "easeInOut",
         delay: isMobileView ? 0 : 0.4 // No delay in mobile
       }
     }
@@ -286,7 +286,7 @@ function WhyWeExist() {
               y: 0,
               transition: {
                 duration: isMobileView ? 0 : 1.2, // No animation duration in mobile
-                ease: [0.25, 0.1, 0.25, 1],
+                ease: "easeInOut",
                 delay: isMobileView ? 0 : 0.6 // No delay in mobile
               }
             }

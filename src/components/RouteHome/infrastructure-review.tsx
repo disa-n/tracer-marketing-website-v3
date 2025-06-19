@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import PrimaryButton from "../ui/PrimaryButton";
 import { infraData, InfraItem } from "./data/infraData";
 import Image from "next/image";
@@ -15,7 +15,7 @@ const InfrastructureReview = () => {
   };
 
   // Animation variant for title fade-in
-  const titleVariants = {
+  const titleVariants: Variants = {
     hidden: {
       opacity: 0
     },
@@ -23,7 +23,7 @@ const InfrastructureReview = () => {
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: [0.6, 0, 0.38, 1]
+        ease: "easeOut"
       }
     }
   };

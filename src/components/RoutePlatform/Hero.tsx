@@ -1,10 +1,10 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
-import { motion, Variants, useInView } from 'framer-motion'
+import { motion, Variants, useInView, type Transition } from 'framer-motion'
 
 // Animation configuration - more visible for testing
-const animationConfig = { delay: 0.1, duration: 2.0, ease: [0.25, 0.1, 0.25, 1] }
+const animationConfig: Transition = { delay: 0.1, duration: 2.0, ease: "easeInOut" }
 
 const Hero = () => {
     const ref = useRef(null)

@@ -32,8 +32,7 @@ export default function Hero() {
           <StyledLayoutWrapper>
 
           {/* Main Heading */}
-          <h1 className="font-chakra-petch text-[#202020] leading-[0.9] mb-6 lg:mb-10 tracking-tight
-                         text-[60px] sm:text-[68px] md:text-[76px] lg:text-[76px] xl:text-[84px] 2xl:text-[104px]">
+          <h1 className="font-chakra-petch text-[48px] !font-[400] leading-[0.9] tracking-tighter text-[#202020] sm:text-[70px] 1100:text-[80px] 1300:text-[104px] mb-6 lg:mb-10">
             {title}
           </h1>
 

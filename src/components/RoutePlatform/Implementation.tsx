@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
-import { motion, useAnimation, useInView } from 'framer-motion'
+import { motion, useAnimation, useInView, type Variants } from 'framer-motion'
 
 const Implementation = () => {
     // State for responsive behavior based on 50% screen width
@@ -103,25 +103,25 @@ const Implementation = () => {
     }, [monitoringInView, scrollDirection, hasImageAnimated, monitoringImageControls, monitoringTextControls])
 
     // Animation variants for text elements (subtle rise, no fade) - disabled in mobile view
-    const textVariants = {
+    const textVariants: Variants = {
         hidden: {
             y: isMobileView ? 0 : 30,
             transition: {
                 duration: isMobileView ? 0 : 0.8,
-                ease: [0.25, 0.1, 0.25, 1]
+                ease: "easeInOut"
             }
         },
         visible: {
             y: 0,
             transition: {
                 duration: isMobileView ? 0 : 0.8,
-                ease: [0.25, 0.1, 0.25, 1],
+                ease: "easeInOut",
                 staggerChildren: isMobileView ? 0 : 0.2
             }
         }
     }
 
-    const textItemVariants = {
+    const textItemVariants: Variants = {
         hidden: {
             y: isMobileView ? 0 : 30
         },
@@ -129,13 +129,13 @@ const Implementation = () => {
             y: 0,
             transition: {
                 duration: isMobileView ? 0 : 0.8,
-                ease: [0.25, 0.1, 0.25, 1]
+                ease: "easeInOut"
             }
         }
     }
 
     // Animation variants for logo grid (staggered left to right) - disabled in mobile view
-    const logoGridVariants = {
+    const logoGridVariants: Variants = {
         hidden: {
             transition: {
                 staggerChildren: isMobileView ? 0 : 0.2, // No stagger in mobile view
@@ -150,55 +150,55 @@ const Implementation = () => {
     }
 
     // Individual logo animation variants with less dramatic starting positions - disabled in mobile view
-    const createLogoVariants = (startY: number) => ({
+    const createLogoVariants = (startY: number): Variants => ({
         hidden: {
             y: isMobileView ? 0 : Math.min(startY * 0.3, 120), // No slide animation in mobile view
             transition: {
                 duration: isMobileView ? 0 : 1.2, // No duration in mobile view
-                ease: [0.25, 0.1, 0.25, 1]
+                ease: "easeInOut"
             }
         },
         visible: {
             y: 0,
             transition: {
                 duration: isMobileView ? 0 : 1.2, // No duration in mobile view
-                ease: [0.25, 0.1, 0.25, 1]
+                ease: "easeInOut"
             }
         }
     })
 
     // Individual monitoring image variants (expand from collapsed state - never reset) - disabled in mobile view
-    const monitoringImageVariants = {
+    const monitoringImageVariants: Variants = {
         hidden: {
             scaleY: isMobileView ? 1 : 0.05, // No scale animation in mobile view
             transition: {
                 duration: isMobileView ? 0 : 0.8, // No duration in mobile view
-                ease: [0.6, 0, 0.38, 1]
+                ease: "easeOut"
             }
         },
         visible: {
             scaleY: 1,
             transition: {
                 duration: isMobileView ? 0 : 0.8, // No duration in mobile view
-                ease: [0.6, 0, 0.38, 1]
+                ease: "easeOut"
             }
         }
     }
 
     // Text label variants (fade in - can reset) - disabled in mobile view
-    const labelVariants = {
+    const labelVariants: Variants = {
         hidden: {
             opacity: isMobileView ? 1 : 0, // No fade animation in mobile view
             transition: {
                 duration: isMobileView ? 0 : 0.6, // No duration in mobile view
-                ease: [0.6, 0, 0.38, 1]
+                ease: "easeOut"
             }
         },
         visible: {
             opacity: 1,
             transition: {
                 duration: isMobileView ? 0 : 0.6, // No duration in mobile view
-                ease: [0.6, 0, 0.38, 1]
+                ease: "easeOut"
             }
         }
     }
