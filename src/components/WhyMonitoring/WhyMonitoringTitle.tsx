@@ -4,7 +4,7 @@ import { GridLinesLight } from '@/components/shared/GridLines';
 
 export default function WhyMonitoringTitle() {
   return (
-    <section className="relative bg-[#FCFCFC] pt-20 -pb-10">
+    <section className="relative bg-[#FCFCFC] pt-20 -pb-10 lg:pt-4 xl:pt-4 2xl:pt-2">
       <div className="absolute inset-0 z-0" style={{ top: "0.5px" }}>
         <GridLinesLight />
       </div>
@@ -14,7 +14,7 @@ export default function WhyMonitoringTitle() {
       <div className="relative z-10 flex flex-col lg:flex-row lg:items-start justify-between gap-12">
 
         {/* Left Column - Text Content (aligned with CoreChallengesSection) */}
-        <div className="px-4 md:px-8 lg:px-12 mt-16 xl:mt-20 2xl:mt-40 order-2 lg:order-1">
+        <div className="px-4 md:px-8 lg:px-12 mt-16 lg:mt-36 xl:mt-38 2xl:mt-40 order-2 lg:order-1">
           <div className="max-w-[1400px] w-full">
             {/* Heading */}
             <h2 className="font-britti-sans text-[#202020] font-normal capitalize leading-[1.1] mb-2 tracking-tight
@@ -32,7 +32,7 @@ export default function WhyMonitoringTitle() {
         </div>
 
         {/* Right Column - Image */}
-        <div className="w-full lg:flex-1 flex justify-center lg:justify-end px-4 lg:px-0 xl:px-0 -mt-[31px] lg:-mt-[127px] xl:-mt-[159px] 2xl:-mt-[150px] -mb-8 lg:mb-0 lg:mr-[-150px] xl:mr-[-200px] 2xl:mr-[-150px] order-1 lg:order-2">
+        <div className="w-full lg:flex-1 flex justify-center lg:justify-end px-4 lg:px-0 xl:px-0 -mt-[31px] lg:-mt-[120px] xl:-mt-[170px] 2xl:-mt-[148px] -mb-8 lg:-mb-[60px] xl:-mb-[60px] 2xl:-mb-[80px] lg:mr-[-150px] xl:mr-[-200px] 2xl:mr-[-150px] order-1 lg:order-2 relative z-0">
           <Image
             src="/whymonitoring/T-Layered-Wheel.webp"
             alt="Why monitoring is the solution illustration"
