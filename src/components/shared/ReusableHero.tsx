@@ -8,7 +8,7 @@ import StyledLayoutWrapper from '@/components/shared/StyledLayoutWrapper';
 
 interface ReusableHeroProps {
   title: string | React.ReactNode;
-  subtitle: string;
+  subtitle: string | React.ReactNode;
   showEmailSignup?: boolean;
   imageSrc?: string;
   imageAlt?: string;
