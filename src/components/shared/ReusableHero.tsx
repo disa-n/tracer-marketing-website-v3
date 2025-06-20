@@ -14,9 +14,10 @@ interface ReusableHeroProps {
   imageAlt?: string;
   imageStyle?: 'monitoring' | 'blog';
   className?: string;
+  hideBottomRectangles?: boolean;
 }
 
-export default function ReusableHero({ title, subtitle, showEmailSignup = false, imageSrc, imageAlt, imageStyle = 'monitoring', className = "" }: ReusableHeroProps) {
+export default function ReusableHero({ title, subtitle, showEmailSignup = false, imageSrc, imageAlt, imageStyle = 'monitoring', className = "", hideBottomRectangles = false }: ReusableHeroProps) {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
