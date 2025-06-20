@@ -57,7 +57,7 @@ export default function ReusableHero({ title, subtitle, showEmailSignup = false,
                 </div>
               </div>
             ) : (
-              <div className="hidden lg:block relative flex-shrink-0">
+              <div className="relative flex-shrink-0">
                 <Image
                   src={imageSrc}
                   alt={imageAlt || "Hero image"}
@@ -71,7 +71,7 @@ export default function ReusableHero({ title, subtitle, showEmailSignup = false,
         )}
 
         {/* Text Content Column - Appears second on mobile, left on desktop */}
-        <div className={`relative z-10 flex flex-col justify-center pt-8 pb-8 lg:py-20 lg:max-w-[1400px] lg:w-full lg:order-1 ${className}`}>
+        <div className={`relative z-10 flex flex-col justify-center pt-16 pb-8 lg:pt-20 lg:pb-20 lg:max-w-[1400px] lg:w-full lg:order-1 ${className}`}>
           <StyledLayoutWrapper>
 
           {/* Main Heading */}

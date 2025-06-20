@@ -41,6 +41,7 @@ const MDX_BLOG_POSTS = [
   'kenya-day-three',
   'kenya-day-four',
   'biweekly-roundup-1',
+  'cloud-cost-monitoring',
 ] as const;
 
 // Type for MDX blog post slugs
@@ -198,6 +199,17 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
     tag: 'blog',
     readTime: '4 min read',
     ogImage: '/Blog/Header-Roundup1.jpeg',
+    template: 'default'
+  },
+  'cloud-cost-monitoring': {
+    slug: 'cloud-cost-monitoring',
+    title: 'Cloud cost monitoring in bioinformatics',
+    date: 'June 20, 2025',
+    description: 'Monitoring and understanding costs for scientific workloads running on cloud technology infrastructure such as AWS, remains a persistent challenge that current tools fail to solve.',
+    author: 'Team Tracer',
+    tag: 'article',
+    readTime: '8 min read',
+    ogImage: '/Blog/T-chip.webp',
     template: 'default'
   },
 };

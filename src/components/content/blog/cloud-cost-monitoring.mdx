@@ -1,0 +1,64 @@
+export const metadata = {
+  title: "Cloud cost monitoring in bioinformatics",
+  date: "June 20, 2025",
+  description: "Monitoring and understanding costs for scientific workloads running on cloud technology infrastructure such as AWS, remains a persistent challenge that current tools fail to solve.",
+  author: "Team Tracer",
+  tag: "article",
+  readTime: "8 min read",
+  ogImage: "/Blog/T-chip.webp",
+  template: "default"
+};
+
+# Cloud cost monitoring in bioinformatics
+
+## Available Tools Do Not Provide Cost Visibility
+
+Monitoring and understanding costs for scientific workloads running on cloud technology infrastructure such as AWS, remains a persistent challenge that current tools fail to solve.
+
+> "Monitoring solutions we used before weren't well-engineered, well-architected, or even truly observable."
+
+## Why Available Tools Fall Short
+
+### Surpassed Monthly Spending Limit - May 2025
+
+**AWS Cost Explorer**  
+Shows total monthly spend, but lacks cost breakdowns by environment, team, project, or pipeline.
+
+**AWS Batch Dashboard**  
+Goes one layer deeper with job-level metrics like runtime and resource usage, but does not show costs per job or provide any pipeline-level context.
+
+**CloudWatch**  
+Monitors infrastructure-level metrics like CPU and memory, but lacks metrics specific to scientific workloads like runs, hosts or per-project costs.
+
+**Datadog**  
+Offers broad cost monitoring, but is not built for scientific workloads. Limits analyses to basic spend data without pipeline-level context.
+
+## Current Monitoring Strategies are Unsustainable
+
+### Companies Are Building DIY Cost Monitoring Tools
+
+Because existing tools fail to meet the needs of scientific workloads, many pharma and biotech teams are building in-house cost monitoring solutions using product logs and billing data. While these custom tools can work in theory, they are difficult to set up and even harder to maintain, making them unsustainable in the long run.
+
+> "We tried building a cost tool ourselves, but it didn't work out. It was a huge engineering lift and too much of a burden to own and operate long term."
+
+### Information Is Scattered
+
+Because no single tool is performant enough to stand alone, information is scattered, with logs and metrics spread across different systems. This forces scientists to consolidate information in spreadsheets and estimate pipeline-level costs using fragmented metrics. The entire process is manual, error-prone and incredibly time-consuming.
+
+> "We observe costs by jumping into people's accounts and checking the numbers ourselves, or we don't observe at all. That's the bar right now."
+
+Complicating matters further, organizations often operate across multiple AWS environments. They operate one central environment and several team- or company-specific environments, making it even harder to aggregate or attribute costs.
+
+> "We're running all these different AWS Batch jobs, but how do we bring the costs together into a single overview to actually know what's going on?"
+
+## Learning from Our Own Cloud Waste
+
+We experienced this issue firsthand. In just 48 hours, we unintentionally wasted **$2,000** on AWS due to missing real-time cost monitoring and alerting. An alarming figure that could have scaled up to **$1M dollars** over the full year.
+
+This waste amounted to **45% of our weekly cloud budget**. Facing these challenges firsthand inspired us to build the solution we, and the wider industry, were missing.
+
+Because if it's happening in our cloud, it's likely happening in yours too.
+
+---
+
+*Learn more about how Tracer addresses these cloud cost monitoring challenges for bioinformatics teams. Explore our other resources and documentation for more insights.*
