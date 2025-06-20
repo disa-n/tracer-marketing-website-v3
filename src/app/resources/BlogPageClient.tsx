@@ -109,20 +109,125 @@ export default function BlogPageClient() {
 
   return (
     <main className="w-full">
-      {/* Hero Section */}
-      <ReusableHero
-        title="Resources"
-        subtitle="The latest updates from Tracer. See our changelog for more product updates."
-        showEmailSignup={true}
-        imageSrc="/Blog/T-chip.webp"
-        imageAlt="Blog hero placeholder"
-        imageStyle="blog"
-        className="lg:-mt-16 xl:-mt-20 2xl:-mt-24"
-      />
+      {/* Hero Section - Responsive layout: image on top for mobile, side-by-side for desktop */}
+      <div className="relative overflow-visible min-h-[60vh] max-h-[75vh] pt-16 lg:pt-0 lg:-mt-32 pb-0">
+        <ReusableHero
+          title="Resources"
+          subtitle="The latest updates from Tracer. See our changelog for more product updates."
+          showEmailSignup={true}
+          imageSrc="/Blog/T-chip.webp"
+          imageAlt="Blog hero placeholder"
+          imageStyle="blog"
+          className="
+            [&_img]:!scale-75 [&_img]:md:!scale-80 [&_img]:lg:!scale-85
+            [&>div]:flex-col [&>div]:lg:flex-row
+            [&>div>div:first-child]:order-1 [&>div>div:first-child]:lg:order-2
+            [&>div>div:last-child]:order-2 [&>div>div:last-child]:lg:order-1
+          "
+        />
+      </div>
+
+      {/* Section Navigation - Mobile-first design with staircase on larger screens */}
+      <Section showGridLines={true} padding="none" maxWidth="full" className="relative -mt-4 sm:-mt-6 lg:-mt-8">
+        {/* Staircase background - creates steps going down on the right side only */}
+        <div className="hidden md:block absolute top-0 left-0 w-[35%] md:w-[45%] lg:w-[45%] h-14 bg-[#202020]"></div>
+        <div className="hidden md:block absolute top-14 left-0 w-[55%] md:w-[65%] lg:w-[70%] h-14 bg-[#202020]"></div>
+        <div className="hidden md:block absolute top-28 left-0 w-full h-32 bg-[#202020]"></div>
+        {/* Mobile/tablet full black background */}
+        <div className="lg:hidden w-full h-full bg-[#202020] absolute top-0 left-0 py-8 sm:py-12"></div>
+
+        <div className="relative z-10">
+          <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-12 2xl:px-12 pt-8 sm:pt-12 lg:pt-16">
+            <div className="flex flex-col gap-4 sm:flex-row sm:gap-6 justify-center sm:justify-center lg:justify-start items-center sm:items-center lg:items-start max-w-4xl mx-auto lg:mx-0">
+              {/* Tools Card */}
+              <button
+                onClick={() => {
+                  const toolsSection = document.getElementById('tools-section');
+                  if (toolsSection) {
+                    const yOffset = -120; // Offset to account for navbar height
+                    const y = toolsSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                  }
+                }}
+                className="group w-full sm:w-auto bg-white border border-gray-200 rounded-none p-4 hover:bg-gray-50 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+              >
+                <div className="flex flex-col items-center text-center space-y-2">
+                  {/* Tools Icon */}
+                  <div className="w-8 h-8 flex items-center justify-center">
+                    <svg className="w-6 h-6 text-[#202020]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.5 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-medium text-[#202020] font-chakra-petch">Tools</h3>
+                    <p className="text-xs text-gray-600 mt-1">Explore our toolkit</p>
+                  </div>
+                </div>
+              </button>
+
+              {/* Tracer Blog Card */}
+              <button
+                onClick={() => {
+                  const blogSection = document.getElementById('tracer-blog-section');
+                  if (blogSection) {
+                    const yOffset = -120; // Offset to account for navbar height
+                    const y = blogSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                  }
+                }}
+                className="group w-full sm:w-auto bg-white border border-gray-200 rounded-none p-4 hover:bg-gray-50 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+              >
+                <div className="flex flex-col items-center text-center space-y-2">
+                  {/* Blog Icon */}
+                  <div className="w-8 h-8 flex items-center justify-center">
+                    <svg className="w-6 h-6 text-[#202020]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-medium text-[#202020] font-chakra-petch">Tracer Blog</h3>
+                    <p className="text-xs text-gray-600 mt-1">Latest insights</p>
+                  </div>
+                </div>
+              </button>
+
+              {/* Articles Card */}
+              <button
+                onClick={() => {
+                  const articlesSection = document.getElementById('articles-section');
+                  if (articlesSection) {
+                    const yOffset = -120; // Offset to account for navbar height
+                    const y = articlesSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                  }
+                }}
+                className="group w-full sm:w-auto bg-white border border-gray-200 rounded-none p-4 hover:bg-gray-50 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+              >
+                <div className="flex flex-col items-center text-center space-y-2">
+                  {/* Articles Icon */}
+                  <div className="w-8 h-8 flex items-center justify-center">
+                    <svg className="w-6 h-6 text-[#202020]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-medium text-[#202020] font-chakra-petch">Articles</h3>
+                    <p className="text-xs text-gray-600 mt-1">In-depth content</p>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+
+
 
       {/* Tools Section */}
-      <Section showGridLines={true} padding="none" maxWidth="full" className="pt-24 pb-8">
-        <div className="flex flex-col lg:flex-row">
+      <Section showGridLines={true} padding="none" maxWidth="full" className="pt-60 pb-8">
+        <div className="flex flex-col lg:flex-row" id="tools-section">
           <div className="relative z-10 px-4 md:px-8 lg:px-12 xl:px-12 2xl:px-12 lg:w-full">
             <SectionTitle
               title="Tools"
@@ -148,7 +253,7 @@ export default function BlogPageClient() {
 
       {/* Blog Section */}
       <Section showGridLines={true} padding="none" maxWidth="full" className="pt-24 pb-20">
-        <div className="flex flex-col lg:flex-row">
+        <div className="flex flex-col lg:flex-row" id="tracer-blog-section">
           <div className="relative z-10 px-4 md:px-8 lg:px-12 xl:px-12 2xl:px-12 lg:w-full">
             <SectionTitle
               title="Tracer Blog"
@@ -226,7 +331,7 @@ export default function BlogPageClient() {
 
       {/* Articles Section */}
       <Section showGridLines={true} padding="none" maxWidth="full" className="pt-24 pb-20">
-        <div className="flex flex-col lg:flex-row">
+        <div className="flex flex-col lg:flex-row" id="articles-section">
           <div className="relative z-10 px-4 md:px-8 lg:px-12 xl:px-12 2xl:px-12 lg:w-full">
             <SectionTitle
               title="Articles"
