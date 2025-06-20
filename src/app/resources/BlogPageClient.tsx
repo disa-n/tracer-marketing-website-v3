@@ -110,7 +110,6 @@ export default function BlogPageClient() {
 
   return (
     <main className="w-full">
-<<<<<<< HEAD
       {/* Hero Section - Responsive layout: image on top for mobile, side-by-side for desktop */}
       <div className="relative overflow-visible min-h-[60vh] max-h-[75vh] pt-16 lg:pt-0 lg:-mt-32 pb-0">
         <ReusableHero
@@ -217,26 +216,6 @@ export default function BlogPageClient() {
         </div>
       </Section>
 
-
-
-=======
-      {/* Hero Section */}
-      <ReusableHero
-        title="Resources"
-        subtitle={
-          <>
-            The latest observability resources, tools, and updates from Tracer.
-            <br />
-            See our bi-weekly roundups for the latest company and product developments.
-          </>
-        }
-        showEmailSignup={true}
-        imageSrc="/Blog/T-chip.webp"
-        imageAlt="Blog hero placeholder"
-        imageStyle="blog"
-        className="lg:-mt-16 xl:-mt-20 2xl:-mt-24"
-      />
->>>>>>> origin/main
 
       {/* Tools Section */}
       <Section showGridLines={true} padding="none" maxWidth="full" className="pt-60 pb-8">
