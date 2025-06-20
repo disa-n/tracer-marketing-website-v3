@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useRef, useEffect } from 'react'
-import Image from 'next/image'
 import {
   motion,
   useScroll,
@@ -34,6 +33,32 @@ function Layer() {
     scrollYProgress,
     [0, 0.25, 0.5, 0.75, 1],
     ['184px', '-450px', '-1000px', '-1550px', '-2000px']
+  )
+
+  // Text opacity transforms - fade out when text goes above the visual frame
+  // Each layer fades out as it scrolls past the top of the frame
+  const layer1Opacity = useTransform(
+    scrollYProgress,
+    [0, 0.15, 0.25],
+    [1, 1, 0]
+  )
+
+  const layer2Opacity = useTransform(
+    scrollYProgress,
+    [0.05, 0.15, 0.25, 0.4, 0.5],
+    [0, 0, 1, 1, 0]
+  )
+
+  const layer3Opacity = useTransform(
+    scrollYProgress,
+    [0.25, 0.35, 0.5, 0.65, 0.75],
+    [0, 0, 1, 1, 0]
+  )
+
+  const layer4Opacity = useTransform(
+    scrollYProgress,
+    [0.5, 0.65, 0.7, 1],
+    [0, 0, 1, 1]
   )
 
 
@@ -71,19 +96,7 @@ function Layer() {
 
   return (
     <div className="w-full">
-      {/* Mobile layout */}
-      <div className="flex flex-col md:hidden">
-        <div className="h-10 w-[80%] bg-[#1f1f1f] md:w-[250px] lg:h-20 xl:w-[309px]" />
-        <div className="flex h-80 w-full items-center justify-center bg-[#1f1f1f] md:w-[320px] xl:w-[393px]">
-          <Image
-            src="/technology/four-layers-image.png"
-            alt="Four Layers Technology Stack"
-            width={393}
-            height={320}
-            className="h-80 w-full object-cover md:w-[320px] xl:w-[393px]"
-          />
-        </div>
-      </div>
+      {/* Mobile layout - image removed */}
       {/* Original background section for mobile */}
       <div className="bg-[#202020] px-4 py-16 md:hidden">
         <p className="font-chakra-petch pb-10 uppercase text-[#fcfcfc]">
@@ -196,8 +209,7 @@ function Layer() {
 
       {/* Desktop layout */}
       <div className="hidden md:block">
-        {/* Line break element */}
-        <div className="h-10 w-[80%] bg-[#1f1f1f] md:w-[250px] lg:h-20 xl:w-[309px]" />
+        {/* Line break element removed */}
       </div>
 
       {/* Desktop anchored viewport container */}
@@ -229,7 +241,7 @@ function Layer() {
             >
               {/* Image viewport window */}
               <div
-                className="absolute w-[528px] h-[604px] left-[56px] top-4 bg-[#202020] overflow-hidden"
+                className="absolute w-[528px] h-[604px] left-[54px] top-4 bg-[#202020] overflow-hidden"
                 style={{ outline: '1px #404040 solid', outlineOffset: '-1px' }}
               >
                 {/* Scrolling image */}
@@ -252,10 +264,13 @@ function Layer() {
               }}
             >
           {/* Layer 1 - Extraction (0-20% scroll: OS/System diagram) */}
-          <div
+          <motion.div
             ref={layer1Ref}
             className="absolute w-[478px] flex flex-col justify-start items-start gap-14"
-            style={{ top: '0px' }}
+            style={{
+              top: '0px',
+              opacity: layer1Opacity
+            }}
           >
           <div className="text-[#FCFCFC] text-base font-chakra-petch uppercase leading-[19px]">LAYER 001</div>
           <div className="flex flex-col justify-start items-start gap-6">
@@ -278,13 +293,16 @@ function Layer() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Layer 2 - Filter (20-40% scroll: Diamond/Cube filtering diagram) */}
-        <div
+        <motion.div
           ref={layer2Ref}
           className="absolute w-[478px] flex flex-col justify-start items-start gap-14"
-          style={{ top: '721px' }}
+          style={{
+            top: '721px',
+            opacity: layer2Opacity
+          }}
         >
           <div className="text-[#FCFCFC] text-base font-chakra-petch uppercase leading-[19px]">LAYER 002</div>
           <div className="flex flex-col justify-start items-start gap-6">
@@ -306,13 +324,16 @@ function Layer() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Layer 3 - Transformation (40-60% scroll: Pipeline/Flow diagram) */}
-        <div
+        <motion.div
           ref={layer3Ref}
           className="absolute w-[478px] flex flex-col justify-start items-start gap-14"
-          style={{ top: '1420px' }}
+          style={{
+            top: '1420px',
+            opacity: layer3Opacity
+          }}
         >
           <div className="text-[#FCFCFC] text-base font-chakra-petch uppercase leading-[19px]">LAYER 003</div>
           <div className="flex flex-col justify-start items-start gap-6">
@@ -340,13 +361,16 @@ function Layer() {
               <div className="h-[10px] bg-[#FCFCFC] w-[80%] mt-1"></div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Layer 4 - Insights (60-80% scroll: Dashboard/Analytics interface) */}
-        <div
+        <motion.div
           ref={layer4Ref}
           className="absolute w-[478px] flex flex-col justify-start items-start gap-14"
-          style={{ top: '2119px' }}
+          style={{
+            top: '2119px',
+            opacity: layer4Opacity
+          }}
         >
           <div className="text-[#FCFCFC] text-base font-chakra-petch uppercase leading-[19px]">LAYER 004</div>
           <div className="flex flex-col justify-start items-start gap-6">
@@ -369,7 +393,7 @@ function Layer() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
 
             </motion.div>
