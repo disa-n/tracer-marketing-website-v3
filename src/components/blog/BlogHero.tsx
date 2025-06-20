@@ -44,7 +44,7 @@ export default function BlogHero() {
                          text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[40px]
                          leading-[1.1] tracking-[-0.01em]"
             >
-              The latest updates from Tracer. See our changelog for more product updates.
+              The latest updates from Tracer. See our bi-weekly roundups for the latest company and product developments.
             </div>
 
             {!submitted ? (

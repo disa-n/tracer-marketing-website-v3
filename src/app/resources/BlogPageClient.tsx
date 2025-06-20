@@ -52,7 +52,13 @@ export default function BlogPageClient() {
       {/* Hero Section */}
       <ReusableHero
         title="Resources"
-        subtitle="The latest updates from Tracer. See our changelog for more product updates."
+        subtitle={
+          <>
+            The latest observability resources, tools, and updates from Tracer.
+            <br />
+            See our bi-weekly roundups for the latest company and product developments.
+          </>
+        }
         showEmailSignup={true}
         imageSrc="/Blog/T-chip.webp"
         imageAlt="Blog hero placeholder"
