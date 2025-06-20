@@ -4,19 +4,19 @@ import { GridLinesLight } from '@/components/shared/GridLines';
 
 export default function Hero() {
   return (
-    <section className="relative bg-[#FCFCFC] lg:min-h-screen overflow-hidden">
+    <section className="relative bg-[#FCFCFC] lg:min-h-[80vh] overflow-hidden">
       <GridLinesLight />
-      <div className="flex flex-col lg:flex-row lg:min-h-screen">
+      <div className="flex flex-col lg:flex-row lg:min-h-[80vh]">
 
         {/* Image Column - Appears first on mobile, right on desktop */}
-        <div className="flex items-center justify-center mt-8 lg:mt-0 lg:flex-1 lg:justify-center lg:order-2">
+        <div className="flex items-center justify-center mt-8 lg:mt-0 lg:flex-1 lg:justify-center lg:order-2 lg:items-start lg:pt-16">
           <div className="w-full max-w-xs lg:max-w-[600px] lg:min-w-[500px] xl:max-w-[800px] 2xl:max-w-[900px]">
             <div className="relative w-full aspect-square lg:aspect-[4/3] xl:aspect-[3/2] 2xl:aspect-[5/3]">
               <Image
                 src="/whymonitoring/T-Space-Satellite.webp"
                 alt="Monitoring illustration showing complex pipeline systems"
                 fill
-                className="object-contain lg:scale-[1.8] lg:-translate-x-8 xl:scale-[3.2] xl:-translate-x-16 2xl:scale-[4.0] 2xl:-translate-x-20"
+                className="object-contain lg:scale-[1.8] lg:-translate-x-8 xl:scale-[3.2] xl:translate-x-4 2xl:scale-[4.0] 2xl:-translate-x-20"
                 priority
               />
             </div>
@@ -24,10 +24,10 @@ export default function Hero() {
         </div>
 
         {/* Text Content Column - Appears second on mobile, left on desktop */}
-        <div className="relative z-10 flex flex-col justify-center px-4 md:px-8 lg:px-12 pt-8 pb-8 lg:py-20 lg:max-w-[1400px] lg:w-full lg:order-1">
+        <div className="relative z-10 flex flex-col justify-center px-4 md:px-8 lg:px-12 pt-8 pb-8 lg:py-8 xl:justify-start xl:pt-35 2xl:justify-start 2xl:pt-48 lg:max-w-[1400px] lg:w-full lg:order-1">
 
           {/* Main Heading */}
-          <h1 className="font-chakra-petch text-[48px] !font-[400] leading-[0.9] tracking-tighter text-[#202020] sm:text-[70px] 1100:text-[80px] 1300:text-[104px] mb-6 lg:mb-8">
+          <h1 className="font-chakra-petch text-[48px] !font-[400] leading-[0.9] tracking-tighter text-[#202020] sm:text-[70px] 1100:text-[80px] xl:text-[92px] 1300:text-[104px] mb-6 lg:mb-8">
             Monitoring Matters<br />More Than Ever
           </h1>
 

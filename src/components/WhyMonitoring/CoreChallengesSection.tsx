@@ -4,7 +4,7 @@ import GridLines from '../shared/GridLines';
 
 export default function CoreChallengesSection() {
   return (
-    <section className="relative bg-[#202020] py-16">
+    <section className="relative bg-[#202020] pt-16 pb-16 lg:pt-8 xl:pt-6 z-20">
       <div className="absolute inset-0" style={{ top: "0.5px", bottom: "0.75px" }}>
         <GridLines />
       </div>
