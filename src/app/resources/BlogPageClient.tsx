@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import FilterBar from '@/components/blog/FilterBar';
 
 import BlogCard from '@/components/blog/BlogCard';
@@ -13,20 +13,69 @@ import LoadingSpinner from '@/components/shared/LoadingSpinner';
 import { useBlogPosts } from '@/hooks/useBlogPosts';
 import { TOOLS } from '@/lib/constants';
 
-const POSTS_PER_PAGE = 4;
+// Dynamic posts per page based on grid columns to ensure single row
+const getPostsPerPage = () => {
+  if (typeof window === 'undefined') return 4; // Default for SSR
+
+  const width = window.innerWidth;
+  if (width >= 1536) return 4; // 2xl: 4 columns
+  if (width >= 1024) return 3; // lg: 3 columns
+  if (width >= 640) return 2;  // sm: 2 columns
+  return 1; // mobile: 1 column
+};
 
 export default function BlogPageClient() {
   const { data, loading, error } = useBlogPosts();
   const [currentPage, setCurrentPage] = useState(1);
+  const [articlesCurrentPage, setArticlesCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(4);
+
+  // Update posts per page based on window size
+  useEffect(() => {
+    const updatePostsPerPage = () => {
+      const newPostsPerPage = getPostsPerPage();
+      if (newPostsPerPage !== postsPerPage) {
+        setPostsPerPage(newPostsPerPage);
+        // Reset to first page when posts per page changes
+        setCurrentPage(1);
+        setArticlesCurrentPage(1);
+      }
+    };
+
+    // Set initial value
+    updatePostsPerPage();
+
+    // Add resize listener
+    window.addEventListener('resize', updatePostsPerPage);
+    return () => window.removeEventListener('resize', updatePostsPerPage);
+  }, [postsPerPage]);
+
+  // Filter posts to exclude articles for recent posts section
+  const recentPosts = useMemo(() => {
+    return data.posts.filter(post => post.metadata.tag !== 'article');
+  }, [data.posts]);
+
+  // Filter articles
+  const articles = useMemo(() => {
+    return data.posts.filter(post => post.metadata.tag === 'article');
+  }, [data.posts]);
 
   // Calculate pagination for recent posts
   const paginatedPosts = useMemo(() => {
-    const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
-    const endIndex = startIndex + POSTS_PER_PAGE;
-    return data.posts.slice(startIndex, endIndex);
-  }, [data.posts, currentPage]);
+    const startIndex = (currentPage - 1) * postsPerPage;
+    const endIndex = startIndex + postsPerPage;
+    return recentPosts.slice(startIndex, endIndex);
+  }, [recentPosts, currentPage, postsPerPage]);
 
-  const totalPages = Math.ceil(data.posts.length / POSTS_PER_PAGE);
+  // Calculate pagination for articles
+  const paginatedArticles = useMemo(() => {
+    const startIndex = (articlesCurrentPage - 1) * postsPerPage;
+    const endIndex = startIndex + postsPerPage;
+    return articles.slice(startIndex, endIndex);
+  }, [articles, articlesCurrentPage, postsPerPage]);
+
+  const totalPages = Math.ceil(recentPosts.length / postsPerPage);
+  const totalArticlePages = Math.ceil(articles.length / postsPerPage);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -35,6 +84,17 @@ export default function BlogPageClient() {
       const recentPostsSection = document.getElementById('recent-posts');
       if (recentPostsSection) {
         recentPostsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
+
+  const handleArticlesPageChange = (page: number) => {
+    setArticlesCurrentPage(page);
+    // Scroll to articles section
+    if (typeof window !== 'undefined') {
+      const articlesSection = document.getElementById('all-articles');
+      if (articlesSection) {
+        articlesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
   };
@@ -153,8 +213,59 @@ export default function BlogPageClient() {
                     currentPage={currentPage}
                     totalPages={totalPages}
                     onPageChange={handlePageChange}
-                    totalPosts={data.posts.length}
+                    totalPosts={recentPosts.length}
                     currentPostsCount={paginatedPosts.length}
+                    className="px-4 md:px-0"
+                  />
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      </Section>
+
+      {/* Articles Section */}
+      <Section showGridLines={true} padding="none" maxWidth="full" className="pt-24 pb-20">
+        <div className="flex flex-col lg:flex-row">
+          <div className="relative z-10 px-4 md:px-8 lg:px-12 xl:px-12 2xl:px-12 lg:w-full">
+            <SectionTitle
+              title="Articles"
+              subtitle="In-depth technical articles and insights on bioinformatics from the Tracer team."
+              size="large"
+              className="mb-12"
+            />
+
+            {/* All Articles Row */}
+            {articles.length > 0 && (
+              <div id="all-articles" className="mt-12 sm:mt-16">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 mb-4 sm:mb-6 px-4 md:px-0">
+                  <h3 className="text-base sm:text-lg font-britti-sans font-medium text-[#202020]">
+                    ALL ARTICLES
+                  </h3>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8 px-4 md:px-0">
+                  {paginatedArticles.map((post) => (
+                    <BlogCard
+                      key={post.slug}
+                      slug={post.slug}
+                      title={post.metadata.title}
+                      date={post.metadata.date}
+                      description={post.metadata.description}
+                      ogImage={post.metadata.ogImage}
+                      tag={post.metadata.tag}
+                      author={post.metadata.author}
+                    />
+                  ))}
+                </div>
+
+                {/* Pagination */}
+                {totalArticlePages >= 1 && (
+                  <BlogPagination
+                    currentPage={articlesCurrentPage}
+                    totalPages={totalArticlePages}
+                    onPageChange={handleArticlesPageChange}
+                    totalPosts={articles.length}
+                    currentPostsCount={paginatedArticles.length}
                     className="px-4 md:px-0"
                   />
                 )}

@@ -23,6 +23,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Tracer | Observability Platform for AI-driven Science",
   description: "Tracer combines deep scientific knowledge and cutting-edge tech to accelerate AI adoption in industry.",
+  metadataBase: new URL(process.env.NODE_ENV === 'production' ? 'https://tracer.com' : 'http://localhost:3000'),
 };
 
 export default function RootLayout({

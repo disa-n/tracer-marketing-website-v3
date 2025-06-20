@@ -68,6 +68,7 @@ export const TOOLS = [
 export const BLOG_CONFIG = {
   allowedSlugs: ['kenya-day-one', 'kenya-day-two', 'kenya-day-three', 'kenya-day-four'] as string[],
   allowedBiweeklySlugs: ['biweekly-roundup-1'] as string[],
+  allowedArticleSlugs: ['cloud-cost-monitoring'] as string[],
   kenyaHackathonPost: {
     slug: 'kenya-hackathon',
     metadata: {

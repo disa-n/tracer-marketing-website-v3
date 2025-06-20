@@ -33,8 +33,12 @@ export function useBlogPosts() {
         const kenyaHackathonPost: BlogPost = BLOG_CONFIG.kenyaHackathonPost;
         const biweeklyRoundupsPost: BlogPost = BLOG_CONFIG.biweeklyRoundupsPost;
 
-        // Filter to only show specific posts (Kenya days 1-4 and bi-weekly roundups)
-        const allowedSlugs = [...BLOG_CONFIG.allowedSlugs, ...(BLOG_CONFIG.allowedBiweeklySlugs || [])];
+        // Filter to only show specific posts (Kenya days 1-4, bi-weekly roundups, and articles)
+        const allowedSlugs = [
+          ...BLOG_CONFIG.allowedSlugs,
+          ...(BLOG_CONFIG.allowedBiweeklySlugs || []),
+          ...(BLOG_CONFIG.allowedArticleSlugs || [])
+        ];
         const filteredPosts = blogPosts.filter(post =>
           allowedSlugs.includes(post.slug) &&
           post.slug !== 'kenya-hackathon' &&

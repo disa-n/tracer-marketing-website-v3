@@ -72,7 +72,7 @@ export default function BlogCard({
   return (
     <Link href={cardLink} className="block h-full">
       <div className="border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col min-h-[clamp(450px,60vw,550px)] z-[2] bg-[#FCFCFC] cursor-pointer">
-        <div className="relative h-48 sm:h-56 w-full">
+        <div className="relative h-48 sm:h-56 w-full bg-black">
           <Image
             src={ogImage || "https://placehold.co/400x224"}
             alt={title}
