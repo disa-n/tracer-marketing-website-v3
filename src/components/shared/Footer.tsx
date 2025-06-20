@@ -28,6 +28,9 @@ const Footer = () => {
                                 <li className="cursor-pointer transition-all hover:opacity-80">
                                     <Link href="/resources">Resources</Link>
                                 </li>
+                                <li className="cursor-pointer transition-all hover:opacity-80">
+                                    <Link href="/resources/biweeklyroundupsoverview">Updates</Link>
+                                </li>
                             </ul>
                         </div>
                         <div>
@@ -43,9 +46,6 @@ const Footer = () => {
                                 </li>
                                 <li className="cursor-pointer transition-all hover:opacity-80">
                                     <Link href="/technology">Technology</Link>
-                                </li>
-                                <li className="cursor-pointer transition-all hover:opacity-80">
-                                    <Link href="/coming-soon">Changelog</Link>
                                 </li>
                             </ul>
                         </div>
