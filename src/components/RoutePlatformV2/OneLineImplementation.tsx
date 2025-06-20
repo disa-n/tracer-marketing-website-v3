@@ -152,55 +152,67 @@ const OneLineImplementation = () => {
             <div className="grid grid-cols-3 md:grid-cols-6 gap-6">
             {/* Airflow */}
             <div className="flex items-center justify-center w-[215px] h-[215px] bg-[#202020] border border-[#303030]">
-              <img
+              <Image
                 src="/platformv2/logos/airflow.svg"
                 alt="Apache Airflow"
-                className="w-[200px] h-[120px] object-contain"
+                width={200}
+                height={120}
+                className="object-contain"
               />
             </div>
 
             {/* AWS */}
             <div className="flex items-center justify-center w-[215px] h-[215px] bg-[#202020] border border-[#303030]">
-              <img
+              <Image
                 src="/platformv2/logos/aws-sv.svg"
                 alt="Amazon Web Services"
-                className="max-w-[120px] max-h-[60px] object-contain"
+                width={120}
+                height={60}
+                className="object-contain"
               />
             </div>
 
             {/* Nextflow */}
             <div className="flex items-center justify-center w-[215px] h-[215px] bg-[#202020] border border-[#303030]">
-              <img
+              <Image
                 src="/platformv2/logos/next-flow.svg"
                 alt="Nextflow"
-                className="max-w-[120px] max-h-[60px] object-contain"
+                width={120}
+                height={60}
+                className="object-contain"
               />
             </div>
 
             {/* Bash */}
             <div className="flex items-center justify-center w-[215px] h-[215px] bg-[#202020] border border-[#303030]">
-              <img
+              <Image
                 src="/platformv2/logos/bash.svg"
                 alt="Bash Shell"
-                className="max-w-[120px] max-h-[60px] object-contain"
+                width={120}
+                height={60}
+                className="object-contain"
               />
             </div>
 
             {/* AWS Batch */}
             <div className="flex items-center justify-center w-[215px] h-[215px] bg-[#202020] border border-[#303030]">
-              <img
+              <Image
                 src="/platformv2/logos/aws-batch.svg"
                 alt="AWS Batch"
-                className="max-w-[120px] max-h-[60px] object-contain"
+                width={120}
+                height={60}
+                className="object-contain"
               />
             </div>
 
             {/* Ubuntu */}
             <div className="flex items-center justify-center w-[215px] h-[215px] bg-[#202020] border border-[#303030]">
-              <img
+              <Image
                 src="/platformv2/logos/ubuntu.svg"
                 alt="Ubuntu"
-                className="max-w-[120px] max-h-[60px] object-contain"
+                width={120}
+                height={60}
+                className="object-contain"
               />
             </div>
           </div>
