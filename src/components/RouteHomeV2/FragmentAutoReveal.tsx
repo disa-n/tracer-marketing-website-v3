@@ -2,48 +2,177 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { GridLinesLight } from '@/components/shared/GridLines';
 
 export default function FragmentAutoReveal() {
   const [animationState, setAnimationState] = useState<'initial' | 'piece-connecting' | 'complete' | 'reversing'>('initial');
+  const [progress, setProgress] = useState(0);
+  const [activeTab, setActiveTab] = useState<'traditional' | 'tracer'>('traditional');
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isManualMode, setIsManualMode] = useState(false);
+
+  // Handle manual tab clicks
+  const handleTabClick = (tab: 'traditional' | 'tracer') => {
+    setIsManualMode(true);
+    setIsAutoPlaying(false);
+    setActiveTab(tab);
+    setProgress(0);
+
+    // Set appropriate animation state for manual mode
+    if (tab === 'traditional') {
+      setAnimationState('initial');
+    } else {
+      setAnimationState('complete');
+    }
+
+    // Use the same timing as auto-play for accurate progress indication
+    let progressDuration;
+    if (tab === 'traditional') {
+      progressDuration = 5000; // 5 seconds until animation switches to "With Tracer"
+    } else {
+      progressDuration = 6500; // 6.5 seconds until animation switches back to "Traditional"
+    }
+
+    const progressInterval = setInterval(() => {
+      setProgress(prev => {
+        if (prev >= 100) {
+          clearInterval(progressInterval);
+          // When progress completes, immediately trigger the transition
+          if (tab === 'traditional') {
+            setAnimationState('piece-connecting');
+            setTimeout(() => {
+              setAnimationState('complete');
+              setActiveTab('tracer');
+              setProgress(0);
+
+              // Start tracer progress
+              const tracerInterval = setInterval(() => {
+                setProgress(prev => {
+                  if (prev >= 100) {
+                    clearInterval(tracerInterval);
+                    setAnimationState('reversing');
+                    setActiveTab('traditional');
+                    setProgress(0);
+
+                    // Start reverse progress
+                    const reverseInterval = setInterval(() => {
+                      setProgress(prev => {
+                        if (prev >= 100) {
+                          clearInterval(reverseInterval);
+                          setAnimationState('initial');
+                          setIsManualMode(false);
+                          setIsAutoPlaying(true);
+                          return 100;
+                        }
+                        return prev + (100 / (4500 / 50));
+                      });
+                    }, 50);
+
+                    return 100;
+                  }
+                  return prev + (100 / (6500 / 50));
+                });
+              }, 50);
+            }, 1500);
+          } else {
+            setAnimationState('reversing');
+            setActiveTab('traditional');
+            setProgress(0);
+
+            // Start reverse progress
+            const reverseInterval = setInterval(() => {
+              setProgress(prev => {
+                if (prev >= 100) {
+                  clearInterval(reverseInterval);
+                  setAnimationState('initial');
+                  setIsManualMode(false);
+                  setIsAutoPlaying(true);
+                  return 100;
+                }
+                return prev + (100 / (4500 / 50));
+              });
+            }, 50);
+          }
+          return 100;
+        }
+        return prev + (100 / (progressDuration / 50));
+      });
+    }, 50);
+  };
 
   useEffect(() => {
+    if (!isAutoPlaying || isManualMode) return;
+
     const runAnimationCycle = () => {
       // Start with traditional monitoring
       setAnimationState('initial');
+      setActiveTab('traditional');
+      setProgress(0);
 
-      // Wait 3 seconds, then start piece connecting animation
+      // Progress bar animation for initial wait (updates every 50ms for smooth animation)
+      const progressInterval = setInterval(() => {
+        setProgress(prev => {
+          if (prev >= 100) return 100;
+          return prev + (100 / (5000 / 50)); // 5 seconds total, update every 50ms
+        });
+      }, 50);
+
+      // Wait 5 seconds, then start piece connecting animation
       const connectTimer = setTimeout(() => {
+        clearInterval(progressInterval);
         setAnimationState('piece-connecting');
 
         // As soon as piece connects (animation duration), transition to complete state
         setTimeout(() => {
           setAnimationState('complete');
+          setActiveTab('tracer');
+          setProgress(0); // Reset progress for tracer state
 
-          // Hold complete state for 8 seconds, then reverse the animation
+          // Progress bar animation for tracer state (6.5 seconds to account for transition time)
+          const tracerProgressInterval = setInterval(() => {
+            setProgress(prev => {
+              if (prev >= 100) return 100;
+              return prev + (100 / (6500 / 50)); // 6.5 seconds total, update every 50ms
+            });
+          }, 50);
+
+          // Hold complete state for 6.5 seconds, then reverse the animation
           setTimeout(() => {
+            clearInterval(tracerProgressInterval);
             // Start reversing - fade out "With Tracer" and highlights
             setAnimationState('reversing');
+            setActiveTab('traditional');
+            setProgress(0); // Reset progress for reverse transition
 
-            // After 1.5 seconds, show piece disconnecting (reverse of connecting)
+            // Progress bar animation for reverse transition (4.5 seconds total)
+            const reverseProgressInterval = setInterval(() => {
+              setProgress(prev => {
+                if (prev >= 100) return 100;
+                return prev + (100 / (4500 / 50)); // 4.5 seconds total, update every 50ms
+              });
+            }, 50);
+
+            // After 3 seconds, show piece disconnecting and go back to initial
             setTimeout(() => {
               setAnimationState('initial');
 
               // After another 1.5 seconds, restart the cycle
               setTimeout(() => {
+                clearInterval(reverseProgressInterval);
                 runAnimationCycle(); // Restart the entire cycle
               }, 1500);
-            }, 1500);
-          }, 8000);
+            }, 3000);
+          }, 6500); // Reduced from 8000 to 6500 to match progress bar
         }, 1500); // Match the piece animation duration for immediate transition
-      }, 3000);
+      }, 5000);
 
       return connectTimer;
     };
 
     const timer = runAnimationCycle();
     return () => clearTimeout(timer);
-  }, []);
+  }, [isAutoPlaying, isManualMode]);
 
   return (
     <>
@@ -104,20 +233,81 @@ export default function FragmentAutoReveal() {
           </h1>
 
           {/* Subheading Paragraph - matching Total Visibility styling */}
-          <p className="font-britti-sans text-[#888888] text-left text-[16px] leading-[22px] 600:text-[20px] 600:leading-[22px] max-w-fit">
+          <p className="font-britti-sans text-[#888888] text-left text-[16px] leading-[22px] 600:text-[20px] 600:leading-[22px] max-w-fit mb-6">
             Tracer delivers unmatched visibility, speed, and accuracy for high-performance scientific computing.<br />
             Built from the ground up for the unique demands of research pipelines, not generic infrastructure.
           </p>
+
+          {/* Tab Navigation */}
+          <div className="mb-4 flex justify-center">
+            <div className="flex gap-8 md:gap-12">
+              <div className="relative">
+                <button
+                  onClick={() => handleTabClick('traditional')}
+                  className={`
+                    font-britti-sans text-sm md:text-base lg:text-lg
+                    transition-colors duration-300 ease-in-out
+                    relative pb-2 cursor-pointer
+                    ${activeTab === 'traditional'
+                      ? 'text-[#202020]'
+                      : 'text-[#888888] hover:text-[#202020]'
+                    }
+                  `}
+                >
+                  Traditional Monitoring
+                </button>
+                {activeTab === 'traditional' && (
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8E8E8]">
+                    <motion.div
+                      className="h-full bg-[#202020]"
+                      initial={{ width: '0%' }}
+                      animate={{ width: `${progress}%` }}
+                      transition={{ duration: 0.1, ease: 'linear' }}
+                    />
+                  </div>
+                )}
+              </div>
+
+              <div className="relative">
+                <button
+                  onClick={() => handleTabClick('tracer')}
+                  className={`
+                    font-britti-sans text-sm md:text-base lg:text-lg
+                    transition-colors duration-300 ease-in-out
+                    relative pb-2 cursor-pointer
+                    ${activeTab === 'tracer'
+                      ? 'text-[#202020]'
+                      : 'text-[#888888] hover:text-[#202020]'
+                    }
+                  `}
+                >
+                  With Tracer
+                </button>
+                {activeTab === 'tracer' && (
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8E8E8]">
+                    <motion.div
+                      className="h-full bg-[#202020]"
+                      initial={{ width: '0%' }}
+                      animate={{ width: `${progress}%` }}
+                      transition={{ duration: 0.1, ease: 'linear' }}
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Content Box */}
         <div className="relative w-full bg-[#141414] border border-[#333333] overflow-hidden" style={{ height: '594px' }}>
 
+
+
           {/* Left Side - Text Content */}
           <div className="absolute left-8 top-8 bottom-8 w-1/2 flex flex-col justify-center">
             {/* Traditional Monitoring Text */}
             <div className={`transition-opacity duration-500 ${
-              animationState === 'complete' ? 'opacity-0' : 'opacity-100'
+              activeTab === 'traditional' ? 'opacity-100' : 'opacity-0'
             }`}>
               <h3 className="font-britti-sans font-normal text-white mb-4 text-[28px] leading-[32px] 600:text-[32px] 600:leading-[36px]">
                 Traditional Monitoring
@@ -130,7 +320,7 @@ export default function FragmentAutoReveal() {
 
             {/* With Tracer Text */}
             <div className={`absolute inset-0 flex flex-col justify-center transition-opacity duration-500 ${
-              animationState === 'complete' ? 'opacity-100' : 'opacity-0'
+              activeTab === 'tracer' ? 'opacity-100' : 'opacity-0'
             }`}>
               <h3 className="font-britti-sans font-normal text-white mb-4 text-[28px] leading-[32px] 600:text-[32px] 600:leading-[36px]">
                 With Tracer
@@ -154,14 +344,14 @@ export default function FragmentAutoReveal() {
                 width={720}
                 height={540}
                 className={`transition-opacity duration-500 ${
-                  animationState === 'complete' ? 'opacity-0' : 'opacity-100'
+                  activeTab === 'traditional' ? 'opacity-100' : 'opacity-0'
                 }`}
               />
 
               {/* Faded black overlay over TM puzzle */}
               <div
                 className={`absolute inset-0 transition-opacity duration-500 ${
-                  animationState === 'complete' ? 'opacity-0' : 'opacity-100'
+                  activeTab === 'traditional' ? 'opacity-100' : 'opacity-0'
                 }`}
                 style={{
                   background: 'linear-gradient(to top, rgba(20, 20, 20, 0.7) 0%, rgba(20, 20, 20, 0.4) 50%, rgba(20, 20, 20, 0.15) 100%)',
@@ -172,13 +362,11 @@ export default function FragmentAutoReveal() {
               {/* Missing Piece Animation - tm-puzzle-2 sliding in */}
               <div
                 className={`absolute transition-all duration-1500 ${
-                  animationState === 'complete'
-                    ? 'opacity-0'
-                    : animationState === 'reversing'
-                      ? 'transform -translate-y-40 opacity-100'
-                      : animationState === 'piece-connecting'
+                  activeTab === 'traditional'
+                    ? (animationState === 'piece-connecting'
                         ? 'transform translate-y-0 opacity-100'
-                        : 'transform -translate-y-40 opacity-100'
+                        : 'transform -translate-y-40 opacity-100')
+                    : 'opacity-0'
                 }`}
                 style={{
                   top: '0px', // Flush with top row pieces
@@ -204,7 +392,7 @@ export default function FragmentAutoReveal() {
                 width={1373}
                 height={544}
                 className={`absolute transition-opacity duration-500 delay-50 ${
-                  animationState === 'complete' ? 'opacity-80' : 'opacity-0'
+                  activeTab === 'tracer' ? 'opacity-80' : 'opacity-0'
                 }`}
                 style={{
                   bottom: '0px',
@@ -222,7 +410,7 @@ export default function FragmentAutoReveal() {
                 width={836}
                 height={544}
                 className={`absolute bottom-0 right-0 transition-opacity duration-500 delay-100 ${
-                  animationState === 'complete' ? 'opacity-100' : 'opacity-0'
+                  activeTab === 'tracer' ? 'opacity-100' : 'opacity-0'
                 }`}
                 style={{
                   transformOrigin: 'bottom right',
@@ -234,7 +422,7 @@ export default function FragmentAutoReveal() {
               {/* Traveling light around puzzle edges */}
               <div
                 className={`absolute z-5 transition-opacity duration-500 ${
-                  animationState === 'complete' ? 'opacity-100' : 'opacity-0'
+                  activeTab === 'tracer' ? 'opacity-100' : 'opacity-0'
                 }`}
                 style={{
                   width: '12px',
@@ -243,7 +431,7 @@ export default function FragmentAutoReveal() {
                   borderRadius: '50%',
                   filter: 'blur(2px)',
                   boxShadow: '0 0 20px rgba(58, 35, 237, 0.8), 0 0 40px rgba(191, 81, 152, 0.6)',
-                  animation: animationState === 'complete' ? 'travelAroundPuzzle 4s linear infinite' : 'none'
+                  animation: activeTab === 'tracer' ? 'travelAroundPuzzle 4s linear infinite' : 'none'
                 }}
               />
 
@@ -254,7 +442,7 @@ export default function FragmentAutoReveal() {
                 width={720}
                 height={540}
                 className={`absolute inset-0 z-10 transition-opacity duration-500 ${
-                  animationState === 'complete' ? 'opacity-100' : 'opacity-0'
+                  activeTab === 'tracer' ? 'opacity-100' : 'opacity-0'
                 }`}
               />
 

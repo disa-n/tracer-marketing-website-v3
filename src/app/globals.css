@@ -218,6 +218,91 @@
   }
 }
 
+/* Custom animations */
+@keyframes border-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes border-glow {
+  0%, 100% {
+    opacity: 0.6;
+    filter: blur(1px);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+@keyframes slide-top {
+  0% {
+    left: -24px;
+    opacity: 0;
+  }
+  25% {
+    left: 50%;
+    opacity: 1;
+  }
+  50% {
+    left: calc(100% + 24px);
+    opacity: 0;
+  }
+  50.01%, 100% {
+    left: -24px;
+    opacity: 0;
+  }
+}
+
+@keyframes slide-right {
+  0%, 25% {
+    top: -24px;
+    opacity: 0;
+  }
+  50% {
+    top: 50%;
+    opacity: 1;
+  }
+  75% {
+    top: calc(100% + 24px);
+    opacity: 0;
+  }
+  75.01%, 100% {
+    top: -24px;
+    opacity: 0;
+  }
+}
+
+@keyframes slide-bottom {
+  0%, 50% {
+    right: -24px;
+    opacity: 0;
+  }
+  75% {
+    right: 50%;
+    opacity: 1;
+  }
+  100% {
+    right: calc(100% + 24px);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-left {
+  0%, 75% {
+    bottom: -24px;
+    opacity: 0;
+  }
+  100% {
+    bottom: calc(100% + 24px);
+    opacity: 1;
+  }
+}
+
 @layer utilities {
   .animate-slow-pulse {
     animation: slow-pulse 6s ease-in-out infinite;
@@ -244,5 +329,14 @@
   100% {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
   }
 }
