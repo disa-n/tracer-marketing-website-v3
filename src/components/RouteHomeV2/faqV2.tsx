@@ -46,7 +46,7 @@ const Faq = () => {
         <div className="mx-auto w-full">
           <div className="container_fluid">
             <div className="py-10 md:py-8">
-              <h2 className="font-chakra-petch text-[48px] font-normal leading-[40px] tracking-[-4%] text-foreground xl:text-[120px] xl:leading-[98px]">
+              <h2 className="font-chakra-petch text-[48px] font-normal leading-[40px] tracking-[-4%] text-[#fcfcfc] xl:text-[120px] xl:leading-[98px]">
                 FAQ
               </h2>
               <div className="mt-10 md:mt-14">
@@ -59,18 +59,18 @@ const Faq = () => {
               >
                 <div className="flex justify-between gap-5">
                   <div className="flex gap-10 xl:gap-[100px]">
-                    <span className="font-chakra-petch text-base font-normal uppercase leading-[19px] tracking-[-1%] text-[#FCFCFC] md:pt-1.5">
+                    <span className="font-chakra-petch text-base font-normal uppercase leading-[19px] tracking-[-1%] text-[#fcfcfc] md:pt-1.5">
                       {item.id}
                     </span>
                     <div className="hidden md:block">
-                      <p className="font-britti-sans text-[24px] font-normal leading-[24px] tracking-[-1%] text-foreground md:pt-1">
+                      <p className="font-britti-sans text-[24px] font-normal leading-[24px] tracking-[-1%] text-[#fcfcfc] md:pt-1">
                         {item.question}
                       </p>
                       <div
                         className={`overflow-hidden transition-all duration-500 ${openIndex === index ? "mt-5 max-h-[500px]" : "max-h-0"
                           }`}
                       >
-                        <p className="max-w-[763px] font-britti-sans text-base font-normal leading-[18px] text-foreground">
+                        <p className="max-w-[763px] font-britti-sans text-base font-normal leading-[18px] text-[#fcfcfc]">
                           {parseText(item.answer)}
                         </p>
                       </div>
@@ -105,14 +105,14 @@ const Faq = () => {
                   </div>
                 </div>
                 <div className="mt-6 w-[88%] md:hidden">
-                  <p className="font-britti-sans text-base font-normal leading-[16px] text-foreground">
+                  <p className="font-britti-sans text-base font-normal leading-[16px] text-[#fcfcfc]">
                     {item.question}
                   </p>
                   <div
                     className={`overflow-hidden transition-all duration-500 ${openIndex === index ? "mt-3 max-h-[500px]" : "max-h-0"
                       }`}
                   >
-                    <p className="font-britti-sans text-sm font-normal leading-[16px] text-foreground">
+                    <p className="font-britti-sans text-sm font-normal leading-[16px] text-[#fcfcfc]">
                       {parseText(item.answer)}
                     </p>
                   </div>
