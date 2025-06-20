@@ -8,12 +8,12 @@ const MonitoringInsights = () => {
         <div className='w-full flex justify-center bg-white'>
             <div className='w-full max-w-[1800px] px-6 900:px-8 py-16 md:py-24'>
                 <div className="mb-8 md:mb-12 lg:mb-16">
-                    <h2 className="font-britti-sans text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] font-normal leading-[1.1] sm:leading-[1.0] md:leading-[0.9] lg:leading-[80px] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] text-black mb-4 md:mb-6">
+                    <h2 className="font-britti-sans text-[32px] sm:text-[40px] lg:text-[48px] font-normal leading-[1.1] tracking-[-0.01em] text-black mb-6">
                         Monitoring Insights for the Worldʼs<br className="hidden sm:block" />
                         <span className="sm:hidden">Most Complex Industries</span>
                         <span className="hidden sm:inline">Most Complex Industries</span>
                     </h2>
-                    <p className="font-britti-sans text-[14px] md:text-[16px] font-normal leading-[18px] md:leading-[20px] text-[#888888] max-w-2xl">
+                    <p className="font-britti-sans text-sm sm:text-base font-normal leading-[1.4] text-[#888888] max-w-2xl">
                         From automotive to biotech, Tracer brings real-time monitoring and deep system-level insights to the most data-intensive industries.
                     </p>
                 </div>
