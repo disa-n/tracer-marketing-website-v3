@@ -96,7 +96,7 @@ const OneLineImplementation = () => {
               <span className="hidden sm:inline">Takes One Line of Code</span>
             </h2>
             <p className="font-britti-sans text-[14px] md:text-[16px] font-normal leading-[18px] md:leading-[20px] text-[#888888] max-w-2xl">
-              Tracer installs instantly, connects at the kernel level, and starts monitoring without any config<br className="hidden md:block" />
+              Tracer installs instantly, connects at the kernel-level, and starts monitoring without any config<br className="hidden md:block" />
               <span className="md:hidden"> </span>or agent setup. It works in Docker or directly on your system.
             </p>
           </div>
