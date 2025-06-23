@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { GridLinesLight } from '@/components/shared/GridLines';
 
 export default function HeroSectionV2() {
