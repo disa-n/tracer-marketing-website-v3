@@ -137,7 +137,7 @@ function Layer() {
               <h2 className="pt-8 text-[32px] text-white">Filter layer</h2>
               <span className="text-white">
                 Science-specific information about the tools, frameworks, and
-                files is automatically recognised and extracted.
+                files is automatically recognized and extracted.
               </span>
               <p className="text-white mt-4">
                 The filter takes into account the deep technical and scientific information

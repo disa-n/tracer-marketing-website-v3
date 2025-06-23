@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import GridLines from '@/components/shared/GridLines';
+import { GridLinesLight } from '@/components/shared/GridLines';
 
 // Define the tab data structure
 interface TabData {
@@ -15,34 +15,34 @@ interface TabData {
 // Tab options data
 const tabsData: TabData[] = [
   {
-    id: 'pipeline-overview',
-    label: 'Pipeline Overview',
+    id: 'anomaly-detection',
+    label: 'Anomaly Detection',
     imageUrl: '/home/Pipeline-Overview.webp'
   },
   {
-    id: 'tool-diagnostics',
-    label: 'Tool Diagnostics Preview',
+    id: 'tool-level-insights',
+    label: 'Tool-Level Insights',
     imageUrl: '/home/Tool-Preview.webp'
   },
   {
-    id: 'insights-drilldown',
-    label: 'Insights Drilldown',
+    id: 'run-by-run-clarity',
+    label: 'Run-by-Run Clarity',
     imageUrl: '/home/Insights-Drilldown.webp'
   },
   {
-    id: 'ai-recommendation',
-    label: 'AI Recommendation Engine',
+    id: 'smart-recommendations',
+    label: 'Smart Recommendations',
     imageUrl: '/home/AI-Rec.webp'
   },
   {
-    id: 'infrastructure-summary',
-    label: 'Infrastructure Summary',
+    id: 'infra-cost-breakdown',
+    label: 'Infra Cost Breakdown',
     imageUrl: '/home/Infra-Summary.webp'
   },
   {
-    id: 'logs-view',
-    label: 'Logs View',
-    imageUrl: '/home/Logs-View.webp'
+    id: 'unified-log-search',
+    label: 'Unified Log Search',
+    imageUrl: '/home/unified-logs.webp'
   }
 ];
 
@@ -112,24 +112,29 @@ export default function ProductPreviewSectionV2() {
   };
 
   return (
-    <section className="relative bg-[#202020] px-4 py-12 md:px-8 xl:py-20 overflow-hidden">
-      <GridLines />
-      <div className="relative z-10 max-w-[1400px] mx-auto">
+    <section className="relative bg-[#FCFCFC] py-0 xl:py-0 -mt-4 sm:-mt-8 lg:-mt-12 overflow-hidden">
+
+      <GridLinesLight />
+
+      {/* Full navbar width container - no frame */}
+      <div className='w-full flex items-center px-6 sm:px-4 pt-8 justify-center relative z-10'>
+        <div className={`w-full max-w-[1408px] 1600:max-w-[1500px] 1700:max-w-[1600px] 1800:max-w-[1700px] 1900:max-w-[1800px] 1920:max-w-[1900px]`}>
 
         {/* Tab Navigation */}
-        <div className="mb-8 flex justify-center">
-          <div className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12 xl:gap-16">
+        <div className="mb-6 flex justify-center">
+          {/* Mobile and Tablet: flexible 2-row layout (< 1024px) */}
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-6 lg:hidden max-w-2xl px-4">
             {tabsData.map((tab) => (
               <div key={tab.id} className="relative">
                 <motion.button
                   onClick={() => handleTabClick(tab.id)}
                   className={`
-                    font-britti-sans text-sm md:text-base lg:text-lg
+                    font-britti-sans text-sm md:text-base
                     transition-colors duration-300 ease-in-out
-                    relative pb-2 cursor-pointer
+                    relative pb-3 md:pb-2 cursor-pointer px-1 md:px-0 whitespace-nowrap
                     ${activeTab === tab.id
-                      ? 'text-white'
-                      : 'text-[#A0A0A0] hover:text-white'
+                      ? 'text-[#202020]'
+                      : 'text-[#888888] hover:text-[#202020]'
                     }
                   `}
                 >
@@ -138,9 +143,43 @@ export default function ProductPreviewSectionV2() {
 
                 {/* Active tab underline with progress */}
                 {activeTab === tab.id && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-600">
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8E8E8]">
                     <motion.div
-                      className="h-full bg-white"
+                      className="h-full bg-[#202020]"
+                      initial={{ width: '0%' }}
+                      animate={{ width: `${progress}%` }}
+                      transition={{ duration: 0.1, ease: 'linear' }}
+                    />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Laptop and up: single row (≥ 1024px) */}
+          <div className="hidden lg:flex justify-center gap-8 xl:gap-12 2xl:gap-16">
+            {tabsData.map((tab) => (
+              <div key={tab.id} className="relative">
+                <motion.button
+                  onClick={() => handleTabClick(tab.id)}
+                  className={`
+                    font-britti-sans text-base xl:text-lg
+                    transition-colors duration-300 ease-in-out
+                    relative pb-2 cursor-pointer whitespace-nowrap
+                    ${activeTab === tab.id
+                      ? 'text-[#202020]'
+                      : 'text-[#888888] hover:text-[#202020]'
+                    }
+                  `}
+                >
+                  {tab.label}
+                </motion.button>
+
+                {/* Active tab underline with progress */}
+                {activeTab === tab.id && (
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8E8E8]">
+                    <motion.div
+                      className="h-full bg-[#202020]"
                       initial={{ width: '0%' }}
                       animate={{ width: `${progress}%` }}
                       transition={{ duration: 0.1, ease: 'linear' }}
@@ -152,43 +191,51 @@ export default function ProductPreviewSectionV2() {
           </div>
         </div>
 
-        {/* Outer Container - Responsive */}
-        <div className="w-full flex justify-center">
-          <div className="bg-[#202020] relative w-full max-w-[1379px] border-4 border-[#404040] rounded-sm shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
-               style={{ aspectRatio: '1379/724' }}>
-            {/* Inner Preview Box */}
-            <div className="bg-[#141414] absolute inset-0 overflow-hidden">
-              <div className="w-full h-full flex items-center justify-center p-2 md:p-4">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeTab}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{
-                      duration: 0.4,
-                      ease: "easeInOut",
-                      opacity: { duration: 0.3 },
-                      y: { duration: 0.4 }
-                    }}
-                    className="w-full h-full flex items-center justify-center"
-                  >
-                    <Image
-                      src={activeTabData.imageUrl}
-                      alt={`${activeTabData.label} preview`}
-                      width={1280}
-                      height={640}
-                      className="max-w-full max-h-full object-contain"
-                      priority={activeTab === tabsData[0].id}
-                    />
-                  </motion.div>
-                </AnimatePresence>
+        {/* Full Width Container with Glassmorphism Border */}
+        <div className="w-full pt-1 pb-0 md:pt-1 md:pb-0">
+          <div className="flex justify-center">
+            {/* Overflow container to cut off the bottom */}
+            <div className="relative w-full max-w-[1300px] overflow-hidden" style={{ height: '95%', aspectRatio: '1379/678' }}>
+              <div
+                className="relative w-full rounded-lg overflow-hidden bg-[#0B0B0B]"
+                style={{
+                  aspectRatio: '1379/714'
+                }}
+              >
+                {/* Inner content container */}
+                <div className="relative w-full h-full bg-[#0B0B0B] rounded-md overflow-hidden">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeTab}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{
+                        duration: 0.4,
+                        ease: "easeInOut",
+                        opacity: { duration: 0.3 },
+                        y: { duration: 0.4 }
+                      }}
+                      className="w-full h-full"
+                    >
+                      <Image
+                        src={activeTabData.imageUrl}
+                        alt={`${activeTabData.label} preview`}
+                        width={1280}
+                        height={640}
+                        className="w-full h-full object-contain"
+                        priority={activeTab === tabsData[0].id}
+                      />
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-      </div>
+        </div> {/* Close navbar width container */}
+      </div> {/* Close full width container */}
     </section>
   );
 }

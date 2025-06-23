@@ -17,7 +17,7 @@ const YourPartner = () => {
                             </p>
                         </div>
                         <Link href="/technology" className='mt-8 h-[48px] w-full cursor-pointer bg-[#E8E8E8] px-8 font-britti-sans text-base font-[400] text-c-black transition-all hover:opacity-80 md:mt-0 md:w-fit flex items-center justify-center'>
-                            See our Technology
+                            Talk to Us Directly
                         </Link>
                         <div className='mt-12 md:hidden'>
                             <ul className='space-y-4 text-sm font-[400] text-c-off-white'>

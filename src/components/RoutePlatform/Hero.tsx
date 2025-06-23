@@ -104,7 +104,7 @@ const Hero = () => {
                             _TRACER PLATFORM
                         </p>
                         <h1 className='mt-4 font-britti-sans text-[48px] !font-[400] leading-[0.9] tracking-tighter text-c-black sm:text-[70px] 1100:text-[80px] 1300:text-[104px]'>
-                            Actionable insights, optimised workloads
+                            Actionable Insights, Optimised Workloads
                         </h1>
                         <p className='mt-4 max-w-[630px] font-britti-sans text-sm font-[400] text-c-black sm:text-base md:mt-8'>
                             Born for the cloud, Tracer provides deep insights into your AI and computational workloads. From team productivity to cost and performance management. Tracer makes large, expensive analyses swift and dynamic.
