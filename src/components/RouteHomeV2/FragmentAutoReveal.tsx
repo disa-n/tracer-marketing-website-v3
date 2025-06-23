@@ -11,9 +11,24 @@ export default function FragmentAutoReveal() {
   const [activeTab, setActiveTab] = useState<'traditional' | 'tracer'>('traditional');
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isManualMode, setIsManualMode] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Handle manual tab clicks
+  // Check if we're on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Handle manual tab clicks (desktop only - mobile uses simple toggle)
   const handleTabClick = (tab: 'traditional' | 'tracer') => {
+    if (isMobile) return; // Mobile uses simple setActiveTab instead
+
     setIsManualMode(true);
     setIsAutoPlaying(false);
     setActiveTab(tab);
@@ -26,7 +41,7 @@ export default function FragmentAutoReveal() {
       setAnimationState('complete');
     }
 
-    // Use the same timing as auto-play for accurate progress indication
+    // Start a simple progress bar that matches the auto-play timing
     let progressDuration;
     if (tab === 'traditional') {
       progressDuration = 5000; // 5 seconds until animation switches to "With Tracer"
@@ -38,62 +53,9 @@ export default function FragmentAutoReveal() {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(progressInterval);
-          // When progress completes, immediately trigger the transition
-          if (tab === 'traditional') {
-            setAnimationState('piece-connecting');
-            setTimeout(() => {
-              setAnimationState('complete');
-              setActiveTab('tracer');
-              setProgress(0);
-
-              // Start tracer progress
-              const tracerInterval = setInterval(() => {
-                setProgress(prev => {
-                  if (prev >= 100) {
-                    clearInterval(tracerInterval);
-                    setAnimationState('reversing');
-                    setActiveTab('traditional');
-                    setProgress(0);
-
-                    // Start reverse progress
-                    const reverseInterval = setInterval(() => {
-                      setProgress(prev => {
-                        if (prev >= 100) {
-                          clearInterval(reverseInterval);
-                          setAnimationState('initial');
-                          setIsManualMode(false);
-                          setIsAutoPlaying(true);
-                          return 100;
-                        }
-                        return prev + (100 / (4500 / 50));
-                      });
-                    }, 50);
-
-                    return 100;
-                  }
-                  return prev + (100 / (6500 / 50));
-                });
-              }, 50);
-            }, 1500);
-          } else {
-            setAnimationState('reversing');
-            setActiveTab('traditional');
-            setProgress(0);
-
-            // Start reverse progress
-            const reverseInterval = setInterval(() => {
-              setProgress(prev => {
-                if (prev >= 100) {
-                  clearInterval(reverseInterval);
-                  setAnimationState('initial');
-                  setIsManualMode(false);
-                  setIsAutoPlaying(true);
-                  return 100;
-                }
-                return prev + (100 / (4500 / 50));
-              });
-            }, 50);
-          }
+          // When progress completes, return to auto-play mode
+          setIsManualMode(false);
+          setIsAutoPlaying(true);
           return 100;
         }
         return prev + (100 / (progressDuration / 50));
@@ -102,7 +64,7 @@ export default function FragmentAutoReveal() {
   };
 
   useEffect(() => {
-    if (!isAutoPlaying || isManualMode) return;
+    if (!isAutoPlaying || isManualMode || isMobile) return;
 
     const runAnimationCycle = () => {
       // Start with traditional monitoring
@@ -145,11 +107,11 @@ export default function FragmentAutoReveal() {
             setActiveTab('traditional');
             setProgress(0); // Reset progress for reverse transition
 
-            // Progress bar animation for reverse transition (4.5 seconds total)
+            // Progress bar animation for reverse transition (3 seconds total to match actual timing)
             const reverseProgressInterval = setInterval(() => {
               setProgress(prev => {
                 if (prev >= 100) return 100;
-                return prev + (100 / (4500 / 50)); // 4.5 seconds total, update every 50ms
+                return prev + (100 / (3000 / 50)); // 3 seconds total, update every 50ms
               });
             }, 50);
 
@@ -157,11 +119,9 @@ export default function FragmentAutoReveal() {
             setTimeout(() => {
               setAnimationState('initial');
 
-              // After another 1.5 seconds, restart the cycle
-              setTimeout(() => {
-                clearInterval(reverseProgressInterval);
-                runAnimationCycle(); // Restart the entire cycle
-              }, 1500);
+              // Immediately restart the cycle without additional delay
+              clearInterval(reverseProgressInterval);
+              runAnimationCycle(); // Restart the entire cycle
             }, 3000);
           }, 6500); // Reduced from 8000 to 6500 to match progress bar
         }, 1500); // Match the piece animation duration for immediate transition
@@ -240,61 +200,88 @@ export default function FragmentAutoReveal() {
 
           {/* Tab Navigation */}
           <div className="mb-4 flex justify-center">
-            <div className="flex gap-8 md:gap-12">
-              <div className="relative">
+            {isMobile ? (
+              /* Mobile: Static toggle buttons */
+              <div className="flex gap-3">
                 <button
-                  onClick={() => handleTabClick('traditional')}
-                  className={`
-                    font-britti-sans text-sm md:text-base lg:text-lg
-                    transition-colors duration-300 ease-in-out
-                    relative pb-2 cursor-pointer
-                    ${activeTab === 'traditional'
-                      ? 'text-[#202020]'
-                      : 'text-[#888888] hover:text-[#202020]'
-                    }
-                  `}
+                  onClick={() => setActiveTab('traditional')}
+                  className={`px-4 py-2 font-britti-sans text-sm transition-colors duration-200 ${
+                    activeTab === 'traditional'
+                      ? 'bg-[#202020] text-[#FCFCFC]'
+                      : 'bg-[#E8E8E8] text-[#202020] hover:bg-[#D8D8D8]'
+                  }`}
                 >
                   Traditional Monitoring
                 </button>
-                {activeTab === 'traditional' && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8E8E8]">
-                    <motion.div
-                      className="h-full bg-[#202020]"
-                      initial={{ width: '0%' }}
-                      animate={{ width: `${progress}%` }}
-                      transition={{ duration: 0.1, ease: 'linear' }}
-                    />
-                  </div>
-                )}
-              </div>
-
-              <div className="relative">
                 <button
-                  onClick={() => handleTabClick('tracer')}
-                  className={`
-                    font-britti-sans text-sm md:text-base lg:text-lg
-                    transition-colors duration-300 ease-in-out
-                    relative pb-2 cursor-pointer
-                    ${activeTab === 'tracer'
-                      ? 'text-[#202020]'
-                      : 'text-[#888888] hover:text-[#202020]'
-                    }
-                  `}
+                  onClick={() => setActiveTab('tracer')}
+                  className={`px-4 py-2 font-britti-sans text-sm transition-colors duration-200 ${
+                    activeTab === 'tracer'
+                      ? 'bg-[#202020] text-[#FCFCFC]'
+                      : 'bg-[#E8E8E8] text-[#202020] hover:bg-[#D8D8D8]'
+                  }`}
                 >
                   With Tracer
                 </button>
-                {activeTab === 'tracer' && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8E8E8]">
-                    <motion.div
-                      className="h-full bg-[#202020]"
-                      initial={{ width: '0%' }}
-                      animate={{ width: `${progress}%` }}
-                      transition={{ duration: 0.1, ease: 'linear' }}
-                    />
-                  </div>
-                )}
               </div>
-            </div>
+            ) : (
+              /* Desktop: Animated tabs with progress bars */
+              <div className="flex gap-8 md:gap-12">
+                <div className="relative">
+                  <button
+                    onClick={() => handleTabClick('traditional')}
+                    className={`
+                      font-britti-sans text-sm md:text-base lg:text-lg
+                      transition-colors duration-300 ease-in-out
+                      relative pb-2 cursor-pointer
+                      ${activeTab === 'traditional'
+                        ? 'text-[#202020]'
+                        : 'text-[#888888] hover:text-[#202020]'
+                      }
+                    `}
+                  >
+                    Traditional Monitoring
+                  </button>
+                  {activeTab === 'traditional' && (
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8E8E8]">
+                      <motion.div
+                        className="h-full bg-[#202020]"
+                        initial={{ width: '0%' }}
+                        animate={{ width: `${progress}%` }}
+                        transition={{ duration: 0.1, ease: 'linear' }}
+                      />
+                    </div>
+                  )}
+                </div>
+
+                <div className="relative">
+                  <button
+                    onClick={() => handleTabClick('tracer')}
+                    className={`
+                      font-britti-sans text-sm md:text-base lg:text-lg
+                      transition-colors duration-300 ease-in-out
+                      relative pb-2 cursor-pointer
+                      ${activeTab === 'tracer'
+                        ? 'text-[#202020]'
+                        : 'text-[#888888] hover:text-[#202020]'
+                      }
+                    `}
+                  >
+                    With Tracer
+                  </button>
+                  {activeTab === 'tracer' && (
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8E8E8]">
+                      <motion.div
+                        className="h-full bg-[#202020]"
+                        initial={{ width: '0%' }}
+                        animate={{ width: `${progress}%` }}
+                        transition={{ duration: 0.1, ease: 'linear' }}
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -304,7 +291,7 @@ export default function FragmentAutoReveal() {
 
 
           {/* Left Side - Text Content */}
-          <div className="absolute left-8 top-8 bottom-8 w-1/2 flex flex-col justify-center">
+          <div className="absolute left-8 top-16 bottom-8 w-1/2 flex flex-col justify-start z-20">
             {/* Traditional Monitoring Text */}
             <div className={`transition-opacity duration-500 ${
               activeTab === 'traditional' ? 'opacity-100' : 'opacity-0'
@@ -319,7 +306,7 @@ export default function FragmentAutoReveal() {
             </div>
 
             {/* With Tracer Text */}
-            <div className={`absolute inset-0 flex flex-col justify-center transition-opacity duration-500 ${
+            <div className={`absolute inset-0 flex flex-col justify-start transition-opacity duration-500 ${
               activeTab === 'tracer' ? 'opacity-100' : 'opacity-0'
             }`}>
               <h3 className="font-britti-sans font-normal text-white mb-4 text-[28px] leading-[32px] 600:text-[32px] 600:leading-[36px]">
@@ -398,7 +385,7 @@ export default function FragmentAutoReveal() {
                   bottom: '0px',
                   right: '0px',
                   transformOrigin: 'bottom right',
-                  transform: 'scale(2.2)',
+                  transform: isMobile ? 'scale(1.5)' : 'scale(2.2)',
                   zIndex: 1
                 }}
               />
@@ -414,7 +401,7 @@ export default function FragmentAutoReveal() {
                 }`}
                 style={{
                   transformOrigin: 'bottom right',
-                  transform: 'scale(1.3)',
+                  transform: isMobile ? 'scale(1.8)' : 'scale(1.3)',
                   zIndex: 2
                 }}
               />

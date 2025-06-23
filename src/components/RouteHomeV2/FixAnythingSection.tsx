@@ -21,10 +21,10 @@ export default function FixAnythingSection() {
         <div className="px-4 md:px-8 lg:px-12">
           <div className="max-w-[1400px] w-full">
             <div className="mb-12">
-              <h2 className="text-[#FCFCFC] text-[48px] font-normal leading-[50px] mb-2 text-left font-britti max-w-fit">
+              <h2 className="text-[#FCFCFC] text-[48px] 2xl:text-[56px] font-normal leading-[50px] 2xl:leading-[58px] mb-2 text-left font-britti max-w-fit">
                 See and Fix Anything. Instantly.
               </h2>
-              <p className="text-[#888888] text-[20px] leading-[22px] font-normal text-left font-britti max-w-fit">
+              <p className="text-[#888888] text-[20px] 2xl:text-[24px] leading-[22px] 2xl:leading-[26px] font-normal text-left font-britti max-w-fit">
                 Tracer helps you effortlessly monitor tools, runs, and infrastructure with visual clarity and actionable diagnostics.
               </p>
             </div>
