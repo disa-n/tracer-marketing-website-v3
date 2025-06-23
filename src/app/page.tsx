@@ -34,6 +34,10 @@ export default function HomePage() {
     <>
       <HeroSectionV2 />
       <ProductPreviewSectionV2 />
+
+      {/* Section Divider */}
+      <div className="w-full h-px bg-[#E8E8E8]" />
+
       <UseTracerSectionV2 />
       <FixAnythingSection />
       <FragmentAutoReveal />

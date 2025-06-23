@@ -33,7 +33,7 @@ export const insightsData: InsightItem[] = [
     title: "TRACER debug",
     heading: "Fix issues instantly",
     description:
-      "Gain deep insights into the root causes of bugs across all analyses, recognise the error type, and solve instantly",
+      "Gain deep insights into the root causes of bugs across all analyses, recognize the error type, and solve instantly",
     mt: " md:mt-[454px] lg:mt-[600px]",
   },
 ];

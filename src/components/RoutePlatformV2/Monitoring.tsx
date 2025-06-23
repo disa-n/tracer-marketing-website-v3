@@ -232,10 +232,10 @@ const Monitoring = () => {
                                 </div>
                                 <div className="w-full">
                                     <h2 className='font-britti-sans text-[24px] font-[400] leading-[0.9] md:text-[32px]'>
-                                        Predict and optimise <br className="sm:hidden" /> compute requirements
+                                        Predict and optimize <br className="sm:hidden" /> compute requirements
                                     </h2>
                                     <p className='mt-2 max-w-[560px] font-britti-sans text-sm font-[400] leading-[1.1] text-c-black md:mt-3 md:text-[16px]'>
-                                        Forecast the exact running time and compute needs of your pipelines. Further optimise your underutilised instances and increase the usage of AI models in a cost-efficient manner
+                                        Forecast the exact running time and compute needs of your pipelines. Further optimize your underutilized instances and increase the usage of AI models in a cost-efficient manner
                                     </p>
                                 </div>
                             </div>

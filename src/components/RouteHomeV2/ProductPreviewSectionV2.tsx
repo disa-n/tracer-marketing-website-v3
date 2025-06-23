@@ -112,21 +112,60 @@ export default function ProductPreviewSectionV2() {
   };
 
   return (
-    <section className="relative bg-[#FCFCFC] px-3 sm:px-4 py-0 xl:py-0 -mt-4 sm:-mt-8 lg:-mt-12 overflow-hidden">
+    <section className="relative bg-[#FCFCFC] py-0 xl:py-0 -mt-4 sm:-mt-8 lg:-mt-12 overflow-hidden">
+
       <GridLinesLight />
-      <div className="relative z-10 max-w-[1408px] 1600:max-w-[1500px] 1700:max-w-[1600px] 1800:max-w-[1700px] 1900:max-w-[1800px] 1920:max-w-[1900px] mx-auto">
+
+      {/* Full navbar width container - no frame */}
+      <div className='w-full flex items-center px-6 sm:px-4 pt-8 justify-center relative z-10'>
+        <div className={`w-full max-w-[1408px] 1600:max-w-[1500px] 1700:max-w-[1600px] 1800:max-w-[1700px] 1900:max-w-[1800px] 1920:max-w-[1900px]`}>
 
         {/* Tab Navigation */}
-        <div className="mb-4 flex justify-center">
-          <div className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12 xl:gap-16">
+        <div className="mb-6 flex justify-center">
+          {/* Mobile and Tablet: flexible 2-row layout (< 1024px) */}
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-6 lg:hidden max-w-2xl px-4">
             {tabsData.map((tab) => (
               <div key={tab.id} className="relative">
                 <motion.button
                   onClick={() => handleTabClick(tab.id)}
                   className={`
-                    font-britti-sans text-sm md:text-base lg:text-lg
+                    font-britti-sans text-sm md:text-base
                     transition-colors duration-300 ease-in-out
-                    relative pb-2 cursor-pointer
+                    relative pb-3 md:pb-2 cursor-pointer px-1 md:px-0 whitespace-nowrap
+                    ${activeTab === tab.id
+                      ? 'text-[#202020]'
+                      : 'text-[#888888] hover:text-[#202020]'
+                    }
+                  `}
+                >
+                  {tab.label}
+                </motion.button>
+
+                {/* Active tab underline with progress */}
+                {activeTab === tab.id && (
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8E8E8]">
+                    <motion.div
+                      className="h-full bg-[#202020]"
+                      initial={{ width: '0%' }}
+                      animate={{ width: `${progress}%` }}
+                      transition={{ duration: 0.1, ease: 'linear' }}
+                    />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Laptop and up: single row (≥ 1024px) */}
+          <div className="hidden lg:flex justify-center gap-8 xl:gap-12 2xl:gap-16">
+            {tabsData.map((tab) => (
+              <div key={tab.id} className="relative">
+                <motion.button
+                  onClick={() => handleTabClick(tab.id)}
+                  className={`
+                    font-britti-sans text-base xl:text-lg
+                    transition-colors duration-300 ease-in-out
+                    relative pb-2 cursor-pointer whitespace-nowrap
                     ${activeTab === tab.id
                       ? 'text-[#202020]'
                       : 'text-[#888888] hover:text-[#202020]'
@@ -152,40 +191,51 @@ export default function ProductPreviewSectionV2() {
           </div>
         </div>
 
-        {/* Full Width Black Container */}
-        <div className="w-full bg-[#0B0B0B] rounded-lg overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.2)] py-6 md:py-8">
+        {/* Full Width Container with Glassmorphism Border */}
+        <div className="w-full pt-1 pb-0 md:pt-1 md:pb-0">
           <div className="flex justify-center">
-            <div className="relative w-full max-w-[1300px] rounded-lg overflow-hidden border border-[#474747]"
-                 style={{ aspectRatio: '1379/724' }}>
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeTab}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{
-                    duration: 0.4,
-                    ease: "easeInOut",
-                    opacity: { duration: 0.3 },
-                    y: { duration: 0.4 }
-                  }}
-                  className="w-full h-full"
-                >
-                  <Image
-                    src={activeTabData.imageUrl}
-                    alt={`${activeTabData.label} preview`}
-                    width={1280}
-                    height={640}
-                    className="w-full h-full object-contain"
-                    priority={activeTab === tabsData[0].id}
-                  />
-                </motion.div>
-              </AnimatePresence>
+            {/* Overflow container to cut off the bottom */}
+            <div className="relative w-full max-w-[1300px] overflow-hidden" style={{ height: '95%', aspectRatio: '1379/678' }}>
+              <div
+                className="relative w-full rounded-lg overflow-hidden bg-[#0B0B0B]"
+                style={{
+                  aspectRatio: '1379/714'
+                }}
+              >
+                {/* Inner content container */}
+                <div className="relative w-full h-full bg-[#0B0B0B] rounded-md overflow-hidden">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeTab}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{
+                        duration: 0.4,
+                        ease: "easeInOut",
+                        opacity: { duration: 0.3 },
+                        y: { duration: 0.4 }
+                      }}
+                      className="w-full h-full"
+                    >
+                      <Image
+                        src={activeTabData.imageUrl}
+                        alt={`${activeTabData.label} preview`}
+                        width={1280}
+                        height={640}
+                        className="w-full h-full object-contain"
+                        priority={activeTab === tabsData[0].id}
+                      />
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-      </div>
+        </div> {/* Close navbar width container */}
+      </div> {/* Close full width container */}
     </section>
   );
 }

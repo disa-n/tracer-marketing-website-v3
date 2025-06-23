@@ -38,7 +38,7 @@ const features: Feature[] = [
     id: 'tool-metrics',
     title: 'Tool-Level Metrics',
     previewTitle: 'Tool-Level Metrics',
-    description: 'Get granular insights into individual tool performance, resource consumption,\nand execution patterns across your pipeline ecosystem.',
+    description: 'Get granular insights into tool-level CPU, memory, and disk I/O usage, along with\nperformance and execution patterns across your pipeline ecosystem.',
     icon: Settings,
     image: '/platformv2/features/tool-metrics.webp'
   },
@@ -86,12 +86,9 @@ const ProductFeaturesDeepDive = () => {
   const currentFeature = features.find(f => f.id === activeFeature) || features[0]
   const currentIndex = features.findIndex(f => f.id === activeFeature)
 
-  // Auto-advance functionality (desktop only)
+  // Auto-advance functionality
   useEffect(() => {
-    // Check if we're on mobile (screen width <= 1024px)
-    const isMobile = window.innerWidth <= 1024
-
-    if (!isAutoAdvancing || isMobile) return
+    if (!isAutoAdvancing) return
 
     // Clear existing intervals
     if (intervalRef.current) clearInterval(intervalRef.current)
@@ -104,15 +101,15 @@ const ProductFeaturesDeepDive = () => {
     progressIntervalRef.current = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) return 100
-        return prev + (100 / (5000 / 50)) // 5 seconds total, update every 50ms
+        return prev + (100 / (8000 / 50)) // 8 seconds total, update every 50ms
       })
     }, 50)
 
-    // Auto-advance to next feature after 5 seconds
+    // Auto-advance to next feature after 8 seconds
     intervalRef.current = setTimeout(() => {
       const nextIndex = (currentIndex + 1) % features.length
       setActiveFeature(features[nextIndex].id)
-    }, 5000)
+    }, 8000)
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current)
@@ -134,59 +131,26 @@ const ProductFeaturesDeepDive = () => {
 
   return (
     <section className="relative overflow-hidden bg-white">
-      {/* Background Grid Lines - Desktop Only */}
-      <div className="hidden lg:block">
-        <GridLines3 />
-      </div>
+      {/* Background Grid Lines */}
+      <GridLines3 />
       
-      <div className='w-full flex z-[10] flex-col items-center justify-center max-w-[1800px] px-6 900:px-8 mx-auto'>
+      <div className='w-full flex z-[10] flex-col items-center justify-center max-w-[1800px] 900:px-8 px-6 mx-auto'>
         <div className="relative z-10 py-16 lg:py-28 w-full">
           {/* Section Header */}
           <div className="mb-12 lg:mb-16">
             <h2 className="font-britti-sans text-[32px] sm:text-[40px] lg:text-[48px] font-normal leading-[1.1] tracking-[-0.01em] text-black mb-6">
-              Explore the Power Behind<br />
+              Explore The Power Behind<br />
               Tracer&apos;s Observability Layers
             </h2>
-            <p className="font-britti-sans text-sm sm:text-base font-normal leading-[1.4] text-[#888888] max-w-2xl">
+            <p className="font-britti-sans text-[14px] sm:text-[16px] font-normal leading-[1.4] text-[#888888] max-w-2xl">
               Get a closer look at the core features powering real-time observability, cost tracking, and smarter pipeline decisions.
             </p>
           </div>
 
           {/* Features Grid */}
-          <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[300px_1fr] lg:gap-8">
-            {/* Mobile Tab Navigation - matches home screen style */}
-            <div className="lg:hidden mb-8 flex justify-center">
-              <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-                {features.map((feature) => (
-                  <div key={feature.id} className="relative">
-                    <motion.button
-                      onClick={() => handleFeatureClick(feature.id)}
-                      className={`
-                        font-britti-sans text-sm sm:text-base
-                        transition-colors duration-300 ease-in-out
-                        relative pb-2 cursor-pointer
-                        ${activeFeature === feature.id
-                          ? 'text-black'
-                          : 'text-[#888888] hover:text-black'
-                        }
-                      `}
-                    >
-                      {feature.title}
-                    </motion.button>
-
-                    {/* Active tab underline */}
-                    {activeFeature === feature.id && (
-                      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-300">
-                        <div className="h-full bg-black w-full" />
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Desktop Feature List */}
-            <div className="hidden lg:block border border-gray-200 bg-white h-fit">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-[300px_1fr] lg:gap-8">
+            {/* Left Side - Feature List */}
+            <div className="border border-gray-200 bg-white h-fit">
               {features.map((feature) => (
                 <div key={feature.id} className="relative">
                   <motion.button
@@ -206,7 +170,7 @@ const ProductFeaturesDeepDive = () => {
                           activeFeature === feature.id ? 'text-gray-700' : 'text-[#888888]'
                         }`}
                       />
-                      <h3 className={`font-britti-sans text-base sm:text-lg font-normal leading-[1.2] tracking-[-0.01em] transition-colors duration-300 ${
+                      <h3 className={`font-britti-sans text-[16px] sm:text-[18px] font-normal leading-[1.2] tracking-[-0.01em] transition-colors duration-300 ${
                         activeFeature === feature.id ? 'text-black' : 'text-[#888888]'
                       }`}>
                         {feature.title}
@@ -214,7 +178,7 @@ const ProductFeaturesDeepDive = () => {
                     </div>
                   </motion.button>
 
-                  {/* Loading Bar - Desktop Only */}
+                  {/* Loading Bar */}
                   {activeFeature === feature.id && (
                     <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-200">
                       <motion.div
@@ -231,13 +195,23 @@ const ProductFeaturesDeepDive = () => {
 
             {/* Right Side - Feature Display */}
             <div className="relative">
-              <div className="lg:sticky lg:top-8 h-fit">
+              <div className="sticky top-8 h-fit">
                 {/* Feature Header */}
                 <div className="mb-6">
-                  <h3 className="font-britti-sans text-2xl sm:text-[28px] lg:text-[32px] font-normal leading-[1.1] tracking-[-0.01em] text-black mb-4 break-words">
-                    {currentFeature.previewTitle}
-                  </h3>
-                  <p className="font-britti-sans text-sm sm:text-base font-normal leading-[1.4] tracking-[0em] text-[#888888] break-words">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 gap-4">
+                    <h3 className="font-britti-sans text-[24px] sm:text-[28px] lg:text-[32px] font-normal leading-[1.1] tracking-[-0.01em] text-black whitespace-pre-line">
+                      {currentFeature.previewTitle}
+                    </h3>
+                    <Link
+                      href="https://sandbox.tracer.cloud/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="h-[48px] font-britti-sans text-[14px] sm:text-base font-normal cursor-pointer bg-[#E8E8E8] flex items-center justify-center text-black px-6 sm:px-8 hover:opacity-80 transition-all shrink-0 w-full sm:w-auto"
+                    >
+                      See It In Action
+                    </Link>
+                  </div>
+                  <p className="font-britti-sans text-[14px] sm:text-[16px] font-normal leading-[1.4] tracking-[0em] text-[#888888] whitespace-pre-line">
                     {currentFeature.description}
                   </p>
                 </div>
@@ -250,28 +224,24 @@ const ProductFeaturesDeepDive = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.3 }}
-                    className="relative w-full border border-gray-200 h-[300px] sm:h-[400px] lg:h-[510px] mb-6"
+                    className="relative w-full border border-gray-200 h-[290px] sm:h-[390px] lg:h-[500px]"
                     style={{ backgroundColor: '#0B0B0B' }}
                   >
                     <Image
                       src={currentFeature.image}
                       alt={currentFeature.title}
                       fill
-                      className="object-contain"
+                      className={
+                        activeFeature === 'unified-log' || activeFeature === 'time-sink'
+                          ? "object-contain"
+                          : (activeFeature === 'pipeline-spend' || activeFeature === 'tool-metrics' || activeFeature === 'live-instance' || activeFeature === 'smart-tradeoffs')
+                          ? "object-contain 2xl:object-contain"
+                          : "object-cover"
+                      }
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
                     />
                   </motion.div>
                 </AnimatePresence>
-
-                {/* See It in Action Button */}
-                <Link
-                  href="https://sandbox.tracer.cloud/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="h-12 font-britti-sans text-sm sm:text-base font-normal cursor-pointer bg-[#E8E8E8] flex items-center justify-center text-black px-6 sm:px-8 hover:opacity-80 transition-all w-full"
-                >
-                  See It in Action
-                </Link>
               </div>
             </div>
           </div>

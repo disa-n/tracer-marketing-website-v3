@@ -15,7 +15,7 @@ export const faqData: FaqItem[] = [
     id: "002",
     question: "What type of analyses or indications do you support?",
     answer:
-      "We support any analysis running on Linux systems. Tracer recognises any computational biology framework or tool, written in bash, Python, or R. It supports the most common workflow management and schedulers, including Nextflow, AWS Batch, Slurm, and WDL.",
+      "We support any analysis running on Linux systems. Tracer recognizes any computational biology framework or tool, written in bash, Python, or R. It supports the most common workflow management and schedulers, including Nextflow, AWS Batch, Slurm, and WDL.",
   },
   {
     id: "003",
