@@ -9,12 +9,12 @@ const MonitoringInsights = () => {
             <div className='w-full max-w-[1800px] px-6 900:px-8 py-16 md:py-24'>
                 <div className="mb-8 md:mb-12 lg:mb-16">
                     <h2 className="font-britti-sans text-[32px] sm:text-[40px] lg:text-[48px] font-normal leading-[1.1] tracking-[-0.01em] text-black mb-6">
-                        Monitoring Insights for the Worldʼs<br className="hidden sm:block" />
+                        Monitoring Insights for the Worldʼs <br className="hidden sm:block" />
                         <span className="sm:hidden">Most Complex Industries</span>
                         <span className="hidden sm:inline">Most Complex Industries</span>
                     </h2>
                     <p className="font-britti-sans text-sm sm:text-base font-normal leading-[1.4] text-[#888888] max-w-2xl">
-                        From automotive to biotech, Tracer brings real-time monitoring and deep system-level insights to the most data-intensive industries.
+                        From automotive to biotech, Tracer brings real-time monitoring and insights to workloads in the most advanced, data-intensive industries.
                     </p>
                 </div>
                 <div className='w-full mt-6 md:mt-[18px] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[0.16fr_0.27fr_0.27fr_0.36fr] gap-4 md:gap-2'>
