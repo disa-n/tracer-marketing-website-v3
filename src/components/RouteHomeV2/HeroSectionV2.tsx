@@ -79,11 +79,13 @@ export default function HeroSectionV2() {
                   className="absolute inset-0 bg-gradient-to-r from-[#3A23ED] via-[#BF5198] to-[#FFA231] bg-clip-text text-transparent"
                   style={{
                     filter: 'brightness(2.5) saturate(0.3)',
-                    maskImage: 'linear-gradient(90deg, transparent 0%, transparent 40%, white 50%, transparent 60%, transparent 100%)',
-                    WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, transparent 40%, white 50%, transparent 60%, transparent 100%)',
-                    maskSize: '200% 100%',
-                    WebkitMaskSize: '200% 100%',
-                    animation: 'gradient-sweep-lr 3s linear infinite'
+                    maskImage: 'linear-gradient(90deg, transparent 0%, transparent 35%, white 50%, transparent 65%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, transparent 35%, white 50%, transparent 65%, transparent 100%)',
+                    maskSize: '300% 100%',
+                    WebkitMaskSize: '300% 100%',
+                    maskRepeat: 'no-repeat',
+                    WebkitMaskRepeat: 'no-repeat',
+                    animation: 'gradient-sweep-lr 4s ease-in-out infinite'
                   }}
                 >
                   {displayedText}

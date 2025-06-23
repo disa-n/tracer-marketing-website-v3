@@ -364,11 +364,11 @@
 
 @keyframes gradient-sweep-lr {
   0% {
-    mask-position: 100% 0;
-    -webkit-mask-position: 100% 0;
+    mask-position: 150% 0;
+    -webkit-mask-position: 150% 0;
   }
   100% {
-    mask-position: -100% 0;
-    -webkit-mask-position: -100% 0;
+    mask-position: -150% 0;
+    -webkit-mask-position: -150% 0;
   }
 }
