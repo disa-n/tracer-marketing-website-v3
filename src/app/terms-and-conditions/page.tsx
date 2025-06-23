@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Terms & Conditions | Tracer",
+  title: "Tracer | Terms and Conditions",
   description: "Read Tracer's terms and conditions for using our website.",
 };
 
