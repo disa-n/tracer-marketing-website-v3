@@ -3,6 +3,7 @@ export const metadata = {
   description: "Tracer combines deep scientific knowledge and cutting-edge tech to accelerate AI adoption in industry. Learn more about our mission, team, and values.",}
 import Hero from '../../components/about/Hero'
 import WhyWeExist from '../../components/about/WhyWeExist'
+import MoonshotSection from '../../components/about/MoonshotSection'
 import TwoWorlds from '../../components/about/TwoWorlds'
 import Culture from '../../components/about/Culture'
 import Hiring from '../../components/about/Hiring'
@@ -17,9 +18,10 @@ export default function AboutPage() {
       <Hero/>
 
       {/* Why We Exist Section */}
-      <section className="relative w-full py-16 lg:pt-0 lg:pb-16 px-4">
-        <WhyWeExist />
-      </section>
+      <WhyWeExist />
+
+      {/* Moonshot Section */}
+      <MoonshotSection />
 
       {/* Two Worlds Section */}
       <section className="relative w-full">

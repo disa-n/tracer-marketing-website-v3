@@ -1,30 +1,32 @@
 import { ReactNode } from 'react';
+import { Rocket } from 'lucide-react';
 
 interface InsightCardProps {
-  icon: ReactNode;
+  icon?: ReactNode;
   title: string;
-  description: string;
+  description: string | ReactNode;
 }
 
 export default function InsightCard({ icon, title, description }: InsightCardProps) {
   return (
-    <div className="bg-[#FCFCFC] border border-[#E8E8E8] p-8 md:p-10 min-h-[400px] md:min-h-[450px] flex flex-col justify-center">
-      {/* Icon */}
-      <div className="flex justify-center mb-16 mt-6">
-        {icon}
+    <div className="bg-[#FCFCFC] border border-[#E8E8E8] max-w-[1255px] px-4 md:px-8 lg:px-12 pt-10 pb-16 h-full flex flex-col">
+      {/* Icon - Top-left corner */}
+      <div className="mb-6">
+        {icon || <Rocket className="w-16 h-16 text-[#202020]" strokeWidth={1} />}
       </div>
 
-      {/* Title and Description with their own spacing */}
-      <div className="space-y-4">
-        {/* Title */}
-        <h3 className="font-britti-sans text-lg sm:text-xl lg:text-2xl font-normal text-[#202020]">
-          {title}
-        </h3>
+      {/* Title */}
+      <h3 className="font-britti-sans text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-medium text-[#202020] mb-4">
+        {title}
+      </h3>
 
-        {/* Description */}
-        <p className="font-britti-sans text-sm sm:text-base text-[#888888]">
-          {description}
-        </p>
+      {/* Description */}
+      <div className="font-britti-sans font-normal text-[#202020] text-base md:text-lg lg:text-base xl:text-base 2xl:text-lg leading-[1.5] space-y-6 flex-1">
+        {typeof description === 'string' ? (
+          <p>{description}</p>
+        ) : (
+          description
+        )}
       </div>
     </div>
   );
