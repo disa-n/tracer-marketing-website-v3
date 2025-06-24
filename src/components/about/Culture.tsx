@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useMemo } from 'react'
 import Image from 'next/image'
-import { GridLines3Dark } from '@/components/shared/GridLines'
+import GridLines from '@/components/shared/GridLines'
 
 
 // Types
@@ -268,7 +268,7 @@ function Culture() {
   return (
     <section className="relative overflow-hidden bg-[#202020] py-16 lg:pt-16 lg:pb-24 z-30">
       {/* GridLines */}
-      <GridLines3Dark />
+      <GridLines />
 
       {/* Title Container */}
       <div className="relative z-10 w-full max-w-[1408px] 1600:max-w-[1500px] 1700:max-w-[1600px] 1800:max-w-[1700px] 1900:max-w-[1800px] 1920:max-w-[1900px] mx-auto px-4 md:px-8 lg:px-12 xl:px-8">

@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Our Technology | Tracer",
+  title: "Tracer | Our Technology",
   description: "Explore Tracer's core technology. Learn how we use eBPF, OpenTelemetry, and infrastructure-native observability to deliver real-time visibility into complex scientific pipelines.",}
 import HeroSection from "@/components/RouteTechnology/HeroSection";
 import Layer from "@/components/RouteTechnology/Layer";

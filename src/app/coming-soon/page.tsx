@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Coming Soon | Tracer",
+  title: "Tracer | Coming Soon",
   description: "This feature is coming soon. Stay tuned for updates from Tracer.",
 };
 

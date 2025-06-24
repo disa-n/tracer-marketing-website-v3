@@ -10,14 +10,14 @@ const YourPartner = () => {
                     <div className='flex w-full flex-col items-start justify-between px-4 pt-6 md:px-6 lg:flex-row'>
                         <div className='w-full max-w-[800px]'>
                             <h2 className='font-britti-sans text-[32px] font-[400] leading-[1] tracking-tight text-c-off-white md:text-[56px] md:leading-[0.85] md:tracking-tighter'>
-                                Your partner <br className='md:hidden' /> in every step  <br className='hidden md:flex' /> of <br className='md:hidden' /> your infrastructure journey
+                                Your Partner <br className='md:hidden' /> in Every Step  <br className='hidden md:flex' /> of <br className='md:hidden' /> Your Infrastructure Journey
                             </h2>
                             <p className='mt-5 font-britti-sans text-sm font-[400] text-c-off-white md:text-base'>
                                 From your first steps building new computational pipelines to optimising existing <br className='hidden md:flex' /> AI models in the cloud, Tracer is your partner for your shift to digital and AI.
                             </p>
                         </div>
-                        <Link href="/technology" className='mt-8 h-[48px] w-full cursor-pointer bg-[#E8E8E8] px-8 font-britti-sans text-base font-[400] text-c-black transition-all hover:opacity-80 md:mt-0 md:w-fit flex items-center justify-center'>
-                            Talk to Us Directly
+                        <Link href="/demo" className='mt-8 h-[48px] w-full cursor-pointer bg-[#E8E8E8] px-8 font-britti-sans text-base font-[400] text-c-black transition-all hover:opacity-80 md:mt-0 md:w-fit flex items-center justify-center'>
+                            Talk to Us
                         </Link>
                         <div className='mt-12 md:hidden'>
                             <ul className='space-y-4 text-sm font-[400] text-c-off-white'>

@@ -4,7 +4,7 @@ import Generator from '@/components/tools/reverse-complement/Generator';
 import Cta from '@/components/RoutePlatform/Cta';
 
 export const metadata: Metadata = {
-  title: 'Reverse Complement Generator | Tracer',
+  title: 'Tracer | Reverse Complement Generator',
   description: 'Get the reverse, complement, or reverse complement of any DNA sequence as quickly as we can provide visibility into your bioinformatic pipelines.',
 };
 
