@@ -1,9 +1,11 @@
 'use client'
 
 import React, { useRef, useEffect, useState } from 'react'
-import Image from 'next/image'
 import { motion, useAnimation, useInView, type Variants } from 'framer-motion'
 import { GridLinesLight } from '@/components/shared/GridLines'
+import InsightCard from '@/components/ui/InsightCard'
+import StyledLayoutWrapper from '@/components/shared/StyledLayoutWrapper'
+import { Rocket, Trophy } from 'lucide-react'
 
 function WhyWeExist() {
   // State for responsive behavior - disable animations on mobile
@@ -32,7 +34,6 @@ function WhyWeExist() {
 
   // Refs and controls for card animations
   const cardsRef = useRef(null)
-  const moonshotRef = useRef(null)
 
   // Detect when cards come into view
   const cardsInView = useInView(cardsRef, {
@@ -40,56 +41,19 @@ function WhyWeExist() {
     margin: "0px 0px 0px 0px"
   })
 
-  // Detect when moonshot section comes into view
-  const moonshotInView = useInView(moonshotRef, {
-    amount: 0.2, // Trigger when 20% visible
-    margin: "0px 0px 0px 0px"
-  })
-
   const cardsControls = useAnimation()
-  const moonshotControls = useAnimation()
   const rectangleControls = useAnimation()
-  const textControls = useAnimation()
 
   // Animation variants for cards (rise into place, no fade) - desktop only
   const cardVariants: Variants = {
     hidden: {
-      y: isMobileView ? 0 : 120 // No slide animation in mobile
+      y: isMobileView ? 0 : 60 // Reduced from 120 to 60 for subtler animation
     },
     visible: {
       y: 0,
       transition: {
-        duration: isMobileView ? 0 : 0.8, // No animation duration in mobile
+        duration: isMobileView ? 0 : 0.8,
         ease: "easeInOut"
-      }
-    }
-  }
-
-  // Animation variants for second card (staggered) - desktop only
-  const cardVariantsStaggered: Variants = {
-    hidden: {
-      y: isMobileView ? 0 : 120 // No slide animation in mobile
-    },
-    visible: {
-      y: 0,
-      transition: {
-        duration: isMobileView ? 0 : 0.8, // No animation duration in mobile
-        ease: "easeInOut",
-        delay: isMobileView ? 0 : 0.2 // No delay in mobile
-      }
-    }
-  }
-
-  // Animation variants for moonshot background (rise in place) - desktop only
-  const moonshotVariants: Variants = {
-    hidden: {
-      y: isMobileView ? 0 : 40 // No slide animation in mobile
-    },
-    visible: {
-      y: 0,
-      transition: {
-        duration: isMobileView ? 0 : 1.0, // No animation duration in mobile
-        ease: "easeInOut" // Smoother easing curve
       }
     }
   }
@@ -98,14 +62,14 @@ function WhyWeExist() {
   const rectangleVariants: Variants = {
     hidden: {
       y: isMobileView ? 0 : 40, // No slide animation in mobile
-      width: isMobileView ? "min(400px, 85vw)" : "min(430px, 90vw)", // Start at final size in mobile
-      height: isMobileView ? "min(100px, 12vw)" : "min(110px, 15vw)", // Start at final size in mobile
+      width: isMobileView ? "min(400px, 85vw)" : "min(430px, 90vw)", // Start at final size in mobile, larger size in desktop
+      height: isMobileView ? "min(130px, 15vw)" : "min(140px, 18vw)", // Start at final size in mobile, larger size in desktop
       transformOrigin: "top right"
     },
     visible: {
       y: 0, // Rise to final position with background
-      width: "min(400px, 85vw)", // Responsive final width
-      height: "min(100px, 12vw)", // Responsive final height
+      width: "min(400px, 85vw)", // Responsive final width (smaller)
+      height: "min(130px, 15vw)", // Responsive final height (smaller)
       transition: {
         y: {
           duration: isMobileView ? 0 : 1.0, // No animation duration in mobile
@@ -125,17 +89,17 @@ function WhyWeExist() {
     }
   }
 
-  // Animation variants for text elements (slide up from below, staggered after background) - desktop only
-  const textVariants: Variants = {
+  // Animation variants for second card (staggered) - desktop only
+  const cardVariantsStaggered: Variants = {
     hidden: {
-      y: isMobileView ? 0 : 60 // No slide animation in mobile
+      y: isMobileView ? 0 : 60 // Reduced from 120 to 60 for subtler animation
     },
     visible: {
       y: 0,
       transition: {
-        duration: isMobileView ? 0 : 0.8, // No animation duration in mobile
+        duration: isMobileView ? 0 : 0.8,
         ease: "easeInOut",
-        delay: isMobileView ? 0 : 0.4 // No delay in mobile
+        delay: isMobileView ? 0 : 0.2
       }
     }
   }
@@ -144,103 +108,88 @@ function WhyWeExist() {
   useEffect(() => {
     if (cardsInView && !cardsAnimated) {
       cardsControls.start("visible")
+      rectangleControls.start("visible")
       setCardsAnimated(true)
     }
-  }, [cardsInView, cardsAnimated, cardsControls, setCardsAnimated])
+    // No reset behavior - animations stay visible once triggered
+  }, [cardsInView, cardsAnimated, cardsControls, rectangleControls, setCardsAnimated])
 
+  // Ensure rectangle starts in hidden state
   useEffect(() => {
-    if (moonshotInView) {
-      moonshotControls.start("visible")
-      rectangleControls.start("visible")
-      textControls.start("visible")
-    } else {
-      moonshotControls.start("hidden")
-      rectangleControls.start("hidden")
-      textControls.start("hidden")
-    }
-  }, [moonshotInView, moonshotControls, rectangleControls, textControls])
+    rectangleControls.set("hidden")
+  }, [rectangleControls])
 
   return (
-    <div className="relative w-full flex flex-col justify-start items-start gap-8 lg:gap-8 px-4 lg:px-0">
+    <section className="relative overflow-hidden">
       {/* Light Gridlines */}
       <GridLinesLight />
 
-      {/* Section Title */}
-      <div className="mt-8 xl:ml-15 2xl:ml-15 text-[#202020] font-britti-sans font-medium break-words relative z-10 text-2xl sm:text-3xl lg:text-[40px] leading-tight lg:leading-[38px] tracking-tight lg:tracking-[-1.5px] max-w-full lg:max-w-[453px]">
-        Why We Exist
+      <div className="relative z-20 pt-16 pb-32 lg:pt-20 lg:pb-48">
+        <StyledLayoutWrapper>
+          {/* Section Title */}
+          <h2 className="text-[#202020] font-britti-sans font-medium text-2xl sm:text-3xl lg:text-[40px] leading-tight lg:leading-[38px] tracking-tight lg:tracking-[-1.5px] mb-4 lg:mb-6">
+            Why We Exist
+          </h2>
+
+          {/* Cards Container */}
+          <div ref={cardsRef} className="relative mt-12 lg:mt-16">
+            {/* Cards Layout - Mobile-first: stacked, then overlapping positioned on lg+ */}
+            <div className="flex flex-col gap-4 lg:gap-0 lg:relative lg:min-h-[700px]">
+              {/* Mission Card */}
+              <motion.div
+                className="flex lg:absolute lg:top-0 lg:left-0 xl:left-[-20px] 2xl:left-[100px] lg:w-[620px] xl:w-[670px] 2xl:w-[750px] lg:h-[350px] lg:z-10"
+                animate={cardsControls}
+                variants={cardVariants}
+                initial="hidden"
+              >
+                <InsightCard
+                  icon={<Rocket className="w-16 h-16 text-[#202020]" strokeWidth={1} />}
+                  title="Mission"
+                  description={
+                    <div className="space-y-6">
+                      <p>
+                        To revolutionise how scientists and engineers leverage high-performance computing by making observability seamless, insightful, and transformative.
+                      </p>
+                      <p>
+                        We empower innovation in regulated industries, enabling breakthroughs that redefine what&apos;s possible in scientific research, design, and engineering.
+                      </p>
+                    </div>
+                  }
+                />
+              </motion.div>
+
+              {/* Goal Card */}
+              <motion.div
+                className="flex lg:absolute lg:top-[320px] xl:top-[360px] lg:right-0 xl:right-[-20px] 2xl:right-[100px] lg:w-[620px] xl:w-[670px] 2xl:w-[750px] lg:h-[350px] lg:z-20"
+                animate={cardsControls}
+                variants={cardVariantsStaggered}
+                initial="hidden"
+              >
+                <InsightCard
+                  icon={<Trophy className="w-16 h-16 text-[#202020]" strokeWidth={1} />}
+                  title="Goal"
+                  description={
+                    <div className="space-y-6">
+                      <p>
+                        To make high-performance computing as accessible and impactful for science as cloud computing has been for software.
+                      </p>
+                      <p className="opacity-0 pointer-events-none">
+                        {/* Hidden spacer paragraph to match Mission card height */}
+                        &nbsp;
+                      </p>
+                    </div>
+                  }
+                />
+              </motion.div>
+            </div>
+          </div>
+        </StyledLayoutWrapper>
       </div>
 
-      {/* Cards Container */}
-      <div ref={cardsRef} className="relative w-full max-w-7xl mx-auto z-10">
-        {/* Cards Layout - Responsive Grid */}
-        <div className="flex flex-col gap-8 lg:gap-16 lg:h-[720px] lg:relative min-h-[600px] lg:min-h-[720px]">
-          {/* Mission Card */}
-          <motion.div
-            className="bg-[#FCFCFC] border border-[#E8E8E8] p-4 lg:p-5 flex flex-col gap-4 lg:gap-6 z-[5] lg:absolute lg:w-[600px] lg:h-[320px] lg:left-[30px] lg:top-0"
-            animate={cardsControls}
-            variants={cardVariants}
-            initial="hidden"
-          >
-            {/* Mission Icon - Rocket SVG */}
-            <div className="w-12 h-12 flex items-center justify-center">
-              <Image
-                src="/About us/rocket.svg"
-                alt="Mission Rocket"
-                width={39}
-                height={39}
-              />
-            </div>
-
-            {/* Mission Content */}
-            <div className="flex flex-col gap-2 lg:gap-4 flex-1 lg:mt-[75px]">
-              <h3 className="text-[#202020] font-britti-sans font-normal text-2xl sm:text-3xl lg:text-[40px] leading-tight lg:leading-[38px] tracking-tight lg:tracking-[-1.5px]">
-                Mission
-              </h3>
-              <div className="text-[#202020] font-britti-sans font-normal text-sm sm:text-base lg:text-[16px] leading-relaxed lg:leading-[17px] space-y-4">
-                <p>
-                  To revolutionise how scientists and engineers leverage high-performance computing by making observability seamless, insightful, and transformative.
-                </p>
-                <p>
-                  We empower innovation in regulated industries, enabling breakthroughs that redefine what&apos;s possible in scientific research, design, and engineering.
-                </p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Goal Card */}
-          <motion.div
-            className="bg-[#FCFCFC] border border-[#E8E8E8] p-4 lg:p-5 flex flex-col gap-4 lg:gap-6 z-[5] lg:absolute lg:w-[590px] lg:h-[320px] lg:right-[20px] lg:top-[350px]"
-            animate={cardsControls}
-            variants={cardVariantsStaggered}
-            initial="hidden"
-          >
-            {/* Goal Icon - Trophy SVG */}
-            <div className="w-12 h-12 flex items-center justify-center">
-              <Image
-                src="/About us/trophy.svg"
-                alt="Goal Trophy"
-                width={37}
-                height={37}
-              />
-            </div>
-
-            {/* Goal Content */}
-            <div className="flex flex-col gap-2 lg:gap-4 flex-1 lg:mt-[75px]">
-              <h3 className="text-[#202020] font-britti-sans font-normal text-2xl sm:text-3xl lg:text-[40px] leading-tight lg:leading-[38px] tracking-tight lg:tracking-[-1.5px]">
-                Goal
-              </h3>
-              <div className="text-[#202020] font-britti-sans font-normal text-sm sm:text-base lg:text-[16px] leading-relaxed lg:leading-[17px]">
-                To make high-performance computing as accessible and impactful for science as cloud computing has been for software.
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Background rectangle element - intersecting with moonshot */}
-      <div className="relative w-full h-15 -mt-5 lg:-mt-5">
+      {/* Rectangle element at bottom - positioned to sit on top of moonshot section */}
+      <div className="absolute bottom-0 w-full h-20 overflow-hidden z-30">
         <motion.div
-          className="absolute bg-[#202020] top-7 z-10"
+          className="absolute bg-[#202020] bottom-0 z-30"
           style={{
             left: 'calc(-50vw + 50%)'
           }}
@@ -249,58 +198,7 @@ function WhyWeExist() {
           initial="hidden"
         />
       </div>
-
-      {/* Moonshot Section */}
-      <motion.div
-        ref={moonshotRef}
-        className="relative w-screen bg-[#202020] overflow-hidden min-h-[350px] pb-14 -mt-10 -mb-2 -mx-4 lg:-mx-0 px-4 lg:px-16 z-10"
-        style={{
-          marginLeft: 'calc(-50vw + 50%)',
-          marginRight: 'calc(-50vw + 50%)',
-          paddingLeft: 'calc(50vw - 50% + 16px)',
-          paddingRight: 'calc(50vw - 50% + 16px)'
-        }}
-        animate={moonshotControls}
-        variants={moonshotVariants}
-        initial="hidden"
-      >
-        {/* Moonshot Title */}
-        <motion.div
-          className="text-[#FCFCFC] font-britti-sans font-normal text-center pt-16 lg:pt-24 text-2xl sm:text-3xl lg:text-[40px] leading-tight lg:leading-[48px]"
-          animate={textControls}
-          variants={textVariants}
-          initial="hidden"
-        >
-          Our Moonshot
-        </motion.div>
-
-        {/* Moonshot Description */}
-        <motion.div
-          className="flex flex-col justify-center text-[#FCFCFC] font-britti-sans font-normal text-center mt-8 lg:mt-12 px-4 lg:px-0 text-sm sm:text-base lg:text-[16px] leading-relaxed lg:leading-[17px] max-w-4xl mx-auto"
-          animate={textControls}
-          variants={{
-            hidden: {
-              y: isMobileView ? 0 : 400 // No slide animation in mobile
-            },
-            visible: {
-              y: 0,
-              transition: {
-                duration: isMobileView ? 0 : 1.2, // No animation duration in mobile
-                ease: "easeInOut",
-                delay: isMobileView ? 0 : 0.6 // No delay in mobile
-              }
-            }
-          }}
-          initial="hidden"
-        >
-          Just as cloud computing revolutionised web and mobile applications over the past 10 years, we believe it&apos;s time for scientists and engineers to experience a similar transformation and ask:
-
-          <p className="mt-5 font-semibold">
-            &ldquo;What can I do with all this immense power?&rdquo;
-          </p>
-        </motion.div>
-      </motion.div>
-    </div>
+    </section>
   )
 }
 
