@@ -17,32 +17,32 @@ const tabsData: TabData[] = [
   {
     id: 'anomaly-detection',
     label: 'Anomaly Detection',
-    imageUrl: '/home/Pipeline-Overview.webp'
+    imageUrl: '/home/anomaly-detection-v2.webp'
   },
   {
     id: 'tool-level-insights',
     label: 'Tool-Level Insights',
-    imageUrl: '/home/Tool-Preview.webp'
+    imageUrl: '/home/tool-level-insights-v2.webp'
   },
   {
     id: 'run-by-run-clarity',
     label: 'Run-by-Run Clarity',
-    imageUrl: '/home/Insights-Drilldown.webp'
+    imageUrl: '/home/run-by-run-clarity-v2.webp'
   },
   {
     id: 'smart-recommendations',
     label: 'Smart Recommendations',
-    imageUrl: '/home/AI-Rec.webp'
+    imageUrl: '/home/smart-recommendations-v2.webp'
   },
   {
     id: 'infra-cost-breakdown',
     label: 'Infra Cost Breakdown',
-    imageUrl: '/home/Infra-Summary.webp'
+    imageUrl: '/home/infra-cost-breakdown-v2.webp'
   },
   {
     id: 'unified-log-search',
     label: 'Unified Log Search',
-    imageUrl: '/home/unified-logs.webp'
+    imageUrl: '/home/unified-log-search-v2.webp'
   }
 ];
 
