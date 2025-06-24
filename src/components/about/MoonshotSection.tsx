@@ -68,7 +68,7 @@ export default function MoonshotSection() {
       {/* Moonshot Section */}
       <div
         ref={moonshotRef}
-        className="relative w-screen bg-[#202020] overflow-hidden min-h-[450px] pb-20 -mt-10 -mb-2 -mx-4 lg:-mx-0 px-4 lg:px-16 z-10"
+        className="relative w-screen bg-[#202020] overflow-visible pb-12 lg:pb-26 -mt-10 -mb-2 -mx-4 lg:-mx-0 px-4 lg:px-16 z-10"
         style={{
           marginLeft: 'calc(-50vw + 50%)',
           marginRight: 'calc(-50vw + 50%)',
@@ -80,7 +80,7 @@ export default function MoonshotSection() {
         <GridLines />
         {/* Moonshot Title */}
         <motion.div
-          className="text-[#FCFCFC] font-britti-sans font-normal text-center pt-16 lg:pt-24 text-2xl sm:text-3xl lg:text-[40px] leading-tight lg:leading-[48px]"
+          className="text-[#FCFCFC] font-britti-sans font-normal text-center pt-12 lg:pt-24 text-2xl sm:text-3xl lg:text-[40px] leading-tight lg:leading-[48px] relative z-20"
           animate={textControls}
           variants={textVariants}
           initial="hidden"
@@ -90,7 +90,7 @@ export default function MoonshotSection() {
 
         {/* Moonshot Description */}
         <motion.div
-          className="flex flex-col justify-center text-[#FCFCFC] font-britti-sans font-normal text-center mt-8 lg:mt-12 px-4 lg:px-0 text-sm sm:text-base lg:text-[16px] leading-relaxed lg:leading-[17px] max-w-4xl mx-auto"
+          className="flex flex-col justify-center text-[#FCFCFC] font-britti-sans font-normal text-center mt-4 lg:mt-12 px-4 lg:px-0 text-sm sm:text-base lg:text-[16px] leading-relaxed lg:leading-[17px] max-w-4xl mx-auto relative z-20"
           animate={textControls}
           variants={{
             hidden: {
