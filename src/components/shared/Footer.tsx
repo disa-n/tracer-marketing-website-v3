@@ -29,6 +29,9 @@ const Footer = () => {
                                     <Link href="/resources">Resources</Link>
                                 </li>
                                 <li className="cursor-pointer transition-all hover:opacity-80">
+                                    <Link href="https://jobs.ashbyhq.com/tracer">Careers</Link>
+                                </li>
+                                <li className="cursor-pointer transition-all hover:opacity-80">
                                     <Link href="/resources/biweeklyroundupsoverview">Updates</Link>
                                 </li>
                             </ul>

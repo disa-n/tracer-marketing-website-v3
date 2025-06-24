@@ -3,12 +3,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { motion, useAnimation, useInView } from 'framer-motion'
+import { GridLinesLight } from '@/components/shared/GridLines'
 
 function Hiring() {
-  // State for responsive behavior
-  const [isMobile, setIsMobile] = useState(false)
-  const [windowWidth, setWindowWidth] = useState(1280) // Default to desktop width
-
   // State for animation control based on 50% screen width
   const [isMobileView, setIsMobileView] = useState(false)
 
@@ -26,9 +23,9 @@ function Hiring() {
   useEffect(() => {
     if (imageInView) {
       imageControls.start("visible")
-     } else {
-    imageControls.start("hidden") // Make sure this line is present
-  }
+    } else {
+      imageControls.start("hidden")
+    }
   }, [imageInView, imageControls])
 
   // Handle responsive behavior
@@ -36,8 +33,6 @@ function Hiring() {
     const checkScreenSize = () => {
       if (typeof window !== 'undefined') {
         const width = window.innerWidth
-        setWindowWidth(width)
-        setIsMobile(width < 1280) // xl breakpoint
         // Disable animations on mobile devices (width <= 768px) or when window is 50% or less of screen width
         const isMobileDevice = width <= 768;
         const isNarrowWindow = width <= (window.screen.width * 0.5);
@@ -63,167 +58,73 @@ function Hiring() {
 
 
   return (
-    <div
-      className="relative w-screen bg-[#FCFCFC] overflow-hidden hiring-section"
-      style={{
-        minHeight: isMobile ? 1100 : 500, // Increased height for stacked image
-        paddingTop: 64,
-        paddingBottom: 64,
-        marginLeft: 'calc(-50vw + 50%)',
-        marginRight: 'calc(-50vw + 50%)',
-        paddingLeft: 'calc(50vw - 50% + 16px)',
-        paddingRight: 'calc(50vw - 50% + 16px)',
-        zIndex: 10
-      }}
-    >
+    <section className="relative overflow-hidden bg-[#FCFCFC] min-h-[600px] lg:min-h-[650px]">
       {/* Background Gridlines */}
-      {!isMobile && (
-        <>
-          {/* Vertical line 1 */}
-          <div
-            className="absolute bg-[#E8E8E8]"
-            style={{
-              width: 1,
-              height: '100%',
-              left: 250,
-              top: 0,
-              zIndex: 1
-            }}
-          />
+      <GridLinesLight />
 
-          {/* Vertical line 2 */}
-          <div
-            className="absolute bg-[#E8E8E8]"
-            style={{
-              width: 1,
-              height: '100%',
-              left: 570,
-              top: 0,
-              zIndex: 1
-            }}
-          />
+      {/* Text Content - Always above image to prevent overlap */}
+      <div className="relative z-10 py-16 md:pb-0 lg:py-28">
+        <div className="w-full max-w-[1408px] 1600:max-w-[1500px] 1700:max-w-[1600px] 1800:max-w-[1700px] 1900:max-w-[1800px] 1920:max-w-[1900px] mx-auto px-4 md:px-8 lg:px-12 xl:px-8">
+          <div className="md:max-w-[550px] lg:ml-[50%] lg:max-w-[600px] xl:ml-[50%] xl:max-w-[600px] 2xl:ml-[40%] 2xl:max-w-[800px]">
+          {/* Section Title */}
+          <h2 className="text-[#202020] font-britti-sans font-medium text-[32px] leading-[30px] md:text-[40px] md:leading-[36px] lg:text-[44px] lg:leading-[40px] xl:text-[48px] xl:leading-[44px] tracking-tight mb-6 text-left lg:text-left xl:text-left">
+            Join Our Growing Team
+          </h2>
 
-          {/* Vertical line 3 */}
-          <div
-            className="absolute bg-[#E8E8E8]"
-            style={{
-              width: 1,
-              height: '100%',
-              left: 890,
-              top: 0,
-              zIndex: 1
-            }}
-          />
+          {/* Description */}
+          <p className="text-[#202020] font-britti-sans font-normal text-[16px] leading-[20px] md:text-[18px] md:leading-[22px] mb-4 text-left lg:text-left xl:text-left">
+            With VC funding in the bank, we are hiring ambitious and hard-working individuals to fast-track our growth.
+          </p>
+          <p className="text-[#202020] font-britti-sans font-normal text-[16px] leading-[20px] md:text-[18px] md:leading-[22px] mb-8 text-left lg:text-left xl:text-left">
+            Join our team in London and help rethink scientific computing to power the next generation of breakthroughs.
+          </p>
 
-          {/* Vertical line 4 */}
-          <div
-            className="absolute bg-[#E8E8E8]"
-            style={{
-              width: 1,
-              height: '100%',
-              left: 1210,
-              top: 0,
-              zIndex: 1
-            }}
-          />
-        </>
-      )}
-
-
-
-      {/* Section Title */}
-      <div
-        className="absolute text-[#202020] font-britti-sans font-normal break-words hiring-title
-                   w-[calc(100%-32px)] left-4 text-left text-[32px] leading-[30px]
-                   md:w-[calc(100%-64px)] md:left-8 md:text-[40px] md:leading-[36px]
-                   lg:w-[calc(100%-200px)] lg:left-auto lg:right-8 lg:text-left lg:text-[44px] lg:leading-[40px]
-                   xl:w-[597px] xl:left-[720px] xl:text-left xl:text-[48px] xl:leading-[38px]"
-        style={{
-          top: 64,
-          zIndex: 10,
-          letterSpacing: 'clamp(-2px, -0.3vw, -4px)'
-        }}
-      >
-        Join Our Growing Team
-      </div>
-
-      {/* Description */}
-      <div
-        className="absolute text-[#202020] font-britti-sans font-normal break-words hiring-description
-                   w-[calc(100%-32px)] left-4 top-[140px] flex flex-col justify-center text-[16px] leading-[17px]
-                   md:w-[calc(100%-64px)] md:left-8 md:top-[150px]
-                   lg:w-[calc(100%-200px)] lg:left-auto lg:right-8 lg:top-[130px]
-                   xl:w-[669px] xl:left-[720px] xl:top-[123px]"
-        style={{
-          zIndex: 10
-        }}
-      >
-        With VC funding in the bank, we are hiring ambitious and hard-working individuals to fast-track our growth. Join our team in London and help rethink scientific computing to power the next generation of breakthroughs.
-      </div>
-
-      {/* CTA Button */}
-     <a
-  href="https://jobs.ashbyhq.com/tracer"
-  target="_blank"
-  rel="noopener noreferrer"
->
-        <div
-          className="absolute bg-[#E8E8E8] hiring-button hover:bg-[#D8D8D8] transition-colors duration-200
-                     left-4 top-[240px] inline-flex justify-center items-center cursor-pointer w-fit
-                     md:left-8 md:top-[250px]
-                     lg:left-auto lg:right-8 lg:top-[230px]
-                     xl:left-[720px] xl:top-[223px]"
-          style={{
-            paddingLeft: 32,
-            paddingRight: 32,
-            paddingTop: 16,
-            paddingBottom: 16,
-            gap: 8,
-            zIndex: 10
-          }}
-        >
-          <div
-            className="text-[#202020] font-britti-sans font-normal break-words whitespace-nowrap"
-            style={{
-              fontSize: 16,
-              lineHeight: '17px'
-            }}
-          >
-            View Role Details & Apply Now
+          {/* CTA Button */}
+          <div className="flex lg:justify-start xl:justify-start">
+            <a
+              href="https://jobs.ashbyhq.com/tracer"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center bg-[#E8E8E8] hover:bg-[#D8D8D8] transition-colors duration-200 px-8 py-4 text-[#202020] font-britti-sans font-normal text-[16px] leading-[17px] whitespace-nowrap mb-8 md:mb-4 lg:mb-8 xl:mb-0"
+            >
+              Apply Now
+            </a>
           </div>
-        </div>
-      </a>
 
-      {/* Background Image */}
+        </div>
+
+        </div>
+      </div>
+
+      {/* Stacked Image - Mobile to md only - Completely outside all containers */}
+      <div className="lg:hidden relative z-5 -mt-28 md:-mt-20 -mx-32">
+        <div className="relative w-[calc(100%+16rem)] h-[550px] md:h-[700px] -ml-65 md:-ml-100">
+          <Image
+            src="/About us/tracer-rocket.svg"
+            alt="Tracer Rocket"
+            fill
+            className="object-cover"
+          />
+        </div>
+      </div>
+
+      {/* Rocket Image - Positioned after text to prevent overlap */}
       <motion.div
-        ref={imageRef}
-        className="hiring-image"
-        style={isMobile ? {
-          position: 'absolute',
-          width: windowWidth >= 1024 && windowWidth < 1280 ? 1200 : 1100, // Larger sizes for both views
-          height: windowWidth >= 1024 && windowWidth < 1280 ? 680 : 620, // Proportional height increase
-          left: windowWidth >= 1024 && windowWidth < 1280 ? -400 : -350,
-          top: windowWidth >= 1024 && windowWidth < 1280 ? 280 : 320, // Move up in intermediate view
-          zIndex: 2
-        } : {
-          position: 'absolute',
+        className="absolute hidden lg:block left-[-200px] lg:left-[-280px] xl:left-[-280px] xl:bottom-[-50px] 2xl:left-[-100px] 2xl:bottom-0 bottom-0 z-0"
+        style={{
           width: 1314,
           height: 740,
-          // More left-skewed positioning for xxl screens (1536px+)
-          right: windowWidth >= 1536 ? 1000 : 500,
-          bottom: -200,
-          zIndex: 2
         }}
         animate={imageControls}
         initial="hidden"
         variants={{
           hidden: {
-            x: isMobileView ? 0 : (isMobile ? -150 : -250) // No slide animation in mobile view
+            x: isMobileView ? 0 : -250
           },
           visible: {
             x: 0,
             transition: {
-              duration: isMobileView ? 0 : 1.4, // No animation duration in mobile view
+              duration: isMobileView ? 0 : 1.4,
               ease: [0.25, 0.1, 0.25, 1]
             }
           }
@@ -237,7 +138,7 @@ function Hiring() {
           className="object-contain"
         />
       </motion.div>
-    </div>
+    </section>
   )
 }
 

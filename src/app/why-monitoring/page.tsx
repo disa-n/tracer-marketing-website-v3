@@ -6,7 +6,7 @@ import HowTracerWorksSection from "@/components/WhyMonitoring/HowTracerWorksSect
 import PersonalisedDemoV2 from "@/components/RouteHomeV2/PersonalisedDemoV2";
 
 export const metadata = {
-  title: "Why Monitoring | Tracer",
+  title: "Tracer | Why Monitoring",
   description: "Understand the importance of monitoring in AI-driven scientific workflows and how Tracer provides comprehensive visibility into your pipelines.",
 }
 

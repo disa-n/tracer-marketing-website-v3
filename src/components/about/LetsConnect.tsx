@@ -149,10 +149,10 @@ function LetsConnect() {
               We want to hear from you!
               <br />
               <br />
-              Join us in our mission to unlock the full potential of HPC and help usher in a new era of scientific breakthroughs!
+              Support us in our mission to optimise computational pipelines and usher in a new era of scientific discovery!
               <br />
               <br />
-              Reach out to{' '}
+              Contact us at {' '}
               <span
                 className="underline cursor-pointer hover:opacity-80 transition-opacity duration-200"
                 onClick={() => {
@@ -161,7 +161,7 @@ function LetsConnect() {
                   }
                 }}
               >
-                careers@tracer.cloud
+                hello@tracer.cloud
               </span>
             </div>
           </div>

@@ -128,7 +128,7 @@ const OneLineImplementation = () => {
           {/* Framework Compatibility Section */}
           <div className="mt-16 sm:mt-24 md:mt-32 lg:mt-48">
             <h2 className="font-chakra-petch font-[400] text-[24px] sm:text-[28px] md:text-[32px] lg:text-[40px] text-white leading-[0.9] mb-4 md:mb-6">
-              We Work With Any Framework
+              We Work With Any Framework, Language, and Architecture
             </h2>
             {/* Technology Logos */}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 lg:gap-6">
