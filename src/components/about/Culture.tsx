@@ -1,395 +1,362 @@
 'use client'
 
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect, useState, useMemo } from 'react'
 import Image from 'next/image'
-import { motion, useAnimation, useInView } from 'framer-motion'
+import { motion, useAnimation, useInView, type Variants } from 'framer-motion'
+import { GridLines3Dark } from '@/components/shared/GridLines'
 
-function Culture() {
-  // State for responsive behavior based on 50% screen width
+
+// Types
+interface CultureValue {
+  title: string
+  description: string
+  iconSrc: string
+}
+
+interface CultureCardProps {
+  title: string
+  description: string
+  iconSrc: string
+  cardWidth: string
+  className?: string
+}
+
+// Custom hooks
+const useResponsiveAnimation = () => {
   const [isMobileView, setIsMobileView] = useState(false)
+  const [windowWidth, setWindowWidth] = useState(1440)
 
-  // Effect to handle window resize and determine if animations should be disabled
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth
-      // Disable animations on mobile devices (width <= 768px) or when window is 50% or less of screen width
-      const isMobileDevice = width <= 768;
-      const isNarrowWindow = width <= (window.screen.width * 0.5);
+      setWindowWidth(width)
+      const isMobileDevice = width <= 768
+      const isNarrowWindow = width <= (window.screen.width * 0.5)
       setIsMobileView(isMobileDevice || isNarrowWindow)
     }
 
-    // Set initial values
     handleResize()
-
-    // Add event listener
     window.addEventListener('resize', handleResize)
-
-    // Cleanup
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  // Animation refs and controls
-  const titleRef = useRef(null)
-  const rectanglesRef = useRef(null)
+  return { isMobileView, windowWidth }
+}
 
-  // Animation controls
-  const titleControls = useAnimation()
-  const rectanglesControls = useAnimation()
+const useCardDimensions = (windowWidth: number) => {
+  return useMemo(() => {
+    if (windowWidth <= 960) return '350px'
+    if (windowWidth <= 1024) return '350px'
+    if (windowWidth <= 1280) return '380px'
+    if (windowWidth <= 1440) return '420px'
+    if (windowWidth <= 1600) return '450px'
+    if (windowWidth <= 1920) return '480px'
+    return '500px'
+  }, [windowWidth])
+}
+
+// Reusable Culture Card Component
+const CultureCard: React.FC<CultureCardProps> = ({
+  title,
+  description,
+  iconSrc,
+  cardWidth,
+  className = ''
+}) => {
+  return (
+    <div
+      className={`bg-[#202020] border border-[#E8E8E8] p-4 h-[212px] overflow-hidden transition-transform duration-300 hover:scale-105 ${className}`}
+      style={{ width: cardWidth, minWidth: cardWidth, maxWidth: cardWidth }}
+    >
+      <div className="w-14 h-14 mb-4">
+        <Image
+          src={iconSrc}
+          alt={`${title} Icon`}
+          width={56}
+          height={56}
+          className="object-contain w-full h-full"
+        />
+      </div>
+      <div className="space-y-2">
+        <h3 className="text-[#FCFCFC] font-britti-sans font-normal text-[32px] leading-[30px] break-words">
+          {title}
+        </h3>
+        <p className="text-[#FCFCFC] font-britti-sans font-normal text-base leading-[17px] break-words">
+          {description}
+        </p>
+      </div>
+    </div>
+  )
+}
+
+
+
+// Animation variants
+const createAnimationVariants = (isMobileView: boolean): Variants => ({
+  hidden: {
+    y: isMobileView ? 0 : 60,
+    opacity: isMobileView ? 1 : 0,
+    transition: {
+      duration: isMobileView ? 0 : 0.6,
+      ease: [0.25, 0.1, 0.25, 1]
+    }
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: isMobileView ? 0 : 0.8,
+      ease: [0.25, 0.1, 0.25, 1]
+    }
+  }
+})
+
+// Mobile Cards Component
+interface MobileCardsProps {
+  cultureValues: CultureValue[]
+  cardWidth: string
+  mobileCardsRef: React.RefObject<HTMLDivElement | null>
+  mobileCardsControls: any
+  animationVariants: Variants
+  isMobileView: boolean
+}
+
+const MobileCards: React.FC<MobileCardsProps> = ({
+  cultureValues,
+  cardWidth,
+  mobileCardsRef,
+  mobileCardsControls,
+  animationVariants,
+  isMobileView
+}) => (
+  <div className="block lg:hidden">
+    {/* 2x6 Grid for tablet/intermediate view */}
+    <div className="hidden md:grid md:grid-cols-2 md:gap-6 lg:hidden">
+      {cultureValues.map((value) => (
+        <div
+          key={value.title}
+          className="flex justify-center"
+        >
+          <CultureCard
+            title={value.title}
+            description={value.description}
+            iconSrc={value.iconSrc}
+            cardWidth={cardWidth}
+          />
+        </div>
+      ))}
+    </div>
+
+    {/* Single column for mobile */}
+    <div className="block md:hidden space-y-6">
+      {cultureValues.map((value) => (
+        <div
+          key={value.title}
+          className="flex justify-center"
+        >
+          <CultureCard
+            title={value.title}
+            description={value.description}
+            iconSrc={value.iconSrc}
+            cardWidth={cardWidth}
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+)
+
+// Desktop Cards Component
+interface DesktopCardsProps {
+  cultureValues: CultureValue[]
+  cardWidth: string
+  desktopCardsRef: React.RefObject<HTMLDivElement | null>
+  desktopCardsControls: any
+  animationVariants: Variants
+  isMobileView: boolean
+}
+
+const DesktopCards: React.FC<DesktopCardsProps> = ({
+  cultureValues,
+  cardWidth,
+  desktopCardsRef,
+  desktopCardsControls,
+  animationVariants,
+  isMobileView
+}) => (
+  <div className="hidden lg:block w-full">
+    {/* 2x6 Grid for intermediate desktop (1024px-1150px) */}
+    <div className="grid grid-cols-2 gap-6 justify-items-center 1200:hidden">
+      {cultureValues.map((value) => (
+        <div
+          key={value.title}
+          className="flex justify-center"
+        >
+          <CultureCard
+            title={value.title}
+            description={value.description}
+            iconSrc={value.iconSrc}
+            cardWidth={cardWidth}
+          />
+        </div>
+      ))}
+    </div>
+
+    {/* Original 3-column staggered layout for larger screens (1200px+) */}
+    <div className="hidden 1200:grid grid-cols-3 gap-8 lg:gap-10 xl:gap-12 2xl:gap-x-8 2xl:gap-y-16 justify-items-center 2xl:grid-cols-[1fr_auto_auto_auto_1fr] 2xl:gap-x-6">
+      {/* Row 1 - Top 3 cards */}
+      {cultureValues.slice(0, 3).map((value, index) => (
+        <div
+          key={value.title}
+          className={`flex justify-center ${
+            index === 0 ? '2xl:col-start-2' :
+            index === 1 ? '2xl:col-start-3' :
+            '2xl:col-start-4'
+          }`}
+        >
+          <CultureCard
+            title={value.title}
+            description={value.description}
+            iconSrc={value.iconSrc}
+            cardWidth={cardWidth}
+          />
+        </div>
+      ))}
+
+      {/* Row 2 - Bottom 3 cards with offset pattern */}
+      <div className="col-start-3 2xl:col-start-4 flex justify-center">
+        <div>
+          <CultureCard
+            title={cultureValues[3].title}
+            description={cultureValues[3].description}
+            iconSrc={cultureValues[3].iconSrc}
+            cardWidth={cardWidth}
+          />
+        </div>
+      </div>
+
+      <div className="col-start-2 2xl:col-start-3 flex justify-center">
+        <div>
+          <CultureCard
+            title={cultureValues[4].title}
+            description={cultureValues[4].description}
+            iconSrc={cultureValues[4].iconSrc}
+            cardWidth={cardWidth}
+          />
+        </div>
+      </div>
+
+      <div className="col-start-3 2xl:col-start-4 flex justify-center">
+        <div>
+          <CultureCard
+            title={cultureValues[5].title}
+            description={cultureValues[5].description}
+            iconSrc={cultureValues[5].iconSrc}
+            cardWidth={cardWidth}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+)
+
+function Culture() {
+  const { isMobileView, windowWidth } = useResponsiveAnimation()
+  const cardWidth = useCardDimensions(windowWidth)
+
+  // Animation refs and controls
+  const mobileCardsRef = useRef<HTMLDivElement>(null)
+  const desktopCardsRef = useRef<HTMLDivElement>(null)
+
+  const mobileCardsControls = useAnimation()
+  const desktopCardsControls = useAnimation()
 
   // Detect when elements come into view
-  const titleInView = useInView(titleRef, {
-    amount: 0.3,
-    margin: "0px 0px 0px 0px"
-  })
-
-  const rectanglesInView = useInView(rectanglesRef, {
-    amount: 0.3,
-    margin: "0px 0px 0px 0px"
-  })
-
-  // Handle scroll-based animations
-  useEffect(() => {
-    if (titleInView) {
-      titleControls.start("visible")
-    } else {
-      titleControls.start("hidden")
-    }
-  }, [titleInView, titleControls])
+  const mobileCardsInView = useInView(mobileCardsRef, { amount: 0.3 })
+  const desktopCardsInView = useInView(desktopCardsRef, { amount: 0.3 })
 
   useEffect(() => {
-    if (rectanglesInView) {
-      rectanglesControls.start("visible")
-    }
-  }, [rectanglesInView, rectanglesControls])
+    if (mobileCardsInView) mobileCardsControls.start("visible")
+  }, [mobileCardsInView, mobileCardsControls])
 
-  // Add CSS styles for responsive behavior
   useEffect(() => {
-    const style = document.createElement('style')
-    style.textContent = `
-      @media (max-width: 960px) {
-        .culture-section { min-height: 1750px !important; }
-        .culture-card-0 { left: calc(50% - 175px) !important; top: 0px !important; }
-        .culture-card-1 { left: calc(50% - 175px) !important; top: 240px !important; }
-        .culture-card-2 { left: calc(50% - 175px) !important; top: 480px !important; }
-        .culture-card-bottom-0 { left: calc(50% - 175px) !important; top: 720px !important; }
-        .culture-card-bottom-1 { left: calc(50% - 175px) !important; top: 960px !important; }
-        .culture-card-bottom-2 { left: calc(50% - 175px) !important; top: 1200px !important; }
-      }
-
-      .culture-card {
-        transition: transform 0.3s ease;
-      }
-
-      .culture-card:hover {
-        transform: scale(1.05);
-      }
-    `
-    document.head.appendChild(style)
-    return () => {
-      if (document.head.contains(style)) {
-        document.head.removeChild(style)
-      }
-    }
-  }, [])
+    if (desktopCardsInView) desktopCardsControls.start("visible")
+  }, [desktopCardsInView, desktopCardsControls])
 
   // Culture values data
-  const cultureValues = [
+  const cultureValues: CultureValue[] = [
     {
       title: "Passion",
-      description: "We lead with passion. When we care deeply about our work, great things follow."
+      description: "We lead with passion. When we care deeply about our work, great things follow.",
+      iconSrc: "/About us/passion.svg"
     },
     {
       title: "Intelligence",
-      description: "We face the hard truths, ask the right questions, and solve problems as a team."
+      description: "We face the hard truths, ask the right questions, and solve problems as a team.",
+      iconSrc: "/About us/intelligence.svg"
     },
     {
       title: "Fun & Fearlessness",
-      description: "The best work happens when you’re having fun and taking on big challenges."
+      description: "The best work happens when you’re having fun and taking on big challenges.",
+      iconSrc: "/About us/fun.svg"
     },
     {
       title: "Hard Work",
-      description: "We work really hard, but live a life worth living– and take epic holidays."
+      description: "We work really hard, but live a life worth living — and take epic holidays.",
+      iconSrc: "/About us/hardwork.svg"
     },
     {
       title: "Experiment",
-      description: "We experiment relentlessly in pursuit of truth, learn fast, and iterate faster."
+      description: "We experiment relentlessly in pursuit of truth, learn fast, and iterate faster.",
+      iconSrc: "/About us/exp.svg"
     },
     {
       title: "Meritocracy",
-      description: "Like a professional sports team, we focus on contribution and reward excellence."
+      description: "Like a professional sports team, we focus on contribution and reward excellence.",
+      iconSrc: "/About us/meritocracy.svg"
     }
   ]
 
+  // Memoized animation variants
+  const animationVariants = useMemo(() => createAnimationVariants(isMobileView), [isMobileView])
+
   return (
-    <div
-      className="relative w-screen bg-[#202020] overflow-hidden culture-section"
-      style={{
-        minHeight: 950,
-        paddingTop: 86,
-        paddingBottom: 56,
-        marginLeft: 'calc(-50vw + 50%)',
-        marginRight: 'calc(-50vw + 50%)',
-        paddingLeft: 'calc(50vw - 50% + 16px)',
-        paddingRight: 'calc(50vw - 50% + 16px)',
-        zIndex: 30, // Increased z-index to ensure it covers the TwoWorlds image
-        position: 'relative' // Ensure stacking context
-      }}
-    >
-      {/* Extra background coverage to ensure no image bleed-through */}
-      <div
-        className="absolute w-full bg-[#202020]"
-        style={{
-          top: -100, // Extend above the section
-          left: 0,
-          height: 200, // Cover potential overlap area
-          zIndex: 1
-        }}
-      />
-      {/* Background Gridlines */}
-      {/* Vertical line 1 */}
-      <div
-        className="absolute bg-[#404040]"
-        style={{
-          width: 1,
-          height: '150%',
-          left: 250,
-          top: 0,
-          zIndex: 1
-        }}
-      />
+    <section className="relative overflow-hidden bg-[#202020] py-16 lg:pt-16 lg:pb-24 z-30">
+      {/* GridLines */}
+      <GridLines3Dark />
 
-      {/* Vertical line 2 */}
-      <div
-        className="absolute bg-[#404040]"
-        style={{
-          width: 1,
-          height: '100%',
-          left: 570,
-          top: 0,
-          zIndex: 1
-        }}
-      />
-
-      {/* Vertical line 3 */}
-      <div
-        className="absolute bg-[#404040]"
-        style={{
-          width: 1,
-          height: '100%',
-          left: 890,
-          top: 0,
-          zIndex: 1
-        }}
-      />
-
-      {/* Vertical line 4 */}
-      <div
-        className="absolute bg-[#404040]"
-        style={{
-          width: 1,
-          height: '100%',
-          left: 1210,
-          top: 0,
-          zIndex: 1
-        }}
-      />
-
-      {/* Section Title */}
-      <motion.div
-        ref={titleRef}
-        className="absolute text-[#FCFCFC] font-britti-sans font-normal break-words"
-        style={{
-          width: 1300,
-          left: 16,
-          top: 60,
-          fontSize: 96,
-          lineHeight: '80px',
-          zIndex: 10,
-          letterSpacing: 'clamp(-2px, -0.3vw, -4px)'
-        }}
-        animate={titleControls}
-        initial={{ y: 60, opacity: 0 }}
-        variants={{
-          hidden: {
-            y: isMobileView ? 0 : 60, // No slide animation in mobile
-            opacity: isMobileView ? 1 : 0, // No fade-in animation in mobile
-            transition: {
-              duration: isMobileView ? 0 : 0.6, // No animation duration in mobile
-              ease: [0.25, 0.1, 0.25, 1]
-            }
-          },
-          visible: {
-            y: 0,
-            opacity: 1,
-            transition: {
-              duration: isMobileView ? 0 : 0.8, // No animation duration in mobile
-              ease: [0.25, 0.1, 0.25, 1]
-            }
-          }
-        }}
-      >
-        Our Culture
-      </motion.div>
+      {/* Title Container */}
+      <div className="relative z-10 w-full max-w-[1408px] 1600:max-w-[1500px] 1700:max-w-[1600px] 1800:max-w-[1700px] 1900:max-w-[1800px] 1920:max-w-[1900px] mx-auto px-4 md:px-8 lg:px-12 xl:px-8">
+        {/* Section Title */}
+        <h2
+          className="text-[#FCFCFC] font-britti-sans font-normal text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[96px] leading-tight lg:leading-[80px] mb-8 lg:mb-16"
+          style={{ letterSpacing: 'clamp(-2px, -0.3vw, -4px)' }}
+        >
+          Our Culture
+        </h2>
+      </div>
 
       {/* Cards Container */}
-      <div
-        className="absolute"
-        style={{
-          left: '50%',
-          top: 205,
-          transform: 'translateX(-50%)',
-          width: 1200,
-          height: 735,
-          zIndex: 10
-        }}
-      >
-        {/* Row 1 - Top 3 cards */}
-        {cultureValues.slice(0, 3).map((value, index) => (
-          <div
-            key={value.title}
-            className={`absolute bg-[#202020] overflow-hidden culture-card culture-card-${index}`}
-            style={{
-              width: 350,
-              height: 212,
-              left: index === 0 ? 'calc(16.67% - 175px)' : index === 1 ? 'calc(50% - 175px)' : 'calc(83.33% - 175px)',
-              top: 0,
-              outline: '1px #E8E8E8 solid',
-              outlineOffset: '-1px',
-              zIndex: 10,
-              padding: 16
-            }}
-          >
-            {/* Icon placeholder */}
-            <div
-              className="absolute overflow-hidden"
-              style={{
-                width: 56,
-                height: 56,
-                left: 16,
-                top: 16,
-                zIndex: 10
-              }}
-            >
-              <Image
-                src={
-                  value.title === "Passion" ? "/About us/passion.svg" :
-                  value.title === "Intelligence" ? "/About us/intelligence.svg" :
-                  value.title === "Fun & Fearlessness" ? "/About us/fun.svg" :
-                  "/placeholder-icon.svg"
-                }
-                alt={`${value.title} Icon`}
-                width={56}
-                height={56}
-                className="object-contain"
-              />
-            </div>
+      <div className="relative z-10 w-full max-w-[1408px] 1600:max-w-[1500px] 1700:max-w-[1600px] 1800:max-w-[1700px] 1900:max-w-[1800px] 1920:max-w-[1900px] mx-auto px-4 md:px-8 lg:px-12 2xl:px-4">
+        <MobileCards
+          cultureValues={cultureValues}
+          cardWidth={cardWidth}
+          mobileCardsRef={mobileCardsRef}
+          mobileCardsControls={mobileCardsControls}
+          animationVariants={animationVariants}
+          isMobileView={isMobileView}
+        />
 
-            {/* Content */}
-            <div
-              className="absolute flex flex-col justify-start items-start gap-2"
-              style={{
-                width: 318,
-                left: 16,
-                top: 124,
-                zIndex: 10
-              }}
-            >
-              <div
-                className="text-[#FCFCFC] font-britti-sans font-normal break-words"
-                style={{
-                  fontSize: 32,
-                  lineHeight: '30px'
-                }}
-              >
-                {value.title}
-              </div>
-              <div
-                className="text-[#FCFCFC] font-britti-sans font-normal break-words"
-                style={{
-                  width: 318,
-                  fontSize: 16,
-                  lineHeight: '17px'
-                }}
-              >
-                {value.description}
-              </div>
-            </div>
-          </div>
-        ))}
-
-        {/* Row 2 - Bottom 3 cards */}
-        {cultureValues.slice(3, 6).map((value, index) => (
-          <div
-            key={value.title}
-            className={`absolute bg-[#202020] overflow-hidden culture-card culture-card-bottom-${index}`}
-            style={{
-              width: 350,
-              height: 212,
-              left: index === 0 ? 'calc(83.33% - 175px)' : index === 1 ? 'calc(50% - 175px)' : 'calc(83.33% - 175px)',
-              top: index === 0 ? 245 : index === 1 ? 490 : 490,
-              outline: '1px #E8E8E8 solid',
-              outlineOffset: '-1px',
-              zIndex: 5,
-              padding: 16
-            }}
-          >
-            {/* Icon placeholder */}
-            <div
-              className="absolute overflow-hidden"
-              style={{
-                width: 56,
-                height: 56,
-                left: 16,
-                top: 16
-              }}
-            >
-              <Image
-                src={
-                  value.title === "Hard Work" ? "/About us/hardwork.svg" :
-                  value.title === "Experiment" ? "/About us/exp.svg" :
-                  value.title === "Meritocracy" ? "/About us/meritocracy.svg" :
-                  "/placeholder-icon.svg"
-                }
-                alt={`${value.title} Icon`}
-                width={56}
-                height={56}
-                className="object-contain"
-              />
-            </div>
-
-            {/* Content */}
-            <div
-              className="absolute flex flex-col justify-start items-start gap-2"
-              style={{
-                width: 318,
-                left: 16,
-                top: 124
-              }}
-            >
-              <div
-                className="text-[#FCFCFC] font-britti-sans font-normal break-words"
-                style={{
-                  fontSize: 32,
-                  lineHeight: '30px'
-                }}
-              >
-                {value.title}
-              </div>
-              <div
-                className="text-[#FCFCFC] font-britti-sans font-normal break-words"
-                style={{
-                  width: 318,
-                  fontSize: 16,
-                  lineHeight: '17px'
-                }}
-              >
-                {value.description}
-              </div>
-            </div>
-          </div>
-        ))}
+        <DesktopCards
+          cultureValues={cultureValues}
+          cardWidth={cardWidth}
+          desktopCardsRef={desktopCardsRef}
+          desktopCardsControls={desktopCardsControls}
+          animationVariants={animationVariants}
+          isMobileView={isMobileView}
+        />
       </div>
-    </div>
+    </section>
   )
 }
 
