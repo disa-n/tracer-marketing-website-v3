@@ -42,24 +42,7 @@ const OneLineImplementation = () => {
   }
 
   const handleOpenTerminal = () => {
-    // Copy the code first
-    handleCopyCode()
-
-    // Show instructions to open terminal
-    const userAgent = navigator.userAgent.toLowerCase()
-    let instructions = ''
-
-    if (userAgent.includes('mac')) {
-      instructions = 'Press Cmd+Space, type "Terminal", and press Enter. Then paste the copied command.'
-    } else if (userAgent.includes('win')) {
-      instructions = 'Press Win+R, type "cmd", and press Enter. Then paste the copied command.'
-    } else if (userAgent.includes('linux')) {
-      instructions = 'Press Ctrl+Alt+T to open Terminal. Then paste the copied command.'
-    } else {
-      instructions = 'Open your terminal application and paste the copied command.'
-    }
-
-    alert(`Code copied to clipboard!\n\n${instructions}`)
+    window.open('https://sandbox.tracer.cloud/', '_blank')
   }
 
   return (

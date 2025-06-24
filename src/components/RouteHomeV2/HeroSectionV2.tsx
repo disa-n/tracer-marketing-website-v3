@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { GridLinesLight } from '@/components/shared/GridLines';
+import ShinyCTAButton from '@/components/shared/ShinyCTAButton';
 
 export default function HeroSectionV2() {
   const [displayedText, setDisplayedText] = useState('');
@@ -10,8 +11,17 @@ export default function HeroSectionV2() {
   const [isComplete, setIsComplete] = useState(false);
   const [startTyping, setStartTyping] = useState(false);
   const [startPulse, setStartPulse] = useState(false);
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [isErasing, setIsErasing] = useState(false);
 
-  const targetText = 'That Lives in the OS';
+  const textVariations = [
+    'That Lives in the OS',
+    'Making Cost Visible',
+    'That Sees Every Tool',
+    'Optimised for HPC',
+    'Maps Jobs to Budget',
+    'Breaking Down Runtime'
+  ];
 
   // Start typing after a delay
   useEffect(() => {
@@ -23,37 +33,67 @@ export default function HeroSectionV2() {
   }, []);
 
   useEffect(() => {
-    if (startTyping && currentCharIndex < targetText.length) {
-      const timer = setTimeout(() => {
-        setDisplayedText(prev => prev + targetText[currentCharIndex]);
-        setCurrentCharIndex(prev => prev + 1);
-      }, 80); // Typing speed
+    if (!startTyping) return;
 
-      return () => clearTimeout(timer);
-    } else if (startTyping && currentCharIndex >= targetText.length) {
-      setIsComplete(true);
+    const currentText = textVariations[currentTextIndex];
+
+    if (isErasing) {
+      // Erasing text
+      if (displayedText.length > 0) {
+        const timer = setTimeout(() => {
+          setDisplayedText(prev => prev.slice(0, -1));
+        }, 50); // Erasing speed (faster than typing)
+        return () => clearTimeout(timer);
+      } else {
+        // Finished erasing, move to next text
+        setIsErasing(false);
+        setCurrentTextIndex(prev => (prev + 1) % textVariations.length);
+        setCurrentCharIndex(0);
+      }
+    } else {
+      // Typing text
+      if (currentCharIndex < currentText.length) {
+        const timer = setTimeout(() => {
+          setDisplayedText(prev => prev + currentText[currentCharIndex]);
+          setCurrentCharIndex(prev => prev + 1);
+        }, 80); // Typing speed
+        return () => clearTimeout(timer);
+      } else {
+        // Finished typing current text
+        setIsComplete(true);
+        // Wait before starting to erase
+        const timer = setTimeout(() => {
+          setIsComplete(false);
+          setStartPulse(false);
+          setIsErasing(true);
+        }, 3000); // Display complete text for 3 seconds
+        return () => clearTimeout(timer);
+      }
     }
-  }, [currentCharIndex, startTyping, targetText]);
+  }, [currentCharIndex, startTyping, currentTextIndex, isErasing, displayedText, textVariations]);
 
-  // Start pulse animation after typewriter completes
+  // Start pulse animation after typewriter completes each text
   useEffect(() => {
-    if (isComplete) {
+    if (isComplete && !isErasing) {
       const timer = setTimeout(() => {
         setStartPulse(true);
-      }, 2000); // 2 second delay after typewriter completes
+      }, 500); // Start pulse shortly after completion
 
       return () => clearTimeout(timer);
     }
-  }, [isComplete]);
+  }, [isComplete, isErasing]);
 
-  // Cursor blinking effect
+  // Cursor blinking effect - show when typing or erasing
   useEffect(() => {
-    const cursorTimer = setInterval(() => {
-      setShowCursor(prev => !prev);
-    }, 500);
-
-    return () => clearInterval(cursorTimer);
-  }, []);
+    if (startTyping && !isComplete) {
+      const cursorTimer = setInterval(() => {
+        setShowCursor(prev => !prev);
+      }, 500);
+      return () => clearInterval(cursorTimer);
+    } else {
+      setShowCursor(false);
+    }
+  }, [startTyping, isComplete]);
   return (
     <section className="relative bg-[#FCFCFC] overflow-hidden">
       <GridLinesLight />
@@ -100,27 +140,7 @@ export default function HeroSectionV2() {
 
           {/* CTA Buttons */}
           <div className="flex flex-row gap-4 justify-center items-center mb-8 sm:mb-6">
-            {/* Glowing CTA Button Container */}
-            <div className="relative group">
-              {/* Outer glow ring - rectangular */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#3A23ED] via-[#BF5198] to-[#FFA231] blur-sm opacity-75 group-hover:opacity-100 animate-glow-pulse transition duration-300"></div>
-
-              {/* Gradient border with button inside - rectangular */}
-              <div className="relative bg-gradient-to-r from-[#3A23ED] via-[#BF5198] to-[#FFA231] p-[2px]">
-                <a
-                  href="https://sandbox.tracer.cloud/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative z-10 inline-flex items-center justify-center px-6 h-[40px] sm:px-8 sm:h-[49px]
-                             bg-[#202020] text-[#FCFCFC] font-britti-sans text-sm sm:text-base !font-[400]
-                             hover:bg-[#303030] transition-all duration-300
-                             shadow-[0_0_20px_rgba(58,35,237,0.3),0_0_40px_rgba(191,81,152,0.2),0_0_60px_rgba(255,162,49,0.1)]
-                             hover:shadow-[0_0_40px_rgba(58,35,237,0.6),0_0_80px_rgba(191,81,152,0.5),0_0_120px_rgba(255,162,49,0.4)]"
-                >
-                  Try for Free
-                </a>
-              </div>
-            </div>
+            <ShinyCTAButton />
 
             <a
               href="/product"
