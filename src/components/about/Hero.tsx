@@ -31,8 +31,13 @@ export default function Hero() {
         <div className="relative z-10 flex flex-col justify-center pt-4 pb-6 lg:pt-16 lg:pb-12 lg:max-w-[1200px] lg:w-[85%] xl:max-w-[1150px] xl:w-[70%] 2xl:max-w-[1400px] 2xl:w-full lg:order-1">
           <StyledLayoutWrapper>
 
+          {/* Product Label */}
+          <p className='font-chakra-petch text-sm font-[400] uppercase text-[#202020] sm:text-base'>
+            _TRACER JOURNEY
+          </p>
+
           {/* Main Heading */}
-          <h1 className="font-chakra-petch text-[48px] !font-[400] leading-[0.9] tracking-tighter text-[#202020] sm:text-[70px] 1100:text-[80px] 1300:text-[104px] mb-6 lg:mb-10">
+          <h1 className="mt-4 font-chakra-petch text-[48px] !font-[400] leading-[0.9] tracking-tighter text-[#202020] sm:text-[70px] 1100:text-[80px] 1300:text-[104px] mb-6 lg:mb-10">
             {title}
           </h1>
 

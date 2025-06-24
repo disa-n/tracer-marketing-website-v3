@@ -28,8 +28,13 @@ export default function BlogHero() {
     <div className="w-full pt-16 md:pt-8 lg:pt-24 xl:pt-20 2xl:pt-16">
       <div className="px-4 md:px-8 lg:px-12 w-full">
 
+        {/* Product Label */}
+        <p className='font-chakra-petch text-sm font-[400] uppercase text-[#202020] sm:text-base mt-4 md:mt-6 lg:mt-8 xl:mt-6 2xl:mt-4'>
+          _TRACER RESOURCES
+        </p>
+
         <div
-          className="text-[#202020] font-['Britti_Sans'] font-normal break-words mt-4 md:mt-6 lg:mt-8 xl:mt-6 2xl:mt-4
+          className="text-[#202020] font-['Britti_Sans'] font-normal break-words mt-4
                      text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[104px]
                      leading-[0.85] tracking-[-0.02em]"
         >

@@ -14,9 +14,10 @@ interface ReusableHeroProps {
   imageAlt?: string;
   imageStyle?: 'monitoring' | 'blog';
   className?: string;
+  productLabel?: string;
 }
 
-export default function ReusableHero({ title, subtitle, showEmailSignup = false, imageSrc, imageAlt, imageStyle = 'monitoring', className = "" }: ReusableHeroProps) {
+export default function ReusableHero({ title, subtitle, showEmailSignup = false, imageSrc, imageAlt, imageStyle = 'monitoring', className = "", productLabel }: ReusableHeroProps) {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
@@ -74,8 +75,15 @@ export default function ReusableHero({ title, subtitle, showEmailSignup = false,
         <div className={`relative z-10 flex flex-col justify-center pt-16 pb-8 lg:pt-20 lg:pb-20 lg:max-w-[1400px] lg:w-full lg:order-1 ${className}`}>
           <StyledLayoutWrapper>
 
+          {/* Product Label */}
+          {productLabel && (
+            <p className='font-chakra-petch text-sm font-[400] uppercase text-[#202020] sm:text-base'>
+              {productLabel}
+            </p>
+          )}
+
           {/* Main Heading */}
-          <h1 className="font-chakra-petch text-[48px] !font-[400] leading-[0.9] tracking-tighter text-[#202020] sm:text-[70px] 1100:text-[80px] 1300:text-[104px] mb-6 lg:mb-8">
+          <h1 className={`font-chakra-petch text-[48px] !font-[400] leading-[0.9] tracking-tighter text-[#202020] sm:text-[70px] 1100:text-[80px] 1300:text-[104px] mb-6 lg:mb-8 ${productLabel ? 'mt-4' : ''}`}>
             {title}
           </h1>
 
