@@ -11,6 +11,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useDemo } from '../ScheduleDemo'
 import { useState } from 'react'
+import ShinyCTAButton from './ShinyCTAButton'
 
 const NavigationBar = () => {
     const { openDemo } = useDemo();
@@ -59,27 +60,7 @@ const NavigationBar = () => {
                         )}
                     </div>
                     <div className="flex items-center gap-3 h-full">
-                        {/* Try for Free button wrapper - Glowing CTA */}
-                        <div className="h-full relative group">
-                            {/* Outer glow ring - matching hero exactly */}
-                            <div className="absolute -inset-1 bg-gradient-to-r from-[#3A23ED] via-[#BF5198] to-[#FFA231] blur-sm opacity-75 group-hover:opacity-100 animate-glow-pulse transition duration-300"></div>
-
-                            {/* Rainbow gradient border with button inside - matching hero exactly */}
-                            <div className="relative h-full bg-gradient-to-r from-[#3A23ED] via-[#BF5198] to-[#FFA231] p-[2px]">
-                                <Link
-                                    href="https://sandbox.tracer.cloud/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="relative z-10 h-full font-britti-sans text-base !font-[400] cursor-pointer
-                                               bg-[#202020] text-[#FCFCFC] flex items-center justify-center px-8
-                                               hover:bg-[#303030] transition-all duration-300
-                                               shadow-[0_0_20px_rgba(58,35,237,0.3),0_0_40px_rgba(191,81,152,0.2),0_0_60px_rgba(255,162,49,0.1)]
-                                               hover:shadow-[0_0_40px_rgba(58,35,237,0.6),0_0_80px_rgba(191,81,152,0.5),0_0_120px_rgba(255,162,49,0.4)]"
-                                >
-                                    Try for Free
-                                </Link>
-                            </div>
-                        </div>
+                        <ShinyCTAButton />
 
                         {/* Get a Demo button */}
                         <button
@@ -130,27 +111,8 @@ const NavigationBar = () => {
                             )}
                         </div>
                         <SheetFooter className="flex flex-col gap-4 px-4 pb-4">
-                            {/* Mobile Try for Free button - Glowing CTA */}
-                            <div className="relative group">
-                                {/* Outer glow ring - matching hero exactly */}
-                                <div className="absolute -inset-1 bg-gradient-to-r from-[#3A23ED] via-[#BF5198] to-[#FFA231] blur-sm opacity-75 group-hover:opacity-100 animate-glow-pulse transition duration-300"></div>
-
-                                {/* Rainbow gradient border with button inside - matching hero exactly */}
-                                <div className="relative h-[49px] bg-gradient-to-r from-[#3A23ED] via-[#BF5198] to-[#FFA231] p-[2px]">
-                                    <Link
-                                        href="https://sandbox.tracer.cloud/"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className='relative z-10 h-full font-britti-sans !font-[400] cursor-pointer
-                                                   bg-[#202020] text-[#FCFCFC] flex items-center justify-center px-8
-                                                   hover:bg-[#303030] transition-all duration-300
-                                                   shadow-[0_0_20px_rgba(58,35,237,0.3),0_0_40px_rgba(191,81,152,0.2),0_0_60px_rgba(255,162,49,0.1)]
-                                                   hover:shadow-[0_0_40px_rgba(58,35,237,0.6),0_0_80px_rgba(191,81,152,0.5),0_0_120px_rgba(255,162,49,0.4)]'
-                                        onClick={handleNavLinkClick}
-                                    >
-                                        Try for Free
-                                    </Link>
-                                </div>
+                            <div onClick={handleNavLinkClick}>
+                                <ShinyCTAButton />
                             </div>
 
                             <button

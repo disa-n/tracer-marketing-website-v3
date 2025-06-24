@@ -30,7 +30,7 @@ const features: Feature[] = [
     id: 'pipeline-spend',
     title: 'Map Pipeline Spend',
     previewTitle: 'Match Pipeline Activity to Cost Centers in Real Time',
-    description: 'Automatically attribute cloud spend to specific pipelines, tools, and teams. Map compute\nusage directly to cost centers for accurate budgeting and internal chargebacks.',
+    description: 'Automatically attribute cloud spend to specific pipelines, tools, and teams.\nMap compute usage directly to cost centers for accurate budgeting.',
     icon: BarChart3,
     image: '/platformv2/features/pipeline-spend.webp'
   },
@@ -62,7 +62,7 @@ const features: Feature[] = [
     id: 'time-sink',
     title: 'Time Sink Detector',
     previewTitle: 'Time Sink Detector',
-    description: 'Automatically identify bottlenecks and performance issues that slow down\nyour pipelines and impact productivity.',
+    description: 'Automatically identify bottlenecks and performance issues\nthat slow down your pipelines and impact productivity.',
     icon: Clock,
     image: '/platformv2/features/time-sink.webp'
   },
@@ -229,12 +229,27 @@ const ProductFeaturesDeepDive = () => {
               <div className="lg:sticky lg:top-8 h-fit">
                 {/* Feature Header */}
                 <div className="mb-6">
-                  <h3 className="font-britti-sans text-2xl sm:text-[28px] lg:text-[32px] font-normal leading-[1.1] tracking-[-0.01em] text-black mb-4 break-words">
-                    {currentFeature.previewTitle}
-                  </h3>
-                  <p className="font-britti-sans text-sm sm:text-base font-normal leading-[1.4] tracking-[0em] text-[#888888] break-words">
-                    {currentFeature.description}
-                  </p>
+                  <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4 gap-4">
+                    <div className="flex-1">
+                      <h3 className="font-britti-sans text-2xl sm:text-[28px] lg:text-[32px] font-normal leading-[1.1] tracking-[-0.01em] text-black mb-4 break-words">
+                        {currentFeature.previewTitle}
+                      </h3>
+                      <p className="font-britti-sans text-sm sm:text-base font-normal leading-[1.4] tracking-[0em] text-[#888888] break-words whitespace-pre-line">
+                        {currentFeature.description}
+                      </p>
+                    </div>
+                    {/* See It in Action Button - Aligned with header */}
+                    <div className="flex-shrink-0">
+                      <Link
+                        href="https://sandbox.tracer.cloud/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="h-12 font-britti-sans text-sm sm:text-base font-normal cursor-pointer bg-[#E8E8E8] flex items-center justify-center text-black px-6 sm:px-8 hover:opacity-80 transition-all"
+                      >
+                        See It in Action
+                      </Link>
+                    </div>
+                  </div>
                 </div>
                 {/* Feature Image */}
                 <AnimatePresence mode="wait">
@@ -244,7 +259,7 @@ const ProductFeaturesDeepDive = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.3 }}
-                    className="relative w-full border border-gray-200 h-[300px] sm:h-[400px] lg:h-[510px] mb-6"
+                    className="relative w-full border border-gray-200 h-[300px] sm:h-[400px] lg:h-[510px]"
                     style={{ backgroundColor: '#0B0B0B' }}
                   >
                     <Image
@@ -256,15 +271,6 @@ const ProductFeaturesDeepDive = () => {
                     />
                   </motion.div>
                 </AnimatePresence>
-                {/* See It in Action Button */}
-                <Link
-                  href="https://sandbox.tracer.cloud/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="h-12 font-britti-sans text-sm sm:text-base font-normal cursor-pointer bg-[#E8E8E8] flex items-center justify-center text-black px-6 sm:px-8 hover:opacity-80 transition-all w-full"
-                >
-                  See It in Action
-                </Link>
               </div>
             </div>
           </div>
