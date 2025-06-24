@@ -17,36 +17,36 @@ const MonitoringInsights = () => {
                 </div>
                 <div className='w-full mt-6 md:mt-[18px] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[0.16fr_0.27fr_0.27fr_0.36fr] gap-4 md:gap-2'>
                     {/* Automotive */}
-                    <div className="min-h-[200px] md:min-h-[450px]">
-                        <div className="overflow-hidden h-[200px] md:h-[450px]">
-                            <Image src={"/platform/m-1.webp"} alt='' width={500} height={500} className='w-full h-full object-cover' style={{objectPosition: 'center 60%'}} />
+                    <div className="flex flex-col">
+                        <div className="overflow-hidden h-[200px] md:h-auto">
+                            <Image src={"/platform/m-1.webp"} alt='' width={500} height={500} className='w-full h-full md:h-auto object-cover' style={{objectPosition: 'center 60%'}} />
                         </div>
                         <h3 className='mt-2 text-[24px] md:text-[40px] font-[400] tracking-tighter text-c-black leading-[1] font-britti-sans'>
                             Automotive
                         </h3>
                     </div>
                     {/* Computational Fluid Dynamic */}
-                    <div className="min-h-[200px] md:min-h-[450px]">
-                        <div className="overflow-hidden h-[200px] md:h-[450px]">
-                            <Image src={"/platform/m-2.webp"} alt='' width={500} height={500} className='w-full h-auto object-cover' />
+                    <div className="flex flex-col">
+                        <div className="overflow-hidden h-[200px] md:h-auto">
+                            <Image src={"/platform/m-2.webp"} alt='' width={500} height={500} className='w-full h-full md:h-auto object-cover' />
                         </div>
                         <h3 className='mt-2 text-[24px] md:text-[40px] font-[400] tracking-tighter text-c-black leading-[1] font-britti-sans'>
                             Computational Fluid Dynamic
                         </h3>
                     </div>
                     {/* Pharma & Biotech */}
-                    <div className="min-h-[200px] md:min-h-[450px]">
-                        <div className="overflow-hidden h-[200px] md:h-[450px]">
-                            <Image src={"/platform/m-3.webp"} alt='' width={500} height={500} className='w-full h-full object-cover' style={{objectPosition: 'center 60%'}} />
+                    <div className="flex flex-col">
+                        <div className="overflow-hidden h-[200px] md:h-auto">
+                            <Image src={"/platform/m-3.webp"} alt='' width={500} height={500} className='w-full h-full md:h-auto object-cover' style={{objectPosition: 'center 60%'}} />
                         </div>
                         <h3 className='mt-2 text-[24px] md:text-[40px] font-[400] tracking-tighter text-c-black leading-[1] font-britti-sans'>
                             Pharma & Biotech
                         </h3>
                     </div>
                     {/* Aerospace */}
-                    <div className="min-h-[200px] md:min-h-[450px]">
-                        <div className="overflow-hidden h-[200px] md:h-[450px]">
-                            <Image src={"/platform/m-4.webp"} alt='' width={500} height={500} className='w-full h-auto object-cover' />
+                    <div className="flex flex-col">
+                        <div className="overflow-hidden h-[200px] md:h-auto">
+                            <Image src={"/platform/m-4.webp"} alt='' width={500} height={500} className='w-full h-full md:h-auto object-cover' />
                         </div>
                         <h3 className='mt-2 text-[24px] md:text-[40px] font-[400] tracking-tighter text-c-black leading-[1] font-britti-sans'>
                             Aerospace
