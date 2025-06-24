@@ -1,8 +1,7 @@
 'use client'
 
-import React, { useRef, useEffect, useState, useMemo } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import Image from 'next/image'
-import { motion, useAnimation, useInView, type Variants } from 'framer-motion'
 import { GridLines3Dark } from '@/components/shared/GridLines'
 
 
@@ -91,43 +90,17 @@ const CultureCard: React.FC<CultureCardProps> = ({
 
 
 
-// Animation variants
-const createAnimationVariants = (isMobileView: boolean): Variants => ({
-  hidden: {
-    y: isMobileView ? 0 : 60,
-    opacity: isMobileView ? 1 : 0,
-    transition: {
-      duration: isMobileView ? 0 : 0.6,
-      ease: [0.25, 0.1, 0.25, 1]
-    }
-  },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: isMobileView ? 0 : 0.8,
-      ease: [0.25, 0.1, 0.25, 1]
-    }
-  }
-})
+
 
 // Mobile Cards Component
 interface MobileCardsProps {
   cultureValues: CultureValue[]
   cardWidth: string
-  mobileCardsRef: React.RefObject<HTMLDivElement | null>
-  mobileCardsControls: any
-  animationVariants: Variants
-  isMobileView: boolean
 }
 
 const MobileCards: React.FC<MobileCardsProps> = ({
   cultureValues,
-  cardWidth,
-  mobileCardsRef,
-  mobileCardsControls,
-  animationVariants,
-  isMobileView
+  cardWidth
 }) => (
   <div className="block lg:hidden">
     {/* 2x6 Grid for tablet/intermediate view */}
@@ -170,19 +143,11 @@ const MobileCards: React.FC<MobileCardsProps> = ({
 interface DesktopCardsProps {
   cultureValues: CultureValue[]
   cardWidth: string
-  desktopCardsRef: React.RefObject<HTMLDivElement | null>
-  desktopCardsControls: any
-  animationVariants: Variants
-  isMobileView: boolean
 }
 
 const DesktopCards: React.FC<DesktopCardsProps> = ({
   cultureValues,
-  cardWidth,
-  desktopCardsRef,
-  desktopCardsControls,
-  animationVariants,
-  isMobileView
+  cardWidth
 }) => (
   <div className="hidden lg:block w-full">
     {/* 2x6 Grid for intermediate desktop (1024px-1150px) */}
@@ -261,27 +226,10 @@ const DesktopCards: React.FC<DesktopCardsProps> = ({
 )
 
 function Culture() {
-  const { isMobileView, windowWidth } = useResponsiveAnimation()
+  const { windowWidth } = useResponsiveAnimation()
   const cardWidth = useCardDimensions(windowWidth)
 
-  // Animation refs and controls
-  const mobileCardsRef = useRef<HTMLDivElement>(null)
-  const desktopCardsRef = useRef<HTMLDivElement>(null)
 
-  const mobileCardsControls = useAnimation()
-  const desktopCardsControls = useAnimation()
-
-  // Detect when elements come into view
-  const mobileCardsInView = useInView(mobileCardsRef, { amount: 0.3 })
-  const desktopCardsInView = useInView(desktopCardsRef, { amount: 0.3 })
-
-  useEffect(() => {
-    if (mobileCardsInView) mobileCardsControls.start("visible")
-  }, [mobileCardsInView, mobileCardsControls])
-
-  useEffect(() => {
-    if (desktopCardsInView) desktopCardsControls.start("visible")
-  }, [desktopCardsInView, desktopCardsControls])
 
   // Culture values data
   const cultureValues: CultureValue[] = [
@@ -317,9 +265,6 @@ function Culture() {
     }
   ]
 
-  // Memoized animation variants
-  const animationVariants = useMemo(() => createAnimationVariants(isMobileView), [isMobileView])
-
   return (
     <section className="relative overflow-hidden bg-[#202020] py-16 lg:pt-16 lg:pb-24 z-30">
       {/* GridLines */}
@@ -341,19 +286,11 @@ function Culture() {
         <MobileCards
           cultureValues={cultureValues}
           cardWidth={cardWidth}
-          mobileCardsRef={mobileCardsRef}
-          mobileCardsControls={mobileCardsControls}
-          animationVariants={animationVariants}
-          isMobileView={isMobileView}
         />
 
         <DesktopCards
           cultureValues={cultureValues}
           cardWidth={cardWidth}
-          desktopCardsRef={desktopCardsRef}
-          desktopCardsControls={desktopCardsControls}
-          animationVariants={animationVariants}
-          isMobileView={isMobileView}
         />
       </div>
     </section>
