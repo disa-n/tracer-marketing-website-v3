@@ -69,12 +69,12 @@ function formatDate(dateString: string): string {
     const date = new Date(dateString);
     if (isNaN(date.getTime())) {
       // If the date is invalid, return current date
-      return new Date().toISOString().split('T')[0];
+      return new Date().toISOString().split('T')[0] || new Date().toISOString();
     }
-    return date.toISOString().split('T')[0];
+    return date.toISOString().split('T')[0] || new Date().toISOString();
   } catch {
     // Fallback to current date if parsing fails
-    return new Date().toISOString().split('T')[0];
+    return new Date().toISOString().split('T')[0] || new Date().toISOString();
   }
 }
 
@@ -103,7 +103,7 @@ export async function GET() {
   try {
     // Get all published blog posts
     const blogPosts = await getAllBlogPosts();
-    
+
     // Create dynamic URLs for blog posts, whitepapers, and tools under /resources
     const dynamicUrls = blogPosts
       .filter(post => post.published !== false) // Only include published posts
@@ -131,12 +131,12 @@ export async function GET() {
         'Cache-Control': 'public, max-age=3600, s-maxage=3600', // Cache for 1 hour
       },
     });
-  } catch (error) {
-    console.error('Error generating sitemap:', error);
-    
+  } catch {
+    // Error generating sitemap - use fallback
+
     // Return a basic sitemap with just static URLs if there's an error
     const fallbackSitemap = generateSitemapXml(staticUrls);
-    
+
     return new Response(fallbackSitemap, {
       headers: {
         'Content-Type': 'application/xml',

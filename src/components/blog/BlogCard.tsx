@@ -7,9 +7,9 @@ type BlogCardProps = {
   title: string;
   description: string;
   date: string;
-  tag?: string;
-  ogImage?: string;
-  author?: string | string[];
+  tag: string;
+  ogImage?: string | undefined;
+  author?: string | string[] | undefined;
 };
 
 export default function BlogCard({
@@ -25,8 +25,8 @@ export default function BlogCard({
     typeof author === "string"
       ? author.split(/,\s*and\s*|,\s*|\s+and\s+/).map((a) => a.trim())
       : Array.isArray(author)
-      ? author
-      : [];
+        ? author
+        : [];
 
   // Smart routing logic for directories and posts
   const getCardLink = () => {
@@ -101,7 +101,7 @@ export default function BlogCard({
                 SEE ALL TRACER UPDATES →
               </div>
             </div>
-          ) : authors.length > 0 ? (
+          ) : authors.length > 0 && authors[0] ? (
             <div className="flex items-center mt-auto">
               {authors.length === 1 ? (
                 <div className="text-xs sm:text-sm text-gray-500">

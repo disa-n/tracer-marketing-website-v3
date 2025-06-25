@@ -24,8 +24,8 @@ export default function StaticContent({ slug }: { slug: string }) {
         } else {
           setIsComingSoon(true);
         }
-      } catch (error) {
-        console.error("Error loading blog post:", error);
+      } catch {
+        // Error loading blog post
         setIsComingSoon(true);
       } finally {
         setLoading(false);
@@ -58,8 +58,6 @@ export default function StaticContent({ slug }: { slug: string }) {
     return <ComingSoon />;
   }
 
-  console.log("Rendering blog content for slug:", slug);
-
   if (!post) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-12">
@@ -74,11 +72,11 @@ export default function StaticContent({ slug }: { slug: string }) {
     slug: post.slug,
     title: post.title,
     date: post.date,
-    imageSrc: post.ogImage || post.imageSrc || '',
+    imageSrc: post.ogImage || post.imageSrc || '/placeholder-icon.svg',
     description: post.description,
-    author: post.author,
-    tag: post.tag,
-    readTime: post.readTime,
+    author: post.author || 'Team Tracer',
+    tag: post.tag || 'general',
+    readTime: post.readTime || '5 min read',
     content: post.content || ''
   };
 

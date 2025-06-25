@@ -37,8 +37,8 @@ export default function MDXContent({ slug }: MDXContentProps) {
         setComponent(() => module.default);
         setMetadata(module.metadata || null);
       })
-      .catch((err) => {
-        console.error(`Error loading MDX file: ${slug}.mdx`, err);
+      .catch(() => {
+        // Error loading MDX file
         setError(true);
       });
   }, [slug]);
@@ -74,11 +74,11 @@ export default function MDXContent({ slug }: MDXContentProps) {
     slug,
     title: metadata.title,
     date: metadata.date,
-    imageSrc: metadata.ogImage || '',
+    imageSrc: metadata.ogImage || '/placeholder-icon.svg',
     description: metadata.description,
-    author: metadata.author,
-    tag: metadata.tag,
-    readTime: metadata.readTime,
+    author: metadata.author || 'Team Tracer',
+    tag: metadata.tag || 'general',
+    readTime: metadata.readTime || '5 min read',
     content: '' // Content will be rendered by the MDX component
   };
 

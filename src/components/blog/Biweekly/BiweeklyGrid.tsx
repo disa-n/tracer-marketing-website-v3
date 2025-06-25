@@ -73,17 +73,17 @@ function BiweeklyGridItem({ date, description, imageSrc, caption, slug }: Biweek
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </div>
-            
+
             {showActionButtons && (
               <div className="flex gap-2">
                 <button className="text-[#888888] hover:text-[#FCFCFC] transition-colors">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                    <path d="M8 0L10.5 5.5L16 8L10.5 10.5L8 16L5.5 10.5L0 8L5.5 5.5L8 0Z"/>
+                    <path d="M8 0L10.5 5.5L16 8L10.5 10.5L8 16L5.5 10.5L0 8L5.5 5.5L8 0Z" />
                   </svg>
                 </button>
                 <button className="text-[#888888] hover:text-[#FCFCFC] transition-colors">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                    <path d="M8 2C4.7 2 2 4.7 2 8s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm0 10c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z"/>
+                    <path d="M8 2C4.7 2 2 4.7 2 8s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm0 10c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z" />
                   </svg>
                 </button>
               </div>
@@ -116,7 +116,7 @@ export default async function BiweeklyGrid({ items }: BiweeklyGridProps) {
   const defaultItems: BiweeklyGridItemProps[] = sortedBiweeklyPosts.map(post => ({
     date: post.date,
     description: post.description,
-    imageSrc: post.ogImage || post.imageSrc,
+    imageSrc: post.ogImage || post.imageSrc || '/placeholder-icon.svg',
     caption: post.title,
     slug: post.slug,
   }));

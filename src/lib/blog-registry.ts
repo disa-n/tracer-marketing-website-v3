@@ -11,13 +11,13 @@ export interface BlogPostMetadata {
   title: string;
   date: string;
   description: string;
-  author?: string;
-  tag?: string;
-  readTime?: string;
-  ogImage?: string;
-  template?: 'default' | 'minimal' | 'magazine' | 'technical';
-  imageSrc?: string; // For backward compatibility
-  published?: boolean; // Controls visibility on blog pages
+  author?: string | undefined;
+  tag?: string | undefined;
+  readTime?: string | undefined;
+  ogImage?: string | undefined;
+  template?: 'default' | 'minimal' | 'magazine' | 'technical' | undefined;
+  imageSrc?: string | undefined; // For backward compatibility
+  published?: boolean | undefined; // Controls visibility on blog pages
 }
 
 /**
@@ -69,7 +69,10 @@ export interface BlogPostSchema {
 
 export interface BlogPost extends BlogPostMetadata {
   type: 'mdx' | 'static';
-  content?: string; // Only for static posts
+  content?: string | undefined; // Only for static posts
+  author: string; // Required for BlogPost
+  tag: string; // Required for BlogPost
+  imageSrc: string; // Required for BlogPost
 }
 
 // Registry of all available MDX blog posts
@@ -269,13 +272,13 @@ export async function loadMDXMetadata(slug: string): Promise<BlogPostMetadata | 
   const metadata = MDX_METADATA[slug];
 
   if (!metadata) {
-    console.warn(`No metadata found for MDX post: ${slug}`);
+    // No metadata found for MDX post
     return null;
   }
 
   return {
     ...metadata,
-    imageSrc: metadata.ogImage, // For backward compatibility
+    imageSrc: metadata.ogImage || '/placeholder-icon.svg', // For backward compatibility
   };
 }
 
@@ -286,22 +289,22 @@ export async function loadStaticBlogPosts(): Promise<BlogPost[]> {
   try {
     const { getAllBlogPosts } = await import('@/data/blogPosts');
     const staticPosts = getAllBlogPosts();
-    
+
     return staticPosts.map(post => ({
       slug: post.slug,
       title: post.title,
       date: post.date,
       description: post.description,
-      author: post.author,
-      tag: post.tag,
+      author: post.author || 'Team Tracer',
+      tag: post.tag || 'general',
       readTime: post.readTime,
       ogImage: post.imageSrc,
-      imageSrc: post.imageSrc,
+      imageSrc: post.imageSrc || '/placeholder-icon.svg',
       type: 'static' as const,
       content: post.content,
     }));
-  } catch (error) {
-    console.error('Error loading static blog posts:', error);
+  } catch {
+    // Error loading static blog posts
     return [];
   }
 }
@@ -320,6 +323,9 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
       allPosts.push({
         ...metadata,
         type: 'mdx',
+        author: metadata.author || 'Team Tracer',
+        tag: metadata.tag || 'general',
+        imageSrc: metadata.imageSrc || metadata.ogImage || '/placeholder-icon.svg',
       });
       processedSlugs.add(slug);
     }
@@ -349,6 +355,9 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
       return {
         ...metadata,
         type: 'mdx',
+        author: metadata.author || 'Team Tracer',
+        tag: metadata.tag || 'general',
+        imageSrc: metadata.imageSrc || metadata.ogImage || '/placeholder-icon.svg',
       };
     }
   }
@@ -356,7 +365,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
   // Check static posts
   const staticPosts = await loadStaticBlogPosts();
   const staticPost = staticPosts.find(post => post.slug === slug);
-  
+
   return staticPost || null;
 }
 
@@ -391,9 +400,9 @@ export async function getBlogPostsForClient(): Promise<Array<{
       title: post.title,
       date: post.date,
       description: post.description,
-      tag: post.tag,
-      ogImage: post.ogImage,
-      author: post.author,
+      tag: post.tag || 'general',
+      ogImage: post.ogImage || '/placeholder-icon.svg',
+      author: post.author || 'Team Tracer',
     },
   }));
 }
@@ -443,8 +452,8 @@ export function generateBlogPostSchema(post: BlogPost): BlogPostSchema {
 
   // Use author or default to "Tracer Team"
   const authorName = post.author && typeof post.author === 'string' ? post.author :
-                    post.author && Array.isArray(post.author) ? post.author.join(', ') :
-                    'Tracer Team';
+    post.author && Array.isArray(post.author) ? post.author.join(', ') :
+      'Tracer Team';
 
   // Generate keywords from tag and title
   const keywords = [
@@ -460,7 +469,7 @@ export function generateBlogPostSchema(post: BlogPost): BlogPostSchema {
     "@type": "BlogPosting",
     "headline": post.title,
     "description": post.description,
-    "image": post.ogImage || post.imageSrc,
+    "image": post.ogImage || post.imageSrc || '/placeholder-icon.svg',
     "author": {
       "@type": "Organization",
       "name": authorName

@@ -213,7 +213,7 @@ export default async function KenyaGrid({ items }: KenyaGridProps) {
   const defaultItems: KenyaGridItemProps[] = sortedKenyaPosts.map(post => ({
     date: post.date,
     description: post.description,
-    imageSrc: post.ogImage || post.imageSrc,
+    imageSrc: post.ogImage || post.imageSrc || '/placeholder-icon.svg',
     caption: post.title,
     slug: post.slug,
   }));

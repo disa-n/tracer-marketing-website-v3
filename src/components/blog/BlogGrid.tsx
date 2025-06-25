@@ -1,17 +1,6 @@
 import React from 'react';
 import BlogCard from './BlogCard';
-
-type BlogPost = {
-  slug: string;
-  metadata: {
-    title: string;
-    date: string;
-    description: string;
-    tag?: string;
-    ogImage?: string;
-    author?: string | string[];
-  };
-};
+import { BlogPost } from '@/lib/blog-registry';
 
 export default function BlogGrid({ posts }: { posts: BlogPost[] }) {
   return (
@@ -20,7 +9,12 @@ export default function BlogGrid({ posts }: { posts: BlogPost[] }) {
         <BlogCard
           key={post.slug}
           slug={post.slug}
-          {...post.metadata}
+          title={post.title}
+          description={post.description}
+          date={post.date}
+          tag={post.tag}
+          ogImage={post.ogImage}
+          author={post.author}
         />
       ))}
     </div>

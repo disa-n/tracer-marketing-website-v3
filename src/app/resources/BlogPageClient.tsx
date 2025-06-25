@@ -274,7 +274,7 @@ export default function BlogPageClient() {
                       date={directory.metadata.date}
                       description={directory.metadata.description}
                       ogImage={directory.metadata.ogImage}
-                      tag={directory.metadata.tag}
+                      tag={directory.metadata.tag || 'general'}
                       author={directory.metadata.author}
                     />
                   ))}
@@ -299,7 +299,7 @@ export default function BlogPageClient() {
                       date={post.metadata.date}
                       description={post.metadata.description}
                       ogImage={post.metadata.ogImage}
-                      tag={post.metadata.tag}
+                      tag={post.metadata.tag || 'general'}
                       author={post.metadata.author}
                     />
                   ))}
@@ -350,7 +350,7 @@ export default function BlogPageClient() {
                       date={post.metadata.date}
                       description={post.metadata.description}
                       ogImage={post.metadata.ogImage}
-                      tag={post.metadata.tag}
+                      tag={post.metadata.tag || 'general'}
                       author={post.metadata.author}
                     />
                   ))}

@@ -18,20 +18,14 @@ export default function StaticContent({ slug }: { slug: string }) {
           const hostname = window.location.hostname;
           const isLocalhost = hostname.includes("localhost");
 
-          console.log("Current hostname:", hostname);
-          console.log("Is localhost:", isLocalhost);
-
           if (isLocalhost) {
             setIsComingSoon(false);
-            console.log("Setting isComingSoon to false (localhost)");
           } else {
             setIsComingSoon(true);
-            console.log("Setting isComingSoon to true (production)");
           }
         } else {
           // Default to coming soon during SSR
           setIsComingSoon(true);
-          console.log("Setting isComingSoon to true (SSR)");
         }
 
         // If not coming soon, load the blog post data
@@ -39,8 +33,8 @@ export default function StaticContent({ slug }: { slug: string }) {
           const blogPost = await getBlogPost(slug);
           setPost(blogPost);
         }
-      } catch (error) {
-        console.error('Error loading blog post:', error);
+      } catch {
+        // Error loading blog post
       } finally {
         setLoading(false);
       }
@@ -48,8 +42,6 @@ export default function StaticContent({ slug }: { slug: string }) {
 
     loadPost();
   }, [slug, isComingSoon]);
-
-  console.log("Current isComingSoon state:", isComingSoon);
 
   if (loading) {
     return (
@@ -59,12 +51,9 @@ export default function StaticContent({ slug }: { slug: string }) {
     );
   }
 
-  if(isComingSoon) {
-    console.log("Rendering ComingSoon component");
+  if (isComingSoon) {
     return <ComingSoon />
   }
-
-  console.log("Rendering blog content for slug:", slug);
 
   if (!post) {
     return (
@@ -80,11 +69,11 @@ export default function StaticContent({ slug }: { slug: string }) {
     slug: post.slug,
     title: post.title,
     date: post.date,
-    imageSrc: post.ogImage || post.imageSrc || '',
+    imageSrc: post.ogImage || post.imageSrc || '/placeholder-icon.svg',
     description: post.description,
-    author: post.author,
-    tag: post.tag,
-    readTime: post.readTime,
+    author: post.author || 'Team Tracer',
+    tag: post.tag || 'general',
+    readTime: post.readTime || '5 min read',
     content: post.content || ''
   };
 
