@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import ShinyCTAButton from './ShinyCTAButton';
 import { useDemo } from '../ScheduleDemo';
 
@@ -117,7 +117,7 @@ const DynamicNavbar: React.FC = () => {
               hidden 1000:flex items-center gap-3 h-full flex-shrink-0 transition-all duration-500 ease-in-out
               ${isScrolled ? 'ml-6' : 'ml-8'}
             `}>
-              <ShinyCTAButton isScrolled={isScrolled} />
+              <ShinyCTAButton mobileHeight={49} desktopHeight={49} />
 
               {/* Get a Demo button */}
               <button
@@ -184,7 +184,7 @@ const DynamicNavbar: React.FC = () => {
             {/* Footer with CTA Buttons */}
             <div className="flex flex-col gap-4 px-4 pb-4">
               <div onClick={handleNavLinkClick}>
-                <ShinyCTAButton />
+                <ShinyCTAButton mobileHeight={49} desktopHeight={49} />
               </div>
 
               <button

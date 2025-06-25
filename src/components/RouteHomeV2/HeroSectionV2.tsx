@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import GridLines from '@/components/shared/GridLines';
 import ShinyCTAButton from '@/components/shared/ShinyCTAButton';
 
@@ -14,14 +14,14 @@ export default function HeroSectionV2() {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [isErasing, setIsErasing] = useState(false);
 
-  const textVariations = [
+  const textVariations = useMemo(() => [
     'That Lives in the OS',
     'Making Cost Visible',
     'That Sees Every Tool',
     'Optimised for HPC',
     'Mapping Jobs to Budget',
     'Breaking Down Runtime'
-  ];
+  ], []);
 
   // Start typing after a delay
   useEffect(() => {

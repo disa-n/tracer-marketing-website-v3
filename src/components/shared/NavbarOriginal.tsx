@@ -60,7 +60,7 @@ const NavigationBarOriginal = () => {
                         )}
                     </div>
                     <div className="flex items-center gap-3 h-full">
-                        <ShinyCTAButton />
+                        <ShinyCTAButton mobileHeight={49} desktopHeight={49} />
 
                         {/* Get a Demo button */}
                         <button
@@ -112,7 +112,7 @@ const NavigationBarOriginal = () => {
                         </div>
                         <SheetFooter className="flex flex-col gap-4 px-4 pb-4">
                             <div onClick={handleNavLinkClick}>
-                                <ShinyCTAButton />
+                                <ShinyCTAButton mobileHeight={49} desktopHeight={49} />
                             </div>
 
                             <button

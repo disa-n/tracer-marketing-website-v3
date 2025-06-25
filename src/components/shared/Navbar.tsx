@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import ShinyCTAButton from './ShinyCTAButton';
 import { useDemo } from '../ScheduleDemo';
 
