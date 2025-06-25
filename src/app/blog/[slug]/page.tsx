@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { getBlogPostsForStaticGeneration, getBlogPost, isMDXBlogPost } from '@/lib/blog-registry';
+import { getBlogPostsForStaticGeneration, getBlogPost, isMDXBlogPost, generateBlogPostSchema } from '@/lib/blog-registry';
 
 export async function generateStaticParams() {
   // Get all blog posts from the centralized registry
@@ -52,11 +52,37 @@ export default async function BlogPost({
     const resolvedParams = await params;
     const slug = resolvedParams.slug;
 
+    // Get the blog post for JSON-LD schema
+    const post = await getBlogPost(slug);
+
+    if (!post) {
+      notFound();
+    }
+
+    // Generate JSON-LD schema for this blog post
+    const blogPostSchema = generateBlogPostSchema(post);
+
     // Check if this is an MDX blog post using the centralized registry
     if (isMDXBlogPost(slug)) {
-      return <MDXContent slug={slug} />;
+      return (
+        <>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostSchema) }}
+          />
+          <MDXContent slug={slug} />
+        </>
+      );
     } else {
-      return <StaticContent slug={slug} />;
+      return (
+        <>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostSchema) }}
+          />
+          <StaticContent slug={slug} />
+        </>
+      );
     }
   } catch (error) {
     console.error("Error loading blog post:", error);

@@ -73,19 +73,15 @@ export default function UseTracerSectionV2() {
                 &ldquo;We can&apos;t tell what&apos;s working or where things are falling apart.&rdquo;
               </p>
 
-              {/* First paragraph */}
-              <p className="text-2xl lg:text-4xl 2xl:text-5xl font-medium leading-snug tracking-tight lg:tracking-tighter font-britti text-[#202020] mb-4">
-                It&apos;s a common story:
+              {/* Main text paragraph */}
+              <p className="text-2xl lg:text-4xl 2xl:text-5xl font-normal leading-[48px] tracking-tight lg:tracking-tighter font-britti text-[#202020] mb-4">
+                Analytical pipelines break. Logs rarely explain why.<br />
+                Compute planning happens blind.
               </p>
 
-              {/* Second paragraph */}
-              <p className="text-2xl lg:text-4xl 2xl:text-5xl font-normal leading-snug tracking-tight lg:tracking-tighter font-britti text-[#202020] mb-4">
-                Analytical pipelines break. Logs rarely explain why.
-              </p>
-
-              {/* Third paragraph */}
-              <p className="text-2xl lg:text-4xl 2xl:text-5xl font-normal leading-snug tracking-tight lg:tracking-tighter font-britti text-[#202020] mb-4">
-                Sure, you can keep guessing what went wrong…
+              <p className="text-2xl lg:text-4xl 2xl:text-5xl font-normal leading-[48px] tracking-tight lg:tracking-tighter font-britti text-[#202020] mb-4">
+                Sure, you can keep guessing what went wrong.<br />
+                Stay in the dark as cloud costs spiral.
               </p>
 
               {/* Large downward arrow icon (centered until 650px, then left-aligned) */}
@@ -109,8 +105,9 @@ export default function UseTracerSectionV2() {
               </div>
 
               {/* Final line */}
-              <p className="text-2xl lg:text-4xl 2xl:text-5xl font-normal leading-snug tracking-tight lg:tracking-tighter font-britti text-[#202020]">
-                <span className="font-medium tracking-tight lg:tracking-tighter">Or you can use Tracer</span> — the observability<br className="hidden sm:block" /> platform built for AI-driven science.
+              <p className="text-2xl lg:text-4xl 2xl:text-5xl font-normal leading-[48px] tracking-tight lg:tracking-tighter font-britti text-[#202020]">
+                Or you can use Tracer.<br />
+                The observability platform built for AI-driven science.
               </p>
               </div>
             </div>

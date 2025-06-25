@@ -16,7 +16,7 @@ export default function HeroSectionV2() {
 
   const textVariations = useMemo(() => [
     'That Lives in the OS',
-    'Making Cost Visible',
+    'Making Costs Visible',
     'That Sees Every Tool',
     'Optimised for HPC',
     'Mapping Jobs to Budget',

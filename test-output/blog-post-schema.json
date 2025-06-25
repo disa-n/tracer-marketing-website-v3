@@ -1,0 +1,29 @@
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Test Post 1",
+  "description": "Description for test post 1",
+  "image": "/Blog/test-image.webp",
+  "author": {
+    "@type": "Organization",
+    "name": "Team Tracer"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Tracer",
+    "url": "http://localhost:3000",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:3000/logo.png"
+    }
+  },
+  "datePublished": "2024-01-01T00:00:00.000Z",
+  "dateModified": "2024-01-01T00:00:00.000Z",
+  "url": "http://localhost:3000/resources/test-post-1",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:3000/resources/test-post-1"
+  },
+  "articleSection": "Technology",
+  "keywords": "test, HPC, observability, scientific computing, performance monitoring"
+}
