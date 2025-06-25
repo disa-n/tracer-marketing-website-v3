@@ -140,7 +140,7 @@ export default function HeroSectionV2() {
 
           {/* CTA Buttons */}
           <div className="flex flex-row gap-4 justify-center items-center mb-8 sm:mb-6">
-            <ShinyCTAButton />
+            <ShinyCTAButton mobileHeight={42} desktopHeight={51} />
 
             <a
               href="/product"
