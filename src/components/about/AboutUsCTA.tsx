@@ -1,0 +1,21 @@
+"use client"
+
+import ReusableCta from '@/components/shared/ReusableCta'
+
+const AboutUsCTA = () => {
+  return (
+    <ReusableCta
+      imageSrc="/home/demo-home-car.png"
+      imageAlt="demo-car"
+      title="Ready to see Tracer in action?"
+      subtitle="get a personalized demo"
+      buttonText="Get a Demo"
+      showOverlay={true}
+      overlayWidth="31%"
+      overlayHeight="45px"
+      overlayMobileHeight="54px"
+    />
+  )
+}
+
+export default AboutUsCTA

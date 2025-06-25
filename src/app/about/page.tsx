@@ -7,7 +7,7 @@ import MoonshotSection from '../../components/about/MoonshotSection'
 import TwoWorlds from '../../components/about/TwoWorlds'
 import Culture from '../../components/about/Culture'
 import Hiring from '../../components/about/Hiring'
-import LetsConnect from '../../components/about/LetsConnect'
+import AboutUsCTA from '@/components/about/AboutUsCTA'
 
 export default function AboutPage() {
   return (
@@ -38,9 +38,8 @@ export default function AboutPage() {
         <Hiring />
       </section>
 
-      {/* Let's Connect Section */}
       <section className="relative w-full">
-        <LetsConnect />
+        <AboutUsCTA />
       </section>
     </main>
   );

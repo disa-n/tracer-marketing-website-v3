@@ -271,10 +271,10 @@ function Culture() {
       <GridLines />
 
       {/* Title Container */}
-      <div className="relative z-10 w-full max-w-[1408px] 1600:max-w-[1500px] 1700:max-w-[1600px] 1800:max-w-[1700px] 1900:max-w-[1800px] 1920:max-w-[1900px] mx-auto px-4 md:px-8 lg:px-12 xl:px-8">
+      <div className="relative z-10 flex flex-col justify-center px-4 md:px-8 lg:px-12 lg:max-w-[1400px] lg:w-full">
         {/* Section Title */}
         <h2
-          className="text-[#FCFCFC] font-britti-sans font-normal text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[96px] leading-tight lg:leading-[80px] mb-8 lg:mb-16"
+          className="mt-4 text-[#FCFCFC] font-britti-sans font-normal text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[96px] leading-tight lg:leading-[80px] mb-8 lg:mb-16"
           style={{ letterSpacing: 'clamp(-2px, -0.3vw, -4px)' }}
         >
           Our Culture
