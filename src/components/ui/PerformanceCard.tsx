@@ -18,22 +18,22 @@ export default function PerformanceCard({
   pushTextDown = false,
 }: PerformanceCardProps) {
   return (
-    <div className="w-full h-[520px] md:aspect-[4/3] bg-[#202020] border border-[#474747] flex flex-col">
+    <div className="w-full bg-[#202020] border border-[#474747] flex flex-col">
       {/* Top Half: Visual Preview */}
-      <div className="relative bg-[#141414] h-[240px] md:flex-[3] flex-shrink-0">
+      <div className="relative bg-[#141414] h-[280px] md:h-[320px] lg:h-[360px] xl:h-[400px] 2xl:h-[440px] flex-shrink-0">
         {/* Preview Image */}
         {previewImage && (
           <Image
             src={previewImage}
             alt={title}
             fill
-            className="object-cover"
+            className="object-cover object-center"
           />
         )}
       </div>
 
       {/* Bottom Half: Text Block */}
-      <div className="p-6 flex flex-col gap-2 md:flex-[2]">
+      <div className="p-6 flex flex-col">
         {/* Labels on same line under image - full width */}
         <div className="flex justify-between items-center mb-4">
           <span className="text-[#888888] text-[14px] font-chakra-petch uppercase">

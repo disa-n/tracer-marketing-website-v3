@@ -4,9 +4,9 @@ import { GridLinesLight } from '@/components/shared/GridLines';
 
 export default function Hero() {
   return (
-    <section className="relative bg-[#FCFCFC] lg:min-h-[80vh] overflow-hidden">
+    <section className="relative bg-[#FCFCFC] min-h-[60vh] lg:min-h-[70vh] overflow-hidden">
       <GridLinesLight />
-      <div className="flex flex-col lg:flex-row lg:min-h-[80vh]">
+      <div className="flex flex-col lg:flex-row">
 
         {/* Image Column - Appears first on mobile, right on desktop */}
         <div className="flex items-center justify-center mt-8 lg:mt-0 lg:flex-1 lg:justify-center lg:order-2 lg:items-start lg:pt-16">
@@ -16,7 +16,7 @@ export default function Hero() {
                 src="/whymonitoring/T-Space-Satellite.webp"
                 alt="Monitoring illustration showing complex pipeline systems"
                 fill
-                className="object-contain lg:scale-[1.8] lg:-translate-x-8 xl:scale-[3.2] xl:translate-x-4 2xl:scale-[4.0] 2xl:-translate-x-20"
+                className="object-contain lg:scale-[1.8] lg:translate-x-8 xl:scale-[3.2] xl:translate-x-16 2xl:scale-[4.0] 2xl:translate-x-4"
                 priority
               />
             </div>
@@ -24,7 +24,7 @@ export default function Hero() {
         </div>
 
         {/* Text Content Column - Appears second on mobile, left on desktop */}
-        <div className="relative z-10 flex flex-col justify-center px-4 md:px-8 lg:px-12 pt-8 pb-8 lg:py-8 xl:justify-start xl:pt-35 2xl:justify-start 2xl:pt-48 lg:max-w-[1400px] lg:w-full lg:order-1">
+        <div className="relative z-10 flex flex-col justify-center px-4 md:px-8 lg:px-12 pt-8 pb-20 lg:py-8 lg:pb-32 xl:justify-start xl:pt-35 xl:pb-40 2xl:justify-start 2xl:pt-48 2xl:pb-48 lg:max-w-[1400px] lg:w-full lg:order-1">
 
           {/* Product Label */}
           <p className='font-chakra-petch text-sm font-[400] uppercase text-[#202020] sm:text-base'>

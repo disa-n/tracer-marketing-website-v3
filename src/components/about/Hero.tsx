@@ -28,7 +28,7 @@ export default function Hero() {
         </div>
 
         {/* Text Content Column - Appears second on mobile, left on desktop */}
-        <div className="relative z-10 flex flex-col justify-center pt-4 pb-6 lg:pt-16 lg:pb-12 lg:max-w-[1200px] lg:w-[85%] xl:max-w-[1150px] xl:w-[70%] 2xl:max-w-[1400px] 2xl:w-full lg:order-1">
+        <div className="relative z-10 flex flex-col justify-center pt-8 pb-6 lg:py-20 lg:max-w-[1400px] lg:w-full lg:order-1">
           <StyledLayoutWrapper>
 
           {/* Product Label */}
@@ -37,13 +37,13 @@ export default function Hero() {
           </p>
 
           {/* Main Heading */}
-          <h1 className="mt-4 font-chakra-petch text-[48px] !font-[400] leading-[0.9] tracking-tighter text-[#202020] sm:text-[70px] 1100:text-[80px] 1300:text-[104px] mb-6 lg:mb-10">
+          <h1 className="mt-4 font-chakra-petch text-[48px] !font-[400] leading-[0.9] tracking-tighter text-[#202020] sm:text-[70px] 1100:text-[80px] 1300:text-[104px] mb-6 lg:mb-8">
             {title}
           </h1>
 
           {/* Supporting Paragraph */}
           <p className="font-britti-sans text-[#202020] leading-[1.4] max-w-[600px] xl:max-w-[700px] 2xl:max-w-[800px]
-                        text-[20px] sm:text-[22px] md:text-[24px] lg:text-[26px] xl:text-[24px] 2xl:text-[28px] mb-8">
+                        text-[16px] sm:text-[18px] md:text-xl lg:text-xl xl:text-lg 2xl:text-xl mb-4 lg:mb-8">
             {subtitle}
           </p>
 

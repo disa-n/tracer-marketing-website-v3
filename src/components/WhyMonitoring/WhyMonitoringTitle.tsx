@@ -4,7 +4,7 @@ import { GridLinesLight } from '@/components/shared/GridLines';
 
 export default function WhyMonitoringTitle() {
   return (
-    <section className="relative bg-[#FCFCFC] pt-20 -pb-10 lg:pt-4 xl:pt-4 2xl:pt-2">
+    <section className="relative bg-[#FCFCFC] pt-20 pb-10 lg:pt-8 xl:pt-8 2xl:pt-6">
       <div className="absolute inset-0 z-0" style={{ top: "0.5px" }}>
         <GridLinesLight />
       </div>
@@ -14,7 +14,7 @@ export default function WhyMonitoringTitle() {
       <div className="relative z-10 flex flex-col lg:flex-row lg:items-start justify-between gap-12">
 
         {/* Left Column - Text Content (aligned with CoreChallengesSection) */}
-        <div className="px-4 md:px-8 lg:px-12 mt-16 lg:mt-36 xl:mt-38 2xl:mt-40 order-2 lg:order-1">
+        <div className="px-4 md:px-8 lg:px-12 mt-20 lg:mt-40 xl:mt-42 2xl:mt-44 order-2 lg:order-1">
           <div className="max-w-[1400px] w-full">
             {/* Heading */}
             <h2 className="font-britti-sans text-[#202020] font-normal capitalize leading-[1.1] mb-2 tracking-tight
