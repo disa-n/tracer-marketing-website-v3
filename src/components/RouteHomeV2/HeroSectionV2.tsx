@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { GridLinesLight } from '@/components/shared/GridLines';
+import GridLines from '@/components/shared/GridLines';
 import ShinyCTAButton from '@/components/shared/ShinyCTAButton';
 
 export default function HeroSectionV2() {
@@ -95,15 +95,15 @@ export default function HeroSectionV2() {
     }
   }, [startTyping, isComplete]);
   return (
-    <section className="relative bg-[#FCFCFC] overflow-hidden">
-      <GridLinesLight />
+    <section className="relative bg-[#141414] overflow-hidden">
+      <GridLines />
       <div className="relative z-10 w-full max-w-[1800px] mx-auto px-8 900:px-8">
 
         {/* Centered Content */}
         <div className="text-center pt-32 pb-12 sm:pt-32 sm:pb-10 lg:pt-40 lg:pb-12">
 
           {/* Main Heading with Typewriter Effect on Last Line */}
-          <h1 className="font-chakra-petch text-[48px] !font-[400] leading-[0.9] tracking-tighter text-[#202020] sm:text-[70px] 1100:text-[80px] 1300:text-[104px] mb-8 sm:mb-6 lg:mb-8 max-w-5xl mx-auto">
+          <h1 className="font-chakra-petch text-[48px] !font-[400] leading-[0.9] tracking-tighter text-white sm:text-[70px] 1100:text-[80px] 1300:text-[104px] mb-8 sm:mb-6 lg:mb-8 max-w-5xl mx-auto">
             The First Pipeline<br />
             Monitoring System<br />
             <span className="relative inline-block">
