@@ -28,7 +28,7 @@ export default function Hero() {
 
           {/* Product Label */}
           <p className='font-chakra-petch text-sm font-[400] uppercase text-[#202020] sm:text-base'>
-            _TRACER RATIONALE
+            _TRACER INSIGHTS
           </p>
 
           {/* Main Heading */}

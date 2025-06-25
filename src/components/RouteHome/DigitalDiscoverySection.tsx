@@ -339,7 +339,7 @@ export default function DigitalDiscoverySection() {
           >
             {[
               'from curing cancer',
-              'personalised medicine',
+              'personalized medicine',
               'revolutionising human computer interaction'
             ].map((caption, i) => (
               <React.Fragment key={i}>
@@ -362,7 +362,7 @@ export default function DigitalDiscoverySection() {
               },
               {
                 src: '/home/personalised-medicine-image.webp',
-                caption: 'personalised medicine',
+                caption: 'personalized medicine',
               },
               {
                 src: '/home/robot-image.webp',
@@ -408,7 +408,7 @@ export default function DigitalDiscoverySection() {
             <div className="mt-4 hidden md:flex items-center gap-4 lg:gap-6">
               {[
                 'from curing cancer',
-                'personalised medicine',
+                'personalized medicine',
                 'revolutionising human computer interaction'
               ].map((caption, i) => (
                 <React.Fragment key={i}>
@@ -431,7 +431,7 @@ export default function DigitalDiscoverySection() {
                 },
                 {
                   src: '/home/personalised-medicine-image.webp',
-                  caption: 'personalised medicine',
+                  caption: 'personalized medicine',
                 },
                 {
                   src: '/home/robot-image.webp',

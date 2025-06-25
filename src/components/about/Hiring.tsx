@@ -73,10 +73,22 @@ function Hiring() {
 
           {/* Description */}
           <p className="text-[#202020] font-britti-sans font-normal text-[16px] leading-[20px] md:text-[18px] md:leading-[22px] mb-4 text-left lg:text-left xl:text-left">
-            With VC funding in the bank, we are hiring ambitious and hard-working individuals to fast-track our growth.
+            Ready to help shape the future of high-performance computing? We are hiring ambitious and hard-working individuals to fast-track our growth.
           </p>
-          <p className="text-[#202020] font-britti-sans font-normal text-[16px] leading-[20px] md:text-[18px] md:leading-[22px] mb-8 text-left lg:text-left xl:text-left">
-            Join our team in London and help rethink scientific computing to power the next generation of breakthroughs.
+          <p className="text-[#202020] font-britti-sans font-normal text-[16px] leading-[20px] md:text-[18px] md:leading-[22px] mb-4 text-left lg:text-left xl:text-left">
+            Join our team in London and support our mission to rethink scientific computing and power the next generation of breakthroughs.
+          </p>
+
+          {/* Contact Information */}
+          <p className="text-[#202020] font-britti-sans font-normal text-[16px] leading-[20px] md:text-[18px] md:leading-[22px] mb-4 text-left lg:text-left xl:text-left">
+            Apply now for a position or contact us at{' '}
+            <a
+              href="mailto:careers@tracer.cloud"
+              className="text-[#202020] hover:text-[#404040] transition-colors duration-200 underline"
+            >
+              careers@tracer.cloud
+            </a>
+            .
           </p>
 
           {/* CTA Button */}
@@ -87,7 +99,7 @@ function Hiring() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center bg-[#E8E8E8] hover:bg-[#D8D8D8] transition-colors duration-200 px-8 py-4 text-[#202020] font-britti-sans font-normal text-[16px] leading-[17px] whitespace-nowrap mb-8 md:mb-4 lg:mb-8 xl:mb-0"
             >
-              Apply Now
+              View Open Roles
             </a>
           </div>
 
@@ -110,7 +122,7 @@ function Hiring() {
 
       {/* Rocket Image - Positioned after text to prevent overlap */}
       <motion.div
-        className="absolute hidden lg:block left-[-200px] lg:left-[-280px] xl:left-[-280px] xl:bottom-[-50px] 2xl:left-[-100px] 2xl:bottom-[-30px] bottom-0 z-0"
+        className="absolute hidden lg:block left-[-200px] lg:left-[-280px] xl:left-[-280px] xl:bottom-[-50px] 2xl:left-[-150px] 2xl:bottom-[-30px] bottom-0 z-0"
         style={{
           width: 1314,
           height: 740,

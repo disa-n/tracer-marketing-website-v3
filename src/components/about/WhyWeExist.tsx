@@ -125,26 +125,30 @@ function WhyWeExist() {
       <GridLinesLight />
 
       <div className="relative z-20 pt-16 pb-32 lg:pt-20 lg:pb-48">
-        <StyledLayoutWrapper>
-          {/* Section Title */}
-          <h2 className="text-[#202020] font-britti-sans font-medium text-2xl sm:text-3xl lg:text-[40px] leading-tight lg:leading-[38px] tracking-tight lg:tracking-[-1.5px] mb-4 lg:mb-6">
+        {/* Title with new alignment */}
+        <div className="flex flex-col justify-center px-4 md:px-8 lg:px-12 lg:max-w-[1400px] lg:w-full">
+          <h2 className="mt-4 text-[#202020] font-britti-sans font-medium text-2xl sm:text-3xl lg:text-[40px] leading-tight lg:leading-[38px] tracking-tight lg:tracking-[-1.5px] mb-4 lg:mb-6">
             Why We Exist
           </h2>
+        </div>
+
+        {/* Cards with original StyledLayoutWrapper for proper positioning */}
+        <StyledLayoutWrapper>
 
           {/* Cards Container */}
           <div ref={cardsRef} className="relative mt-12 lg:mt-16">
-            {/* Cards Layout - Mobile-first: stacked, then overlapping positioned on lg+ */}
-            <div className="flex flex-col gap-4 lg:gap-0 lg:relative lg:min-h-[700px]">
+            {/* Cards Layout - Mobile-first: stacked, then side by side on lg+ */}
+            <div className="flex flex-col gap-4 lg:flex-row lg:gap-8 xl:gap-12">
               {/* Mission Card */}
               <motion.div
-                className="flex lg:absolute lg:top-0 lg:left-0 xl:left-[-20px] 2xl:left-[100px] lg:w-[620px] xl:w-[670px] 2xl:w-[750px] lg:h-[350px] lg:z-10"
+                className="flex flex-1"
                 animate={cardsControls}
                 variants={cardVariants}
                 initial="hidden"
               >
                 <InsightCard
                   icon={<Rocket className="w-16 h-16 text-[#202020]" strokeWidth={1} />}
-                  title="Mission"
+                  title="Our Mission"
                   description={
                     <div className="space-y-6">
                       <p>
@@ -160,14 +164,14 @@ function WhyWeExist() {
 
               {/* Goal Card */}
               <motion.div
-                className="flex lg:absolute lg:top-[320px] xl:top-[360px] lg:right-0 xl:right-[-20px] 2xl:right-[100px] lg:w-[620px] xl:w-[670px] 2xl:w-[750px] lg:h-[350px] lg:z-20"
+                className="flex flex-1"
                 animate={cardsControls}
                 variants={cardVariantsStaggered}
                 initial="hidden"
               >
                 <InsightCard
                   icon={<Trophy className="w-16 h-16 text-[#202020]" strokeWidth={1} />}
-                  title="Goal"
+                  title="Our Goal"
                   description={
                     <div className="space-y-6">
                       <p>

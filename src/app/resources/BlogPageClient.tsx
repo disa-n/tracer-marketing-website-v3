@@ -219,13 +219,13 @@ export default function BlogPageClient() {
 
 
       {/* Tools Section */}
-      <Section showGridLines={true} padding="none" maxWidth="full" className="pt-60 pb-8">
+      <Section showGridLines={true} padding="none" maxWidth="full" className="pt-24 pb-20">
         <div className="flex flex-col lg:flex-row" id="tools-section">
           <div className="relative z-10 px-4 md:px-8 lg:px-12 xl:px-12 2xl:px-12 lg:w-full">
             <SectionTitle
               title="Tools"
               size="large"
-              className="mb-8"
+              className="mb-12"
             />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6 md:gap-8">
               {TOOLS.map((tool) => (
@@ -328,7 +328,7 @@ export default function BlogPageClient() {
           <div className="relative z-10 px-4 md:px-8 lg:px-12 xl:px-12 2xl:px-12 lg:w-full">
             <SectionTitle
               title="Articles"
-              subtitle="In-depth technical articles and insights on bioinformatics from the Tracer team."
+              subtitle="In-depth technical articles and insights on scientific computing from the Tracer team."
               size="large"
               className="mb-12"
             />
