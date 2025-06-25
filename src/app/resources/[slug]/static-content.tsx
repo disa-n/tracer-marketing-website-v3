@@ -74,11 +74,11 @@ export default function StaticContent({ slug }: { slug: string }) {
     slug: post.slug,
     title: post.title,
     date: post.date,
-    imageSrc: post.ogImage || post.imageSrc || '',
+    imageSrc: post.ogImage || post.imageSrc || '/placeholder-icon.svg',
     description: post.description,
-    author: post.author,
-    tag: post.tag,
-    readTime: post.readTime,
+    author: post.author || 'Team Tracer',
+    tag: post.tag || 'general',
+    readTime: post.readTime || '5 min read',
     content: post.content || ''
   };
 
