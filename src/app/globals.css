@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "../styles/shiny-button.css";
 
 @font-face {
   font-family: "Britti Sans";
@@ -332,15 +333,6 @@
   100% {
     opacity: 1;
     transform: scale(1);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
   }
 }
 

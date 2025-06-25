@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { GridLinesLight } from '@/components/shared/GridLines';
+import GridLines from '@/components/shared/GridLines';
 
 // Define the tab data structure
 interface TabData {
@@ -17,32 +17,32 @@ const tabsData: TabData[] = [
   {
     id: 'anomaly-detection',
     label: 'Anomaly Detection',
-    imageUrl: '/home/Pipeline-Overview.webp'
+    imageUrl: '/home/anomaly-detection-v2.webp'
   },
   {
     id: 'tool-level-insights',
     label: 'Tool-Level Insights',
-    imageUrl: '/home/Tool-Preview.webp'
+    imageUrl: '/home/tool-level-insights-v2.webp'
   },
   {
     id: 'run-by-run-clarity',
     label: 'Run-by-Run Clarity',
-    imageUrl: '/home/Insights-Drilldown.webp'
+    imageUrl: '/home/run-by-run-clarity-v2.webp'
   },
   {
     id: 'smart-recommendations',
     label: 'Smart Recommendations',
-    imageUrl: '/home/AI-Rec.webp'
+    imageUrl: '/home/smart-recommendations-v2.webp'
   },
   {
     id: 'infra-cost-breakdown',
     label: 'Infra Cost Breakdown',
-    imageUrl: '/home/Infra-Summary.webp'
+    imageUrl: '/home/infra-cost-breakdown-v2.webp'
   },
   {
     id: 'unified-log-search',
     label: 'Unified Log Search',
-    imageUrl: '/home/unified-logs.webp'
+    imageUrl: '/home/unified-log-search-v2.webp'
   }
 ];
 
@@ -112,9 +112,9 @@ export default function ProductPreviewSectionV2() {
   };
 
   return (
-    <section className="relative bg-[#FCFCFC] py-0 xl:py-0 -mt-4 sm:-mt-8 lg:-mt-12 overflow-hidden">
+    <section className="relative bg-[#141414] py-0 xl:py-0 -mt-4 sm:-mt-8 lg:-mt-12 overflow-hidden">
 
-      <GridLinesLight />
+        <GridLines />
 
       {/* Full navbar width container - no frame */}
       <div className='w-full flex items-center px-6 sm:px-4 pt-8 justify-center relative z-10'>
@@ -133,8 +133,8 @@ export default function ProductPreviewSectionV2() {
                     transition-colors duration-300 ease-in-out
                     relative pb-3 md:pb-2 cursor-pointer px-1 md:px-0 whitespace-nowrap
                     ${activeTab === tab.id
-                      ? 'text-[#202020]'
-                      : 'text-[#888888] hover:text-[#202020]'
+                      ? 'text-white'
+                      : 'text-[#888888] hover:text-white'
                     }
                   `}
                 >
@@ -143,9 +143,9 @@ export default function ProductPreviewSectionV2() {
 
                 {/* Active tab underline with progress */}
                 {activeTab === tab.id && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8E8E8]">
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#303030]">
                     <motion.div
-                      className="h-full bg-[#202020]"
+                      className="h-full bg-white"
                       initial={{ width: '0%' }}
                       animate={{ width: `${progress}%` }}
                       transition={{ duration: 0.1, ease: 'linear' }}
@@ -167,8 +167,8 @@ export default function ProductPreviewSectionV2() {
                     transition-colors duration-300 ease-in-out
                     relative pb-2 cursor-pointer whitespace-nowrap
                     ${activeTab === tab.id
-                      ? 'text-[#202020]'
-                      : 'text-[#888888] hover:text-[#202020]'
+                      ? 'text-white'
+                      : 'text-[#888888] hover:text-white'
                     }
                   `}
                 >
@@ -177,9 +177,9 @@ export default function ProductPreviewSectionV2() {
 
                 {/* Active tab underline with progress */}
                 {activeTab === tab.id && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8E8E8]">
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#303030]">
                     <motion.div
-                      className="h-full bg-[#202020]"
+                      className="h-full bg-white"
                       initial={{ width: '0%' }}
                       animate={{ width: `${progress}%` }}
                       transition={{ duration: 0.1, ease: 'linear' }}
@@ -191,47 +191,70 @@ export default function ProductPreviewSectionV2() {
           </div>
         </div>
 
-        {/* Full Width Container with Glassmorphism Border */}
-        <div className="w-full pt-1 pb-0 md:pt-1 md:pb-0">
-          <div className="flex justify-center">
-            {/* Overflow container to cut off the bottom */}
-            <div className="relative w-full max-w-[1300px] overflow-hidden" style={{ height: '95%', aspectRatio: '1379/678' }}>
-              <div
-                className="relative w-full rounded-lg overflow-hidden bg-[#0B0B0B]"
-                style={{
-                  aspectRatio: '1379/714'
-                }}
-              >
-                {/* Inner content container */}
-                <div className="relative w-full h-full bg-[#0B0B0B] rounded-md overflow-hidden">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={activeTab}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{
-                        duration: 0.4,
-                        ease: "easeInOut",
-                        opacity: { duration: 0.3 },
-                        y: { duration: 0.4 }
-                      }}
-                      className="w-full h-full"
-                    >
-                      <Image
-                        src={activeTabData.imageUrl}
-                        alt={`${activeTabData.label} preview`}
-                        width={1280}
-                        height={640}
-                        className="w-full h-full object-contain"
-                        priority={activeTab === tabsData[0].id}
-                      />
-                    </motion.div>
-                  </AnimatePresence>
+        {/* Preview Container with Glassmorphism Border */}
+        <div className="w-full pt-1 pb-0 md:pt-1 md:pb-0 relative">
+          {/* Glassmorphism Border Frame - spans full navbar width */}
+          <div
+            className="relative w-full rounded-lg overflow-hidden"
+            style={{
+              background: 'rgba(255, 255, 255, 0.05)',
+              backdropFilter: 'blur(4px)',
+              border: '1px solid rgba(255, 255, 255, 0.15)',
+              boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 8px 32px rgba(0, 0, 0, 0.4)'
+            }}
+          >
+
+            {/* Inner content container with minimal padding for larger preview */}
+            <div className="p-2 sm:p-3 md:p-4">
+              {/* Full width container - no max-width constraint */}
+              <div className="relative w-full overflow-hidden rounded-lg" style={{ aspectRatio: '1379/678' }}>
+                <div
+                  className="relative w-full rounded-lg overflow-hidden bg-[#0B0B0B]"
+                  style={{
+                    aspectRatio: '1379/714'
+                  }}
+                >
+                    {/* Inner content container */}
+                    <div className="relative w-full h-full bg-[#0B0B0B] rounded-md overflow-hidden">
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={activeTab}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -20 }}
+                          transition={{
+                            duration: 0.4,
+                            ease: "easeInOut",
+                            opacity: { duration: 0.3 },
+                            y: { duration: 0.4 }
+                          }}
+                          className="w-full h-full"
+                        >
+                          <Image
+                            src={activeTabData.imageUrl}
+                            alt={`${activeTabData.label} preview`}
+                            width={1280}
+                            height={640}
+                            className="w-full h-full object-contain"
+                            priority={activeTab === tabsData[0].id}
+                          />
+                        </motion.div>
+                      </AnimatePresence>
+
+
+                    </div>
+                  </div>
                 </div>
-              </div>
             </div>
           </div>
+
+          {/* Fade overlay at bottom - positioned over entire preview section */}
+          <div
+            className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
+            style={{
+              background: 'linear-gradient(to top, #141414 0%, rgba(20, 20, 20, 0.9) 40%, rgba(20, 20, 20, 0.5) 70%, transparent 100%)'
+            }}
+          />
         </div>
 
         </div> {/* Close navbar width container */}

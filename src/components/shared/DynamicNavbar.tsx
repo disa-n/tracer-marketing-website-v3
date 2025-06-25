@@ -20,7 +20,7 @@ const navItems: NavItem[] = [
   { label: 'Resources', href: '/resources' },
 ];
 
-const NavigationBar = () => {
+const DynamicNavbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { openDemo } = useDemo();
@@ -117,7 +117,7 @@ const NavigationBar = () => {
               hidden 1000:flex items-center gap-3 h-full flex-shrink-0 transition-all duration-500 ease-in-out
               ${isScrolled ? 'ml-6' : 'ml-8'}
             `}>
-                <ShinyCTAButton mobileHeight={42} desktopHeight={51} />
+              <ShinyCTAButton mobileHeight={49} desktopHeight={49} />
 
               {/* Get a Demo button */}
               <button
@@ -144,6 +144,7 @@ const NavigationBar = () => {
           </div>
         </div>
       </div>
+
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-[250] 1000:hidden">
@@ -183,28 +184,24 @@ const NavigationBar = () => {
             {/* Footer with CTA Buttons */}
             <div className="flex flex-col gap-4 px-4 pb-4">
               <div onClick={handleNavLinkClick}>
-                    <ShinyCTAButton mobileHeight={51} desktopHeight={51} wide={true}/>
-                </div>
-                <div 
-                style={{ paddingLeft: '2px', paddingRight: '2px',display: 'flex' }}
-                className="flex-col"
-                >
-                <button
-                    onClick={handleDemoClick}
-                    className='h-[49px] font-britti-sans !font-[400] cursor-pointer bg-[#E8E8E8] flex items-center justify-center text-black px-8'
-                >
-                    Get a Demo
-                </button>
-                </div>
+                <ShinyCTAButton mobileHeight={49} desktopHeight={49} />
+              </div>
+
+              <button
+                onClick={handleDemoClick}
+                className='h-[49px] font-britti-sans !font-[400] cursor-pointer bg-[#E8E8E8] flex items-center justify-center text-black px-8'
+              >
+                Get a Demo
+              </button>
             </div>
           </div>
         </div>
       )}
 
-
+      {/* Spacer to prevent content jump */}
+      <div className={`transition-all duration-500 ease-in-out ${isScrolled ? 'h-16' : 'h-[85px]'}`} />
     </>
   );
 };
 
-export default NavigationBar;
-
+export default DynamicNavbar;
