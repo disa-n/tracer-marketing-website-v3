@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react"
 
-export default function ShinyCTAButton() {
+interface ShinyCTAButtonProps {
+  isScrolled?: boolean;
+}
+
+export default function ShinyCTAButton({ isScrolled = false }: ShinyCTAButtonProps) {
   const [angle, setAngle] = useState(0)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isHovered, setIsHovered] = useState(false)
@@ -34,7 +38,11 @@ export default function ShinyCTAButton() {
         href="https://sandbox.tracer.cloud/"
         target="_blank"
         rel="noopener noreferrer"
-        className="relative overflow-hidden border-2 border-transparent px-6 h-[40px] sm:px-8 sm:h-[49px] text-sm sm:text-base font-medium text-white shadow-inner outline-offset-4 inline-flex items-center justify-center cursor-pointer"
+        className={`relative overflow-hidden border-2 border-transparent font-medium text-white shadow-inner outline-offset-4 inline-flex items-center justify-center cursor-pointer transition-all duration-500 ease-in-out ${
+          isScrolled
+            ? 'h-[35px] text-sm px-4'
+            : 'h-[45px] text-base px-6'
+        }`}
         style={{
           background:
             `linear-gradient(#202020, #202020) padding-box, ` +

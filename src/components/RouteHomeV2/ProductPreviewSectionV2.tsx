@@ -192,7 +192,7 @@ export default function ProductPreviewSectionV2() {
         </div>
 
         {/* Preview Container with Glassmorphism Border */}
-        <div className="w-full pt-1 pb-0 md:pt-1 md:pb-0">
+        <div className="w-full pt-1 pb-0 md:pt-1 md:pb-0 relative">
           {/* Glassmorphism Border Frame - spans full navbar width */}
           <div
             className="relative w-full rounded-lg overflow-hidden"
@@ -240,11 +240,21 @@ export default function ProductPreviewSectionV2() {
                           />
                         </motion.div>
                       </AnimatePresence>
+
+
                     </div>
                   </div>
                 </div>
             </div>
           </div>
+
+          {/* Fade overlay at bottom - positioned over entire preview section */}
+          <div
+            className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
+            style={{
+              background: 'linear-gradient(to top, #141414 0%, rgba(20, 20, 20, 0.9) 40%, rgba(20, 20, 20, 0.5) 70%, transparent 100%)'
+            }}
+          />
         </div>
 
         </div> {/* Close navbar width container */}

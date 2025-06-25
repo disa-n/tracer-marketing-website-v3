@@ -20,7 +20,7 @@ const navItems: NavItem[] = [
   { label: 'Resources', href: '/resources' },
 ];
 
-const NavigationBar = () => {
+const DynamicNavbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { openDemo } = useDemo();
@@ -144,6 +144,7 @@ const NavigationBar = () => {
           </div>
         </div>
       </div>
+
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-[250] 1000:hidden">
@@ -197,10 +198,10 @@ const NavigationBar = () => {
         </div>
       )}
 
-
+      {/* Spacer to prevent content jump */}
+      <div className={`transition-all duration-500 ease-in-out ${isScrolled ? 'h-16' : 'h-[85px]'}`} />
     </>
   );
 };
 
-export default NavigationBar;
-
+export default DynamicNavbar;

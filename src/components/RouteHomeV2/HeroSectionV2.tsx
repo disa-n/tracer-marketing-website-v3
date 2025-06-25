@@ -19,7 +19,7 @@ export default function HeroSectionV2() {
     'Making Cost Visible',
     'That Sees Every Tool',
     'Optimised for HPC',
-    'Maps Jobs to Budget',
+    'Mapping Jobs to Budget',
     'Breaking Down Runtime'
   ];
 
@@ -100,13 +100,13 @@ export default function HeroSectionV2() {
       <div className="relative z-10 w-full max-w-[1800px] mx-auto px-8 900:px-8">
 
         {/* Centered Content */}
-        <div className="text-center pt-32 pb-12 sm:pt-32 sm:pb-10 lg:pt-40 lg:pb-12">
+        <div className="text-center pt-24 pb-12 sm:pt-28 sm:pb-10 lg:pt-32 lg:pb-12">
 
           {/* Main Heading with Typewriter Effect on Last Line */}
           <h1 className="font-chakra-petch text-[48px] !font-[400] leading-[0.9] tracking-tighter text-white sm:text-[70px] 1100:text-[80px] 1300:text-[104px] mb-8 sm:mb-6 lg:mb-8 max-w-5xl mx-auto">
             The First Pipeline<br />
             Monitoring System<br />
-            <span className="relative inline-block">
+            <span className="relative inline-block whitespace-nowrap">
               <span className="bg-gradient-to-r from-[#3A23ED] via-[#BF5198] to-[#FFA231] bg-clip-text text-transparent">
                 {displayedText}
                 {!isComplete && startTyping && (
