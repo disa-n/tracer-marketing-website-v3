@@ -7,16 +7,16 @@ import './HeroSection.css'
 function HeroSection() {
   const title = (
     <>
-      HPC Performance For Groundbreaking Science
+      Powering Scientific Breakthroughs
     </>
   )
 
   const subtitle = "Tracer uses cutting-edge technology to bring observability to complex scientific pipelines. By extracting real-time system-level data, Tracer turns what was initially a black box into clear, actionable insights."
 
   return (
-    <section className="relative bg-[#FCFCFC] min-h-[75vh] lg:min-h-screen overflow-hidden">
+    <section className="relative bg-[#FCFCFC] min-h-[60vh] lg:min-h-[70vh] overflow-hidden">
       <GridLinesLight />
-      <div className="flex flex-col lg:flex-row lg:min-h-screen">
+      <div className="flex flex-col lg:flex-row">
 
         {/* Image Column - Appears first on mobile, right on desktop */}
         <div className="flex items-center justify-center mt-8 lg:mt-0 lg:flex-1 lg:justify-center lg:order-2">
@@ -26,7 +26,7 @@ function HeroSection() {
                 src="/technology/T-Asset-Satellite.webp"
                 alt="Tracer Technology"
                 fill
-                className="object-contain lg:scale-[1.8] lg:-translate-x-8 xl:scale-[3.2] xl:-translate-x-16 2xl:scale-[4.0] 2xl:-translate-x-20"
+                className="object-contain lg:scale-[1.8] lg:translate-x-16 xl:scale-[3.2] xl:translate-x-24 2xl:scale-[4.0] 2xl:translate-x-32"
                 priority
               />
             </div>
@@ -34,7 +34,7 @@ function HeroSection() {
         </div>
 
         {/* Text Content Column - Appears second on mobile, left on desktop */}
-        <div className="relative z-10 flex flex-col justify-center pt-8 pb-6 lg:py-20 lg:max-w-[1400px] lg:w-full lg:order-1">
+        <div className="relative z-10 flex flex-col justify-center pt-8 pb-20 lg:py-8 lg:pb-32 xl:justify-start xl:pt-35 xl:pb-40 2xl:justify-start 2xl:pt-48 2xl:pb-48 lg:max-w-[1400px] lg:w-full lg:order-1">
           <StyledLayoutWrapper>
 
           {/* Product Label */}

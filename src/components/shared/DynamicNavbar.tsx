@@ -39,13 +39,17 @@ const DynamicNavbar: React.FC = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const handleDemoClick = () => {
-    openDemo();
+  const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
   };
 
+  const handleDemoClick = () => {
+    openDemo();
+    closeMobileMenu();
+  };
+
   const handleNavLinkClick = () => {
-    setIsMobileMenuOpen(false);
+    closeMobileMenu();
   };
 
   return (
@@ -115,9 +119,9 @@ const DynamicNavbar: React.FC = () => {
             {/* CTA Buttons */}
             <div className={`
               hidden 1000:flex items-center gap-3 h-full flex-shrink-0 transition-all duration-500 ease-in-out
-              ${isScrolled ? 'ml-6' : 'ml-8'}
+              ${isScrolled ? 'ml-7' : 'ml-8'}
             `}>
-              <ShinyCTAButton isScrolled={isScrolled} />
+              <ShinyCTAButton isScrolled={isScrolled} smallHeight={35} largeHeight={45} />
 
               {/* Get a Demo button */}
               <button
@@ -145,57 +149,73 @@ const DynamicNavbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-[250] 1000:hidden">
+        <>
+          {/* Background Overlay */}
           <div
-            className="absolute inset-0 bg-[#303030]/90 backdrop-blur-[200px]"
-            onClick={toggleMobileMenu}
+            className="fixed inset-0 bg-black/50 z-[200] 1000:hidden"
+            onClick={closeMobileMenu}
           />
 
-          <div className="absolute top-0 right-0 w-full bg-[#303030]/90 backdrop-blur-[200px] flex flex-col min-h-screen">
-            {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-white/10">
-              <Link href={"/"} onClick={handleNavLinkClick}>
-                <Image src={"/shared/tracer-logo.png"} alt='tracer-logo.png' width={150} height={50} className='w-full shrink-0 max-w-[100px] sm:max-w-[123px]' />
-              </Link>
-              <button onClick={toggleMobileMenu} className="p-2">
-                <X className="w-6 h-6 text-white" />
-              </button>
-            </div>
+          {/* Menu Content */}
+          <div className="fixed inset-0 z-[300] 1000:hidden">
+            <div className="bg-[#303030] w-full h-full flex flex-col">
 
-            {/* Spacer */}
-            <div className='flex flex-col flex-grow'></div>
-
-            {/* Navigation Links */}
-            <div className='flex flex-col gap-6 sm:gap-8 px-4 pb-8'>
-              {navItems.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className='font-britti-sans text-xl sm:text-2xl font-[400] text-[#FCFCFC] hover:text-white/60 transition-all'
-                  onClick={handleNavLinkClick}
-                >
-                  {item.label}
+              {/* Header with Close Button */}
+              <div className="flex items-center justify-between p-4 border-b border-white/20">
+                <Link href="/" onClick={handleNavLinkClick}>
+                  <Image
+                    src="/shared/tracer-logo.png"
+                    alt="Tracer Logo"
+                    width={100}
+                    height={33}
+                    className="w-[100px]"
+                  />
                 </Link>
-              ))}
-            </div>
 
-            {/* Footer with CTA Buttons */}
-            <div className="flex flex-col gap-4 px-4 pb-4">
-              <div onClick={handleNavLinkClick}>
-                <ShinyCTAButton />
+                <button
+                  onClick={closeMobileMenu}
+                  className="w-10 h-10 flex items-center justify-center text-white hover:bg-white/10 rounded"
+                  aria-label="Close menu"
+                >
+                  <X size={24} />
+                </button>
               </div>
 
-              <button
-                onClick={handleDemoClick}
-                className='h-[49px] font-britti-sans !font-[400] cursor-pointer bg-[#E8E8E8] flex items-center justify-center text-black px-8'
-              >
-                Get a Demo
-              </button>
+              {/* Navigation Links */}
+              <div className="flex-1 flex flex-col justify-center px-6">
+                <nav className="space-y-8">
+                  {navItems.map((item) => (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      onClick={handleNavLinkClick}
+                      className="block text-white text-2xl font-britti-sans font-[400] hover:text-white/70 transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </nav>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="p-6 space-y-4">
+                <div onClick={handleNavLinkClick}>
+                  <ShinyCTAButton mobileHeight={51} desktopHeight={51} wide={true} />
+                </div>
+
+                <button
+                  onClick={handleDemoClick}
+                  className="w-full h-[51px] bg-[#E8E8E8] text-black font-britti-sans font-[400] hover:bg-[#D8D8D8] transition-colors"
+                >
+                  Get a Demo
+                </button>
+              </div>
+
             </div>
           </div>
-        </div>
+        </>
       )}
 
       {/* Spacer to prevent content jump */}
