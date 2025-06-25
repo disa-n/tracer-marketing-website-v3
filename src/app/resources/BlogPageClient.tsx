@@ -114,11 +114,12 @@ export default function BlogPageClient() {
       <div className="relative overflow-visible min-h-[60vh] max-h-[75vh] pt-16 lg:pt-0 lg:-mt-32 pb-0">
         <ReusableHero
           title="Resources"
-          subtitle="The latest updates from Tracer. See our changelog for more product updates."
+          subtitle="The latest updates from Tracer. See our bi-weekly roundups for the latest company and product developments."
           showEmailSignup={true}
           imageSrc="/Blog/T-chip.webp"
           imageAlt="Blog hero placeholder"
           imageStyle="blog"
+          productLabel="_TRACER RESOURCES"
           className="
             [&_img]:!scale-75 [&_img]:md:!scale-80 [&_img]:lg:!scale-85
             [&>div]:flex-col [&>div]:lg:flex-row

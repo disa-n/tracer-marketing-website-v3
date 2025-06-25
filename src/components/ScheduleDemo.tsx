@@ -165,7 +165,7 @@ export default function ScheduleDemoPage() {
       <div className="flex-1 flex items-center justify-center p-6 md:p-8 lg:p-16 relative z-10">
         <div className="w-full max-w-md space-y-8">
           {/* Heading Section */}
-          <div className="space-y-4">
+          <div className="space-y-6">
             <h1 className="font-['Britti_Sans'] text-[32px] md:text-[40px] lg:text-[48px] font-normal leading-[1.1] tracking-[-0.02em] text-[#202020]">
               Interested?
             </h1>
@@ -229,6 +229,26 @@ export default function ScheduleDemoPage() {
               Submit
             </button>
           </form>
+
+          {/* Or Divider and Book a Call */}
+          <div className="space-y-6">
+            {/* Divider */}
+            <div className="flex items-center justify-center">
+              <div className="flex-1 h-[1px] bg-[#303030]"></div>
+              <span className="px-4 text-[#303030] font-['Britti_Sans'] text-sm">or</span>
+              <div className="flex-1 h-[1px] bg-[#303030]"></div>
+            </div>
+
+            {/* Book a Call Button */}
+            <a
+              href="https://calendly.com/tracerlaura/meeting-with-laura"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full h-[42px] md:h-[49px] bg-[#E8E8E8] text-[#202020] text-base md:text-lg font-['Britti_Sans'] hover:bg-[#D8D8D8] transition-colors cursor-pointer flex items-center justify-center"
+            >
+              Book a Call
+            </a>
+          </div>
         </div>
       </div>
 

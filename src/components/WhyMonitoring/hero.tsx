@@ -26,8 +26,13 @@ export default function Hero() {
         {/* Text Content Column - Appears second on mobile, left on desktop */}
         <div className="relative z-10 flex flex-col justify-center px-4 md:px-8 lg:px-12 pt-8 pb-8 lg:py-8 xl:justify-start xl:pt-35 2xl:justify-start 2xl:pt-48 lg:max-w-[1400px] lg:w-full lg:order-1">
 
+          {/* Product Label */}
+          <p className='font-chakra-petch text-sm font-[400] uppercase text-[#202020] sm:text-base'>
+            _TRACER RATIONALE
+          </p>
+
           {/* Main Heading */}
-          <h1 className="font-chakra-petch text-[48px] !font-[400] leading-[0.9] tracking-tighter text-[#202020] sm:text-[70px] 1100:text-[80px] xl:text-[92px] 1300:text-[104px] mb-6 lg:mb-8">
+          <h1 className="mt-4 font-chakra-petch text-[48px] !font-[400] leading-[0.9] tracking-tighter text-[#202020] sm:text-[70px] 1100:text-[80px] xl:text-[92px] 1300:text-[104px] mb-6 lg:mb-8">
             Monitoring Matters<br />More Than Ever
           </h1>
 

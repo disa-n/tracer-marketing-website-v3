@@ -110,7 +110,7 @@ function Hiring() {
 
       {/* Rocket Image - Positioned after text to prevent overlap */}
       <motion.div
-        className="absolute hidden lg:block left-[-200px] lg:left-[-280px] xl:left-[-280px] xl:bottom-[-50px] 2xl:left-[-100px] 2xl:bottom-0 bottom-0 z-0"
+        className="absolute hidden lg:block left-[-200px] lg:left-[-280px] xl:left-[-280px] xl:bottom-[-50px] 2xl:left-[-100px] 2xl:bottom-[-30px] bottom-0 z-0"
         style={{
           width: 1314,
           height: 740,
