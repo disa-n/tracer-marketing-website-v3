@@ -11,6 +11,21 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    rules: {
+      // Enforce stricter rules that match Vercel's environment
+      "@typescript-eslint/no-unused-vars": "error",
+      "@typescript-eslint/no-explicit-any": "warn",
+      "react-hooks/exhaustive-deps": "error",
+      "react/no-unescaped-entities": "error",
+      "no-console": "warn",
+      "prefer-const": "error",
+      "no-var": "error",
+      // Catch common issues that cause Vercel builds to fail
+      "import/no-unresolved": "error",
+      "react/jsx-no-undef": "error",
+    },
+  },
 ];
 
 export default eslintConfig;

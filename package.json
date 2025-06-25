@@ -6,8 +6,16 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "vercel-build": "next build",
+    "build:strict": "npm run type-check && npm run lint:strict && npm run build",
+    "build:vercel-local": "npm run clean && npm run type-check && npm run lint:strict && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:strict": "next lint --max-warnings 0",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit --incremental false",
+    "type-check:watch": "tsc --noEmit --watch",
+    "clean": "rm -rf .next out",
+    "test-build": "npm run build:vercel-local && echo '✅ Build successful - ready for Vercel!'"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
