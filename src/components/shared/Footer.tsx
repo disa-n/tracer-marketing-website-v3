@@ -13,7 +13,7 @@ const Footer = () => {
         <div className='flex w-full flex-col items-center justify-center bg-[#FCFCFC]'>
             <div className="w-full px-4 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
                 <div className="flex w-full flex-col items-end justify-between gap-[48px] sm:gap-[72px] pb-3 pt-[32px] md:flex-row md:items-start md:gap-0 md:pb-[168px]">
-                    <div className="grid w-full grid-cols-2 gap-8 sm:gap-12 text-c-black md:w-fit md:grid-cols-[240px_224px_144px] md:gap-0">
+                    <div className="grid w-full grid-cols-2 gap-8 sm:gap-12 text-c-black md:w-fit md:grid-cols-[240px_224px_144px_200px] md:gap-0">
                         <div className="col-span-2 md:col-span-1">
                             <Image src={"/shared/tracer-logo-black.png"} alt="tracer-logo-black" width={140} height={30} className="w-full max-w-[100px] sm:max-w-[114px]" />
                         </div>
@@ -42,13 +42,26 @@ const Footer = () => {
                             </h4>
                             <ul className="mt-3 sm:mt-4 space-y-2 font-britti-sans text-[14px] sm:text-[16px] font-[400] leading-[1.2] text-c-black md:mt-10 md:text-[20px]">
                                 <li className="cursor-pointer transition-all hover:opacity-80">
-                                    <Link href="/why-monitoring">Why Monitoring</Link>
+                                    <Link href="/why-monitoring">Monitoring</Link>
                                 </li>
                                 <li className="cursor-pointer transition-all hover:opacity-80">
                                     <Link href="/product">Product</Link>
                                 </li>
                                 <li className="cursor-pointer transition-all hover:opacity-80">
                                     <Link href="/technology">Technology</Link>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="md:ml-20">
+                            <h4 className="font-chakra-petch text-xs sm:text-sm font-[400] uppercase leading-[1] text-[#868686]">
+                                Connect
+                            </h4>
+                            <ul className="mt-3 sm:mt-4 space-y-2 font-britti-sans text-[14px] sm:text-[16px] font-[400] leading-[1.2] text-c-black md:mt-10 md:text-[20px]">
+                                <li className="cursor-pointer transition-all hover:opacity-80">
+                                    <Link href="https://www.linkedin.com/company/tracercloud" target="_blank" rel="noopener noreferrer">LinkedIn</Link>
+                                </li>
+                                <li className="cursor-pointer transition-all hover:opacity-80">
+                                    <Link href="https://github.com/Tracer-Cloud/tracer-client?tab=readme-ov-file" target="_blank" rel="noopener noreferrer">GitHub</Link>
                                 </li>
                             </ul>
                         </div>

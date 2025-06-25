@@ -1,6 +1,6 @@
 /**
  * Centralized Blog Registry - Single Source of Truth for all blog posts
- * 
+ *
  * This file automatically discovers and manages all blog posts from both:
  * - MDX files in src/components/content/blog/
  * - Static posts in blogPosts.ts (legacy)
@@ -18,6 +18,53 @@ export interface BlogPostMetadata {
   template?: 'default' | 'minimal' | 'magazine' | 'technical';
   imageSrc?: string; // For backward compatibility
   published?: boolean; // Controls visibility on blog pages
+}
+
+/**
+ * JSON-LD Schema Types for SEO
+ */
+export interface BlogSchema {
+  "@context": string;
+  "@type": string;
+  name: string;
+  url: string;
+  description: string;
+  publisher: {
+    "@type": string;
+    name: string;
+    url: string;
+  };
+  inLanguage: string;
+}
+
+export interface BlogPostSchema {
+  "@context": string;
+  "@type": string;
+  headline: string;
+  description: string;
+  image?: string;
+  author: {
+    "@type": string;
+    name: string;
+  };
+  publisher: {
+    "@type": string;
+    name: string;
+    url: string;
+    logo: {
+      "@type": string;
+      url: string;
+    };
+  };
+  datePublished: string;
+  dateModified: string;
+  url: string;
+  mainEntityOfPage: {
+    "@type": string;
+    "@id": string;
+  };
+  articleSection: string;
+  keywords?: string;
 }
 
 export interface BlogPost extends BlogPostMetadata {
@@ -349,4 +396,92 @@ export async function getBlogPostsForClient(): Promise<Array<{
       author: post.author,
     },
   }));
+}
+
+/**
+ * Get the base URL for the application
+ */
+function getBaseUrl(): string {
+  if (process.env.NODE_ENV === 'production') {
+    return 'https://tracer.cloud';
+  }
+
+  // For development, use NEXT_PUBLIC_BASE_URL if set, otherwise default to localhost:3000
+  return process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+}
+
+/**
+ * Generate JSON-LD schema for the main blog/resources page
+ */
+export function generateBlogSchema(): BlogSchema {
+  const baseUrl = getBaseUrl();
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Tracer Resources",
+    "url": `${baseUrl}/resources`,
+    "description": "Insights, updates, technical articles, and tools related to HPC observability, bioinformatics, and scientific computing",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Tracer",
+      "url": baseUrl
+    },
+    "inLanguage": "en-US"
+  };
+}
+
+/**
+ * Generate JSON-LD schema for individual blog posts
+ */
+export function generateBlogPostSchema(post: BlogPost): BlogPostSchema {
+  const baseUrl = getBaseUrl();
+  const postUrl = `${baseUrl}/resources/${post.slug}`;
+
+  // Format date to ISO 8601
+  const publishDate = new Date(post.date).toISOString();
+
+  // Use author or default to "Tracer Team"
+  const authorName = post.author && typeof post.author === 'string' ? post.author :
+                    post.author && Array.isArray(post.author) ? post.author.join(', ') :
+                    'Tracer Team';
+
+  // Generate keywords from tag and title
+  const keywords = [
+    post.tag,
+    'HPC',
+    'observability',
+    'scientific computing',
+    'performance monitoring'
+  ].filter(Boolean).join(', ');
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.description,
+    "image": post.ogImage || post.imageSrc,
+    "author": {
+      "@type": "Organization",
+      "name": authorName
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Tracer",
+      "url": baseUrl,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${baseUrl}/logo.png`
+      }
+    },
+    "datePublished": publishDate,
+    "dateModified": publishDate, // Use same date for now, can be enhanced later
+    "url": postUrl,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": postUrl
+    },
+    "articleSection": "Technology",
+    "keywords": keywords
+  };
 }

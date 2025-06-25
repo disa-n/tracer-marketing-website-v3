@@ -1,0 +1,13 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Tracer Resources",
+  "url": "http://localhost:3000/resources",
+  "description": "Insights, updates, and technical articles on HPC observability and scientific computing.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Tracer",
+    "url": "http://localhost:3000"
+  },
+  "inLanguage": "en-US"
+}
