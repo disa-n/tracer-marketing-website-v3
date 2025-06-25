@@ -303,7 +303,7 @@ export async function loadStaticBlogPosts(): Promise<BlogPost[]> {
       type: 'static' as const,
       content: post.content,
     }));
-  } catch (error) {
+  } catch {
     // Error loading static blog posts
     return [];
   }
@@ -401,7 +401,7 @@ export async function getBlogPostsForClient(): Promise<Array<{
       date: post.date,
       description: post.description,
       tag: post.tag || 'general',
-      ogImage: post.ogImage,
+      ogImage: post.ogImage || '/placeholder-icon.svg',
       author: post.author || 'Team Tracer',
     },
   }));

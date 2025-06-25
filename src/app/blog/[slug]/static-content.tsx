@@ -33,7 +33,7 @@ export default function StaticContent({ slug }: { slug: string }) {
           const blogPost = await getBlogPost(slug);
           setPost(blogPost);
         }
-      } catch (error) {
+      } catch {
         // Error loading blog post
       } finally {
         setLoading(false);

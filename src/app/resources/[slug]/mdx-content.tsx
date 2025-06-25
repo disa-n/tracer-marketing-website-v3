@@ -37,8 +37,8 @@ export default function MDXContent({ slug }: MDXContentProps) {
         setComponent(() => module.default);
         setMetadata(module.metadata || null);
       })
-      .catch((err) => {
-        console.error(`Error loading MDX file: ${slug}.mdx`, err);
+      .catch(() => {
+        // Error loading MDX file
         setError(true);
       });
   }, [slug]);

@@ -173,11 +173,10 @@ const DesktopCards: React.FC<DesktopCardsProps> = ({
       {cultureValues.slice(0, 3).map((value, index) => (
         <div
           key={value.title}
-          className={`flex justify-center ${
-            index === 0 ? '2xl:col-start-2' :
-            index === 1 ? '2xl:col-start-3' :
-            '2xl:col-start-4'
-          }`}
+          className={`flex justify-center ${index === 0 ? '2xl:col-start-2' :
+              index === 1 ? '2xl:col-start-3' :
+                '2xl:col-start-4'
+            }`}
         >
           <CultureCard
             title={value.title}
@@ -192,9 +191,9 @@ const DesktopCards: React.FC<DesktopCardsProps> = ({
       <div className="col-start-3 2xl:col-start-4 flex justify-center">
         <div>
           <CultureCard
-            title={cultureValues[3].title}
-            description={cultureValues[3].description}
-            iconSrc={cultureValues[3].iconSrc}
+            title={cultureValues[3]?.title || ''}
+            description={cultureValues[3]?.description || ''}
+            iconSrc={cultureValues[3]?.iconSrc || ''}
             cardWidth={cardWidth}
           />
         </div>

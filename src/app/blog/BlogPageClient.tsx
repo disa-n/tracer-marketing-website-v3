@@ -5,19 +5,9 @@ import BlogHero from '@/components/blog/BlogHero';
 import BlogIntro from '@/components/blog/BlogIntro';
 import FilterBar from '@/components/blog/FilterBar';
 import BlogGrid from '@/components/blog/BlogGrid';
-import { getBlogPostsForClient } from '@/lib/blog-registry';
+import { getBlogPostsForClient, BlogPost } from '@/lib/blog-registry';
 
-type BlogPost = {
-  slug: string;
-  metadata: {
-    title: string;
-    date: string;
-    description: string;
-    tag?: string;
-    ogImage?: string;
-    author?: string | string[];
-  };
-};
+// Using BlogPost from blog-registry instead of local type
 
 export default function BlogPageClient() {
   const [posts, setPosts] = React.useState<BlogPost[]>([]);
@@ -86,7 +76,7 @@ export default function BlogPageClient() {
               const year = dateObj.getFullYear();
               formattedDate = `${date} ${month} ${year}`;
             }
-          } catch (e) {
+          } catch {
             // Error formatting date - use original
           }
 
@@ -102,11 +92,42 @@ export default function BlogPageClient() {
         // Sort filtered posts by date (oldest to newest)
         formattedPosts.sort((a, b) => new Date(a.metadata.date).getTime() - new Date(b.metadata.date).getTime());
 
-        // Combine with Kenya Hackathon post first
-        const allPosts = [kenyaHackathonPost, ...formattedPosts];
+        // Convert to BlogPost format for BlogGrid
+        const convertedPosts: BlogPost[] = [
+          // Convert Kenya Hackathon post
+          {
+            slug: kenyaHackathonPost.slug,
+            title: kenyaHackathonPost.metadata.title,
+            date: kenyaHackathonPost.metadata.date,
+            description: kenyaHackathonPost.metadata.description,
+            author: Array.isArray(kenyaHackathonPost.metadata.author)
+              ? kenyaHackathonPost.metadata.author.join(', ')
+              : kenyaHackathonPost.metadata.author || 'Team Tracer',
+            tag: kenyaHackathonPost.metadata.tag || 'general',
+            imageSrc: kenyaHackathonPost.metadata.ogImage || '/placeholder-icon.svg',
+            ogImage: kenyaHackathonPost.metadata.ogImage,
+            readTime: '5 min read',
+            type: 'static' as const,
+          },
+          // Convert formatted posts
+          ...formattedPosts.map(post => ({
+            slug: post.slug,
+            title: post.metadata.title,
+            date: post.metadata.date,
+            description: post.metadata.description,
+            author: Array.isArray(post.metadata.author)
+              ? post.metadata.author.join(', ')
+              : post.metadata.author || 'Team Tracer',
+            tag: post.metadata.tag || 'general',
+            imageSrc: post.metadata.ogImage || '/placeholder-icon.svg',
+            ogImage: post.metadata.ogImage,
+            readTime: '5 min read',
+            type: 'static' as const,
+          }))
+        ];
 
-        setPosts(allPosts);
-      } catch (error) {
+        setPosts(convertedPosts);
+      } catch {
         // Error loading blog posts
       } finally {
         setLoading(false);

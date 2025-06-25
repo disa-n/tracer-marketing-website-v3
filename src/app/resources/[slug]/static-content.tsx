@@ -24,8 +24,8 @@ export default function StaticContent({ slug }: { slug: string }) {
         } else {
           setIsComingSoon(true);
         }
-      } catch (error) {
-        console.error("Error loading blog post:", error);
+      } catch {
+        // Error loading blog post
         setIsComingSoon(true);
       } finally {
         setLoading(false);
@@ -57,8 +57,6 @@ export default function StaticContent({ slug }: { slug: string }) {
   if (isComingSoon) {
     return <ComingSoon />;
   }
-
-  console.log("Rendering blog content for slug:", slug);
 
   if (!post) {
     return (

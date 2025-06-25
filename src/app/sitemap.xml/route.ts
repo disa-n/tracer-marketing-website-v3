@@ -131,7 +131,7 @@ export async function GET() {
         'Cache-Control': 'public, max-age=3600, s-maxage=3600', // Cache for 1 hour
       },
     });
-  } catch (error) {
+  } catch {
     // Error generating sitemap - use fallback
 
     // Return a basic sitemap with just static URLs if there's an error

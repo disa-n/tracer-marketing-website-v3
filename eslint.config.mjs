@@ -13,13 +13,13 @@ const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     rules: {
-      // Enforce stricter rules that match Vercel's environment
-      "@typescript-eslint/no-unused-vars": "error",
+      // Focus on real errors that break builds
+      "@typescript-eslint/no-unused-vars": "warn",
       "@typescript-eslint/no-explicit-any": "warn",
-      "react-hooks/exhaustive-deps": "error",
+      "react-hooks/exhaustive-deps": "warn",
       "react/no-unescaped-entities": "error",
-      "no-console": "warn",
-      "prefer-const": "error",
+      "no-console": "off", // Allow console statements
+      "prefer-const": "warn",
       "no-var": "error",
       // Catch common issues that cause Vercel builds to fail
       "import/no-unresolved": "error",

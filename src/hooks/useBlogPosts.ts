@@ -79,7 +79,7 @@ export function useBlogPosts() {
               const year = dateObj.getFullYear();
               formattedDate = `${date} ${month} ${year}`;
             }
-          } catch (e) {
+          } catch {
             // Error formatting date - use original
           }
 
@@ -100,7 +100,7 @@ export function useBlogPosts() {
         const posts = formattedPosts;
 
         setData({ directories, posts });
-      } catch (err) {
+      } catch {
         // Error loading blog posts
         setError('Failed to load blog posts');
       } finally {
