@@ -52,7 +52,6 @@ export default function ProductPreviewSectionV2() {
   const [progress, setProgress] = useState(0);
   const [isAutoAdvancing, setIsAutoAdvancing] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
 
   // Refs for intervals
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
