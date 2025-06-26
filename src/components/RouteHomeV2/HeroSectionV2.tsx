@@ -5,10 +5,10 @@ import GridLines from '@/components/shared/GridLines';
 import ShinyCTAButton from '@/components/shared/ShinyCTAButton';
 
 export default function HeroSectionV2() {
-  const [displayedText, setDisplayedText] = useState('');
+  const [displayedText, setDisplayedText] = useState('That Lives in the OS');
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
-  const [isComplete, setIsComplete] = useState(false);
+  const [isComplete, setIsComplete] = useState(true);
   const [startTyping, setStartTyping] = useState(false);
   const [startPulse, setStartPulse] = useState(false);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
@@ -23,11 +23,13 @@ export default function HeroSectionV2() {
     'Breaking Down Runtime'
   ], []);
 
-  // Start typing after a delay
+  // Start erasing after initial display
   useEffect(() => {
     const timer = setTimeout(() => {
+      setIsComplete(false);
+      setIsErasing(true);
       setStartTyping(true);
-    }, 1000); // 1 second delay before starting typewriter
+    }, 2000); // Display initial text for 2 seconds before starting to erase
 
     return () => clearTimeout(timer);
   }, []);
@@ -103,7 +105,7 @@ export default function HeroSectionV2() {
         <div className="text-center pt-24 pb-12 sm:pt-28 sm:pb-10 lg:pt-32 lg:pb-12">
 
           {/* Main Heading with Typewriter Effect on Last Line */}
-          <h1 className="font-chakra-petch text-[48px] !font-[400] leading-[0.9] tracking-tighter text-white sm:text-[70px] 1100:text-[80px] 1300:text-[104px] mb-8 sm:mb-6 lg:mb-8 max-w-5xl mx-auto">
+          <h1 className="font-chakra-petch text-[44px] !font-[400] leading-[0.9] tracking-tighter text-white sm:text-[70px] 1100:text-[80px] 1300:text-[104px] mb-8 sm:mb-6 lg:mb-8 max-w-5xl mx-auto">
             The First Pipeline<br />
             Monitoring System<br />
             <span className="relative inline-block whitespace-nowrap">

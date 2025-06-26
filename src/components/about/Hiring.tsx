@@ -66,44 +66,44 @@ function Hiring() {
       <div className="relative z-10 py-16 md:pb-0 lg:py-28">
         <div className="w-full max-w-[1408px] 1600:max-w-[1500px] 1700:max-w-[1600px] 1800:max-w-[1700px] 1900:max-w-[1800px] 1920:max-w-[1900px] mx-auto px-4 md:px-8 lg:px-12 xl:px-8">
           <div className="md:max-w-[550px] lg:ml-[50%] lg:max-w-[600px] xl:ml-[50%] xl:max-w-[600px] 2xl:ml-[40%] 2xl:max-w-[800px]">
-          {/* Section Title */}
-          <h2 className="text-[#202020] font-britti-sans font-medium text-[32px] leading-[30px] md:text-[40px] md:leading-[36px] lg:text-[44px] lg:leading-[40px] xl:text-[48px] xl:leading-[44px] tracking-tight mb-6 text-left lg:text-left xl:text-left">
-            Join Our Growing Team
-          </h2>
+            {/* Section Title */}
+            <h2 className="text-[#202020] font-britti-sans font-medium text-[32px] leading-[30px] md:text-[40px] md:leading-[36px] lg:text-[44px] lg:leading-[40px] xl:text-[48px] xl:leading-[44px] tracking-tight mb-6 text-left lg:text-left xl:text-left">
+              Join Our Growing Team
+            </h2>
 
-          {/* Description */}
-          <p className="text-[#202020] font-britti-sans font-normal text-[16px] leading-[20px] md:text-[18px] md:leading-[22px] mb-4 text-left lg:text-left xl:text-left">
-            Ready to help shape the future of high-performance computing? We are hiring ambitious and hard-working individuals to fast-track our growth.
-          </p>
-          <p className="text-[#202020] font-britti-sans font-normal text-[16px] leading-[20px] md:text-[18px] md:leading-[22px] mb-4 text-left lg:text-left xl:text-left">
-            Join our team in London and support our mission to rethink scientific computing and power the next generation of breakthroughs.
-          </p>
+            {/* Description */}
+            <p className="text-[#202020] font-britti-sans font-normal text-[16px] leading-[20px] md:text-[18px] md:leading-[22px] mb-4 text-left lg:text-left xl:text-left">
+              Ready to help shape the future of high-performance computing? We are hiring ambitious and hard-working individuals to fast-track our growth.
+            </p>
+            <p className="text-[#202020] font-britti-sans font-normal text-[16px] leading-[20px] md:text-[18px] md:leading-[22px] mb-4 text-left lg:text-left xl:text-left">
+              Join our team in London and support our mission to rethink scientific computing and power the next generation of breakthroughs.
+            </p>
 
-          {/* Contact Information */}
-          <p className="text-[#202020] font-britti-sans font-normal text-[16px] leading-[20px] md:text-[18px] md:leading-[22px] mb-4 text-left lg:text-left xl:text-left">
-            Apply now for a position or contact us at{' '}
-            <a
-              href="mailto:careers@tracer.cloud"
-              className="text-[#202020] hover:text-[#404040] transition-colors duration-200 underline"
-            >
-              careers@tracer.cloud
-            </a>
-            .
-          </p>
+            {/* Contact Information */}
+            <p className="text-[#202020] font-britti-sans font-normal text-[16px] leading-[20px] md:text-[18px] md:leading-[22px] mb-4 text-left lg:text-left xl:text-left">
+              Apply now for a position or contact us at{' '}
+              <a
+                href="mailto:careers@tracer.cloud"
+                className="text-[#202020] hover:text-[#404040] transition-colors duration-200 underline"
+              >
+                careers@tracer.cloud
+              </a>
+              .
+            </p>
 
-          {/* CTA Button */}
-          <div className="flex lg:justify-start xl:justify-start">
-            <a
-              href="https://jobs.ashbyhq.com/tracer"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-[#E8E8E8] hover:bg-[#D8D8D8] transition-colors duration-200 px-8 py-4 text-[#202020] font-britti-sans font-normal text-[16px] leading-[17px] whitespace-nowrap mb-8 md:mb-4 lg:mb-8 xl:mb-0"
-            >
-              View Open Roles
-            </a>
+            {/* CTA Button */}
+            <div className="flex lg:justify-start xl:justify-start">
+              <a
+                href="https://jobs.ashbyhq.com/tracer"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center bg-[#E8E8E8] hover:bg-[#D8D8D8] transition-colors duration-200 px-8 py-4 text-[#202020] font-britti-sans font-normal text-[16px] leading-[17px] whitespace-nowrap mb-8 md:mb-4 lg:mb-8 xl:mb-0"
+              >
+                View Open Roles
+              </a>
+            </div>
+
           </div>
-
-        </div>
 
         </div>
       </div>

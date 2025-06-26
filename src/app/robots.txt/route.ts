@@ -7,12 +7,12 @@ Sitemap: https://www.tracer.cloud/sitemap.xml
 
 # Disallow admin and internal paths
 Disallow: /admin/
-Disallow: /_next/
-Disallow: /api/
 Disallow: /coming-soon
 Disallow: /test-*
 Disallow: /legacyhome
 Disallow: /platform
+Disallow: /blog
+Disallow: /llms.txt
 `;
 
   return new Response(robotsTxt, {

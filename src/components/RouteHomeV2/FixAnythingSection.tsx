@@ -39,8 +39,8 @@ export default function FixAnythingSection() {
             <PerformanceCard
               indexLabel="01–03"
               sectionLabel="TRACER PERFORMANCE"
-              title="Predict and optimise compute requirements"
-              description="Forecast the exact running time and compute needs of your pipelines. Further optimise your underutilised instances and increase the usage of AI models in a cost-efficient manner."
+              title="Predict and optimize compute requirements"
+              description="Forecast the exact running time and compute needs of your pipelines. Further optimize your underutilized instances and increase the usage of AI models in a cost-efficient manner."
               previewImage="/home/Tracer-Performance.webp"
               pushTextDown={true}
             />
@@ -51,14 +51,14 @@ export default function FixAnythingSection() {
               indexLabel="02–03"
               sectionLabel="TRACER INTELLIGENCE"
               title="Total visibility into computational infrastructure"
-              description="Gain real-time, highly granular insights into every workload and process, independent of coding language or framework, including highly parallelised processes across instances."
+              description="Gain real-time, highly granular insights into every workload and process, independent of coding language or framework, including highly parallelized processes across instances."
               previewImage="/home/Tracer-Intel.webp"
             />
             <PerformanceCard
               indexLabel="03–03"
               sectionLabel="TRACER DEBUG"
               title="Fix issues instantly"
-              description="Gain deep insights into the root causes of bugs across all analyses, recognise the error type, and solve instantly."
+              description="Gain deep insights into the root causes of bugs across all analyses, recognize the error type, and solve instantly."
               previewImage="/home/Tracer-Debug.webp"
               pushTextDown={true}
             />
