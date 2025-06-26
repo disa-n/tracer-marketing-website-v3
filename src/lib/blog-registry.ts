@@ -92,6 +92,7 @@ const MDX_BLOG_POSTS = [
   'kenya-day-four',
   'biweekly-roundup-1',
   'cloud-cost-monitoring',
+  'cloud-cost-management',
 ] as const;
 
 // Type for MDX blog post slugs
@@ -262,6 +263,17 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
     ogImage: '/Blog/T-chip.webp',
     template: 'default'
   },
+  'cloud-cost-management': {
+    slug: 'cloud-cost-management',
+    title: 'Cloud Cost Management for Scientific Computing',
+    date: 'June 26, 2025',
+    description: 'Effective strategies and tools for managing cloud costs in scientific computing environments, from resource optimization to budget monitoring.',
+    author: 'Team Tracer',
+    tag: 'cloud',
+    readTime: '8 min read',
+    ogImage: '/Blog/dna-blog-costs.webp',
+    template: 'default'
+  },
 };
 
 /**
@@ -394,7 +406,17 @@ export async function getBlogPostsForClient(): Promise<Array<{
   // Use getAllBlogPosts which already handles deduplication
   const allPosts = await getAllBlogPosts();
 
-  return allPosts.map(post => ({
+  // Filter out unpublished posts (published: false)
+  const publishedPosts = allPosts.filter(post => {
+    // If published field is explicitly set to false, hide the post
+    if (post.published === false) {
+      return false;
+    }
+    // Default to published if not specified
+    return true;
+  });
+
+  return publishedPosts.map(post => ({
     slug: post.slug,
     metadata: {
       title: post.title,

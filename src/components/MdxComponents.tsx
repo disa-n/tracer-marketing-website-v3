@@ -63,6 +63,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </pre>
     ),
+    // Make Next.js Image component available to MDX
+    Image: Image,
     ...components,
   }
 }
