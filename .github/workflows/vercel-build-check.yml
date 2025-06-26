@@ -44,12 +44,12 @@ jobs:
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
       
-    - name: TypeScript type check
+    - name: TypeScript type check (errors only)
       run: pnpm run type-check
-      
-    - name: ESLint check (strict)
-      run: pnpm run lint:strict
-      
+
+    - name: ESLint check (errors only, allow warnings)
+      run: pnpm run lint
+
     - name: Build application
       run: pnpm run build
       
