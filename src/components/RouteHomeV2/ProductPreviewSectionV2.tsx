@@ -61,16 +61,29 @@ export default function ProductPreviewSectionV2() {
   const activeTabData = tabsData.find(tab => tab.id === activeTab) || tabsData[0];
   const currentIndex = tabsData.findIndex(tab => tab.id === activeTab);
 
-  // Check if we're on mobile
+  // Mobile detection effect
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 640); // sm breakpoint
+      const newIsMobile = window.innerWidth < 1024; // lg breakpoint
+      setIsMobile(newIsMobile);
+
+      // Reset progress when switching between mobile/desktop
+      if (newIsMobile) {
+        setProgress(0);
+        if (intervalRef.current) clearInterval(intervalRef.current);
+        if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
+      }
     };
 
+    // Check on mount
     checkMobile();
+
+    // Add resize listener
     window.addEventListener('resize', checkMobile);
 
-    return () => window.removeEventListener('resize', checkMobile);
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
 
   // Cleanup intervals on unmount
@@ -83,7 +96,8 @@ export default function ProductPreviewSectionV2() {
 
   // Auto-advance functionality
   useEffect(() => {
-    if (!isAutoAdvancing) return;
+    // Disable auto-advancing on mobile
+    if (!isAutoAdvancing || isMobile) return;
 
     // Clear existing intervals
     if (intervalRef.current) clearInterval(intervalRef.current);
@@ -110,7 +124,7 @@ export default function ProductPreviewSectionV2() {
       if (intervalRef.current) clearInterval(intervalRef.current);
       if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
     };
-  }, [activeTab, currentIndex, isAutoAdvancing]);
+  }, [activeTab, currentIndex, isAutoAdvancing, isMobile]);
 
   // Handle manual tab selection
   const handleTabClick = (tabId: string) => {
@@ -118,123 +132,123 @@ export default function ProductPreviewSectionV2() {
     setActiveTab(tabId);
     setProgress(0);
 
-    // Re-enable auto-advancing after manual selection
+    // Re-enable auto-advancing after a longer delay to give user time to view their selection
     setTimeout(() => {
       setIsAutoAdvancing(true);
-    }, 100);
+    }, 20000); // 20 seconds delay before resuming autoplay
   };
 
   return (
     <section className="relative bg-[#141414] py-0 xl:py-0 -mt-4 sm:-mt-8 lg:-mt-12 overflow-hidden">
 
-        <GridLines />
+      <GridLines />
 
-        {/* Dark gradient overlay working upward toward hero */}
-        <div
-          className="absolute inset-0 pointer-events-none z-[1]"
-          style={{
-            background: 'linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 25%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.2) 75%, transparent 100%)'
-          }}
-        />
+      {/* Dark gradient overlay working upward toward hero */}
+      <div
+        className="absolute inset-0 pointer-events-none z-[1]"
+        style={{
+          background: 'linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 25%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.2) 75%, transparent 100%)'
+        }}
+      />
 
       {/* Full navbar width container - no frame */}
       <div className='w-full flex items-center px-6 sm:px-4 pt-8 justify-center relative z-10'>
         <div className={`w-full max-w-[1408px] 1600:max-w-[1500px] 1700:max-w-[1600px] 1800:max-w-[1700px] 1900:max-w-[1800px] 1920:max-w-[1900px]`}>
 
-        {/* Tab Navigation */}
-        <div className="mb-6 flex justify-center">
-          {/* Mobile and Tablet: flexible 2-row layout (< 1024px) */}
-          <div className="flex flex-wrap justify-center gap-x-4 gap-y-6 lg:hidden max-w-2xl px-4">
-            {tabsData.map((tab) => (
-              <div key={tab.id} className="relative">
-                <motion.button
-                  onClick={() => handleTabClick(tab.id)}
-                  className={`
+          {/* Tab Navigation */}
+          <div className="mb-6 flex justify-center">
+            {/* Mobile and Tablet: flexible 2-row layout (< 1024px) */}
+            <div className="flex flex-wrap justify-center gap-x-4 gap-y-6 lg:hidden max-w-2xl px-4">
+              {tabsData.map((tab) => (
+                <div key={tab.id} className="relative">
+                  <motion.button
+                    onClick={() => handleTabClick(tab.id)}
+                    className={`
                     font-britti-sans text-sm md:text-base
                     transition-colors duration-300 ease-in-out
                     relative pb-3 md:pb-2 cursor-pointer px-1 md:px-0 whitespace-nowrap
                     ${activeTab === tab.id
-                      ? 'text-white'
-                      : 'text-[#888888] hover:text-white'
-                    }
+                        ? 'text-white'
+                        : 'text-[#888888] hover:text-white'
+                      }
                   `}
-                >
-                  {tab.label}
-                </motion.button>
+                  >
+                    {tab.label}
+                  </motion.button>
 
-                {/* Active tab underline with progress */}
-                {activeTab === tab.id && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#303030]">
-                    <motion.div
-                      className="h-full bg-white"
-                      initial={{ width: '0%' }}
-                      animate={{ width: `${progress}%` }}
-                      transition={{ duration: 0.1, ease: 'linear' }}
-                    />
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+                  {/* Active tab underline with progress */}
+                  {activeTab === tab.id && (
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#303030]">
+                      <motion.div
+                        className="h-full bg-white"
+                        initial={{ width: '0%' }}
+                        animate={{ width: isMobile ? '100%' : `${progress}%` }}
+                        transition={{ duration: 0.1, ease: 'linear' }}
+                      />
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
 
-          {/* Laptop and up: single row (≥ 1024px) */}
-          <div className="hidden lg:flex justify-center gap-8 xl:gap-12 2xl:gap-16">
-            {tabsData.map((tab) => (
-              <div key={tab.id} className="relative">
-                <motion.button
-                  onClick={() => handleTabClick(tab.id)}
-                  className={`
+            {/* Laptop and up: single row (≥ 1024px) */}
+            <div className="hidden lg:flex justify-center gap-8 xl:gap-12 2xl:gap-16">
+              {tabsData.map((tab) => (
+                <div key={tab.id} className="relative">
+                  <motion.button
+                    onClick={() => handleTabClick(tab.id)}
+                    className={`
                     font-britti-sans text-base xl:text-lg
                     transition-colors duration-300 ease-in-out
                     relative pb-2 cursor-pointer whitespace-nowrap
                     ${activeTab === tab.id
-                      ? 'text-white'
-                      : 'text-[#888888] hover:text-white'
-                    }
+                        ? 'text-white'
+                        : 'text-[#888888] hover:text-white'
+                      }
                   `}
-                >
-                  {tab.label}
-                </motion.button>
+                  >
+                    {tab.label}
+                  </motion.button>
 
-                {/* Active tab underline with progress */}
-                {activeTab === tab.id && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#303030]">
-                    <motion.div
-                      className="h-full bg-white"
-                      initial={{ width: '0%' }}
-                      animate={{ width: `${progress}%` }}
-                      transition={{ duration: 0.1, ease: 'linear' }}
-                    />
-                  </div>
-                )}
-              </div>
-            ))}
+                  {/* Active tab underline with progress */}
+                  {activeTab === tab.id && (
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#303030]">
+                      <motion.div
+                        className="h-full bg-white"
+                        initial={{ width: '0%' }}
+                        animate={{ width: `${progress}%` }}
+                        transition={{ duration: 0.1, ease: 'linear' }}
+                      />
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Preview Container with Glassmorphism Border */}
-        <div className="w-full pt-1 pb-0 md:pt-1 md:pb-0 relative">
-          {/* Glassmorphism Border Frame - spans full navbar width */}
-          <div
-            className="relative w-full rounded-lg overflow-hidden"
-            style={{
-              background: 'rgba(255, 255, 255, 0.05)',
-              backdropFilter: 'blur(4px)',
-              border: '1px solid rgba(255, 255, 255, 0.15)',
-              boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 8px 32px rgba(0, 0, 0, 0.4)'
-            }}
-          >
+          {/* Preview Container with Glassmorphism Border */}
+          <div className="w-full pt-1 pb-0 md:pt-1 md:pb-0 relative">
+            {/* Glassmorphism Border Frame - spans full navbar width */}
+            <div
+              className="relative w-full rounded-lg overflow-hidden"
+              style={{
+                background: 'rgba(255, 255, 255, 0.05)',
+                backdropFilter: 'blur(4px)',
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 8px 32px rgba(0, 0, 0, 0.4)'
+              }}
+            >
 
-            {/* Inner content container with minimal padding for larger preview */}
-            <div className="p-2 sm:p-3 md:p-4">
-              {/* Full width container - no max-width constraint */}
-              <div className="relative w-full overflow-hidden rounded-lg" style={{ aspectRatio: '1379/678' }}>
-                <div
-                  className="relative w-full rounded-lg overflow-hidden bg-[#0B0B0B]"
-                  style={{
-                    aspectRatio: '1379/714'
-                  }}
-                >
+              {/* Inner content container with minimal padding for larger preview */}
+              <div className="p-2 sm:p-3 md:p-4">
+                {/* Full width container - no max-width constraint */}
+                <div className="relative w-full overflow-hidden rounded-lg" style={{ aspectRatio: '1379/678' }}>
+                  <div
+                    className="relative w-full rounded-lg overflow-hidden bg-[#0B0B0B]"
+                    style={{
+                      aspectRatio: '1379/714'
+                    }}
+                  >
                     {/* Inner content container */}
                     <div className="relative w-full h-full bg-[#0B0B0B] rounded-md overflow-hidden">
                       <AnimatePresence mode="wait">
@@ -266,19 +280,17 @@ export default function ProductPreviewSectionV2() {
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
-          </div>
 
-          {/* Fade overlay at bottom - positioned over entire preview section */}
-          <div
-            className="absolute bottom-0 left-0 right-0 pointer-events-none z-10 h-20 sm:h-32"
-            style={{
-              background: isMobile
-                ? 'linear-gradient(to top, #141414 0%, rgba(20, 20, 20, 0.6) 30%, rgba(20, 20, 20, 0.3) 60%, transparent 100%)'
-                : 'linear-gradient(to top, #141414 0%, rgba(20, 20, 20, 0.9) 40%, rgba(20, 20, 20, 0.5) 70%, transparent 100%)'
-            }}
-          />
-        </div>
+            {/* Fade overlay at bottom - positioned over entire preview section */}
+            <div
+              className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
+              style={{
+                background: 'linear-gradient(to top, #141414 0%, rgba(20, 20, 20, 0.9) 40%, rgba(20, 20, 20, 0.5) 70%, transparent 100%)'
+              }}
+            />
+          </div>
 
         </div> {/* Close navbar width container */}
       </div> {/* Close full width container */}

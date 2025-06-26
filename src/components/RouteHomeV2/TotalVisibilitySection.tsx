@@ -18,16 +18,16 @@ export default function TotalVisibilitySection() {
             <div className="max-w-[1400px] w-full">
               {/* Introductory Content */}
               <div className="mb-16">
-            {/* Main Heading */}
-            <h1 className="font-britti-sans font-normal text-[#202020] mb-6 break-words tracking-tight text-left text-[48px] leading-[50px] 600:text-[56px] 600:leading-[64px] 1300:text-[80px] 1300:leading-[72px] max-w-fit">
-              Total Visibility.<br />
-              Powered by eBPF.
-            </h1>
+                {/* Main Heading */}
+                <h1 className="font-britti-sans font-normal text-[#202020] mb-6 break-words tracking-tight text-left text-[48px] leading-[50px] 600:text-[56px] 600:leading-[64px] 1300:text-[80px] 1300:leading-[72px] max-w-fit">
+                  Total Visibility.<br />
+                  Powered by eBPF.
+                </h1>
 
-            {/* Subheading Paragraph */}
-            <p className="font-britti-sans text-[#888888] text-left text-[16px] leading-[22px] 600:text-[20px] 600:leading-[22px] max-w-fit">
-              Tracer delivers unmatched visibility, speed, and accuracy for high-performance scientific computing — built from the ground up for the unique demands of research pipelines, not generic infrastructure.
-            </p>
+                {/* Subheading Paragraph */}
+                <p className="font-britti-sans text-[#888888] text-left text-[16px] leading-[22px] 600:text-[20px] 600:leading-[22px] max-w-fit">
+                  Tracer delivers unmatched visibility, speed, and accuracy for high-performance scientific computing — built from the ground up for the unique demands of research pipelines, not generic infrastructure.
+                </p>
               </div>
             </div>
           </div>
@@ -41,21 +41,19 @@ export default function TotalVisibilitySection() {
         <div className="flex mb-6">
           <button
             onClick={() => setActiveTab('traditional')}
-            className={`flex-1 py-3 px-4 font-britti-sans font-normal text-[20px] leading-[24px] border-b-2 transition-colors ${
-              activeTab === 'traditional'
-                ? 'text-[#202020] border-[#202020]'
-                : 'text-[#888888] border-transparent'
-            }`}
+            className={`flex-1 py-3 px-4 font-britti-sans font-normal text-[20px] leading-[24px] border-b-2 transition-colors ${activeTab === 'traditional'
+              ? 'text-[#202020] border-[#202020]'
+              : 'text-[#888888] border-transparent'
+              }`}
           >
             Traditional Monitoring Tools
           </button>
           <button
             onClick={() => setActiveTab('tracer')}
-            className={`flex-1 py-3 px-4 font-britti-sans font-normal text-[20px] leading-[24px] border-b-2 transition-colors ${
-              activeTab === 'tracer'
-                ? 'text-[#202020] border-[#202020]'
-                : 'text-[#888888] border-transparent'
-            }`}
+            className={`flex-1 py-3 px-4 font-britti-sans font-normal text-[20px] leading-[24px] border-b-2 transition-colors ${activeTab === 'tracer'
+              ? 'text-[#202020] border-[#202020]'
+              : 'text-[#888888] border-transparent'
+              }`}
           >
             Tracer
           </button>
@@ -120,12 +118,12 @@ export default function TotalVisibilitySection() {
           <div className="flex-1">
             {/* Placeholder Image Box with overlaid text */}
             <div className="relative w-full h-[800px] xl:h-[900px] bg-[#141414] mb-6">
-               <Image
-                  src="/home/Traditional-Tool-Diagram.webp"
-                  alt="Traditional system diagram showing incomplete error visibility"
-                  fill
-                  className="object-contain"
-                />
+              <Image
+                src="/home/Traditional-Tool-Diagram.webp"
+                alt="Traditional system diagram showing incomplete error visibility"
+                fill
+                className="object-contain"
+              />
 
               {/* Overlaid Content - starts at left edge of image */}
               <div className="absolute bottom-0 left-0 right-0 pt-32 pb-6 px-6 bg-gradient-to-t from-[#1b1b1b] to-transparent">
