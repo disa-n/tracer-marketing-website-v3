@@ -23,50 +23,42 @@ export default function CoreChallengesSection() {
         </div>
       </div>
 
-      {/* Card grid - centered as before */}
-      <div className="relative z-10 px-4 lg:px-20 xl:px-32">
-        <div className="max-w-[1400px] mx-auto">
+      {/* Card grid - with proper padding and gaps */}
+      <div className="relative z-10 px-4 md:px-8 lg:px-12">
+        <div className="max-w-[1800px] mx-auto">
           {/* Card grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-10">
-          <div className="[&>div]:!h-[480px] [&>div]:md:!h-[440px] [&>div]:xl:!h-[480px] [&>div]:2xl:!h-[520px] [&>div>div:first-child]:!h-[280px] [&>div>div:first-child]:md:!h-[260px] [&>div>div:first-child]:xl:!h-[305px] [&>div>div:first-child]:2xl:!h-[325px] [&>div>div:first-child]:md:!flex-none">
-            <PerformanceCard
-              indexLabel="01–04"
-              sectionLabel="CORE CHALLENGES"
-              title="No visibility into digitalisation"
-              description="No structured way to measure ROI, track progress, or identify the areas to double down on AI investments."
-              previewImage="/whymonitoring/Core-Challenge-1-2.webp"
-            />
-          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 lg:gap-10">
+          <PerformanceCard
+            indexLabel="01–04"
+            sectionLabel="CORE CHALLENGES"
+            title="No visibility into digitalisation"
+            description="No structured way to measure ROI, track progress, or identify the areas to double down on AI investments."
+            previewImage="/whymonitoring/Core-Challenge-1-2.webp"
+          />
 
-          <div className="[&>div]:!h-[480px] [&>div]:md:!h-[440px] [&>div]:xl:!h-[480px] [&>div]:2xl:!h-[520px] [&>div>div:first-child]:!h-[280px] [&>div>div:first-child]:md:!h-[260px] [&>div>div:first-child]:xl:!h-[305px] [&>div>div:first-child]:2xl:!h-[325px] [&>div>div:first-child]:md:!flex-none">
-            <PerformanceCard
-              indexLabel="02–04"
-              sectionLabel="CORE CHALLENGES"
-              title="Information lost between teams"
-              description="Metadata and crucial context get lost during handovers—leading to confusion, rework, and slower collaboration."
-              previewImage="/whymonitoring/Core-Challenge-2-2.webp"
-            />
-          </div>
+          <PerformanceCard
+            indexLabel="02–04"
+            sectionLabel="CORE CHALLENGES"
+            title="Information lost between teams"
+            description="Metadata and crucial context get lost during handovers—leading to confusion, rework, and slower collaboration."
+            previewImage="/whymonitoring/Core-Challenge-2-2.webp"
+          />
 
-          <div className="[&>div]:!h-[480px] [&>div]:md:!h-[440px] [&>div]:xl:!h-[480px] [&>div]:2xl:!h-[520px] [&>div>div:first-child]:!h-[280px] [&>div>div:first-child]:md:!h-[260px] [&>div>div:first-child]:xl:!h-[305px] [&>div>div:first-child]:2xl:!h-[325px] [&>div>div:first-child]:md:!flex-none">
-            <PerformanceCard
-              indexLabel="03–04"
-              sectionLabel="CORE CHALLENGES"
-              title="Inefficient tools"
-              description="Legacy systems lack the insights needed to debug, optimise, or even pinpoint performance bottlenecks."
-              previewImage="/whymonitoring/Core-Challenge-3-2.webp"
-            />
-          </div>
+          <PerformanceCard
+            indexLabel="03–04"
+            sectionLabel="CORE CHALLENGES"
+            title="Inefficient tools"
+            description="Legacy systems lack the insights needed to debug, optimise, or even pinpoint performance bottlenecks."
+            previewImage="/whymonitoring/Core-Challenge-3-2.webp"
+          />
 
-          <div className="[&>div]:!h-[480px] [&>div]:md:!h-[440px] [&>div]:xl:!h-[480px] [&>div]:2xl:!h-[520px] [&>div>div:first-child]:!h-[280px] [&>div>div:first-child]:md:!h-[260px] [&>div>div:first-child]:xl:!h-[305px] [&>div>div:first-child]:2xl:!h-[325px] [&>div>div:first-child]:md:!flex-none">
-            <PerformanceCard
-              indexLabel="04–04"
-              sectionLabel="CORE CHALLENGES"
-              title="Lack of cost attribution"
-              description="Cloud spend is opaque. Manual tagging is unreliable. It's hard to predict budgets or connect spend to value."
-              previewImage="/whymonitoring/Core-Challenge-4-2.webp"
-            />
-          </div>
+          <PerformanceCard
+            indexLabel="04–04"
+            sectionLabel="CORE CHALLENGES"
+            title="Lack of cost attribution"
+            description="Cloud spend is opaque. Manual tagging is unreliable. It's hard to predict budgets or connect spend to value."
+            previewImage="/whymonitoring/Core-Challenge-4-2.webp"
+          />
           </div>
         </div>
       </div>

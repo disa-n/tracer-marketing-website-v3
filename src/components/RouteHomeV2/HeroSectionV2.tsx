@@ -13,15 +13,39 @@ export default function HeroSectionV2() {
   const [startPulse, setStartPulse] = useState(false);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [isErasing, setIsErasing] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const textVariations = useMemo(() => [
+  // Check if we're on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640); // sm breakpoint
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const desktopTextVariations = [
     'That Lives in the OS',
     'Making Costs Visible',
     'That Sees Every Tool',
     'Optimised for HPC',
     'Mapping Jobs to Budget',
     'Breaking Down Runtime'
-  ], []);
+  ];
+
+  const mobileTextVariations = [
+    'That Lives in the OS',
+    'Making Costs Visible',
+    'That Sees Every Tool',
+    'Optimised for HPC',
+    'To Map Jobs to Budget',
+    'To Break Down Runtime'
+  ];
+
+  const textVariations = isMobile ? mobileTextVariations : desktopTextVariations;
 
   // Start erasing after initial display
   useEffect(() => {
@@ -102,14 +126,15 @@ export default function HeroSectionV2() {
       <div className="relative z-10 w-full max-w-[1800px] mx-auto px-8 900:px-8">
 
         {/* Centered Content */}
-        <div className="text-center pt-24 pb-12 sm:pt-28 sm:pb-10 lg:pt-32 lg:pb-12">
+        <div className="text-center pt-40 pb-20 sm:pt-28 sm:pb-10 lg:pt-32 lg:pb-12">
 
           {/* Main Heading with Typewriter Effect on Last Line */}
           <h1 className="font-chakra-petch text-[44px] !font-[400] leading-[0.9] tracking-tighter text-white sm:text-[70px] 1100:text-[80px] 1300:text-[104px] mb-8 sm:mb-6 lg:mb-8 max-w-5xl mx-auto">
             The First Pipeline<br />
             Monitoring System<br />
-            <span className="relative inline-block whitespace-nowrap">
-              <span className="bg-gradient-to-r from-[#3A23ED] via-[#BF5198] to-[#FFA231] bg-clip-text text-transparent">
+            <div className="flex justify-center">
+              <span className="relative inline-block whitespace-nowrap">
+                <span className="bg-gradient-to-r from-[#3A23ED] via-[#BF5198] to-[#FFA231] bg-clip-text text-transparent">
                 {displayedText}
                 {!isComplete && startTyping && (
                   <span className={`inline-block w-[3px] h-[0.8em] bg-gradient-to-r from-[#3A23ED] via-[#BF5198] to-[#FFA231] ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`} />
@@ -132,22 +157,23 @@ export default function HeroSectionV2() {
                   {displayedText}
                 </span>
               )}
-            </span>
+              </span>
+            </div>
           </h1>
 
           {/* Supporting Text */}
-          <p className="font-britti-sans text-sm font-[400] text-[#888888] sm:text-base leading-[1.4] max-w-[630px] mx-auto mb-10 sm:mb-8 lg:mb-10">
-            Tracer combines cutting-edge technological advances with the deep understanding of scientific industries to give insights into enterprises&apos; digital and AI acceleration.
+          <p className="font-britti-sans text-base font-[400] text-[#888888] sm:text-base leading-[1.4] max-w-[630px] mx-auto mb-10 sm:mb-8 lg:mb-10">
+            Accelerate bioinformatics with real-time pipeline insights.<br />Built for precision, scale, and HPC-native environments.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-row gap-4 justify-center items-center mb-8 sm:mb-6">
-            <ShinyCTAButton mobileHeight={42} desktopHeight={51} />
+            <ShinyCTAButton mobileHeight={48} desktopHeight={51} />
 
             <a
               href="/product"
-              className="inline-flex items-center justify-center px-6 h-[40px] sm:px-8 sm:h-[49px]
-                         bg-[#E8E8E8] text-[#202020] font-britti-sans text-sm sm:text-base !font-[400]
+              className="inline-flex items-center justify-center px-6 h-[46px] sm:px-8 sm:h-[49px]
+                         bg-[#E8E8E8] text-[#202020] font-britti-sans text-base sm:text-base !font-[400]
                          hover:bg-[#D8D8D8] transition-colors duration-200"
             >
               Get a Demo

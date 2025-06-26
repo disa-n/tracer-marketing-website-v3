@@ -16,33 +16,33 @@ interface TabData {
 const tabsData: TabData[] = [
   {
     id: 'anomaly-detection',
-    label: 'Anomaly Detection',
-    imageUrl: '/home/anomaly-detection-v2.webp'
+    label: 'Pipeline Health Map',
+    imageUrl: '/home/Pipeline Health Map.webp'
   },
   {
     id: 'tool-level-insights',
     label: 'Tool-Level Insights',
-    imageUrl: '/home/tool-level-insights-v2.webp'
+    imageUrl: '/home/Tool-Level Insights.webp'
   },
   {
     id: 'run-by-run-clarity',
-    label: 'Run-by-Run Clarity',
-    imageUrl: '/home/run-by-run-clarity-v2.webp'
+    label: 'Multi-Tool Analysis',
+    imageUrl: '/home/Multi-Tool Analysis.webp'
   },
   {
     id: 'smart-recommendations',
-    label: 'Smart Recommendations',
-    imageUrl: '/home/smart-recommendations-v2.webp'
+    label: 'Workflow Optimisation',
+    imageUrl: '/home/Workflow Optimisation.webp'
   },
   {
     id: 'infra-cost-breakdown',
-    label: 'Infra Cost Breakdown',
-    imageUrl: '/home/infra-cost-breakdown-v2.webp'
+    label: 'Cost Attribution',
+    imageUrl: '/home/Costs Attribution.webp'
   },
   {
     id: 'unified-log-search',
-    label: 'Unified Log Search',
-    imageUrl: '/home/unified-log-search-v2.webp'
+    label: 'Unified Log Panel',
+    imageUrl: '/home/Unified Log Panel.webp'
   }
 ];
 
@@ -51,6 +51,7 @@ export default function ProductPreviewSectionV2() {
   const [activeTab, setActiveTab] = useState<string>(tabsData[0].id);
   const [progress, setProgress] = useState(0);
   const [isAutoAdvancing, setIsAutoAdvancing] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   // Refs for intervals
@@ -110,15 +111,15 @@ export default function ProductPreviewSectionV2() {
     progressIntervalRef.current = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) return 100;
-        return prev + (100 / (5000 / 50)); // 5 seconds total, update every 50ms
+        return prev + (100 / (8000 / 50)); // 8 seconds total, update every 50ms
       });
     }, 50);
 
-    // Auto-advance to next feature after 5 seconds
+    // Auto-advance to next feature after 8 seconds
     intervalRef.current = setTimeout(() => {
       const nextIndex = (currentIndex + 1) % tabsData.length;
       setActiveTab(tabsData[nextIndex].id);
-    }, 5000);
+    }, 8000);
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
@@ -142,6 +143,14 @@ export default function ProductPreviewSectionV2() {
     <section className="relative bg-[#141414] py-0 xl:py-0 -mt-4 sm:-mt-8 lg:-mt-12 overflow-hidden">
 
       <GridLines />
+
+      {/* Dark gradient overlay working upward toward hero */}
+      <div
+        className="absolute inset-0 pointer-events-none z-[1]"
+        style={{
+          background: 'linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 25%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.2) 75%, transparent 100%)'
+        }}
+      />
 
       {/* Full navbar width container - no frame */}
       <div className='w-full flex items-center px-6 sm:px-4 pt-8 justify-center relative z-10'>
