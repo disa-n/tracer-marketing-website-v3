@@ -13,8 +13,8 @@ const Footer = () => {
         <div className='flex w-full flex-col items-center justify-center bg-[#FCFCFC]'>
             <div className="w-full px-4 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
                 <div className="flex w-full flex-col items-end justify-between gap-[48px] sm:gap-[72px] pb-3 pt-[32px] md:flex-row md:items-start md:gap-0 md:pb-[168px]">
-                    <div className="grid w-full grid-cols-3 gap-4 sm:gap-8 text-c-black md:w-fit md:grid-cols-[240px_224px_144px_200px] md:gap-0">
-                        <div className="col-span-3 md:col-span-1">
+                    <div className="grid w-full grid-cols-2 gap-8 sm:gap-12 text-c-black md:w-fit md:grid-cols-[240px_224px_144px_200px] md:gap-0">
+                        <div className="col-span-2 md:col-span-1">
                             <Image src={"/shared/tracer-logo-black.png"} alt="tracer-logo-black" width={140} height={30} className="w-full max-w-[100px] sm:max-w-[114px]" />
                         </div>
                         <div>
@@ -76,7 +76,7 @@ const Footer = () => {
                 </div>
                 <div className="flex w-full items-center justify-start border-y-[1px] border-[#E8E8E8] py-3 md:h-[32px]">
                     <p className="font-britti-sans text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm 2xl:text-sm font-[400] leading-[1.3] text-[#868686]">
-                        2025 The Forge Software Inc. | A US Delaware Corporation, registered at 9 Wall Street, Suite 168 New York, NY 10005 | <Link href="/terms-and-conditions" className="hover:opacity-80 transition-all">Terms & Conditions</Link> | <Link href="/privacy-policy" className="hover:opacity-80 transition-all">Privacy Policy</Link> | <Link href="/cookies-policy" className="hover:opacity-80 transition-all">Cookies Policy</Link>
+                        2025 The Forge Software Inc. | A US Delaware Corporation, registered at 99 Wall Street, Suite 168 New York, NY 10005 | <Link href="/terms-and-conditions" className="hover:opacity-80 transition-all">Terms & Conditions</Link> | <Link href="/privacy-policy" className="hover:opacity-80 transition-all">Privacy Policy</Link> | <Link href="/cookies-policy" className="hover:opacity-80 transition-all">Cookies Policy</Link>
                     </p>
                 </div>
             </div>

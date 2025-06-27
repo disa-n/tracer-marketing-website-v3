@@ -14,7 +14,7 @@ const TermsAndConditions = () => {
           <p>
             These Terms and Conditions (&ldquo;Terms&rdquo;) constitute a legally binding agreement between you
             (&ldquo;User&rdquo; or &ldquo;you&rdquo;) and Tracer.cloud Inc., a Delaware corporation, with its principal place of
-            business located at 9 Wall Street, Suite 168, New York, NY 10005, United States
+            business located at 99 Wall Street, Suite 168, New York, NY 10005, United States
             (&ldquo;Tracer&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;). By accessing or using the Tracer website (the &ldquo;Site&rdquo;), you
             agree to be bound by these Terms. If you do not accept these Terms in their entirety, you must
             not access or use the Site.
@@ -73,7 +73,7 @@ const TermsAndConditions = () => {
             <p>If you have any questions about these Terms, please contact us at:</p>
             <ul className="mt-2 ml-4">
               <li><strong>Email:</strong> legal@tracer.cloud</li>
-              <li><strong>Address:</strong> Tracer.cloud Inc., 9 Wall Street, Suite 168, New York, NY 10005</li>
+              <li><strong>Address:</strong> Tracer.cloud Inc., 99 Wall Street, Suite 168, New York, NY 10005</li>
             </ul>
           </div>
         </section>

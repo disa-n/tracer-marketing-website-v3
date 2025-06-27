@@ -174,8 +174,8 @@ const DesktopCards: React.FC<DesktopCardsProps> = ({
         <div
           key={value.title}
           className={`flex justify-center ${index === 0 ? '2xl:col-start-2' :
-            index === 1 ? '2xl:col-start-3' :
-              '2xl:col-start-4'
+              index === 1 ? '2xl:col-start-3' :
+                '2xl:col-start-4'
             }`}
         >
           <CultureCard
@@ -273,7 +273,8 @@ function Culture() {
       <div className="relative z-10 flex flex-col justify-center px-4 md:px-8 lg:px-12 lg:max-w-[1400px] lg:w-full">
         {/* Section Title */}
         <h2
-          className="mt-4 text-[#FCFCFC] font-britti-sans font-normal text-4xl lg:text-6xl max-[1064px]:lg:text-5xl xl:text-6xl leading-tight tracking-tight mb-8 lg:mb-16"
+          className="mt-4 text-[#FCFCFC] font-britti-sans font-normal text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[96px] leading-tight lg:leading-[80px] mb-8 lg:mb-16"
+          style={{ letterSpacing: 'clamp(-2px, -0.3vw, -4px)' }}
         >
           Our Culture
         </h2>

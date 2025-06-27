@@ -71,15 +71,34 @@ export default function FragmentAutoReveal() {
         {/* Grid Lines Background */}
         <GridLinesLight />
 
-        <div className="px-4 md:px-8 lg:px-12 py-16 md:py-24">
-          <div className="mx-auto w-full max-w-[1408px] 1600:max-w-[1500px] 1700:max-w-[1600px] 1800:max-w-[1700px] 1900:max-w-[1800px] 1920:max-w-[1900px] relative z-10">
+        <div className="w-full flex justify-center px-3 sm:px-4 py-16 md:py-24">
+          <div className="w-full max-w-[1408px] 1600:max-w-[1500px] 1700:max-w-[1600px] 1800:max-w-[1700px] 1900:max-w-[1800px] 1920:max-w-[1900px] relative z-10">
 
             {/* Header Section */}
-            <div className="mb-4">
+            <div className="mb-4 relative">
+              {/* See our Technology CTA - Top Right (Desktop Only) */}
+              <div className="absolute top-0 right-0 z-20 hidden md:block">
+                <a
+                  href="/technology"
+                  className="flex h-[48px] w-auto shrink-0 cursor-pointer items-center justify-center bg-[#E8E8E8] px-8 py-3 font-britti-sans text-sm font-normal text-[#202020] hover:bg-[#E8E8E8]/80 transition-colors duration-200 md:h-[49px] md:text-base"
+                >
+                  See our Technology
+                </a>
+              </div>
+
               {/* Main Heading - matching Total Visibility styling */}
               <h1 className="font-britti-sans font-normal text-[#202020] mb-6 break-words tracking-tight text-left text-[48px] leading-[50px] 600:text-[56px] 600:leading-[64px] 1300:text-[80px] 1300:leading-[72px] max-w-fit">
-                From Fragments To<br />
-                Full Visibility With Tracer
+                {/* Small mobile version */}
+                <span className="sm:hidden">
+                  From Fragments<br />
+                  To Full Visibility<br />
+                  With Tracer
+                </span>
+                {/* All other sizes */}
+                <span className="hidden sm:inline">
+                  From Fragments To<br />
+                  Full Visibility With Tracer
+                </span>
               </h1>
 
               {/* Subheading Paragraph - matching Total Visibility styling */}
@@ -88,38 +107,37 @@ export default function FragmentAutoReveal() {
                 Built from the ground up for the unique demands of research pipelines, not generic infrastructure.
               </p>
 
-              {/* Tab Navigation */}
-              <div className="mb-0 flex justify-start">
-                <div className={`flex gap-4 ${isMobile ? 'w-full' : ''}`}>
-                  <button
-                    onClick={() => setActiveTab('traditional')}
-                    className={`${isMobile ? 'flex-1' : ''} px-8 py-4 font-britti-sans text-lg md:text-xl transition-colors duration-200 whitespace-nowrap ${activeTab === 'traditional'
-                      ? 'bg-[#202020] text-[#FCFCFC]'
-                      : 'bg-[#E8E8E8] text-[#202020] hover:bg-[#D8D8D8]'
-                      }`}
-                  >
-                    Traditional Monitoring
-                  </button>
-                  <button
-                    onClick={() => setActiveTab('tracer')}
-                    className={`${isMobile ? 'flex-1' : ''} px-8 py-4 font-britti-sans text-lg md:text-xl transition-colors duration-200 ${activeTab === 'tracer'
-                      ? 'bg-[#202020] text-[#FCFCFC]'
-                      : 'bg-[#E8E8E8] text-[#202020] hover:bg-[#D8D8D8]'
-                      }`}
-                  >
-                    With Tracer
-                  </button>
-                </div>
-              </div>
             </div>
 
             {/* Content Box */}
             <div className="relative w-full bg-[#141414] border border-[#333333] overflow-hidden" style={{ height: '594px' }}>
 
+              {/* Tab Navigation - Full Width on Top of Preview */}
+              <div className="absolute top-0 left-0 right-0 z-30 flex">
+                <button
+                  onClick={() => setActiveTab('traditional')}
+                  className={`flex-1 px-4 py-3 font-britti-sans text-sm md:text-base transition-all duration-200 border-b-2 ${activeTab === 'traditional'
+                    ? 'bg-[#202020] text-white border-white'
+                    : 'bg-[#141414] text-[#888888] border-[#333333] hover:text-white hover:bg-[#202020]'
+                    }`}
+                >
+                  Traditional Monitoring
+                </button>
+                <button
+                  onClick={() => setActiveTab('tracer')}
+                  className={`flex-1 px-4 py-3 font-britti-sans text-sm md:text-base transition-all duration-200 border-b-2 ${activeTab === 'tracer'
+                    ? 'bg-[#202020] text-white border-white'
+                    : 'bg-[#141414] text-[#888888] border-[#333333] hover:text-white hover:bg-[#202020]'
+                    }`}
+                >
+                  With Tracer
+                </button>
+              </div>
+
 
 
               {/* Left Side - Text Content */}
-              <div className="absolute left-8 top-16 bottom-8 w-1/2 flex flex-col justify-start z-20">
+              <div className="absolute left-8 top-20 bottom-8 w-1/2 flex flex-col justify-start z-20">
                 {/* Traditional Monitoring Text */}
                 <div className={`transition-opacity duration-500 ${activeTab === 'traditional' ? 'opacity-100' : 'opacity-0'
                   }`}>
@@ -138,9 +156,9 @@ export default function FragmentAutoReveal() {
                   <h3 className="font-britti-sans font-normal text-white mb-4 text-[28px] leading-[32px] 600:text-[32px] 600:leading-[36px]">
                     With Tracer
                   </h3>
-                  <p className="font-britti-sans text-[#888888] text-[16px] leading-[20px] 600:text-[18px] 600:leading-[22px] max-w-[500px]">
-                    Fills in the gaps with real-time, low-level system insights.<br />
-                    Complete pipeline visibility.
+                  <p className="font-britti-sans text-[#888888] text-[16px] leading-[20px] 600:text-[18px] 600:leading-[22px] max-w-[400px]">
+                    Fills in the gaps with real-time, low-level <br />
+                    system insights. Complete pipeline visibility.
                   </p>
                 </div>
               </div>
@@ -175,8 +193,8 @@ export default function FragmentAutoReveal() {
                     className={`absolute transition-opacity duration-500 ${activeTab === 'traditional' ? 'opacity-100' : 'opacity-0'
                       }`}
                     style={{
-                      top: isMobile ? '-110px' : '0px', // Move 70px higher up on mobile, flush with top row pieces on desktop
-                      left: isMobile ? '121px' : '181px', // Move 1px right from previous position on mobile, original position on desktop
+                      top: isMobile ? '-110px' : '-140px', // Move 70px higher up on mobile, flush with top row pieces on desktop
+                      left: isMobile ? '88px' : '181px', // Move 1px right from previous position on mobile, original position on desktop
                       zIndex: 10, // Ensure it appears above other pieces
                     }}
                   >
@@ -185,7 +203,7 @@ export default function FragmentAutoReveal() {
                       alt="Missing puzzle piece connecting"
                       width={220}
                       height={220}
-                      className={isMobile ? "w-[140px] h-[140px]" : ""}
+                      className={isMobile ? "w-[104px] h-[104px]" : ""}
                     />
                   </div>
 
@@ -203,7 +221,7 @@ export default function FragmentAutoReveal() {
                       bottom: '0px',
                       right: '0px',
                       transformOrigin: 'bottom right',
-                      transform: isMobile ? 'scale(1.5)' : 'scale(2.2)',
+                      transform: isMobile ? 'scale(3.5)' : 'scale(2.2)',
                       zIndex: 1
                     }}
                   />
@@ -255,6 +273,16 @@ export default function FragmentAutoReveal() {
                 </div>
               </div>
 
+            </div>
+
+            {/* Mobile CTA - Full Width Below Preview */}
+            <div className="mt-4 md:hidden">
+              <a
+                href="/technology"
+                className="flex h-[48px] w-full cursor-pointer items-center justify-center bg-[#E8E8E8] font-britti-sans text-sm font-normal text-[#202020] hover:bg-[#E8E8E8]/80 transition-colors duration-200"
+              >
+                See our Technology
+              </a>
             </div>
 
           </div>

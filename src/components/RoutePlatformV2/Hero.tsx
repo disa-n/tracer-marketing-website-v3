@@ -103,7 +103,7 @@ const Hero = () => {
                         <p className='font-chakra-petch text-sm font-[400] uppercase text-c-black sm:text-base'>
                             _TRACER PRODUCT
                         </p>
-                        <h1 className='mt-4 font-chakra-petch text-[48px] !font-[400] leading-[0.9] tracking-tighter text-c-black sm:text-[70px] 1100:text-[76px] 1300:text-[100px]'>
+                        <h1 className='mt-4 font-chakra-petch text-[48px] !font-[400] leading-[0.9] tracking-tighter text-c-black sm:text-[70px] 1100:text-[80px] 1300:text-[104px]'>
                             Actionable Insights, Optimised Workloads
                         </h1>
                         <p className='mt-4 max-w-[630px] font-britti-sans text-sm font-[400] text-c-black sm:text-base md:mt-8'>
