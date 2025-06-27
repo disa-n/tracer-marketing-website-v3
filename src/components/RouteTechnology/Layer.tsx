@@ -100,7 +100,7 @@ function Layer() {
       {/* Original background section for mobile */}
       <div className="bg-[#202020] px-4 py-16 md:hidden">
         <p className="font-chakra-petch pb-10 uppercase text-[#fcfcfc]">
-          _Four layers to make this happen
+          _Four layers for full-stack observability
         </p>
 
         {/* Mobile content */}
@@ -263,137 +263,137 @@ function Layer() {
                 top: contentY
               }}
             >
-          {/* Layer 1 - Extraction (0-20% scroll: OS/System diagram) */}
-          <motion.div
-            ref={layer1Ref}
-            className="absolute w-[478px] flex flex-col justify-start items-start gap-14"
-            style={{
-              top: '0px',
-              opacity: layer1Opacity
-            }}
-          >
-          <div className="text-[#FCFCFC] text-base font-chakra-petch uppercase leading-[19px]">LAYER 001</div>
-          <div className="flex flex-col justify-start items-start gap-6">
-            <div className="flex flex-col justify-start items-start gap-4">
-              <div className="text-[#FCFCFC] text-[56px] font-britti-sans leading-[48px]">Extraction layer</div>
-              <div className="w-[478px] text-[#FCFCFC] text-xl font-britti-sans leading-[22px]">
-                Linux-based connectors written in Rust extract information
-                straight from the operating system (OS). With the newest
-                technologies such as eBPF, we ensure very low overhead at 2%
-                while keeping extreme speed.
-              </div>
-              <div className="w-[478px] text-[#FCFCFC] text-xl font-britti-sans leading-[22px]">
-                OS-level connection ensures deeper visibility compared to application-connectors.
-              </div>
-            </div>
-            <div className="p-3 justify-center items-center gap-2 inline-flex" style={{ outline: '1px #404040 solid', outlineOffset: '-1px' }}>
-              <div className="w-[400px] text-[#FCFCFC] text-base font-britti-sans leading-[17px]">
-                Unprecedented information gathering while bypassing terrible
-                logging and incomplete information
-              </div>
-            </div>
-          </div>
-        </motion.div>
+              {/* Layer 1 - Extraction (0-20% scroll: OS/System diagram) */}
+              <motion.div
+                ref={layer1Ref}
+                className="absolute w-[478px] flex flex-col justify-start items-start gap-14"
+                style={{
+                  top: '0px',
+                  opacity: layer1Opacity
+                }}
+              >
+                <div className="text-[#FCFCFC] text-base font-chakra-petch uppercase leading-[19px]">LAYER 001</div>
+                <div className="flex flex-col justify-start items-start gap-6">
+                  <div className="flex flex-col justify-start items-start gap-4">
+                    <div className="text-[#FCFCFC] text-[56px] font-britti-sans leading-[48px]">Extraction layer</div>
+                    <div className="w-[478px] text-[#FCFCFC] text-xl font-britti-sans leading-[22px]">
+                      Linux-based connectors written in Rust extract information
+                      straight from the operating system (OS). With the newest
+                      technologies such as eBPF, we ensure very low overhead at 2%
+                      while keeping extreme speed.
+                    </div>
+                    <div className="w-[478px] text-[#FCFCFC] text-xl font-britti-sans leading-[22px]">
+                      OS-level connection ensures deeper visibility compared to application-connectors.
+                    </div>
+                  </div>
+                  <div className="p-3 justify-center items-center gap-2 inline-flex" style={{ outline: '1px #404040 solid', outlineOffset: '-1px' }}>
+                    <div className="w-[400px] text-[#FCFCFC] text-base font-britti-sans leading-[17px]">
+                      Unprecedented information gathering while bypassing terrible
+                      logging and incomplete information
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
 
-        {/* Layer 2 - Filter (20-40% scroll: Diamond/Cube filtering diagram) */}
-        <motion.div
-          ref={layer2Ref}
-          className="absolute w-[478px] flex flex-col justify-start items-start gap-14"
-          style={{
-            top: '721px',
-            opacity: layer2Opacity
-          }}
-        >
-          <div className="text-[#FCFCFC] text-base font-chakra-petch uppercase leading-[19px]">LAYER 002</div>
-          <div className="flex flex-col justify-start items-start gap-6">
-            <div className="flex flex-col justify-start items-start gap-4">
-              <div className="text-[#FCFCFC] text-[56px] font-britti-sans leading-[48px]">Filter layer</div>
-              <div className="w-[478px] text-[#FCFCFC] text-xl font-britti-sans leading-[22px]">
-                Science-specific information about the tools, frameworks, and
-                files is automatically recognised and extracted.
-              </div>
-              <div className="w-[478px] text-[#FCFCFC] text-xl font-britti-sans leading-[22px]">
-                The filter takes into account the deep technical and scientific information
-                required for actionable insights compared to generic observability outputs.
-              </div>
-            </div>
-            <div className="p-3 justify-center items-center gap-2 inline-flex" style={{ outline: '1px #404040 solid', outlineOffset: '-1px' }}>
-              <div className="w-[400px] text-[#FCFCFC] text-base font-britti-sans leading-[17px]">
-                Filter focused on science-specific pipeline information,
-                differing from other observability solutions
-              </div>
-            </div>
-          </div>
-        </motion.div>
+              {/* Layer 2 - Filter (20-40% scroll: Diamond/Cube filtering diagram) */}
+              <motion.div
+                ref={layer2Ref}
+                className="absolute w-[478px] flex flex-col justify-start items-start gap-14"
+                style={{
+                  top: '721px',
+                  opacity: layer2Opacity
+                }}
+              >
+                <div className="text-[#FCFCFC] text-base font-chakra-petch uppercase leading-[19px]">LAYER 002</div>
+                <div className="flex flex-col justify-start items-start gap-6">
+                  <div className="flex flex-col justify-start items-start gap-4">
+                    <div className="text-[#FCFCFC] text-[56px] font-britti-sans leading-[48px]">Filter layer</div>
+                    <div className="w-[478px] text-[#FCFCFC] text-xl font-britti-sans leading-[22px]">
+                      Science-specific information about the tools, frameworks, and
+                      files is automatically recognised and extracted.
+                    </div>
+                    <div className="w-[478px] text-[#FCFCFC] text-xl font-britti-sans leading-[22px]">
+                      The filter takes into account the deep technical and scientific information
+                      required for actionable insights compared to generic observability outputs.
+                    </div>
+                  </div>
+                  <div className="p-3 justify-center items-center gap-2 inline-flex" style={{ outline: '1px #404040 solid', outlineOffset: '-1px' }}>
+                    <div className="w-[400px] text-[#FCFCFC] text-base font-britti-sans leading-[17px]">
+                      Filter focused on science-specific pipeline information,
+                      differing from other observability solutions
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
 
-        {/* Layer 3 - Transformation (40-60% scroll: Pipeline/Flow diagram) */}
-        <motion.div
-          ref={layer3Ref}
-          className="absolute w-[478px] flex flex-col justify-start items-start gap-14"
-          style={{
-            top: '1420px',
-            opacity: layer3Opacity
-          }}
-        >
-          <div className="text-[#FCFCFC] text-base font-chakra-petch uppercase leading-[19px]">LAYER 003</div>
-          <div className="flex flex-col justify-start items-start gap-6">
-            <div className="flex flex-col justify-start items-start gap-4">
-              <div className="text-[#FCFCFC] text-[56px] font-britti-sans leading-[48px]">Transformation layer</div>
-              <div className="w-[478px] text-[#FCFCFC] text-xl font-britti-sans leading-[22px]">
-                Extracted and filtered information is transformed into Open
-                Telemetry format, the latest standard for observability
-                practices.
-              </div>
-              <div className="w-[478px] text-[#FCFCFC] text-xl font-britti-sans leading-[22px]">
-                Pioneering an approach called &ldquo;synthetic log generation&rdquo;, Tracer creates logs even where there was nothing before.
-              </div>
-            </div>
-            <div className="p-3 justify-center items-center gap-2 inline-flex" style={{ outline: '1px #404040 solid', outlineOffset: '-1px' }}>
-              <div className="w-[400px] text-[#FCFCFC] text-base font-britti-sans leading-[17px]">
-                Synthetic log generation in OTel format for ultimate
-                flexibility and understanding
-              </div>
-            </div>
+              {/* Layer 3 - Transformation (40-60% scroll: Pipeline/Flow diagram) */}
+              <motion.div
+                ref={layer3Ref}
+                className="absolute w-[478px] flex flex-col justify-start items-start gap-14"
+                style={{
+                  top: '1420px',
+                  opacity: layer3Opacity
+                }}
+              >
+                <div className="text-[#FCFCFC] text-base font-chakra-petch uppercase leading-[19px]">LAYER 003</div>
+                <div className="flex flex-col justify-start items-start gap-6">
+                  <div className="flex flex-col justify-start items-start gap-4">
+                    <div className="text-[#FCFCFC] text-[56px] font-britti-sans leading-[48px]">Transformation layer</div>
+                    <div className="w-[478px] text-[#FCFCFC] text-xl font-britti-sans leading-[22px]">
+                      Extracted and filtered information is transformed into Open
+                      Telemetry format, the latest standard for observability
+                      practices.
+                    </div>
+                    <div className="w-[478px] text-[#FCFCFC] text-xl font-britti-sans leading-[22px]">
+                      Pioneering an approach called &ldquo;synthetic log generation&rdquo;, Tracer creates logs even where there was nothing before.
+                    </div>
+                  </div>
+                  <div className="p-3 justify-center items-center gap-2 inline-flex" style={{ outline: '1px #404040 solid', outlineOffset: '-1px' }}>
+                    <div className="w-[400px] text-[#FCFCFC] text-base font-britti-sans leading-[17px]">
+                      Synthetic log generation in OTel format for ultimate
+                      flexibility and understanding
+                    </div>
+                  </div>
 
-            {/* White rectangle elements */}
-            <div className="mt-4">
-              <div className="h-[10px] bg-[#FCFCFC] w-full"></div>
-              <div className="h-[10px] bg-[#FCFCFC] w-[80%] mt-1"></div>
-            </div>
-          </div>
-        </motion.div>
+                  {/* White rectangle elements */}
+                  <div className="mt-4">
+                    <div className="h-[10px] bg-[#FCFCFC] w-full"></div>
+                    <div className="h-[10px] bg-[#FCFCFC] w-[80%] mt-1"></div>
+                  </div>
+                </div>
+              </motion.div>
 
-        {/* Layer 4 - Insights (60-80% scroll: Dashboard/Analytics interface) */}
-        <motion.div
-          ref={layer4Ref}
-          className="absolute w-[478px] flex flex-col justify-start items-start gap-14"
-          style={{
-            top: '2119px',
-            opacity: layer4Opacity
-          }}
-        >
-          <div className="text-[#FCFCFC] text-base font-chakra-petch uppercase leading-[19px]">LAYER 004</div>
-          <div className="flex flex-col justify-start items-start gap-6">
-            <div className="flex flex-col justify-start items-start gap-4">
-              <div className="text-[#FCFCFC] text-[56px] font-britti-sans leading-[48px]">Insights layer</div>
-              <div className="w-[478px] text-[#FCFCFC] text-xl font-britti-sans leading-[22px]">
-                We implement AI and other predictive technologies on top of the
-                generated information for fast error resolution, cost reduction,
-                and speed improvements.
-              </div>
-              <div className="w-[478px] text-[#FCFCFC] text-xl font-britti-sans leading-[22px]">
-                This layer consists of different applications on top of our data lake of pipeline information for
-                all levels across the enterprise — for scientists, engineers, and executives.
-              </div>
-            </div>
-            <div className="p-3 justify-center items-center gap-2 inline-flex" style={{ outline: '1px #404040 solid', outlineOffset: '-1px' }}>
-              <div className="text-[#FCFCFC] text-base font-britti-sans leading-[17px]">
-                Information turned into insights for all layers of the
-                organisation
-              </div>
-            </div>
-          </div>
-        </motion.div>
+              {/* Layer 4 - Insights (60-80% scroll: Dashboard/Analytics interface) */}
+              <motion.div
+                ref={layer4Ref}
+                className="absolute w-[478px] flex flex-col justify-start items-start gap-14"
+                style={{
+                  top: '2119px',
+                  opacity: layer4Opacity
+                }}
+              >
+                <div className="text-[#FCFCFC] text-base font-chakra-petch uppercase leading-[19px]">LAYER 004</div>
+                <div className="flex flex-col justify-start items-start gap-6">
+                  <div className="flex flex-col justify-start items-start gap-4">
+                    <div className="text-[#FCFCFC] text-[56px] font-britti-sans leading-[48px]">Insights layer</div>
+                    <div className="w-[478px] text-[#FCFCFC] text-xl font-britti-sans leading-[22px]">
+                      We implement AI and other predictive technologies on top of the
+                      generated information for fast error resolution, cost reduction,
+                      and speed improvements.
+                    </div>
+                    <div className="w-[478px] text-[#FCFCFC] text-xl font-britti-sans leading-[22px]">
+                      This layer consists of different applications on top of our data lake of pipeline information for
+                      all levels across the enterprise — for scientists, engineers, and executives.
+                    </div>
+                  </div>
+                  <div className="p-3 justify-center items-center gap-2 inline-flex" style={{ outline: '1px #404040 solid', outlineOffset: '-1px' }}>
+                    <div className="text-[#FCFCFC] text-base font-britti-sans leading-[17px]">
+                      Information turned into insights for all layers of the
+                      organisation
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
 
 
             </motion.div>

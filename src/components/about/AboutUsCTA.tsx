@@ -9,7 +9,7 @@ const AboutUsCTA = () => {
       imageAlt="demo-car"
       title="Ready to see Tracer in action?"
       subtitle="get a personalized demo"
-      buttonText="Get a Demo"
+      buttonText="Talk to an Expert"
       showOverlay={true}
       overlayWidth="31%"
       overlayHeight="45px"
