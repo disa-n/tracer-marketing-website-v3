@@ -126,10 +126,11 @@ const DynamicNavbar: React.FC = () => {
               {/* Get a Demo button */}
               <button
                 onClick={handleDemoClick}
-                className={`font-britti-sans !font-[400] cursor-pointer bg-[#E8E8E8] flex items-center justify-center text-black transition-all duration-500 ease-in-out ${isScrolled
-                  ? 'h-[31px] text-sm px-4'
-                  : 'h-[41px] text-base px-6'
-                  }`}
+                className={`font-britti-sans !font-[400] cursor-pointer bg-[#E8E8E8] flex items-center justify-center text-black transition-all duration-500 ease-in-out ${
+                  isScrolled
+                    ? 'h-[31px] text-sm px-4'
+                    : 'h-[41px] text-base px-6'
+                }`}
               >
                 Get a Demo
               </button>
