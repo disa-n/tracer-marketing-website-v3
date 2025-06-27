@@ -1,13 +1,9 @@
 'use client';
 import React from 'react';
-import GridLines from '../shared/GridLines';
 
 export default function ScienceNeedsInfoSection() {
   return (
     <>
-      {/* Background Grid Lines */}
-      <GridLines />
-
       {/* Main Section */}
       <section className="relative w-full bg-[#FCFCFC] overflow-hidden">
         <div className="flex flex-col justify-center pt-16 md:pt-24 pb-2 md:pb-4">

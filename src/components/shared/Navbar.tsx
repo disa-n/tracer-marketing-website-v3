@@ -69,7 +69,7 @@ const NavigationBar = () => {
             ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}
           `}
           style={{
-            background: 'rgba(0, 0, 0, 0.8)',
+            background: 'rgba(80, 80, 80, 0.7)',
             backdropFilter: 'blur(4px)',
             border: '1px solid rgba(255, 255, 255, 0.15)',
             boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 8px 32px rgba(0, 0, 0, 0.4)'
@@ -121,16 +121,15 @@ const NavigationBar = () => {
               hidden 1000:flex items-center gap-3 h-full flex-shrink-0 transition-all duration-500 ease-in-out
               ${isScrolled ? 'ml-7' : 'ml-8'}
             `}>
-                <ShinyCTAButton isScrolled={isScrolled} smallHeight={35} largeHeight={45} />
+              <ShinyCTAButton isScrolled={isScrolled} smallHeight={35} largeHeight={45} />
 
               {/* Get a Demo button */}
               <button
                 onClick={handleDemoClick}
-                className={`font-britti-sans !font-[400] cursor-pointer bg-[#E8E8E8] flex items-center justify-center text-black transition-all duration-500 ease-in-out ${
-                  isScrolled
+                className={`font-britti-sans !font-[400] cursor-pointer bg-[#E8E8E8] flex items-center justify-center text-black transition-all duration-500 ease-in-out ${isScrolled
                     ? 'h-[31px] text-sm px-4'
                     : 'h-[41px] text-base px-6'
-                }`}
+                  }`}
               >
                 Get a Demo
               </button>

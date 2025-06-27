@@ -68,7 +68,6 @@ export default function FragmentAutoReveal() {
         }
       `}</style>
       <section className="relative bg-[#FCFCFC] overflow-hidden">
-        {/* Grid Lines Background */}
         <GridLinesLight />
 
         <div className="w-full flex justify-center px-3 sm:px-4 py-16 md:py-24">

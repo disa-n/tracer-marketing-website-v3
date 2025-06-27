@@ -211,7 +211,7 @@
 
 @layer base {
   * {
-    @apply outline-ring/50 border-border;
+    @apply outline-ring/50;
   }
   body {
     @apply bg-background dark:bg-[#1e1e1e] text-foreground;
