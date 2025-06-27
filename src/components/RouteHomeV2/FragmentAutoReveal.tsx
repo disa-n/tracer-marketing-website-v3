@@ -193,8 +193,8 @@ export default function FragmentAutoReveal() {
                     className={`absolute transition-opacity duration-500 ${activeTab === 'traditional' ? 'opacity-100' : 'opacity-0'
                       }`}
                     style={{
-                      top: isMobile ? '-110px' : '0px', // Move 70px higher up on mobile, flush with top row pieces on desktop
-                      left: isMobile ? '121px' : '181px', // Move 1px right from previous position on mobile, original position on desktop
+                      top: isMobile ? '-110px' : '-140px', // Move 70px higher up on mobile, flush with top row pieces on desktop
+                      left: isMobile ? '88px' : '181px', // Move 1px right from previous position on mobile, original position on desktop
                       zIndex: 10, // Ensure it appears above other pieces
                     }}
                   >
@@ -203,7 +203,7 @@ export default function FragmentAutoReveal() {
                       alt="Missing puzzle piece connecting"
                       width={220}
                       height={220}
-                      className={isMobile ? "w-[140px] h-[140px]" : ""}
+                      className={isMobile ? "w-[104px] h-[104px]" : ""}
                     />
                   </div>
 
