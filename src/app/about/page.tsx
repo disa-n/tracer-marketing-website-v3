@@ -1,7 +1,8 @@
 export const metadata = {
   title: "Tracer | About Us",
-  description: "Tracer combines deep scientific knowledge and cutting-edge tech to accelerate AI adoption in industry. Learn more about our mission, team, and values.",}
-import Hero from '../../components/about/Hero'
+  description: "Tracer combines deep scientific knowledge and cutting-edge tech to accelerate AI adoption in industry. Learn more about our mission, team, and values.",
+}
+import ReusablePageHero from "@/components/shared/ReusablePageHero";
 import WhyWeExist from '../../components/about/WhyWeExist'
 import MoonshotSection from '../../components/about/MoonshotSection'
 import TwoWorlds from '../../components/about/TwoWorlds'
@@ -12,10 +13,17 @@ import AboutUsCTA from '@/components/about/AboutUsCTA'
 export default function AboutPage() {
   return (
     <main className="w-full bg-[#FCFCFC] min-h-screen overflow-hidden relative">
-      
+
 
       {/* Hero Section */}
-      <Hero/>
+      <ReusablePageHero
+        title="About Us"
+        subtitle="Tracer is an advanced observability platform for high-performance computing (HPC) systems in regulated industries. We help scientists and engineers to run, maintain, and optimise supercomputing software solutions."
+        productLabel="_TRACER COMPANY"
+        imageSrc="/about/about-hero.webp"
+        imageAlt="About Tracer team"
+        variant="flipped"
+      />
 
       {/* Why We Exist Section */}
       <WhyWeExist />

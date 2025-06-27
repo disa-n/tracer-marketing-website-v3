@@ -245,7 +245,7 @@ export default function PrivacyPolicyText() {
           If you have questions or comments about this notice, you may email us at founders@tracer.cloud or contact us by post at:
           <br /><br />
           The Forge Software Inc.<br />
-          9 Wall St suite 168, New York, NY 10005, USA<br />
+          99 Wall St suite 168, New York, NY 10005, USA<br />
           New York, NY 10005<br />
           United States
         </p>
