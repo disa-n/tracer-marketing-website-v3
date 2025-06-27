@@ -4,10 +4,13 @@ import GridLines from '../shared/GridLines';
 
 export default function CoreChallengesSection() {
   return (
-    <section className="relative bg-[#202020] pt-16 pb-16 lg:pt-8 xl:pt-6 z-20">
+    <section className="relative bg-[#202020] pt-16 pb-16 md:pt-36 md:pb-36 z-20">
       <div className="absolute inset-0" style={{ top: "0.5px", bottom: "0.75px" }}>
         <GridLines />
       </div>
+
+      {/* White rectangle at top right - hidden on mobile, visible on lg+ */}
+      <div className="hidden lg:block absolute top-0 right-0 w-[500px] h-24 bg-white z-30"></div>
       {/* Text content aligned with hero */}
       <div className="relative z-10 px-4 md:px-8 lg:px-12">
         <div className="max-w-[1400px] w-full">
@@ -28,37 +31,37 @@ export default function CoreChallengesSection() {
         <div className="max-w-[1800px] mx-auto">
           {/* Card grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 lg:gap-10">
-          <PerformanceCard
-            indexLabel="01–04"
-            sectionLabel="CORE CHALLENGES"
-            title="No visibility into digitalisation"
-            description="No structured way to measure ROI, track progress, or identify the areas to double down on AI investments."
-            previewImage="/whymonitoring/Core-Challenge-1-2.webp"
-          />
+            <PerformanceCard
+              indexLabel="01–04"
+              sectionLabel="CORE CHALLENGES"
+              title="No visibility into digitalisation"
+              description="No structured way to measure ROI, track progress, or identify the areas to double down on AI investments."
+              previewImage="/whymonitoring/Core-Challenge-1-2.webp"
+            />
 
-          <PerformanceCard
-            indexLabel="02–04"
-            sectionLabel="CORE CHALLENGES"
-            title="Information lost between teams"
-            description="Metadata and crucial context get lost during handovers—leading to confusion, rework, and slower collaboration."
-            previewImage="/whymonitoring/Core-Challenge-2-2.webp"
-          />
+            <PerformanceCard
+              indexLabel="02–04"
+              sectionLabel="CORE CHALLENGES"
+              title="Information lost between teams"
+              description="Metadata and crucial context get lost during handovers—leading to confusion, rework, and slower collaboration."
+              previewImage="/whymonitoring/Core-Challenge-2-2.webp"
+            />
 
-          <PerformanceCard
-            indexLabel="03–04"
-            sectionLabel="CORE CHALLENGES"
-            title="Inefficient tools"
-            description="Legacy systems lack the insights needed to debug, optimise, or even pinpoint performance bottlenecks."
-            previewImage="/whymonitoring/Core-Challenge-3-2.webp"
-          />
+            <PerformanceCard
+              indexLabel="03–04"
+              sectionLabel="CORE CHALLENGES"
+              title="Inefficient tools"
+              description="Legacy systems lack the insights needed to debug, optimise, or even pinpoint performance bottlenecks."
+              previewImage="/whymonitoring/Core-Challenge-3-2.webp"
+            />
 
-          <PerformanceCard
-            indexLabel="04–04"
-            sectionLabel="CORE CHALLENGES"
-            title="Lack of cost attribution"
-            description="Cloud spend is opaque. Manual tagging is unreliable. It's hard to predict budgets or connect spend to value."
-            previewImage="/whymonitoring/Core-Challenge-4-2.webp"
-          />
+            <PerformanceCard
+              indexLabel="04–04"
+              sectionLabel="CORE CHALLENGES"
+              title="Lack of cost attribution"
+              description="Cloud spend is opaque. Manual tagging is unreliable. It's hard to predict budgets or connect spend to value."
+              previewImage="/whymonitoring/Core-Challenge-4-2.webp"
+            />
           </div>
         </div>
       </div>

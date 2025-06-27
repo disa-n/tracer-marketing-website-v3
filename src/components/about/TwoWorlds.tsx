@@ -7,7 +7,7 @@ interface FoundersSectionProps {
   altText?: string;
 }
 
-export default function FoundersSection({}: FoundersSectionProps) {
+export default function FoundersSection({ }: FoundersSectionProps) {
   return (
     <section className="relative bg-[#FCFCFC] overflow-hidden pt-8 pb-0 -mb-32 lg:pt-16 lg:pb-0 lg:mb-0 lg:h-[550px] xl:h-[520px]">
       {/* Vertical line in the middle of the section */}
@@ -28,7 +28,7 @@ export default function FoundersSection({}: FoundersSectionProps) {
           {/* Left text column - mobile-first approach */}
           <div className="w-full max-w-[700px] xl:max-w-[600px] 2xl:max-w-[650px] lg:w-1/2 xl:w-1/2 2xl:w-1/2 lg:flex lg:flex-col lg:justify-start mt-2 lg:mt-0">
             {/* Main heading */}
-            <h1 className="mt-4 font-britti-sans font-medium text-[#202020] text-3xl lg:text-5xl max-[1064px]:lg:text-4xl xl:text-5xl mb-2 lg:mb-6 leading-tight">
+            <h1 className="mt-4 font-britti-sans font-medium text-[#202020] text-3xl lg:text-5xl max-[1064px]:lg:text-4xl xl:text-5xl mb-2 lg:mb-6 leading-tight tracking-tight">
               The Best of Two Worlds
             </h1>
 
@@ -38,10 +38,10 @@ export default function FoundersSection({}: FoundersSectionProps) {
                 Tracer was founded in 2023 by Vincent Hus and Laura Bogaert, who set out to change the way scientists understand and manage their computational workloads.
               </p>
               <p>
-                Vincent, an engineer working at the intersection of software and biomechanics, kept running into infrastructure issues that slowed his work. Laura, advising leading life sciences organizations at McKinsey, saw those same slowdowns across the industry.
+                Vincent, an engineer working at the intersection of software and biomechanics, kept running into infrastructure issues that slowed his work. Laura, advising leading life sciences organisations at McKinsey, saw those same slowdowns across the industry.
               </p>
               <p>
-                Driven by their shared frustration, they joined forces to build the world&apos;s first verticalized observability platform, purpose-built for scientific computing.
+                Driven by their shared frustration, they joined forces to build the world&apos;s first verticalised observability platform, purpose-built for scientific computing.
               </p>
             </div>
           </div>

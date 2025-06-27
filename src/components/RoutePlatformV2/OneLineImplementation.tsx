@@ -70,10 +70,10 @@ const OneLineImplementation = () => {
       </div>
 
       <div className='w-full flex z-[10] flex-col items-center justify-center max-w-[1800px] px-4 sm:px-6 md:px-8 mx-auto'>
-        <div className="relative z-10 py-8 sm:py-12 md:py-16 lg:py-28 w-full">
+        <div className="relative z-10 py-10 md:pt-36 md:pb-36 w-full">
           {/* Header */}
           <div className="mb-8 md:mb-12 lg:mb-16">
-            <h2 className="font-britti-sans text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] font-normal leading-[1.1] sm:leading-[1.0] md:leading-[0.9] lg:leading-[80px] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] text-white mb-4 md:mb-6">
+            <h2 className="font-britti-sans text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] font-normal leading-[1.0] tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px] text-white mb-4 md:mb-6">
               Our Implementation <br className="hidden sm:block" />
               <span className="sm:hidden">Takes One Line of Code</span>
               <span className="hidden sm:inline">Takes One Line of Code</span>
@@ -132,67 +132,67 @@ const OneLineImplementation = () => {
             </h2>
             {/* Technology Logos */}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 lg:gap-6">
-            {/* Airflow */}
-            <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-2 sm:p-3 md:p-4">
-              <Image
-                src="/platformv2/logos/airflow.svg"
-                alt="Apache Airflow"
-                width={120}
-                height={60}
-                className="w-full h-auto max-w-[80px] sm:max-w-[100px] md:max-w-[120px] max-h-[40px] sm:max-h-[50px] md:max-h-[60px] object-contain"
-              />
+              {/* Airflow */}
+              <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-2 sm:p-3 md:p-4">
+                <Image
+                  src="/platformv2/logos/airflow.svg"
+                  alt="Apache Airflow"
+                  width={120}
+                  height={60}
+                  className="w-full h-auto max-w-[80px] sm:max-w-[100px] md:max-w-[120px] max-h-[40px] sm:max-h-[50px] md:max-h-[60px] object-contain"
+                />
+              </div>
+              {/* AWS */}
+              <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-2 sm:p-3 md:p-4">
+                <Image
+                  src="/platformv2/logos/aws-sv.svg"
+                  alt="Amazon Web Services"
+                  width={120}
+                  height={60}
+                  className="w-full h-auto max-w-[80px] sm:max-w-[100px] md:max-w-[120px] max-h-[40px] sm:max-h-[50px] md:max-h-[60px] object-contain"
+                />
+              </div>
+              {/* Nextflow */}
+              <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-2 sm:p-3 md:p-4">
+                <Image
+                  src="/platformv2/logos/next-flow.svg"
+                  alt="Nextflow"
+                  width={120}
+                  height={60}
+                  className="w-full h-auto max-w-[80px] sm:max-w-[100px] md:max-w-[120px] max-h-[40px] sm:max-h-[50px] md:max-h-[60px] object-contain"
+                />
+              </div>
+              {/* Bash */}
+              <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-2 sm:p-3 md:p-4">
+                <Image
+                  src="/platformv2/logos/bash.svg"
+                  alt="Bash Shell"
+                  width={120}
+                  height={60}
+                  className="w-full h-auto max-w-[80px] sm:max-w-[100px] md:max-w-[120px] max-h-[40px] sm:max-h-[50px] md:max-h-[60px] object-contain"
+                />
+              </div>
+              {/* AWS Batch */}
+              <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-2 sm:p-3 md:p-4">
+                <Image
+                  src="/platformv2/logos/aws-batch.svg"
+                  alt="AWS Batch"
+                  width={120}
+                  height={60}
+                  className="w-full h-auto max-w-[80px] sm:max-w-[100px] md:max-w-[120px] max-h-[40px] sm:max-h-[50px] md:max-h-[60px] object-contain"
+                />
+              </div>
+              {/* Ubuntu */}
+              <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-2 sm:p-3 md:p-4">
+                <Image
+                  src="/platformv2/logos/ubuntu.svg"
+                  alt="Ubuntu"
+                  width={120}
+                  height={60}
+                  className="w-full h-auto max-w-[80px] sm:max-w-[100px] md:max-w-[120px] max-h-[40px] sm:max-h-[50px] md:max-h-[60px] object-contain"
+                />
+              </div>
             </div>
-            {/* AWS */}
-            <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-2 sm:p-3 md:p-4">
-              <Image
-                src="/platformv2/logos/aws-sv.svg"
-                alt="Amazon Web Services"
-                width={120}
-                height={60}
-                className="w-full h-auto max-w-[80px] sm:max-w-[100px] md:max-w-[120px] max-h-[40px] sm:max-h-[50px] md:max-h-[60px] object-contain"
-              />
-            </div>
-            {/* Nextflow */}
-            <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-2 sm:p-3 md:p-4">
-              <Image
-                src="/platformv2/logos/next-flow.svg"
-                alt="Nextflow"
-                width={120}
-                height={60}
-                className="w-full h-auto max-w-[80px] sm:max-w-[100px] md:max-w-[120px] max-h-[40px] sm:max-h-[50px] md:max-h-[60px] object-contain"
-              />
-            </div>
-            {/* Bash */}
-            <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-2 sm:p-3 md:p-4">
-              <Image
-                src="/platformv2/logos/bash.svg"
-                alt="Bash Shell"
-                width={120}
-                height={60}
-                className="w-full h-auto max-w-[80px] sm:max-w-[100px] md:max-w-[120px] max-h-[40px] sm:max-h-[50px] md:max-h-[60px] object-contain"
-              />
-            </div>
-            {/* AWS Batch */}
-            <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-2 sm:p-3 md:p-4">
-              <Image
-                src="/platformv2/logos/aws-batch.svg"
-                alt="AWS Batch"
-                width={120}
-                height={60}
-                className="w-full h-auto max-w-[80px] sm:max-w-[100px] md:max-w-[120px] max-h-[40px] sm:max-h-[50px] md:max-h-[60px] object-contain"
-              />
-            </div>
-            {/* Ubuntu */}
-            <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-2 sm:p-3 md:p-4">
-              <Image
-                src="/platformv2/logos/ubuntu.svg"
-                alt="Ubuntu"
-                width={120}
-                height={60}
-                className="w-full h-auto max-w-[80px] sm:max-w-[100px] md:max-w-[120px] max-h-[40px] sm:max-h-[50px] md:max-h-[60px] object-contain"
-              />
-            </div>
-          </div>
           </div>
         </div>
       </div>
