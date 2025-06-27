@@ -1,6 +1,5 @@
 'use client';
 import React from 'react';
-import StyledLayoutWrapper from '../shared/StyledLayoutWrapper';
 import GridLines from '../shared/GridLines';
 
 export default function ScienceNeedsInfoSection() {
@@ -22,7 +21,7 @@ export default function ScienceNeedsInfoSection() {
 
               {/* Subtitle Text */}
               <p className="text-[16px] leading-[22px] 600:text-[20px] 600:leading-[22px] 2xl:text-[24px] 2xl:leading-[26px] text-neutral-400 font-normal tracking-tight font-britti">
-                Tracer gives researchers the real-time insight traditional monitoring tools can't.<br />
+                Tracer gives researchers the real-time insight traditional monitoring tools can&apos;t.<br />
                 Purpose-built for the complexity, speed, and stakes of scientific discovery.
               </p>
             </div>

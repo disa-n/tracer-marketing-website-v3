@@ -135,7 +135,7 @@ export default function ProductPreviewSectionV2() {
       if (intervalRef.current) clearInterval(intervalRef.current);
       if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
     };
-  }, [activeTab, currentIndex, isAutoAdvancing]);
+  }, [activeTab, currentIndex, isAutoAdvancing, isMobile]);
 
   // Handle manual tab selection
   const handleTabClick = (tabId: string, event?: React.MouseEvent<HTMLButtonElement>) => {

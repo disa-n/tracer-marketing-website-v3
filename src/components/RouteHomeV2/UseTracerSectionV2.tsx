@@ -64,7 +64,7 @@ export default function UseTracerSectionV2() {
               <div className="max-w-[1400px] w-full">
                 {/* Main text paragraph */}
                 <p className="text-2xl lg:text-4xl 2xl:text-5xl font-normal leading-[1.3] lg:leading-[48px] tracking-tight lg:tracking-tighter font-britti text-[#202020] mb-4">
-                  Analytical pipelines break. Logs don't say why.<br />
+                  Analytical pipelines break. Logs don&apos;t say why.<br />
                   And generic monitoring tools miss what matters.
                 </p>
                 <p className="text-2xl lg:text-4xl 2xl:text-5xl font-normal leading-[1.3] lg:leading-[48px] tracking-tight lg:tracking-tighter font-britti text-[#202020] mb-4">
@@ -92,7 +92,7 @@ export default function UseTracerSectionV2() {
                 </div>
                 {/* Final line */}
                 <p className="text-2xl lg:text-4xl 2xl:text-5xl font-normal leading-[1.3] lg:leading-[48px] tracking-tight lg:tracking-tighter font-britti text-[#202020]">
-                  That's why we built Tracer.<br />
+                  That&apos;s why we built Tracer.<br />
                   Observability for AI driven science.
                 </p>
               </div>
