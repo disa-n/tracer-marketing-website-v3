@@ -120,7 +120,7 @@ function WhyWeExist() {
   }, [rectangleControls])
 
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden bg-white">
       {/* Light Gridlines */}
       <GridLinesLight />
 

@@ -51,7 +51,7 @@ export default function FixAnythingSection() {
               indexLabel="02–03"
               sectionLabel="TRACER INTELLIGENCE"
               title="Total visibility into computational infrastructure"
-              description="Gain real-time, highly granular insights into every workload and process, independent of coding language or framework, including highly parallelised processes across instances."
+              description="Gain real-time, highly granular insights into every workload and process, independent of coding language or framework, including highly parallelized processes across instances."
               previewImage="/home/Tracer-Intel.webp"
             />
             <PerformanceCard

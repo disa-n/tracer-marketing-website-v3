@@ -161,10 +161,10 @@ export default function ProductPreviewSectionV2() {
       }
     }
 
-    // Re-enable auto-advancing after manual selection
+    // Re-enable auto-advancing after 20 seconds of manual selection
     setTimeout(() => {
       setIsAutoAdvancing(true);
-    }, 100);
+    }, 20000); // 20 seconds pause
   };
 
   return (

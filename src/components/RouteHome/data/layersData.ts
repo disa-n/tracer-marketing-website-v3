@@ -13,7 +13,7 @@ export const defaultLayersData = [
     id: "002",
     title: "Filter Layers",
     description:
-      "Science-specific information about the tools, frameworks, and files are automatically recognized and extracted. The filter takes into account the deep technical and scientific information required for actionable insights compared to generic observability outputs",
+      "Science-specific information about the tools, frameworks, and files are automatically recognised and extracted. The filter takes into account the deep technical and scientific information required for actionable insights compared to generic observability outputs",
     additionalInfo:
       "Filter focused on science-specific pipeline information, differing from other observability solutions",
   },

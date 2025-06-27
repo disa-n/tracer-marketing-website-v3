@@ -125,10 +125,10 @@ const ProductFeaturesDeepDive = () => {
     setActiveFeature(featureId)
     setProgress(0)
 
-    // Re-enable auto-advancing after manual selection
+    // Re-enable auto-advancing after 20 seconds of manual selection
     setTimeout(() => {
       setIsAutoAdvancing(true)
-    }, 100)
+    }, 20000) // 20 seconds pause
   }
 
   return (
@@ -186,24 +186,21 @@ const ProductFeaturesDeepDive = () => {
                 <div key={feature.id} className="relative">
                   <motion.button
                     onClick={() => handleFeatureClick(feature.id)}
-                    className={`w-full text-left p-4 sm:p-6 lg:p-8 transition-all duration-300 min-h-[80px] sm:min-h-[90px] lg:min-h-[105px] ${
-                      activeFeature === feature.id
-                        ? 'bg-gray-50'
-                        : 'bg-white hover:bg-gray-25'
-                    }`}
+                    className={`w-full text-left p-4 sm:p-6 lg:p-8 transition-all duration-300 min-h-[80px] sm:min-h-[90px] lg:min-h-[105px] ${activeFeature === feature.id
+                      ? 'bg-gray-50'
+                      : 'bg-white hover:bg-gray-25'
+                      }`}
                     whileHover={{ scale: 1.005 }}
                     whileTap={{ scale: 0.995 }}
                   >
                     <div className="flex items-center gap-3 sm:gap-4">
                       <feature.icon
                         size={20}
-                        className={`flex-shrink-0 transition-colors duration-300 sm:w-6 sm:h-6 ${
-                          activeFeature === feature.id ? 'text-gray-700' : 'text-[#888888]'
-                        }`}
+                        className={`flex-shrink-0 transition-colors duration-300 sm:w-6 sm:h-6 ${activeFeature === feature.id ? 'text-gray-700' : 'text-[#888888]'
+                          }`}
                       />
-                      <h3 className={`font-britti-sans text-base sm:text-lg font-normal leading-[1.2] tracking-[-0.01em] transition-colors duration-300 ${
-                        activeFeature === feature.id ? 'text-black' : 'text-[#888888]'
-                      }`}>
+                      <h3 className={`font-britti-sans text-base sm:text-lg font-normal leading-[1.2] tracking-[-0.01em] transition-colors duration-300 ${activeFeature === feature.id ? 'text-black' : 'text-[#888888]'
+                        }`}>
                         {feature.title}
                       </h3>
                     </div>
@@ -238,8 +235,8 @@ const ProductFeaturesDeepDive = () => {
                         {currentFeature.description}
                       </p>
                     </div>
-                    {/* See It in Action Button - Aligned with header */}
-                    <div className="flex-shrink-0">
+                    {/* See It in Action Button - Desktop only, aligned with header */}
+                    <div className="hidden lg:flex flex-shrink-0">
                       <Link
                         href="https://sandbox.tracer.cloud/"
                         target="_blank"
@@ -259,7 +256,7 @@ const ProductFeaturesDeepDive = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.3 }}
-                    className="relative w-full border border-gray-200 h-[300px] sm:h-[400px] lg:h-[510px]"
+                    className="relative w-full border border-gray-200 h-[300px] sm:h-[400px] lg:h-[510px] mb-6 lg:mb-0"
                     style={{ backgroundColor: '#0B0B0B' }}
                   >
                     <Image
@@ -271,6 +268,18 @@ const ProductFeaturesDeepDive = () => {
                     />
                   </motion.div>
                 </AnimatePresence>
+
+                {/* See It in Action Button - Mobile/Tablet only, below image */}
+                <div className="lg:hidden flex justify-center">
+                  <Link
+                    href="https://sandbox.tracer.cloud/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="h-12 font-britti-sans text-sm sm:text-base font-normal cursor-pointer bg-[#E8E8E8] flex items-center justify-center text-black px-6 sm:px-8 hover:opacity-80 transition-all w-full sm:w-auto"
+                  >
+                    See It in Action
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

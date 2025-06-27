@@ -99,9 +99,7 @@ function Layer() {
       {/* Mobile layout - image removed */}
       {/* Original background section for mobile */}
       <div className="bg-[#202020] px-4 py-16 md:hidden">
-        <p className="font-chakra-petch pb-10 uppercase text-[#fcfcfc]">
-          _Four layers for full-stack observability
-        </p>
+        <div className="pb-10"></div>
 
         {/* Mobile content */}
         <div className="space-y-16">
@@ -137,7 +135,7 @@ function Layer() {
               <h2 className="pt-8 text-[32px] text-white">Filter layer</h2>
               <span className="text-white">
                 Science-specific information about the tools, frameworks, and
-                files is automatically recognized and extracted.
+                files is automatically recognised and extracted.
               </span>
               <p className="text-white mt-4">
                 The filter takes into account the deep technical and scientific information
@@ -222,17 +220,15 @@ function Layer() {
         <div className="w-full h-screen flex items-center justify-center bg-[#202020] sticky top-0">
           {/* Fixed frame container - this is where user is anchored */}
           <div className="relative" style={{ transform: 'translateX(-300px)' }}>
-            {/* Title positioned above frame */}
+            {/* Gap preserved where title was positioned */}
             <div
-              className="absolute text-[#FCFCFC] text-base font-chakra-petch uppercase"
+              className="absolute"
               style={{
                 left: '0px',
                 top: '-65px',
-                lineHeight: '19px'
+                height: '19px'
               }}
-            >
-              _Four layers to make this happen
-            </div>
+            ></div>
 
             {/* Main frame container */}
             <div

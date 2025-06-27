@@ -71,7 +71,7 @@ export default function FragmentAutoReveal() {
         {/* Grid Lines Background */}
         <GridLinesLight />
 
-        <div className="w-full flex justify-center px-3 sm:px-4 py-16 md:py-24">
+        <div className="w-full flex justify-center px-4 md:px-8 lg:px-12 py-16 md:py-24">
           <div className="w-full max-w-[1408px] 1600:max-w-[1500px] 1700:max-w-[1600px] 1800:max-w-[1700px] 1900:max-w-[1800px] 1920:max-w-[1900px] relative z-10">
 
             {/* Header Section */}

@@ -80,7 +80,7 @@ export default function MoonshotSection() {
         <GridLines />
         {/* Moonshot Title */}
         <motion.div
-          className="text-[#FCFCFC] font-britti-sans font-normal text-center pt-12 lg:pt-24 text-2xl sm:text-3xl lg:text-[40px] leading-tight lg:leading-[48px] relative z-20"
+          className="text-[#FCFCFC] font-britti-sans font-normal text-center pt-12 lg:pt-24 text-3xl lg:text-5xl max-[1064px]:lg:text-4xl xl:text-5xl leading-tight tracking-tight relative z-20"
           animate={textControls}
           variants={textVariants}
           initial="hidden"
@@ -90,7 +90,7 @@ export default function MoonshotSection() {
 
         {/* Moonshot Description */}
         <motion.div
-          className="flex flex-col justify-center text-[#FCFCFC] font-britti-sans font-normal text-center mt-4 lg:mt-12 px-4 lg:px-0 text-sm sm:text-base lg:text-[16px] leading-relaxed lg:leading-[17px] max-w-4xl mx-auto relative z-20"
+          className="flex flex-col justify-center text-[#FCFCFC] font-britti-sans font-normal text-center mt-4 lg:mt-12 px-4 lg:px-0 leading-relaxed max-w-4xl mx-auto relative z-20"
           animate={textControls}
           variants={{
             hidden: {

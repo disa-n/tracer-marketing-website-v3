@@ -81,7 +81,7 @@ const ReusablePageHero = ({
           alt={imageAlt}
           width={800}
           height={567}
-          className={`absolute ${variant === 'mirrored' ? 'right-0 scale-x-[-1]' : 'left-0'} top-0 aspect-[775/567] w-full max-w-[480px] max-sm:hidden sm:max-w-[480px] 1000:max-w-[775px]`}
+          className={`absolute ${variant === 'mirrored' ? 'right-0 scale-x-[-1]' : 'left-0'} top-0 aspect-[775/567] w-full max-w-[480px] max-sm:hidden sm:max-w-[480px] 1000:max-w-[775px] ${imageSrc.includes('Tracer-brain') ? 'lg:scale-[1.15] lg:translate-x-4 lg:translate-y-3 xl:scale-[1.25] xl:translate-x-6 xl:translate-y-4 2xl:scale-[1.35] 2xl:translate-x-8 2xl:translate-y-6' : ''}`}
           variants={imageVariant}
           initial="hidden"
           animate={imageAnimated ? 'visible' : 'hidden'}
@@ -91,7 +91,7 @@ const ReusablePageHero = ({
           alt={imageAlt}
           width={800}
           height={567}
-          className={`absolute ${variant === 'mirrored' ? 'right-0 translate-x-14 400:translate-x-0 scale-x-[-1]' : 'left-0 -translate-x-14 400:translate-x-0'} top-0 aspect-[775/567] w-full min-w-[400px] max-w-[400px] 500:max-w-[400px] sm:hidden`}
+          className={`absolute ${variant === 'mirrored' ? 'right-0 translate-x-14 400:translate-x-0 scale-x-[-1]' : 'left-0 -translate-x-14 400:translate-x-0'} top-0 aspect-[775/567] w-full min-w-[400px] max-w-[400px] 500:max-w-[400px] sm:hidden ${imageSrc.includes('Tracer-brain') ? 'scale-[1.2]' : ''}`}
           variants={imageVariant}
           initial="hidden"
           animate={imageAnimated ? 'visible' : 'hidden'}

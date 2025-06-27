@@ -13,8 +13,8 @@ const Footer = () => {
         <div className='flex w-full flex-col items-center justify-center bg-[#FCFCFC]'>
             <div className="w-full px-4 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
                 <div className="flex w-full flex-col items-end justify-between gap-[48px] sm:gap-[72px] pb-3 pt-[32px] md:flex-row md:items-start md:gap-0 md:pb-[168px]">
-                    <div className="grid w-full grid-cols-2 gap-8 sm:gap-12 text-c-black md:w-fit md:grid-cols-[240px_224px_144px_200px] md:gap-0">
-                        <div className="col-span-2 md:col-span-1">
+                    <div className="grid w-full grid-cols-3 gap-4 sm:gap-8 text-c-black md:w-fit md:grid-cols-[240px_224px_144px_200px] md:gap-0">
+                        <div className="col-span-3 md:col-span-1">
                             <Image src={"/shared/tracer-logo-black.png"} alt="tracer-logo-black" width={140} height={30} className="w-full max-w-[100px] sm:max-w-[114px]" />
                         </div>
                         <div>
