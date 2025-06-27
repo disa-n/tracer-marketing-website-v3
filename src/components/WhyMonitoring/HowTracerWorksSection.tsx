@@ -6,7 +6,7 @@ import PrimaryButton from '@/components/ui/PrimaryButton';
 
 export default function HowTracerWorksSection() {
   return (
-    <section className="relative bg-[#FCFCFC] pt-20 pb-6 lg:pb-20">
+    <section className="relative bg-[#FCFCFC] pt-20 pb-6 md:pt-36 md:pb-36">
       {/* Background GridLines */}
       <div className="absolute inset-0 z-0" style={{ top: "0.5px" }}>
         <GridLinesLight />
@@ -41,85 +41,85 @@ export default function HowTracerWorksSection() {
         {/* Right Column - Content Blocks */}
         <div className="relative z-10 w-full lg:flex-1 px-4 md:px-8 lg:px-6 2xl:px-2">
           <div className="space-y-12">
-              {/* Block 1 */}
-              <div className="space-y-6">
-                {/* Step Number and Title - aligned horizontally */}
-                <div className="flex items-start gap-3">
-                  <div className="font-chakra-petch text-[#202020] font-normal leading-none tracking-tight pt-1
+            {/* Block 1 */}
+            <div className="space-y-6">
+              {/* Step Number and Title - aligned horizontally */}
+              <div className="flex items-start gap-3">
+                <div className="font-chakra-petch text-[#202020] font-normal leading-none tracking-tight pt-1
                                   text-[36px] sm:text-[40px] md:text-[46px] lg:text-[52px] xl:text-[60px] 2xl:text-[68px]
                                   w-[60px] sm:w-[70px] md:w-[80px] lg:w-[90px] xl:w-[100px] 2xl:w-[110px] flex-shrink-0">
-                    01
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-britti-sans text-[#202020] font-medium leading-[1.1] tracking-tight
+                  01
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-britti-sans text-[#202020] font-medium leading-[1.1] tracking-tight
                                    text-[24px] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[40px]">
-                      Built For The Most Complex<br className="hidden lg:block" /> Computing Systems
-                    </h3>
+                    Built For The Most Complex<br className="hidden lg:block" /> Computing Systems
+                  </h3>
 
-                    {/* Description - aligned with title */}
-                    <div className="space-y-4 mt-6">
-                      <p className="font-britti-sans text-[#888888] font-normal
+                  {/* Description - aligned with title */}
+                  <div className="space-y-4 mt-6">
+                    <p className="font-britti-sans text-[#888888] font-normal
                                     text-sm sm:text-base md:text-lg leading-relaxed max-w-[600px]">
-                        Tracer uses eBPF-powered OS-level extraction technologies to reach actionable insights other tools miss.
-                      </p>
-                      <p className="font-britti-sans text-[#888888] font-normal
+                      Tracer uses eBPF-powered OS-level extraction technologies to reach actionable insights other tools miss.
+                    </p>
+                    <p className="font-britti-sans text-[#888888] font-normal
                                     text-sm sm:text-base md:text-lg leading-relaxed max-w-[600px]">
-                        What others can&apos;t see, we extract, transform, and explain.
-                      </p>
-                    </div>
+                      What others can&apos;t see, we extract, transform, and explain.
+                    </p>
+                  </div>
 
-                    {/* CTA Button - aligned with title */}
-                    <div className="pt-4">
-                      <Link href="/technology">
-                        <PrimaryButton
-                          title="See our Technology"
-                          className="w-full lg:w-[180px] bg-[#E8E8E8] text-[#202020] hover:bg-[#E8E8E8]/80 whitespace-nowrap"
-                        />
-                      </Link>
-                    </div>
+                  {/* CTA Button - aligned with title */}
+                  <div className="pt-4">
+                    <Link href="/technology">
+                      <PrimaryButton
+                        title="See our Technology"
+                        className="w-full lg:w-[180px] bg-[#E8E8E8] text-[#202020] hover:bg-[#E8E8E8]/80 whitespace-nowrap"
+                      />
+                    </Link>
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* Block 2 */}
-              <div className="space-y-6">
-                {/* Step Number and Title - aligned horizontally */}
-                <div className="flex items-start gap-3">
-                  <div className="font-chakra-petch text-[#202020] font-normal leading-none tracking-tight pt-1
+            {/* Block 2 */}
+            <div className="space-y-6">
+              {/* Step Number and Title - aligned horizontally */}
+              <div className="flex items-start gap-3">
+                <div className="font-chakra-petch text-[#202020] font-normal leading-none tracking-tight pt-1
                                   text-[36px] sm:text-[40px] md:text-[46px] lg:text-[52px] xl:text-[60px] 2xl:text-[68px]
                                   w-[60px] sm:w-[70px] md:w-[80px] lg:w-[90px] xl:w-[100px] 2xl:w-[110px] flex-shrink-0">
-                    02
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-britti-sans text-[#202020] font-medium leading-[1.1] tracking-tight
+                  02
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-britti-sans text-[#202020] font-medium leading-[1.1] tracking-tight
                                    text-[24px] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[40px]">
-                      Move Fast Without Losing<br className="hidden lg:block" /> Control
-                    </h3>
+                    Move Fast Without Losing<br className="hidden lg:block" /> Control
+                  </h3>
 
-                    {/* Description - aligned with title */}
-                    <div className="space-y-4 mt-6">
-                      <p className="font-britti-sans text-[#888888] font-normal
+                  {/* Description - aligned with title */}
+                  <div className="space-y-4 mt-6">
+                    <p className="font-britti-sans text-[#888888] font-normal
                                     text-sm sm:text-base md:text-lg leading-relaxed max-w-[600px]">
-                        Tracer reveals what&apos;s happening in compute environments as they run, helping teams ship, scale, and debug with confidence.
-                      </p>
-                      <p className="font-britti-sans text-[#888888] font-normal
+                      Tracer reveals what&apos;s happening in compute environments as they run, helping teams ship, scale, and debug with confidence.
+                    </p>
+                    <p className="font-britti-sans text-[#888888] font-normal
                                     text-sm sm:text-base md:text-lg leading-relaxed max-w-[600px]">
-                        No guesswork. No blind spots. Just real-time visibility when you need it most.
-                      </p>
-                    </div>
+                      No guesswork. No blind spots. Just real-time visibility when you need it most.
+                    </p>
+                  </div>
 
-                    {/* CTA Button - aligned with title */}
-                    <div className="pt-4">
-                      <Link href="/demo">
-                        <PrimaryButton
-                          title="Get a Demo"
-                          className="w-full lg:w-[180px] bg-[#E8E8E8] text-[#202020] hover:bg-[#E8E8E8]/80"
-                        />
-                      </Link>
-                    </div>
+                  {/* CTA Button - aligned with title */}
+                  <div className="pt-4">
+                    <Link href="/demo">
+                      <PrimaryButton
+                        title="Get a Demo"
+                        className="w-full lg:w-[180px] bg-[#E8E8E8] text-[#202020] hover:bg-[#E8E8E8]/80"
+                      />
+                    </Link>
                   </div>
                 </div>
               </div>
+            </div>
           </div>
         </div>
 

@@ -10,7 +10,7 @@ export default function ScienceNeedsInfoSection() {
 
       {/* Main Section */}
       <section className="relative w-full bg-[#FCFCFC] overflow-hidden">
-        <div className="flex flex-col justify-center pt-16 md:pt-24 pb-2 md:pb-4">
+        <div className="flex flex-col justify-center pt-16 pb-2 md:pt-36 md:pb-4">
           <div className="px-4 md:px-8 lg:px-12">
             <div className="max-w-[1400px] w-full">
               {/* Main Title - matching "From Fragments To Full Visibility With Tracer" styling */}

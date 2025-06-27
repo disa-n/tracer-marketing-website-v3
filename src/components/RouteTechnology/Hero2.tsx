@@ -67,7 +67,7 @@ const Hero2 = () => {
   }, [imageAnimated])
 
   return (
-    <div className='bg-white' ref={ref}>
+    <div className='relative bg-white py-10 md:pt-36 md:pb-8' ref={ref}>
       <div className='relative mx-auto grid w-full grid-cols-1 grid-rows-[290px_auto] 1000:grid-cols-[0.52fr_1fr] 1000:grid-rows-[380px_187px_auto]'>
         <motion.img
           src="/technology/T-Asset-Satellite.webp"
@@ -117,6 +117,8 @@ const Hero2 = () => {
         </div>
         <div className='z-[10] bg-white' />
       </div>
+      {/* Dark rectangle at bottom of section margin space - hidden on mobile/stacked view */}
+      <div className='absolute bottom-0 left-0 w-1/4 h-16 bg-[#202020] z-20 hidden lg:block' />
     </div>
   )
 }

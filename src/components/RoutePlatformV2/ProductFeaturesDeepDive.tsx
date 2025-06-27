@@ -138,7 +138,7 @@ const ProductFeaturesDeepDive = () => {
         <GridLines3 />
       </div>
       <div className='w-full flex z-[10] flex-col items-center justify-center max-w-[1800px] px-6 900:px-8 mx-auto'>
-        <div className="relative z-10 py-16 lg:py-28 w-full">
+        <div className="relative z-10 py-10 md:pt-36 md:pb-36 w-full">
           {/* Section Header */}
           <div className="mb-12 lg:mb-16">
             <h2 className="font-britti-sans text-[32px] sm:text-[40px] lg:text-[48px] font-normal leading-[1.1] tracking-[-0.01em] text-black mb-6">

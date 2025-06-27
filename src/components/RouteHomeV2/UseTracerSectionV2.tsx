@@ -59,7 +59,7 @@ export default function UseTracerSectionV2() {
         </div>
         {/* Left Column: Text Content - contained within max-w container - First on mobile */}
         <div className="w-full lg:w-auto order-1 lg:order-1">
-          <div className="flex flex-col justify-center pt-10 pb-8 sm:pt-14 sm:pb-18 lg:pt-24 lg:pb-22 xl:pt-28 xl:pb-30">
+          <div className="flex flex-col justify-center pt-6 pb-8 sm:pt-10 sm:pb-18 lg:pt-16 lg:pb-22 xl:pt-20 xl:pb-30">
             <div className="px-4 md:px-8 lg:px-12">
               <div className="max-w-[1400px] w-full">
                 {/* Main text paragraph */}

@@ -13,7 +13,7 @@ interface StandardCtaProps {
   overlayMobileHeight?: string;
 }
 
-const StandardCta = ({ 
+const StandardCta = ({
   imageSrc = "/home/demo-home-car.png",
   imageAlt = "demo-car",
   mobileImageSrc,
@@ -32,7 +32,7 @@ const StandardCta = ({
             <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end sm:gap-2 xl:gap-0">
               <div className="space-y-2 md:space-y-4">
                 <span className="font-chakra-petch text-sm sm:text-sm md:text-sm lg:text-sm xl:text-sm 2xl:text-base font-normal uppercase leading-[19px] tracking-[-1%] text-[#202020]">
-                  get a personalized demo
+                  get a personalised demo
                 </span>
                 <h3 className="font-britti-sans text-[32px] sm:text-[32px] md:text-[56px] lg:text-[56px] xl:text-[56px] 2xl:text-[56px] font-normal leading-[30px] tracking-[-2%] text-[#202020] lg:leading-[56px]">
                   Ready to see Tracer in action?

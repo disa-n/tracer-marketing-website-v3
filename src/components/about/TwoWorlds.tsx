@@ -41,7 +41,7 @@ export default function FoundersSection({ }: FoundersSectionProps) {
                 Vincent, an engineer working at the intersection of software and biomechanics, kept running into infrastructure issues that slowed his work. Laura, advising leading life sciences organisations at McKinsey, saw those same slowdowns across the industry.
               </p>
               <p>
-                Driven by their shared frustration, they joined forces to build the world&apos;s first verticalized observability platform, purpose-built for scientific computing.
+                Driven by their shared frustration, they joined forces to build the world&apos;s first verticalised observability platform, purpose-built for scientific computing.
               </p>
             </div>
           </div>
