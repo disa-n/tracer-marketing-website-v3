@@ -179,8 +179,18 @@ export default function HeroSectionV2() {
               <a
                 href="/product"
                 className="inline-flex items-center justify-center w-full sm:w-auto px-6 h-[40px] sm:px-8 sm:h-[49px]
-                         bg-[#202020] text-[#FCFCFC] font-britti-sans text-sm sm:text-base !font-[400]
-                         hover:bg-[#303030] transition-colors duration-200"
+                         text-[#FCFCFC] font-britti-sans text-sm sm:text-base !font-[400]
+                         transition-colors duration-200"
+                style={{
+                  background: 'rgba(80, 80, 80, 0.7)',
+                  backdropFilter: 'blur(4px)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(80, 80, 80, 0.9)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(80, 80, 80, 0.7)';
+                }}
               >
                 Get a Demo
               </a>
