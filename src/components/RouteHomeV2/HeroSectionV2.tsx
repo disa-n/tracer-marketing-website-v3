@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { GridLinesHero } from '@/components/shared/GridLines';
+import GridLines from '@/components/shared/GridLines';
 import ShinyCTAButton from '@/components/shared/ShinyCTAButton';
 
 export default function HeroSectionV2() {
@@ -112,9 +112,9 @@ export default function HeroSectionV2() {
     }
   }, [isComplete, isErasing]);
 
-  // Cursor blinking effect - show when typing or erasing
+  // Cursor blinking effect - show when typing, erasing, or after completion
   useEffect(() => {
-    if (startTyping && !isComplete) {
+    if (startTyping) {
       const cursorTimer = setInterval(() => {
         setShowCursor(prev => !prev);
       }, 500);
@@ -122,10 +122,10 @@ export default function HeroSectionV2() {
     } else {
       setShowCursor(false);
     }
-  }, [startTyping, isComplete]);
+  }, [startTyping]);
   return (
-    <section className="relative bg-[#FCFCFC] min-h-screen 300:min-h-[70vh] 400:min-h-[65vh] xs:min-h-[60vh] sm:min-h-[55vh] lg:min-h-screen">
-      <GridLinesHero />
+    <section className="relative bg-[#141414] min-h-screen 300:min-h-[70vh] 400:min-h-[65vh] xs:min-h-[60vh] sm:min-h-[55vh] lg:min-h-screen">
+      <GridLines />
       <div className="relative z-10 w-full max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 900:px-8 pb-0 300:pb-0 400:pb-0 xs:pb-0 sm:pb-0 lg:pb-0">
 
         <div className="flex flex-col lg:flex-row min-h-screen 300:min-h-[85vh] 400:min-h-[80vh] xs:min-h-[75vh] sm:min-h-[70vh] lg:min-h-screen" style={{ minHeight: '750px' }}>
@@ -134,10 +134,10 @@ export default function HeroSectionV2() {
 
             {/* Mobile Hero Image - Above title, extending off-screen - Only shows on smallest mobile screens */}
             <div className="block sm:hidden -mb-2 300:-mb-3 400:-mb-3 xs:-mb-3 sm:-mb-2 mt-32 300:mt-28 400:mt-24 xs:mt-20 sm:mt-24 relative -mx-4 sm:-mx-6 md:-mx-8 overflow-hidden">
-              <div className="relative w-[800px] 300:w-[900px] 400:w-[950px] xs:w-[1100px] sm:w-[1200px] h-[320px] 300:h-[360px] 400:h-[380px] xs:h-[440px] sm:h-[480px] -translate-x-[60px] 300:-translate-x-[70px] 400:-translate-x-[75px] xs:-translate-x-[70px] sm:-translate-x-[60px]">
+              <div className="relative w-[800px] 300:w-[900px] 400:w-[950px] xs:w-[1100px] sm:w-[1200px] h-[320px] 300:h-[360px] 400:h-[380px] xs:h-[440px] sm:h-[480px] -translate-x-[120px] 300:-translate-x-[130px] 400:-translate-x-[135px] xs:-translate-x-[130px] sm:-translate-x-[120px]">
                 <Image
-                  src="/home/spaceship-shuttle.webp"
-                  alt="Spaceship shuttle representing advanced monitoring technology"
+                  src="/home/T-Asset-Spacecraft_7 1.webp"
+                  alt="Spacecraft representing advanced monitoring technology"
                   fill
                   className="object-contain"
                   priority
@@ -146,39 +146,23 @@ export default function HeroSectionV2() {
             </div>
 
             {/* Main Heading with Typewriter Effect on Last Line */}
-            <h1 className="font-chakra-petch text-[32px] 350:text-[36px] 400:text-[44px] xs:text-[52px] sm:text-[56px] md:text-[60px] lg:text-[70px] 1100:text-[80px] 1300:text-[104px] !font-[400] leading-[0.9] tracking-tighter text-[#202020] mb-3 300:mb-3 400:mb-4 xs:mb-3 sm:mb-4 lg:mb-4 whitespace-nowrap -mt-8 300:-mt-12 400:-mt-16 xs:-mt-12 sm:mt-8 md:mt-16 lg:mt-0">
+            <h1 className="font-chakra-petch text-[32px] 350:text-[36px] 400:text-[44px] xs:text-[52px] sm:text-[56px] md:text-[60px] lg:text-[70px] 1100:text-[80px] 1300:text-[104px] !font-[400] leading-[0.9] tracking-tighter text-white mb-3 300:mb-3 400:mb-4 xs:mb-3 sm:mb-4 lg:mb-4 whitespace-nowrap -mt-8 300:-mt-12 400:-mt-16 xs:-mt-12 sm:mt-8 md:mt-16 lg:mt-0">
               Next-Gen Monitoring<br />
               <div className="flex justify-center lg:justify-start">
                 <span className="relative inline-block whitespace-nowrap min-w-[140px] 300:min-w-[160px] 400:min-w-[180px] xs:min-w-[240px] sm:min-w-[320px] md:min-w-[420px] lg:min-w-[520px] xl:min-w-[620px] text-center lg:text-left min-h-[1.2em]">
-                  <span className="bg-gradient-to-r from-[#3A23ED] via-[#BF5198] to-[#FFA231] bg-clip-text text-transparent">
+                  <span className="text-white">
                     {displayedText || '\u00A0'}
-                    {!isComplete && startTyping && (
-                      <span className={`inline-block w-[2px] 400:w-[3px] h-[0.8em] bg-gradient-to-r from-[#3A23ED] via-[#BF5198] to-[#FFA231] ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`} />
+                    {startTyping && (
+                      <span className={`inline-block w-[2px] 400:w-[3px] h-[0.8em] bg-white ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`} />
                     )}
                   </span>
-                  {startPulse && (
-                    <span
-                      className="absolute inset-0 bg-gradient-to-r from-[#3A23ED] via-[#BF5198] to-[#FFA231] bg-clip-text text-transparent"
-                      style={{
-                        filter: 'brightness(2.5) saturate(0.3)',
-                        maskImage: 'linear-gradient(90deg, transparent 0%, transparent 35%, white 50%, transparent 65%, transparent 100%)',
-                        WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, transparent 35%, white 50%, transparent 65%, transparent 100%)',
-                        maskSize: '300% 100%',
-                        WebkitMaskSize: '300% 100%',
-                        maskRepeat: 'no-repeat',
-                        WebkitMaskRepeat: 'no-repeat',
-                        animation: 'gradient-sweep-lr 4s ease-in-out infinite'
-                      }}
-                    >
-                      {displayedText}
-                    </span>
-                  )}
+
                 </span>
               </div>
             </h1>
 
             {/* Supporting Text */}
-            <p className="font-britti-sans text-sm 300:text-sm 400:text-base xs:text-base sm:text-base md:text-base font-[400] text-[#888888] leading-[1.4] max-w-[320px] 300:max-w-[380px] 400:max-w-[420px] xs:max-w-[500px] sm:max-w-[480px] md:max-w-[630px] mb-6 300:mb-7 400:mb-8 xs:mb-5 sm:mb-6 lg:mb-6 px-2 -mt-1 300:-mt-2 400:-mt-2 xs:-mt-2 sm:-mt-3 lg:-mt-3 text-center lg:text-left mx-auto lg:mx-0">
+            <p className="font-britti-sans text-sm 300:text-sm 400:text-base xs:text-base sm:text-base md:text-base font-[400] text-[#CCCCCC] leading-[1.4] max-w-[320px] 300:max-w-[380px] 400:max-w-[420px] xs:max-w-[500px] sm:max-w-[480px] md:max-w-[630px] mb-6 300:mb-7 400:mb-8 xs:mb-5 sm:mb-6 lg:mb-6 px-2 -mt-1 300:-mt-2 400:-mt-2 xs:-mt-2 sm:-mt-3 lg:-mt-3 text-center lg:text-left mx-auto lg:mx-0">
               Accelerate bioinformatics with real-time pipeline insights.
               <br className="block" />
               Built for precision, scale, and HPC-native environments.
@@ -220,10 +204,10 @@ export default function HeroSectionV2() {
 
           {/* Image Column - Desktop and larger screens only */}
           <div className="hidden lg:flex lg:absolute lg:right-0 lg:top-0 lg:w-full lg:h-full lg:items-center lg:justify-end lg:pointer-events-none lg:z-0">
-            <div className="relative lg:w-[1800px] xl:w-[2100px] 2xl:w-[2400px] lg:h-[1800px] xl:h-[2100px] 2xl:h-[2400px] lg:translate-x-[450px] lg:translate-y-[150px] xl:translate-x-[550px] xl:translate-y-[170px] 2xl:translate-x-[650px] 2xl:translate-y-[200px]">
+            <div className="relative lg:w-[1800px] xl:w-[2100px] 2xl:w-[2400px] lg:h-[1800px] xl:h-[2100px] 2xl:h-[2400px] lg:translate-x-[200px] lg:translate-y-[150px] xl:translate-x-[250px] xl:translate-y-[170px] 2xl:translate-x-[300px] 2xl:translate-y-[200px]">
               <Image
-                src="/home/spaceship-shuttle.webp"
-                alt="Spaceship shuttle representing advanced monitoring technology"
+                src="/home/T-Asset-Spacecraft_7 1.webp"
+                alt="Spacecraft representing advanced monitoring technology"
                 fill
                 className="object-contain"
                 priority
