@@ -25,6 +25,12 @@ export const EmailSignup: React.FC<EmailSignupProps> = ({
     e.preventDefault();
     setIsLoading(true);
 
+    if (!supabase) {
+      console.error('Supabase client not available');
+      setIsLoading(false);
+      return;
+    }
+
     const { error } = await supabase
       .from('email_signups')
       .insert([{ email }]);
