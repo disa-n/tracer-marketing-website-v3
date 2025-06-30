@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { GridLinesHero } from '@/components/shared/GridLines';
+import GridLines from '@/components/shared/GridLines';
 import ShinyCTAButton from '@/components/shared/ShinyCTAButton';
 
 export default function HeroSectionV2() {
@@ -124,8 +124,8 @@ export default function HeroSectionV2() {
     }
   }, [startTyping, isComplete]);
   return (
-    <section className="relative bg-[#FCFCFC] min-h-screen 300:min-h-[70vh] 400:min-h-[65vh] xs:min-h-[60vh] sm:min-h-[55vh] lg:min-h-screen">
-      <GridLinesHero />
+    <section className="relative bg-[#141414] min-h-screen 300:min-h-[70vh] 400:min-h-[65vh] xs:min-h-[60vh] sm:min-h-[55vh] lg:min-h-screen">
+      <GridLines />
       <div className="relative z-10 w-full max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 900:px-8 pb-0 300:pb-0 400:pb-0 xs:pb-0 sm:pb-0 lg:pb-0">
 
         <div className="flex flex-col lg:flex-row min-h-screen 300:min-h-[85vh] 400:min-h-[80vh] xs:min-h-[75vh] sm:min-h-[70vh] lg:min-h-screen" style={{ minHeight: '750px' }}>
@@ -134,10 +134,10 @@ export default function HeroSectionV2() {
 
             {/* Mobile Hero Image - Above title, extending off-screen - Only shows on smallest mobile screens */}
             <div className="block sm:hidden -mb-2 300:-mb-3 400:-mb-3 xs:-mb-3 sm:-mb-2 mt-32 300:mt-28 400:mt-24 xs:mt-20 sm:mt-24 relative -mx-4 sm:-mx-6 md:-mx-8 overflow-hidden">
-              <div className="relative w-[800px] 300:w-[900px] 400:w-[950px] xs:w-[1100px] sm:w-[1200px] h-[320px] 300:h-[360px] 400:h-[380px] xs:h-[440px] sm:h-[480px] -translate-x-[60px] 300:-translate-x-[70px] 400:-translate-x-[75px] xs:-translate-x-[70px] sm:-translate-x-[60px]">
+              <div className="relative w-[800px] 300:w-[900px] 400:w-[950px] xs:w-[1100px] sm:w-[1200px] h-[420px] 300:h-[460px] 400:h-[480px] xs:h-[540px] sm:h-[580px] -translate-x-[160px] 300:-translate-x-[170px] 400:-translate-x-[175px] xs:-translate-x-[170px] sm:-translate-x-[160px] -translate-y-[20px]">
                 <Image
-                  src="/home/spaceship-shuttle.webp"
-                  alt="Spaceship shuttle representing advanced monitoring technology"
+                  src="/home/T-Asset-Spacecraft_7 1.webp"
+                  alt="Spacecraft representing advanced monitoring technology"
                   fill
                   className="object-contain"
                   priority
@@ -146,39 +146,22 @@ export default function HeroSectionV2() {
             </div>
 
             {/* Main Heading with Typewriter Effect on Last Line */}
-            <h1 className="font-chakra-petch text-[32px] 350:text-[36px] 400:text-[44px] xs:text-[52px] sm:text-[56px] md:text-[60px] lg:text-[70px] 1100:text-[80px] 1300:text-[104px] !font-[400] leading-[0.9] tracking-tighter text-[#202020] mb-3 300:mb-3 400:mb-4 xs:mb-3 sm:mb-4 lg:mb-4 whitespace-nowrap -mt-8 300:-mt-12 400:-mt-16 xs:-mt-12 sm:mt-8 md:mt-16 lg:mt-0">
+            <h1 className="font-chakra-petch text-[32px] 350:text-[36px] 400:text-[44px] xs:text-[52px] sm:text-[56px] md:text-[60px] lg:text-[70px] 1100:text-[80px] 1300:text-[104px] !font-[400] leading-[0.9] tracking-tighter text-white mb-3 300:mb-3 400:mb-4 xs:mb-3 sm:mb-4 lg:mb-4 whitespace-nowrap -mt-8 300:-mt-12 400:-mt-16 xs:-mt-12 sm:mt-8 md:mt-16 lg:mt-0">
               Next-Gen Monitoring<br />
               <div className="flex justify-center lg:justify-start">
                 <span className="relative inline-block whitespace-nowrap min-w-[140px] 300:min-w-[160px] 400:min-w-[180px] xs:min-w-[240px] sm:min-w-[320px] md:min-w-[420px] lg:min-w-[520px] xl:min-w-[620px] text-center lg:text-left min-h-[1.2em]">
-                  <span className="bg-gradient-to-r from-[#3A23ED] via-[#BF5198] to-[#FFA231] bg-clip-text text-transparent">
+                  <span className="text-white">
                     {displayedText || '\u00A0'}
                     {!isComplete && startTyping && (
-                      <span className={`inline-block w-[2px] 400:w-[3px] h-[0.8em] bg-gradient-to-r from-[#3A23ED] via-[#BF5198] to-[#FFA231] ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`} />
+                      <span className={`inline-block w-[2px] 400:w-[3px] h-[0.8em] bg-white ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`} />
                     )}
                   </span>
-                  {startPulse && (
-                    <span
-                      className="absolute inset-0 bg-gradient-to-r from-[#3A23ED] via-[#BF5198] to-[#FFA231] bg-clip-text text-transparent"
-                      style={{
-                        filter: 'brightness(2.5) saturate(0.3)',
-                        maskImage: 'linear-gradient(90deg, transparent 0%, transparent 35%, white 50%, transparent 65%, transparent 100%)',
-                        WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, transparent 35%, white 50%, transparent 65%, transparent 100%)',
-                        maskSize: '300% 100%',
-                        WebkitMaskSize: '300% 100%',
-                        maskRepeat: 'no-repeat',
-                        WebkitMaskRepeat: 'no-repeat',
-                        animation: 'gradient-sweep-lr 4s ease-in-out infinite'
-                      }}
-                    >
-                      {displayedText}
-                    </span>
-                  )}
                 </span>
               </div>
             </h1>
 
             {/* Supporting Text */}
-            <p className="font-britti-sans text-sm 300:text-sm 400:text-base xs:text-base sm:text-base md:text-base font-[400] text-[#888888] leading-[1.4] max-w-[320px] 300:max-w-[380px] 400:max-w-[420px] xs:max-w-[500px] sm:max-w-[480px] md:max-w-[630px] mb-6 300:mb-7 400:mb-8 xs:mb-5 sm:mb-6 lg:mb-6 px-2 -mt-1 300:-mt-2 400:-mt-2 xs:-mt-2 sm:-mt-3 lg:-mt-3 text-center lg:text-left mx-auto lg:mx-0">
+            <p className="font-britti-sans text-lg 300:text-lg 400:text-xl xs:text-xl sm:text-xl md:text-xl font-[400] text-[#CCCCCC] leading-[1.4] max-w-[320px] 300:max-w-[380px] 400:max-w-[420px] xs:max-w-[500px] sm:max-w-[480px] md:max-w-[630px] mb-6 300:mb-7 400:mb-8 xs:mb-5 sm:mb-6 lg:mb-6 px-2 -mt-1 300:-mt-2 400:-mt-2 xs:-mt-2 sm:-mt-3 lg:-mt-3 text-center lg:text-left mx-auto lg:mx-0">
               Accelerate bioinformatics with real-time pipeline insights.
               <br className="block" />
               Built for precision, scale, and HPC-native environments.
@@ -197,20 +180,12 @@ export default function HeroSectionV2() {
               <a
                 href="/product"
                 className="inline-flex items-center justify-center w-[48%] sm:w-auto px-4 300:px-5 400:px-6 sm:px-8
-                         text-[#FCFCFC] font-britti-sans text-sm 300:text-sm 400:text-base sm:text-lg !font-[400]
-                         transition-colors duration-200 demo-button-height"
+                         bg-[#E8E8E8] text-black font-britti-sans text-sm 300:text-sm 400:text-base sm:text-lg !font-[400]
+                         hover:bg-[#D8D8D8] transition-colors duration-200 demo-button-height"
                 style={{
-                  background: 'rgba(80, 80, 80, 0.7)',
-                  backdropFilter: 'blur(4px)',
                   '--mobile-height': '40px',
                   '--desktop-height': '55px',
                 } as React.CSSProperties}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(80, 80, 80, 0.9)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(80, 80, 80, 0.7)';
-                }}
               >
                 Get a Demo
               </a>
@@ -220,10 +195,10 @@ export default function HeroSectionV2() {
 
           {/* Image Column - Desktop and larger screens only */}
           <div className="hidden lg:flex lg:absolute lg:right-0 lg:top-0 lg:w-full lg:h-full lg:items-center lg:justify-end lg:pointer-events-none lg:z-0">
-            <div className="relative lg:w-[1800px] xl:w-[2100px] 2xl:w-[2400px] lg:h-[1800px] xl:h-[2100px] 2xl:h-[2400px] lg:translate-x-[450px] lg:translate-y-[150px] xl:translate-x-[550px] xl:translate-y-[170px] 2xl:translate-x-[650px] 2xl:translate-y-[200px]">
+            <div className="relative lg:w-[1800px] xl:w-[2100px] 2xl:w-[2400px] lg:h-[2200px] xl:h-[2500px] 2xl:h-[2800px] lg:translate-x-[150px] lg:translate-y-[100px] xl:translate-x-[200px] xl:translate-y-[120px] 2xl:translate-x-[250px] 2xl:translate-y-[150px]">
               <Image
-                src="/home/spaceship-shuttle.webp"
-                alt="Spaceship shuttle representing advanced monitoring technology"
+                src="/home/T-Asset-Spacecraft_7 1.webp"
+                alt="Spacecraft representing advanced monitoring technology"
                 fill
                 className="object-contain"
                 priority
@@ -234,8 +209,7 @@ export default function HeroSectionV2() {
         </div>
       </div>
 
-      {/* Dark grey box - desktop only */}
-      <div className="hidden lg:block absolute bottom-0 left-0 2xl:-left-20 w-[45%] 2xl:w-[calc(45%+5rem)] h-[100px] bg-[#141414] z-[20]"></div>
+
     </section>
   );
 }
