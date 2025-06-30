@@ -209,12 +209,12 @@ const Monitoring = () => {
                     <motion.div className='flex flex-col h-full' variants={firstCardVariants}>
                         <div className='w-full bg-white px-4 pt-4 md:px-3 md:pt-3'>
                             <div className='h-[215px] w-full bg-main-background relative'
-                                 style={{
-                                     height: getCardHeight()
-                                 }}>
+                                style={{
+                                    height: getCardHeight()
+                                }}>
                                 <Image
                                     src="/platform/predict-and-optimise.svg"
-                                    alt="Predict and optimize compute requirements"
+                                    alt="Predict and optimise compute requirements"
                                     fill
                                     className="object-cover object-top-left"
                                 />
@@ -232,10 +232,10 @@ const Monitoring = () => {
                                 </div>
                                 <div className="w-full">
                                     <h2 className='font-britti-sans text-[24px] font-[400] leading-[0.9] md:text-[32px]'>
-                                        Predict and optimize <br className="sm:hidden" /> compute requirements
+                                        Predict and optimise <br className="sm:hidden" /> compute requirements
                                     </h2>
                                     <p className='mt-2 max-w-[560px] font-britti-sans text-sm font-[400] leading-[1.1] text-c-black md:mt-3 md:text-[16px]'>
-                                        Forecast the exact running time and compute needs of your pipelines. Further optimize your underutilized instances and increase the usage of AI models in a cost-efficient manner
+                                        Forecast the exact running time and compute needs of your pipelines. Further optimise your underutilised instances and increase the usage of AI models in a cost-efficient manner
                                     </p>
                                 </div>
                             </div>
@@ -245,9 +245,9 @@ const Monitoring = () => {
                     <motion.div className='flex flex-col h-full' variants={secondCardVariants}>
                         <div className='w-full border-l border-[#E8E8E8] bg-[#FCFCFC] px-4 pt-4 text-black md:px-3 md:pt-3'>
                             <div className='h-[215px] w-full bg-main-background relative'
-                                 style={{
-                                     height: getCardHeight()
-                                 }}>
+                                style={{
+                                    height: getCardHeight()
+                                }}>
                                 <Image
                                     src="/platform/total-visibility.svg"
                                     alt="Total visibility into computational infrastructure"
@@ -281,9 +281,9 @@ const Monitoring = () => {
                     <motion.div className='flex flex-col h-full' variants={thirdCardVariants}>
                         <div className='w-full border-l border-[#E8E8E8] bg-[#FCFCFC] px-4 pt-4 md:px-3 md:pt-3'>
                             <div className='h-[215px] w-full bg-main-background relative'
-                                 style={{
-                                     height: getCardHeight()
-                                 }}>
+                                style={{
+                                    height: getCardHeight()
+                                }}>
                                 <Image
                                     src="/platform/fix-issues.svg"
                                     alt="Fix issues instantly"

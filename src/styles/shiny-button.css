@@ -71,6 +71,24 @@ https://ryanmulligan.dev/blog/css-property-new-style/
   }
 }
 
+/* Demo button height matching */
+.demo-button-height {
+  height: var(--mobile-height);
+}
+
+@media (min-width: 640px) {
+  .demo-button-height {
+    height: var(--desktop-height);
+  }
+}
+
+/* Hide dark rectangle below 350px */
+@media (max-width: 349px) {
+  .hide-below-350 {
+    display: none;
+  }
+}
+
 .shiny-cta::before,
 .shiny-cta::after,
 .shiny-cta span::before {

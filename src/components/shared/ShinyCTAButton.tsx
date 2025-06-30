@@ -4,14 +4,16 @@ export default function ShinyCTAButton({
   smallHeight,
   largeHeight,
   isScrolled,
-  wide = false
+  wide = false,
+  textSizeClasses = "text-base sm:text-lg"
 }: {
   mobileHeight?: number;
   desktopHeight?: number;
   smallHeight?: number;
   largeHeight?: number;
   isScrolled?: boolean;
-  wide?: boolean
+  wide?: boolean;
+  textSizeClasses?: string;
 }) {
   // Use responsive heights if provided, otherwise fall back to mobile/desktop heights
   const height = isScrolled !== undefined
@@ -23,13 +25,12 @@ export default function ShinyCTAButton({
       href="https://sandbox.tracer.cloud/"
       target="_blank"
       rel="noopener noreferrer"
-      className={`shiny-cta flex items-center justify-center transition-all duration-500 ease-in-out ${wide ? 'sctebig' : 'sctesmall'} ${
-        isScrolled !== undefined
-          ? (isScrolled
-              ? 'text-sm px-4 h-[35px]'
-              : 'text-base px-6 h-[45px]')
-          : 'px-6 sm:px-8 text-sm sm:text-base'
-      }`}
+      className={`shiny-cta flex items-center justify-center transition-all duration-500 ease-in-out ${wide ? 'sctebig' : 'sctesmall'} ${isScrolled !== undefined
+        ? (isScrolled
+          ? 'text-sm px-4 h-[35px]'
+          : 'text-base px-6 h-[45px]')
+        : `px-6 sm:px-8 ${textSizeClasses}`
+        }`}
       style={{
         '--mobile-height': height ? `${height}px` : `${mobileHeight}px`,
         '--desktop-height': height ? `${height}px` : `${desktopHeight}px`,

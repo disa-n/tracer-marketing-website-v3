@@ -16,7 +16,7 @@ interface ReusableCtaProps {
   buttonText?: string;
 }
 
-const ReusableCta = ({ 
+const ReusableCta = ({
   imageSrc = "/home/demo-home-car.png",
   imageAlt = "demo-car",
   mobileImageSrc,
@@ -25,7 +25,7 @@ const ReusableCta = ({
   overlayHeight = "45px",
   overlayMobileHeight = "54px",
   title = "Ready to see Tracer in action?",
-  subtitle = "get a personalized demo",
+  subtitle = "get a personalised demo",
   buttonText = "Talk to an Expert"
 }: ReusableCtaProps) => {
   const { openDemo } = useDemo();

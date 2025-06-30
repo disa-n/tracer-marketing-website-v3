@@ -38,7 +38,7 @@ const features: Feature[] = [
     id: 'tool-metrics',
     title: 'Tool-Level Metrics',
     previewTitle: 'Tool-Level Metrics',
-    description: 'Get granular insights into tool-level CPU, memory, and disk I/O usage,\nalong with performance and execution patterns across your pipeline ecosystem.',
+    description: 'Get granular insights into tool-level CPU, memory, and disk I/O usage, along with\nperformance and execution patterns across your pipeline ecosystem.',
     icon: Settings,
     image: '/platformv2/features/tool-metrics.webp'
   },
@@ -70,7 +70,7 @@ const features: Feature[] = [
     id: 'smart-tradeoffs',
     title: 'Smart Tool Tradeoffs',
     previewTitle: 'Smart Tool Tradeoffs',
-    description: 'Intelligent recommendations for optimizing tool selection,\nresource allocation, and configuration based on your specific workloads.',
+    description: 'Intelligent recommendations for optimizing tool selection, resource allocation,\nand configuration based on your specific workloads.',
     icon: Brain,
     image: '/platformv2/features/smart-tradeoffs.webp'
   }
@@ -125,10 +125,10 @@ const ProductFeaturesDeepDive = () => {
     setActiveFeature(featureId)
     setProgress(0)
 
-    // Re-enable auto-advancing after a longer delay to give user time to view their selection
+    // Re-enable auto-advancing after 20 seconds of manual selection
     setTimeout(() => {
       setIsAutoAdvancing(true)
-    }, 20000) // 20 seconds delay before resuming autoplay
+    }, 20000) // 20 seconds pause
   }
 
   return (
@@ -138,14 +138,14 @@ const ProductFeaturesDeepDive = () => {
         <GridLines3 />
       </div>
       <div className='w-full flex z-[10] flex-col items-center justify-center max-w-[1800px] px-6 900:px-8 mx-auto'>
-        <div className="relative z-10 py-16 lg:py-28 w-full">
+        <div className="relative z-10 py-10 md:pt-36 md:pb-36 w-full">
           {/* Section Header */}
           <div className="mb-12 lg:mb-16">
             <h2 className="font-britti-sans text-[32px] sm:text-[40px] lg:text-[48px] font-normal leading-[1.1] tracking-[-0.01em] text-black mb-6">
               Explore the Power Behind<br />
               Tracer&apos;s Observability Layers
             </h2>
-            <p className="font-britti-sans text-sm sm:text-base font-normal leading-[1.4] text-[#888888] max-w-2xl xl:max-w-4xl">
+            <p className="font-britti-sans text-sm sm:text-base font-normal leading-[1.4] text-[#888888] max-w-2xl">
               Get a closer look at the core features powering real-time observability, cost tracking, and smarter pipeline decisions.
             </p>
           </div>
@@ -227,7 +227,7 @@ const ProductFeaturesDeepDive = () => {
                 {/* Feature Header */}
                 <div className="mb-6">
                   <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4 gap-4">
-                    <div className="flex-1 lg:max-w-none xl:max-w-7xl 2xl:max-w-none">
+                    <div className="flex-1">
                       <h3 className="font-britti-sans text-2xl sm:text-[28px] lg:text-[32px] font-normal leading-[1.1] tracking-[-0.01em] text-black mb-4 break-words">
                         {currentFeature.previewTitle}
                       </h3>
@@ -256,7 +256,7 @@ const ProductFeaturesDeepDive = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.3 }}
-                    className="relative w-full border border-gray-200 h-[300px] sm:h-[400px] lg:h-[510px]"
+                    className="relative w-full border border-gray-200 h-[300px] sm:h-[400px] lg:h-[510px] mb-6 lg:mb-0"
                     style={{ backgroundColor: '#0B0B0B' }}
                   >
                     <Image
@@ -269,13 +269,13 @@ const ProductFeaturesDeepDive = () => {
                   </motion.div>
                 </AnimatePresence>
 
-                {/* See It in Action Button - Mobile/Tablet only, under image */}
-                <div className="lg:hidden mt-6">
+                {/* See It in Action Button - Mobile/Tablet only, below image */}
+                <div className="lg:hidden flex justify-center">
                   <Link
                     href="https://sandbox.tracer.cloud/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="h-12 font-britti-sans text-sm sm:text-base font-normal cursor-pointer bg-[#E8E8E8] flex items-center justify-center text-black px-6 sm:px-8 hover:opacity-80 transition-all w-full"
+                    className="h-12 font-britti-sans text-sm sm:text-base font-normal cursor-pointer bg-[#E8E8E8] flex items-center justify-center text-black px-6 sm:px-8 hover:opacity-80 transition-all w-full sm:w-auto"
                   >
                     See It in Action
                   </Link>

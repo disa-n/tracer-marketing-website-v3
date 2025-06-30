@@ -1,4 +1,4 @@
-import Hero from "@/components/WhyMonitoring/hero";
+import Hero2 from "@/components/WhyMonitoring/Hero2";
 import CoreChallengesSection from "@/components/WhyMonitoring/CoreChallengesSection";
 import WhyMonitoringTitle from "@/components/WhyMonitoring/WhyMonitoringTitle";
 import WhyMonitoringCardGrid from "@/components/WhyMonitoring/WhyMonitoringCardGrid";
@@ -13,7 +13,7 @@ export const metadata = {
 export default function WhyMonitoringPage() {
   return (
     <main className="w-full">
-      <Hero />
+      <Hero2 />
       <CoreChallengesSection />
       <WhyMonitoringTitle />
       <WhyMonitoringCardGrid />

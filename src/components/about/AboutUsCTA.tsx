@@ -8,8 +8,8 @@ const AboutUsCTA = () => {
       imageSrc="/home/demo-home-car.png"
       imageAlt="demo-car"
       title="Ready to see Tracer in action?"
-      subtitle="get a personalized demo"
-      buttonText="Get a Demo"
+      subtitle="get a personalised demo"
+      buttonText="Talk to an Expert"
       showOverlay={true}
       overlayWidth="31%"
       overlayHeight="45px"

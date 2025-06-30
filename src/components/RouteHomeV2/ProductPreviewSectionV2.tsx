@@ -3,7 +3,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import GridLines from '@/components/shared/GridLines';
+import GridLines from '../shared/GridLines';
+
 
 // Define the tab data structure
 interface TabData {
@@ -17,32 +18,32 @@ const tabsData: TabData[] = [
   {
     id: 'anomaly-detection',
     label: 'Pipeline Health Map',
-    imageUrl: '/home/Pipeline Health Map.webp'
+    imageUrl: '/home/Pipeline Health Map-v2.webp'
   },
   {
     id: 'tool-level-insights',
     label: 'Tool-Level Insights',
-    imageUrl: '/home/Tool-Level Insights.webp'
+    imageUrl: '/home/Tool-Level Insights-v2.webp'
   },
   {
     id: 'run-by-run-clarity',
     label: 'Multi-Tool Analysis',
-    imageUrl: '/home/Multi-Tool Analysis.webp'
+    imageUrl: '/home/Multi-Tool Analysis-v2.webp'
   },
   {
     id: 'smart-recommendations',
     label: 'Workflow Optimisation',
-    imageUrl: '/home/Workflow Optimisation.webp'
+    imageUrl: '/home/Workflow Optimisation-v2.webp'
   },
   {
     id: 'infra-cost-breakdown',
     label: 'Cost Attribution',
-    imageUrl: '/home/Costs Attribution.webp'
+    imageUrl: '/home/Costs Attribution-v2.webp'
   },
   {
     id: 'unified-log-search',
     label: 'Unified Log Panel',
-    imageUrl: '/home/Unified Log Panel.webp'
+    imageUrl: '/home/Unified Log Panel-v2.webp'
   }
 ];
 
@@ -61,29 +62,16 @@ export default function ProductPreviewSectionV2() {
   const activeTabData = tabsData.find(tab => tab.id === activeTab) || tabsData[0];
   const currentIndex = tabsData.findIndex(tab => tab.id === activeTab);
 
-  // Mobile detection effect
+  // Check if we're on mobile
   useEffect(() => {
     const checkMobile = () => {
-      const newIsMobile = window.innerWidth < 1024; // lg breakpoint
-      setIsMobile(newIsMobile);
-
-      // Reset progress when switching between mobile/desktop
-      if (newIsMobile) {
-        setProgress(0);
-        if (intervalRef.current) clearInterval(intervalRef.current);
-        if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
-      }
+      setIsMobile(window.innerWidth < 640); // sm breakpoint
     };
 
-    // Check on mount
     checkMobile();
-
-    // Add resize listener
     window.addEventListener('resize', checkMobile);
 
-    return () => {
-      window.removeEventListener('resize', checkMobile);
-    };
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   // Cleanup intervals on unmount
@@ -94,13 +82,9 @@ export default function ProductPreviewSectionV2() {
     };
   }, []);
 
-  // Auto-advance functionality
+  // Progress bar animation (always runs)
   useEffect(() => {
-    // Disable auto-advancing on mobile
-    if (!isAutoAdvancing || isMobile) return;
-
-    // Clear existing intervals
-    if (intervalRef.current) clearInterval(intervalRef.current);
+    // Clear existing progress interval
     if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
 
     // Reset progress
@@ -114,35 +98,88 @@ export default function ProductPreviewSectionV2() {
       });
     }, 50);
 
+    return () => {
+      if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
+    };
+  }, [activeTab]); // Run whenever activeTab changes
+
+  // Auto-advance functionality (only when auto-advancing is enabled)
+  useEffect(() => {
+    if (!isAutoAdvancing) return;
+
+    // Clear existing auto-advance interval
+    if (intervalRef.current) clearInterval(intervalRef.current);
+
     // Auto-advance to next feature after 8 seconds
     intervalRef.current = setTimeout(() => {
-      const nextIndex = (currentIndex + 1) % tabsData.length;
-      setActiveTab(tabsData[nextIndex].id);
+      // For small mobile view only: if current tab is "Unified Log Panel", go back to "Pipeline Health Map"
+      if (isMobile && activeTab === 'unified-log-search') {
+        setActiveTab('anomaly-detection'); // Pipeline Health Map
+
+        // Center the Pipeline Health Map button after switching
+        setTimeout(() => {
+          const pipelineButton = document.querySelector('[data-tab-id="anomaly-detection"]');
+          if (pipelineButton) {
+            const container = pipelineButton.closest('.overflow-x-auto');
+            if (container) {
+              const containerRect = container.getBoundingClientRect();
+              const buttonRect = pipelineButton.getBoundingClientRect();
+              const containerCenter = containerRect.left + containerRect.width / 2;
+              const buttonCenter = buttonRect.left + buttonRect.width / 2;
+              const scrollOffset = buttonCenter - containerCenter;
+
+              container.scrollBy({
+                left: scrollOffset,
+                behavior: 'smooth'
+              });
+            }
+          }
+        }, 100); // Small delay to ensure tab switch has completed
+      } else {
+        const nextIndex = (currentIndex + 1) % tabsData.length;
+        setActiveTab(tabsData[nextIndex].id);
+      }
     }, 8000);
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
-      if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
     };
   }, [activeTab, currentIndex, isAutoAdvancing, isMobile]);
 
   // Handle manual tab selection
-  const handleTabClick = (tabId: string) => {
+  const handleTabClick = (tabId: string, event?: React.MouseEvent<HTMLButtonElement>) => {
+    // Stop auto-advancing temporarily
     setIsAutoAdvancing(false);
-    setActiveTab(tabId);
-    setProgress(0);
 
-    // Re-enable auto-advancing after a longer delay to give user time to view their selection
+    // Switch to the selected tab (this will trigger the progress bar reset via useEffect)
+    setActiveTab(tabId);
+
+    // Center the clicked tab if it's partially off-screen (mobile only)
+    if (event && isMobile) {
+      const button = event.currentTarget;
+      const container = button.closest('.overflow-x-auto');
+      if (container) {
+        const containerRect = container.getBoundingClientRect();
+        const buttonRect = button.getBoundingClientRect();
+        const containerCenter = containerRect.left + containerRect.width / 2;
+        const buttonCenter = buttonRect.left + buttonRect.width / 2;
+        const scrollOffset = buttonCenter - containerCenter;
+
+        container.scrollBy({
+          left: scrollOffset,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    // Re-enable auto-advancing after 20 seconds of manual selection
     setTimeout(() => {
       setIsAutoAdvancing(true);
-    }, 20000); // 20 seconds delay before resuming autoplay
+    }, 20000); // 20 seconds pause
   };
 
   return (
-    <section className="relative bg-[#141414] py-0 xl:py-0 -mt-4 sm:-mt-8 lg:-mt-12 overflow-hidden">
-
-      <GridLines />
-
+    <section className="relative bg-[#141414] -mt-32 300:-mt-36 400:-mt-38 xs:-mt-36 sm:-mt-32 lg:mt-0 pt-8 xl:pt-12 pb-0 overflow-hidden">
       {/* Dark gradient overlay working upward toward hero */}
       <div
         className="absolute inset-0 pointer-events-none z-[1]"
@@ -157,12 +194,51 @@ export default function ProductPreviewSectionV2() {
 
           {/* Tab Navigation */}
           <div className="mb-6 flex justify-center">
-            {/* Mobile and Tablet: flexible 2-row layout (< 1024px) */}
-            <div className="flex flex-wrap justify-center gap-x-4 gap-y-6 lg:hidden max-w-2xl px-4">
+            {/* Small Mobile: swipable single row (< 640px) */}
+            <div className="sm:hidden w-full px-4">
+              <div className="overflow-x-auto scrollbar-hide">
+                <div className="flex gap-6 min-w-max px-2">
+                  {tabsData.map((tab) => (
+                    <div key={tab.id} className="relative flex-shrink-0">
+                      <motion.button
+                        onClick={(e) => handleTabClick(tab.id, e)}
+                        data-tab-id={tab.id}
+                        className={`
+                        font-britti-sans text-sm
+                        transition-colors duration-300 ease-in-out
+                        relative pb-3 cursor-pointer whitespace-nowrap
+                        ${activeTab === tab.id
+                            ? 'text-white'
+                            : 'text-[#888888] hover:text-white'
+                          }
+                      `}
+                      >
+                        {tab.label}
+                      </motion.button>
+
+                      {/* Active tab underline with progress */}
+                      {activeTab === tab.id && (
+                        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#303030]">
+                          <motion.div
+                            className="h-full bg-white"
+                            initial={{ width: '0%' }}
+                            animate={{ width: `${progress}%` }}
+                            transition={{ duration: 0.1, ease: 'linear' }}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Tablet: flexible 2-row layout (640px - 1024px) */}
+            <div className="hidden sm:flex lg:hidden flex-wrap justify-center gap-x-4 gap-y-6 max-w-2xl px-4">
               {tabsData.map((tab) => (
                 <div key={tab.id} className="relative">
                   <motion.button
-                    onClick={() => handleTabClick(tab.id)}
+                    onClick={(e) => handleTabClick(tab.id, e)}
                     className={`
                     font-britti-sans text-sm md:text-base
                     transition-colors duration-300 ease-in-out
@@ -182,7 +258,7 @@ export default function ProductPreviewSectionV2() {
                       <motion.div
                         className="h-full bg-white"
                         initial={{ width: '0%' }}
-                        animate={{ width: isMobile ? '100%' : `${progress}%` }}
+                        animate={{ width: `${progress}%` }}
                         transition={{ duration: 0.1, ease: 'linear' }}
                       />
                     </div>
@@ -196,7 +272,7 @@ export default function ProductPreviewSectionV2() {
               {tabsData.map((tab) => (
                 <div key={tab.id} className="relative">
                   <motion.button
-                    onClick={() => handleTabClick(tab.id)}
+                    onClick={(e) => handleTabClick(tab.id, e)}
                     className={`
                     font-britti-sans text-base xl:text-lg
                     transition-colors duration-300 ease-in-out
@@ -285,9 +361,11 @@ export default function ProductPreviewSectionV2() {
 
             {/* Fade overlay at bottom - positioned over entire preview section */}
             <div
-              className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
+              className="absolute bottom-0 left-0 right-0 pointer-events-none z-10 h-20 sm:h-32"
               style={{
-                background: 'linear-gradient(to top, #141414 0%, rgba(20, 20, 20, 0.9) 40%, rgba(20, 20, 20, 0.5) 70%, transparent 100%)'
+                background: isMobile
+                  ? 'linear-gradient(to top, #141414 0%, rgba(20, 20, 20, 0.6) 30%, rgba(20, 20, 20, 0.3) 60%, transparent 100%)'
+                  : 'linear-gradient(to top, #141414 0%, rgba(20, 20, 20, 0.9) 40%, rgba(20, 20, 20, 0.5) 70%, transparent 100%)'
               }}
             />
           </div>

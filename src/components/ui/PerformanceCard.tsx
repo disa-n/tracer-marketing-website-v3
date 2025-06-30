@@ -6,6 +6,7 @@ type PerformanceCardProps = {
   title: string;              // e.g. 'Predict and optimise compute requirements'
   description: string;        // Supporting paragraph
   previewImage?: string;      // Optional preview image URL for top half
+  mobilePreviewImage?: string; // Optional mobile-specific preview image URL
   pushTextDown?: boolean;     // Optional prop to add extra top margin to text content
 };
 
@@ -15,20 +16,31 @@ export default function PerformanceCard({
   title,
   description,
   previewImage,
+  mobilePreviewImage,
   pushTextDown = false,
 }: PerformanceCardProps) {
   return (
     <div className="w-full bg-[#202020] border border-[#474747] flex flex-col">
       {/* Top Half: Visual Preview */}
-      <div className="relative bg-[#141414] h-[280px] md:h-[320px] lg:h-[360px] xl:h-[400px] 2xl:h-[440px] flex-shrink-0">
+      <div className="relative bg-[#141414] h-[280px] md:h-[320px] lg:h-[360px] xl:h-[400px] 2xl:h-[440px] flex-shrink-0 overflow-hidden">
         {/* Preview Image */}
         {previewImage && (
-          <Image
-            src={previewImage}
-            alt={title}
-            fill
-            className="object-cover object-center"
-          />
+          <>
+            {/* Desktop Image */}
+            <Image
+              src={previewImage}
+              alt={title}
+              fill
+              className="object-cover object-center hidden md:block"
+            />
+            {/* Mobile Image */}
+            <Image
+              src={mobilePreviewImage || previewImage}
+              alt={title}
+              fill
+              className="object-contain object-center block md:hidden scale-110"
+            />
+          </>
         )}
       </div>
 

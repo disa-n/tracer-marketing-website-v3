@@ -26,9 +26,9 @@ export const unifiedPlatformData: UnifiedPlatformItem[] = [
   {
     id: "tracer-performance",
     label: "_Tracer Performance",
-    title: "Predict and optimize compute requirements",
+    title: "Predict and optimise compute requirements",
     description:
-      "Forecast the exact running time and compute needs of pipelines. Further optimize your underutilized instances and increase the usage of AI models in a cost-efficient manner",
+      "Forecast the exact running time and compute needs of pipelines. Further optimise your underutilised instances and increase the usage of AI models in a cost-efficient manner",
     imageSrc: "/home/line-52.svg",
     marginTop: "lg:mt-[180px]",
     imagePosition: "absolute bottom-[-102px] left-[-1px]",
@@ -74,9 +74,9 @@ export const unifiedCardDataLg: UnifiedCardData[] = [
   {
     id: "performance",
     tag: "_Tracer Performance",
-    title: "Predict and optimize compute requirements",
+    title: "Predict and optimise compute requirements",
     description:
-      "Forecast the exact running time and compute needs of pipelines. Further optimize your underutilized instances and increase the usage of AI models in a cost-efficient manner",
+      "Forecast the exact running time and compute needs of pipelines. Further optimise your underutilised instances and increase the usage of AI models in a cost-efficient manner",
     lineImage: "/home/line-52.svg",
     containerStyle:
       "absolute left-[35%] top-[35px] xl:left-[39%] xl:top-[70px]",

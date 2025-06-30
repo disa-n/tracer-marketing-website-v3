@@ -2,6 +2,7 @@
 
 import HeroSectionV2 from '@/components/RouteHomeV2/HeroSectionV2';
 import ProductPreviewSectionV2 from '@/components/RouteHomeV2/ProductPreviewSectionV2';
+import ScienceNeedsInfoSection from '@/components/RouteHomeV2/ScienceNeedsInfoSection';
 import UseTracerSectionV2 from '@/components/RouteHomeV2/UseTracerSectionV2';
 import FixAnythingSection from '@/components/RouteHomeV2/FixAnythingSection';
 import FragmentAutoReveal from '@/components/RouteHomeV2/FragmentAutoReveal';
@@ -78,6 +79,7 @@ export default function HomePage() {
       {/* Section Divider */}
       <div className="w-full h-px bg-[#E8E8E8]" />
 
+      <ScienceNeedsInfoSection />
       <UseTracerSectionV2 />
       <FixAnythingSection />
       <FragmentAutoReveal />
