@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import GridLines from '@/components/shared/GridLines';
 import ShinyCTAButton from '@/components/shared/ShinyCTAButton';
+import { SearchX, Wrench, ShieldOff, Siren } from 'lucide-react';
 
 export default function HeroSectionV2() {
   const [displayedText, setDisplayedText] = useState('That Lives in the OS');
