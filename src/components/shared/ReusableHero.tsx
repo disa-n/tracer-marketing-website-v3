@@ -24,13 +24,18 @@ export default function ReusableHero({ title, subtitle, showEmailSignup = false,
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const { error } = await supabase
-      .from('email_signups')
-      .insert([{ email }]);
+    // Only save to Supabase if client is available
+    if (supabase) {
+      const { error } = await supabase
+        .from('email_signups')
+        .insert([{ email }]);
 
-    if (error) {
-      console.error('Supabase insert error:', error.message);
-      return;
+      if (error) {
+        console.error('Supabase insert error:', error.message);
+        return;
+      }
+    } else {
+      console.warn('Supabase client not available. Email signup not saved to database.');
     }
 
     setSubmitted(true);
@@ -75,60 +80,60 @@ export default function ReusableHero({ title, subtitle, showEmailSignup = false,
         <div className={`relative z-10 flex flex-col justify-center pt-16 pb-8 lg:py-8 lg:pb-32 xl:justify-start xl:pt-56 xl:pb-36 2xl:justify-start 2xl:pt-72 2xl:pb-40 lg:max-w-[1400px] lg:w-full lg:order-1 ${className}`}>
           <StyledLayoutWrapper>
 
-          {/* Product Label */}
-          {productLabel && (
-            <p className='font-chakra-petch text-sm font-[400] uppercase text-[#202020] sm:text-base'>
-              {productLabel}
-            </p>
-          )}
+            {/* Product Label */}
+            {productLabel && (
+              <p className='font-chakra-petch text-sm font-[400] uppercase text-[#202020] sm:text-base'>
+                {productLabel}
+              </p>
+            )}
 
-          {/* Main Heading */}
-          <h1 className={`font-chakra-petch text-[48px] !font-[400] leading-[0.9] tracking-tighter text-[#202020] sm:text-[70px] 1100:text-[80px] 1300:text-[104px] mb-6 lg:mb-8 ${productLabel ? 'mt-4' : ''}`}>
-            {title}
-          </h1>
+            {/* Main Heading */}
+            <h1 className={`font-chakra-petch text-[48px] !font-[400] leading-[0.9] tracking-tighter text-[#202020] sm:text-[70px] 1100:text-[80px] 1300:text-[104px] mb-6 lg:mb-8 ${productLabel ? 'mt-4' : ''}`}>
+              {title}
+            </h1>
 
-          {/* Supporting Paragraph */}
-          <p className="font-britti-sans text-[#202020] leading-[1.4] max-w-[600px] xl:max-w-[700px] 2xl:max-w-[800px]
+            {/* Supporting Paragraph */}
+            <p className="font-britti-sans text-[#202020] leading-[1.4] max-w-[600px] xl:max-w-[700px] 2xl:max-w-[800px]
                         text-[16px] sm:text-[18px] md:text-xl lg:text-xl xl:text-lg 2xl:text-xl mb-8">
-            {subtitle}
-          </p>
+              {subtitle}
+            </p>
 
-          {/* Email Signup Form */}
-          {showEmailSignup && (
-            <>
-              {!submitted ? (
-                <form onSubmit={handleSubmit}>
-                  <div className="flex items-center">
-                    <div
-                      className="flex-1 max-w-[250px] px-5 py-2 bg-[#F5F5F5] outline outline-[0.72px] outline-[#E8E8E8] outline-offset-[-0.72px] flex items-center"
-                    >
-                      <input
-                        type="email"
-                        placeholder="Enter your e-mail"
-                        required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="w-full bg-transparent border-none outline-none text-[#202020] font-['Britti_Sans'] text-sm md:text-base"
-                      />
+            {/* Email Signup Form */}
+            {showEmailSignup && (
+              <>
+                {!submitted ? (
+                  <form onSubmit={handleSubmit}>
+                    <div className="flex items-center">
+                      <div
+                        className="flex-1 max-w-[250px] px-5 py-2 bg-[#F5F5F5] outline outline-[0.72px] outline-[#E8E8E8] outline-offset-[-0.72px] flex items-center"
+                      >
+                        <input
+                          type="email"
+                          placeholder="Enter your e-mail"
+                          required
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          className="w-full bg-transparent border-none outline-none text-[#202020] font-['Britti_Sans'] text-sm md:text-base"
+                        />
+                      </div>
+
+                      <button
+                        type="submit"
+                        className="ml-1 px-5 py-2 bg-[#202020] text-[#FCFCFC] outline outline-[0.72px] outline-[#E8E8E8] outline-offset-[-0.72px] font-['Britti_Sans'] text-sm md:text-base whitespace-nowrap"
+                      >
+                        Get Updates
+                      </button>
                     </div>
-
-                    <button
-                      type="submit"
-                      className="ml-1 px-5 py-2 bg-[#202020] text-[#FCFCFC] outline outline-[0.72px] outline-[#E8E8E8] outline-offset-[-0.72px] font-['Britti_Sans'] text-sm md:text-base whitespace-nowrap"
-                    >
-                      Get Updates
-                    </button>
+                  </form>
+                ) : (
+                  <div
+                    className="text-[#FB82E9] font-['Britti_Sans'] text-sm md:text-base mt-4"
+                  >
+                    Thanks! You&apos;re subscribed.
                   </div>
-                </form>
-              ) : (
-                <div
-                  className="text-[#FB82E9] font-['Britti_Sans'] text-sm md:text-base mt-4"
-                >
-                  Thanks! You&apos;re subscribed.
-                </div>
-              )}
-            </>
-          )}
+                )}
+              </>
+            )}
 
           </StyledLayoutWrapper>
         </div>

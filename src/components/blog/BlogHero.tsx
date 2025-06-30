@@ -11,13 +11,18 @@ export default function BlogHero() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const { error } = await supabase
-      .from('email_signups')
-      .insert([{ email }]);
+    // Only save to Supabase if client is available
+    if (supabase) {
+      const { error } = await supabase
+        .from('email_signups')
+        .insert([{ email }]);
 
-    if (error) {
-      console.error('Supabase insert error:', error.message);
-      return;
+      if (error) {
+        console.error('Supabase insert error:', error.message);
+        return;
+      }
+    } else {
+      console.warn('Supabase client not available. Email signup not saved to database.');
     }
 
     setSubmitted(true);

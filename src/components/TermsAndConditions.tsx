@@ -14,7 +14,7 @@ const TermsAndConditions = () => {
           <p>
             These Terms and Conditions (&quot;Terms&quot;) constitute a legally binding agreement between you
             (&quot;User&quot; or &quot;you&quot;) and The Forge Software Inc., a Delaware corporation, with its principal place of
-            business located at 9 Wall Street, Suite 168, New York, NY 10005, United States
+            business located at 99 Wall Street, Suite 168, New York, NY 10005, United States
             (&quot;Tracer&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;). By accessing or using the Tracer website (the &quot;Site&quot;), you
             agree to be bound by these Terms. If you do not accept these Terms in their entirety, you must
             not access or use the Site.
@@ -73,7 +73,7 @@ const TermsAndConditions = () => {
             <p>If you have any questions about these Terms, please contact us at:</p>
             <ul className="mt-4 ml-4 space-y-2">
               <li><strong>Email:</strong> founders@tracer.cloud</li>
-              <li><strong>Address:</strong> The Forge Software Inc., 9 Wall Street, Suite 168, New York, NY 10005</li>
+              <li><strong>Address:</strong> The Forge Software Inc., 99 Wall Street, Suite 168, New York, NY 10005</li>
             </ul>
           </div>
         </section>

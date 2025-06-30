@@ -65,7 +65,7 @@ export default function PrivacyPolicyText() {
           <div className="space-y-4">
             <h4 className="text-xl leading-[22px] font-normal">How do we keep your information safe?</h4>
             <p className="text-base leading-[17px]">
-              We have adequate organizational and technical processes and procedures in place to protect your personal information. However, no electronic transmission over the internet or information storage technology can be guaranteed to be 100% secure, so we cannot promise or guarantee that hackers, cybercriminals, or other unauthorized third parties will not be able to defeat our security and improperly collect, access, steal, or modify your information. Learn more about how we keep your information safe.
+              We have adequate organisational and technical processes and procedures in place to protect your personal information. However, no electronic transmission over the internet or information storage technology can be guaranteed to be 100% secure, so we cannot promise or guarantee that hackers, cybercriminals, or other unauthorised third parties will not be able to defeat our security and improperly collect, access, steal, or modify your information. Learn more about how we keep your information safe.
             </p>
           </div>
 
@@ -182,7 +182,7 @@ export default function PrivacyPolicyText() {
       <section className="space-y-6">
         <h2 className="text-[40px] leading-[38px] font-normal">6. How Do We Keep Your Information Safe?</h2>
         <p className="text-base leading-[17px]">
-          <strong>In Short:</strong> We aim to protect your personal information through a system of organizational and technical security measures.
+          <strong>In Short:</strong> We aim to protect your personal information through a system of organisational and technical security measures.
           <br /><br />
           We have implemented appropriate and reasonable technical and organizational security measures designed to protect the security of any personal information we process. However, despite our safeguards and efforts to secure your information, no electronic transmission over the Internet or information storage technology can be guaranteed to be 100% secure, so we cannot promise or guarantee that hackers, cybercriminals, or other unauthorized third parties will not be able to defeat our security and improperly collect, access, steal, or modify your information. Although we will do our best to protect your personal information, transmission of personal information to and from our Services is at your own risk. You should only access the Services within a secure environment.
         </p>
@@ -245,7 +245,7 @@ export default function PrivacyPolicyText() {
           If you have questions or comments about this notice, you may email us at founders@tracer.cloud or contact us by post at:
           <br /><br />
           The Forge Software Inc.<br />
-          9 Wall St suite 168, New York, NY 10005, USA<br />
+          99 Wall St suite 168, New York, NY 10005, USA<br />
           New York, NY 10005<br />
           United States
         </p>

@@ -5,11 +5,11 @@ import React from 'react'
 const YourPartner = () => {
     return (
         <div className='relative flex w-full items-center justify-center bg-[#202020] z-20'>
-            <div className='w-full max-w-[1440px] px-4 pb-3 pt-4 md:p-4'>
+            <div className='w-full max-w-[1440px] px-4 py-10 md:pt-36 md:pb-36'>
                 <div className='md:gap-30 flex w-full flex-col items-center justify-center gap-12 border border-[#404040]'>
                     <div className='flex w-full flex-col items-start justify-between px-4 pt-6 md:px-6 lg:flex-row'>
                         <div className='w-full max-w-[800px]'>
-                            <h2 className='font-britti-sans text-[32px] font-[400] leading-[1] tracking-tight text-c-off-white md:text-[56px] md:leading-[0.85] md:tracking-tighter'>
+                            <h2 className='font-britti-sans text-[32px] font-[400] leading-[1.1] tracking-tight text-c-off-white md:text-[56px] md:leading-[1.1] md:tracking-tighter'>
                                 Your Partner <br className='md:hidden' /> in Every Step  <br className='hidden md:flex' /> of <br className='md:hidden' /> Your Infrastructure Journey
                             </h2>
                             <p className='mt-5 font-britti-sans text-sm font-[400] text-c-off-white md:text-base'>

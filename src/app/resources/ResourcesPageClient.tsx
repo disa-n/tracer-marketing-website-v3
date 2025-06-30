@@ -19,7 +19,7 @@ const resourceItems: ResourceItem[] = [
     slug: "enterprise-observability-guide",
     title: "The Complete Guide to Enterprise Observability",
     date: "February 15, 2024",
-    description: "Learn how enterprise observability transforms HPC environments and enables data-driven decision making across your organization.",
+    description: "Learn how enterprise observability transforms HPC environments and enables data-driven decision making across your organisation.",
     category: "Guide",
     image: "/images/resources/enterprise-observability.jpg",
     type: "guide"
@@ -46,7 +46,7 @@ const resourceItems: ResourceItem[] = [
     slug: "observability-roi-calculator",
     title: "Enterprise Observability ROI Calculator",
     date: "May 5, 2024",
-    description: "Use our interactive tool to calculate the potential return on investment from implementing enterprise-grade observability in your organization.",
+    description: "Use our interactive tool to calculate the potential return on investment from implementing enterprise-grade observability in your organisation.",
     category: "Tool",
     image: "/images/resources/roi-calculator.jpg",
     type: "guide"
@@ -75,7 +75,7 @@ export default function ResourcesPageClient() {
   // Always show ComingSoon in production, show content in development
   const isComingSoon = process.env.NODE_ENV !== "development";
 
-  if(isComingSoon) {
+  if (isComingSoon) {
     return <ComingSoon />
   }
 

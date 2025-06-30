@@ -6,7 +6,7 @@ import PerformanceCard from '../ui/PerformanceCard';
 
 export default function FixAnythingSection() {
   return (
-    <section id="fix-anything-section" className="relative bg-[#202020] pt-24 pb-24">
+    <section id="fix-anything-section" className="relative bg-[#202020] pt-24 pb-0 md:pt-36 md:pb-36">
       <div className="absolute inset-0 z-0 pointer-events-none hidden sm:block">
         <div className="w-full h-full max-w-[1600px] mx-auto flex justify-between">
           <div className="w-0 h-full opacity-50 outline outline-[0.25px] outline-offset-[-0.125px] outline-[#404040]" />
@@ -21,10 +21,10 @@ export default function FixAnythingSection() {
         <div className="px-4 md:px-8 lg:px-12">
           <div className="max-w-[1400px] w-full">
             <div className="mb-12">
-              <h2 className="text-[#FCFCFC] text-[48px] 2xl:text-[56px] font-normal leading-[50px] 2xl:leading-[58px] mb-2 text-left font-britti max-w-fit">
+              <h2 className="text-[#FCFCFC] text-[36px] sm:text-[48px] 2xl:text-[56px] font-normal leading-[38px] sm:leading-[50px] 2xl:leading-[58px] mb-2 text-left font-britti max-w-fit tracking-tight sm:tracking-normal">
                 See and Fix Anything. Instantly.
               </h2>
-              <p className="text-[#888888] text-[20px] 2xl:text-[24px] leading-[22px] 2xl:leading-[26px] font-normal text-left font-britti max-w-fit">
+              <p className="text-[#888888] text-[14px] sm:text-[20px] 2xl:text-[24px] leading-[16px] sm:leading-[22px] 2xl:leading-[26px] font-normal text-left font-britti max-w-fit tracking-tight sm:tracking-normal">
                 Tracer helps you effortlessly monitor tools, runs, and infrastructure with visual clarity and actionable diagnostics.
               </p>
             </div>
@@ -39,9 +39,10 @@ export default function FixAnythingSection() {
             <PerformanceCard
               indexLabel="01–03"
               sectionLabel="TRACER PERFORMANCE"
-              title="Predict and optimize compute requirements"
-              description="Forecast the exact running time and compute needs of your pipelines. Further optimize your underutilized instances and increase the usage of AI models in a cost-efficient manner."
+              title="Predict and optimise compute requirements"
+              description="Forecast the exact running time and compute needs of your pipelines. Further optimise your underutilised instances and increase the usage of AI models in a cost-efficient manner."
               previewImage="/home/Tracer-Performance.webp"
+              mobilePreviewImage="/home/Tracer-Performance-Mobile.webp"
               pushTextDown={true}
             />
           </div>
@@ -58,7 +59,7 @@ export default function FixAnythingSection() {
               indexLabel="03–03"
               sectionLabel="TRACER DEBUG"
               title="Fix issues instantly"
-              description="Gain deep insights into the root causes of bugs across all analyses, recognize the error type, and solve instantly."
+              description="Gain deep insights into the root causes of bugs across all analyses, recognise the error type, and solve instantly."
               previewImage="/home/Tracer-Debug.webp"
               pushTextDown={true}
             />
@@ -70,9 +71,9 @@ export default function FixAnythingSection() {
       <div className="relative z-10 max-w-[1800px] mx-auto px-2 sm:px-4 lg:px-6 xl:px-8 2xl:px-16">
         <div className="mt-12 text-left">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <Link href="/technology" className="block w-full">
+            <Link href="/product" className="block w-full">
               <button className="w-full min-w-fit bg-[#E8E8E8] text-[#202020] font-britti text-[16px] leading-[17px] px-8 py-4 hover:bg-[#e0e0e0] cursor-pointer whitespace-nowrap">
-                See our Technology →
+                View Product →
               </button>
             </Link>
             <div></div>

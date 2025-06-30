@@ -4,7 +4,7 @@ import Image from 'next/image'
 const MonitoringInsights = () => {
     return (
         <div className='w-full flex justify-center bg-white'>
-            <div className='w-full max-w-[1800px] px-6 900:px-8 py-16 md:py-24'>
+            <div className='w-full max-w-[1800px] px-6 900:px-8 py-10 md:pt-36 md:pb-36'>
                 <div className="mb-8 md:mb-12 lg:mb-16">
                     <h2 className="font-britti-sans text-[32px] sm:text-[40px] lg:text-[48px] font-normal leading-[1.1] tracking-[-0.01em] text-black mb-6">
                         Monitoring Insights for the Worldʼs <br className="hidden sm:block" />
@@ -19,7 +19,7 @@ const MonitoringInsights = () => {
                     {/* Automotive */}
                     <div className="flex flex-col">
                         <div className="overflow-hidden h-[200px] md:h-auto">
-                            <Image src={"/platform/m-1.webp"} alt='' width={500} height={500} className='w-full h-full md:h-auto object-cover' style={{objectPosition: 'center 60%'}} />
+                            <Image src={"/platform/m-1.webp"} alt='' width={500} height={500} className='w-full h-full md:h-auto object-cover' style={{ objectPosition: 'center 60%' }} />
                         </div>
                         <h3 className='mt-2 text-[24px] md:text-[40px] font-[400] tracking-tighter text-c-black leading-[1] font-britti-sans'>
                             Automotive
@@ -37,7 +37,7 @@ const MonitoringInsights = () => {
                     {/* Pharma & Biotech */}
                     <div className="flex flex-col">
                         <div className="overflow-hidden h-[200px] md:h-auto">
-                            <Image src={"/platform/m-3.webp"} alt='' width={500} height={500} className='w-full h-full md:h-auto object-cover' style={{objectPosition: 'center 60%'}} />
+                            <Image src={"/platform/m-3.webp"} alt='' width={500} height={500} className='w-full h-full md:h-auto object-cover' style={{ objectPosition: 'center 60%' }} />
                         </div>
                         <h3 className='mt-2 text-[24px] md:text-[40px] font-[400] tracking-tighter text-c-black leading-[1] font-britti-sans'>
                             Pharma & Biotech
