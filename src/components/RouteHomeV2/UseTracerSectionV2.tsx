@@ -17,7 +17,7 @@ export default function UseTracerSectionV2() {
         {/* Right Column: Image + Footer - flush to viewport edge with white background - Last on mobile */}
         <div className="flex-1 lg:min-w-0 bg-[#FCFCFC] pt-0 lg:pt-20 flex flex-col order-2 lg:order-2">
           {/* Image container - flush right with white background */}
-          <div className="flex justify-end pr-0 mt-0 lg:mt-10 xl:mt-6 2xl:mt-8 mb-0 min-[1024px]:max-[1125px]:hidden">
+          <div className="hidden lg:flex justify-end pr-0 mt-0 lg:mt-10 xl:mt-6 2xl:mt-8 mb-0 min-[1024px]:max-[1125px]:hidden">
             <div className="w-full lg:w-3/4 relative aspect-[3/2] lg:aspect-[5/4] lg:translate-y-3 xl:aspect-[5/4] xl:-translate-y-6 2xl:aspect-[4/3] 2xl:-translate-y-14 bg-[#202020]">
               <Image
                 src="/home/T-Asset-DNA_2.webp"
@@ -59,7 +59,7 @@ export default function UseTracerSectionV2() {
         </div>
         {/* Left Column: Text Content - contained within max-w container - First on mobile */}
         <div className="w-full lg:w-auto order-1 lg:order-1">
-          <div className="flex flex-col justify-center pt-6 pb-8 sm:pt-10 sm:pb-18 lg:pt-16 lg:pb-22 xl:pt-20 xl:pb-30">
+          <div className="flex flex-col justify-center pt-6 pb-16 sm:pt-10 sm:pb-24 lg:pt-16 lg:pb-22 xl:pt-20 xl:pb-30">
             <div className="px-4 md:px-8 lg:px-12">
               <div className="max-w-[1400px] w-full">
                 {/* Main text paragraph */}
@@ -71,8 +71,8 @@ export default function UseTracerSectionV2() {
                   Too little visibility. Too late. Progress stalls.<br />
                   In science, every wrong assumption costs.
                 </p>
-                {/* Large downward arrow icon (centered until 650px, then left-aligned) */}
-                <div className="flex justify-center min-[650px]:justify-start mt-2 mb-4">
+                {/* Large downward arrow icon (left-aligned) */}
+                <div className="flex justify-start mt-2 mb-4">
                   <svg
                     width="32"
                     height="32"
@@ -99,6 +99,16 @@ export default function UseTracerSectionV2() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Mobile Section Break - Thin strip with footer-b.png */}
+      <div className="lg:hidden w-full h-6 relative overflow-hidden">
+        <Image
+          src="/platform/footer-b.png"
+          alt=""
+          fill
+          className="object-cover object-center"
+        />
       </div>
     </section>
   );

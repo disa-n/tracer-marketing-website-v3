@@ -42,6 +42,7 @@ export default function FixAnythingSection() {
               title="Predict and optimise compute requirements"
               description="Forecast the exact running time and compute needs of your pipelines. Further optimise your underutilised instances and increase the usage of AI models in a cost-efficient manner."
               previewImage="/home/Tracer-Performance.webp"
+              mobilePreviewImage="/home/Tracer-Performance-Mobile.webp"
               pushTextDown={true}
             />
           </div>

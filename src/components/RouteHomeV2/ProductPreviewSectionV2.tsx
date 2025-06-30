@@ -168,7 +168,7 @@ export default function ProductPreviewSectionV2() {
   };
 
   return (
-    <section className="relative bg-[#141414] pt-8 xl:pt-12 pb-0 overflow-hidden">
+    <section className="relative bg-[#141414] -mt-32 300:-mt-36 400:-mt-38 xs:-mt-36 sm:-mt-32 lg:mt-0 pt-8 xl:pt-12 pb-0 overflow-hidden">
       {/* Dark gradient overlay working upward toward hero */}
       <div
         className="absolute inset-0 pointer-events-none z-[1]"
