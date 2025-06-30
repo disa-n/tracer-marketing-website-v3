@@ -1,7 +1,10 @@
+import Quote from '../../shared/Quote';
+import EmailSignup from '../../shared/EmailSignup';
+
 export const metadata = {
-  title: 'The Current State of Cloud Cost Management',
+  title: 'Part 1: The Current State of Cloud Cost Management',
   date: 'June 26, 2025',
-  description: 'How current cloud cost monitoring tools struggle to meet the needs of bioinformatics, and the need for a new approach.',
+  description: 'How current cloud cost monitoring tools struggle to meet the needs of bioinformatics, and the demand for a new approach.',
   author: 'Amberley',
   tag: 'Blog',
   readTime: '3 min read',
@@ -10,32 +13,30 @@ export const metadata = {
   published: false
 };
 
-
-
 ---
 
 ## Core takeaways
 
-- Current cloud cost solutions offer scattered insights; it can be a challenge to see cloud spend in realtime, let alone per pipeline.
+- Current cloud cost solutions offer scattered insights; it can be a challenge to see cloud spend in real time, let alone per pipeline.
 - This is an unsustainable path for a rapidly growing industry with accelerating cloud expenditure.
 
-<hr className="my-12 border-gray-300" />
+<hr className="mt-6 mb-12 border-gray-300" />
 
 ## The Hidden Cost Crisis
 
 In the pharma and bioinformatics space, cloud costs are rising fast. And the real culprit isn’t AWS or GCP. Teams are misallocating resources not out of negligence, but because they lack visibility. Without knowing where the money goes, expense management is impossible.
 
-Cloud infrastructure has become the default foundation over on-premise for managing software on high performance computing platforms. 
+Cloud infrastructure has become the default foundation over on-premises for managing software on high-performance computing platforms. 
 
-Its scalability, collaboration potential and perceived cost-effectiveness has driven widespread adoption; a trend that will only accelerate with the increasing use of AI. 
+Its scalability, collaboration potential and perceived cost-effectiveness have driven widespread integration; a trend that will only accelerate with increasing AI adoption. 
 
-Yet, companies are facing unpredictable bills, spending between $10 to $100 million on cloud resources annually, that they cannot attribute or optimize.  
+Yet, companies are facing unpredictable bills, spending between $10 and $100 million on cloud resources annually, that they cannot attribute or optimize.  
 
 This is not sustainable in the long run for an industry that is predicted to triple in size by 2032.
 
 <div className="w-full my-8">
   <Image
-    src="/Blog/table for blog post.webp"
+    src="/Blog/cagr_blog.webp"
     alt="Cloud cost management comparison table"
     width={800}
     height={400}
@@ -43,21 +44,28 @@ This is not sustainable in the long run for an industry that is predicted to tri
   />
 </div>
 
-<hr className="my-12 border-gray-300" />
+<div className="text-sm text-gray-600 mt-2 text-center">
+  <a href="https://www.fortunebusinessinsights.com/bioinformatics-market-109493" target="_blank" rel="noopener noreferrer" className="hover:text-gray-800 underline">
+    Source
+  </a>
+</div>
 
+<hr className="mt-8 mb-12 border-gray-300" />
+ 
 ## The biggest black box in the computational budget
 
 Poor attribution is driven by a lack of visibility into cloud spend. Current cloud cost observability providers do not tailor their insights to the complexity of the sector.  
  
-Bioinformatics workloads are inherently erratic, with unpredictable cost spikes and complex configurations that are difficult to monitor. Cloud optimization tools need to recognise this, adapt, and provide granular insight.  
+Bioinformatics workloads are inherently erratic, with unpredictable cost spikes and complex configurations that are difficult to monitor. Cloud optimization tools need to recognize this, adapt, and provide granular insight.  
 
 Instead, the status quo is that each provider, e.g., AWS Cloudwatch, offers visibility into one piece of the cloud spend puzzle, failing to capture the complete picture.  
 
 As a result, scientific computing is left in the dark: there is little understanding of how cloud resources are consumed or where money is actually flowing.
 
-> “We observe costs by jumping into people's accounts and checking the numbers ourselves, or we don't observe at all. That's the bar right now.”
-
-This makes it nearly impossible to rightsize workloads or understand actual cloud usage, which leads to inefficient cloud budgets which produce waste. 
+<Quote>
+“We observe costs by jumping into people's accounts and checking the numbers ourselves, or we don't observe at all. That's the bar right now.”
+</Quote>
+This makes it nearly impossible to rightsize workloads or understand actual cloud usage, which leads to inefficient cloud budgets that produce waste.
 
 <hr className="my-12 border-gray-300" />
 
@@ -82,11 +90,11 @@ The table below highlights how each provider prioritizes different capabilities 
       </tr>
       <tr className="bg-white">
         <td className="border border-black px-4 py-3 font-medium text-black">CloudZero</td>
-        <td className="border border-black px-4 py-3 text-black">Provides per unit cost breakdown and Kubernetes visibility</td>
+        <td className="border border-black px-4 py-3 text-black">Unit cost breakdown and Kubernetes</td>
         <td className="border border-black px-4 py-3 text-black">Designed for finance and engineering - lacking key pipeline level metrics and life science specific insight</td>
       </tr>
       <tr className="bg-white">
-        <td className="border border-black px-4 py-3 font-medium text-black">CloudWatch</td>
+        <td className="border border-black px-4 py-3 font-medium text-black">AWS CloudWatch</td>
         <td className="border border-black px-4 py-3 text-black">Infrastructure-level metrics like CPU & memory</td>
         <td className="border border-black px-4 py-3 text-black">Metrics specific to scientific workloads like runs, hosts or per project cost</td>
       </tr>
@@ -115,15 +123,24 @@ The table below highlights how each provider prioritizes different capabilities 
 
 Because no single tool provides deep enough information, users either have logs and metrics spread across different systems or are forced to DIY solutions. Neither of these options are effective - in both instances, costs remain unattributed and bioinformaticians pay the price.  
  
-In the case of the former, information has to be manually consolidated in spreadsheets and pipeline-level costs are estimated from fragmented metrics. This process is prone to error and is time-consuming. Complicating this further, organizations often operate across multiple AWS environments, making it even hard to assess or attribute costs.  
+In the case of the former, information has to be manually consolidated in spreadsheets and pipeline-level costs are estimated from fragmented metrics. This process is prone to error and is time-consuming. Complicating the situation further, organizations often operate across multiple AWS environments, making it even harder to assess or attribute costs.  
 
-Many pharma and biotech teams turn to building in-house programs to fulfil their cost-monitoring needs, using product logs and billing data. These are difficult to set up and maintain.
+Many pharma and biotech teams turn to building in-house programs to fulfill their cost-monitoring needs, using product logs and billing data. These are difficult to set up and maintain.
 
 Whether teams are using an existing platform or struggling to understand metrics across a mix of DIY and other tools, they are still experiencing cloud waste.  
 
-> “Honestly, knowing where exactly our cloud spending is going and where our attention should be, would be the single largest benefit for our teams at the moment.”
+<Quote>
+“Honestly, knowing where exactly our cloud spending is going and where our attention should be, would be the single largest benefit for our teams at the moment.”
+</Quote>
 
 <hr className="my-12 border-gray-300" />
 
 Want a deeper look at what’s driving hidden cloud costs - and how to fix it? Our white paper will be available soon!
+
+<EmailSignup
+  title="Get Notified About Newly Released Blog Posts"
+  placeholder="Enter your email"
+  buttonText="Get Updates"
+  className="my-12"
+/>
 
