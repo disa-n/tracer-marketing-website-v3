@@ -124,23 +124,36 @@ export default function HeroSectionV2() {
     }
   }, [startTyping, isComplete]);
   return (
-    <section className="relative bg-[#FCFCFC] overflow-hidden min-h-screen">
+    <section className="relative bg-[#FCFCFC] min-h-screen 300:min-h-[70vh] 400:min-h-[65vh] xs:min-h-[60vh] sm:min-h-[55vh] lg:min-h-screen">
       <GridLinesHero />
-      <div className="relative z-10 w-full max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 900:px-8">
+      <div className="relative z-10 w-full max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 900:px-8 pb-0 300:pb-0 400:pb-0 xs:pb-0 sm:pb-0 lg:pb-0">
 
-        <div className="flex flex-col lg:flex-row lg:min-h-screen">
-          {/* Left-aligned Content */}
-          <div className="relative z-10 text-left pt-4 pb-6 xs:pt-8 xs:pb-8 sm:pt-12 sm:pb-10 lg:pt-16 lg:pb-12 xl:pt-20 xl:pb-14 2xl:pt-24 2xl:pb-16 flex flex-col justify-center min-h-screen lg:flex-1 lg:max-w-[60%]">
+        <div className="flex flex-col lg:flex-row min-h-screen 300:min-h-[85vh] 400:min-h-[80vh] xs:min-h-[75vh] sm:min-h-[70vh] lg:min-h-screen" style={{ minHeight: '750px' }}>
+          {/* Content - Center-aligned on mobile, left-aligned on desktop */}
+          <div className="relative z-10 text-center lg:text-left -mt-20 300:-mt-24 400:-mt-28 xs:-mt-20 sm:-mt-16 lg:mt-0 pt-0 pb-0 300:pb-0 400:pb-0 xs:pb-0 sm:pb-0 lg:pt-16 lg:pb-12 xl:pt-20 xl:pb-14 2xl:pt-24 2xl:pb-16 flex flex-col justify-center min-h-screen 300:min-h-[85vh] 400:min-h-[80vh] xs:min-h-[75vh] sm:min-h-[70vh] lg:min-h-screen lg:flex-1 lg:max-w-[60%]">
+
+            {/* Mobile Hero Image - Above title, extending off-screen - Only shows on smallest mobile screens */}
+            <div className="block sm:hidden -mb-2 300:-mb-3 400:-mb-3 xs:-mb-3 sm:-mb-2 mt-32 300:mt-28 400:mt-24 xs:mt-20 sm:mt-24 relative -mx-4 sm:-mx-6 md:-mx-8 overflow-hidden">
+              <div className="relative w-[800px] 300:w-[900px] 400:w-[950px] xs:w-[1100px] sm:w-[1200px] h-[320px] 300:h-[360px] 400:h-[380px] xs:h-[440px] sm:h-[480px] -translate-x-[60px] 300:-translate-x-[70px] 400:-translate-x-[75px] xs:-translate-x-[70px] sm:-translate-x-[60px]">
+                <Image
+                  src="/home/spaceship-shuttle.webp"
+                  alt="Spaceship shuttle representing advanced monitoring technology"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </div>
 
             {/* Main Heading with Typewriter Effect on Last Line */}
-            <h1 className="font-chakra-petch text-[36px] xs:text-[36px] sm:text-[48px] md:text-[60px] lg:text-[70px] 1100:text-[80px] 1300:text-[104px] !font-[400] leading-[0.9] tracking-tighter text-[#202020] mb-4 xs:mb-3 sm:mb-4 lg:mb-4 whitespace-nowrap">
+            <h1 className="font-chakra-petch text-[32px] 350:text-[36px] 400:text-[44px] xs:text-[52px] sm:text-[56px] md:text-[60px] lg:text-[70px] 1100:text-[80px] 1300:text-[104px] !font-[400] leading-[0.9] tracking-tighter text-[#202020] mb-3 300:mb-3 400:mb-4 xs:mb-3 sm:mb-4 lg:mb-4 whitespace-nowrap -mt-8 300:-mt-12 400:-mt-16 xs:-mt-12 sm:mt-8 md:mt-16 lg:mt-0">
               Next-Gen Monitoring<br />
-              <div className="flex justify-start">
-                <span className="relative inline-block whitespace-nowrap min-w-[180px] xs:min-w-[240px] sm:min-w-[320px] md:min-w-[420px] lg:min-w-[520px] xl:min-w-[620px] text-left min-h-[1.2em]">
+              <div className="flex justify-center lg:justify-start">
+                <span className="relative inline-block whitespace-nowrap min-w-[140px] 300:min-w-[160px] 400:min-w-[180px] xs:min-w-[240px] sm:min-w-[320px] md:min-w-[420px] lg:min-w-[520px] xl:min-w-[620px] text-center lg:text-left min-h-[1.2em]">
                   <span className="bg-gradient-to-r from-[#3A23ED] via-[#BF5198] to-[#FFA231] bg-clip-text text-transparent">
                     {displayedText || '\u00A0'}
                     {!isComplete && startTyping && (
-                      <span className={`inline-block w-[3px] h-[0.8em] bg-gradient-to-r from-[#3A23ED] via-[#BF5198] to-[#FFA231] ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`} />
+                      <span className={`inline-block w-[2px] 400:w-[3px] h-[0.8em] bg-gradient-to-r from-[#3A23ED] via-[#BF5198] to-[#FFA231] ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`} />
                     )}
                   </span>
                   {startPulse && (
@@ -165,26 +178,33 @@ export default function HeroSectionV2() {
             </h1>
 
             {/* Supporting Text */}
-            <p className="font-britti-sans text-sm xs:text-sm sm:text-sm md:text-base font-[400] text-[#888888] leading-[1.4] max-w-[280px] xs:max-w-[320px] sm:max-w-[480px] md:max-w-[630px] mb-8 xs:mb-5 sm:mb-6 lg:mb-6 px-2 -mt-2 xs:-mt-2 sm:-mt-3 lg:-mt-3">
-              Accelerate bioinformatics with real-time pipeline insights.<br />
+            <p className="font-britti-sans text-sm 300:text-sm 400:text-base xs:text-base sm:text-base md:text-base font-[400] text-[#888888] leading-[1.4] max-w-[320px] 300:max-w-[380px] 400:max-w-[420px] xs:max-w-[500px] sm:max-w-[480px] md:max-w-[630px] mb-6 300:mb-7 400:mb-8 xs:mb-5 sm:mb-6 lg:mb-6 px-2 -mt-1 300:-mt-2 400:-mt-2 xs:-mt-2 sm:-mt-3 lg:-mt-3 text-center lg:text-left mx-auto lg:mx-0">
+              Accelerate bioinformatics with real-time pipeline insights.
+              <br className="block" />
               Built for precision, scale, and HPC-native environments.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-start items-start mb-4 xs:mb-5 sm:mb-6 px-2">
-              <div className="w-full sm:w-auto mobile-full-width-cta">
-                <ShinyCTAButton mobileHeight={40} desktopHeight={51} />
+            <div className="flex flex-row gap-2 300:gap-3 sm:gap-4 justify-center lg:justify-start items-center lg:items-start mb-12 300:mb-4 400:mb-2 xs:mb-1 sm:mb-0 lg:mb-16 px-2">
+              <div className="w-[48%] sm:w-auto mobile-full-width-cta">
+                <ShinyCTAButton
+                  mobileHeight={40}
+                  desktopHeight={55}
+                  textSizeClasses="text-sm 300:text-sm 400:text-base sm:text-lg"
+                />
               </div>
 
               <a
                 href="/product"
-                className="inline-flex items-center justify-center w-full sm:w-auto px-6 h-[40px] sm:px-8 sm:h-[49px]
-                         text-[#FCFCFC] font-britti-sans text-sm sm:text-base !font-[400]
-                         transition-colors duration-200"
+                className="inline-flex items-center justify-center w-[48%] sm:w-auto px-4 300:px-5 400:px-6 sm:px-8
+                         text-[#FCFCFC] font-britti-sans text-sm 300:text-sm 400:text-base sm:text-lg !font-[400]
+                         transition-colors duration-200 demo-button-height"
                 style={{
                   background: 'rgba(80, 80, 80, 0.7)',
                   backdropFilter: 'blur(4px)',
-                }}
+                  '--mobile-height': '40px',
+                  '--desktop-height': '55px',
+                } as React.CSSProperties}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = 'rgba(80, 80, 80, 0.9)';
                 }}
@@ -211,11 +231,11 @@ export default function HeroSectionV2() {
             </div>
           </div>
 
-          {/* Dark grey box - positioned in lower section */}
-          <div className="absolute bottom-0 left-0 w-[75%] lg:w-[45%] h-[60px] sm:h-[75px] lg:h-[100px] bg-[#141414] z-5"></div>
-
         </div>
       </div>
+
+      {/* Dark grey box - desktop only */}
+      <div className="hidden lg:block absolute bottom-0 left-0 2xl:-left-20 w-[45%] 2xl:w-[calc(45%+5rem)] h-[100px] bg-[#141414] z-[20]"></div>
     </section>
   );
 }
