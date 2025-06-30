@@ -82,12 +82,9 @@ export default function ProductPreviewSectionV2() {
     };
   }, []);
 
-  // Auto-advance functionality
+  // Progress bar animation (always runs)
   useEffect(() => {
-    if (!isAutoAdvancing) return;
-
-    // Clear existing intervals
-    if (intervalRef.current) clearInterval(intervalRef.current);
+    // Clear existing progress interval
     if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
 
     // Reset progress
@@ -100,6 +97,18 @@ export default function ProductPreviewSectionV2() {
         return prev + (100 / (8000 / 50)); // 8 seconds total, update every 50ms
       });
     }, 50);
+
+    return () => {
+      if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
+    };
+  }, [activeTab]); // Run whenever activeTab changes
+
+  // Auto-advance functionality (only when auto-advancing is enabled)
+  useEffect(() => {
+    if (!isAutoAdvancing) return;
+
+    // Clear existing auto-advance interval
+    if (intervalRef.current) clearInterval(intervalRef.current);
 
     // Auto-advance to next feature after 8 seconds
     intervalRef.current = setTimeout(() => {
@@ -134,15 +143,16 @@ export default function ProductPreviewSectionV2() {
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
-      if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
     };
   }, [activeTab, currentIndex, isAutoAdvancing, isMobile]);
 
   // Handle manual tab selection
   const handleTabClick = (tabId: string, event?: React.MouseEvent<HTMLButtonElement>) => {
+    // Stop auto-advancing temporarily
     setIsAutoAdvancing(false);
+
+    // Switch to the selected tab (this will trigger the progress bar reset via useEffect)
     setActiveTab(tabId);
-    setProgress(0);
 
     // Center the clicked tab if it's partially off-screen (mobile only)
     if (event && isMobile) {

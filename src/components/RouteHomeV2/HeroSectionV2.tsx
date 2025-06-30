@@ -112,9 +112,9 @@ export default function HeroSectionV2() {
     }
   }, [isComplete, isErasing]);
 
-  // Cursor blinking effect - show when typing, erasing, or after completion
+  // Cursor blinking effect - show when typing or erasing
   useEffect(() => {
-    if (startTyping) {
+    if (startTyping && !isComplete) {
       const cursorTimer = setInterval(() => {
         setShowCursor(prev => !prev);
       }, 500);
@@ -122,7 +122,7 @@ export default function HeroSectionV2() {
     } else {
       setShowCursor(false);
     }
-  }, [startTyping]);
+  }, [startTyping, isComplete]);
   return (
     <section className="relative bg-[#141414] min-h-screen 300:min-h-[70vh] 400:min-h-[65vh] xs:min-h-[60vh] sm:min-h-[55vh] lg:min-h-screen">
       <GridLines />
@@ -134,7 +134,7 @@ export default function HeroSectionV2() {
 
             {/* Mobile Hero Image - Above title, extending off-screen - Only shows on smallest mobile screens */}
             <div className="block sm:hidden -mb-2 300:-mb-3 400:-mb-3 xs:-mb-3 sm:-mb-2 mt-32 300:mt-28 400:mt-24 xs:mt-20 sm:mt-24 relative -mx-4 sm:-mx-6 md:-mx-8 overflow-hidden">
-              <div className="relative w-[800px] 300:w-[900px] 400:w-[950px] xs:w-[1100px] sm:w-[1200px] h-[320px] 300:h-[360px] 400:h-[380px] xs:h-[440px] sm:h-[480px] -translate-x-[120px] 300:-translate-x-[130px] 400:-translate-x-[135px] xs:-translate-x-[130px] sm:-translate-x-[120px]">
+              <div className="relative w-[800px] 300:w-[900px] 400:w-[950px] xs:w-[1100px] sm:w-[1200px] h-[420px] 300:h-[460px] 400:h-[480px] xs:h-[540px] sm:h-[580px] -translate-x-[160px] 300:-translate-x-[170px] 400:-translate-x-[175px] xs:-translate-x-[170px] sm:-translate-x-[160px] -translate-y-[20px]">
                 <Image
                   src="/home/T-Asset-Spacecraft_7 1.webp"
                   alt="Spacecraft representing advanced monitoring technology"
@@ -152,17 +152,16 @@ export default function HeroSectionV2() {
                 <span className="relative inline-block whitespace-nowrap min-w-[140px] 300:min-w-[160px] 400:min-w-[180px] xs:min-w-[240px] sm:min-w-[320px] md:min-w-[420px] lg:min-w-[520px] xl:min-w-[620px] text-center lg:text-left min-h-[1.2em]">
                   <span className="text-white">
                     {displayedText || '\u00A0'}
-                    {startTyping && (
+                    {!isComplete && startTyping && (
                       <span className={`inline-block w-[2px] 400:w-[3px] h-[0.8em] bg-white ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`} />
                     )}
                   </span>
-
                 </span>
               </div>
             </h1>
 
             {/* Supporting Text */}
-            <p className="font-britti-sans text-sm 300:text-sm 400:text-base xs:text-base sm:text-base md:text-base font-[400] text-[#CCCCCC] leading-[1.4] max-w-[320px] 300:max-w-[380px] 400:max-w-[420px] xs:max-w-[500px] sm:max-w-[480px] md:max-w-[630px] mb-6 300:mb-7 400:mb-8 xs:mb-5 sm:mb-6 lg:mb-6 px-2 -mt-1 300:-mt-2 400:-mt-2 xs:-mt-2 sm:-mt-3 lg:-mt-3 text-center lg:text-left mx-auto lg:mx-0">
+            <p className="font-britti-sans text-lg 300:text-lg 400:text-xl xs:text-xl sm:text-xl md:text-xl font-[400] text-[#CCCCCC] leading-[1.4] max-w-[320px] 300:max-w-[380px] 400:max-w-[420px] xs:max-w-[500px] sm:max-w-[480px] md:max-w-[630px] mb-6 300:mb-7 400:mb-8 xs:mb-5 sm:mb-6 lg:mb-6 px-2 -mt-1 300:-mt-2 400:-mt-2 xs:-mt-2 sm:-mt-3 lg:-mt-3 text-center lg:text-left mx-auto lg:mx-0">
               Accelerate bioinformatics with real-time pipeline insights.
               <br className="block" />
               Built for precision, scale, and HPC-native environments.
@@ -181,20 +180,12 @@ export default function HeroSectionV2() {
               <a
                 href="/product"
                 className="inline-flex items-center justify-center w-[48%] sm:w-auto px-4 300:px-5 400:px-6 sm:px-8
-                         text-[#FCFCFC] font-britti-sans text-sm 300:text-sm 400:text-base sm:text-lg !font-[400]
-                         transition-colors duration-200 demo-button-height"
+                         bg-[#E8E8E8] text-black font-britti-sans text-sm 300:text-sm 400:text-base sm:text-lg !font-[400]
+                         hover:bg-[#D8D8D8] transition-colors duration-200 demo-button-height"
                 style={{
-                  background: 'rgba(80, 80, 80, 0.7)',
-                  backdropFilter: 'blur(4px)',
                   '--mobile-height': '40px',
                   '--desktop-height': '55px',
                 } as React.CSSProperties}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(80, 80, 80, 0.9)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(80, 80, 80, 0.7)';
-                }}
               >
                 Get a Demo
               </a>
@@ -204,7 +195,7 @@ export default function HeroSectionV2() {
 
           {/* Image Column - Desktop and larger screens only */}
           <div className="hidden lg:flex lg:absolute lg:right-0 lg:top-0 lg:w-full lg:h-full lg:items-center lg:justify-end lg:pointer-events-none lg:z-0">
-            <div className="relative lg:w-[1800px] xl:w-[2100px] 2xl:w-[2400px] lg:h-[1800px] xl:h-[2100px] 2xl:h-[2400px] lg:translate-x-[200px] lg:translate-y-[150px] xl:translate-x-[250px] xl:translate-y-[170px] 2xl:translate-x-[300px] 2xl:translate-y-[200px]">
+            <div className="relative lg:w-[1800px] xl:w-[2100px] 2xl:w-[2400px] lg:h-[2200px] xl:h-[2500px] 2xl:h-[2800px] lg:translate-x-[150px] lg:translate-y-[100px] xl:translate-x-[200px] xl:translate-y-[120px] 2xl:translate-x-[250px] 2xl:translate-y-[150px]">
               <Image
                 src="/home/T-Asset-Spacecraft_7 1.webp"
                 alt="Spacecraft representing advanced monitoring technology"
@@ -218,8 +209,7 @@ export default function HeroSectionV2() {
         </div>
       </div>
 
-      {/* Dark grey box - desktop only */}
-      <div className="hidden lg:block absolute bottom-0 left-0 2xl:-left-20 w-[45%] 2xl:w-[calc(45%+5rem)] h-[100px] bg-[#141414] z-[20]"></div>
+
     </section>
   );
 }
