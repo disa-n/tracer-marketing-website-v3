@@ -17,7 +17,7 @@ export default function WhyMonitoringTitle() {
         <div className="px-4 md:px-8 lg:px-12 mt-20 lg:mt-40 xl:mt-42 2xl:mt-44 order-2 lg:order-1">
           <div className="max-w-[1400px] w-full">
             {/* Heading */}
-            <h2 className="font-britti-sans text-[#202020] font-normal capitalize leading-[1.1] mb-2 tracking-tight
+            <h2 className="font-britti-sans text-[#202020] font-normal capitalize leading-[1.1] mb-2 lg:mb-6 xl:mb-8 2xl:mb-10 tracking-tight
                            text-[38px] sm:text-[42px] md:text-[48px] lg:text-[56px] xl:text-[68px] 2xl:text-[82px] max-w-[600px]">
               Why Monitoring<br className="hidden lg:block" /> Is The Solution
             </h2>
@@ -26,7 +26,7 @@ export default function WhyMonitoringTitle() {
             <p className="font-britti-sans text-[#888888] font-normal mb-6
                           text-sm sm:text-base md:text-lg max-w-[600px] xl:max-w-[700px] 2xl:max-w-[825px]">
               Because you can&apos;t fix what you can&apos;t see.<br />
-              Tracer brings observability closer to where pipelines actually run: inside the system.
+              Tracer brings observability closer to where pipelines run: inside the system.
             </p>
           </div>
         </div>

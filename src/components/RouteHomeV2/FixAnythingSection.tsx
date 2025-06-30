@@ -20,8 +20,8 @@ export default function FixAnythingSection() {
       <div className="relative z-10">
         <div className="px-4 md:px-8 lg:px-12">
           <div className="max-w-[1400px] w-full">
-            <div className="mb-12">
-              <h2 className="text-[#FCFCFC] text-[36px] sm:text-[48px] 2xl:text-[56px] font-normal leading-[38px] sm:leading-[50px] 2xl:leading-[58px] mb-2 text-left font-britti max-w-fit tracking-tight sm:tracking-normal">
+            <div className="mb-24">
+              <h2 className="text-[#FCFCFC] text-[36px] sm:text-[48px] 2xl:text-[56px] font-normal leading-[38px] sm:leading-[50px] 2xl:leading-[58px] mb-6 text-left font-britti max-w-fit tracking-tight sm:tracking-normal">
                 See and Fix Anything. Instantly.
               </h2>
               <p className="text-[#888888] text-[14px] sm:text-[20px] 2xl:text-[24px] leading-[16px] sm:leading-[22px] 2xl:leading-[26px] font-normal text-left font-britti max-w-fit tracking-tight sm:tracking-normal">
@@ -52,7 +52,7 @@ export default function FixAnythingSection() {
               indexLabel="02–03"
               sectionLabel="TRACER INTELLIGENCE"
               title="Total visibility into computational infrastructure"
-              description="Gain real-time, highly granular insights into every workload and process, independent of coding language or framework, including highly parallelized processes across instances."
+              description="Gain real-time, highly granular insights into every workload and process, independent of coding language or framework, including highly parallelised processes across instances."
               previewImage="/home/Tracer-Intel.webp"
             />
             <PerformanceCard

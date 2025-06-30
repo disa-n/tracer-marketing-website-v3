@@ -82,7 +82,7 @@ export default function HowTracerWorksSection() {
             </div>
 
             {/* Block 2 */}
-            <div className="space-y-6">
+            <div className="space-y-6 2xl:mt-32">
               {/* Step Number and Title - aligned horizontally */}
               <div className="flex items-start gap-3">
                 <div className="font-chakra-petch text-[#202020] font-normal leading-none tracking-tight pt-1

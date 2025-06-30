@@ -80,7 +80,7 @@ const CultureCard: React.FC<CultureCardProps> = ({
         <h3 className="text-[#FCFCFC] font-britti-sans font-normal text-[32px] leading-[30px] break-words">
           {title}
         </h3>
-        <p className="text-[#FCFCFC] font-britti-sans font-normal text-base leading-[17px] break-words">
+        <p className="text-[#FCFCFC] font-britti-sans font-normal text-base leading-[18px] 2xl:leading-[20px] break-words">
           {description}
         </p>
       </div>

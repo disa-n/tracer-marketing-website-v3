@@ -72,15 +72,15 @@ function Hiring() {
             </h2>
 
             {/* Description */}
-            <p className="text-[#202020] font-britti-sans font-normal text-[16px] leading-[20px] md:text-[18px] md:leading-[22px] mb-4 text-left lg:text-left xl:text-left">
+            <p className="text-[#202020] font-britti-sans font-normal text-[16px] leading-[1.5] md:text-[18px] mb-4 text-left lg:text-left xl:text-left">
               Ready to help shape the future of high-performance computing? We are hiring ambitious and hard-working individuals to fast-track our growth.
             </p>
-            <p className="text-[#202020] font-britti-sans font-normal text-[16px] leading-[20px] md:text-[18px] md:leading-[22px] mb-4 text-left lg:text-left xl:text-left">
+            <p className="text-[#202020] font-britti-sans font-normal text-[16px] leading-[1.5] md:text-[18px] mb-4 text-left lg:text-left xl:text-left">
               Join our team in London and support our mission to rethink scientific computing and power the next generation of breakthroughs.
             </p>
 
             {/* Contact Information */}
-            <p className="text-[#202020] font-britti-sans font-normal text-[16px] leading-[20px] md:text-[18px] md:leading-[22px] mb-4 text-left lg:text-left xl:text-left">
+            <p className="text-[#202020] font-britti-sans font-normal text-[16px] leading-[1.5] md:text-[18px] mb-4 text-left lg:text-left xl:text-left">
               Apply now for a position or contact us at{' '}
               <a
                 href="mailto:careers@tracer.cloud"

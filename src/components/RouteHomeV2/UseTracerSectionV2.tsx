@@ -65,7 +65,7 @@ export default function UseTracerSectionV2() {
                 {/* Main text paragraph */}
                 <p className="text-2xl lg:text-4xl 2xl:text-5xl font-normal leading-[1.3] lg:leading-[48px] tracking-tight lg:tracking-tighter font-britti text-[#202020] mb-4">
                   Sure, you can keep guessing what&apos;s going<br />
-                  wrong with your analytical pipelines.<br />
+                  wrong with your computational pipelines.<br />
                   Tools that don&apos;t scale. Dashboards that don&apos;t<br />
                   explain. Alerts that never quite mean anything.
                 </p>
