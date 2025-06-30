@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import GridLines from '../shared/GridLines';
 
 
 // Define the tab data structure
@@ -169,6 +170,9 @@ export default function ProductPreviewSectionV2() {
 
   return (
     <section className="relative bg-[#141414] pt-8 xl:pt-12 pb-0 overflow-hidden">
+      {/* Grid Lines */}
+      <GridLines />
+
       {/* Dark gradient overlay working upward toward hero */}
       <div
         className="absolute inset-0 pointer-events-none z-[1]"

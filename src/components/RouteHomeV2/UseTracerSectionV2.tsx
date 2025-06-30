@@ -20,8 +20,8 @@ export default function UseTracerSectionV2() {
           <div className="flex justify-end pr-0 mt-0 lg:mt-10 xl:mt-6 2xl:mt-8 mb-0 min-[1024px]:max-[1125px]:hidden">
             <div className="w-full lg:w-3/4 relative aspect-[3/2] lg:aspect-[5/4] lg:translate-y-3 xl:aspect-[5/4] xl:-translate-y-6 2xl:aspect-[4/3] 2xl:-translate-y-14 bg-[#202020]">
               <Image
-                src="/home/T-Asset-DNA_2.webp"
-                alt="DNA visualization"
+                src="/home/Globe-Image.webp"
+                alt="Globe visualization"
                 fill
                 className="object-cover"
               />
@@ -64,12 +64,10 @@ export default function UseTracerSectionV2() {
               <div className="max-w-[1400px] w-full">
                 {/* Main text paragraph */}
                 <p className="text-2xl lg:text-4xl 2xl:text-5xl font-normal leading-[1.3] lg:leading-[48px] tracking-tight lg:tracking-tighter font-britti text-[#202020] mb-4">
-                  Analytical pipelines break. Logs don&apos;t say why.<br />
-                  And generic monitoring tools miss what matters.
-                </p>
-                <p className="text-2xl lg:text-4xl 2xl:text-5xl font-normal leading-[1.3] lg:leading-[48px] tracking-tight lg:tracking-tighter font-britti text-[#202020] mb-4">
-                  Too little visibility. Too late. Progress stalls.<br />
-                  In science, every wrong assumption costs.
+                  Sure, you can keep guessing what&apos;s going<br />
+                  wrong with your analytical pipelines.<br />
+                  Tools that don&apos;t scale. Dashboards that don&apos;t<br />
+                  explain. Alerts that never quite mean anything.
                 </p>
                 {/* Large downward arrow icon (centered until 650px, then left-aligned) */}
                 <div className="flex justify-center min-[650px]:justify-start mt-2 mb-4">
@@ -92,8 +90,8 @@ export default function UseTracerSectionV2() {
                 </div>
                 {/* Final line */}
                 <p className="text-2xl lg:text-4xl 2xl:text-5xl font-normal leading-[1.3] lg:leading-[48px] tracking-tight lg:tracking-tighter font-britti text-[#202020]">
-                  That&apos;s why we built Tracer.<br />
-                  Observability for AI driven science.
+                  Or you could use Tracer — the observability<br />
+                  platform built for AI-driven science.
                 </p>
               </div>
             </div>
