@@ -201,12 +201,12 @@ const NavigationBar = () => {
               {/* CTA Buttons */}
               <div className="p-6 space-y-4">
                 <div onClick={handleNavLinkClick}>
-                  <ShinyCTAButton mobileHeight={51} desktopHeight={51} wide={true} />
+                  <ShinyCTAButton mobileHeight={48} desktopHeight={55} wide={true} />
                 </div>
 
                 <button
                   onClick={handleDemoClick}
-                  className="w-full h-[47px] bg-[#E8E8E8] text-black font-britti-sans font-[400] hover:bg-[#D8D8D8] transition-colors"
+                  className="w-full h-[44px] bg-[#E8E8E8] text-black font-britti-sans font-[400] hover:bg-[#D8D8D8] transition-colors"
                 >
                   Get a Demo
                 </button>

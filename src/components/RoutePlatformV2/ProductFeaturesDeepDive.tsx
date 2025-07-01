@@ -275,7 +275,7 @@ const ProductFeaturesDeepDive = () => {
                     href="https://sandbox.tracer.cloud/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="h-12 font-britti-sans text-sm sm:text-base font-normal cursor-pointer bg-[#E8E8E8] flex items-center justify-center text-black px-6 sm:px-8 hover:opacity-80 transition-all w-full sm:w-auto"
+                    className="h-[44px] font-britti-sans text-sm sm:text-base font-normal cursor-pointer bg-[#E8E8E8] flex items-center justify-center text-black px-6 sm:px-8 hover:opacity-80 transition-all w-full sm:w-auto"
                   >
                     See It in Action
                   </Link>

@@ -6,9 +6,9 @@ https://ryanmulligan.dev/blog/css-property-new-style/
 :root {
   --shiny-cta-bg: #000000;
   --shiny-cta-bg-subtle: #1a1818;
-  --shiny-cta-left: #3A23ED;
-  --shiny-cta-middle: #BF5198;
-  --shiny-cta-right: #FFA231;
+  --shiny-cta-left: #ffffff;
+  --shiny-cta-middle: #ffffff;
+  --shiny-cta-right: #ffffff;
   --shiny-cta-background-sweep: #565656;
   --shiny-cta-hover-background: #4e4e4e;
 }
