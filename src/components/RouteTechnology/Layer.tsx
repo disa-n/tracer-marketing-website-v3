@@ -99,14 +99,7 @@ function Layer() {
       {/* Mobile layout - image removed */}
       {/* Original background section for mobile */}
       <div className="bg-[#202020] px-4 py-16 md:hidden">
-        <div className="pb-1"></div>
-
-        {/* Section Title */}
-        <div className="mb-16">
-          <h2 className="text-white font-britti-sans font-normal text-3xl sm:text-4xl md:text-5xl leading-tight tracking-tight text-left">
-            Four Layers Powering Full-Stack Observability
-          </h2>
-        </div>
+        <div className="pb-10"></div>
 
         {/* Mobile content */}
         <div className="space-y-16">

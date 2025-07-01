@@ -44,7 +44,7 @@ export default function ScienceNeedsInfoSection() {
     },
     {
       icon: <Wrench className="w-12 h-12 md:w-16 md:h-16 text-[#202020]" strokeWidth={1} />,
-      title: "\"Generic Dashboards Miss The Context\"",
+      title: "\"Generic Dashboards Miss Pipeline Context\"",
       description: "Off-the-shelf tools weren't built for scientific workflows. They surface metrics, but not meaning."
     },
     {
