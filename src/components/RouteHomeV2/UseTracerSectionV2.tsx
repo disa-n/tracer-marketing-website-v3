@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import { SearchX, Wrench, ShieldOff, Siren } from 'lucide-react';
+import { SearchX, Server, CircleDollarSign, EyeOff } from 'lucide-react';
 import { GridLinesLight } from '@/components/shared/GridLines';
 
 // Card component for problem statements
@@ -13,9 +13,9 @@ interface ProblemCardProps {
 
 function ProblemCard({ icon, title, description }: ProblemCardProps) {
   return (
-    <div className="bg-[#FCFCFC] border border-[#E8E8E8] p-4 md:p-8 flex items-start gap-4 md:gap-8 min-h-[100px] md:min-h-[140px]">
+    <div className="bg-[#FCFCFC] border border-[#E8E8E8] p-4 md:p-8 flex items-center gap-4 md:gap-8 min-h-[100px] md:min-h-[140px]">
       {/* Icon */}
-      <div className="flex-shrink-0 mt-0">
+      <div className="flex-shrink-0">
         {icon}
       </div>
 
@@ -49,24 +49,24 @@ export default function UseTracerSectionV2() {
   // Card data with the problems
   const problemCards = [
     {
+      icon: <Server className="w-8 h-8 md:w-16 md:h-16 text-[#202020]" strokeWidth={1} />,
+      title: "\"Am I using the right-sized instances?\"",
+      description: "You might be overpaying for unused resources or suffering performance issues \nwithout clear data to guide your sizing decisions."
+    },
+    {
       icon: <SearchX className="w-8 h-8 md:w-16 md:h-16 text-[#202020]" strokeWidth={1} />,
-      title: "\"We don't know when something's failing\"",
-      description: "Pipelines silently break. By the time you find out,\nyou've already wasted hours or worse, your results are wrong."
+      title: "\"We don't know which binary breaks, when, or why\"",
+      description: "Software binaries break silently. \nBy the time you find out, you've already wasted hours, and your results are wrong."
     },
     {
-      icon: <Wrench className="w-8 h-8 md:w-16 md:h-16 text-[#202020]" strokeWidth={1} />,
-      title: "\"Generic dashboards miss the context\"",
-      description: "Off-the-shelf tools weren't built for scientific workflows.\nThey surface metrics, but not meaning."
+      icon: <EyeOff className="w-8 h-8 md:w-16 md:h-16 text-[#202020]" strokeWidth={1} />,
+      title: "\"Generic dashboards miss pipeline context\"",
+      description: "Processes are loosely connected in outdated interfaces. \nIt is a constant challenge to connect processes to pipeline runs."
     },
     {
-      icon: <ShieldOff className="w-8 h-8 md:w-16 md:h-16 text-[#202020]" strokeWidth={1} />,
-      title: "\"Security standards? Not even close\"",
-      description: "Most tools ignore compliance, traceability, and access control\nessentials for sensitive, collaborative research."
-    },
-    {
-      icon: <Siren className="w-8 h-8 md:w-16 md:h-16 text-[#202020]" strokeWidth={1} />,
-      title: "\"Too much noise. Not enough insight\"",
-      description: "Endless alerts make it hard to spot real problems.\nYou're reactive, not proactive."
+      icon: <CircleDollarSign className="w-8 h-8 md:w-16 md:h-16 text-[#202020]" strokeWidth={1} />,
+      title: "\"How can I make my pipelines more cost-efficient?\"",
+      description: "You can’t optimize costs without visibility into what’s actually driving spend \nacross pipeline components, tools, and teams."
     }
   ];
 

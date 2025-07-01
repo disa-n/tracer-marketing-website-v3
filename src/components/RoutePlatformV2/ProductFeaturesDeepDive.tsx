@@ -30,7 +30,7 @@ const features: Feature[] = [
     id: 'pipeline-spend',
     title: 'Map Pipeline Spend',
     previewTitle: 'Match Pipeline Activity to Cost Centers in Real Time',
-    description: 'Automatically attribute cloud spend to specific pipelines, tools, and teams.\nMap compute usage directly to cost centers for accurate budgeting.',
+    description: 'Automatically attribute cloud spend to specific pipelines, tools, and teams. Map compute usage directly to cost centers for accurate budgeting.',
     icon: BarChart3,
     image: '/platformv2/features/pipeline-spend.webp'
   },
@@ -38,7 +38,7 @@ const features: Feature[] = [
     id: 'tool-metrics',
     title: 'Tool-Level Metrics',
     previewTitle: 'Tool-Level Metrics',
-    description: 'Get granular insights into tool-level CPU, memory, and disk I/O usage, along with\nperformance and execution patterns across your pipeline ecosystem.',
+    description: 'Get granular insights into tool-level CPU, memory, and disk I/O usage, along with performance and execution patterns across your pipeline ecosystem.',
     icon: Settings,
     image: '/platformv2/features/tool-metrics.webp'
   },
@@ -46,7 +46,7 @@ const features: Feature[] = [
     id: 'unified-log',
     title: 'Unified Log View',
     previewTitle: 'Unified Log View',
-    description: 'Centralized logging across all pipeline components with intelligent\nfiltering, search, and correlation capabilities.',
+    description: 'Centralised logging across all pipeline components with intelligent filtering, search, and correlation capabilities.',
     icon: Eye,
     image: '/platformv2/features/unified-log.webp'
   },
@@ -54,7 +54,7 @@ const features: Feature[] = [
     id: 'live-instance',
     title: 'Live Instance Watch',
     previewTitle: 'Live Instance Watch',
-    description: 'Real-time monitoring of running instances with live resource utilization,\nperformance metrics, and health status.',
+    description: 'Real-time monitoring of running instances with live resource utilisation, performance metrics, and health status.',
     icon: Activity,
     image: '/platformv2/features/live-instance.webp'
   },
@@ -62,7 +62,7 @@ const features: Feature[] = [
     id: 'time-sink',
     title: 'Time Sink Detector',
     previewTitle: 'Time Sink Detector',
-    description: 'Automatically identify bottlenecks and performance issues\nthat slow down your pipelines and impact productivity.',
+    description: 'Automatically identify bottlenecks and performance issues that slow down your pipelines and impact productivity.',
     icon: Clock,
     image: '/platformv2/features/time-sink.webp'
   },
@@ -70,27 +70,59 @@ const features: Feature[] = [
     id: 'smart-tradeoffs',
     title: 'Smart Tool Tradeoffs',
     previewTitle: 'Smart Tool Tradeoffs',
-    description: 'Intelligent recommendations for optimizing tool selection, resource allocation,\nand configuration based on your specific workloads.',
+    description: 'Intelligent recommendations for optimizing tool selection, resource allocation, and configuration based on your specific workloads.',
     icon: Brain,
     image: '/platformv2/features/smart-tradeoffs.webp'
   }
 ]
 
+// Utility function to center a tab in its scrollable container
+const scrollToCenter = (tabId: string, delay: number = 100): void => {
+  setTimeout(() => {
+    const targetButton = document.querySelector(`[data-tab-id="${tabId}"]`)
+    if (targetButton) {
+      const container = targetButton.closest('.overflow-x-auto')
+      if (container) {
+        const containerRect = container.getBoundingClientRect()
+        const buttonRect = targetButton.getBoundingClientRect()
+        const containerCenter = containerRect.left + containerRect.width / 2
+        const buttonCenter = buttonRect.left + buttonRect.width / 2
+        const scrollOffset = buttonCenter - containerCenter
+
+        container.scrollBy({
+          left: scrollOffset,
+          behavior: 'smooth'
+        })
+      }
+    }
+  }, delay)
+}
+
 const ProductFeaturesDeepDive = () => {
   const [activeFeature, setActiveFeature] = useState<string>(features[0].id)
   const [progress, setProgress] = useState<number>(0)
   const [isAutoAdvancing, setIsAutoAdvancing] = useState<boolean>(true)
+  const [isMobile, setIsMobile] = useState<boolean>(false)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
   const progressIntervalRef = useRef<NodeJS.Timeout | null>(null)
 
   const currentFeature = features.find(f => f.id === activeFeature) || features[0]
   const currentIndex = features.findIndex(f => f.id === activeFeature)
 
-  // Auto-advance functionality (desktop only)
+  // Mobile detection
   useEffect(() => {
-    // Check if we're on mobile (screen width <= 1024px)
-    const isMobile = window.innerWidth <= 1024
-    if (!isAutoAdvancing || isMobile) return
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 1024)
+    }
+
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // Auto-advance functionality (works on all devices)
+  useEffect(() => {
+    if (!isAutoAdvancing) return
 
     // Clear existing intervals
     if (intervalRef.current) clearInterval(intervalRef.current)
@@ -103,15 +135,21 @@ const ProductFeaturesDeepDive = () => {
     progressIntervalRef.current = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) return 100
-        return prev + (100 / (5000 / 50)) // 5 seconds total, update every 50ms
+        return prev + (100 / (8000 / 50)) // 8 seconds total, update every 50ms
       })
     }, 50)
 
-    // Auto-advance to next feature after 5 seconds
+    // Auto-advance to next feature after 8 seconds
     intervalRef.current = setTimeout(() => {
       const nextIndex = (currentIndex + 1) % features.length
-      setActiveFeature(features[nextIndex].id)
-    }, 5000)
+      const nextFeatureId = features[nextIndex].id
+      setActiveFeature(nextFeatureId)
+
+      // Auto-center the new active tab on mobile
+      if (isMobile) {
+        scrollToCenter(nextFeatureId, 100)
+      }
+    }, 8000)
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current)
@@ -120,10 +158,15 @@ const ProductFeaturesDeepDive = () => {
   }, [activeFeature, currentIndex, isAutoAdvancing])
 
   // Handle manual feature selection
-  const handleFeatureClick = (featureId: string) => {
+  const handleFeatureClick = (featureId: string, event?: React.MouseEvent<HTMLButtonElement>) => {
     setIsAutoAdvancing(false)
     setActiveFeature(featureId)
     setProgress(0)
+
+    // Center the clicked tab if it's partially off-screen (mobile only)
+    if (event && isMobile) {
+      scrollToCenter(featureId, 0)
+    }
 
     // Re-enable auto-advancing after 20 seconds of manual selection
     setTimeout(() => {
@@ -151,33 +194,43 @@ const ProductFeaturesDeepDive = () => {
           </div>
           {/* Features Grid */}
           <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[300px_1fr] lg:gap-8">
-            {/* Mobile Tab Navigation - matches home screen style */}
-            <div className="lg:hidden mb-8 flex justify-center">
-              <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-                {features.map((feature) => (
-                  <div key={feature.id} className="relative">
-                    <motion.button
-                      onClick={() => handleFeatureClick(feature.id)}
-                      className={`
-                        font-britti-sans text-sm sm:text-base
-                        transition-colors duration-300 ease-in-out
-                        relative pb-2 cursor-pointer
-                        ${activeFeature === feature.id
-                          ? 'text-black'
-                          : 'text-[#888888] hover:text-black'
-                        }
-                      `}
-                    >
-                      {feature.title}
-                    </motion.button>
-                    {/* Active tab underline */}
-                    {activeFeature === feature.id && (
-                      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-300">
-                        <div className="h-full bg-black w-full" />
+            {/* Mobile Tab Navigation - horizontally scrollable */}
+            <div className="lg:hidden mb-8">
+              <div className="w-full px-4">
+                <div className="overflow-x-auto scrollbar-hide">
+                  <div className="flex gap-6 min-w-max px-2">
+                    {features.map((feature) => (
+                      <div key={feature.id} className="relative flex-shrink-0">
+                        <motion.button
+                          onClick={(e) => handleFeatureClick(feature.id, e)}
+                          data-tab-id={feature.id}
+                          className={`
+                            font-britti-sans text-sm
+                            transition-colors duration-300 ease-in-out
+                            relative pb-3 cursor-pointer whitespace-nowrap
+                            ${activeFeature === feature.id
+                              ? 'text-black'
+                              : 'text-[#888888] hover:text-black'
+                            }
+                          `}
+                        >
+                          {feature.title}
+                        </motion.button>
+                        {/* Active tab underline with progress bar */}
+                        {activeFeature === feature.id && (
+                          <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-300">
+                            <motion.div
+                              className="h-full bg-black"
+                              initial={{ width: '0%' }}
+                              animate={{ width: `${progress}%` }}
+                              transition={{ duration: 0.1, ease: 'linear' }}
+                            />
+                          </div>
+                        )}
                       </div>
-                    )}
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
             </div>
             {/* Desktop Feature List */}
@@ -231,7 +284,7 @@ const ProductFeaturesDeepDive = () => {
                       <h3 className="font-britti-sans text-2xl sm:text-[28px] lg:text-[32px] font-normal leading-[1.1] tracking-[-0.01em] text-black mb-4 break-words">
                         {currentFeature.previewTitle}
                       </h3>
-                      <p className="font-britti-sans text-sm sm:text-base font-normal leading-[1.4] tracking-[0em] text-[#888888] break-words whitespace-pre-line">
+                      <p className="font-britti-sans text-sm sm:text-base font-normal leading-[1.4] tracking-[0em] text-[#888888] break-words">
                         {currentFeature.description}
                       </p>
                     </div>
