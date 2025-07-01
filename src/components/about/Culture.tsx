@@ -64,10 +64,10 @@ const CultureCard: React.FC<CultureCardProps> = ({
 }) => {
   return (
     <div
-      className={`bg-[#202020] border border-[#E8E8E8] p-4 h-[212px] overflow-hidden transition-transform duration-300 hover:scale-105 ${className}`}
+      className={`bg-[#202020] border border-[#E8E8E8] px-4 py-6 h-[212px] overflow-hidden transition-transform duration-300 hover:scale-105 ${className}`}
       style={{ width: cardWidth, minWidth: cardWidth, maxWidth: cardWidth }}
     >
-      <div className="w-14 h-14 mb-4">
+      <div className="w-14 h-14 mb-3">
         <Image
           src={iconSrc}
           alt={`${title} Icon`}
