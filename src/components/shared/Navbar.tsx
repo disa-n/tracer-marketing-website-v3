@@ -127,8 +127,8 @@ const NavigationBar = () => {
               <button
                 onClick={handleDemoClick}
                 className={`font-britti-sans font-normal cursor-pointer bg-[#E8E8E8] flex items-center justify-center text-black transition-all duration-500 ease-in-out ${isScrolled
-                  ? 'h-[33px] text-sm px-4'
-                  : 'h-[45px] text-base px-6'
+                  ? 'h-[31px] text-sm px-4'
+                  : 'h-[41px] text-base px-6'
                   }`}
                 style={{ fontFamily: 'inherit', lineHeight: '1.2' }}
               >
@@ -206,7 +206,7 @@ const NavigationBar = () => {
 
                 <button
                   onClick={handleDemoClick}
-                  className="w-full h-[51px] bg-[#E8E8E8] text-black font-britti-sans font-[400] hover:bg-[#D8D8D8] transition-colors"
+                  className="w-full h-[47px] bg-[#E8E8E8] text-black font-britti-sans font-[400] hover:bg-[#D8D8D8] transition-colors"
                 >
                   Get a Demo
                 </button>

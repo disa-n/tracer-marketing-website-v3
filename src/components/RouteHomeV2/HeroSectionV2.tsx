@@ -169,7 +169,7 @@ export default function HeroSectionV2() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-row gap-2 300:gap-3 sm:gap-4 justify-center lg:justify-start items-center lg:items-start mb-12 300:mb-4 400:mb-2 xs:mb-1 sm:mb-0 lg:mb-16 px-2">
+            <div className="flex flex-row gap-2 300:gap-3 sm:gap-4 justify-center lg:justify-start items-center mb-12 300:mb-4 400:mb-2 xs:mb-1 sm:mb-0 lg:mb-16 px-2">
               <div className="w-[48%] sm:w-auto mobile-full-width-cta">
                 <ShinyCTAButton
                   mobileHeight={40}
@@ -184,8 +184,8 @@ export default function HeroSectionV2() {
                          bg-[#E8E8E8] text-black font-britti-sans text-sm 300:text-sm 400:text-base sm:text-lg !font-[400]
                          hover:bg-[#D8D8D8] transition-colors duration-200 demo-button-height"
                 style={{
-                  '--mobile-height': '40px',
-                  '--desktop-height': '55px',
+                  '--mobile-height': '36px',
+                  '--desktop-height': '51px',
                 } as React.CSSProperties}
               >
                 Get a Demo
