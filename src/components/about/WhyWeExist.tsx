@@ -130,7 +130,7 @@ function WhyWeExist() {
       <div className="relative z-20 pt-16 pb-32 lg:pt-20 lg:pb-48">
         {/* Title with new alignment */}
         <div className="flex flex-col justify-center px-4 md:px-8 lg:px-12 lg:max-w-[1400px] lg:w-full">
-          <h2 className="mt-4 text-[#202020] font-britti-sans font-medium text-2xl sm:text-3xl lg:text-[40px] leading-tight lg:leading-[38px] tracking-tight lg:tracking-[-1.5px] mb-4 lg:mb-6">
+          <h2 className="mt-4 text-[#202020] font-britti-sans font-medium text-3xl lg:text-5xl leading-tight lg:leading-[38px] tracking-tight lg:tracking-[-1.5px] mb-4 lg:mb-6">
             Why We Exist
           </h2>
         </div>
@@ -141,7 +141,7 @@ function WhyWeExist() {
           {/* Cards Container */}
           <div ref={cardsRef} className="relative mt-12 lg:mt-16">
             {/* Cards Layout - Mobile-first: stacked, then side by side on lg+ */}
-            <div className="flex flex-col gap-4 lg:flex-row lg:gap-8 xl:gap-12">
+            <div className="flex flex-col gap-12 lg:flex-row lg:gap-8 xl:gap-12">
               {/* Mission Card */}
               <motion.div
                 className="flex flex-1"

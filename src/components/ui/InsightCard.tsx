@@ -9,7 +9,7 @@ interface InsightCardProps {
 
 export default function InsightCard({ icon, title, description }: InsightCardProps) {
   return (
-    <div className="bg-white border border-[#E8E8E8] max-w-[1255px] px-4 md:px-8 lg:px-12 pt-10 pb-16 h-full flex flex-col">
+    <div className="bg-white border border-[#E8E8E8] max-w-[1255px] px-4 md:px-8 lg:px-12 pt-10 pb-8 lg:pb-16 h-full flex flex-col">
       {/* Icon - Top-left corner */}
       <div className="mb-6">
         {icon || <Rocket className="w-16 h-16 text-[#202020]" strokeWidth={1} />}
