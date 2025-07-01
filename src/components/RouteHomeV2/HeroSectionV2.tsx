@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import GridLines from '@/components/shared/GridLines';
 import ShinyCTAButton from '@/components/shared/ShinyCTAButton';
 import { SearchX, Wrench, ShieldOff, Siren } from 'lucide-react';
@@ -46,6 +47,8 @@ export default function HeroSectionV2() {
     'Mapping Job Spend',
     'Breaking Down Runs'
   ];
+
+
 
   const textVariations = isMobile ? mobileTextVariations : desktopTextVariations;
 
@@ -135,7 +138,20 @@ export default function HeroSectionV2() {
 
             {/* Mobile Hero Image - Above title, extending off-screen - Only shows on smallest mobile screens */}
             <div className="block sm:hidden -mb-2 300:-mb-3 400:-mb-3 xs:-mb-3 sm:-mb-2 mt-32 300:mt-28 400:mt-24 xs:mt-20 sm:mt-24 relative -mx-4 sm:-mx-6 md:-mx-8 overflow-hidden">
-              <div className="relative w-[800px] 300:w-[900px] 400:w-[950px] xs:w-[1100px] sm:w-[1200px] h-[420px] 300:h-[460px] 400:h-[480px] xs:h-[540px] sm:h-[580px] -translate-x-[160px] 300:-translate-x-[170px] 400:-translate-x-[175px] xs:-translate-x-[170px] sm:-translate-x-[160px] -translate-y-[20px]">
+              <motion.div
+                className="relative w-[800px] 300:w-[900px] 400:w-[950px] xs:w-[1100px] sm:w-[1200px] h-[420px] 300:h-[460px] 400:h-[480px] xs:h-[540px] sm:h-[580px] -translate-x-[160px] 300:-translate-x-[170px] 400:-translate-x-[175px] xs:-translate-x-[170px] sm:-translate-x-[160px] -translate-y-[20px]"
+                animate={{
+                  y: [0, -15, 0],
+                  x: [0, 8, 0],
+                  rotate: [0, 1.5, 0]
+                }}
+                transition={{
+                  duration: 5,
+                  ease: "easeInOut",
+                  repeat: Infinity,
+                  repeatType: "loop"
+                }}
+              >
                 <Image
                   src="/home/T-Asset-Spacecraft_7 1.webp"
                   alt="Spacecraft representing advanced monitoring technology"
@@ -143,7 +159,7 @@ export default function HeroSectionV2() {
                   className="object-contain"
                   priority
                 />
-              </div>
+              </motion.div>
             </div>
 
             {/* Main Heading with Typewriter Effect on Last Line */}
@@ -196,7 +212,20 @@ export default function HeroSectionV2() {
 
           {/* Image Column - Desktop and larger screens only */}
           <div className="hidden lg:flex lg:absolute lg:right-0 lg:top-0 lg:w-full lg:h-full lg:items-center lg:justify-end lg:pointer-events-none lg:z-0">
-            <div className="relative lg:w-[1800px] xl:w-[2100px] 2xl:w-[2400px] lg:h-[2200px] xl:h-[2500px] 2xl:h-[2800px] lg:translate-x-[150px] lg:translate-y-[100px] xl:translate-x-[200px] xl:translate-y-[120px] 2xl:translate-x-[250px] 2xl:translate-y-[150px]">
+            <motion.div
+              className="relative lg:w-[1800px] xl:w-[2100px] 2xl:w-[2400px] lg:h-[2200px] xl:h-[2500px] 2xl:h-[2800px] lg:translate-x-[150px] lg:translate-y-[100px] xl:translate-x-[200px] xl:translate-y-[120px] 2xl:translate-x-[250px] 2xl:translate-y-[150px]"
+              animate={{
+                y: [0, -20, 0],
+                x: [0, 10, 0],
+                rotate: [0, 2, 0]
+              }}
+              transition={{
+                duration: 6,
+                ease: "easeInOut",
+                repeat: Infinity,
+                repeatType: "loop"
+              }}
+            >
               <Image
                 src="/home/T-Asset-Spacecraft_7 1.webp"
                 alt="Spacecraft representing advanced monitoring technology"
@@ -204,7 +233,7 @@ export default function HeroSectionV2() {
                 className="object-contain"
                 priority
               />
-            </div>
+            </motion.div>
           </div>
 
         </div>
