@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Hero from '@/components/tools/reverse-complement/Hero';
 import Generator from '@/components/tools/reverse-complement/Generator';
-import Cta from '@/components/RoutePlatform/Cta';
+import Cta from '@/components/RoutePlatformV2/Cta';
 
 export const metadata: Metadata = {
   title: 'Tracer | Reverse Complement Generator',
