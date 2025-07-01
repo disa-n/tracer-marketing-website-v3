@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, Variants, useAnimation, useInView } from 'framer-motion';
 import Image from 'next/image';
 import { DualLeftArrowIcon, MonitorIcon } from '../shared/Svgs';
+import { GridLinesLight } from '@/components/shared/GridLines';
 
 // Variants for coordinated reveal
 const revealVariants: Variants = {
@@ -234,47 +235,8 @@ export default function DigitalDiscoverySection() {
         </div>
       )}
 
-      {/* Static Vertical Gridlines - Hidden on mobile/small screens */}
-      {shouldShowGridlines && (
-        <>
-          <div
-            className="absolute bg-[#E8E8E8] h-full"
-            style={{
-              width: 1,
-              left: 250,
-              top: 0,
-              zIndex: 0,
-            }}
-          />
-          <div
-            className="absolute bg-[#E8E8E8] h-full"
-            style={{
-              width: 1,
-              left: 570,
-              top: 0,
-              zIndex: 0,
-            }}
-          />
-          <div
-            className="absolute bg-[#E8E8E8] h-full"
-            style={{
-              width: 1,
-              left: 890,
-              top: 0,
-              zIndex: 0,
-            }}
-          />
-          <div
-            className="absolute bg-[#E8E8E8] h-full"
-            style={{
-              width: 1,
-              left: 1210,
-              top: 0,
-              zIndex: 0,
-            }}
-          />
-        </>
-      )}
+      {/* Grid Lines */}
+      {shouldShowGridlines && <GridLinesLight />}
 
       {/* Intro text animation - appears once and stays */}
       {shouldAnimate ? (

@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { GridLines3 } from '@/components/shared/GridLines'
+import { GridLinesLight } from '@/components/shared/GridLines'
 import {
   BarChart3,
   Settings,
@@ -135,7 +135,7 @@ const ProductFeaturesDeepDive = () => {
     <section className="relative overflow-hidden bg-white">
       {/* Background Grid Lines - Desktop Only */}
       <div className="hidden lg:block">
-        <GridLines3 />
+        <GridLinesLight />
       </div>
       <div className='w-full flex z-[10] flex-col items-center justify-center max-w-[1800px] px-6 900:px-8 mx-auto'>
         <div className="relative z-10 py-10 md:pt-36 md:pb-36 w-full">

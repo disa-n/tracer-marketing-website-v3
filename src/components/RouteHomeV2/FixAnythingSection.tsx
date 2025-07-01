@@ -3,18 +3,12 @@
 import React from 'react';
 import Link from 'next/link';
 import PerformanceCard from '../ui/PerformanceCard';
+import GridLines from '@/components/shared/GridLines';
 
 export default function FixAnythingSection() {
   return (
     <section id="fix-anything-section" className="relative bg-[#202020] pt-24 pb-0 md:pt-36 md:pb-36">
-      <div className="absolute inset-0 z-0 pointer-events-none hidden sm:block">
-        <div className="w-full h-full max-w-[1600px] mx-auto flex justify-between">
-          <div className="w-0 h-full opacity-50 outline outline-[0.25px] outline-offset-[-0.125px] outline-[#404040]" />
-          <div className="w-0 h-full opacity-50 outline outline-[0.25px] outline-offset-[-0.125px] outline-[#404040]" />
-          <div className="w-0 h-full opacity-50 outline outline-[0.25px] outline-offset-[-0.125px] outline-[#404040]" />
-          <div className="w-0 h-full opacity-50 outline outline-[0.25px] outline-offset-[-0.125px] outline-[#404040]" />
-        </div>
-      </div>
+      <GridLines />
 
       {/* Section Heading */}
       <div className="relative z-10">

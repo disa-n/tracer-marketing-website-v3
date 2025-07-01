@@ -1,19 +1,13 @@
 import Image from 'next/image';
+import GridLines from '@/components/shared/GridLines';
 
 const MeetTracerSection = () => {
   return (
-    <section className="bg-[#202020] relative overflow-hidden">
+    <section className="bg-[#202020] relative overflow-hidden w-full">
       {/* Grid Lines */}
-      <div className="absolute inset-0 z-0 pointer-events-none hidden sm:block overflow-hidden">
-        <div className="w-full h-full flex justify-between">
-          <div className="w-0 h-full opacity-50 outline outline-[0.25px] outline-offset-[-0.125px] outline-[#404040]" />
-          <div className="w-0 h-full opacity-50 outline outline-[0.25px] outline-offset-[-0.125px] outline-[#404040]" />
-          <div className="w-0 h-full opacity-50 outline outline-[0.25px] outline-offset-[-0.125px] outline-[#404040]" />
-          <div className="w-0 h-full opacity-50 outline outline-[0.25px] outline-offset-[-0.125px] outline-[#404040]" />
-        </div>
-      </div>
+      <GridLines />
 
-      <div className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center justify-center px-4 md:px-8 lg:px-12">
+      <div className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center justify-center px-4 md:px-8 lg:px-12 w-full max-w-[1800px] mx-auto">
 
         {/* Jet Image - Background */}
         <div className="absolute inset-0 flex items-center justify-center z-0">

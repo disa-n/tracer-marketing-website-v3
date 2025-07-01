@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
 import { motion, useAnimation, useInView, type Variants } from 'framer-motion'
-import { GridLines3 } from '@/components/shared/GridLines'
+import { GridLinesLight } from '@/components/shared/GridLines'
 
 const Approach = () => {
     // State for responsive behavior based on 50% screen width
@@ -80,7 +80,7 @@ const Approach = () => {
 
     return (
         <div className='bg-white pt-10 pb-4 md:py-[72px] w-full text-black border-t border-[#E8E8E8] flex items-center relative justify-center flex-col'>
-            <GridLines3 />
+            <GridLinesLight />
             <div className='w-full flex z-[10]  flex-col items-center justify-center max-w-[1800px] 900:px-8 px-6'>
                 <div className='w-full  pb-8 md:pb-12 font-[400] font-britti-sans text-[32px] md:text-[40px] text-[#202020] leading-[0.9]'>
                     The dawn of AI <br className='sm:hidden ' /> in science <br className='sm:flex hidden' /> requires <br className='sm:hidden ' />a new approach

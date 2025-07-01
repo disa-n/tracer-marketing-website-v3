@@ -65,16 +65,7 @@ const ComingSoon = () => {
       {/* Background container with max-width constraint */}
       <div className="relative mx-auto max-w-[1440px] w-full min-h-screen">
 
-        {/* Vertical Gridlines */}
-        <div className="pointer-events-none absolute inset-0 z-0">
-          {[12, 37, 62, 87].map((percent, index) => (
-            <div
-              key={index}
-              className="absolute top-0 h-full w-[0.5px] bg-[#E8E8E8]"
-              style={{ left: `${percent}%`, transform: 'translateX(-50%)' }}
-            />
-          ))}
-        </div>
+
 
         {/* Main Content Container */}
         <div className="relative z-10 flex flex-col justify-center min-h-screen px-4 md:px-16 lg:px-[65px]">

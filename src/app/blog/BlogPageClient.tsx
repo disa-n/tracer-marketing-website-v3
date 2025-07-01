@@ -171,53 +171,7 @@ export default function BlogPageClient() {
         }}
       />
 
-      {/* Vertical Gridlines - Visible in background of subscribe section */}
-      <div className="absolute left-0 w-full pointer-events-none" style={{ top: 'calc(95px + 60px + 135px)', height: 'calc(100% - 224px)' }}>
-        {/* Gridline 1 */}
-        <div
-          className="absolute bg-[#E8E8E8]"
-          style={{
-            width: 1,
-            left: 250,
-            top: 0,
-            height: '96%',
-            zIndex: 1,
-          }}
-        />
-        {/* Gridline 2 */}
-        <div
-          className="absolute bg-[#E8E8E8]"
-          style={{
-            width: 1,
-            left: 570,
-            top: 0,
-            height: '96%',
-            zIndex: 1,
-          }}
-        />
-        {/* Gridline 3 */}
-        <div
-          className="absolute bg-[#E8E8E8]"
-          style={{
-            width: 1,
-            left: 890,
-            top: 0,
-            height: '96%',
-            zIndex: 1,
-          }}
-        />
-        {/* Gridline 4 */}
-        <div
-          className="absolute bg-[#E8E8E8]"
-          style={{
-            width: 1,
-            left: 1210,
-            top: 0,
-            height: '96%',
-            zIndex: 1,
-          }}
-        />
-      </div>
+
 
       <div className="px-4 md:px-8 max-w-7xl xxl:max-w-none xxl:px-16 mx-auto relative z-10">
         <BlogHero />
