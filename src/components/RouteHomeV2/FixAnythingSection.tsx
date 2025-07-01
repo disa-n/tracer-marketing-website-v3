@@ -11,23 +11,17 @@ export default function FixAnythingSection() {
       <GridLines />
 
       {/* Section Heading */}
-      <div className="relative z-10">
-        <div className="px-4 md:px-8 lg:px-12">
-          <div className="max-w-[1400px] w-full">
-            <div className="mb-24">
-              <h2 className="text-[#FCFCFC] text-[36px] sm:text-[48px] 2xl:text-[56px] font-normal leading-[38px] sm:leading-[50px] 2xl:leading-[58px] mb-6 text-left font-britti max-w-fit tracking-tight sm:tracking-normal">
-                See and Fix Anything. Instantly.
-              </h2>
-              <p className="text-[#888888] text-[14px] sm:text-[20px] 2xl:text-[24px] leading-[16px] sm:leading-[22px] 2xl:leading-[26px] font-normal text-left font-britti max-w-fit tracking-tight sm:tracking-normal">
-                Tracer helps you effortlessly monitor tools, runs, and infrastructure with visual clarity and actionable diagnostics.
-              </p>
-            </div>
-          </div>
-        </div>
+      <div className="relative z-10 w-full max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 900:px-8 mb-24">
+        <h2 className="text-[#FCFCFC] text-[36px] sm:text-[48px] 2xl:text-[56px] font-normal leading-[38px] sm:leading-[50px] 2xl:leading-[58px] mb-6 text-left font-britti max-w-fit tracking-tight sm:tracking-normal">
+          See and Fix Anything. Instantly.
+        </h2>
+        <p className="text-[#888888] text-[14px] sm:text-[20px] 2xl:text-[24px] leading-[16px] sm:leading-[22px] 2xl:leading-[26px] font-normal text-left font-britti max-w-fit tracking-tight sm:tracking-normal">
+          Tracer helps you effortlessly monitor tools, runs, and infrastructure with visual clarity and actionable diagnostics.
+        </p>
       </div>
 
       {/* Feature Card Grid */}
-      <div className="relative z-10 max-w-[1800px] mx-auto px-2 sm:px-4 lg:px-6 xl:px-8 2xl:px-16">
+      <div className="relative z-10 w-full max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 900:px-8">
         <div className="space-y-8">
           <div className="w-full">
             <PerformanceCard
@@ -62,11 +56,11 @@ export default function FixAnythingSection() {
       </div>
 
       {/* CTA Button */}
-      <div className="relative z-10 max-w-[1800px] mx-auto px-2 sm:px-4 lg:px-6 xl:px-8 2xl:px-16">
+      <div className="relative z-10 w-full max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 900:px-8">
         <div className="mt-12 text-left">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <Link href="/product" className="block w-full">
-              <button className="w-full min-w-fit bg-[#E8E8E8] text-[#202020] font-britti text-[16px] leading-[17px] px-8 py-4 hover:bg-[#e0e0e0] cursor-pointer whitespace-nowrap">
+              <button className="w-full min-w-fit bg-[#E8E8E8] text-[#202020] font-britti text-[16px] leading-[17px] px-8 h-[44px] hover:bg-[#e0e0e0] cursor-pointer whitespace-nowrap">
                 View Product →
               </button>
             </Link>

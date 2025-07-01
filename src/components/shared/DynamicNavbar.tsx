@@ -121,7 +121,7 @@ const DynamicNavbar: React.FC = () => {
               hidden 1000:flex items-center gap-3 h-full flex-shrink-0 transition-all duration-500 ease-in-out
               ${isScrolled ? 'ml-7' : 'ml-8'}
             `}>
-              <ShinyCTAButton isScrolled={isScrolled} />
+              <ShinyCTAButton isScrolled={isScrolled} smallHeight={35} largeHeight={45} />
 
               {/* Get a Demo button */}
               <button
