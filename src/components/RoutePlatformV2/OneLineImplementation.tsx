@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
-import { GridLines3Dark } from '@/components/shared/GridLines'
+import GridLines from '@/components/shared/GridLines'
 import { Copy } from 'lucide-react'
 import { motion, useAnimation, useInView, type Variants } from 'framer-motion'
 
@@ -48,7 +48,7 @@ const OneLineImplementation = () => {
   return (
     <section ref={sectionRef} className="relative overflow-hidden bg-[#202020]">
       {/* Background Grid Lines */}
-      <GridLines3Dark />
+      <GridLines />
 
       {/* Robotic Arm - Top Right */}
       <div className="absolute -top-60 -right-[1000px] z-10 hidden md:block overflow-hidden">

@@ -41,7 +41,7 @@ export default function HeroSection() {
 
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
-      window.removeEventListener('beforeunload', () => {});
+      window.removeEventListener('beforeunload', () => { });
     };
   }, []);
 
@@ -131,18 +131,7 @@ export default function HeroSection() {
           />
         </motion.div>
 
-        {/* GRIDLINES */}
-        {shouldShowGridlines && (
-          <>
-            {[250, 570, 890, 1210].map((left, i) => (
-              <div
-                key={i}
-                className={`absolute bg-[#404040] ${i < 2 ? 'h-[160vh]' : 'h-[640px] lg:h-[800px]'}`}
-                style={{ width: 1, left, top: 0, zIndex: i < 2 ? 0 : 6 }}
-              />
-            ))}
-          </>
-        )}
+
       </motion.div>
     </section>
   );

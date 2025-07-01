@@ -206,7 +206,7 @@ const DynamicNavbar: React.FC = () => {
 
                 <button
                   onClick={handleDemoClick}
-                  className="w-full h-[51px] bg-[#E8E8E8] text-black font-britti-sans font-[400] hover:bg-[#D8D8D8] transition-colors"
+                  className="w-full h-[47px] bg-[#E8E8E8] text-black font-britti-sans font-[400] hover:bg-[#D8D8D8] transition-colors"
                 >
                   Get a Demo
                 </button>

@@ -4,6 +4,7 @@ import HeroSectionV2 from '@/components/RouteHomeV2/HeroSectionV2';
 import ProductPreviewSectionV2 from '@/components/RouteHomeV2/ProductPreviewSectionV2';
 import ScienceNeedsInfoSection from '@/components/RouteHomeV2/ScienceNeedsInfoSection';
 import UseTracerSectionV2 from '@/components/RouteHomeV2/UseTracerSectionV2';
+import MeetTracerSection from '@/components/shared/MeetTracerSection';
 import FixAnythingSection from '@/components/RouteHomeV2/FixAnythingSection';
 import FragmentAutoReveal from '@/components/RouteHomeV2/FragmentAutoReveal';
 import FaqV2 from '@/components/RouteHomeV2/faqV2';
@@ -81,6 +82,7 @@ export default function HomePage() {
 
       <ScienceNeedsInfoSection />
       <UseTracerSectionV2 />
+      <MeetTracerSection />
       <FixAnythingSection />
       <FragmentAutoReveal />
       <FaqV2 />

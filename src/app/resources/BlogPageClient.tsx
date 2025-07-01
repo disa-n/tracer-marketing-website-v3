@@ -322,19 +322,20 @@ export default function BlogPageClient() {
         </div>
       </Section>
 
-      {/* Articles Section */}
+      {/* Articles Section - TEMPORARILY HIDDEN */}
+      {false && (
       <Section showGridLines={true} padding="none" maxWidth="full" className="pt-24 pb-20">
         <div className="flex flex-col lg:flex-row" id="articles-section">
           <div className="relative z-10 px-4 md:px-8 lg:px-12 xl:px-12 2xl:px-12 lg:w-full">
             <SectionTitle
               title="Articles"
-              subtitle="In-depth technical articles and insights on scientific computing from the Tracer team."
+              subtitle="In-depth technical white papers and insights on scientific computing from the Tracer team."
               size="large"
               className="mb-12"
             />
 
-            {/* All Articles Row */}
-            {articles.length > 0 && (
+            {/* All Articles Row - TEMPORARILY HIDDEN */}
+            {false && articles.length > 0 && (
               <div id="all-articles" className="mt-12 sm:mt-16">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 mb-4 sm:mb-6 px-4 md:px-0">
                   <h3 className="text-base sm:text-lg font-britti-sans font-medium text-[#202020]">
@@ -372,6 +373,7 @@ export default function BlogPageClient() {
           </div>
         </div>
       </Section>
+      )}
     </main>
   );
 }

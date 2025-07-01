@@ -1,6 +1,39 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
+import { SearchX, Wrench, ShieldOff, Siren } from 'lucide-react';
+
+// Card component for problem statements
+interface ProblemCardProps {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}
+
+function ProblemCard({ icon, title, description }: ProblemCardProps) {
+  return (
+    <div className="bg-[#FCFCFC] border border-[#E8E8E8] p-6 md:p-8 flex items-center gap-6 md:gap-8 min-h-[120px] md:min-h-[140px]">
+      {/* Icon */}
+      <div className="flex-shrink-0">
+        {icon}
+      </div>
+
+      {/* Title and Description */}
+      <div className="flex-1 space-y-2">
+        {/* Title - increased by 8px */}
+        <h3 className="font-britti-sans text-[26px] sm:text-[28px] font-normal text-[#202020] leading-tight">
+          {title}
+        </h3>
+
+        {/* Description */}
+        <p className="font-britti-sans text-sm sm:text-base text-[#888888] leading-snug whitespace-pre-line">
+          {description}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export default function UseTracerSectionV2() {
   const scrollToFixAnything = () => {
     const fixAnythingSection = document.getElementById('fix-anything-section');
@@ -11,6 +44,31 @@ export default function UseTracerSectionV2() {
       });
     }
   };
+
+  // Card data with the problems
+  const problemCards = [
+    {
+      icon: <SearchX className="w-12 h-12 md:w-16 md:h-16 text-[#202020]" strokeWidth={1} />,
+      title: "\"We don't know when something's failing\"",
+      description: "Pipelines silently break. By the time you find out,\nyou've already wasted hours or worse, your results are wrong."
+    },
+    {
+      icon: <Wrench className="w-12 h-12 md:w-16 md:h-16 text-[#202020]" strokeWidth={1} />,
+      title: "\"Generic dashboards miss the context\"",
+      description: "Off-the-shelf tools weren't built for scientific workflows.\nThey surface metrics, but not meaning."
+    },
+    {
+      icon: <ShieldOff className="w-12 h-12 md:w-16 md:h-16 text-[#202020]" strokeWidth={1} />,
+      title: "\"Security standards? Not even close\"",
+      description: "Most tools ignore compliance, traceability, and access control\nessentials for sensitive, collaborative research."
+    },
+    {
+      icon: <Siren className="w-12 h-12 md:w-16 md:h-16 text-[#202020]" strokeWidth={1} />,
+      title: "\"Too much noise. Not enough insight\"",
+      description: "Endless alerts make it hard to spot real problems.\nYou're reactive, not proactive."
+    }
+  ];
+
   return (
     <section className="bg-[#FCFCFC]">
       <div className="flex flex-col lg:flex-row">
@@ -18,7 +76,7 @@ export default function UseTracerSectionV2() {
         <div className="flex-1 lg:min-w-0 bg-[#FCFCFC] pt-0 lg:pt-20 flex flex-col order-2 lg:order-2">
           {/* Image container - flush right with white background */}
           <div className="flex justify-end pr-0 mt-0 lg:mt-10 xl:mt-6 2xl:mt-8 mb-0 min-[1024px]:max-[1125px]:hidden">
-            <div className="w-full lg:w-3/4 relative aspect-[3/2] lg:aspect-[5/4] lg:translate-y-3 xl:aspect-[5/4] xl:-translate-y-6 2xl:aspect-[4/3] 2xl:-translate-y-14 bg-[#202020]">
+            <div className="w-full lg:w-3/4 relative aspect-[4/3] lg:aspect-[4/5] lg:translate-y-3 xl:aspect-[3/4] xl:-translate-y-6 2xl:aspect-[5/6] 2xl:-translate-y-14 bg-[#202020]">
               <Image
                 src="/home/Globe-Image.webp"
                 alt="Globe visualization"
@@ -30,7 +88,7 @@ export default function UseTracerSectionV2() {
           {/* Footer - separate dark rectangle flush right, matching image width - hidden on mobile */}
           <div className="hidden lg:flex justify-end pr-0 mt-auto">
             <div className="w-full lg:w-3/4">
-              <div className="bg-[#202020] h-16 w-full flex items-center justify-start pl-3">
+              <div className="bg-[#202020] h-24 w-full flex items-center justify-start pl-3">
                 <button
                   onClick={scrollToFixAnything}
                   className="w-8 h-12 bg-white flex items-center justify-center hover:bg-gray-100 transition-colors duration-200 cursor-pointer"
@@ -62,37 +120,17 @@ export default function UseTracerSectionV2() {
           <div className="flex flex-col justify-center pt-6 pb-8 sm:pt-10 sm:pb-18 lg:pt-16 lg:pb-22 xl:pt-20 xl:pb-30">
             <div className="px-4 md:px-8 lg:px-12">
               <div className="max-w-[1400px] w-full">
-                {/* Main text paragraph */}
-                <p className="text-2xl lg:text-4xl 2xl:text-5xl font-normal leading-[1.3] lg:leading-[48px] tracking-tight lg:tracking-tighter font-britti text-[#202020] mb-4">
-                  Sure, you can keep guessing what&apos;s going<br />
-                  wrong with your computational pipelines.<br />
-                  Tools that don&apos;t scale. Dashboards that don&apos;t<br />
-                  explain. Alerts that never quite mean anything.
-                </p>
-                {/* Large downward arrow icon (centered until 650px, then left-aligned) */}
-                <div className="flex justify-center min-[650px]:justify-start mt-2 mb-4">
-                  <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="text-[#888888] text-2xl lg:w-12 lg:h-12 xl:w-14 xl:h-14 2xl:w-16 2xl:h-16"
-                  >
-                    <path
-                      d="M16 6L16 26M16 26L26 16M16 26L6 16"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+                {/* Problem Cards */}
+                <div className="space-y-4 md:space-y-6">
+                  {problemCards.map((card, index) => (
+                    <ProblemCard
+                      key={index}
+                      icon={card.icon}
+                      title={card.title}
+                      description={card.description}
                     />
-                  </svg>
+                  ))}
                 </div>
-                {/* Final line */}
-                <p className="text-2xl lg:text-4xl 2xl:text-5xl font-normal leading-[1.3] lg:leading-[48px] tracking-tight lg:tracking-tighter font-britti text-[#202020]">
-                  Or you could use Tracer — the observability<br />
-                  platform built for AI-driven science.
-                </p>
               </div>
             </div>
           </div>
