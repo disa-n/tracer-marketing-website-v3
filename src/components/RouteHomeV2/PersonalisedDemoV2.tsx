@@ -1,12 +1,10 @@
 "use client"
 
 import Image from "next/image";
-
-const openDemo = () => {
-  window.open('https://calendly.com/tracer-demo/30min', '_blank');
-};
+import { useDemo } from "../ScheduleDemo";
 
 const PersonalizedDemoHome = () => {
+  const { openDemo } = useDemo();
   return (
     <section className="bg-[#FCFCFC]">
       <div className="mx-auto w-full">

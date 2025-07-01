@@ -17,11 +17,6 @@ export const navItems: NavItem[] = [
     name: "About",
     link: "/about",
   },
-  // Old configuration (commented out for backup):
-  // {
-  //   name: "Blog",
-  //   link: "/blog",
-  // },
   {
     name: "Resources",
     link: "/resources",

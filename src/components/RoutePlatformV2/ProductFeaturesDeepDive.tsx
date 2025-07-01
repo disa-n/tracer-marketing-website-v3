@@ -155,7 +155,7 @@ const ProductFeaturesDeepDive = () => {
       if (intervalRef.current) clearInterval(intervalRef.current)
       if (progressIntervalRef.current) clearInterval(progressIntervalRef.current)
     }
-  }, [activeFeature, currentIndex, isAutoAdvancing])
+  }, [activeFeature, currentIndex, isAutoAdvancing, isMobile])
 
   // Handle manual feature selection
   const handleFeatureClick = (featureId: string, event?: React.MouseEvent<HTMLButtonElement>) => {

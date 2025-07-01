@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import GridLines from '@/components/shared/GridLines';
 import ShinyCTAButton from '@/components/shared/ShinyCTAButton';
-import { SearchX, Wrench, ShieldOff, Siren } from 'lucide-react';
+
 
 export default function HeroSectionV2() {
   const [displayedText, setDisplayedText] = useState('That Lives in the OS');
@@ -13,7 +13,7 @@ export default function HeroSectionV2() {
   const [showCursor, setShowCursor] = useState(false);
   const [isComplete, setIsComplete] = useState(true);
   const [startTyping, setStartTyping] = useState(false);
-  const [startPulse, setStartPulse] = useState(true);
+
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [isErasing, setIsErasing] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -97,7 +97,6 @@ export default function HeroSectionV2() {
         // Wait before starting to erase
         const timer = setTimeout(() => {
           setIsComplete(false);
-          setStartPulse(false);
           setIsErasing(true);
         }, 3000); // Display complete text for 3 seconds
         return () => clearTimeout(timer);
@@ -105,16 +104,7 @@ export default function HeroSectionV2() {
     }
   }, [currentCharIndex, startTyping, currentTextIndex, isErasing, displayedText, textVariations]);
 
-  // Start pulse animation after typewriter completes each text
-  useEffect(() => {
-    if (isComplete && !isErasing) {
-      const timer = setTimeout(() => {
-        setStartPulse(true);
-      }, 500); // Start pulse shortly after completion
 
-      return () => clearTimeout(timer);
-    }
-  }, [isComplete, isErasing]);
 
   // Cursor blinking effect - show when typing or erasing
   useEffect(() => {

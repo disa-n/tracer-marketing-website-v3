@@ -1,64 +1,11 @@
 'use client';
 import React from 'react';
-import Image from 'next/image';
-import { SearchX, Wrench, ShieldOff, Siren } from 'lucide-react';
+
 import { GridLinesLight } from '@/components/shared/GridLines';
 
-// Card component matching WhyMonitoring style
-interface ScienceInfoCardProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}
 
-function ScienceInfoCard({ icon, title, description }: ScienceInfoCardProps) {
-  return (
-    <div className="bg-[#FCFCFC] border border-[#E8E8E8] p-6 md:p-8 flex items-center gap-6 md:gap-8 min-h-[120px] md:min-h-[140px]">
-      {/* Icon */}
-      <div className="flex-shrink-0">
-        {icon}
-      </div>
-
-      {/* Title and Description */}
-      <div className="flex-1 space-y-2">
-        {/* Title */}
-        <h3 className="font-britti-sans text-lg sm:text-xl font-normal text-[#202020] leading-tight">
-          {title}
-        </h3>
-
-        {/* Description */}
-        <p className="font-britti-sans text-sm sm:text-base text-[#888888] leading-snug">
-          {description}
-        </p>
-      </div>
-    </div>
-  );
-}
 
 export default function ScienceNeedsInfoSection() {
-  // Card data with the content from the image
-  const cardData = [
-    {
-      icon: <SearchX className="w-12 h-12 md:w-16 md:h-16 text-[#202020]" strokeWidth={1} />,
-      title: "\"We Don't Know When Something's Failing\"",
-      description: "Pipelines silently break. By the time you find out, you've already wasted hours of spend, your results are wrong."
-    },
-    {
-      icon: <Wrench className="w-12 h-12 md:w-16 md:h-16 text-[#202020]" strokeWidth={1} />,
-      title: "\"Generic Dashboards Miss Pipeline Context\"",
-      description: "Off-the-shelf tools weren't built for scientific workflows. They surface metrics, but not meaning."
-    },
-    {
-      icon: <ShieldOff className="w-12 h-12 md:w-16 md:h-16 text-[#202020]" strokeWidth={1} />,
-      title: "\"Security Standards? Not Even Close\"",
-      description: "Most tools ignore compliance, traceability, and access control essentials for sensitive, collaborative research."
-    },
-    {
-      icon: <Siren className="w-12 h-12 md:w-16 md:h-16 text-[#202020]" strokeWidth={1} />,
-      title: "\"Too Much Noise. Not Enough Insight\"",
-      description: "Endless alerts make it hard to spot real problems. You're reactive, not proactive."
-    }
-  ];
 
   return (
     <>

@@ -1,35 +1,22 @@
-// app/legacy-home/page.tsx
+// This legacy home page has been removed as part of codebase cleanup.
+// The main home page now uses V2 components and can be found at src/app/page.tsx
+// This file is kept as a placeholder to prevent 404 errors during transition.
 
-import AboutTracer from "@/components/RouteHome/AboutTracer";
-import CoreChallengeSection from "@/components/RouteHome/CoreChallenges";
-import DataPrivacyNotice from "@/components/RouteHome/DataPrivacyNotice";
-import DigitalDiscoverySection from "@/components/RouteHome/DigitalDiscoverySection";
-import Faq from "@/components/RouteHome/Faq";
-import HeroSection from "@/components/RouteHome/Hero";
-import HowTracerWorks from "@/components/RouteHome/HowTracerWorks";
-import InfrastructureReview from "@/components/RouteHome/InfrastructureReview";
-import ModernMonitoringPlatform from "@/components/RouteHome/ModernMonitoringPlatform";
-import PersonalizedDemoHome from "@/components/RouteHome/PersonalizedDemoHome";
-import UnifiedPlatformOverview from "@/components/RouteHome/UnifiedPlatformOverview";
-import WhyMonitoringSection from "@/components/RouteHome/WhyMonitoringSection";
-import PreLoaderProgress from "@/components/shared/PreLoader";
+import Link from 'next/link';
 
 export default function LegacyHomePage() {
   return (
-    <>
-      <PreLoaderProgress />
-      <HeroSection />
-      <DigitalDiscoverySection />
-      <CoreChallengeSection />
-      <WhyMonitoringSection />
-      <ModernMonitoringPlatform />
-      <AboutTracer />
-      <HowTracerWorks />
-      <UnifiedPlatformOverview />
-      <InfrastructureReview />
-      <Faq />
-      <DataPrivacyNotice />
-      <PersonalizedDemoHome />
-    </>
+    <div className="min-h-screen flex items-center justify-center bg-[#FCFCFC]">
+      <div className="text-center">
+        <h1 className="text-2xl font-bold text-[#202020] mb-4">Page Moved</h1>
+        <p className="text-[#888888] mb-6">This legacy page has been replaced with our updated home page.</p>
+        <Link
+          href="/"
+          className="inline-block px-6 py-3 bg-[#202020] text-white hover:bg-[#404040] transition-colors"
+        >
+          Go to Home Page
+        </Link>
+      </div>
+    </div>
   );
 }

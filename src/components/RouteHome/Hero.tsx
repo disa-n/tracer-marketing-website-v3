@@ -53,7 +53,7 @@ export default function HeroSection() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const shouldShowGridlines = windowWidth > 768;
+
 
   return (
     <section key={refreshKey} className="h-[640px] lg:h-[800px] text-white" style={{ backgroundColor: '#202020' }}>
