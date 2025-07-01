@@ -27,7 +27,7 @@ https://ryanmulligan.dev/blog/css-property-new-style/
 
 @property --gradient-percent {
   syntax: "<percentage>";
-  initial-value: 5%;
+  initial-value: 3%;
   inherits: false;
 }
 
@@ -39,7 +39,7 @@ https://ryanmulligan.dev/blog/css-property-new-style/
 
 .shiny-cta {
   --animation: gradient-angle linear infinite;
-  --duration: 3s;
+  --duration: 5s;
   --shadow-size: 2px;
   isolation: isolate;
   position: relative;
@@ -188,7 +188,7 @@ https://ryanmulligan.dev/blog/css-property-new-style/
 }
 
 .shiny-cta:is(:hover, :focus-visible) {
-  --gradient-percent: 20%;
+  --gradient-percent: 12%;
   --gradient-angle-offset: 95deg;
   --gradient-shine: var(--shiny-cta-right);
 }

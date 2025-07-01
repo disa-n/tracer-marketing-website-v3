@@ -8,29 +8,42 @@ const Cta = () => {
     const { openDemo } = useDemo()
 
     return (
-        <div className='flex w-full flex-col items-center justify-center gap-6 bg-[#FCFCFC] text-c-black md:gap-8'>
-            <div className='flex w-full flex-col items-start justify-between px-4 md:px-8 lg:px-12 xl:px-16 2xl:px-20 md:flex-row md:items-end'>
-                <div className='flex flex-col items-start'>
-                    <p className='font-chakra-petch text-[14px] sm:text-[14px] md:text-[14px] lg:text-[14px] xl:text-[14px] 2xl:text-[16px] font-[400] uppercase leading-[1] text-c-black'>
-                        get a personalized demo
-                    </p>
-                    <h2 className='mt-4 font-britti-sans text-[32px] sm:text-[32px] md:text-[56px] lg:text-[56px] xl:text-[56px] 2xl:text-[56px] font-[400] leading-[0.9] tracking-tighter text-c-black sm:leading-[0.8]'>
-                        Ready to see Tracer <br className='sm:hidden' /> in action?
-                    </h2>
+        <section className="bg-[#FCFCFC]">
+            <div className="mx-auto w-full">
+                <div className="pt-6 sm:pt-16">
+                    <div className="px-4 md:px-8 lg:px-12">
+                        <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end sm:gap-2 xl:gap-0">
+                            <div className="space-y-2 md:space-y-4">
+                                <span className="font-chakra-petch text-sm sm:text-sm md:text-sm lg:text-sm xl:text-sm 2xl:text-base font-normal uppercase leading-[19px] tracking-[-1%] text-[#202020]">
+                                    get a personalised demo
+                                </span>
+                                <h3 className="font-britti-sans text-[32px] sm:text-[32px] md:text-[56px] lg:text-[56px] xl:text-[56px] 2xl:text-[56px] font-normal leading-[30px] tracking-[-2%] text-[#202020] lg:leading-[56px]">
+                                    Ready to see Tracer in action?
+                                </h3>
+                            </div>
+                            <div className="flex sm:justify-end">
+                                <button
+                                    onClick={openDemo}
+                                    className="flex h-[48px] w-full shrink-0 cursor-pointer items-center justify-center bg-[#E8E8E8] px-8 py-3 font-britti-sans text-sm font-normal text-[#202020] hover:bg-[#E8E8E8]/80 sm:w-auto md:h-[49px] md:text-base"
+                                >
+                                    Talk to an Expert
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <button
-                    onClick={openDemo}
-                    className='mt-6 h-[48px] w-full shrink-0 cursor-pointer bg-[#E8E8E8] px-8 font-britti-sans text-sm sm:text-sm md:text-sm lg:text-sm xl:text-sm 2xl:text-base font-[400] text-c-black transition-all hover:opacity-80 md:mt-0 md:w-fit'
-                >
-                    Talk to an Expert
-                </button>
             </div>
-            <div className='relative h-[200px] w-full sm:h-[330px]'>
-                <div className='absolute right-0 top-0 h-[45px] w-[112px] bg-[#FCFCFC] sm:h-[54px] sm:w-[458px]' />
-
-                <Image src={"/platform/car.webp"} alt='car' width={1500} height={400} className='h-full w-full object-cover' />
+            <div className="relative mt-8 h-[200px] w-full xl:h-[316px]">
+                <Image
+                    src="/platform/car.webp"
+                    alt="car"
+                    fill
+                    className="object-cover"
+                    priority
+                />
+                <div className="absolute right-0 top-0 h-[45px] w-[31%] bg-[#FCFCFC] md:h-[54px]"></div>
             </div>
-        </div>
+        </section>
     )
 }
 

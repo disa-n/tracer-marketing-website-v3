@@ -141,12 +141,12 @@ export default function HeroSectionV2() {
               <motion.div
                 className="relative w-[min(600px,100vw)] 300:w-[min(650px,100vw)] 400:w-[min(700px,100vw)] xs:w-[min(750px,100vw)] h-[320px] 300:h-[340px] 400:h-[360px] xs:h-[380px] -translate-y-[20px]"
                 animate={{
-                  y: [0, -15, 0],
-                  x: [0, 8, 0],
-                  rotate: [0, 1.5, 0]
+                  x: [-4, 4, -4],
+                  y: [0, -4, 0],
+                  rotate: [0, 0.5, 0]
                 }}
                 transition={{
-                  duration: 5,
+                  duration: 7,
                   ease: "easeInOut",
                   repeat: Infinity,
                   repeatType: "loop"
@@ -167,12 +167,12 @@ export default function HeroSectionV2() {
               <motion.div
                 className="relative w-[800px] sm:w-[900px] md:w-[1000px] h-[400px] sm:h-[450px] md:h-[500px] -translate-y-[20px]"
                 animate={{
-                  y: [0, -15, 0],
-                  x: [0, 8, 0],
-                  rotate: [0, 1.5, 0]
+                  x: [-5, 5, -5],
+                  y: [0, -5, 0],
+                  rotate: [0, 0.6, 0]
                 }}
                 transition={{
-                  duration: 5,
+                  duration: 7.5,
                   ease: "easeInOut",
                   repeat: Infinity,
                   repeatType: "loop"
@@ -241,12 +241,12 @@ export default function HeroSectionV2() {
             <motion.div
               className="relative lg:w-[1800px] xl:w-[2100px] 2xl:w-[2400px] lg:h-[2200px] xl:h-[2500px] 2xl:h-[2800px] lg:translate-x-[150px] lg:translate-y-[100px] xl:translate-x-[200px] xl:translate-y-[120px] 2xl:translate-x-[250px] 2xl:translate-y-[150px]"
               animate={{
-                y: [0, -20, 0],
-                x: [0, 10, 0],
-                rotate: [0, 2, 0]
+                x: [-7, 7, -7],
+                y: [0, -7, 0],
+                rotate: [0, 0.8, 0]
               }}
               transition={{
-                duration: 6,
+                duration: 8,
                 ease: "easeInOut",
                 repeat: Infinity,
                 repeatType: "loop"
