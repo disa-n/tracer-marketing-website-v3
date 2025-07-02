@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from 'next/image';
 
 interface ColorBreakLineProps {
   height?: string;
@@ -21,12 +21,12 @@ export default function ColorBreakLine({
   
   return (
     <div className={`${height} w-full ${visibilityClass} ${className}`}>
-      <Image 
-        src="/platform/footer-b.png" 
-        alt="color-break-line" 
-        width={1600} 
-        height={60} 
-        className="h-full w-full object-fill md:object-cover" 
+      <Image
+        src="/platformv2/footer-b.png"
+        alt="color-break-line"
+        width={1600}
+        height={60}
+        className="h-full w-full object-fill md:object-cover"
       />
     </div>
   );

@@ -1,11 +1,11 @@
 'use client';
 
-import React from 'react';
+import BlogGrid from '@/components/blog/BlogGrid';
 import BlogHero from '@/components/blog/BlogHero';
 import BlogIntro from '@/components/blog/BlogIntro';
 import FilterBar from '@/components/blog/FilterBar';
-import BlogGrid from '@/components/blog/BlogGrid';
-import { getBlogPostsForClient, BlogPost } from '@/lib/blog-registry';
+import { BlogPost, getBlogPostsForClient } from '@/lib/blog-registry';
+import React from 'react';
 
 // Using BlogPost from blog-registry instead of local type
 
@@ -105,7 +105,7 @@ export default function BlogPageClient() {
               : kenyaHackathonPost.metadata.author || 'Team Tracer',
             tag: kenyaHackathonPost.metadata.tag || 'general',
             imageSrc: kenyaHackathonPost.metadata.ogImage || '/placeholder-icon.svg',
-            ogImage: kenyaHackathonPost.metadata.ogImage,
+            ogImage: kenyaHackathonPost.metadata.ogImage || '/placeholder-icon.svg',
             readTime: '5 min read',
             type: 'static' as const,
           },
@@ -120,7 +120,7 @@ export default function BlogPageClient() {
               : post.metadata.author || 'Team Tracer',
             tag: post.metadata.tag || 'general',
             imageSrc: post.metadata.ogImage || '/placeholder-icon.svg',
-            ogImage: post.metadata.ogImage,
+            ogImage: post.metadata.ogImage || '/placeholder-icon.svg',
             readTime: '5 min read',
             type: 'static' as const,
           }))

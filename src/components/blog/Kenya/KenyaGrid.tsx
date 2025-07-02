@@ -1,7 +1,7 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import { getAllBlogPosts } from '@/lib/blog-registry';
 import { BLOG_CONFIG } from '@/lib/constants';
+import Image from 'next/image';
+import Link from 'next/link';
 
 // Flag to control visibility of action buttons
 const showActionButtons = false;
@@ -9,8 +9,8 @@ const showActionButtons = false;
 type KenyaGridItemProps = {
   date: string;
   description: string;
-  imageSrc?: string;
-  caption?: string;
+  imageSrc: string;
+  caption: string;
   slug: string;
 };
 
@@ -213,7 +213,7 @@ export default async function KenyaGrid({ items }: KenyaGridProps) {
   const defaultItems: KenyaGridItemProps[] = sortedKenyaPosts.map(post => ({
     date: post.date,
     description: post.description,
-    imageSrc: post.ogImage || post.imageSrc || '/placeholder-icon.svg',
+    imageSrc: post.ogImage || post.imageSrc,
     caption: post.title,
     slug: post.slug,
   }));
