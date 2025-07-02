@@ -213,7 +213,7 @@ const Monitoring = () => {
                                      height: getCardHeight()
                                  }}>
                                 <Image
-                                    src="/images/product/icons/predict-and-optimise.svg"
+                                    src="/icons/product/predict-and-optimise.svg"
                                     alt="Predict and optimise compute requirements"
                                     fill
                                     className="object-cover object-top-left"
@@ -249,7 +249,7 @@ const Monitoring = () => {
                                      height: getCardHeight()
                                  }}>
                                 <Image
-                                    src="/images/product/icons/total-visibility.svg"
+                                    src="/icons/product/total-visibility.svg"
                                     alt="Total visibility into computational infrastructure"
                                     fill
                                     className="object-cover object-top-left"
@@ -285,7 +285,7 @@ const Monitoring = () => {
                                      height: getCardHeight()
                                  }}>
                                 <Image
-                                    src="/images/product/icons/fix-issues.svg"
+                                    src="/icons/product/fix-issues.svg"
                                     alt="Fix issues instantly"
                                     fill
                                     className="object-cover object-top-left"
