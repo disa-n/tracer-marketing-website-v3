@@ -66,7 +66,7 @@ const Hero = () => {
 
             <div className='relative mx-auto grid w-full grid-cols-1 grid-rows-[290px_auto] 1000:grid-cols-[0.52fr_1fr] 1000:grid-rows-[380px_187px_auto]'>
                 <motion.img
-                    src="/platformv2/hero-bg.webp"
+                    src="/product/hero/hero-bg.webp"
                     alt="hero-bg.png"
                     width={800}
                     height={567}
@@ -76,7 +76,7 @@ const Hero = () => {
                     animate={imageAnimated ? 'visible' : 'hidden'}
                 />
                 <motion.img
-                    src="/platformv2/hero-bg.webp"
+                    src="/product/hero/hero-bg.webp"
                     alt="hero-bg.png"
                     width={800}
                     height={567}

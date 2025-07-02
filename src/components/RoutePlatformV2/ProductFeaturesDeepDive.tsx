@@ -1,18 +1,18 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from 'react'
+import { GridLinesLight } from '@/components/shared/GridLines'
+import { AnimatePresence, motion } from 'framer-motion'
+import {
+    Activity,
+    BarChart3,
+    Brain,
+    Clock,
+    Eye,
+    Settings
+} from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
-import { GridLinesLight } from '@/components/shared/GridLines'
-import {
-  BarChart3,
-  Settings,
-  Eye,
-  Activity,
-  Clock,
-  Brain
-} from 'lucide-react'
+import React, { useEffect, useRef, useState } from 'react'
 
 // Feature data structure
 interface Feature {
@@ -33,7 +33,7 @@ const features: Feature[] = [
     previewTitle: 'Match Pipeline Activity to Cost Centers in Real Time',
     description: 'Automatically attribute cloud spend to specific pipelines, tools, and teams. Map compute usage directly to cost centers for accurate budgeting.',
     icon: BarChart3,
-    image: '/platformv2/features/pipeline-spend.webp'
+    image: '/product/features/pipeline-spend.webp'
   },
   {
     id: 'tool-metrics',
@@ -41,7 +41,7 @@ const features: Feature[] = [
     previewTitle: 'Tool-Level Metrics',
     description: 'Get granular insights into tool-level CPU, memory, and disk I/O usage, along with performance and execution patterns across your pipeline ecosystem.',
     icon: Settings,
-    image: '/platformv2/features/tool-metrics.webp'
+    image: '/product/features/tool-metrics.webp'
   },
   {
     id: 'unified-log',
@@ -49,7 +49,7 @@ const features: Feature[] = [
     previewTitle: 'Unified Log View',
     description: 'Centralised logging across all pipeline components with intelligent filtering, search, and correlation capabilities.',
     icon: Eye,
-    image: '/platformv2/features/unified-log.webp'
+    image: '/product/features/unified-log.webp'
   },
   {
     id: 'live-instance',
@@ -57,8 +57,8 @@ const features: Feature[] = [
     previewTitle: 'Live Instance Watch',
     description: 'Real-time monitoring of running instances with live resource utilisation, performance metrics, and health status.',
     icon: Activity,
-    image: '/platformv2/features/live-instance.webp',
-    mobileImage: '/platformv2/features/live-instance-mobile.webp'
+    image: '/product/features/live-instance.webp',
+    mobileImage: '/product/features/live-instance-mobile.webp'
   },
   {
     id: 'time-sink',
@@ -66,7 +66,7 @@ const features: Feature[] = [
     previewTitle: 'Time Sink Detector',
     description: 'Automatically identify bottlenecks and performance issues that slow down your pipelines and impact productivity.',
     icon: Clock,
-    image: '/platformv2/features/time-sink.webp'
+    image: '/product/features/time-sink.webp'
   },
   {
     id: 'smart-tradeoffs',
@@ -74,8 +74,8 @@ const features: Feature[] = [
     previewTitle: 'Smart Tool Tradeoffs',
     description: 'Intelligent recommendations for optimising tool selection, resource allocation, and configuration based on your specific workloads.',
     icon: Brain,
-    image: '/platformv2/features/smart-tradeoffs.webp',
-    mobileImage: '/platformv2/features/smart-tradeoffs-mobile.webp'
+    image: '/product/features/smart-tradeoffs.webp',
+    mobileImage: '/product/features/smart-tradeoffs-mobile.webp'
   }
 ]
 
