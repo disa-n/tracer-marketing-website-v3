@@ -1,11 +1,13 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
 import { X } from 'lucide-react';
-import ShinyCTAButton from './ShinyCTAButton';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { useDemo } from '../ScheduleDemo';
+import DemoButton from '../ui/DemoButton';
+import ShinyCTAButton from './ShinyCTAButton';
+import ShinyCTAButtonExperimental from './ShinyCTAButtonExperimental';
 
 interface NavItem {
   label: string;
@@ -121,19 +123,15 @@ const NavigationBar = () => {
               hidden 1000:flex items-center gap-3 h-full flex-shrink-0 transition-all duration-500 ease-in-out
               ${isScrolled ? 'ml-7' : 'ml-8'}
             `}>
-              <ShinyCTAButton isScrolled={isScrolled} smallHeight={35} largeHeight={45} />
+              <ShinyCTAButtonExperimental isScrolled={isScrolled} smallHeight={35} largeHeight={45} />
 
-              {/* Get a Demo button */}
-              <button
+              <DemoButton
                 onClick={handleDemoClick}
-                className={`font-britti-sans font-normal cursor-pointer bg-[#E8E8E8] flex items-center justify-center text-black transition-all duration-500 ease-in-out ${isScrolled
-                  ? 'h-[31px] text-sm px-4'
-                  : 'h-[41px] text-base px-6'
-                  }`}
-                style={{ fontFamily: 'inherit', lineHeight: '1.2' }}
-              >
-                Get a Demo
-              </button>
+                mobileHeight={isScrolled ? 31 : 41}
+                desktopHeight={isScrolled ? 35 : 45}
+                textSizeClasses={isScrolled ? 'text-sm' : 'text-base'}
+                widthClasses="w-auto"
+              />
             </div>
 
             {/* Mobile Menu Button */}

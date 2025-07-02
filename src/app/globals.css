@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "../styles/shiny-button.css";
+@import "../styles/shiny-button-experimental.css";
 
 @font-face {
   font-family: "Britti Sans";

@@ -1,0 +1,150 @@
+/*
+CSS @property and the New Style - Experimental Version
+https://ryanmulligan.dev/blog/css-property-new-style/
+*/
+
+:root {
+  --shiny-cta-experimental-bg: linear-gradient(to bottom, #1D4DD5 0%, #19398F 85%);
+  --shiny-cta-experimental-bg-subtle: #1D4DD5;
+  --shiny-cta-experimental-left: #ffffff;
+  --shiny-cta-experimental-middle: #ffffff;
+  --shiny-cta-experimental-right: #ffffff;
+  --shiny-cta-experimental-background-sweep: #ffffff;
+  --shiny-cta-experimental-hover-background: linear-gradient(to bottom, #1D4DD5 0%, #173280 85%);
+}
+
+@property --gradient-angle-experimental {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --gradient-angle-offset-experimental {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --gradient-percent-experimental {
+  syntax: "<percentage>";
+  initial-value: 3%;
+  inherits: false;
+}
+
+@property --gradient-shine-experimental {
+  syntax: "<color>";
+  initial-value: white;
+  inherits: false;
+}
+
+.shiny-cta-experimental {
+  --animation: gradient-angle-experimental linear infinite;
+  --duration: 5s;
+  --shadow-size: 2px;
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  outline-offset: 4px;
+  font-family: inherit;
+  line-height: 1.2;
+  border: none;
+  color: #FCFCFC;
+  background: var(--shiny-cta-experimental-bg);
+
+  height: var(--mobile-height);
+}
+
+@media (min-width: 640px) {
+  .shiny-cta-experimental {
+    height: var(--desktop-height);
+  }
+}
+
+.shiny-cta-experimental::before,
+.shiny-cta-experimental::after,
+.shiny-cta-experimental span::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset-inline-start: 50%;
+  inset-block-start: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+}
+
+.shiny-cta-experimental:active {
+  translate: 0 1px;
+}
+
+/* Remove 3D sheen effect */
+.shiny-cta-experimental::before {
+  display: none;
+}
+
+.shiny-cta-experimental::after {
+  /* Background sweep removed - keeping element for potential future use */
+  display: none;
+}
+
+.shiny-cta-experimental span {
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height:100%;
+}
+
+.shiny-cta-experimental span::before {
+  --size: calc(100% + 1rem);
+  width: var(--size);
+  height: var(--size);
+  opacity: 0;
+}
+
+.shiny-cta-experimental.sctesmall-experimental span::before {
+  display: none;
+}
+.shiny-cta-experimental.sctebig-experimental span::before {
+  display: none;
+}
+/* Simple transition for hover effect */
+.shiny-cta-experimental {
+  transition: background-color 200ms ease;
+}
+
+.shiny-cta-experimental:is(:hover, :focus-visible) {
+  background: var(--shiny-cta-experimental-hover-background);
+}
+
+.shiny-cta-experimental:is(:hover, :focus-visible),
+.shiny-cta-experimental:is(:hover, :focus-visible)::before,
+.shiny-cta-experimental:is(:hover, :focus-visible)::after {
+  animation-play-state: running;
+}
+
+.shiny-cta-experimental:is(:hover, :focus-visible) span::before {
+  opacity: 0;
+}
+
+@keyframes gradient-angle-experimental {
+  to {
+    --gradient-angle-experimental: 360deg;
+  }
+}
+
+@keyframes shimmer-experimental {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes breathe-experimental {
+  from,
+  to {
+    scale: 1;
+  }
+  50% {
+    scale: 1.2;
+  }
+}
