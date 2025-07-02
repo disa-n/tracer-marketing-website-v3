@@ -292,12 +292,12 @@ const GainVisibility = () => {
                     initial="hidden"
                     className='absolute bg-[#202020] shrink-0'
                     style={{
-                        '--start-width': '509px',
-                        '--final-width': '458px',
+                        ['--start-width' as string]: '509px',
+                        ['--final-width' as string]: '458px',
                         height: '54px',
                         bottom: '103px',
                         right: '0px'
-                    } as any}
+                    }}
                 />
                 <motion.div
                     animate={rectangle2Controls}
@@ -305,12 +305,12 @@ const GainVisibility = () => {
                     initial="hidden"
                     className='absolute bg-[#202020] shrink-0'
                     style={{
-                        '--start-width': '651px',
-                        '--final-width': '529px',
+                        ['--start-width' as string]: '651px',
+                        ['--final-width' as string]: '529px',
                         height: '103px',
                         bottom: '0px',
                         right: '0px'
-                    } as any}
+                    }}
                 />
             </motion.div>
         </div>
