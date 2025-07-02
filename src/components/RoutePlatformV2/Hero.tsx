@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
-import { motion, Variants, useInView, type Transition } from 'framer-motion'
+import { motion, useInView, Variants, type Transition } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 
 // Animation configuration - more visible for testing
 const animationConfig: Transition = { delay: 0.1, duration: 2.0, ease: "easeInOut" }
@@ -66,7 +66,7 @@ const Hero = () => {
 
             <div className='relative mx-auto grid w-full grid-cols-1 grid-rows-[290px_auto] 1000:grid-cols-[0.52fr_1fr] 1000:grid-rows-[380px_187px_auto]'>
                 <motion.img
-                    src="/platform/hero-bg.webp"
+                    src="/platformv2/hero-bg.webp"
                     alt="hero-bg.png"
                     width={800}
                     height={567}
@@ -76,7 +76,7 @@ const Hero = () => {
                     animate={imageAnimated ? 'visible' : 'hidden'}
                 />
                 <motion.img
-                    src="/platform/hero-bg.webp"
+                    src="/platformv2/hero-bg.webp"
                     alt="hero-bg.png"
                     width={800}
                     height={567}

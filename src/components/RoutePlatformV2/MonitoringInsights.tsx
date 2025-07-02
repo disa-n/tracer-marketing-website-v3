@@ -1,5 +1,4 @@
 'use client'
-import React from 'react'
 import Image from 'next/image'
 const MonitoringInsights = () => {
     return (
@@ -19,7 +18,7 @@ const MonitoringInsights = () => {
                     {/* Automotive */}
                     <div className="flex flex-col">
                         <div className="overflow-hidden h-[200px] md:h-auto">
-                            <Image src={"/platform/m-1.webp"} alt='' width={500} height={500} className='w-full h-full md:h-auto object-cover' style={{ objectPosition: 'center 60%' }} />
+                            <Image src={"/platformv2/m-1.webp"} alt='' width={500} height={500} className='w-full h-full md:h-auto object-cover' style={{ objectPosition: 'center 60%' }} />
                         </div>
                         <h3 className='mt-2 text-[24px] md:text-[40px] font-[400] tracking-tighter text-c-black leading-[1] font-britti-sans'>
                             Automotive
@@ -28,7 +27,7 @@ const MonitoringInsights = () => {
                     {/* Computational Fluid Dynamic */}
                     <div className="flex flex-col">
                         <div className="overflow-hidden h-[200px] md:h-auto">
-                            <Image src={"/platform/m-2.webp"} alt='' width={500} height={500} className='w-full h-full md:h-auto object-cover' />
+                            <Image src={"/platformv2/m-2.webp"} alt='' width={500} height={500} className='w-full h-full md:h-auto object-cover' />
                         </div>
                         <h3 className='mt-2 text-[24px] md:text-[40px] font-[400] tracking-tighter text-c-black leading-[1] font-britti-sans'>
                             Computational Fluid Dynamic
@@ -37,7 +36,7 @@ const MonitoringInsights = () => {
                     {/* Pharma & Biotech */}
                     <div className="flex flex-col">
                         <div className="overflow-hidden h-[200px] md:h-auto">
-                            <Image src={"/platform/m-3.webp"} alt='' width={500} height={500} className='w-full h-full md:h-auto object-cover' style={{ objectPosition: 'center 60%' }} />
+                            <Image src={"/platformv2/m-3.webp"} alt='' width={500} height={500} className='w-full h-full md:h-auto object-cover' style={{ objectPosition: 'center 60%' }} />
                         </div>
                         <h3 className='mt-2 text-[24px] md:text-[40px] font-[400] tracking-tighter text-c-black leading-[1] font-britti-sans'>
                             Pharma & Biotech
@@ -46,7 +45,7 @@ const MonitoringInsights = () => {
                     {/* Aerospace */}
                     <div className="flex flex-col">
                         <div className="overflow-hidden h-[200px] md:h-auto">
-                            <Image src={"/platform/m-4.webp"} alt='' width={500} height={500} className='w-full h-full md:h-auto object-cover' />
+                            <Image src={"/platformv2/m-4.webp"} alt='' width={500} height={500} className='w-full h-full md:h-auto object-cover' />
                         </div>
                         <h3 className='mt-2 text-[24px] md:text-[40px] font-[400] tracking-tighter text-c-black leading-[1] font-britti-sans'>
                             Aerospace

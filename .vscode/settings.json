@@ -1,4 +1,5 @@
 {
+  // TypeScript Settings
   "typescript.preferences.strictFunctionTypes": true,
   "typescript.preferences.strictNullChecks": true,
   "typescript.preferences.noImplicitAny": true,
@@ -6,6 +7,10 @@
   "typescript.preferences.noImplicitThis": true,
   "typescript.preferences.noUnusedLocals": true,
   "typescript.preferences.noUnusedParameters": true,
+  "typescript.preferences.includePackageJsonAutoImports": "off",
+  "typescript.suggest.autoImports": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  // ESLint Settings (Modern)
   "eslint.validate": [
     "javascript",
     "javascriptreact",
@@ -13,22 +18,66 @@
     "typescriptreact"
   ],
   "eslint.run": "onType",
-  "eslint.autoFixOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
   },
-  "typescript.preferences.includePackageJsonAutoImports": "off",
+  // Editor Settings
   "editor.formatOnSave": true,
-  "files.associations": {
-    "*.css": "tailwindcss"
+  "editor.formatOnPaste": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
   },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  // File Associations
+  "files.associations": {
+    "*.css": "tailwindcss",
+    "*.mdx": "mdx"
+  },
+  // Emmet Settings
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
     "typescript": "typescriptreact"
   },
+  "emmet.triggerExpansionOnTab": true,
+  // Tailwind CSS Settings
   "tailwindCSS.experimental.classRegex": [
-    ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
-    ["classnames\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
-    ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
-  ]
+    [
+      "clsx\\(([^)]*)\\)",
+      "(?:'|\"|`)([^']*)(?:'|\"|`)"
+    ],
+    [
+      "classnames\\(([^)]*)\\)",
+      "(?:'|\"|`)([^']*)(?:'|\"|`)"
+    ],
+    [
+      "cn\\(([^)]*)\\)",
+      "(?:'|\"|`)([^']*)(?:'|\"|`)"
+    ],
+    [
+      "cva\\(([^)]*)\\)",
+      "[\"'`]([^\"'`]*).*?[\"'`]"
+    ]
+  ],
+  "tailwindCSS.includeLanguages": {
+    "typescript": "typescript",
+    "typescriptreact": "typescriptreact"
+  },
+  // Next.js Specific
+  "files.exclude": {
+    "**/.next": true,
+    "**/node_modules": true
+  },
+  // Git Settings
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  // Search Settings
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.next": true,
+    "**/dist": true,
+    "**/.git": true
+  }
 }
