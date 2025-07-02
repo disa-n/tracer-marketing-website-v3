@@ -1,8 +1,7 @@
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
 import { GridLinesLight } from '@/components/shared/GridLines';
 import PrimaryButton from '@/components/ui/PrimaryButton';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function HowTracerWorksSection() {
   return (
@@ -29,7 +28,7 @@ export default function HowTracerWorksSection() {
         {/* Left Column - Image (hidden on mobile, shown on lg+) */}
         <div className="relative z-10 w-full lg:flex-1 flex justify-center lg:justify-start px-4 md:px-8 lg:px-12 hidden lg:flex">
           <Image
-            src="/whymonitoring/T-Stack.webp"
+            src="/images/why-monitoring/T-Stack.webp"
             alt="How Tracer Works illustration"
             width={600}
             height={800}
@@ -128,7 +127,7 @@ export default function HowTracerWorksSection() {
       {/* Mobile Image - shown at bottom on mobile, hidden on lg+ */}
       <div className="relative z-10 flex justify-center px-4 md:px-8 mt-12 lg:hidden">
         <Image
-          src="/whymonitoring/T-Stack.webp"
+          src="/images/why-monitoring/T-Stack.webp"
           alt="How Tracer Works illustration"
           width={600}
           height={800}

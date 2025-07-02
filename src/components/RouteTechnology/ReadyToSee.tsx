@@ -35,7 +35,7 @@ const ReadyToSee = () => {
       </div>
       <div className="relative mt-8 h-[200px] w-full xl:h-[316px]">
         <Image
-          src="/technology/ready-to-seeeee.png"
+          src="/images/technology/ready-to-seeeee.png"
           alt="ReadyToSee"
           fill
           className="object-cover"

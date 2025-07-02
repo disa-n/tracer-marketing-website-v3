@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
-import { motion, Variants, useInView, type Transition } from 'framer-motion'
+import { motion, useInView, Variants, type Transition } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 
 // Animation configuration
 const animationConfig: Transition = { delay: 0.1, duration: 2.0, ease: "easeInOut" }
@@ -61,7 +61,7 @@ const Hero2 = () => {
     <div className='overflow-hidden bg-white' ref={ref}>
       <div className='relative mx-auto grid w-full grid-cols-1 grid-rows-[290px_auto] 1000:grid-cols-[0.52fr_1fr] 1000:grid-rows-[380px_187px_auto]'>
         <motion.img
-          src="/whymonitoring/T-Space-Satellite.webp"
+          src="/images/why-monitoring/T-Space-Satellite.webp"
           alt="Why monitoring matters"
           width={800}
           height={567}
@@ -71,7 +71,7 @@ const Hero2 = () => {
           animate={imageAnimated ? 'visible' : 'hidden'}
         />
         <motion.img
-          src="/whymonitoring/T-Space-Satellite.webp"
+          src="/images/why-monitoring/T-Space-Satellite.webp"
           alt="Why monitoring matters"
           width={800}
           height={567}

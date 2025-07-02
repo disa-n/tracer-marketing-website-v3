@@ -14,7 +14,7 @@ interface StandardCtaProps {
 }
 
 const StandardCta = ({
-  imageSrc = "/home/demo-home-car.png",
+  imageSrc = "/images/home/demo-home-car.png",
   imageAlt = "demo-car",
   mobileImageSrc,
   showOverlay = true,

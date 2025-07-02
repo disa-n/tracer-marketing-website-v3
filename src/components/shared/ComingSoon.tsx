@@ -88,7 +88,7 @@ const ComingSoon = () => {
         {/* T-Asset Robot Image - Responsive */}
         <div className="robot-image">
           <Image
-            src="/coming-soon/T-Asset-Robot.svg"
+            src="/images/coming-soon/T-Asset-Robot.svg"
             alt="Tracer Asset Robot"
             fill
             style={{ objectFit: 'contain' }}

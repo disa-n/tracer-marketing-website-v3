@@ -50,7 +50,7 @@ A reusable hero component based on the "Actionable Insights" design from the pro
   title="Powering Scientific Breakthroughs"
   subtitle="Tracer uses cutting-edge technology to bring observability to complex scientific pipelines. By extracting real-time system-level data, Tracer turns what was initially a black box into clear, actionable insights."
   productLabel="_TRACER TECHNOLOGY"
-  imageSrc="/technology/planedesktop.webp"
+  imageSrc="/images/technology/T-Asset-Satellite.webp"
   imageAlt="Scientific observability technology"
   variant="mirrored"
 />
@@ -62,7 +62,7 @@ A reusable hero component based on the "Actionable Insights" design from the pro
   title="About Us"
   subtitle="Tracer is an advanced observability platform for high-performance computing (HPC) systems in regulated industries. We help scientists and engineers to run, maintain, and optimise supercomputing software solutions."
   productLabel="_TRACER COMPANY"
-  imageSrc="/about/about-hero.webp"
+  imageSrc="/images/about-us/Tracer-brain.webp"
   imageAlt="About Tracer team"
   variant="flipped"
 />
@@ -74,7 +74,7 @@ A reusable hero component based on the "Actionable Insights" design from the pro
   title="Monitoring Matters More Than Ever"
   subtitle="Understanding highly parallelised workloads running on distributed supercomputers is very difficult. Tracer combines cutting-edge technological advances with the deep understanding of scientific industries to go from a black box to insights."
   productLabel="_TRACER INSIGHTS"
-  imageSrc="/why-monitoring/monitoring-hero.webp"
+  imageSrc="/images/why-monitoring/T-Space-Satellite.webp"
   imageAlt="Why monitoring matters"
   variant="default"
 />

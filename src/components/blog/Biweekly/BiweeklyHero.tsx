@@ -51,7 +51,7 @@ export default function BiweeklyHero() {
             <div className="w-full lg:w-1/2 lg:absolute lg:top-0 lg:right-0 lg:h-full lg:max-w-[704px]">
               <div className="relative w-full h-48 sm:h-64 md:h-80 lg:h-[500px] overflow-hidden bg-[#202020]">
                 <Image
-                  src="/Blog/T-Asset-Organic_Shape.png"
+                  src="/Blog/posts/T-Asset-Organic_Shape.png"
                   alt="Tracer bi-weekly roundups - organic DNA helix design"
                   fill
                   className="object-contain object-center rounded-lg"

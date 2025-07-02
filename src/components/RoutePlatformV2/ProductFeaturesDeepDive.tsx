@@ -33,7 +33,7 @@ const features: Feature[] = [
     previewTitle: 'Match Pipeline Activity to Cost Centers in Real Time',
     description: 'Automatically attribute cloud spend to specific pipelines, tools, and teams. Map compute usage directly to cost centers for accurate budgeting.',
     icon: BarChart3,
-    image: '/product/features/pipeline-spend.webp'
+    image: '/images/product/product-features/pipeline-spend.webp'
   },
   {
     id: 'tool-metrics',
@@ -41,7 +41,7 @@ const features: Feature[] = [
     previewTitle: 'Tool-Level Metrics',
     description: 'Get granular insights into tool-level CPU, memory, and disk I/O usage, along with performance and execution patterns across your pipeline ecosystem.',
     icon: Settings,
-    image: '/product/features/tool-metrics.webp'
+    image: '/images/product/product-features/tool-metrics.webp'
   },
   {
     id: 'unified-log',
@@ -49,7 +49,7 @@ const features: Feature[] = [
     previewTitle: 'Unified Log View',
     description: 'Centralised logging across all pipeline components with intelligent filtering, search, and correlation capabilities.',
     icon: Eye,
-    image: '/product/features/unified-log.webp'
+    image: '/images/product/product-features/unified-log.webp'
   },
   {
     id: 'live-instance',
@@ -57,8 +57,8 @@ const features: Feature[] = [
     previewTitle: 'Live Instance Watch',
     description: 'Real-time monitoring of running instances with live resource utilisation, performance metrics, and health status.',
     icon: Activity,
-    image: '/product/features/live-instance.webp',
-    mobileImage: '/product/features/live-instance-mobile.webp'
+    image: '/images/product/product-features/live-instance.webp',
+    mobileImage: '/images/product/product-features/live-instance-mobile.webp'
   },
   {
     id: 'time-sink',
@@ -66,7 +66,7 @@ const features: Feature[] = [
     previewTitle: 'Time Sink Detector',
     description: 'Automatically identify bottlenecks and performance issues that slow down your pipelines and impact productivity.',
     icon: Clock,
-    image: '/product/features/time-sink.webp'
+    image: '/images/product/product-features/time-sink.webp'
   },
   {
     id: 'smart-tradeoffs',
@@ -74,8 +74,8 @@ const features: Feature[] = [
     previewTitle: 'Smart Tool Tradeoffs',
     description: 'Intelligent recommendations for optimising tool selection, resource allocation, and configuration based on your specific workloads.',
     icon: Brain,
-    image: '/product/features/smart-tradeoffs.webp',
-    mobileImage: '/product/features/smart-tradeoffs-mobile.webp'
+    image: '/images/product/product-features/smart-tradeoffs.webp',
+    mobileImage: '/images/product/product-features/smart-tradeoffs-mobile.webp'
   }
 ]
 

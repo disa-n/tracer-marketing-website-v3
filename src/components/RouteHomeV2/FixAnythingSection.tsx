@@ -29,8 +29,8 @@ export default function FixAnythingSection() {
               sectionLabel="TRACER PERFORMANCE"
               title="Predict and optimise compute requirements"
               description="Forecast the exact running time and compute needs of your pipelines. Further optimise your underutilised instances and increase the usage of AI models in a cost-efficient manner."
-              previewImage="/home/Tracer-Performance.webp"
-              mobilePreviewImage="/home/Tracer-Performance-Mobile.webp"
+              previewImage="/images/home/Tracer-Performance.webp"
+              mobilePreviewImage="/images/home/Tracer-Performance-Mobile.webp"
               pushTextDown={true}
             />
           </div>
@@ -41,14 +41,14 @@ export default function FixAnythingSection() {
               sectionLabel="TRACER INTELLIGENCE"
               title="Total visibility into computational infrastructure"
               description="Gain real-time, highly granular insights into every workload and process, independent of coding language or framework, including highly parallelised processes across instances."
-              previewImage="/home/Tracer-Intel.webp"
+              previewImage="/images/home/Tracer-Intel.webp"
             />
             <PerformanceCard
               indexLabel="03–03"
               sectionLabel="TRACER DEBUG"
               title="Fix issues instantly"
               description="Gain deep insights into the root causes of bugs across all analyses, recognise the error type, and solve instantly."
-              previewImage="/home/Tracer-Debug.webp"
+              previewImage="/images/home/Tracer-Debug.webp"
               pushTextDown={true}
             />
           </div>

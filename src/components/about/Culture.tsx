@@ -235,32 +235,32 @@ function Culture() {
     {
       title: "Passion",
       description: "We lead with passion. When we care deeply about our work, great things follow.",
-      iconSrc: "/about-us/passion.svg"
+      iconSrc: "/images/about-us/passion.svg"
     },
     {
       title: "Intelligence",
       description: "We face the hard truths, ask the right questions, and solve problems as a team.",
-      iconSrc: "/about-us/intelligence.svg"
+      iconSrc: "/images/about-us/intelligence.svg"
     },
     {
       title: "Fun & Fearlessness",
       description: "The best work happens when you’re having fun and taking on big challenges.",
-      iconSrc: "/about-us/fun.svg"
+      iconSrc: "/images/about-us/fun.svg"
     },
     {
       title: "Hard Work",
       description: "We work really hard, but live a life worth living — and take epic holidays.",
-      iconSrc: "/about-us/hardwork.svg"
+      iconSrc: "/images/about-us/hardwork.svg"
     },
     {
       title: "Experiment",
       description: "We experiment relentlessly in pursuit of truth, learn fast, and iterate faster.",
-      iconSrc: "/about-us/exp.svg"
+      iconSrc: "/images/about-us/exp.svg"
     },
     {
       title: "Meritocracy",
       description: "Like a professional sports team, we focus on contribution and reward excellence.",
-      iconSrc: "/about-us/meritocracy.svg"
+      iconSrc: "/images/about-us/meritocracy.svg"
     }
   ]
 

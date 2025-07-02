@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import TabNavigation from './TabNavigation';
+import React, { useEffect, useRef, useState } from 'react';
 import PreviewContainer from './PreviewContainer';
-import { scrollToCenter } from './utils';
+import TabNavigation from './TabNavigation';
 import { TabData } from './types';
+import { scrollToCenter } from './utils';
 
 // Configuration for the ProductPreview module
 export const PRODUCT_PREVIEW_CONFIG = {
@@ -19,32 +19,32 @@ export const TABS_DATA: TabData[] = [
     {
         id: 'anomaly-detection',
         label: 'Pipeline Health Map',
-        imageUrl: '/home/Pipeline Health Map-v2.webp'
+        imageUrl: '/images/home/Pipeline Health Map-v2.webp'
     },
     {
         id: 'tool-level-insights',
         label: 'Tool-Level Insights',
-        imageUrl: '/home/Tool-Level Insights-v2.webp'
+        imageUrl: '/images/home/Tool-Level Insights-v2.webp'
     },
     {
         id: 'run-by-run-clarity',
         label: 'Multi-Tool Analysis',
-        imageUrl: '/home/Multi-Tool Analysis-v2.webp'
+        imageUrl: '/images/home/Multi-Tool Analysis-v2.webp'
     },
     {
         id: 'smart-recommendations',
         label: 'Workflow Optimisation',
-        imageUrl: '/home/Workflow Optimisation-v2.webp'
+        imageUrl: '/images/home/Workflow Optimisation-v2.webp'
     },
     {
         id: 'infra-cost-breakdown',
         label: 'Cost Attribution',
-        imageUrl: '/home/Costs Attribution-v2.webp'
+        imageUrl: '/images/home/Costs Attribution-v2.webp'
     },
     {
         id: 'unified-log-search',
         label: 'Unified Log Panel',
-        imageUrl: '/home/Unified Log Panel-v2.webp'
+        imageUrl: '/images/home/Unified Log Panel-v2.webp'
     }
 ];
 

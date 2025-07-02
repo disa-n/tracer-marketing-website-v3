@@ -60,7 +60,7 @@ const OneLineImplementation = () => {
           style={{ transformOrigin: "bottom center" }}
         >
           <Image
-            src="/product/assets/T-Asset-Robotic_Arm.webp"
+            src="/images/product/visuals-assets/T-Asset-Robotic_Arm.webp"
             alt="Robotic Arm"
             width={1800}
             height={1350}
@@ -135,7 +135,7 @@ const OneLineImplementation = () => {
               {/* Airflow */}
               <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-1.5 sm:p-3 md:p-4">
                 <Image
-                  src="/product/logos/airflow.svg"
+                  src="/images/product/logos/airflow.svg"
                   alt="Apache Airflow"
                   width={120}
                   height={60}
@@ -145,7 +145,7 @@ const OneLineImplementation = () => {
               {/* AWS */}
               <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-1.5 sm:p-3 md:p-4">
                 <Image
-                  src="/product/logos/aws-sv.svg"
+                  src="/images/product/logos/aws-sv.svg"
                   alt="Amazon Web Services"
                   width={120}
                   height={60}
@@ -155,7 +155,7 @@ const OneLineImplementation = () => {
               {/* Nextflow */}
               <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-1.5 sm:p-3 md:p-4">
                 <Image
-                  src="/product/logos/next-flow.svg"
+                  src="/images/product/logos/next-flow.svg"
                   alt="Nextflow"
                   width={120}
                   height={60}
@@ -165,7 +165,7 @@ const OneLineImplementation = () => {
               {/* Bash */}
               <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-1.5 sm:p-3 md:p-4">
                 <Image
-                  src="/product/logos/bash.svg"
+                  src="/images/product/logos/bash.svg"
                   alt="Bash Shell"
                   width={120}
                   height={60}
@@ -175,7 +175,7 @@ const OneLineImplementation = () => {
               {/* AWS Batch */}
               <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-1.5 sm:p-3 md:p-4">
                 <Image
-                  src="/product/logos/aws-batch.svg"
+                  src="/images/product/logos/aws-batch.svg"
                   alt="AWS Batch"
                   width={120}
                   height={60}
@@ -185,7 +185,7 @@ const OneLineImplementation = () => {
               {/* Ubuntu */}
               <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-1.5 sm:p-3 md:p-4">
                 <Image
-                  src="/product/logos/ubuntu.svg"
+                  src="/images/product/logos/ubuntu.svg"
                   alt="Ubuntu"
                   width={120}
                   height={60}

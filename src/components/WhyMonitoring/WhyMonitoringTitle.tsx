@@ -1,6 +1,5 @@
-import React from 'react';
-import Image from 'next/image';
 import { GridLinesLight } from '@/components/shared/GridLines';
+import Image from 'next/image';
 
 export default function WhyMonitoringTitle() {
   return (
@@ -34,7 +33,7 @@ export default function WhyMonitoringTitle() {
         {/* Right Column - Image */}
         <div className="w-full lg:flex-1 flex justify-center lg:justify-end px-4 lg:px-0 xl:px-0 -mt-[70px] lg:-mt-[120px] xl:-mt-[170px] 2xl:-mt-[148px] -mb-24 lg:-mb-[60px] xl:-mb-[60px] 2xl:-mb-[80px] lg:mr-[-150px] xl:mr-[-200px] 2xl:mr-[-150px] order-1 lg:order-2 relative z-0">
           <Image
-            src="/whymonitoring/T-Layered-Wheel.webp"
+            src="/images/why-monitoring/T-Layered-Wheel.webp"
             alt="Why monitoring is the solution illustration"
             width={800}
             height={700}
