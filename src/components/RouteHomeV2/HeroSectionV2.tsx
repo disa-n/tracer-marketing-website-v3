@@ -1,10 +1,11 @@
 'use client';
 
 import GridLines from '@/components/shared/GridLines';
-import ShinyCTAButton from '@/components/shared/ShinyCTAButton';
+import ShinyCTAButtonExperimental from '@/components/shared/ShinyCTAButtonExperimental';
+import DemoButton from '@/components/ui/DemoButton';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 export default function HeroSectionV2() {
@@ -187,8 +188,8 @@ export default function HeroSectionV2() {
                 <span className="relative inline-block whitespace-nowrap min-w-[180px] 300:min-w-[200px] 400:min-w-[220px] xs:min-w-[240px] sm:min-w-[280px] md:min-w-[480px] lg:min-w-[520px] xl:min-w-[620px] text-center lg:text-left min-h-[1.2em]">
                   <span className="text-white">
                     {displayedText || '\u00A0'}
-                    {!isComplete && startTyping && (
-                      <span className={`inline-block w-[3px] 400:w-[4px] h-[0.8em] bg-white ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`} />
+                    {startTyping && (
+                      <span className={`inline-block w-[3px] 400:w-[4px] h-[0.8em] bg-white ml-1 ${(!isComplete && showCursor) ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`} />
                     )}
                   </span>
                 </span>
@@ -205,25 +206,19 @@ export default function HeroSectionV2() {
             {/* CTA Buttons */}
             <div className="flex flex-row gap-2 300:gap-3 sm:gap-4 justify-center lg:justify-start items-center mb-12 300:mb-4 400:mb-2 xs:mb-1 sm:mb-0 lg:mb-16 px-2">
               <div className="w-[48%] sm:w-auto mobile-full-width-cta">
-                <ShinyCTAButton
-                  mobileHeight={48}
-                  desktopHeight={55}
+                <ShinyCTAButtonExperimental
+                  mobileHeight={44}
+                  desktopHeight={51}
                   textSizeClasses="text-sm 300:text-sm 400:text-base sm:text-lg"
                 />
               </div>
 
-              <a
-                href="/product"
-                className="inline-flex items-center justify-center w-[48%] sm:w-auto px-4 300:px-5 400:px-6 sm:px-8
-                         bg-[#E8E8E8] text-black font-britti-sans text-sm 300:text-sm 400:text-base sm:text-lg !font-[400]
-                         hover:bg-[#D8D8D8] transition-colors duration-200 demo-button-height"
-                style={{
-                  '--mobile-height': '44px',
-                  '--desktop-height': '51px',
-                } as React.CSSProperties}
-              >
-                Get a Demo
-              </a>
+              <DemoButton
+                mobileHeight={44}
+                desktopHeight={51}
+                textSizeClasses="text-sm 300:text-sm 400:text-base sm:text-lg"
+                widthClasses="w-[48%] sm:w-auto"
+              />
             </div>
 
           </div>

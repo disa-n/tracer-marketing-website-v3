@@ -4,13 +4,13 @@ https://ryanmulligan.dev/blog/css-property-new-style/
 */
 
 :root {
-  --shiny-cta-bg: #000000;
-  --shiny-cta-bg-subtle: #1a1818;
+  --shiny-cta-bg: #4EC5B7;
+  --shiny-cta-bg-subtle: #45b3a6;
   --shiny-cta-left: #ffffff;
   --shiny-cta-middle: #ffffff;
   --shiny-cta-right: #ffffff;
-  --shiny-cta-background-sweep: #565656;
-  --shiny-cta-hover-background: #4e4e4e;
+  --shiny-cta-background-sweep: #6dd1c6;
+  --shiny-cta-hover-background: #3ea89c;
 }
 
 @property --gradient-angle {

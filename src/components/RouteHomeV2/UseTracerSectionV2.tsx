@@ -1,9 +1,9 @@
 'use client';
-import React from 'react';
-import Image from 'next/image';
-import { SearchX, Server, CircleDollarSign, EyeOff } from 'lucide-react';
 import { GridLinesLight } from '@/components/shared/GridLines';
 import ColorBreakLine from '@/components/ui/ColorBreakLine';
+import { CircleDollarSign, EyeOff, SearchX, Server } from 'lucide-react';
+import Image from 'next/image';
+import React from 'react';
 
 // Card component for problem statements
 interface ProblemCardProps {
@@ -56,8 +56,8 @@ export default function UseTracerSectionV2() {
     },
     {
       icon: <SearchX className="w-8 h-8 md:w-16 md:h-16 text-[#202020]" strokeWidth={1} />,
-      title: "\"We don't know which binary breaks, when, or why\"",
-      description: "Software binaries break silently. \nBy the time you find out, you've already wasted hours, and your results are wrong."
+      title: "\"We don't know which tool breaks, when, or why\"",
+      description: "Software breaks silently. By the time you find out, \n you've already wasted hours, and worse, your results are wrong."
     },
     {
       icon: <EyeOff className="w-8 h-8 md:w-16 md:h-16 text-[#202020]" strokeWidth={1} />,
@@ -67,7 +67,7 @@ export default function UseTracerSectionV2() {
     {
       icon: <CircleDollarSign className="w-8 h-8 md:w-16 md:h-16 text-[#202020]" strokeWidth={1} />,
       title: "\"How can I make my pipelines more cost-efficient?\"",
-      description: "You can’t optimize costs without visibility into what’s actually driving spend \nacross pipeline components, tools, and teams."
+      description: "You can’t optimise costs without visibility into what’s actually driving spend \nacross pipeline components, tools, and teams."
     }
   ];
 
