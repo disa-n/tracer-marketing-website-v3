@@ -12,7 +12,7 @@ export default function AuthorDisplay({ author }: AuthorDisplayProps) {
         <div className="w-6 h-6 rounded-full overflow-hidden ml-2 inline-block">
           <div className="relative w-full h-full">
             <Image
-              src="/blog/authors/Laura-DP.webp"
+              src="/images/blog/authors/Laura-DP.webp"
               alt="Laura"
               fill
               sizes="24px"
@@ -35,7 +35,7 @@ export default function AuthorDisplay({ author }: AuthorDisplayProps) {
         <div className="w-6 h-6 rounded-full overflow-hidden ml-2 inline-block">
           <div className="relative w-full h-full">
             <Image
-              src="/blog/authors/Isolde-DP.webp"
+              src="/images/blog/authors/Isolde-DP.webp"
               alt="Isolde"
               fill
               sizes="24px"
@@ -58,7 +58,7 @@ export default function AuthorDisplay({ author }: AuthorDisplayProps) {
         <div className="w-6 h-6 rounded-full overflow-hidden ml-2 inline-block">
           <div className="relative w-full h-full">
             <Image
-              src="/blog/authors/Paul-DP.jpg"
+              src="/images/blog/authors/Paul-DP.jpg"
               alt="Paul"
               fill
               sizes="24px"

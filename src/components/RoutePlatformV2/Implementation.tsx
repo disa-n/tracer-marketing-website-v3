@@ -171,35 +171,35 @@ const Implementation = () => {
                         variants={createLogoVariants(421)}
                         className='aspect-square border border-[#E8E8E8] bg-[#FCFCFC] flex items-center justify-center'
                     >
-                        <Image src={"/images/product/icons/bash.svg"} alt='bash' width={200} height={80} className='w-full max-w-[59px] md:max-w-[111px]' />
+                        <Image src={"/icons/product/bash.svg"} alt='bash' width={200} height={80} className='w-full max-w-[59px] md:max-w-[111px]' />
                     </motion.div>
                     {/* Box-split logo - starts from position 445px down */}
                     <motion.div
                         variants={createLogoVariants(445)}
                         className='aspect-square border border-[#E8E8E8] bg-[#FCFCFC] flex items-center justify-center'
                     >
-                        <Image src={"/images/product/icons/box-split.svg"} alt='box-split' width={200} height={80} className='w-full max-w-[47px] md:max-w-[76px]' />
+                        <Image src={"/icons/product/box-split.svg"} alt='box-split' width={200} height={80} className='w-full max-w-[47px] md:max-w-[76px]' />
                     </motion.div>
                     {/* Airflow logo - starts from position 668px down */}
                     <motion.div
                         variants={createLogoVariants(668)}
                         className='aspect-square border border-[#E8E8E8] bg-[#FCFCFC] flex items-center justify-center'
                     >
-                        <Image src={"/images/product/icons/air-flow.svg"} alt='air-flow' width={200} height={80} className='w-full max-w-[59px] md:max-w-[126px]' />
+                        <Image src={"/icons/product/air-flow.svg"} alt='air-flow' width={200} height={80} className='w-full max-w-[59px] md:max-w-[126px]' />
                     </motion.div>
                     {/* AWS logo - starts from position 692px down */}
                     <motion.div
                         variants={createLogoVariants(692)}
                         className='aspect-square border border-[#E8E8E8] bg-[#FCFCFC] flex items-center justify-center'
                     >
-                        <Image src={"/images/product/icons/aws-sv.svg"} alt='aws-sv' width={200} height={80} className='w-full max-w-[45px] md:max-w-[88px]' />
+                        <Image src={"/icons/product/aws-sv.svg"} alt='aws-sv' width={200} height={80} className='w-full max-w-[45px] md:max-w-[88px]' />
                     </motion.div>
                     {/* Nextflow logo - starts from position 716px down */}
                     <motion.div
                         variants={createLogoVariants(716)}
                         className='aspect-square border border-[#E8E8E8] bg-[#FCFCFC] flex items-center justify-center'
                     >
-                        <Image src={"/images/product/icons/next-flow.svg"} alt='next-flow' width={200} height={80} className='w-full max-w-[64px] md:max-w-[124px]' />
+                        <Image src={"/icons/product/next-flow.svg"} alt='next-flow' width={200} height={80} className='w-full max-w-[64px] md:max-w-[124px]' />
                     </motion.div>
                     <div className='lg:flex hidden' />
                     <div className='lg:flex hidden' />
@@ -208,7 +208,7 @@ const Implementation = () => {
                         variants={createLogoVariants(740)}
                         className='aspect-square border border-[#E8E8E8] bg-[#FCFCFC] flex items-center justify-center'
                     >
-                        <Image src={"/images/product/icons/ununto.svg"} alt='ununto' width={200} height={80} className='w-full max-w-[60px] md:max-w-[113px]' />
+                        <Image src={"/icons/product/ununto.svg"} alt='ununto' width={200} height={80} className='w-full max-w-[60px] md:max-w-[113px]' />
                     </motion.div>
                 </motion.div>
             </div>

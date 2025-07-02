@@ -116,7 +116,7 @@ export default function BlogPageClient() {
           title="Resources"
           subtitle="The latest updates from Tracer. See our bi-weekly roundups for the latest company and product developments."
           showEmailSignup={true}
-          imageSrc="/Blog/T-chip.webp"
+          imageSrc="/images/blog/posts/T-chip.webp"
           imageAlt="Blog hero placeholder"
           imageStyle="blog"
           productLabel="_TRACER RESOURCES"

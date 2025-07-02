@@ -71,7 +71,7 @@ const Footer = () => {
                         <p className="font-chakra-petch text-xs sm:text-sm font-[400] leading-[1.3] text-c-black">
                             BACK TO TOP
                         </p>
-                        <Image src={"/images/product/icons/arrow-tt.svg"} alt="arrow-tt" width={10} height={10} className="w-full max-w-[6px] sm:max-w-[7.5px] translate-y-[-1px]" />
+                        <Image src={"/icons/product/arrow-tt.svg"} alt="arrow-tt" width={10} height={10} className="w-full max-w-[6px] sm:max-w-[7.5px] translate-y-[-1px]" />
                     </div>
                 </div>
                 <div className="flex w-full items-center justify-start border-y-[1px] border-[#E8E8E8] py-3 md:h-[32px]">
