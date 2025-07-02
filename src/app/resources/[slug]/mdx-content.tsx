@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
 import { MDXProviderWrapper } from '@/components/MdxProvider';
 import BlogPostTemplate from '@/components/blog/BlogPostTemplate';
+import React from 'react';
 
 interface MDXContentProps {
   slug: string;
@@ -74,7 +74,7 @@ export default function MDXContent({ slug }: MDXContentProps) {
     slug,
     title: metadata.title,
     date: metadata.date,
-    imageSrc: metadata.ogImage || '/placeholder-icon.svg',
+    imageSrc: metadata.ogImage || '/icons/icon-placeholder.svg',
     description: metadata.description,
     author: metadata.author || 'Team Tracer',
     tag: metadata.tag || 'general',

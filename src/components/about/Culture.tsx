@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useEffect, useState, useMemo } from 'react'
-import Image from 'next/image'
 import GridLines from '@/components/shared/GridLines'
+import Image from 'next/image'
+import React, { useEffect, useMemo, useState } from 'react'
 
 
 // Types
@@ -235,32 +235,32 @@ function Culture() {
     {
       title: "Passion",
       description: "We lead with passion. When we care deeply about our work, great things follow.",
-      iconSrc: "/About us/passion.svg"
+      iconSrc: "/about-us/passion.svg"
     },
     {
       title: "Intelligence",
       description: "We face the hard truths, ask the right questions, and solve problems as a team.",
-      iconSrc: "/About us/intelligence.svg"
+      iconSrc: "/about-us/intelligence.svg"
     },
     {
       title: "Fun & Fearlessness",
       description: "The best work happens when you’re having fun and taking on big challenges.",
-      iconSrc: "/About us/fun.svg"
+      iconSrc: "/about-us/fun.svg"
     },
     {
       title: "Hard Work",
       description: "We work really hard, but live a life worth living — and take epic holidays.",
-      iconSrc: "/About us/hardwork.svg"
+      iconSrc: "/about-us/hardwork.svg"
     },
     {
       title: "Experiment",
       description: "We experiment relentlessly in pursuit of truth, learn fast, and iterate faster.",
-      iconSrc: "/About us/exp.svg"
+      iconSrc: "/about-us/exp.svg"
     },
     {
       title: "Meritocracy",
       description: "Like a professional sports team, we focus on contribution and reward excellence.",
-      iconSrc: "/About us/meritocracy.svg"
+      iconSrc: "/about-us/meritocracy.svg"
     }
   ]
 
