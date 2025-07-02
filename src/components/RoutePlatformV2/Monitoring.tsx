@@ -285,7 +285,7 @@ const Monitoring = () => {
                                      height: getCardHeight()
                                  }}>
                                 <Image
-                                    src="/platformv2/fix-issues.svg"
+                                    src="/product/icons/fix-issues.svg"
                                     alt="Fix issues instantly"
                                     fill
                                     className="object-cover object-top-left"
