@@ -3,6 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import { SearchX, Server, CircleDollarSign, EyeOff } from 'lucide-react';
 import { GridLinesLight } from '@/components/shared/GridLines';
+import ColorBreakLine from '@/components/ui/ColorBreakLine';
 
 // Card component for problem statements
 interface ProblemCardProps {
@@ -71,7 +72,7 @@ export default function UseTracerSectionV2() {
   ];
 
   return (
-    <section className="relative bg-[#FCFCFC]">
+    <section className="relative bg-[#FCFCFC] -mt-8 sm:-mt-6 lg:mt-0">
       {/* Grid Lines */}
       <GridLinesLight />
 
@@ -145,6 +146,9 @@ export default function UseTracerSectionV2() {
           </div>
         </div>
       </div>
+
+      {/* Color Break Line - Mobile Only */}
+      <ColorBreakLine />
     </section>
   );
 }

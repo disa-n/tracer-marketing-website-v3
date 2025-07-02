@@ -22,6 +22,7 @@ interface Feature {
   description: string
   icon: React.ComponentType<{ size?: number; className?: string }>
   image: string
+  mobileImage?: string
   isActive?: boolean
 }
 
@@ -56,7 +57,8 @@ const features: Feature[] = [
     previewTitle: 'Live Instance Watch',
     description: 'Real-time monitoring of running instances with live resource utilisation, performance metrics, and health status.',
     icon: Activity,
-    image: '/platformv2/features/live-instance.webp'
+    image: '/platformv2/features/live-instance.webp',
+    mobileImage: '/platformv2/features/live-instance-mobile.webp'
   },
   {
     id: 'time-sink',
@@ -70,9 +72,10 @@ const features: Feature[] = [
     id: 'smart-tradeoffs',
     title: 'Smart Tool Tradeoffs',
     previewTitle: 'Smart Tool Tradeoffs',
-    description: 'Intelligent recommendations for optimizing tool selection, resource allocation, and configuration based on your specific workloads.',
+    description: 'Intelligent recommendations for optimising tool selection, resource allocation, and configuration based on your specific workloads.',
     icon: Brain,
-    image: '/platformv2/features/smart-tradeoffs.webp'
+    image: '/platformv2/features/smart-tradeoffs.webp',
+    mobileImage: '/platformv2/features/smart-tradeoffs-mobile.webp'
   }
 ]
 
@@ -309,15 +312,22 @@ const ProductFeaturesDeepDive = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.3 }}
-                    className="relative w-full border border-gray-200 h-[300px] sm:h-[400px] lg:h-[510px] mb-6 lg:mb-0"
+                    className="relative w-full border border-gray-200 h-[300px] sm:h-[400px] lg:h-[510px] mb-6 lg:mb-0 overflow-hidden"
                     style={{ backgroundColor: '#0B0B0B' }}
                   >
                     <Image
-                      src={currentFeature.image}
+                      src={isMobile && currentFeature.mobileImage ? currentFeature.mobileImage : currentFeature.image}
                       alt={currentFeature.title}
                       fill
-                      className="object-contain"
+                      className={
+                        isMobile && currentFeature.mobileImage && currentFeature.id === 'smart-tradeoffs'
+                          ? 'object-cover scale-90'
+                          : isMobile && currentFeature.mobileImage && currentFeature.id === 'live-instance'
+                            ? 'object-cover scale-105'
+                            : 'object-contain'
+                      }
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
+                      key={`${currentFeature.id}-${isMobile ? 'mobile' : 'desktop'}`}
                     />
                   </motion.div>
                 </AnimatePresence>
@@ -328,7 +338,7 @@ const ProductFeaturesDeepDive = () => {
                     href="https://sandbox.tracer.cloud/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="h-[44px] font-britti-sans text-sm sm:text-base font-normal cursor-pointer bg-[#E8E8E8] flex items-center justify-center text-black px-6 sm:px-8 hover:opacity-80 transition-all w-full sm:w-auto"
+                    className="h-[48px] font-britti-sans text-sm sm:text-base font-normal cursor-pointer bg-[#E8E8E8] flex items-center justify-center text-black px-6 sm:px-8 hover:opacity-80 transition-all w-full sm:w-auto"
                   >
                     See It in Action
                   </Link>

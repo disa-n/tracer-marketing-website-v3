@@ -16,7 +16,7 @@ const YourPartner = () => {
                                 From your first steps building new computational pipelines to optimising existing <br className='hidden md:flex' /> AI models in the cloud, Tracer is your partner for your shift to digital and AI.
                             </p>
                         </div>
-                        <Link href="/demo" className='mt-8 h-[48px] w-full cursor-pointer bg-[#E8E8E8] px-8 font-britti-sans text-base font-[400] text-c-black transition-all hover:opacity-80 md:mt-0 md:w-fit flex items-center justify-center'>
+                        <Link href="/demo" className='mt-8 h-[48px] w-full cursor-pointer bg-[#E8E8E8] px-6 sm:px-8 font-britti-sans text-sm sm:text-base font-[400] text-c-black transition-all hover:opacity-80 md:mt-0 md:w-fit flex items-center justify-center'>
                             Talk to Us
                         </Link>
                         <div className='mt-12 md:hidden'>
