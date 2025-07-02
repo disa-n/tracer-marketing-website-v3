@@ -116,7 +116,7 @@ export default function BlogPageClient() {
           title="Resources"
           subtitle="The latest updates from Tracer. See our bi-weekly roundups for the latest company and product developments."
           showEmailSignup={true}
-          imageSrc="/Blog/T-chip.webp"
+          imageSrc="/images/blog/posts/T-chip.webp"
           imageAlt="Blog hero placeholder"
           imageStyle="blog"
           productLabel="_TRACER RESOURCES"
@@ -298,7 +298,7 @@ export default function BlogPageClient() {
                       title={post.metadata.title}
                       date={post.metadata.date}
                       description={post.metadata.description}
-                      ogImage={post.metadata.ogImage || '/placeholder-icon.svg'}
+                      ogImage={post.metadata.ogImage || '/icons/icon-placeholder.svg'}
                       tag={post.metadata.tag || 'general'}
                       {...(post.metadata.author && { author: post.metadata.author })}
                     />
@@ -350,7 +350,7 @@ export default function BlogPageClient() {
                       title={post.metadata.title}
                       date={post.metadata.date}
                       description={post.metadata.description}
-                      ogImage={post.metadata.ogImage || '/placeholder-icon.svg'}
+                      ogImage={post.metadata.ogImage || '/icons/icon-placeholder.svg'}
                       tag={post.metadata.tag || 'general'}
                       {...(post.metadata.author && { author: post.metadata.author })}
                     />

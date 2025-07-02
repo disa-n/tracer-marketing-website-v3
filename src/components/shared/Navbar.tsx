@@ -85,7 +85,7 @@ const NavigationBar = () => {
             <div className="flex-shrink-0">
               <Link href={"/"}>
                 <Image
-                  src={"/shared/tracer-logo.png"}
+                  src={"/images/shared/tracer-logo.png"}
                   alt='tracer-logo.png'
                   width={150}
                   height={50}
@@ -141,7 +141,7 @@ const NavigationBar = () => {
               aria-label="Toggle mobile menu"
               aria-expanded={isMobileMenuOpen}
             >
-              <Image src={"/shared/menu-icon.svg"} alt='menu' width={20} height={20} className="w-5 h-5 sm:w-6 sm:h-6" />
+              <Image src={"/images/shared/menu-icon.svg"} alt='menu' width={20} height={20} className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
           </div>
         </div>
@@ -163,7 +163,7 @@ const NavigationBar = () => {
               <div className="flex items-center justify-between p-4 border-b border-white/20">
                 <Link href="/" onClick={handleNavLinkClick}>
                   <Image
-                    src="/shared/tracer-logo.png"
+                    src="/images/shared/tracer-logo.png"
                     alt="Tracer Logo"
                     width={100}
                     height={33}

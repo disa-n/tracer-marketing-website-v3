@@ -17,7 +17,7 @@ interface ReusableCtaProps {
 }
 
 const ReusableCta = ({
-  imageSrc = "/home/demo-home-car.png",
+  imageSrc = "/images/home/demo-home-car.png",
   imageAlt = "demo-car",
   mobileImageSrc,
   showOverlay = true,
@@ -95,7 +95,7 @@ const ReusableCta = ({
 export const AboutUsCTA = () => {
   return (
     <ReusableCta
-      imageSrc="/home/demo-home-car.png"
+      imageSrc="/images/home/demo-home-car.png"
       imageAlt="demo-car"
       title="Ready to join our mission?"
       subtitle="explore opportunities"

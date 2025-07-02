@@ -1,6 +1,5 @@
-import React from 'react';
-import Image from 'next/image';
 import { GridLinesLight } from '@/components/shared/GridLines';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
@@ -28,7 +27,7 @@ export default function Hero() {
           <div className="hidden md:flex lg:justify-end relative z-10 md:absolute md:top-16 md:-right-20 md:bottom-[-50px] md:w-1/2 lg:absolute lg:top-12 lg:-right-40 lg:bottom-[-50px] lg:w-1/2 2xl:top-20">
             <div className="w-full h-full">
               <Image
-                src="/shared/T-DNA-O.webp"
+                src="/images/tools/T-DNA-O.webp"
                 alt="DNA visualization"
                 width={700}
                 height={600}

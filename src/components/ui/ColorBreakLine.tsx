@@ -22,7 +22,7 @@ export default function ColorBreakLine({
   return (
     <div className={`${height} w-full ${visibilityClass} ${className}`}>
       <Image
-        src="/platformv2/footer-b.png"
+        src="/images/product/visuals-assets/footer-b.png"
         alt="color-break-line"
         width={1600}
         height={60}

@@ -1,4 +1,3 @@
-import React from 'react';
 import Image from 'next/image';
 
 interface AuthorDisplayProps {
@@ -13,7 +12,7 @@ export default function AuthorDisplay({ author }: AuthorDisplayProps) {
         <div className="w-6 h-6 rounded-full overflow-hidden ml-2 inline-block">
           <div className="relative w-full h-full">
             <Image
-              src="/Blog/Laura-DP.webp"
+              src="/images/blog/authors/Laura-DP.webp"
               alt="Laura"
               fill
               sizes="24px"
@@ -36,7 +35,7 @@ export default function AuthorDisplay({ author }: AuthorDisplayProps) {
         <div className="w-6 h-6 rounded-full overflow-hidden ml-2 inline-block">
           <div className="relative w-full h-full">
             <Image
-              src="/Blog/Isolde-DP.webp"
+              src="/images/blog/authors/Isolde-DP.webp"
               alt="Isolde"
               fill
               sizes="24px"
@@ -59,7 +58,7 @@ export default function AuthorDisplay({ author }: AuthorDisplayProps) {
         <div className="w-6 h-6 rounded-full overflow-hidden ml-2 inline-block">
           <div className="relative w-full h-full">
             <Image
-              src="/Blog/Paul-DP.jpg"
+              src="/images/blog/authors/Paul-DP.jpg"
               alt="Paul"
               fill
               sizes="24px"

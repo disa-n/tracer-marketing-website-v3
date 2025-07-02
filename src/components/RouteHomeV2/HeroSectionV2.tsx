@@ -146,7 +146,7 @@ export default function HeroSectionV2() {
                 }}
               >
                 <Image
-                  src="/home/T-Asset-Spacecraft_7 1.webp"
+                  src="/images/home/T-Asset-Spacecraft_7 1.webp"
                   alt="Spacecraft representing advanced monitoring technology"
                   fill
                   className="object-contain"
@@ -172,7 +172,7 @@ export default function HeroSectionV2() {
                 }}
               >
                 <Image
-                  src="/home/T-Asset-Spacecraft_7 1.webp"
+                  src="/images/home/T-Asset-Spacecraft_7 1.webp"
                   alt="Spacecraft representing advanced monitoring technology"
                   fill
                   className="object-contain"
@@ -240,7 +240,7 @@ export default function HeroSectionV2() {
               }}
             >
               <Image
-                src="/home/T-Asset-Spacecraft_7 1.webp"
+                src="/images/home/T-Asset-Spacecraft_7 1.webp"
                 alt="Spacecraft representing advanced monitoring technology"
                 fill
                 className="object-contain"

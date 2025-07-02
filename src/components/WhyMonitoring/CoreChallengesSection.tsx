@@ -1,6 +1,5 @@
-import React from 'react';
-import PerformanceCard from '../ui/PerformanceCard';
 import GridLines from '../shared/GridLines';
+import PerformanceCard from '../ui/PerformanceCard';
 
 export default function CoreChallengesSection() {
   return (
@@ -36,7 +35,7 @@ export default function CoreChallengesSection() {
               sectionLabel="CORE CHALLENGES"
               title="No visibility into digitalisation"
               description="No structured way to measure ROI, track progress, or identify the areas to double down on AI investments."
-              previewImage="/whymonitoring/Core-Challenge-1-2.webp"
+              previewImage="/images/why-monitoring/Core-Challenge-1-2.webp"
             />
 
             <PerformanceCard
@@ -44,7 +43,7 @@ export default function CoreChallengesSection() {
               sectionLabel="CORE CHALLENGES"
               title="Information lost between teams"
               description="Metadata and crucial context get lost during handovers—leading to confusion, rework, and slower collaboration."
-              previewImage="/whymonitoring/Core-Challenge-2-2.webp"
+              previewImage="/images/why-monitoring/Core-Challenge-2-2.webp"
             />
 
             <PerformanceCard
@@ -52,7 +51,7 @@ export default function CoreChallengesSection() {
               sectionLabel="CORE CHALLENGES"
               title="Inefficient tools"
               description="Legacy systems lack the insights needed to debug, optimise, or even pinpoint performance bottlenecks."
-              previewImage="/whymonitoring/Core-Challenge-3-2.webp"
+              previewImage="/images/why-monitoring/Core-Challenge-3-2.webp"
             />
 
             <PerformanceCard
@@ -60,7 +59,7 @@ export default function CoreChallengesSection() {
               sectionLabel="CORE CHALLENGES"
               title="Lack of cost attribution"
               description="Cloud spend is opaque. Manual tagging is unreliable. It's hard to predict budgets or connect spend to value."
-              previewImage="/whymonitoring/Core-Challenge-4-2.webp"
+              previewImage="/images/why-monitoring/Core-Challenge-4-2.webp"
             />
           </div>
         </div>

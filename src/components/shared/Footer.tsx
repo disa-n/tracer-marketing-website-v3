@@ -15,7 +15,7 @@ const Footer = () => {
                 <div className="flex w-full flex-col items-end justify-between gap-[48px] sm:gap-[72px] pb-3 pt-[32px] md:flex-row md:items-start md:gap-0 md:pb-[168px]">
                     <div className="grid w-full grid-cols-3 gap-4 sm:gap-8 text-c-black md:w-fit md:grid-cols-[240px_224px_144px_200px] md:gap-0">
                         <div className="col-span-3 md:col-span-1">
-                            <Image src={"/shared/tracer-logo-black.png"} alt="tracer-logo-black" width={140} height={30} className="w-full max-w-[100px] sm:max-w-[114px]" />
+                            <Image src={"/images/shared/tracer-logo-black.png"} alt="tracer-logo-black" width={140} height={30} className="w-full max-w-[100px] sm:max-w-[114px]" />
                         </div>
                         <div>
                             <h4 className="font-chakra-petch text-xs sm:text-sm font-[400] uppercase leading-[1] text-[#868686]">
@@ -71,7 +71,7 @@ const Footer = () => {
                         <p className="font-chakra-petch text-xs sm:text-sm font-[400] leading-[1.3] text-c-black">
                             BACK TO TOP
                         </p>
-                        <Image src={"/platformv2/arrow-tt.svg"} alt="arrow-tt" width={10} height={10} className="w-full max-w-[6px] sm:max-w-[7.5px] translate-y-[-1px]" />
+                        <Image src={"/icons/product/arrow-tt.svg"} alt="arrow-tt" width={10} height={10} className="w-full max-w-[6px] sm:max-w-[7.5px] translate-y-[-1px]" />
                     </div>
                 </div>
                 <div className="flex w-full items-center justify-start border-y-[1px] border-[#E8E8E8] py-3 md:h-[32px]">
@@ -81,7 +81,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="h-[48px] w-full">
-                <Image src={"/platformv2/footer-b.png"} alt="footer-b" width={1600} height={60} className="h-full w-full object-fill md:object-cover" />
+                <Image src={"/images/product/visuals-assets/footer-b.png"} alt="footer-b" width={1600} height={60} className="h-full w-full object-fill md:object-cover" />
             </div>
         </div>
     )

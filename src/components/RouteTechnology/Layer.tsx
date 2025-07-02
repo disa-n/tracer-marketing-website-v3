@@ -1,13 +1,13 @@
 'use client'
 
-import React, { useRef, useEffect } from 'react'
 import {
-  motion,
-  useScroll,
-  useTransform,
-  useAnimation,
-  useInView
+    motion,
+    useAnimation,
+    useInView,
+    useScroll,
+    useTransform
 } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 
 function Layer() {
   const containerRef = useRef(null)
@@ -243,7 +243,7 @@ function Layer() {
                 {/* Scrolling image */}
                 <motion.img
                   ref={imageContainerRef}
-                  src="/technology/four-layers-image.png"
+                  src="/images/technology/four-layers-image.png"
                   alt="Four Layers Technology Stack"
                   className="absolute w-[450px] h-[2020px] left-[63px]"
                   style={{ top: imageY }}

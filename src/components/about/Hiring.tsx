@@ -1,9 +1,9 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
-import { motion, useAnimation, useInView } from 'framer-motion'
 import { GridLinesLight } from '@/components/shared/GridLines'
+import { motion, useAnimation, useInView } from 'framer-motion'
+import Image from 'next/image'
+import { useEffect, useRef, useState } from 'react'
 
 function Hiring() {
   // State for animation control based on 50% screen width
@@ -112,7 +112,7 @@ function Hiring() {
       <div className="lg:hidden relative z-5 -mt-28 md:-mt-20 -mx-32">
         <div className="relative w-[calc(100%+16rem)] h-[550px] md:h-[700px] -ml-65 md:-ml-100">
           <Image
-            src="/About us/tracer-rocket.svg"
+            src="/images/about-us/tracer-rocket.svg"
             alt="Tracer Rocket"
             fill
             className="object-cover"
@@ -143,7 +143,7 @@ function Hiring() {
         }}
       >
         <Image
-          src="/About us/tracer-rocket.svg"
+          src="/images/about-us/tracer-rocket.svg"
           alt="Tracer Rocket"
           width={1314}
           height={740}

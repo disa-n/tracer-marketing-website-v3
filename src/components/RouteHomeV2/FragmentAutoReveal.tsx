@@ -54,7 +54,7 @@ export default function FragmentAutoReveal() {
             <div className="relative w-full h-full">
               {/* Background Image - Desktop */}
               <Image
-                src="/home/Monitoring_Comparison.webp"
+                src="/images/home/Monitoring_Comparison.webp"
                 alt="Monitoring comparison showing traditional vs Tracer"
                 fill
                 className="object-contain hidden sm:block 2xl:scale-125 2xl:-translate-x-8 2xl:-translate-y-6"
@@ -63,7 +63,7 @@ export default function FragmentAutoReveal() {
 
               {/* Background Image - Mobile */}
               <Image
-                src="/home/Mobile_Comparisons.webp"
+                src="/images/home/Mobile_Comparisons.webp"
                 alt="Monitoring comparison showing traditional vs Tracer"
                 fill
                 className="object-contain block sm:hidden"

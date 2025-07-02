@@ -18,7 +18,7 @@ export default function BlogCard({
   description,
   date,
   tag = 'general',
-  ogImage = '/placeholder-icon.svg',
+  ogImage = '/icons/icon-placeholder.svg',
   author,
 }: BlogCardProps) {
   const authors =

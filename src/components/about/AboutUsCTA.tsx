@@ -5,7 +5,7 @@ import ReusableCta from '@/components/shared/ReusableCta'
 const AboutUsCTA = () => {
   return (
     <ReusableCta
-      imageSrc="/home/demo-home-car.png"
+      imageSrc="/images/home/demo-home-car.png"
       imageAlt="demo-car"
       title="Ready to see Tracer in action?"
       subtitle="get a personalised demo"

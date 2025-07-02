@@ -88,7 +88,7 @@ export default function FoundersSection({ }: FoundersSectionProps) {
             {/* Tracer ball image - mobile-first */}
             <div className="flex items-center justify-center relative">
               <Image
-                src="/About us/tracer-ball.svg"
+                src="/images/about-us/tracer-ball.svg"
                 alt="Colorful 3D abstract object - Tracer ball"
                 width={1400}
                 height={1400}

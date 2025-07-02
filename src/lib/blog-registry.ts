@@ -194,7 +194,7 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
     author: 'Team Tracer',
     tag: 'development',
     readTime: '3 min read',
-    ogImage: '/Blog/globe-preview-image.webp',
+    ogImage: '/blog/posts/globe-preview-image.webp',
     template: 'default'
   },
   'kenya-day-one': {
@@ -205,7 +205,7 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
     author: 'Laura',
     tag: 'blog',
     readTime: '5 min read',
-    ogImage: '/Blog/day1-city-view.webp',
+    ogImage: '/images/blog/series/kenya-hackathon/day1-city-view.webp',
     template: 'default'
   },
   'kenya-day-two': {
@@ -216,7 +216,7 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
     author: 'Paul',
     tag: 'blog',
     readTime: '8 min read',
-    ogImage: '/Blog/day2-tracer-working.webp',
+    ogImage: '/images/blog/series/kenya-hackathon/day2-tracer-working.webp',
     template: 'default'
   },
   'kenya-day-three': {
@@ -227,7 +227,7 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
     author: 'Paul',
     tag: 'blog',
     readTime: '5 min read',
-    ogImage: '/Blog/day3-tracer-rooftop.webp',
+    ogImage: '/images/blog/series/kenya-hackathon/day3-tracer-rooftop.webp',
     template: 'default'
   },
   'kenya-day-four': {
@@ -238,7 +238,7 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
     author: 'Isolde',
     tag: 'blog',
     readTime: '7 min read',
-    ogImage: '/Blog/day4-tracer-hardwork.webp',
+    ogImage: '/images/blog/series/kenya-hackathon/day4-tracer-hardwork.webp',
     template: 'default'
   },
   'biweekly-roundup-1': {
@@ -249,7 +249,7 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
     author: 'Isolde',
     tag: 'blog',
     readTime: '4 min read',
-    ogImage: '/Blog/Header-Roundup1.jpeg',
+    ogImage: '/images/blog/series/biweekly-roundups/Header-Roundup1.jpeg',
     template: 'default'
   },
   'cloud-cost-monitoring': {
@@ -260,7 +260,7 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
     author: 'Team Tracer',
     tag: 'article',
     readTime: '8 min read',
-    ogImage: '/Blog/T-chip.webp',
+    ogImage: '/images/blog/posts/T-chip.webp',
     template: 'default'
   },
   'cloud-cost-management': {
@@ -271,7 +271,7 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
     author: 'Team Tracer',
     tag: 'cloud',
     readTime: '8 min read',
-    ogImage: '/Blog/dna-blog-costs.webp',
+    ogImage: '/images/blog/posts/dna-blog-costs.webp',
     template: 'default'
   },
 };
@@ -290,7 +290,7 @@ export async function loadMDXMetadata(slug: string): Promise<BlogPostMetadata | 
 
   return {
     ...metadata,
-    imageSrc: metadata.ogImage || '/placeholder-icon.svg', // For backward compatibility
+    imageSrc: metadata.ogImage || '/icons/icon-placeholder.svg', // For backward compatibility
   };
 }
 

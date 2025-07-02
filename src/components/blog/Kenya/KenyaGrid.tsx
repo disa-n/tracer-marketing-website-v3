@@ -42,7 +42,7 @@ function KenyaGridItem({ date, description, imageSrc, caption, slug }: KenyaGrid
               <div className="flex items-center">
                 <div className="w-4 h-[18px] mr-6 flex items-center justify-center">
                   <Image
-                    src="/Blog/play.svg"
+                    src="/icons/blog/play.svg"
                     alt="Play"
                     width={16}
                     height={16}
@@ -58,7 +58,7 @@ function KenyaGridItem({ date, description, imageSrc, caption, slug }: KenyaGrid
               <div className="flex items-center">
                 <div className="w-4 h-[18px] mr-6 flex items-center justify-center">
                   <Image
-                    src="/Blog/mic.svg"
+                    src="/icons/blog/mic.svg"
                     alt="Microphone"
                     width={16}
                     height={16}
@@ -126,7 +126,7 @@ function KenyaGridItem({ date, description, imageSrc, caption, slug }: KenyaGrid
               <div className="flex items-center">
                 <div className="w-4 h-[18px] mr-6 flex items-center justify-center">
                   <Image
-                    src="/Blog/play.svg"
+                    src="/icons/blog/play.svg"
                     alt="Play"
                     width={16}
                     height={16}
@@ -142,7 +142,7 @@ function KenyaGridItem({ date, description, imageSrc, caption, slug }: KenyaGrid
               <div className="flex items-center">
                 <div className="w-4 h-[18px] mr-6 flex items-center justify-center">
                   <Image
-                    src="/Blog/mic.svg"
+                    src="/icons/blog/mic.svg"
                     alt="Microphone"
                     width={16}
                     height={16}
