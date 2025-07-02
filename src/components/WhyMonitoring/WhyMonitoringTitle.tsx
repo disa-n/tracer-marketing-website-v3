@@ -19,7 +19,7 @@ export default function WhyMonitoringTitle() {
             {/* Heading */}
             <h2 className="font-britti-sans text-[#202020] font-normal capitalize leading-[1.1] mb-2 lg:mb-6 xl:mb-8 2xl:mb-10 tracking-tight
                            text-[38px] sm:text-[42px] md:text-[48px] lg:text-[56px] xl:text-[68px] 2xl:text-[82px] max-w-[600px]">
-              Why Monitoring<br className="hidden lg:block" /> Is The Solution
+              Why Monitoring<br className="lg:hidden" /><br className="hidden lg:block" /> Is The Solution
             </h2>
 
             {/* Subtext */}
@@ -32,7 +32,7 @@ export default function WhyMonitoringTitle() {
         </div>
 
         {/* Right Column - Image */}
-        <div className="w-full lg:flex-1 flex justify-center lg:justify-end px-4 lg:px-0 xl:px-0 -mt-[31px] lg:-mt-[120px] xl:-mt-[170px] 2xl:-mt-[148px] -mb-8 lg:-mb-[60px] xl:-mb-[60px] 2xl:-mb-[80px] lg:mr-[-150px] xl:mr-[-200px] 2xl:mr-[-150px] order-1 lg:order-2 relative z-0">
+        <div className="w-full lg:flex-1 flex justify-center lg:justify-end px-4 lg:px-0 xl:px-0 -mt-[70px] lg:-mt-[120px] xl:-mt-[170px] 2xl:-mt-[148px] -mb-24 lg:-mb-[60px] xl:-mb-[60px] 2xl:-mb-[80px] lg:mr-[-150px] xl:mr-[-200px] 2xl:mr-[-150px] order-1 lg:order-2 relative z-0">
           <Image
             src="/whymonitoring/T-Layered-Wheel.webp"
             alt="Why monitoring is the solution illustration"

@@ -10,9 +10,9 @@ interface CustomInsightCardProps {
 
 function CustomInsightCard({ icon, title, description }: CustomInsightCardProps) {
   return (
-    <div className="bg-[#FCFCFC] border border-[#E8E8E8] p-8 md:p-10 min-h-[400px] md:min-h-[450px] flex flex-col justify-center">
+    <div className="bg-[#FCFCFC] border border-[#E8E8E8] p-8 md:p-10 min-h-[350px] md:min-h-[450px] flex flex-col justify-center">
       {/* Icon */}
-      <div className="flex justify-center mb-16 mt-6">
+      <div className="flex justify-center mb-16 mt-1 md:mt-6">
         {icon}
       </div>
 
