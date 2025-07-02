@@ -127,7 +127,7 @@ export default function HeroSectionV2() {
 
         <div className="flex flex-col lg:flex-row min-h-screen 300:min-h-[85vh] 400:min-h-[80vh] xs:min-h-[75vh] sm:min-h-[70vh] lg:min-h-screen" style={{ minHeight: '750px' }}>
           {/* Content - Center-aligned on mobile, left-aligned on desktop */}
-          <div className="relative z-10 text-center lg:text-left -mt-20 300:-mt-24 400:-mt-28 xs:-mt-20 sm:-mt-16 lg:mt-0 pt-0 pb-0 300:pb-0 400:pb-0 xs:pb-0 sm:pb-0 lg:pt-16 lg:pb-12 xl:pt-20 xl:pb-14 2xl:pt-24 2xl:pb-16 flex flex-col justify-center min-h-screen 300:min-h-[85vh] 400:min-h-[80vh] xs:min-h-[75vh] sm:min-h-[70vh] lg:min-h-screen lg:flex-1 lg:max-w-[60%]">
+          <div className="relative z-10 text-center lg:text-left -mt-20 300:-mt-24 400:-mt-28 xs:-mt-20 sm:-mt-48 md:-mt-56 lg:mt-0 pt-0 pb-0 300:pb-0 400:pb-0 xs:pb-0 sm:pb-0 lg:pt-16 lg:pb-12 xl:pt-20 xl:pb-14 2xl:pt-24 2xl:pb-16 flex flex-col justify-center min-h-screen 300:min-h-[85vh] 400:min-h-[80vh] xs:min-h-[75vh] sm:min-h-[70vh] lg:min-h-screen lg:flex-1 lg:max-w-[60%]">
 
             {/* Mobile Hero Image - Above title, centered on screen - Only shows on smallest mobile screens */}
             <div className="block sm:hidden -mb-2 300:-mb-3 400:-mb-3 xs:-mb-3 sm:-mb-2 mt-32 300:mt-28 400:mt-24 xs:mt-20 sm:mt-24 relative flex justify-center overflow-hidden">
