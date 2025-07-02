@@ -9,8 +9,8 @@ const showActionButtons = false;
 type BiweeklyGridItemProps = {
   date: string;
   description: string;
-  imageSrc?: string;
-  caption?: string;
+  imageSrc: string;
+  caption: string;
   slug: string;
 };
 

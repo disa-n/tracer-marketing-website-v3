@@ -309,7 +309,7 @@ export async function loadStaticBlogPosts(): Promise<BlogPost[]> {
       description: post.description,
       author: post.author || 'Team Tracer',
       tag: post.tag || 'general',
-      readTime: post.readTime,
+      readTime: post.readTime || '5 min read',
       ogImage: post.imageSrc,
       imageSrc: post.imageSrc || '/placeholder-icon.svg',
       type: 'static' as const,

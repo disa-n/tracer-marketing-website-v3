@@ -116,6 +116,7 @@ export default function HeroSectionV2() {
       return () => clearInterval(cursorTimer);
     } else {
       setShowCursor(false);
+      return; // Explicit return for consistency
     }
   }, [startTyping, isComplete]);
   return (

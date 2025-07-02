@@ -2,7 +2,7 @@
 
 import { motion, useAnimation, useInView, type Variants } from 'framer-motion'
 import Image from 'next/image'
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 // Individual Card component with its own scroll detection
 const AnimatedCard = ({
@@ -297,7 +297,7 @@ const GainVisibility = () => {
                         height: '54px',
                         bottom: '103px',
                         right: '0px'
-                    } as React.CSSProperties}
+                    } as any}
                 />
                 <motion.div
                     animate={rectangle2Controls}
@@ -310,7 +310,7 @@ const GainVisibility = () => {
                         height: '103px',
                         bottom: '0px',
                         right: '0px'
-                    } as React.CSSProperties}
+                    } as any}
                 />
             </motion.div>
         </div>
