@@ -1,6 +1,5 @@
-import React from 'react';
-import BlogCard from './BlogCard';
 import { BlogPost } from '@/lib/blog-registry';
+import BlogCard from './BlogCard';
 
 export default function BlogGrid({ posts }: { posts: BlogPost[] }) {
   return (
@@ -13,8 +12,8 @@ export default function BlogGrid({ posts }: { posts: BlogPost[] }) {
           description={post.description}
           date={post.date}
           tag={post.tag}
-          ogImage={post.ogImage}
-          author={post.author}
+          ogImage={post.ogImage || '/placeholder-icon.svg'}
+          {...(post.author && { author: post.author })}
         />
       ))}
     </div>

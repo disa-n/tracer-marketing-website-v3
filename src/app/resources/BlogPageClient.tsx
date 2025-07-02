@@ -1,16 +1,16 @@
 'use client';
 
-import React, { useState, useMemo, useEffect } from 'react';
-import { Settings, Newspaper, FileText } from 'lucide-react';
 import FilterBar from '@/components/blog/FilterBar';
+import { FileText, Newspaper, Settings } from 'lucide-react';
+import { useEffect, useMemo, useState } from 'react';
 
 import BlogCard from '@/components/blog/BlogCard';
 import BlogPagination from '@/components/blog/BlogPagination';
+import LoadingSpinner from '@/components/shared/LoadingSpinner';
 import ReusableHero from '@/components/shared/ReusableHero';
 import Section from '@/components/shared/Section';
 import SectionTitle from '@/components/shared/SectionTitle';
 import ToolCard from '@/components/shared/ToolCard';
-import LoadingSpinner from '@/components/shared/LoadingSpinner';
 import { useBlogPosts } from '@/hooks/useBlogPosts';
 import { TOOLS } from '@/lib/constants';
 
@@ -273,9 +273,9 @@ export default function BlogPageClient() {
                       title={directory.metadata.title}
                       date={directory.metadata.date}
                       description={directory.metadata.description}
-                      ogImage={directory.metadata.ogImage}
+                      ogImage={directory.metadata.ogImage || '/placeholder-icon.svg'}
                       tag={directory.metadata.tag || 'general'}
-                      author={directory.metadata.author}
+                      {...(directory.metadata.author && { author: directory.metadata.author })}
                     />
                   ))}
                 </div>
@@ -298,9 +298,9 @@ export default function BlogPageClient() {
                       title={post.metadata.title}
                       date={post.metadata.date}
                       description={post.metadata.description}
-                      ogImage={post.metadata.ogImage}
+                      ogImage={post.metadata.ogImage || '/placeholder-icon.svg'}
                       tag={post.metadata.tag || 'general'}
-                      author={post.metadata.author}
+                      {...(post.metadata.author && { author: post.metadata.author })}
                     />
                   ))}
                 </div>
@@ -350,9 +350,9 @@ export default function BlogPageClient() {
                       title={post.metadata.title}
                       date={post.metadata.date}
                       description={post.metadata.description}
-                      ogImage={post.metadata.ogImage}
+                      ogImage={post.metadata.ogImage || '/placeholder-icon.svg'}
                       tag={post.metadata.tag || 'general'}
-                      author={post.metadata.author}
+                      {...(post.metadata.author && { author: post.metadata.author })}
                     />
                   ))}
                 </div>

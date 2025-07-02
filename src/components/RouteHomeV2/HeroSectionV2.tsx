@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
 import GridLines from '@/components/shared/GridLines';
 import ShinyCTAButton from '@/components/shared/ShinyCTAButton';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
 
 
 export default function HeroSectionV2() {
@@ -63,7 +63,7 @@ export default function HeroSectionV2() {
   }, []);
 
   useEffect(() => {
-    if (!startTyping) return;
+    if (!startTyping) return undefined;
 
     const currentText = textVariations[currentTextIndex];
 
@@ -82,6 +82,7 @@ export default function HeroSectionV2() {
           return nextIndex >= textVariations.length ? 1 : nextIndex; // Skip back to index 1, not 0
         });
         setCurrentCharIndex(0);
+        return undefined; // Explicit return for this path
       }
     } else {
       // Typing text

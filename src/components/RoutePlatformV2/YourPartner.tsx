@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 
 const YourPartner = () => {
     return (
@@ -45,8 +44,8 @@ const YourPartner = () => {
                         </div>
                     </div>
                     <div className='w-full overflow-hidden border-[#404040] md:border-t 1200:h-[360px]'>
-                        <Image src={"/platform/partner-img.png"} alt='partner-img.png' width={1400} height={380} className='hidden w-full max-w-[1480px] shrink-0 md:flex' />
-                        <Image src={"/platform/partner-img-mb.png"} alt='partner-img.png' width={1400} height={380} className='w-full max-w-[1480px] shrink-0 md:hidden' />
+                        <Image src={"/platformv2/partner-img.png"} alt='partner-img.png' width={1400} height={380} className='hidden w-full max-w-[1480px] shrink-0 md:flex' />
+                        <Image src={"/platformv2/partner-img-mb.png"} alt='partner-img.png' width={1400} height={380} className='w-full max-w-[1480px] shrink-0 md:hidden' />
                     </div>
                 </div>
             </div>

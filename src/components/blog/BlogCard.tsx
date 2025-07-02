@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import AuthorDisplay from './AuthorDisplay';
 
 type BlogCardProps = {
@@ -8,8 +8,8 @@ type BlogCardProps = {
   description: string;
   date: string;
   tag: string;
-  ogImage?: string | undefined;
-  author?: string | string[] | undefined;
+  ogImage?: string;
+  author?: string | string[];
 };
 
 export default function BlogCard({

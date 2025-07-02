@@ -11,13 +11,13 @@ export interface BlogPostMetadata {
   title: string;
   date: string;
   description: string;
-  author?: string | undefined;
-  tag?: string | undefined;
-  readTime?: string | undefined;
-  ogImage?: string | undefined;
-  template?: 'default' | 'minimal' | 'magazine' | 'technical' | undefined;
-  imageSrc?: string | undefined; // For backward compatibility
-  published?: boolean | undefined; // Controls visibility on blog pages
+  author?: string;
+  tag?: string;
+  readTime?: string;
+  ogImage?: string;
+  template?: 'default' | 'minimal' | 'magazine' | 'technical';
+  imageSrc?: string; // For backward compatibility
+  published?: boolean; // Controls visibility on blog pages
 }
 
 /**
@@ -69,7 +69,7 @@ export interface BlogPostSchema {
 
 export interface BlogPost extends BlogPostMetadata {
   type: 'mdx' | 'static';
-  content?: string | undefined; // Only for static posts
+  content?: string; // Only for static posts
   author: string; // Required for BlogPost
   tag: string; // Required for BlogPost
   imageSrc: string; // Required for BlogPost
