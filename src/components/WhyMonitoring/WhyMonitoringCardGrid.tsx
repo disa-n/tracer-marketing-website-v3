@@ -42,7 +42,7 @@ export default function WhyMonitoringCardGrid() {
     },
     {
       icon: <Eye className="w-28 h-28 md:w-32 md:h-32 text-[#202020]" strokeWidth={0.5} />,
-      title: "No-Code Isn't Enough",
+      title: "No-Code Is Not Good",
       description: "Drag-and-drop tools hide what's actually happening in pipelines. Monitoring reveals the real mechanics."
     },
     {
@@ -61,7 +61,7 @@ export default function WhyMonitoringCardGrid() {
     <section className="relative bg-[#FCFCFC] py-16 lg:py-20">
       {/* Top border stroke */}
       <div className="absolute top-0 left-0 w-full h-px bg-[#E8E8E8]"></div>
-      
+
       {/* Main content container */}
       <div className="max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 xl:px-16">
         {/* Responsive grid layout for the cards - wider cards in non-stacked view */}

@@ -119,7 +119,7 @@ const OneLineImplementation = () => {
             {/* Run Button */}
             <button
               onClick={handleOpenTerminal}
-              className="mt-3 md:mt-4 h-[44px] md:h-[49px] w-full sm:w-auto font-britti-sans text-sm md:text-base !font-[400] cursor-pointer bg-[#E8E8E8] flex items-center justify-center text-black px-6 md:px-8 hover:opacity-80 transition-all"
+              className="mt-3 md:mt-4 h-[48px] md:h-[49px] w-full sm:w-auto font-britti-sans text-sm md:text-base !font-[400] cursor-pointer bg-[#E8E8E8] flex items-center justify-center text-black px-6 md:px-8 hover:opacity-80 transition-all"
             >
               Run in Your Terminal
             </button>
@@ -131,19 +131,19 @@ const OneLineImplementation = () => {
               We Work With Any Framework, Language, and Architecture
             </h2>
             {/* Technology Logos */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 lg:gap-6">
+            <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4 lg:gap-6">
               {/* Airflow */}
-              <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-2 sm:p-3 md:p-4">
+              <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-1.5 sm:p-3 md:p-4">
                 <Image
                   src="/platformv2/logos/airflow.svg"
                   alt="Apache Airflow"
                   width={120}
                   height={60}
-                  className="w-full h-auto max-w-[80px] sm:max-w-[100px] md:max-w-[120px] max-h-[40px] sm:max-h-[50px] md:max-h-[60px] object-contain"
+                  className="w-full h-auto max-w-[160px] sm:max-w-[120px] md:max-w-[140px] max-h-[80px] sm:max-h-[60px] md:max-h-[70px] object-contain"
                 />
               </div>
               {/* AWS */}
-              <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-2 sm:p-3 md:p-4">
+              <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-1.5 sm:p-3 md:p-4">
                 <Image
                   src="/platformv2/logos/aws-sv.svg"
                   alt="Amazon Web Services"
@@ -153,7 +153,7 @@ const OneLineImplementation = () => {
                 />
               </div>
               {/* Nextflow */}
-              <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-2 sm:p-3 md:p-4">
+              <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-1.5 sm:p-3 md:p-4">
                 <Image
                   src="/platformv2/logos/next-flow.svg"
                   alt="Nextflow"
@@ -163,7 +163,7 @@ const OneLineImplementation = () => {
                 />
               </div>
               {/* Bash */}
-              <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-2 sm:p-3 md:p-4">
+              <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-1.5 sm:p-3 md:p-4">
                 <Image
                   src="/platformv2/logos/bash.svg"
                   alt="Bash Shell"
@@ -173,7 +173,7 @@ const OneLineImplementation = () => {
                 />
               </div>
               {/* AWS Batch */}
-              <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-2 sm:p-3 md:p-4">
+              <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-1.5 sm:p-3 md:p-4">
                 <Image
                   src="/platformv2/logos/aws-batch.svg"
                   alt="AWS Batch"
@@ -183,7 +183,7 @@ const OneLineImplementation = () => {
                 />
               </div>
               {/* Ubuntu */}
-              <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-2 sm:p-3 md:p-4">
+              <div className="flex items-center justify-center aspect-square w-full bg-[#202020] border border-[#303030] p-1.5 sm:p-3 md:p-4">
                 <Image
                   src="/platformv2/logos/ubuntu.svg"
                   alt="Ubuntu"
