@@ -6,8 +6,8 @@ import { MapPin, BookCheck, PackageOpen, LockKeyhole } from 'lucide-react'
 function SaasBased() {
     return (
         <div className="bg-[#FCFCFC] text-[#202020] relative">
-            {/* Color strip at top - mobile only */}
-            <ColorBreakLine />
+            {/* Color strip at top - mobile only (below 640px) */}
+            <ColorBreakLine mobileOnly={false} className="sm:hidden" />
             <div className="flex flex-col-reverse md:flex-row justify-between">
                 <h2 className="font-britti-sans text-[32px] md:text-[56px] max-w-3xl tracking-tight leading-tight pt-9 pb-5 pl-4 font-normal">
                     Your data stays in your hands

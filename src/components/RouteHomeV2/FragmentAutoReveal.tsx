@@ -40,7 +40,7 @@ export default function FragmentAutoReveal() {
             </h1>
 
             {/* Subheading Paragraph - matching Total Visibility styling */}
-            <p className="font-britti-sans text-[#888888] text-left text-[16px] leading-[26px] 600:text-[20px] 600:leading-[28px] max-w-fit mb-24">
+            <p className="font-britti-sans text-[#888888] text-left text-[16px] leading-[26px] 600:text-[20px] 600:leading-[28px] max-w-fit mb-12">
               Tracer delivers unmatched visibility, speed, and accuracy for high-performance scientific computing.<br />
               Built from the ground up for the unique demands of research pipelines, not generic infrastructure.
             </p>
@@ -67,7 +67,7 @@ export default function FragmentAutoReveal() {
                 alt="Monitoring comparison showing traditional vs Tracer"
                 fill
                 className="object-contain block sm:hidden"
-                style={{ objectPosition: 'center 120%' }}
+                style={{ objectPosition: 'center center' }}
               />
 
               {/* Text Overlays */}
