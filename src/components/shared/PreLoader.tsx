@@ -28,14 +28,14 @@ const PreLoaderProgress = () => {
   }
 
   return (
-    <div className="hidden fixed inset-0 z-[9999] flex h-screen items-center justify-center bg-white bg-[url(/images/not-found-page/bg-lines.svg)] bg-contain bg-center bg-repeat-y text-gray-900">
+    <div className="hidden fixed inset-0 z-[9999] flex h-screen items-center justify-center bg-white bg-[url(/images/home/bg-lines.svg)] bg-contain bg-center bg-repeat-y text-gray-900">
       <div className="font-chakra-petch text-sm font-normal uppercase tracking-[-0.01em] md:text-base">
         [{progress}%]
       </div>
 
       <div className="mt-6 flex flex-col items-center">
         <Image
-          src="/shared/tracer-logo-black.png"
+          src="/images/shared/tracer-logo-black.png"
           alt="Tracer Logo"
           width={123}
           height={29}

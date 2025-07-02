@@ -33,7 +33,7 @@ const PersonalizedDemoHome = () => {
       </div>
       <div className="relative mt-8 h-[200px] w-full xl:h-[316px]">
         <Image
-          src="/home/demo-home-car.png"
+          src="/images/home/demo-home-car.png"
           alt="demo-car"
           fill
           className="object-cover"

@@ -41,7 +41,7 @@ const MeetTracerSection = () => {
             }}
           >
             <Image
-              src="/home/T-Asset-Jet-v2.webp"
+              src="/images/home/T-Asset-Jet-v2.webp"
               alt="Tracer Jet"
               width={1000}
               height={500}
@@ -61,7 +61,7 @@ const MeetTracerSection = () => {
           {/* Tracer Logo */}
           <div className="flex items-center">
             <Image
-              src="/home/Tracer-White-Transparent.svg"
+              src="/images/home/Tracer-White-Transparent.svg"
               alt="Tracer Logo"
               width={200}
               height={67}

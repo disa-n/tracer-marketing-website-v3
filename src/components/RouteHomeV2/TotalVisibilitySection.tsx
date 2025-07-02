@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
 import Image from 'next/image';
+import { useState } from 'react';
 
 export default function TotalVisibilitySection() {
   const [activeTab, setActiveTab] = useState<'traditional' | 'tracer'>('traditional');
@@ -69,7 +69,7 @@ export default function TotalVisibilitySection() {
               <div className="relative w-screen h-[700px] bg-[#141414] -mx-2 sm:-mx-4">
                 {/* Traditional Diagram Image */}
                 <Image
-                  src="/home/Traditional-Tool-Diagram.webp"
+                  src="/images/home/Monitoring_Comparison.webp"
                   alt="Traditional system diagram showing incomplete error visibility"
                   fill
                   className="object-contain"
@@ -92,7 +92,7 @@ export default function TotalVisibilitySection() {
               <div className="relative w-screen h-[700px] bg-[#141414] -mx-2 sm:-mx-4">
                 {/* Tracer Diagram Image */}
                 <Image
-                  src="/home/Tracer-Diagram.webp"
+                  src="/images/home/Tracer-Diagram.webp"
                   alt="Tracer system diagram showing full error visibility"
                   fill
                   className="object-contain"
@@ -121,7 +121,7 @@ export default function TotalVisibilitySection() {
             {/* Placeholder Image Box with overlaid text */}
             <div className="relative w-full h-[800px] xl:h-[900px] bg-[#141414] mb-6">
                <Image
-                  src="/home/Traditional-Tool-Diagram.webp"
+                  src="/images/home/Monitoring_Comparison.webp"
                   alt="Traditional system diagram showing incomplete error visibility"
                   fill
                   className="object-contain"
@@ -150,7 +150,7 @@ export default function TotalVisibilitySection() {
             <div className="relative w-full h-[800px] xl:h-[900px] bg-[#141414] mb-6">
               {/* Tracer Diagram Image */}
               <Image
-                src="/home/Tracer-Diagram.webp"
+                src="/images/home/Tracer-Diagram.webp"
                 alt="Tracer system diagram showing full error visibility"
                 fill
                 className="object-contain"

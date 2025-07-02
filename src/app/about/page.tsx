@@ -20,7 +20,7 @@ export default function AboutPage() {
         title="About Us"
         subtitle="Tracer is an advanced observability platform for high-performance computing (HPC) systems in regulated industries. We help scientists and engineers to run, maintain, and optimise supercomputing software solutions."
         productLabel="_TRACER COMPANY"
-        imageSrc="/product/hero/hero-bg.webp"
+        imageSrc="/images/product/hero/hero-bg.webp"
         imageAlt="Tracer Brain - Advanced observability platform visualization"
         variant="flipped"
       />

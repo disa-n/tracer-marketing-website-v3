@@ -1,7 +1,7 @@
-import Image from 'next/image'
-import FeatureCard from '@/components/ui/FeatureCard'
 import ColorBreakLine from '@/components/ui/ColorBreakLine'
-import { MapPin, BookCheck, PackageOpen, LockKeyhole } from 'lucide-react'
+import FeatureCard from '@/components/ui/FeatureCard'
+import { BookCheck, LockKeyhole, MapPin, PackageOpen } from 'lucide-react'
+import Image from 'next/image'
 
 function SaasBased() {
     return (
@@ -40,7 +40,7 @@ function SaasBased() {
                     <div className="grid grid-cols-3 gap-8">
                         <div className="border border-[#E8E8E8] h-20 flex justify-center items-center">
                             <Image
-                                src="/technology/hipaa.png"
+                                src="/images/technology/hipaa.png"
                                 alt="HIPAA"
                                 width={82}
                                 height={42}
@@ -49,7 +49,7 @@ function SaasBased() {
                         </div>
                         <div className="border border-[#E8E8E8] h-20 flex justify-center items-center">
                             <Image
-                                src="/technology/gdpr.png"
+                                src="/images/technology/gdpr.png"
                                 alt="GDPR"
                                 width={48}
                                 height={48}
@@ -58,7 +58,7 @@ function SaasBased() {
                         </div>
                         <div className="border border-[#E8E8E8] h-20 flex justify-center items-center">
                             <Image
-                                src="/technology/dod.png"
+                                src="/images/technology/dod.png"
                                 alt="DOD"
                                 width={48}
                                 height={48}

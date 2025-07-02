@@ -16,7 +16,7 @@ export default function Hero() {
           <div className="w-full max-w-xs lg:max-w-[600px] lg:min-w-[500px] xl:max-w-[800px] 2xl:max-w-[900px]">
             <div className="relative w-full aspect-square lg:aspect-[4/3] xl:aspect-[3/2] 2xl:aspect-[5/3]">
               <Image
-                src="/about-us/Tracer-brain.webp"
+                src="/images/about-us/Tracer-brain.webp"
                 alt="Tracer Brain - Advanced observability platform visualization"
                 fill
                 className="object-contain lg:scale-[1.5] lg:translate-x-8 lg:translate-y-4 xl:scale-[2.25] xl:translate-x-6 xl:translate-y-8 2xl:scale-[3] 2xl:-translate-x-14 2xl:translate-y-12"

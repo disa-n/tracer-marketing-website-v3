@@ -104,7 +104,7 @@ export default function UseTracerSectionV2() {
               <div className="pl-4 sm:pl-6 md:pl-8 900:pl-8">
                 <div className="w-full relative aspect-[4/3] lg:aspect-[4/4] lg:translate-y-3 xl:aspect-[3/2.5] xl:-translate-y-6 2xl:aspect-[2/1.5] 2xl:-translate-y-14 bg-[#202020]">
                   <Image
-                    src="/home/Globe-Image.webp"
+                    src="/images/home/Globe-Image.webp"
                     alt="Globe visualization"
                     fill
                     className="object-cover"

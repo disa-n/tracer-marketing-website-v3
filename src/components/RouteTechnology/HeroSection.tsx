@@ -1,7 +1,6 @@
-import React from 'react'
-import Image from 'next/image'
 import { GridLinesLight } from '@/components/shared/GridLines'
 import StyledLayoutWrapper from '@/components/shared/StyledLayoutWrapper'
+import Image from 'next/image'
 import './HeroSection.css'
 
 function HeroSection() {
@@ -23,7 +22,7 @@ function HeroSection() {
           <div className="w-full max-w-xs lg:max-w-[600px] lg:min-w-[500px] xl:max-w-[800px] 2xl:max-w-[900px]">
             <div className="relative w-full aspect-square lg:aspect-[4/3] xl:aspect-[3/2] 2xl:aspect-[5/3]">
               <Image
-                src="/technology/T-Asset-Satellite.webp"
+                src="/images/technology/T-Asset-Satellite.webp"
                 alt="Tracer Technology"
                 fill
                 className="object-contain lg:scale-[1.8] lg:translate-x-16 xl:scale-[3.2] xl:translate-x-24 2xl:scale-[4.0] 2xl:translate-x-32"
