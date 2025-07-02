@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useDemo } from '../ScheduleDemo';
 import DemoButton from '../ui/DemoButton';
-import ShinyCTAButton from './ShinyCTAButton';
 import ShinyCTAButtonExperimental from './ShinyCTAButtonExperimental';
 
 interface NavItem {
@@ -131,6 +130,7 @@ const NavigationBar = () => {
                 desktopHeight={isScrolled ? 35 : 45}
                 textSizeClasses={isScrolled ? 'text-sm' : 'text-base'}
                 widthClasses="w-auto"
+                paddingClasses={isScrolled ? 'px-4' : 'px-6'}
               />
             </div>
 
@@ -199,15 +199,21 @@ const NavigationBar = () => {
               {/* CTA Buttons */}
               <div className="p-6 space-y-4">
                 <div onClick={handleNavLinkClick}>
-                  <ShinyCTAButton mobileHeight={48} desktopHeight={55} wide={true} />
+                  <ShinyCTAButtonExperimental
+                    mobileHeight={48}
+                    desktopHeight={55}
+                    wide={true}
+                    textSizeClasses="text-base sm:text-lg"
+                  />
                 </div>
 
-                <button
+                <DemoButton
                   onClick={handleDemoClick}
-                  className="w-full h-[44px] bg-[#E8E8E8] text-black font-britti-sans font-[400] hover:bg-[#D8D8D8] transition-colors"
-                >
-                  Get a Demo
-                </button>
+                  mobileHeight={44}
+                  desktopHeight={51}
+                  textSizeClasses="text-base sm:text-lg"
+                  mobileFullWidth={true}
+                />
               </div>
 
             </div>

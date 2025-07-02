@@ -1,12 +1,16 @@
 'use client';
 
-import Image from 'next/image';
+import { useDemo } from '@/components/ScheduleDemo';
 import GridLines from '@/components/shared/GridLines';
+import ShinyCTAButtonExperimental from '@/components/shared/ShinyCTAButtonExperimental';
+import DemoButton from '@/components/ui/DemoButton';
 import { motion, useInView } from 'framer-motion';
+import Image from 'next/image';
 import { useRef } from 'react';
 
 const MeetTracerSection = () => {
   const sectionRef = useRef(null);
+  const { openDemo } = useDemo();
 
   // Detect when section comes into view
   const isInView = useInView(sectionRef, {
@@ -73,6 +77,43 @@ const MeetTracerSection = () => {
           <h2 className="font-britti-sans text-white text-[28px] md:text-[42px] lg:text-[64px] xl:text-[80px] font-normal leading-[0.9] tracking-tighter whitespace-nowrap">
             The Solution
           </h2>
+        </div>
+
+        {/* CTA Buttons - Positioned on the right, aligned with bottom of image */}
+        <div className="absolute bottom-20 right-4 md:right-8 lg:right-12 z-20 hidden lg:flex flex-row gap-4">
+          <ShinyCTAButtonExperimental
+            mobileHeight={44}
+            desktopHeight={48}
+            textSizeClasses="text-sm lg:text-base"
+          />
+          <DemoButton
+            onClick={openDemo}
+            mobileHeight={44}
+            desktopHeight={48}
+            textSizeClasses="text-sm lg:text-base"
+            widthClasses="w-auto"
+          />
+        </div>
+
+        {/* Mobile CTA Buttons - Below content */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 flex lg:hidden flex-row gap-3 w-full max-w-[320px] px-4">
+          <div className="flex-1">
+            <ShinyCTAButtonExperimental
+              mobileHeight={44}
+              desktopHeight={48}
+              textSizeClasses="text-sm"
+              wide={true}
+            />
+          </div>
+          <div className="flex-1">
+            <DemoButton
+              onClick={openDemo}
+              mobileHeight={44}
+              desktopHeight={48}
+              textSizeClasses="text-sm"
+              widthClasses="w-full"
+            />
+          </div>
         </div>
 
       </div>

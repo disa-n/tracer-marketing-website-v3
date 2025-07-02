@@ -20,6 +20,8 @@ interface DemoButtonProps {
   href?: string;
   /** Whether the button should be full width on mobile */
   mobileFullWidth?: boolean;
+  /** Custom padding classes to override default padding */
+  paddingClasses?: string;
 }
 
 const DemoButton = ({
@@ -31,14 +33,15 @@ const DemoButton = ({
   textSizeClasses = "text-sm 300:text-sm 400:text-base sm:text-lg",
   widthClasses = "w-[48%] sm:w-auto",
   href = "/product",
-  mobileFullWidth = false
+  mobileFullWidth = false,
+  paddingClasses
 }: DemoButtonProps) => {
   const baseClasses = cn(
     "inline-flex items-center justify-center",
     "text-[#FCFCFC] font-britti-sans !font-[400]",
     "transition-all duration-200",
     "demo-button-height",
-    "px-4 300:px-5 400:px-6 sm:px-8",
+    paddingClasses || "px-4 300:px-5 400:px-6 sm:px-8",
     textSizeClasses,
     mobileFullWidth ? "w-full sm:w-auto" : widthClasses,
     className
