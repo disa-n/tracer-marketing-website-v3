@@ -20,7 +20,7 @@ export default function CoreChallengesSection() {
           </h2>
 
           {/* Intro paragraph */}
-          <p className="font-britti-sans text-[#888888] mb-24 text-sm sm:text-base md:text-lg max-w-[600px] xl:max-w-[700px] 2xl:max-w-[800px]">
+          <p className="font-britti-sans text-[#888888] mb-12 md:mb-20 lg:mb-24 text-sm sm:text-base md:text-lg max-w-[600px] xl:max-w-[700px] 2xl:max-w-[800px]">
             Modern science is moving software-first. Without system-level visibility, scientific progress remains difficult to measure, scale, and sustain.
           </p>
         </div>

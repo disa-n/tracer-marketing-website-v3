@@ -65,7 +65,7 @@ const Hero2 = () => {
           alt="Why monitoring matters"
           width={800}
           height={567}
-          className='absolute left-0 top-0 aspect-[775/567] w-full max-w-[480px] hidden sm:block sm:max-w-[480px] 1000:max-w-[950px]'
+          className='absolute -left-20 -top-16 aspect-[775/567] w-full max-w-[560px] hidden sm:block sm:max-w-[560px] 1000:max-w-[1050px] 1000:-top-20 1000:-left-24'
           variants={imageVariant}
           initial="hidden"
           animate={imageAnimated ? 'visible' : 'hidden'}
@@ -75,7 +75,7 @@ const Hero2 = () => {
           alt="Why monitoring matters"
           width={800}
           height={567}
-          className='absolute left-0 top-0 aspect-[775/567] w-full max-w-[500px] block sm:hidden'
+          className='absolute -left-8 -top-4 aspect-[775/567] w-full max-w-[500px] scale-110 block sm:hidden'
           variants={imageVariant}
           initial="hidden"
           animate={imageAnimated ? 'visible' : 'hidden'}

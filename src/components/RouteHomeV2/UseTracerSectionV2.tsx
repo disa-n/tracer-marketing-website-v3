@@ -79,7 +79,7 @@ export default function UseTracerSectionV2() {
       <div className="relative z-10 w-full max-w-[1800px] mx-auto flex flex-col lg:flex-row">
         {/* Left Column: Text Content - standardized container - First on mobile */}
         <div className="w-full lg:w-auto order-1 lg:order-1">
-          <div className="px-4 sm:px-6 md:px-8 900:px-8 pt-2 pb-8 sm:pt-4 sm:pb-18 lg:pt-6 lg:pb-22 xl:pt-8 xl:pb-30">
+          <div className="px-4 sm:px-6 md:px-8 900:px-8 pt-2 pb-8 sm:pt-4 sm:pb-18 lg:pt-2 lg:pb-22 xl:pt-4 xl:pb-30">
             {/* Problem Cards */}
             <div className="space-y-4 md:space-y-6">
               {problemCards.map((card, index) => (
