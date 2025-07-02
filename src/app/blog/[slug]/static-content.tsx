@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import ComingSoon from '@/components/shared/ComingSoon';
-import { getBlogPost, BlogPost } from '@/lib/blog-registry';
 import BlogPostTemplate from '@/components/blog/BlogPostTemplate';
+import ComingSoon from '@/components/shared/ComingSoon';
+import { BlogPost, getBlogPost } from '@/lib/blog-registry';
+import { useEffect, useState } from 'react';
 
 // Simple static content for test posts
 export default function StaticContent({ slug }: { slug: string }) {
@@ -69,7 +69,7 @@ export default function StaticContent({ slug }: { slug: string }) {
     slug: post.slug,
     title: post.title,
     date: post.date,
-    imageSrc: post.ogImage || post.imageSrc || '/placeholder-icon.svg',
+    imageSrc: post.ogImage || post.imageSrc || '/icons/icon-placeholder.svg',
     description: post.description,
     author: post.author || 'Team Tracer',
     tag: post.tag || 'general',

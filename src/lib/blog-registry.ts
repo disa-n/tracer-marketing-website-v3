@@ -290,7 +290,7 @@ export async function loadMDXMetadata(slug: string): Promise<BlogPostMetadata | 
 
   return {
     ...metadata,
-    imageSrc: metadata.ogImage || '/placeholder-icon.svg', // For backward compatibility
+    imageSrc: metadata.ogImage || '/icons/icon-placeholder.svg', // For backward compatibility
   };
 }
 

@@ -12,7 +12,7 @@ export default function BlogGrid({ posts }: { posts: BlogPost[] }) {
           description={post.description}
           date={post.date}
           tag={post.tag}
-          ogImage={post.ogImage || '/placeholder-icon.svg'}
+          ogImage={post.ogImage || '/icons/icon-placeholder.svg'}
           {...(post.author && { author: post.author })}
         />
       ))}

@@ -171,7 +171,7 @@ const Monitoring = () => {
     }, [cardsVisible, pastEnd, containerControls, windowWidth])
     return (
         <div ref={containerRef} className='relative flex w-full flex-col items-center justify-center overflow-hidden'>
-            <Image src={"/platformv2/monitoting-section-img.png"} alt="monitoting-section-img" width={955} height={800} className="absolute right-0 top-0 w-full max-w-[500px] -translate-y-14 translate-x-32 md:translate-x-20 md:translate-y-0 lg:max-w-[800px] lg:translate-x-32 1300:max-w-[955px] 1300:translate-x-40" />
+            <Image src={"/product/assets/monitoting-section-img.png"} alt="monitoting-section-img" width={955} height={800} className="absolute right-0 top-0 w-full max-w-[500px] -translate-y-14 translate-x-32 md:translate-x-20 md:translate-y-0 lg:max-w-[800px] lg:translate-x-32 1300:max-w-[955px] 1300:translate-x-40" />
             <div className='z-[10] w-full border-b border-[#E8E8E8]'>
                 {/* Header Section - Transparent background to show background image */}
                 <div className='w-full flex justify-center'>
@@ -213,7 +213,7 @@ const Monitoring = () => {
                                      height: getCardHeight()
                                  }}>
                                 <Image
-                                    src="/platformv2/predict-and-optimise.svg"
+                                    src="/product/icons/predict-and-optimise.svg"
                                     alt="Predict and optimise compute requirements"
                                     fill
                                     className="object-cover object-top-left"
@@ -249,7 +249,7 @@ const Monitoring = () => {
                                      height: getCardHeight()
                                  }}>
                                 <Image
-                                    src="/platformv2/total-visibility.svg"
+                                    src="/product/icons/total-visibility.svg"
                                     alt="Total visibility into computational infrastructure"
                                     fill
                                     className="object-cover object-top-left"
@@ -285,7 +285,7 @@ const Monitoring = () => {
                                      height: getCardHeight()
                                  }}>
                                 <Image
-                                    src="/platformv2/fix-issues.svg"
+                                    src="/product/icons/fix-issues.svg"
                                     alt="Fix issues instantly"
                                     fill
                                     className="object-cover object-top-left"

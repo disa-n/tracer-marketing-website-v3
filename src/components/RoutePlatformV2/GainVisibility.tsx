@@ -219,21 +219,21 @@ const GainVisibility = () => {
                 </motion.div>
                 <div className='grid w-full gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3'>
                     <AnimatedCard
-                        iconSrc="/platformv2/icons/monitor.svg"
+                        iconSrc="/product/icons/monitor.svg"
                         iconAlt="monitor"
                         title="Compute requirement <br /> predictor"
                         description="Accurately predict how much CPU, RAM, and memory <br /> any pipeline needs for any file size and tools"
                         delay={0}
                     />
                     <AnimatedCard
-                        iconSrc="/platformv2/icons/monitor-2.svg"
+                        iconSrc="/product/icons/monitor-2.svg"
                         iconAlt="monitor-2"
                         title="Bottleneck centre"
                         description="Review compute bottlenecks across your organisation to recognise underutlised instances, slow tools, <br /> and low performance"
                         delay={0}
                     />
                     <AnimatedCard
-                        iconSrc="/platformv2/icons/eye.svg"
+                        iconSrc="/product/icons/eye.svg"
                         iconAlt="eye"
                         title="Democratise pipeline <br /> knowledge"
                         description="Share real-time pipeline status with all team members <br /> for ultimate visibility"
@@ -242,7 +242,7 @@ const GainVisibility = () => {
                     <div className='hidden md:flex' />
                     <div className='hidden md:flex' />
                     <AnimatedCard
-                        iconSrc="/platformv2/icons/phone.svg"
+                        iconSrc="/product/icons/phone.svg"
                         iconAlt="phone"
                         title="Runtime calculator"
                         description="Know when your pipeline will finish"
@@ -251,14 +251,14 @@ const GainVisibility = () => {
                     />
                     <div className='hidden md:flex' />
                     <AnimatedCard
-                        iconSrc="/platformv2/icons/cloude.svg"
+                        iconSrc="/product/icons/cloude.svg"
                         iconAlt="cloude"
                         title="Cloud cost dashboard"
                         description="Review what is driving your cloud costs - across department to sub-tool level and everything in between"
                         delay={0.3}
                     />
                     <AnimatedCard
-                        iconSrc="/platformv2/icons/camera.svg"
+                        iconSrc="/product/icons/camera.svg"
                         iconAlt="camera"
                         title="System of record"
                         description="Know what analyses you did yesterday, last month,  <br />and years ago"
@@ -279,7 +279,7 @@ const GainVisibility = () => {
                     initial="hidden"
                     className='absolute bottom-[-60px] left-[-180px] md:bottom-[-105px] md:left-[-35px] z-0'
                 >
-                    <Image src={"/platformv2/engine-shape.webp"} alt='engine-shape.webp' width={600} height={600} className='w-full max-w-[350px] shrink-0 md:max-w-[550px]' />
+                    <Image src={"/product/assets/engine-shape.webp"} alt='engine-shape.webp' width={600} height={600} className='w-full max-w-[350px] shrink-0 md:max-w-[550px]' />
                 </motion.div>
                 <div className='absolute bottom-0 right-0 flex w-[133px] flex-col items-end justify-center md:w-[529px]'>
                     <div className='h-[45px] w-[90%] bg-[#FCFCFC] md:h-[54px]' />
