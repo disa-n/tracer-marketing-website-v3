@@ -11,7 +11,7 @@ export default function FixAnythingSection() {
       <GridLines />
 
       {/* Section Heading */}
-      <div className="relative z-10 w-full max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 900:px-8 mb-12">
+      <div className="relative z-10 w-full max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 900:px-8 mb-12 md:mb-20 lg:mb-24">
         <h2 className="text-[#FCFCFC] text-[36px] sm:text-[48px] 2xl:text-[56px] font-normal leading-[38px] sm:leading-[50px] 2xl:leading-[58px] mb-6 text-left font-britti max-w-fit tracking-tight sm:tracking-normal">
           See and Fix Anything. Instantly.
         </h2>

@@ -13,7 +13,7 @@ export default function FragmentAutoReveal() {
         <div className="relative z-10 w-full max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 900:px-8 py-16 md:pt-36 md:pb-36">
 
           {/* Header Section */}
-          <div className="mb-4 relative">
+          <div className="mb-12 md:mb-20 lg:mb-24 relative">
             {/* See our Technology CTA - Top Right (Desktop Only) */}
             <div className="absolute top-0 right-0 z-20 hidden md:block">
               <a
