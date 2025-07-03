@@ -40,6 +40,7 @@ const DemoButton = ({
     "inline-flex items-center justify-center",
     "text-[#FCFCFC] font-britti-sans !font-[400]",
     "transition-all duration-200",
+    "cursor-pointer hover:cursor-pointer",
     "demo-button-height",
     paddingClasses || "px-4 300:px-5 400:px-6 sm:px-8",
     textSizeClasses,

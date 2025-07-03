@@ -1,8 +1,7 @@
 'use client';
 
-import React from 'react';
-import Image from 'next/image';
 import { GridLinesLight } from '@/components/shared/GridLines';
+import Image from 'next/image';
 
 export default function FragmentAutoReveal() {
   return (
@@ -24,8 +23,8 @@ export default function FragmentAutoReveal() {
               </a>
             </div>
 
-            {/* Main Heading - matching Total Visibility styling */}
-            <h1 className="font-britti-sans font-normal text-[#202020] mb-6 break-words tracking-tight text-left text-[38px] leading-[42px] 600:text-[56px] 600:leading-[66px] 1300:text-[80px] 1300:leading-[80px] max-w-fit">
+            {/* Main Heading - matching Fix Anything Section styling */}
+            <h1 className="font-britti-sans font-normal text-[#202020] mb-6 break-words tracking-tight text-left text-[36px] sm:text-[48px] 2xl:text-[56px] leading-[38px] sm:leading-[50px] 2xl:leading-[58px] max-w-fit">
               {/* Small mobile version */}
               <span className="sm:hidden">
                 From Fragments<br />
@@ -39,8 +38,8 @@ export default function FragmentAutoReveal() {
               </span>
             </h1>
 
-            {/* Subheading Paragraph - matching Total Visibility styling */}
-            <p className="font-britti-sans text-[#888888] text-left text-[16px] leading-[26px] 600:text-[20px] 600:leading-[28px] max-w-fit mb-12">
+            {/* Subheading Paragraph - matching Fix Anything Section styling */}
+            <p className="font-britti-sans text-[#888888] text-left text-[14px] sm:text-[20px] 2xl:text-[24px] leading-[16px] sm:leading-[22px] 2xl:leading-[26px] max-w-fit mb-12">
               Tracer delivers unmatched visibility, speed, and accuracy for high-performance scientific computing.<br />
               Built from the ground up for the unique demands of research pipelines, not generic infrastructure.
             </p>

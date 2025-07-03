@@ -79,22 +79,6 @@ const MeetTracerSection = () => {
           </h2>
         </div>
 
-        {/* CTA Buttons - Positioned on the right, aligned with bottom of image */}
-        <div className="absolute bottom-20 right-4 md:right-8 lg:right-12 z-20 hidden lg:flex flex-row gap-4">
-          <ShinyCTAButtonExperimental
-            mobileHeight={44}
-            desktopHeight={48}
-            textSizeClasses="text-sm lg:text-base"
-          />
-          <DemoButton
-            onClick={openDemo}
-            mobileHeight={44}
-            desktopHeight={48}
-            textSizeClasses="text-sm lg:text-base"
-            widthClasses="w-auto"
-          />
-        </div>
-
         {/* Mobile CTA Buttons - Below content */}
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 flex lg:hidden flex-row gap-3 w-full max-w-[320px] px-4">
           <div className="flex-1">
@@ -116,6 +100,22 @@ const MeetTracerSection = () => {
           </div>
         </div>
 
+      </div>
+
+      {/* CTA Buttons - Positioned on the right, aligned with bottom of image */}
+      <div className="absolute bottom-20 right-4 md:right-8 lg:right-12 xl:right-16 2xl:right-24 z-20 hidden lg:flex flex-row gap-4">
+        <ShinyCTAButtonExperimental
+          mobileHeight={44}
+          desktopHeight={48}
+          textSizeClasses="text-sm lg:text-base"
+        />
+        <DemoButton
+          onClick={openDemo}
+          mobileHeight={44}
+          desktopHeight={48}
+          textSizeClasses="text-sm lg:text-base"
+          widthClasses="w-auto"
+        />
       </div>
 
       {/* Bottom divider - matches gridline color */}
