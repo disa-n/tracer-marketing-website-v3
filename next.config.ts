@@ -5,9 +5,22 @@ const nextConfig = {
   // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
 
-  // ✅ Add image domains config here
+  // ✅ Add image remote patterns config here
   images: {
-    domains: ['tracer.bio', 'tracer.cloud', 'placehold.co'],
+    remotePatterns: [
+      {
+        protocol: 'https' as const,
+        hostname: 'tracer.bio',
+      },
+      {
+        protocol: 'https' as const,
+        hostname: 'tracer.cloud',
+      },
+      {
+        protocol: 'https' as const,
+        hostname: 'placehold.co',
+      },
+    ],
   },
 }
 

@@ -1,7 +1,7 @@
 'use client';
 
+import { saveEmailSignup } from '@/lib/supabase-utils';
 import { useState } from 'react';
-import { supabase } from '@/lib/supabaseClient';
 
 interface EmailSignupProps {
   title?: string;
@@ -25,18 +25,10 @@ export const EmailSignup: React.FC<EmailSignupProps> = ({
     e.preventDefault();
     setIsLoading(true);
 
-    if (!supabase) {
-      console.error('Supabase client not available');
-      setIsLoading(false);
-      return;
-    }
+    const result = await saveEmailSignup(email);
 
-    const { error } = await supabase
-      .from('email_signups')
-      .insert([{ email }]);
-
-    if (error) {
-      console.error('Supabase insert error:', error.message);
+    if (!result.success) {
+      console.error('Email signup error:', result.error);
       setIsLoading(false);
       return;
     }
