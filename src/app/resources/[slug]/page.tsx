@@ -1,11 +1,6 @@
-import { notFound } from 'next/navigation';
+import { generateBlogPostSchema, getBlogPost, isMDXBlogPost } from '@/lib/blog-registry';
 import { Metadata } from 'next';
-import { getBlogPostsForStaticGeneration, getBlogPost, isMDXBlogPost, generateBlogPostSchema } from '@/lib/blog-registry';
-
-export async function generateStaticParams() {
-  // Get all blog posts from the centralized registry
-  return await getBlogPostsForStaticGeneration();
-}
+import { notFound } from 'next/navigation';
 
 export async function generateMetadata({
   params
@@ -49,8 +44,8 @@ export async function generateMetadata({
 }
 
 // Import the content components
-import StaticContent from './static-content';
 import MDXContent from './mdx-content';
+import StaticContent from './static-content';
 
 // Page component with params as Promise to match Next.js 15 internal type
 export default async function BlogPost({

@@ -3,12 +3,12 @@
 import { GridLinesLight } from '@/components/shared/GridLines'
 import { AnimatePresence, motion } from 'framer-motion'
 import {
-    Activity,
-    BarChart3,
-    Brain,
-    Clock,
-    Eye,
-    Settings
+  Activity,
+  BarChart3,
+  Brain,
+  Clock,
+  Eye,
+  Settings
 } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -242,9 +242,9 @@ const ProductFeaturesDeepDive = () => {
                 <div key={feature.id} className="relative">
                   <motion.button
                     onClick={() => handleFeatureClick(feature.id)}
-                    className={`w-full text-left p-4 sm:p-6 lg:p-8 transition-all duration-300 min-h-[80px] sm:min-h-[90px] lg:min-h-[105px] ${activeFeature === feature.id
-                      ? 'bg-gray-50'
-                      : 'bg-white hover:bg-gray-25'
+                    className={`w-full text-left p-4 sm:p-6 lg:p-8 transition-all duration-300 min-h-[80px] sm:min-h-[90px] lg:min-h-[105px] cursor-pointer ${activeFeature === feature.id
+                      ? 'bg-gray-50 cursor-pointer'
+                      : 'bg-white hover:bg-gray-25 hover:cursor-pointer'
                       }`}
                     whileHover={{ scale: 1.005 }}
                     whileTap={{ scale: 0.995 }}

@@ -57,7 +57,7 @@ export default function PerformanceCard({
         </div>
 
         {/* Title and description - constrained width */}
-        <div className="max-w-xl">
+        <div className="max-w-xl xl:max-w-2xl 2xl:max-w-4xl">
           <h3 className={`text-white text-[28px] 2xl:text-[32px] leading-[30px] 2xl:leading-[34px] font-normal font-britti mb-8 ${pushTextDown ? 'mt-1 md:mt-4' : ''}`}>
             {title}
           </h3>

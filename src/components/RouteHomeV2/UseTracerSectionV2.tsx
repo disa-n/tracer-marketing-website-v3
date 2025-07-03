@@ -78,7 +78,7 @@ export default function UseTracerSectionV2() {
     {
       icon: <CircleDollarSign className="w-8 h-8 md:w-16 md:h-16 text-[#202020]" strokeWidth={1} />,
       title: "\"How can I make my pipelines more cost-efficient?\"",
-      roleTitle: "Director of AI and ML, Global Leading Pharmaceutical Company",
+      roleTitle: "Director of AI and ML, Leading Global Pharmaceutical Company",
       description: "You can’t optimise costs without visibility into what’s actually driving spend \nacross pipeline components, tools, and teams."
     }
   ];
