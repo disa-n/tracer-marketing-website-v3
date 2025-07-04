@@ -9,13 +9,27 @@
 import { supabasePdfs } from '@/lib/supabasePdfs';
 import { useState } from 'react';
 
+interface DiagnosticResults {
+  timestamp: string;
+  client: boolean | null;
+  storage: boolean | null;
+  bucket: boolean | null;
+  buckets?: string[];
+  files: Array<{ name: string; size?: number; type?: string }> | null;
+  folders?: string[];
+  testFile?: boolean;
+  testFileAttempts?: Array<{ path: string; success: boolean; error?: string | null }>;
+  workingPath?: string;
+  errors: string[];
+}
+
 export default function SupabaseDiagnostic() {
-  const [results, setResults] = useState<any>(null);
+  const [results, setResults] = useState<DiagnosticResults | null>(null);
   const [testing, setTesting] = useState(false);
 
   const runDiagnostics = async () => {
     setTesting(true);
-    const diagnostics: any = {
+    const diagnostics: DiagnosticResults = {
       timestamp: new Date().toISOString(),
       client: null,
       storage: null,
@@ -176,9 +190,9 @@ export default function SupabaseDiagnostic() {
                 <span className="ml-2">None</span>
               ) : (
                 <ul className="list-disc list-inside mt-2 ml-4">
-                  {results.files.map((file: any, index: number) => (
+                  {results.files.map((file: { name: string; size?: number; type?: string }, index: number) => (
                     <li key={index}>
-                      <strong>{file.name || file}</strong>
+                      <strong>{file.name}</strong>
                       {file.size && <span className="text-xs ml-2">({file.size} bytes)</span>}
                       {file.type && <span className="text-xs ml-2">[{file.type}]</span>}
                     </li>
@@ -198,7 +212,7 @@ export default function SupabaseDiagnostic() {
             <div className="p-3 bg-gray-50 text-gray-700 rounded text-sm">
               <strong>Test file path attempts:</strong>
               <ul className="list-disc list-inside mt-2 ml-4">
-                {results.testFileAttempts.map((attempt: any, index: number) => (
+                {results.testFileAttempts.map((attempt: { path: string; success: boolean; error?: string | null }, index: number) => (
                   <li key={index} className={attempt.success ? 'text-green-700' : 'text-red-700'}>
                     <code>&quot;{attempt.path}&quot;</code> - {attempt.success ? '✅ Success' : `❌ ${attempt.error}`}
                   </li>
