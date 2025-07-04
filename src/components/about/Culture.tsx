@@ -44,13 +44,15 @@ const useResponsiveAnimation = () => {
 
 const useCardDimensions = (windowWidth: number) => {
   return useMemo(() => {
+    if (windowWidth <= 480) return 'calc(100vw - 32px)'  // Full width minus padding for very small screens
+    if (windowWidth <= 768) return '320px'  // Smaller width for mobile
     if (windowWidth <= 960) return '350px'
     if (windowWidth <= 1024) return '350px'
     if (windowWidth <= 1280) return '380px'
     if (windowWidth <= 1440) return '420px'
-    if (windowWidth <= 1600) return '450px'
-    if (windowWidth <= 1920) return '480px'
-    return '500px'
+    if (windowWidth <= 1536) return '450px'  // xl breakpoint
+    if (windowWidth <= 1920) return '540px'  // 2xl breakpoint - reduced to 540px
+    return '560px'  // larger screens - reduced to 560px
   }, [windowWidth])
 }
 
@@ -150,8 +152,8 @@ const DesktopCards: React.FC<DesktopCardsProps> = ({
   cardWidth
 }) => (
   <div className="hidden lg:block w-full">
-    {/* 2x6 Grid for intermediate desktop (1024px-1150px) */}
-    <div className="grid grid-cols-2 gap-6 justify-items-center 1200:hidden">
+    {/* 3x2 Grid for all desktop layouts */}
+    <div className="grid grid-cols-3 gap-6 lg:gap-8 xl:gap-10 2xl:gap-12 justify-items-center">
       {cultureValues.map((value) => (
         <div
           key={value.title}
@@ -165,61 +167,6 @@ const DesktopCards: React.FC<DesktopCardsProps> = ({
           />
         </div>
       ))}
-    </div>
-
-    {/* Original 3-column staggered layout for larger screens (1200px+) */}
-    <div className="hidden 1200:grid grid-cols-3 gap-8 lg:gap-10 xl:gap-12 2xl:gap-x-8 2xl:gap-y-16 justify-items-center 2xl:grid-cols-[1fr_auto_auto_auto_1fr] 2xl:gap-x-6">
-      {/* Row 1 - Top 3 cards */}
-      {cultureValues.slice(0, 3).map((value, index) => (
-        <div
-          key={value.title}
-          className={`flex justify-center ${index === 0 ? '2xl:col-start-2' :
-            index === 1 ? '2xl:col-start-3' :
-              '2xl:col-start-4'
-            }`}
-        >
-          <CultureCard
-            title={value.title}
-            description={value.description}
-            iconSrc={value.iconSrc}
-            cardWidth={cardWidth}
-          />
-        </div>
-      ))}
-
-      {/* Row 2 - Bottom 3 cards with offset pattern */}
-      <div className="col-start-3 2xl:col-start-4 flex justify-center">
-        <div>
-          <CultureCard
-            title={cultureValues[3]?.title || ''}
-            description={cultureValues[3]?.description || ''}
-            iconSrc={cultureValues[3]?.iconSrc || ''}
-            cardWidth={cardWidth}
-          />
-        </div>
-      </div>
-
-      <div className="col-start-2 2xl:col-start-3 flex justify-center">
-        <div>
-          <CultureCard
-            title={cultureValues[4].title}
-            description={cultureValues[4].description}
-            iconSrc={cultureValues[4].iconSrc}
-            cardWidth={cardWidth}
-          />
-        </div>
-      </div>
-
-      <div className="col-start-3 2xl:col-start-4 flex justify-center">
-        <div>
-          <CultureCard
-            title={cultureValues[5].title}
-            description={cultureValues[5].description}
-            iconSrc={cultureValues[5].iconSrc}
-            cardWidth={cardWidth}
-          />
-        </div>
-      </div>
     </div>
   </div>
 )
@@ -265,7 +212,7 @@ function Culture() {
   ]
 
   return (
-    <section className="relative overflow-hidden bg-[#202020] py-16 lg:pt-16 lg:pb-24 z-30">
+    <section className="relative overflow-hidden bg-[#202020] pt-10 pb-16 md:pt-30 md:pb-42 z-30">
       {/* GridLines */}
       <GridLines />
 
@@ -275,7 +222,7 @@ function Culture() {
         <h2
           className="mt-4 text-[#FCFCFC] font-britti-sans font-normal text-4xl lg:text-6xl max-[1064px]:lg:text-5xl xl:text-6xl leading-tight tracking-tight mb-8 lg:mb-16"
         >
-          Our Culture
+          Our Values
         </h2>
       </div>
 
