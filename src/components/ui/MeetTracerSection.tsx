@@ -1,8 +1,8 @@
 'use client';
 
 import { useDemo } from '@/components/demo';
-import GridLines from '@/components/shared/GridLines';
-import ShinyCTAButtonExperimental from '@/components/shared/ShinyCTAButtonExperimental';
+import GridLines from '@/components/ui/GridLines';
+import ShinyCTAButtonExperimental from '@/components/ui/ShinyCTAButtonExperimental';
 import DemoButton from '@/components/ui/DemoButton';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';

@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect, useState, useMemo } from 'react'
 import { motion, useAnimation, useInView, type Variants } from 'framer-motion'
-import GridLines from '@/components/shared/GridLines'
+import GridLines from '@/components/ui/GridLines'
 
 export default function MoonshotSection() {
   // State for responsive behavior - disable animations on mobile

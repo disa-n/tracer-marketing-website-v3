@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
-import ComingSoon from "@/components/shared/ComingSoon";
+import ComingSoon from "@/components/ui/ComingSoon";
 
 type ResourceItem = {
   slug: string;

@@ -3,12 +3,12 @@ export const metadata = {
   description: "Tracer is an advanced observability platform providing full visibility and real-time insights into complex scientific and computational pipelines. Discover how our product can help optimize workflows and reduce costs.",
 };
 
-import Cta from "@/components/RoutePlatformV2/Cta";
-import Hero from "@/components/RoutePlatformV2/Hero";
-import YourPartner from "@/components/RoutePlatformV2/YourPartner";
-import ProductFeaturesDeepDive from "@/components/RoutePlatformV2/ProductFeaturesDeepDive";
-import OneLineImplementation from "@/components/RoutePlatformV2/OneLineImplementation";
-import MonitoringInsights from "@/components/RoutePlatformV2/MonitoringInsights";
+import Cta from "@/components/product/Cta";
+import Hero from "@/components/product/Hero";
+import MonitoringInsights from "@/components/product/MonitoringInsights";
+import OneLineImplementation from "@/components/product/OneLineImplementation";
+import ProductFeaturesDeepDive from "@/components/product/ProductFeaturesDeepDive";
+import YourPartner from "@/components/product/YourPartner";
 
 export default function ProductPage() {
   const productSchema = {

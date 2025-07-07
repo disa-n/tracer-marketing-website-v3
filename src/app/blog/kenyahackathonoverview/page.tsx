@@ -3,8 +3,8 @@ export const metadata = {
   description: "Tracer combines deep scientific knowledge and cutting-edge tech to accelerate AI adoption in industry.",
 };
 
-import KenyaHero from '@/components/blog/Kenya/KenyaHero';
-import KenyaGrid from '@/components/blog/Kenya/KenyaGrid';
+import KenyaHero from '@/components/resources/Kenya/KenyaHero';
+import KenyaGrid from '@/components/resources/Kenya/KenyaGrid';
 
 export default function KenyaHackathonOverview() {
   return (

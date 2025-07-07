@@ -1,6 +1,6 @@
 'use client';
 
-import GridLines from '@/components/shared/GridLines';
+import GridLines from '@/components/ui/GridLines';
 import Link from 'next/link';
 import PerformanceCard from '../ui/PerformanceCard';
 

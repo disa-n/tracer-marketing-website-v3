@@ -1,16 +1,16 @@
 'use client';
 
-import FilterBar from '@/components/blog/FilterBar';
+import FilterBar from '@/components/resources/FilterBar';
 import { FileText, Newspaper, Settings } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 
-import BlogCard from '@/components/blog/BlogCard';
-import BlogPagination from '@/components/blog/BlogPagination';
-import LoadingSpinner from '@/components/shared/LoadingSpinner';
-import ReusableHero from '@/components/shared/ReusableHero';
-import Section from '@/components/shared/Section';
-import SectionTitle from '@/components/shared/SectionTitle';
-import ToolCard from '@/components/shared/ToolCard';
+import BlogCard from '@/components/resources/BlogCard';
+import BlogPagination from '@/components/resources/BlogPagination';
+import LoadingSpinner from '@/components/ui/LoadingSpinner';
+import ReusableHero from '@/components/ui/ReusableHero';
+import Section from '@/components/ui/Section';
+import SectionTitle from '@/components/ui/SectionTitle';
+import ToolCard from '@/components/ui/ToolCard';
 import { useBlogPosts } from '@/hooks/useBlogPosts';
 import { TOOLS } from '@/lib/constants';
 

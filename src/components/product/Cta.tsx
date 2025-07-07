@@ -1,6 +1,6 @@
 "use client"
 
-import StandardCta from "../shared/StandardCta";
+import StandardCta from "../ui/StandardCta";
 
 const Cta = () => {
   return (

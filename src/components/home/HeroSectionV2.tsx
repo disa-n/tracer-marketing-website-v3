@@ -1,8 +1,8 @@
 'use client';
 
-import GridLines from '@/components/shared/GridLines';
-import ShinyCTAButtonExperimental from '@/components/shared/ShinyCTAButtonExperimental';
 import DemoButton from '@/components/ui/DemoButton';
+import GridLines from '@/components/ui/GridLines';
+import ShinyCTAButtonExperimental from '@/components/ui/ShinyCTAButtonExperimental';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';

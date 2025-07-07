@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { GridLinesLight } from '@/components/shared/GridLines';
+import { GridLinesLight } from '@/components/ui/GridLines';
 import GeneratorCard from './GeneratorCard';
 
 type TransformationType = 'reverse' | 'complement' | 'reverse-complement';
