@@ -3,7 +3,7 @@ export const metadata = {
   description: "Schedule a demo with Tracer to learn how our observability platform can help optimise your computational workflows.",
 };
 
-import ScheduleDemoPage from "@/components/ScheduleDemo";
+import { ScheduleDemoPage } from "@/components/demo";
 
 export default function DemoPage() {
   const jsonLd = {

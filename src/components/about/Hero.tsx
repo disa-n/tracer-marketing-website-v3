@@ -1,17 +1,19 @@
 'use client'
 
+import Image from 'next/image'
+
 const AboutHero = () => {
   return (
     <div className='overflow-hidden bg-main-background'>
       <div className='relative mx-auto grid w-full grid-cols-1 grid-rows-[290px_auto] 1000:grid-cols-[0.52fr_1fr] 1000:grid-rows-[380px_187px_auto]'>
-        <img
+        <Image
           src="/images/about-us/T-Asset-Spacecraft.webp"
           alt="Tracer Spacecraft - Advanced space technology visualization"
           width={800}
           height={567}
           className='absolute left-0 top-0 z-[50] aspect-[775/567] w-full max-w-[480px] max-sm:hidden sm:max-w-[480px] 1000:max-w-[775px] 1000:-translate-x-20'
         />
-        <img
+        <Image
           src="/images/about-us/T-Asset-Spacecraft.webp"
           alt="Tracer Spacecraft - Advanced space technology visualization"
           width={800}

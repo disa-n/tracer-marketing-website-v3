@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { faqData, FaqItem } from "../../data/faqData";
+import { faqData, FaqItem } from "../../lib/data/faqData";
 
 // Function to parse text with asterisks for italics and line breaks
 const parseText = (text: string) => {

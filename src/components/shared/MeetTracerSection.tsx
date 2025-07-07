@@ -1,6 +1,6 @@
 'use client';
 
-import { useDemo } from '@/components/ScheduleDemo';
+import { useDemo } from '@/components/demo';
 import GridLines from '@/components/shared/GridLines';
 import ShinyCTAButtonExperimental from '@/components/shared/ShinyCTAButtonExperimental';
 import DemoButton from '@/components/ui/DemoButton';

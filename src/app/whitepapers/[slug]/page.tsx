@@ -5,7 +5,7 @@
  * Route: /whitepapers/[slug]
  */
 
-import WhitepaperDownloadGateway from '@/components/WhitepaperDownloadGateway';
+import WhitepaperDownloadGateway from '@/components/downloads/WhitepaperDownloadGateway';
 import { generateWhitepaperMetadata, getWhitepaperBySlug } from '@/lib/whitepapers';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';

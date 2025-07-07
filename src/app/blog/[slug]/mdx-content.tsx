@@ -1,7 +1,7 @@
 'use client';
 
-import { MDXProviderWrapper } from '@/components/MdxProvider';
 import BlogPostTemplate from '@/components/blog/BlogPostTemplate';
+import { MDXProviderWrapper } from '@/components/mdx/MdxProvider';
 import React from 'react';
 
 interface MDXContentProps {
@@ -76,7 +76,8 @@ export default function MDXContent({ slug }: MDXContentProps) {
     author: metadata.author || 'Team Tracer',
     tag: metadata.tag || 'general',
     readTime: metadata.readTime || '5 min read',
-    content: '' // Content will be rendered by the MDX component
+    content: '', // Content will be rendered by the MDX component
+    type: 'mdx' as const
   };
 
   // Get the template from metadata, default to 'default'

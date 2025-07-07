@@ -3,7 +3,7 @@
 import { motion, useAnimation, useInView, type Variants } from 'framer-motion'
 import Image from "next/image"
 import { useEffect, useRef, useState } from 'react'
-import { useDemo } from '../ScheduleDemo'
+import { useDemo } from '../demo'
 
 const Monitoring = () => {
     // Demo functionality

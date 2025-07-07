@@ -4,7 +4,7 @@ import { X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { useDemo } from '../ScheduleDemo';
+import { useDemo } from '../demo';
 import DemoButton from '../ui/DemoButton';
 import ShinyCTAButtonExperimental from './ShinyCTAButtonExperimental';
 

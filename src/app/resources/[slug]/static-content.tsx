@@ -77,7 +77,8 @@ export default function StaticContent({ slug }: { slug: string }) {
     author: post.author || 'Team Tracer',
     tag: post.tag || 'general',
     readTime: post.readTime || '5 min read',
-    content: post.content || ''
+    content: post.content || '',
+    type: 'static' as const
   };
 
   return (

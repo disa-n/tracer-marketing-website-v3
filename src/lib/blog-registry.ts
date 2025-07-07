@@ -1,9 +1,8 @@
 /**
  * Centralized Blog Registry - Single Source of Truth for all blog posts
  *
- * This file automatically discovers and manages all blog posts from both:
+ * This file automatically discovers and manages all blog posts from:
  * - MDX files in src/components/content/blog/
- * - Static posts in blogPosts.ts (legacy)
  */
 
 export interface BlogPostMetadata {
@@ -68,8 +67,8 @@ export interface BlogPostSchema {
 }
 
 export interface BlogPost extends BlogPostMetadata {
-  type: 'mdx' | 'static';
-  content?: string; // Only for static posts
+  type: 'mdx' | 'static'; // Keep static for backward compatibility
+  content?: string; // For backward compatibility with templates
   author: string; // Required for BlogPost
   tag: string; // Required for BlogPost
   imageSrc: string; // Required for BlogPost
@@ -294,32 +293,7 @@ export async function loadMDXMetadata(slug: string): Promise<BlogPostMetadata | 
   };
 }
 
-/**
- * Load metadata from static blog posts (legacy)
- */
-export async function loadStaticBlogPosts(): Promise<BlogPost[]> {
-  try {
-    const { getAllBlogPosts } = await import('@/data/blogPosts');
-    const staticPosts = getAllBlogPosts();
 
-    return staticPosts.map(post => ({
-      slug: post.slug,
-      title: post.title,
-      date: post.date,
-      description: post.description,
-      author: post.author || 'Team Tracer',
-      tag: post.tag || 'general',
-      readTime: post.readTime || '5 min read',
-      ogImage: post.imageSrc,
-      imageSrc: post.imageSrc || '/placeholder-icon.svg',
-      type: 'static' as const,
-      content: post.content,
-    }));
-  } catch {
-    // Error loading static blog posts
-    return [];
-  }
-}
 
 /**
  * Get all blog posts (both MDX and static) with their metadata
@@ -343,14 +317,7 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
     }
   }
 
-  // Load static posts, but skip any that already exist as MDX
-  const staticPosts = await loadStaticBlogPosts();
-  for (const staticPost of staticPosts) {
-    if (!processedSlugs.has(staticPost.slug)) {
-      allPosts.push(staticPost);
-      processedSlugs.add(staticPost.slug);
-    }
-  }
+  // Note: Legacy static posts have been removed - all posts are now MDX
 
   // Sort by date (newest first)
   return allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -374,11 +341,8 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
     }
   }
 
-  // Check static posts
-  const staticPosts = await loadStaticBlogPosts();
-  const staticPost = staticPosts.find(post => post.slug === slug);
-
-  return staticPost || null;
+  // No static posts - all posts are now MDX
+  return null;
 }
 
 /**

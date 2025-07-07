@@ -3,7 +3,7 @@ export const metadata = {
   description: "Learn about how Tracer uses cookies and manages your privacy preferences.",
 };
 
-import CookiesPolicyPage from "@/components/Cookies";
+import CookiesPolicyPage from "@/components/legal/Cookies";
 
 export default function CookiesPage() {
   return <CookiesPolicyPage />;
