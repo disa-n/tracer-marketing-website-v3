@@ -91,12 +91,12 @@ export default function ScheduleDemoPage() {
         <div className="w-full max-w-[400px] space-y-8">
           
           {/* Header */}
-          <div className="text-center lg:text-left space-y-4">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-['Britti_Sans'] font-normal text-[#202020] leading-tight">
-              Get a personalised demo
+          <div className="text-center lg:text-left space-y-2">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-['Britti_Sans'] font-normal text-[#202020] leading-tight mt-8">
+              Interested?
             </h1>
             <p className="text-base md:text-lg text-[#666666] font-['Britti_Sans']">
-              See how Tracer can transform your computational workflows
+              Let&apos;s talk about how Tracer fits your workflow
             </p>
           </div>
 
