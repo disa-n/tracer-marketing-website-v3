@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useRef, useState } from 'react';
 
 // LinkedIn icon component
 const LinkedInIcon = () => (
@@ -9,9 +10,37 @@ const LinkedInIcon = () => (
   </svg>
 );
 
+// Bio data for founders
+const founderBios = {
+  vincent: "Vincent is Tracer's lead builder with a track record of turning complex ideas into scalable platforms.\n\nA repeat technical founder, he built Flymble, a BNPL travel platform, from idea to $3M sales, and Primary Portal, a B2B SaaS company with over $15M funding.\n\nHe holds a degree in Biomechanical Engineering from TU Delft.",
+  laura: "Laura is Tracer's lead problem-solver and strategist.\n\nAt McKinsey, she advised global pharma and biotech firms, where she identified the infrastructure bottlenecks slowing scientific progress.\n\nShe holds a Master's in Digital Health from the University of Oxford."
+};
+
 export default function FoundersSection() {
+  const [hoveredFounder, setHoveredFounder] = useState<string | null>(null);
+  const [clickedFounder, setClickedFounder] = useState<string | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleFounderClick = (founder: string) => {
+    setClickedFounder(founder);
+
+    // Clear any existing timeout
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    // Set new timeout to hide card after 3 seconds
+    timeoutRef.current = setTimeout(() => {
+      setClickedFounder(null);
+    }, 3000);
+  };
+
+  const isFounderVisible = (founder: string) => {
+    return hoveredFounder === founder || clickedFounder === founder;
+  };
+
   return (
-    <section className="relative bg-[#FCFCFC] overflow-hidden pt-16 pb-16 md:pt-30 md:pb-30">
+    <section className="relative bg-[#FCFCFC] overflow-visible pt-16 pb-16 md:pt-30 md:pb-30 z-40">
       <div className="relative z-10">
         {/* Mobile and small screens: stacked layout */}
         <div className="lg:hidden">
@@ -35,7 +64,7 @@ export default function FoundersSection() {
             {/* Narrower founders image */}
             <div className="flex-shrink-0">
               <Image
-                src="/images/about-us/t-founders.webp"
+                src="/images/about-us/T-Founders.webp"
                 alt="Vincent Hus and Laura Bogaert - Tracer Founders"
                 width={240}
                 height={280}
@@ -46,9 +75,15 @@ export default function FoundersSection() {
             {/* Founder bios next to image */}
             <div className="flex-1 space-y-6 md:space-y-8 pt-2 md:pt-4">
               {/* Vincent Hus */}
-              <div>
+              <div className="relative">
                 <div className="mb-1">
-                  <h3 className="font-britti-sans font-medium text-[#1e1e1e] text-base md:text-lg mb-0">
+                  <h3
+                    className="font-britti-sans font-medium text-[#1e1e1e] text-base md:text-lg mb-0 cursor-pointer hover:opacity-70 transition-opacity"
+                    onMouseEnter={() => setHoveredFounder('vincent')}
+                    onMouseLeave={() => setHoveredFounder(null)}
+                    onClick={() => handleFounderClick('vincent')}
+                    onTouchStart={() => setHoveredFounder(hoveredFounder === 'vincent' ? null : 'vincent')}
+                  >
                     Vincent Hus
                   </h3>
                   <div className="inline-block h-px border-b border-dashed border-[#1e1e1e] font-britti-sans font-medium text-base md:text-lg" style={{width: 'fit-content', marginBottom: '2px'}}>
@@ -58,6 +93,15 @@ export default function FoundersSection() {
                     Co-founder and CEO
                   </p>
                 </div>
+
+                {/* Bio Card */}
+                {isFounderVisible('vincent') && (
+                  <div className="absolute bottom-full left-0 mb-2 w-64 bg-[#3D3D3D] text-white p-4 shadow-lg z-[100] transition-opacity duration-200">
+                    <p className="font-britti-sans text-sm leading-relaxed whitespace-pre-line">
+                      {founderBios.vincent}
+                    </p>
+                  </div>
+                )}
                 <a
                   href="https://www.linkedin.com/in/vincent-hus"
                   target="_blank"
@@ -72,9 +116,15 @@ export default function FoundersSection() {
               </div>
 
               {/* Laura Bogaert */}
-              <div>
+              <div className="relative">
                 <div className="mb-1">
-                  <h3 className="font-britti-sans font-medium text-[#1e1e1e] text-base md:text-lg mb-0">
+                  <h3
+                    className="font-britti-sans font-medium text-[#1e1e1e] text-base md:text-lg mb-0 cursor-pointer hover:opacity-70 transition-opacity"
+                    onMouseEnter={() => setHoveredFounder('laura')}
+                    onMouseLeave={() => setHoveredFounder(null)}
+                    onClick={() => handleFounderClick('laura')}
+                    onTouchStart={() => setHoveredFounder(hoveredFounder === 'laura' ? null : 'laura')}
+                  >
                     Laura Bogaert
                   </h3>
                   <div className="inline-block h-px border-b border-dashed border-[#1e1e1e] font-britti-sans font-medium text-base md:text-lg" style={{width: 'fit-content', marginBottom: '2px'}}>
@@ -84,6 +134,15 @@ export default function FoundersSection() {
                     Co-founder and COO
                   </p>
                 </div>
+
+                {/* Bio Card */}
+                {isFounderVisible('laura') && (
+                  <div className="absolute bottom-full left-0 mb-2 w-64 bg-[#3D3D3D] text-white p-4 shadow-lg z-[100] transition-opacity duration-200">
+                    <p className="font-britti-sans text-sm leading-relaxed whitespace-pre-line">
+                      {founderBios.laura}
+                    </p>
+                  </div>
+                )}
                 <a
                   href="https://www.linkedin.com/in/laura-bogaert"
                   target="_blank"
@@ -106,7 +165,7 @@ export default function FoundersSection() {
             {/* Left column: Text content with proper left alignment */}
             <div className="w-1/3 px-4 md:px-8 lg:px-12 pt-8">
               <h1 className="font-britti-sans font-medium text-[#1e1e1e] text-3xl lg:text-5xl leading-tight lg:leading-[38px] tracking-tight lg:tracking-[-1.5px] mb-6 lg:mb-8">
-                Meet The Founders
+                The Best of Two Worlds
               </h1>
               <div className="font-britti-sans font-normal text-[#1e1e1e] text-base md:text-lg lg:text-base xl:text-base 2xl:text-lg leading-[1.5] space-y-6 max-w-[600px]">
                 <p>
@@ -121,7 +180,7 @@ export default function FoundersSection() {
             {/* Center column: Founders image */}
             <div className="w-1/3 flex justify-center items-start px-4">
               <Image
-                src="/images/about-us/t-founders.webp"
+                src="/images/about-us/T-Founders.webp"
                 alt="Vincent Hus and Laura Bogaert - Tracer Founders"
                 width={450}
                 height={500}
@@ -133,9 +192,14 @@ export default function FoundersSection() {
             <div className="w-1/3 px-4 flex flex-col justify-center h-full">
               <div className="flex flex-col justify-center gap-36 h-[500px]">
                 {/* Vincent Hus */}
-                <div>
+                <div className="relative">
                   <div className="mb-3">
-                    <h3 className="font-britti-sans font-medium text-[#1e1e1e] text-2xl mb-1">
+                    <h3
+                      className="font-britti-sans font-medium text-[#1e1e1e] text-2xl mb-1 cursor-pointer hover:opacity-70 transition-opacity"
+                      onMouseEnter={() => setHoveredFounder('vincent')}
+                      onMouseLeave={() => setHoveredFounder(null)}
+                      onClick={() => handleFounderClick('vincent')}
+                    >
                       Vincent Hus
                     </h3>
                     <div className="inline-block h-px border-b border-dashed border-[#1e1e1e] font-britti-sans font-medium text-2xl" style={{width: 'fit-content', marginBottom: '0.25rem'}}>
@@ -145,6 +209,15 @@ export default function FoundersSection() {
                       Co-founder and CEO
                     </p>
                   </div>
+
+                  {/* Bio Card */}
+                  {isFounderVisible('vincent') && (
+                    <div className="absolute bottom-full left-0 mb-4 w-80 bg-[#3D3D3D] text-white p-4 shadow-lg z-[100] transition-opacity duration-200">
+                      <p className="font-britti-sans text-sm leading-relaxed whitespace-pre-line">
+                        {founderBios.vincent}
+                      </p>
+                    </div>
+                  )}
                   <a
                     href="https://www.linkedin.com/in/vincent-hus"
                     target="_blank"
@@ -157,9 +230,14 @@ export default function FoundersSection() {
                 </div>
 
                 {/* Laura Bogaert */}
-                <div>
+                <div className="relative">
                   <div className="mb-3">
-                    <h3 className="font-britti-sans font-medium text-[#1e1e1e] text-2xl mb-1">
+                    <h3
+                      className="font-britti-sans font-medium text-[#1e1e1e] text-2xl mb-1 cursor-pointer hover:opacity-70 transition-opacity"
+                      onMouseEnter={() => setHoveredFounder('laura')}
+                      onMouseLeave={() => setHoveredFounder(null)}
+                      onClick={() => handleFounderClick('laura')}
+                    >
                       Laura Bogaert
                     </h3>
                     <div className="inline-block h-px border-b border-dashed border-[#1e1e1e] font-britti-sans font-medium text-2xl" style={{width: 'fit-content', marginBottom: '0.25rem'}}>
@@ -169,6 +247,15 @@ export default function FoundersSection() {
                       Co-founder and COO
                     </p>
                   </div>
+
+                  {/* Bio Card */}
+                  {isFounderVisible('laura') && (
+                    <div className="absolute bottom-full left-0 mb-4 w-80 bg-[#3D3D3D] text-white p-4 shadow-lg z-[100] transition-opacity duration-200">
+                      <p className="font-britti-sans text-sm leading-relaxed whitespace-pre-line">
+                        {founderBios.laura}
+                      </p>
+                    </div>
+                  )}
                   <a
                     href="https://www.linkedin.com/in/laura-bogaert"
                     target="_blank"
