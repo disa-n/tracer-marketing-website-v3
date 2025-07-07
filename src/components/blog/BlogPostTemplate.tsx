@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
+import { BlogPost } from '@/lib/blog-registry';
 import Image from 'next/image';
-import { BlogPost } from '@/data/blogPosts';
+import React from 'react';
 import AuthorDisplay from './AuthorDisplay';
 
 interface BlogPostTemplateProps {

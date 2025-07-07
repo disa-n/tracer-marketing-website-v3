@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image";
-import { useDemo } from "../ScheduleDemo";
+import { useDemo } from "../demo";
 
 interface ReusableCtaProps {
   imageSrc?: string;

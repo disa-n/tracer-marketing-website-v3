@@ -3,7 +3,7 @@ export const metadata = {
   description: "Read Tracer's terms and conditions for using our website.",
 };
 
-import TermsAndConditions from "@/components/TermsAndConditions";
+import TermsAndConditions from "@/components/legal/TermsAndConditions";
 
 export default function TermsAndConditionsPage() {
   return <TermsAndConditions />;

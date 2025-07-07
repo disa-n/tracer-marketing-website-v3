@@ -1,92 +1,13 @@
-"use client"
-
-// // import Cal, { getCalApi } from "@calcom/embed-react";
-// import { useEffect } from "react";
-
-// export function ScheduleDemoPage() {
-//   return (
-//     <section className="flex flex-col gap-10 w-full min-h-screen items-center py-20">
-//       <div className="text-center">
-//         <h1>Schedule Demo</h1>
-//         <p className="text-lg text-primary/80 mt-3">
-//           Talk to the founders to learn more about Tracer
-//         </p>
-//       </div>
-//       {/* <ScheduleDemo /> */}
-//     </section>
-//   );
-// }
-
-// export function ScheduleDemo() {
-//   useEffect(() => {
-//     (async function () {
-//       // const cal = await getCalApi();
-//     //   cal("ui", {
-//     //     styles: { branding: { brandColor: "#000000" } },
-//     //     hideEventTypeDetails: false,
-//     //     layout: "month_view",
-//     //   });
-//     // })();
-//   }, []);
-//   return (
-//     // <Cal
-//     //   calLink="marc-kl/demo"
-//     //   style={{ width: "100%", height: "100%", overflow: "scroll" }}
-//     //   config={{ layout: "month_view" }}
-//     // />
-//     <div />
-//   );
-// }
-
 'use client';
 
-import { supabase } from '@/lib/supabaseClient'; // ✅ Supabase client import
+import { supabase } from '@/lib/supabaseClient';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
+import { useState } from 'react';
 
 interface FormData {
   name: string;
   email: string;
   jobTitle: string;
-}
-
-interface DemoContextType {
-  openDemo: () => void;
-}
-
-const DemoContext = createContext<DemoContextType | undefined>(undefined);
-
-export function DemoModalProvider({ children }: { children: ReactNode }) {
-  const [mounted, setMounted] = useState(false);
-  const router = useRouter();
-
-  // Ensure this only runs on the client
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const value = {
-    openDemo: () => {
-      if (mounted) {
-        router.push('/demo');
-      }
-    }
-  };
-
-  return (
-    <DemoContext.Provider value={value}>
-      {children}
-    </DemoContext.Provider>
-  );
-}
-
-export function useDemo() {
-  const context = useContext(DemoContext);
-  if (context === undefined) {
-    throw new Error('useDemo must be used within a DemoModalProvider');
-  }
-  return context;
 }
 
 export default function ScheduleDemoPage() {
@@ -101,7 +22,7 @@ export default function ScheduleDemoPage() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  // ✅ Updated: submit to demo_enquiries (no quotes needed)
+  // Submit to demo_enquiries
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -146,7 +67,7 @@ export default function ScheduleDemoPage() {
 
     // 3. Clear form and show alert
     setFormData({ name: '', email: '', jobTitle: '' });
-    alert('Thanks! We’ve received your enquiry.');
+    alert("Thanks! We've received your enquiry.");
   };
 
   return (
@@ -166,15 +87,16 @@ export default function ScheduleDemoPage() {
       </div>
 
       {/* Left Side: Form */}
-      <div className="flex-1 flex items-center justify-center p-6 md:p-8 lg:p-16 relative z-10">
-        <div className="w-full max-w-md space-y-8">
-          {/* Heading Section */}
-          <div className="space-y-6">
-            <h1 className="font-['Britti_Sans'] text-[32px] md:text-[40px] lg:text-[48px] font-normal leading-[1.1] tracking-[-0.02em] text-[#202020]">
-              Interested?
+      <div className="relative flex-1 flex items-center justify-center p-6 lg:p-12 z-10">
+        <div className="w-full max-w-[400px] space-y-8">
+          
+          {/* Header */}
+          <div className="text-center lg:text-left space-y-4">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-['Britti_Sans'] font-normal text-[#202020] leading-tight">
+              Get a personalised demo
             </h1>
-            <p className="font-['Britti_Sans'] text-[20px] md:text-[24px] font-normal leading-[1.1] tracking-[-0.02em] text-[#888888] whitespace-nowrap">
-              Let&apos;s talk about how Tracer fits your workflow
+            <p className="text-base md:text-lg text-[#666666] font-['Britti_Sans']">
+              See how Tracer can transform your computational workflows
             </p>
           </div>
 
@@ -203,7 +125,7 @@ export default function ScheduleDemoPage() {
               <input
                 type="email"
                 name="email"
-                placeholder="jane@framer.com"
+                placeholder="jane@company.com"
                 value={formData.email}
                 onChange={handleChange}
                 className="w-full h-[42px] md:h-[48px] bg-[#F5F5F5] border border-[#E8E8E8] px-5 text-base md:text-lg text-[#202020] placeholder-[#B1B1B1] font-['Britti_Sans']"
@@ -213,24 +135,24 @@ export default function ScheduleDemoPage() {
             {/* Job Title */}
             <div className="space-y-2">
               <label className="text-[14px] text-[#888888] font-['Chakra_Petch'] uppercase">
-                What is your job title?
+                Job Title
               </label>
               <input
                 type="text"
                 name="jobTitle"
-                placeholder="e.g., computational biologist"
+                placeholder="Senior Researcher"
                 value={formData.jobTitle}
                 onChange={handleChange}
                 className="w-full h-[42px] md:h-[48px] bg-[#F5F5F5] border border-[#E8E8E8] px-5 text-base md:text-lg text-[#202020] placeholder-[#B1B1B1] font-['Britti_Sans']"
               />
             </div>
 
-            {/* Submit */}
+            {/* Submit Button */}
             <button
               type="submit"
-              className="w-full h-[42px] md:h-[49px] bg-[#202020] text-[#FCFCFC] text-base md:text-lg font-['Britti_Sans'] mt-8 hover:bg-[#404040] transition-colors cursor-pointer"
+              className="w-full h-[42px] md:h-[49px] bg-[#202020] text-white text-base md:text-lg font-['Britti_Sans'] hover:bg-[#333333] transition-colors"
             >
-              Submit
+              Request Demo
             </button>
           </form>
 
@@ -271,4 +193,3 @@ export default function ScheduleDemoPage() {
     </div>
   );
 }
-

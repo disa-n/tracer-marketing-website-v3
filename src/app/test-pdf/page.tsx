@@ -5,8 +5,8 @@
  * with the tracer-test-file.pdf
  */
 
-import PDFDownloadCard from '@/components/PDFDownloadCard';
-import SupabaseDiagnostic from '@/components/SupabaseDiagnostic';
+import PDFDownloadCard from '@/components/downloads/PDFDownloadCard';
+import SupabaseDiagnostic from '@/components/utils/SupabaseDiagnostic';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
