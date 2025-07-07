@@ -1,12 +1,12 @@
 'use client';
 
+import { useDemo } from '@/components/demo';
+import DemoButton from '@/components/ui/buttons/DemoButton';
+import ShinyCTAButtonExperimental from '@/components/ui/buttons/ShinyCTAButtonExperimental';
 import { X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { useDemo } from '../demo';
-import DemoButton from '../ui/DemoButton';
-import ShinyCTAButtonExperimental from './ShinyCTAButtonExperimental';
 
 interface NavItem {
   label: string;

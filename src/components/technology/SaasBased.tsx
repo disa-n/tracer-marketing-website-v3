@@ -1,5 +1,5 @@
-import ColorBreakLine from '@/components/ui/ColorBreakLine'
-import FeatureCard from '@/components/ui/FeatureCard'
+import FeatureCard from '@/components/ui/cards/FeatureCard'
+import ColorBreakLine from '@/components/ui/layout/ColorBreakLine'
 import { BookCheck, LockKeyhole, MapPin, PackageOpen } from 'lucide-react'
 import Image from 'next/image'
 

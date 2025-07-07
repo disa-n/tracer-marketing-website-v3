@@ -1,5 +1,5 @@
-import { GridLinesLight } from '@/components/ui/GridLines'
-import StyledLayoutWrapper from '@/components/ui/StyledLayoutWrapper'
+import { GridLinesLight } from '@/components/ui/layout/GridLines'
+import StyledLayoutWrapper from '@/components/ui/layout/StyledLayoutWrapper'
 import Image from 'next/image'
 import './HeroSection.css'
 

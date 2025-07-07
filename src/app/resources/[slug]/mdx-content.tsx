@@ -1,7 +1,7 @@
 'use client';
 
-import { MDXProviderWrapper } from '@/components/mdx/MdxProvider';
 import BlogPostTemplate from '@/components/resources/BlogPostTemplate';
+import { MDXProviderWrapper } from '@/components/resources/mdx/MdxProvider';
 import React from 'react';
 
 interface MDXContentProps {
@@ -32,7 +32,7 @@ export default function MDXContent({ slug }: MDXContentProps) {
     setMounted(true);
 
     // Dynamic import in useEffect to ensure client-side execution
-    import(`@/components/content/blog/${slug}.mdx`)
+    import(`@/components/resources/content/blog/${slug}.mdx`)
       .then((module: MDXModule) => {
         setComponent(() => module.default);
         setMetadata(module.metadata || null);

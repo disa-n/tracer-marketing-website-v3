@@ -1,11 +1,11 @@
 'use client'
 
-import React, { useRef, useEffect, useState } from 'react'
+import InsightCard from '@/components/ui/cards/InsightCard'
+import { GridLinesLight } from '@/components/ui/layout/GridLines'
+import StyledLayoutWrapper from '@/components/ui/layout/StyledLayoutWrapper'
 import { motion, useAnimation, useInView, type Variants } from 'framer-motion'
-import { GridLinesLight } from '@/components/ui/GridLines'
-import InsightCard from '@/components/ui/InsightCard'
-import StyledLayoutWrapper from '@/components/ui/StyledLayoutWrapper'
 import { Rocket, Trophy } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 
 function WhyWeExist() {
   // State for responsive behavior - disable animations on mobile

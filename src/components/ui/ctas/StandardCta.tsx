@@ -1,9 +1,9 @@
 "use client"
 
+import { useDemo } from "@/components/demo";
 import Image from "next/image";
-import { useDemo } from "../demo";
 
-interface ReusableCtaProps {
+interface StandardCtaProps {
   imageSrc?: string;
   imageAlt?: string;
   mobileImageSrc?: string;
@@ -11,23 +11,17 @@ interface ReusableCtaProps {
   overlayWidth?: string;
   overlayHeight?: string;
   overlayMobileHeight?: string;
-  title?: string;
-  subtitle?: string;
-  buttonText?: string;
 }
 
-const ReusableCta = ({
+const StandardCta = ({
   imageSrc = "/images/home/demo-home-car.png",
   imageAlt = "demo-car",
   mobileImageSrc,
   showOverlay = true,
   overlayWidth = "31%",
   overlayHeight = "45px",
-  overlayMobileHeight = "54px",
-  title = "Ready to see Tracer in action?",
-  subtitle = "get a personalised demo",
-  buttonText = "Talk to an Expert"
-}: ReusableCtaProps) => {
+  overlayMobileHeight = "54px"
+}: StandardCtaProps) => {
   const { openDemo } = useDemo();
 
   return (
@@ -38,10 +32,10 @@ const ReusableCta = ({
             <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end sm:gap-2 xl:gap-0">
               <div className="space-y-2 md:space-y-4">
                 <span className="font-chakra-petch text-sm sm:text-sm md:text-sm lg:text-sm xl:text-sm 2xl:text-base font-normal uppercase leading-[19px] tracking-[-1%] text-[#202020]">
-                  {subtitle}
+                  get a personalised demo
                 </span>
                 <h3 className="font-britti-sans text-[32px] sm:text-[32px] md:text-[56px] lg:text-[56px] xl:text-[56px] 2xl:text-[56px] font-normal leading-[30px] tracking-[-2%] text-[#202020] lg:leading-[56px]">
-                  {title}
+                  Ready to see Tracer in action?
                 </h3>
               </div>
               <div className="flex sm:justify-end">
@@ -49,7 +43,7 @@ const ReusableCta = ({
                   onClick={openDemo}
                   className="flex h-[48px] w-full shrink-0 cursor-pointer items-center justify-center bg-[#E8E8E8] px-8 py-3 font-britti-sans text-sm font-normal text-[#202020] hover:bg-[#E8E8E8]/80 sm:w-auto md:h-[49px] md:text-base"
                 >
-                  {buttonText}
+                  Talk to an Expert
                 </button>
               </div>
             </div>
@@ -91,21 +85,4 @@ const ReusableCta = ({
   );
 };
 
-// Predefined CTA variants
-export const AboutUsCTA = () => {
-  return (
-    <ReusableCta
-      imageSrc="/images/home/demo-home-car.png"
-      imageAlt="demo-car"
-      title="Ready to join our mission?"
-      subtitle="explore opportunities"
-      buttonText="View Open Roles"
-      showOverlay={true}
-      overlayWidth="31%"
-      overlayHeight="45px"
-      overlayMobileHeight="54px"
-    />
-  )
-}
-
-export default ReusableCta;
+export default StandardCta;

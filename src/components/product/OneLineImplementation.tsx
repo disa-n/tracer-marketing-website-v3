@@ -1,6 +1,6 @@
 'use client'
 
-import GridLines from '@/components/ui/GridLines'
+import GridLines from '@/components/ui/layout/GridLines'
 import { motion, useAnimation, useInView, type Variants } from 'framer-motion'
 import { Copy } from 'lucide-react'
 import Image from 'next/image'

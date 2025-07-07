@@ -1,7 +1,7 @@
-import React from "react";
+import { Button } from "@/components/ui/buttons/Button";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
+import React from "react";
 
 const CareersPage: React.FC = () => {
   const fadeInUp = {

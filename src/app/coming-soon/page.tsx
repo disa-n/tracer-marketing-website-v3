@@ -3,7 +3,7 @@ export const metadata = {
   description: "This feature is coming soon. Stay tuned for updates from Tracer.",
 };
 
-import ComingSoon from "@/components/ui/ComingSoon"
+import ComingSoon from "@/components/ui/content/ComingSoon";
 
 export default function ComingSoonPage() {
     return <ComingSoon />

@@ -1,6 +1,6 @@
 'use client'
 
-import GridLines from '@/components/ui/GridLines'
+import GridLines from '@/components/ui/layout/GridLines'
 import Image from 'next/image'
 import React, { useEffect, useMemo, useState } from 'react'
 

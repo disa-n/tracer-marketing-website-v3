@@ -1,6 +1,6 @@
 'use client';
-import { GridLinesLight } from '@/components/ui/GridLines';
-import ColorBreakLine from '@/components/ui/ColorBreakLine';
+import ColorBreakLine from '@/components/ui/layout/ColorBreakLine';
+import { GridLinesLight } from '@/components/ui/layout/GridLines';
 import { CircleDollarSign, EyeOff, SearchX, Server } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';

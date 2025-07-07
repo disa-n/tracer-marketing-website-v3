@@ -82,9 +82,7 @@ const MDX_BLOG_POSTS = [
   'experimenting-with-tracer-pt-3',
   'error-detection-with-tracer-pt-4',
   'tracer-use-case101',
-  'test-post-1',
-  'test-post-2',
-  'sample-mdx-post',
+
   'kenya-day-one',
   'kenya-day-two',
   'kenya-day-three',
@@ -165,37 +163,7 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
     readTime: '6 min read',
     template: 'default'
   },
-  'test-post-1': {
-    slug: 'test-post-1',
-    title: 'Test Post 1',
-    date: 'January 1, 2024',
-    description: 'Description for test post 1',
-    author: 'Team Tracer',
-    tag: 'test',
-    readTime: '2 min read',
-    template: 'default'
-  },
-  'test-post-2': {
-    slug: 'test-post-2',
-    title: 'Test Post 2',
-    date: 'January 2, 2024',
-    description: 'Description for test post 2',
-    author: 'Team Tracer',
-    tag: 'test',
-    readTime: '3 min read',
-    template: 'default'
-  },
-  'sample-mdx-post': {
-    slug: 'sample-mdx-post',
-    title: 'Sample MDX Blog Post with Template',
-    date: 'Mon, 25 June',
-    description: 'This is a sample MDX blog post demonstrating how to use templates with MDX content.',
-    author: 'Team Tracer',
-    tag: 'development',
-    readTime: '3 min read',
-    ogImage: '/blog/posts/globe-preview-image.webp',
-    template: 'default'
-  },
+
   'kenya-day-one': {
     slug: 'kenya-day-one',
     title: 'Hackathon Day One: Monday, June 2nd',
