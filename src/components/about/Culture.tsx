@@ -1,6 +1,6 @@
 'use client'
 
-import GridLines from '@/components/shared/GridLines'
+import GridLines from '@/components/ui/GridLines'
 import Image from 'next/image'
 import React, { useEffect, useMemo, useState } from 'react'
 
@@ -71,7 +71,6 @@ const useCardDimensions = (windowWidth: number) => {
     return '540px'  // Increased from 500px for larger screens
   }, [windowWidth])
 }
-
 // Reusable Culture Card Component
 const CultureCard: React.FC<CultureCardProps> = ({
   title,
@@ -169,6 +168,7 @@ const DesktopCards: React.FC<DesktopCardsProps> = ({
 }) => (
   <div className="hidden lg:block w-full">
     {/* 3x2 Grid for all desktop layouts */}
+    <div className="grid grid-cols-3 gap-6 lg:gap-8 xl:gap-10 2xl:gap-8 justify-items-center">
     <div className="grid grid-cols-3 gap-6 lg:gap-8 xl:gap-10 2xl:gap-8 justify-items-center">
       {cultureValues.map((value) => (
         <div

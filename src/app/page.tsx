@@ -1,14 +1,14 @@
 // app/page.tsx
 
-import HeroSectionV2 from '@/components/RouteHomeV2/HeroSectionV2';
-import ProductPreviewSectionV2 from '@/components/RouteHomeV2/ProductPreviewSectionV2';
-import ScienceNeedsInfoSection from '@/components/RouteHomeV2/ScienceNeedsInfoSection';
-import UseTracerSectionV2 from '@/components/RouteHomeV2/UseTracerSectionV2';
-import MeetTracerSection from '@/components/shared/MeetTracerSection';
-import FixAnythingSection from '@/components/RouteHomeV2/FixAnythingSection';
-import FragmentAutoReveal from '@/components/RouteHomeV2/FragmentAutoReveal';
-import FaqV2 from '@/components/RouteHomeV2/faqV2';
-import PersonalisedDemoV2 from '@/components/RouteHomeV2/PersonalisedDemoV2';
+import FaqV2 from '@/components/home/faqV2';
+import FixAnythingSection from '@/components/home/FixAnythingSection';
+import FragmentAutoReveal from '@/components/home/FragmentAutoReveal';
+import HeroSectionV2 from '@/components/home/HeroSectionV2';
+import PersonalisedDemoV2 from '@/components/home/PersonalisedDemoV2';
+import ProductPreviewSectionV2 from '@/components/home/ProductPreviewSectionV2';
+import ScienceNeedsInfoSection from '@/components/home/ScienceNeedsInfoSection';
+import UseTracerSectionV2 from '@/components/home/UseTracerSectionV2';
+import MeetTracerSection from '@/components/ui/MeetTracerSection';
 import Script from 'next/script';
 
 export const metadata = {

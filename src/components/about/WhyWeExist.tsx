@@ -2,9 +2,9 @@
 
 import React, { useRef, useEffect, useState } from 'react'
 import { motion, useAnimation, useInView, type Variants } from 'framer-motion'
-import { GridLinesLight } from '@/components/shared/GridLines'
+import { GridLinesLight } from '@/components/ui/GridLines'
 import InsightCard from '@/components/ui/InsightCard'
-import StyledLayoutWrapper from '@/components/shared/StyledLayoutWrapper'
+import StyledLayoutWrapper from '@/components/ui/StyledLayoutWrapper'
 import { Rocket, Trophy } from 'lucide-react'
 
 function WhyWeExist() {

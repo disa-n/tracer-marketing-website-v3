@@ -1,4 +1,4 @@
-import GridLines from '../shared/GridLines';
+import GridLines from '../ui/GridLines';
 import PerformanceCard from '../ui/PerformanceCard';
 
 export default function CoreChallengesSection() {

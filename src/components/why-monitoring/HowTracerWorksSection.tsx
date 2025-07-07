@@ -1,4 +1,4 @@
-import { GridLinesLight } from '@/components/shared/GridLines';
+import { GridLinesLight } from '@/components/ui/GridLines';
 import PrimaryButton from '@/components/ui/PrimaryButton';
 import Image from 'next/image';
 import Link from 'next/link';

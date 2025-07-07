@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductPreviewModule from './ProductPreview/ProductPreviewModule';
-import GridLines from '@/components/shared/GridLines';
+import GridLines from '@/components/ui/GridLines';
 
 /**
  * ProductPreviewSectionV2 - Refactored to use modular components
