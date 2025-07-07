@@ -1,97 +1,38 @@
-import { generateBlogPostSchema, getBlogPost, isMDXBlogPost } from '@/lib/blog-registry';
-import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+/**
+ * Resources Route Redirect - Redirects to canonical blog URLs
+ * Route: /resources/[slug] -> /blog/[slug]
+ *
+ * This provides SEO-friendly redirects from old resource URLs to the new unified blog structure.
+ */
 
-export async function generateMetadata({
-  params
-}: {
-  params: Promise<{ slug: string }>
-}): Promise<Metadata> {
-  try {
-    const resolvedParams = await params;
-    const slug = resolvedParams.slug;
-    const post = await getBlogPost(slug);
-    
-    if (!post) {
-      return {
-        title: 'Post Not Found | Tracer',
-        description: 'The requested blog post could not be found.',
-      };
-    }
 
-    return {
-      title: `${post.title} | Tracer`,
-      description: post.description,
-      openGraph: {
-        title: post.title,
-        description: post.description,
-        images: post.ogImage ? [{ url: post.ogImage }] : [],
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: post.title,
-        description: post.description,
-        images: post.ogImage ? [post.ogImage] : [],
-      },
-    };
-  } catch (error) {
-    console.error("Error generating metadata:", error);
-    return {
-      title: 'Error | Tracer',
-      description: 'An error occurred while loading this page.',
-    };
-  }
+import { loadContent } from '@/lib/content-loader';
+import { redirect } from 'next/navigation';
+
+interface ResourcePageProps {
+  params: Promise<{ slug: string }>;
 }
 
-// Import the content components
-import MDXContent from './mdx-content';
-import StaticContent from './static-content';
+/**
+ * Redirect resources to canonical blog URLs
+ * This ensures SEO consistency and prevents duplicate content
+ */
+export default async function ResourcePage({ params }: ResourcePageProps) {
+  const { slug } = await params;
 
-// Page component with params as Promise to match Next.js 15 internal type
-export default async function BlogPost({
-  params
-}: {
-  params: Promise<{ slug: string }>
-}) {
-  try {
-    // Await the params Promise to get the slug
-    const resolvedParams = await params;
-    const slug = resolvedParams.slug;
+  // Check if content exists before redirecting
+  const content = await loadContent(slug, 'resource');
 
-    // Get the blog post for JSON-LD schema
-    const post = await getBlogPost(slug);
-
-    if (!post) {
-      notFound();
+  if (!content) {
+    // If content doesn't exist as resource, try as blog
+    const blogContent = await loadContent(slug, 'blog');
+    if (blogContent) {
+      redirect(`/blog/${slug}`);
     }
-
-    // Generate JSON-LD schema for this blog post
-    const blogPostSchema = generateBlogPostSchema(post);
-
-    // Check if this is an MDX blog post using the centralized registry
-    if (isMDXBlogPost(slug)) {
-      return (
-        <>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostSchema) }}
-          />
-          <MDXContent slug={slug} />
-        </>
-      );
-    } else {
-      return (
-        <>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostSchema) }}
-          />
-          <StaticContent slug={slug} />
-        </>
-      );
-    }
-  } catch (error) {
-    console.error("Error loading blog post:", error);
-    notFound();
+    // If neither exists, let the blog route handle the 404
+    redirect(`/blog/${slug}`);
   }
+
+  // Redirect to canonical blog URL
+  redirect(`/blog/${slug}`);
 }

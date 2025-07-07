@@ -399,7 +399,7 @@ export function generateBlogSchema(): BlogSchema {
  */
 export function generateBlogPostSchema(post: BlogPost): BlogPostSchema {
   const baseUrl = getBaseUrl();
-  const postUrl = `${baseUrl}/resources/${post.slug}`;
+  const postUrl = `${baseUrl}/blog/${post.slug}`; // Use canonical blog URL
 
   // Format date to ISO 8601
   const publishDate = new Date(post.date).toISOString();

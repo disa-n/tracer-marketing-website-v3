@@ -1,12 +1,12 @@
 /**
  * Dynamic Whitepaper Download Page
- * 
+ *
  * Individual whitepaper pages with download gateway
  * Route: /whitepapers/[slug]
  */
 
-import WhitepaperDownloadGateway from '@/components/resources/downloads/WhitepaperDownloadGateway';
-import { generateWhitepaperMetadata, getWhitepaperBySlug } from '@/lib/whitepapers';
+import { loadContent } from '@/lib/content-loader';
+import { generateContentMetadata, generateNotFoundMetadata } from '@/lib/metadata-generator';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
@@ -18,33 +18,52 @@ interface WhitepaperPageProps {
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: WhitepaperPageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const whitepaper = getWhitepaperBySlug(slug);
-  
-  if (!whitepaper) {
-    return {
-      title: 'Whitepaper Not Found | Tracer',
-      description: 'The requested whitepaper could not be found.'
-    };
-  }
+  try {
+    const { slug } = await params;
+    const content = await loadContent(slug, 'whitepaper');
 
-  return generateWhitepaperMetadata(whitepaper);
+    if (!content) {
+      return generateNotFoundMetadata('Whitepaper');
+    }
+
+    return generateContentMetadata(content);
+  } catch (error) {
+    console.error("Error generating metadata:", error);
+    return generateNotFoundMetadata('Whitepaper');
+  }
 }
 
-export default async function WhitepaperPage({ params }: WhitepaperPageProps) {
-  const { slug } = await params;
-  const whitepaper = getWhitepaperBySlug(slug);
+import UnifiedContentRenderer from '@/components/content/UnifiedContentRenderer';
+import { generateContentSchema } from '@/lib/metadata-generator';
 
-  // Return 404 if whitepaper not found
-  if (!whitepaper) {
+export default async function WhitepaperPage({ params }: WhitepaperPageProps) {
+  try {
+    const { slug } = await params;
+    const content = await loadContent(slug, 'whitepaper');
+
+    if (!content) {
+      notFound();
+    }
+
+    // Generate JSON-LD schema for SEO
+    const contentSchema = generateContentSchema(content);
+
+    return (
+      <>
+        {/* JSON-LD Schema for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(contentSchema) }}
+        />
+
+        {/* Render the content */}
+        <UnifiedContentRenderer content={content} />
+      </>
+    );
+  } catch (error) {
+    console.error("Error loading whitepaper:", error);
     notFound();
   }
-
-  return (
-    <main className="w-full min-h-screen bg-[#FCFCFC]">
-      <WhitepaperDownloadGateway whitepaper={whitepaper} />
-    </main>
-  );
 }
 
 // Generate static paths for all whitepapers (optional - for better performance)

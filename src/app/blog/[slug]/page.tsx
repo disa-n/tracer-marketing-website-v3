@@ -1,86 +1,91 @@
-import { generateBlogPostSchema, getBlogPost, isMDXBlogPost } from '@/lib/blog-registry';
+/**
+ * Unified Blog Post Route - Handles both blog and resource content
+ * Route: /blog/[slug]
+ *
+ * This route serves as the canonical location for all blog content.
+ * Resources are redirected here for SEO consistency.
+ */
+
+import { loadContent } from '@/lib/content-loader';
+import { generateContentMetadata, generateNotFoundMetadata } from '@/lib/metadata-generator';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-export async function generateMetadata({
-  params
-}: {
-  params: Promise<{ slug: string }>
-}): Promise<Metadata> {
+interface BlogPostPageProps {
+  params: Promise<{ slug: string }>;
+}
+
+/**
+ * Generate metadata for SEO
+ */
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   try {
-    // Await the params Promise to get the slug
-    const resolvedParams = await params;
-    const slug = resolvedParams.slug;
+    const { slug } = await params;
 
-    // Get blog post data from centralized registry
-    const post = await getBlogPost(slug);
-
-    if (post) {
-      return {
-        title: post.title,
-        description: post.description,
-        openGraph: post.ogImage
-          ? { images: [post.ogImage] }
-          : undefined,
-      };
+    // Try to load as blog content first, then as resource
+    let content = await loadContent(slug, 'blog');
+    if (!content) {
+      content = await loadContent(slug, 'resource');
     }
 
-    return { title: 'Blog Post Not Found' };
+    if (!content) {
+      return generateNotFoundMetadata('Blog Post');
+    }
+
+    return generateContentMetadata(content);
   } catch (error) {
     console.error("Error generating metadata:", error);
-    return { title: 'Blog Post Not Found' };
+    return generateNotFoundMetadata('Blog Post');
   }
 }
 
-// Import the content components
-import MDXContent from './mdx-content';
-import StaticContent from './static-content';
+import UnifiedContentRenderer from '@/components/content/UnifiedContentRenderer';
+import { generateContentSchema } from '@/lib/metadata-generator';
 
-// Page component with params as Promise to match Next.js 15 internal type
-export default async function BlogPost({
-  params
-}: {
-  params: Promise<{ slug: string }>
-}) {
+/**
+ * Main blog post page component
+ */
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
   try {
-    // Await the params Promise to get the slug
-    const resolvedParams = await params;
-    const slug = resolvedParams.slug;
+    const { slug } = await params;
 
-    // Get the blog post for JSON-LD schema
-    const post = await getBlogPost(slug);
+    // Try to load as blog content first, then as resource
+    let content = await loadContent(slug, 'blog');
+    if (!content) {
+      content = await loadContent(slug, 'resource');
+    }
 
-    if (!post) {
+    if (!content) {
       notFound();
     }
 
-    // Generate JSON-LD schema for this blog post
-    const blogPostSchema = generateBlogPostSchema(post);
+    // Generate JSON-LD schema for SEO
+    const contentSchema = generateContentSchema(content);
 
-    // Check if this is an MDX blog post using the centralized registry
-    if (isMDXBlogPost(slug)) {
-      return (
-        <>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostSchema) }}
-          />
-          <MDXContent slug={slug} />
-        </>
-      );
-    } else {
-      return (
-        <>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostSchema) }}
-          />
-          <StaticContent slug={slug} />
-        </>
-      );
-    }
+    return (
+      <>
+        {/* JSON-LD Schema for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(contentSchema) }}
+        />
+
+        {/* Render the content */}
+        <UnifiedContentRenderer content={content} />
+      </>
+    );
   } catch (error) {
     console.error("Error loading blog post:", error);
     notFound();
   }
+}
+
+/**
+ * Generate static params for better performance
+ * This can be expanded to pre-generate popular posts
+ */
+export async function generateStaticParams() {
+  // For now, generate pages on-demand for better development experience
+  // In production, you might want to pre-generate popular blog posts
+  return [];
 }

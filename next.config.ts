@@ -1,4 +1,4 @@
-import createMDX from '@next/mdx'
+import createMDX from '@next/mdx';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -21,6 +21,17 @@ const nextConfig = {
         hostname: 'placehold.co',
       },
     ],
+  },
+
+  // ✅ Add redirects for SEO consistency
+  async redirects() {
+    return [
+      {
+        source: '/resources/:slug',
+        destination: '/blog/:slug',
+        permanent: true, // 301 redirect for SEO
+      },
+    ];
   },
 }
 
