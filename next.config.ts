@@ -26,8 +26,9 @@ const nextConfig = {
   // ✅ Add redirects for SEO consistency
   async redirects() {
     return [
+      // Redirect specific blog post patterns, but exclude overview pages
       {
-        source: '/resources/:slug',
+        source: '/resources/:slug((?!biweeklyroundupsoverview|kenyahackathonoverview).*)',
         destination: '/blog/:slug',
         permanent: true, // 301 redirect for SEO
       },

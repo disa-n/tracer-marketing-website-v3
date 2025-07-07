@@ -45,7 +45,7 @@ export default function UnifiedContentRenderer({ content }: UnifiedContentRender
     async function loadMDXComponent() {
       try {
         // Try to load the MDX file
-        const mdxModule = await import(`@/components/resources/content/blog/${content.slug}.mdx`) as MDXModule;
+        const mdxModule = await import(`../../../content/blog/${content.slug}.mdx`) as MDXModule;
         setMdxComponent(() => mdxModule.default);
         setMdxMetadata(mdxModule.metadata || null);
       } catch (error) {

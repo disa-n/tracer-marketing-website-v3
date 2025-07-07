@@ -1,7 +1,6 @@
 import { GridLinesLight } from '@/components/ui/layout/GridLines'
 import StyledLayoutWrapper from '@/components/ui/layout/StyledLayoutWrapper'
 import Image from 'next/image'
-import './HeroSection.css'
 
 function HeroSection() {
   const title = (

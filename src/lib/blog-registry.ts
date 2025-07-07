@@ -121,6 +121,7 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
     author: 'Team Tracer',
     tag: 'product',
     readTime: '5 min read',
+    ogImage: '/images/blog/posts/T-DNA-Pink.webp',
     template: 'default'
   },
   'introducing-tracer-pt-2': {
@@ -131,6 +132,7 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
     author: 'Team Tracer',
     tag: 'product',
     readTime: '6 min read',
+    ogImage: '/images/blog/posts/T-Asset-DNA-Pink.webp',
     template: 'default'
   },
   'experimenting-with-tracer-pt-3': {
@@ -141,6 +143,7 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
     author: 'Team Tracer',
     tag: 'experiment',
     readTime: '8 min read',
+    ogImage: '/images/blog/posts/terminal.webp',
     template: 'default'
   },
   'error-detection-with-tracer-pt-4': {
@@ -151,6 +154,7 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
     author: 'Team Tracer',
     tag: 'experiment',
     readTime: '7 min read',
+    ogImage: '/images/blog/posts/grafana-oom.webp',
     template: 'default'
   },
   'tracer-use-case101': {
@@ -161,6 +165,7 @@ const MDX_METADATA: Record<string, BlogPostMetadata> = {
     author: 'Team Tracer',
     tag: 'use-case',
     readTime: '6 min read',
+    ogImage: '/images/blog/posts/onboarding.webp',
     template: 'default'
   },
 
