@@ -29,7 +29,7 @@ const NavigationBar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      setIsScrolled(scrollPosition > 50);
+      setIsScrolled(scrollPosition > 100);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -57,12 +57,12 @@ const NavigationBar = () => {
     <>
       {/* Navbar */}
       <div className={`
-        w-full flex items-center justify-center fixed top-0 left-0 z-[300] text-black transition-all duration-500 ease-in-out
+        w-full flex items-center justify-center fixed top-0 left-0 z-[300] text-black transition-all duration-300 ease-in-out
         ${isScrolled ? 'px-3 sm:px-4 pt-4' : 'px-3 sm:px-4 pt-4'}
       `}>
         <div
           className={`
-            w-full flex items-center transition-all duration-500 ease-in-out
+            w-full flex items-center transition-all duration-300 ease-in-out
             ${isScrolled
               ? 'max-w-[1000px] h-[55px] p-2'
               : 'max-w-[1408px] 1600:max-w-[1500px] 1700:max-w-[1600px] 1800:max-w-[1700px] 1900:max-w-[1800px] 1920:max-w-[1900px] h-[65px] p-2'
@@ -77,7 +77,7 @@ const NavigationBar = () => {
           }}
         >
           <div className={`
-            w-full flex items-center transition-all duration-500 ease-in-out
+            w-full flex items-center transition-all duration-300 ease-in-out
             ${isScrolled ? 'justify-between' : 'justify-between'}
           `}>
             {/* Logo */}
@@ -89,7 +89,7 @@ const NavigationBar = () => {
                   width={150}
                   height={50}
                   className={`
-                    w-full shrink-0 transition-all duration-500 ease-in-out
+                    w-full shrink-0 transition-all duration-300 ease-in-out
                     ${isScrolled ? 'max-w-[80px] sm:max-w-[100px]' : 'max-w-[100px] sm:max-w-[123px]'}
                   `}
                 />
@@ -98,11 +98,11 @@ const NavigationBar = () => {
 
             {/* Desktop Navigation - Right Aligned */}
             <div className={`
-              h-full hidden 1000:flex items-center justify-end transition-all duration-500 ease-in-out
+              h-full hidden 1000:flex items-center justify-end transition-all duration-300 ease-in-out
               ${isScrolled ? 'flex-1' : 'flex-1'}
             `}>
               <div className={`
-                flex items-center h-full gap-6 !font-[400] font-britti-sans text-white transition-all duration-500 ease-in-out
+                flex items-center h-full gap-6 !font-[400] font-britti-sans text-white transition-all duration-300 ease-in-out
                 ${isScrolled ? 'text-sm' : 'text-base'}
               `}>
                 {navItems.map((item) => (
@@ -119,10 +119,15 @@ const NavigationBar = () => {
 
             {/* CTA Buttons */}
             <div className={`
-              hidden 1000:flex items-center gap-3 h-full flex-shrink-0 transition-all duration-500 ease-in-out
+              hidden 1000:flex items-center gap-3 h-full flex-shrink-0 transition-all duration-300 ease-in-out
               ${isScrolled ? 'ml-7' : 'ml-8'}
             `}>
-              <ShinyCTAButtonExperimental isScrolled={isScrolled} smallHeight={35} largeHeight={45} />
+              <ShinyCTAButtonExperimental
+                isScrolled={isScrolled}
+                smallHeight={35}
+                largeHeight={45}
+                textSizeClasses={isScrolled ? 'text-[13px]' : 'text-base'}
+              />
 
               <DemoButton
                 onClick={handleDemoClick}
