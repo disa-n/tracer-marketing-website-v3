@@ -1,4 +1,4 @@
-import { GridLinesLight } from '@/components/shared/GridLines';
+import { GridLinesLight } from '@/components/ui/GridLines';
 import Image from 'next/image';
 
 export default function WhyMonitoringTitle() {

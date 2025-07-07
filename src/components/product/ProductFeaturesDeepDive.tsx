@@ -1,6 +1,6 @@
 'use client'
 
-import { GridLinesLight } from '@/components/shared/GridLines'
+import { GridLinesLight } from '@/components/ui/GridLines'
 import { AnimatePresence, motion } from 'framer-motion'
 import {
   Activity,

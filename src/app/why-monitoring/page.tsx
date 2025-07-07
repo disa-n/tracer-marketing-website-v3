@@ -1,9 +1,9 @@
-import Hero2 from "@/components/WhyMonitoring/Hero2";
-import CoreChallengesSection from "@/components/WhyMonitoring/CoreChallengesSection";
-import WhyMonitoringTitle from "@/components/WhyMonitoring/WhyMonitoringTitle";
-import WhyMonitoringCardGrid from "@/components/WhyMonitoring/WhyMonitoringCardGrid";
-import HowTracerWorksSection from "@/components/WhyMonitoring/HowTracerWorksSection";
-import PersonalisedDemoV2 from "@/components/RouteHomeV2/PersonalisedDemoV2";
+import PersonalisedDemoV2 from "@/components/home/PersonalisedDemoV2";
+import CoreChallengesSection from "@/components/why-monitoring/CoreChallengesSection";
+import Hero2 from "@/components/why-monitoring/Hero2";
+import HowTracerWorksSection from "@/components/why-monitoring/HowTracerWorksSection";
+import WhyMonitoringCardGrid from "@/components/why-monitoring/WhyMonitoringCardGrid";
+import WhyMonitoringTitle from "@/components/why-monitoring/WhyMonitoringTitle";
 
 export const metadata = {
   title: "Tracer | Why Monitoring",

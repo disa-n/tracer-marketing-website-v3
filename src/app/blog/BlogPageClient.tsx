@@ -1,9 +1,9 @@
 'use client';
 
-import BlogGrid from '@/components/blog/BlogGrid';
-import BlogHero from '@/components/blog/BlogHero';
-import BlogIntro from '@/components/blog/BlogIntro';
-import FilterBar from '@/components/blog/FilterBar';
+import BlogGrid from '@/components/resources/BlogGrid';
+import BlogHero from '@/components/resources/BlogHero';
+import BlogIntro from '@/components/resources/BlogIntro';
+import FilterBar from '@/components/resources/FilterBar';
 import { BlogPost, getBlogPostsForClient } from '@/lib/blog-registry';
 import React from 'react';
 

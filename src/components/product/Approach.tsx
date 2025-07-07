@@ -1,6 +1,6 @@
 'use client'
 
-import { GridLinesLight } from '@/components/shared/GridLines'
+import { GridLinesLight } from '@/components/ui/GridLines'
 import { motion, useAnimation, useInView, type Variants } from 'framer-motion'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'

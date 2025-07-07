@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { GridLinesLight } from '@/components/shared/GridLines';
+import { GridLinesLight } from '@/components/ui/GridLines';
 import { supabase } from '@/lib/supabaseClient';
-import StyledLayoutWrapper from '@/components/shared/StyledLayoutWrapper';
+import StyledLayoutWrapper from '@/components/ui/StyledLayoutWrapper';
 
 interface ReusableHeroProps {
   title: string | React.ReactNode;

@@ -1,7 +1,7 @@
 'use client';
 
-import BlogPostTemplate from '@/components/blog/BlogPostTemplate';
-import ComingSoon from '@/components/shared/ComingSoon';
+import BlogPostTemplate from '@/components/resources/BlogPostTemplate';
+import ComingSoon from '@/components/ui/ComingSoon';
 import { BlogPost, getBlogPost } from '@/lib/blog-registry';
 import { useEffect, useState } from 'react';
 

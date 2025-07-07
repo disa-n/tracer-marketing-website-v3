@@ -1,7 +1,7 @@
 'use client';
 
-import BlogPostTemplate from '@/components/blog/BlogPostTemplate';
 import { MDXProviderWrapper } from '@/components/mdx/MdxProvider';
+import BlogPostTemplate from '@/components/resources/BlogPostTemplate';
 import React from 'react';
 
 interface MDXContentProps {
