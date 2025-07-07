@@ -1,5 +1,6 @@
 'use client';
 
+import { Info } from 'lucide-react';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
 
@@ -77,19 +78,21 @@ export default function FoundersSection() {
               {/* Vincent Hus */}
               <div className="relative">
                 <div className="mb-1">
-                  <h3
-                    className="font-britti-sans font-medium text-[#1e1e1e] text-base md:text-lg mb-0 cursor-pointer hover:opacity-70 transition-opacity"
-                    onMouseEnter={() => setHoveredFounder('vincent')}
-                    onMouseLeave={() => setHoveredFounder(null)}
-                    onClick={() => handleFounderClick('vincent')}
-                    onTouchStart={() => setHoveredFounder(hoveredFounder === 'vincent' ? null : 'vincent')}
-                  >
-                    Vincent Hus
-                  </h3>
-                  <div className="inline-block h-px border-b border-dashed border-[#1e1e1e] font-britti-sans font-medium text-base md:text-lg" style={{width: 'fit-content', marginBottom: '2px'}}>
-                    <span className="invisible">Vincent Hus</span>
+                  <div className="flex items-center gap-1.5">
+                    <h3 className="font-britti-sans font-medium text-[#1e1e1e] text-base md:text-lg mb-0">
+                      Vincent Hus
+                    </h3>
+                    <Info
+                      size={14}
+                      strokeWidth={1.5}
+                      className="text-gray-400 cursor-pointer hover:text-gray-600 transition-colors flex-shrink-0"
+                      onMouseEnter={() => setHoveredFounder('vincent')}
+                      onMouseLeave={() => setHoveredFounder(null)}
+                      onClick={() => handleFounderClick('vincent')}
+                      onTouchStart={() => setHoveredFounder(hoveredFounder === 'vincent' ? null : 'vincent')}
+                    />
                   </div>
-                  <p className="font-britti-sans font-normal text-[#666666] text-xs md:text-sm" style={{marginTop: '-18px'}}>
+                  <p className="font-britti-sans font-normal text-[#666666] text-xs md:text-sm">
                     Co-founder and CEO
                   </p>
                 </div>
@@ -118,19 +121,21 @@ export default function FoundersSection() {
               {/* Laura Bogaert */}
               <div className="relative">
                 <div className="mb-1">
-                  <h3
-                    className="font-britti-sans font-medium text-[#1e1e1e] text-base md:text-lg mb-0 cursor-pointer hover:opacity-70 transition-opacity"
-                    onMouseEnter={() => setHoveredFounder('laura')}
-                    onMouseLeave={() => setHoveredFounder(null)}
-                    onClick={() => handleFounderClick('laura')}
-                    onTouchStart={() => setHoveredFounder(hoveredFounder === 'laura' ? null : 'laura')}
-                  >
-                    Laura Bogaert
-                  </h3>
-                  <div className="inline-block h-px border-b border-dashed border-[#1e1e1e] font-britti-sans font-medium text-base md:text-lg" style={{width: 'fit-content', marginBottom: '2px'}}>
-                    <span className="invisible">Laura Bogaert</span>
+                  <div className="flex items-center gap-1.5">
+                    <h3 className="font-britti-sans font-medium text-[#1e1e1e] text-base md:text-lg mb-0">
+                      Laura Bogaert
+                    </h3>
+                    <Info
+                      size={14}
+                      strokeWidth={1.5}
+                      className="text-gray-400 cursor-pointer hover:text-gray-600 transition-colors flex-shrink-0"
+                      onMouseEnter={() => setHoveredFounder('laura')}
+                      onMouseLeave={() => setHoveredFounder(null)}
+                      onClick={() => handleFounderClick('laura')}
+                      onTouchStart={() => setHoveredFounder(hoveredFounder === 'laura' ? null : 'laura')}
+                    />
                   </div>
-                  <p className="font-britti-sans font-normal text-[#666666] text-xs md:text-sm" style={{marginTop: '-18px'}}>
+                  <p className="font-britti-sans font-normal text-[#666666] text-xs md:text-sm">
                     Co-founder and COO
                   </p>
                 </div>
@@ -194,26 +199,28 @@ export default function FoundersSection() {
                 {/* Vincent Hus */}
                 <div className="relative">
                   <div className="mb-3">
-                    <h3
-                      className="font-britti-sans font-medium text-[#1e1e1e] text-2xl mb-1 cursor-pointer hover:opacity-70 transition-opacity"
-                      onMouseEnter={() => setHoveredFounder('vincent')}
-                      onMouseLeave={() => setHoveredFounder(null)}
-                      onClick={() => handleFounderClick('vincent')}
-                    >
-                      Vincent Hus
-                    </h3>
-                    <div className="inline-block h-px border-b border-dashed border-[#1e1e1e] font-britti-sans font-medium text-2xl" style={{width: 'fit-content', marginBottom: '0.25rem'}}>
-                      <span className="invisible">Vincent Hus</span>
+                    <div className="flex items-center gap-1.5">
+                      <h3 className="font-britti-sans font-medium text-[#1e1e1e] text-2xl mb-1">
+                        Vincent Hus
+                      </h3>
+                      <Info
+                        size={16}
+                        strokeWidth={1.5}
+                        className="text-gray-400 cursor-pointer hover:text-gray-600 transition-colors flex-shrink-0 -translate-y-0.5"
+                        onMouseEnter={() => setHoveredFounder('vincent')}
+                        onMouseLeave={() => setHoveredFounder(null)}
+                        onClick={() => handleFounderClick('vincent')}
+                      />
                     </div>
-                    <p className="font-britti-sans font-normal text-[#666666] text-base" style={{marginTop: '-12px'}}>
+                    <p className="font-britti-sans font-normal text-[#666666] text-base">
                       Co-founder and CEO
                     </p>
                   </div>
 
                   {/* Bio Card */}
                   {isFounderVisible('vincent') && (
-                    <div className="absolute bottom-full left-0 mb-4 w-80 bg-[#3D3D3D] text-white p-4 shadow-lg z-[100] transition-opacity duration-200">
-                      <p className="font-britti-sans text-sm leading-relaxed whitespace-pre-line">
+                    <div className="absolute bottom-full -left-32 mb-4 w-[380px] bg-[#3D3D3D] text-white p-4 shadow-lg z-[100] transition-opacity duration-200">
+                      <p className="font-britti-sans text-sm leading-tight whitespace-pre-line">
                         {founderBios.vincent}
                       </p>
                     </div>
@@ -232,26 +239,28 @@ export default function FoundersSection() {
                 {/* Laura Bogaert */}
                 <div className="relative">
                   <div className="mb-3">
-                    <h3
-                      className="font-britti-sans font-medium text-[#1e1e1e] text-2xl mb-1 cursor-pointer hover:opacity-70 transition-opacity"
-                      onMouseEnter={() => setHoveredFounder('laura')}
-                      onMouseLeave={() => setHoveredFounder(null)}
-                      onClick={() => handleFounderClick('laura')}
-                    >
-                      Laura Bogaert
-                    </h3>
-                    <div className="inline-block h-px border-b border-dashed border-[#1e1e1e] font-britti-sans font-medium text-2xl" style={{width: 'fit-content', marginBottom: '0.25rem'}}>
-                      <span className="invisible">Laura Bogaert</span>
+                    <div className="flex items-center gap-1.5">
+                      <h3 className="font-britti-sans font-medium text-[#1e1e1e] text-2xl mb-1">
+                        Laura Bogaert
+                      </h3>
+                      <Info
+                        size={16}
+                        strokeWidth={1.5}
+                        className="text-gray-400 cursor-pointer hover:text-gray-600 transition-colors flex-shrink-0 -translate-y-0.5"
+                        onMouseEnter={() => setHoveredFounder('laura')}
+                        onMouseLeave={() => setHoveredFounder(null)}
+                        onClick={() => handleFounderClick('laura')}
+                      />
                     </div>
-                    <p className="font-britti-sans font-normal text-[#666666] text-base" style={{marginTop: '-12px'}}>
+                    <p className="font-britti-sans font-normal text-[#666666] text-base">
                       Co-founder and COO
                     </p>
                   </div>
 
                   {/* Bio Card */}
                   {isFounderVisible('laura') && (
-                    <div className="absolute bottom-full left-0 mb-4 w-80 bg-[#3D3D3D] text-white p-4 shadow-lg z-[100] transition-opacity duration-200">
-                      <p className="font-britti-sans text-sm leading-relaxed whitespace-pre-line">
+                    <div className="absolute bottom-full -left-32 mb-4 w-[380px] bg-[#3D3D3D] text-white p-4 shadow-lg z-[100] transition-opacity duration-200">
+                      <p className="font-britti-sans text-sm leading-tight whitespace-pre-line">
                         {founderBios.laura}
                       </p>
                     </div>
