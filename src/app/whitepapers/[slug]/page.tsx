@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: WhitepaperPageProps): Promise
   }
 }
 
-import UnifiedContentRenderer from '@/components/content/UnifiedContentRenderer';
+import UnifiedContentRenderer from '@/components/resources/UnifiedContentRenderer';
 import { generateContentSchema } from '@/lib/metadata-generator';
 
 export default async function WhitepaperPage({ params }: WhitepaperPageProps) {

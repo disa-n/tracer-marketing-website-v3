@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 }
 
-import UnifiedContentRenderer from '@/components/content/UnifiedContentRenderer';
+import UnifiedContentRenderer from '@/components/resources/UnifiedContentRenderer';
 import { generateContentSchema } from '@/lib/metadata-generator';
 
 /**

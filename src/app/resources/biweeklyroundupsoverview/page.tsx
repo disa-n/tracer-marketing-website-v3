@@ -3,8 +3,8 @@ export const metadata = {
   description: "Stay up to date with Tracer's latest company and product updates through our bi-weekly roundups.",
 };
 
-import BiweeklyHero from '@/components/resources/Biweekly/BiweeklyHero';
-import BiweeklyGrid from '@/components/resources/Biweekly/BiweeklyGrid';
+import BiweeklyGrid from '@/components/resources/blog/Biweekly/BiweeklyGrid';
+import BiweeklyHero from '@/components/resources/blog/Biweekly/BiweeklyHero';
 
 export default function BiweeklyRoundupsOverview() {
   return (

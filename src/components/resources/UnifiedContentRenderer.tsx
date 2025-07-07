@@ -4,7 +4,7 @@
 
 'use client';
 
-import BlogPostTemplate from '@/components/resources/BlogPostTemplate';
+import BlogPostTemplate from '@/components/resources/blog/BlogPostTemplate';
 import WhitepaperDownloadGateway from '@/components/resources/downloads/WhitepaperDownloadGateway';
 import { MDXProviderWrapper } from '@/components/resources/mdx/MdxProvider';
 import ComingSoon from '@/components/ui/content/ComingSoon';

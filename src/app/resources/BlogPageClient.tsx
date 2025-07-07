@@ -1,11 +1,11 @@
 'use client';
 
-import FilterBar from '@/components/resources/FilterBar';
+import FilterBar from '@/components/resources/blog/FilterBar';
 import { FileText, Newspaper, Settings } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 
-import BlogCard from '@/components/resources/BlogCard';
-import BlogPagination from '@/components/resources/BlogPagination';
+import BlogCard from '@/components/resources/blog/BlogCard';
+import BlogPagination from '@/components/resources/blog/BlogPagination';
 import ToolCard from '@/components/ui/cards/ToolCard';
 import SectionTitle from '@/components/ui/content/SectionTitle';
 import ReusableHero from '@/components/ui/heroes/ReusableHero';
