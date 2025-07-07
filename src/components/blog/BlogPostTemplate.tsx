@@ -29,7 +29,7 @@ export default function BlogPostTemplate({ post, template = 'default', mdxConten
     return (
       <div
         className={proseClasses}
-        dangerouslySetInnerHTML={{ __html: post.content }}
+        dangerouslySetInnerHTML={{ __html: post.content || '' }}
       />
     );
   };
@@ -121,7 +121,7 @@ export default function BlogPostTemplate({ post, template = 'default', mdxConten
         {/* Content */}
         <div className="prose prose-xl max-w-none prose-headings:font-britti-sans prose-p:text-[#202020] prose-p:leading-relaxed">
           {mdxContent || (
-            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            <div dangerouslySetInnerHTML={{ __html: post.content || '' }} />
           )}
         </div>
       </div>
@@ -170,7 +170,7 @@ export default function BlogPostTemplate({ post, template = 'default', mdxConten
           <div className="lg:col-span-2">
             <div className="prose prose-lg max-w-none prose-headings:font-britti-sans">
               {mdxContent || (
-                <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                <div dangerouslySetInnerHTML={{ __html: post.content || '' }} />
               )}
             </div>
           </div>
@@ -223,7 +223,7 @@ export default function BlogPostTemplate({ post, template = 'default', mdxConten
         {/* Content */}
         <div className="prose prose-lg max-w-none prose-headings:font-mono prose-code:bg-[#F5F5F5] prose-code:px-2 prose-code:py-1 prose-code:rounded">
           {mdxContent || (
-            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            <div dangerouslySetInnerHTML={{ __html: post.content || '' }} />
           )}
         </div>
       </div>

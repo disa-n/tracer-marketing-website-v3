@@ -79,7 +79,8 @@ export default function MDXContent({ slug }: MDXContentProps) {
     author: metadata.author || 'Team Tracer',
     tag: metadata.tag || 'general',
     readTime: metadata.readTime || '5 min read',
-    content: '' // Content will be rendered by the MDX component
+    content: '', // Content will be rendered by the MDX component
+    type: 'mdx' as const
   };
 
   // Get the template from metadata, default to 'default'
