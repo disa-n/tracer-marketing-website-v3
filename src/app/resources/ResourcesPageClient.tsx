@@ -1,8 +1,7 @@
 'use client'
-import Link from "next/link";
+import ComingSoon from "@/components/ui/content/ComingSoon";
 import Image from "next/image";
-import React from "react";
-import ComingSoon from "@/components/ui/ComingSoon";
+import Link from "next/link";
 
 type ResourceItem = {
   slug: string;

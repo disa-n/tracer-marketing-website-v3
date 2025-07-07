@@ -8,7 +8,7 @@ import PersonalisedDemoV2 from '@/components/home/PersonalisedDemoV2';
 import ProductPreviewSectionV2 from '@/components/home/ProductPreviewSectionV2';
 import ScienceNeedsInfoSection from '@/components/home/ScienceNeedsInfoSection';
 import UseTracerSectionV2 from '@/components/home/UseTracerSectionV2';
-import MeetTracerSection from '@/components/ui/MeetTracerSection';
+import MeetTracerSection from '@/components/ui/content/MeetTracerSection';
 import Script from 'next/script';
 
 export const metadata = {

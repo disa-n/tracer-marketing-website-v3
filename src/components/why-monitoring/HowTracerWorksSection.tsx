@@ -1,5 +1,5 @@
-import { GridLinesLight } from '@/components/ui/GridLines';
-import PrimaryButton from '@/components/ui/PrimaryButton';
+import PrimaryButton from '@/components/ui/buttons/PrimaryButton';
+import { GridLinesLight } from '@/components/ui/layout/GridLines';
 import Image from 'next/image';
 import Link from 'next/link';
 

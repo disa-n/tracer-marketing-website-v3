@@ -1,7 +1,6 @@
 'use client';
-import React from 'react';
 
-import { GridLinesLight } from '@/components/ui/GridLines';
+import { GridLinesLight } from '@/components/ui/layout/GridLines';
 
 
 

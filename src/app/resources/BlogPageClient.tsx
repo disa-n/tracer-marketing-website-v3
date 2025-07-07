@@ -6,11 +6,11 @@ import { useEffect, useMemo, useState } from 'react';
 
 import BlogCard from '@/components/resources/BlogCard';
 import BlogPagination from '@/components/resources/BlogPagination';
-import LoadingSpinner from '@/components/ui/LoadingSpinner';
-import ReusableHero from '@/components/ui/ReusableHero';
-import Section from '@/components/ui/Section';
-import SectionTitle from '@/components/ui/SectionTitle';
-import ToolCard from '@/components/ui/ToolCard';
+import ToolCard from '@/components/ui/cards/ToolCard';
+import SectionTitle from '@/components/ui/content/SectionTitle';
+import ReusableHero from '@/components/ui/heroes/ReusableHero';
+import Section from '@/components/ui/layout/Section';
+import LoadingSpinner from '@/components/ui/utils/LoadingSpinner';
 import { useBlogPosts } from '@/hooks/useBlogPosts';
 import { TOOLS } from '@/lib/constants';
 

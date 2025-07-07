@@ -1,6 +1,6 @@
 "use client"
 
-import ReusableCta from '@/components/ui/ReusableCta'
+import ReusableCta from '@/components/ui/ctas/ReusableCta'
 
 const AboutUsCTA = () => {
   return (

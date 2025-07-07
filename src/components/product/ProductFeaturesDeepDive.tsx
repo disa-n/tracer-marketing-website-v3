@@ -1,14 +1,14 @@
 'use client'
 
-import { GridLinesLight } from '@/components/ui/GridLines'
+import { GridLinesLight } from '@/components/ui/layout/GridLines'
 import { AnimatePresence, motion } from 'framer-motion'
 import {
-  Activity,
-  BarChart3,
-  Brain,
-  Clock,
-  Eye,
-  Settings
+    Activity,
+    BarChart3,
+    Brain,
+    Clock,
+    Eye,
+    Settings
 } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'

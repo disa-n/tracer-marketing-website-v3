@@ -1,8 +1,8 @@
 'use client';
 
-import GridLines from '@/components/ui/GridLines';
+import PerformanceCard from '@/components/ui/cards/PerformanceCard';
+import GridLines from '@/components/ui/layout/GridLines';
 import Link from 'next/link';
-import PerformanceCard from '../ui/PerformanceCard';
 
 export default function FixAnythingSection() {
   return (

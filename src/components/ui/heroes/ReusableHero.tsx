@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
-import Image from 'next/image';
-import { GridLinesLight } from '@/components/ui/GridLines';
+import { GridLinesLight } from '@/components/ui/layout/GridLines';
+import StyledLayoutWrapper from '@/components/ui/layout/StyledLayoutWrapper';
 import { supabase } from '@/lib/supabaseClient';
-import StyledLayoutWrapper from '@/components/ui/StyledLayoutWrapper';
+import Image from 'next/image';
+import React, { useState } from 'react';
 
 interface ReusableHeroProps {
   title: string | React.ReactNode;

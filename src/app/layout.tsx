@@ -1,6 +1,6 @@
 import { DemoProvider } from "@/components/demo";
-import Footer from "@/components/ui/Footer";
-import Header from "@/components/ui/Navbar";
+import Footer from "@/components/ui/navigation/Footer";
+import Header from "@/components/ui/navigation/Navbar";
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Chakra_Petch, Geist, Geist_Mono } from "next/font/google";

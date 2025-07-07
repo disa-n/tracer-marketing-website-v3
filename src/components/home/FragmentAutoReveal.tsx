@@ -1,6 +1,6 @@
 'use client';
 
-import { GridLinesLight } from '@/components/ui/GridLines';
+import { GridLinesLight } from '@/components/ui/layout/GridLines';
 import Image from 'next/image';
 
 export default function FragmentAutoReveal() {

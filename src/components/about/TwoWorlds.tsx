@@ -219,7 +219,7 @@ export default function FoundersSection() {
 
                   {/* Bio Card */}
                   {isFounderVisible('vincent') && (
-                    <div className="absolute bottom-full -left-32 mb-4 w-[380px] bg-[#3D3D3D] text-white p-4 shadow-lg z-[100] transition-opacity duration-200">
+                    <div className="absolute bottom-full -left-32 mb-4 w-[380px] xl:w-[420px] 2xl:w-[450px] bg-[#3D3D3D] text-white p-4 shadow-lg z-[100] transition-opacity duration-200">
                       <p className="font-britti-sans text-sm leading-tight whitespace-pre-line">
                         {founderBios.vincent}
                       </p>

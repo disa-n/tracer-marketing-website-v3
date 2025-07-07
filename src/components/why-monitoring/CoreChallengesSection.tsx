@@ -1,5 +1,5 @@
-import GridLines from '../ui/GridLines';
-import PerformanceCard from '../ui/PerformanceCard';
+import PerformanceCard from '@/components/ui/cards/PerformanceCard';
+import GridLines from '@/components/ui/layout/GridLines';
 
 export default function CoreChallengesSection() {
   return (

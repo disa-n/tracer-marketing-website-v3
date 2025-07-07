@@ -1,6 +1,6 @@
+import { GridLinesLight } from '@/components/ui/layout/GridLines';
+import StyledLayoutWrapper from '@/components/ui/layout/StyledLayoutWrapper';
 import React from 'react';
-import { GridLinesLight } from '@/components/ui/GridLines';
-import StyledLayoutWrapper from '@/components/ui/StyledLayoutWrapper';
 
 interface SectionProps {
   children: React.ReactNode;
