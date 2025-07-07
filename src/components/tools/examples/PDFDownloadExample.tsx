@@ -4,7 +4,7 @@
  * Example component showing how to use the minimal PDF download system
  */
 
-import PDFDownloadCard from '@/components/downloads/PDFDownloadCard';
+import PDFDownloadCard from '@/components/resources/downloads/PDFDownloadCard';
 
 export default function PDFDownloadExample() {
   return (
@@ -54,7 +54,7 @@ export default function PDFDownloadExample() {
 }
 
 // Usage in a page:
-// import PDFDownloadExample from '@/components/examples/PDFDownloadExample';
+// import PDFDownloadExample from '@/components/tools/examples/PDFDownloadExample';
 // 
 // export default function ExamplePage() {
 //   return (
