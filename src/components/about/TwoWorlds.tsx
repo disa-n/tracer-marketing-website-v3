@@ -14,7 +14,6 @@ const LinkedInIcon = () => (
 // Bio data for founders
 const founderBios = {
   vincent: "Vincent is Tracer's lead builder with a track record of turning complex ideas into scalable platforms.\n\nA repeat technical founder, he built Flymble, a BNPL travel platform and Primary Portal, a B2B SaaS company with over $15M funding.\n\nHe holds a degree in Biomechanical Engineering from TU Delft.",
-  vincent: "Vincent is Tracer's lead builder with a track record of turning complex ideas into scalable platforms.\n\nA repeat technical founder, he built Flymble, a BNPL travel platform and Primary Portal, a B2B SaaS company with over $15M funding.\n\nHe holds a degree in Biomechanical Engineering from TU Delft.",
   laura: "Laura is Tracer's lead problem-solver and strategist.\n\nAt McKinsey, she advised global pharma and biotech firms, where she identified the infrastructure bottlenecks slowing scientific progress.\n\nShe holds a Master's in Digital Health from the University of Oxford."
 };
 

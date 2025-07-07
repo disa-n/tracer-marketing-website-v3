@@ -169,7 +169,6 @@ const DesktopCards: React.FC<DesktopCardsProps> = ({
   <div className="hidden lg:block w-full">
     {/* 3x2 Grid for all desktop layouts */}
     <div className="grid grid-cols-3 gap-6 lg:gap-8 xl:gap-10 2xl:gap-8 justify-items-center">
-    <div className="grid grid-cols-3 gap-6 lg:gap-8 xl:gap-10 2xl:gap-8 justify-items-center">
       {cultureValues.map((value) => (
         <div
           key={value.title}
