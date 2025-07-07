@@ -30,11 +30,11 @@ export default function FoundersSection() {
       clearTimeout(timeoutRef.current);
     }
 
-   // Set new timeout to hide card after 15 seconds
-   timeoutRef.current = setTimeout(() => {
-    setClickedFounder(null);
-  }, 15000);
-};
+    // Set new timeout to hide card after 15 seconds
+    timeoutRef.current = setTimeout(() => {
+      setClickedFounder(null);
+    }, 15000);
+  };
 
   const isFounderVisible = (founder: string) => {
     return hoveredFounder === founder || clickedFounder === founder;

@@ -4,13 +4,13 @@ https://ryanmulligan.dev/blog/css-property-new-style/
 */
 
 :root {
-  --shiny-cta-experimental-bg: linear-gradient(to bottom, #1D4DD5 0%, #19398F 85%);
+  --shiny-cta-experimental-bg: linear-gradient(to top right, #19398F 0%, #1D4DD5 85%);
   --shiny-cta-experimental-bg-subtle: #1D4DD5;
   --shiny-cta-experimental-left: #ffffff;
   --shiny-cta-experimental-middle: #ffffff;
   --shiny-cta-experimental-right: #ffffff;
   --shiny-cta-experimental-background-sweep: #ffffff;
-  --shiny-cta-experimental-hover-background: linear-gradient(to bottom, #1D4DD5 0%, #173280 85%);
+  --shiny-cta-experimental-hover-background: linear-gradient(to top right, #173280 0%, #1D4DD5 85%);
 }
 
 @property --gradient-angle-experimental {

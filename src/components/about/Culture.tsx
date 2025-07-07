@@ -48,7 +48,15 @@ const useCardDimensions = (windowWidth: number) => {
     if (windowWidth <= 768) return '320px'  // Smaller width for mobile
     if (windowWidth <= 960) return '350px'
     if (windowWidth <= 1024) return '350px'  // lg breakpoint starts at 1024px
-    if (windowWidth <= 1280) {return '360px'  // Reduced from 380px to prevent touching
+
+    // Desktop calculations: account for container padding and gaps
+    // Container has max-width and px-12 (48px total horizontal padding)
+    // 3-column grid with gaps: lg=24px, xl=32px, 2xl=40px between cards
+
+    if (windowWidth <= 1280) {
+      // lg breakpoint: gap-6 (24px between cards = 48px total gap)
+      // Available width ≈ 1024-1280px, minus padding ≈ 48px, minus gaps ≈ 48px
+      return '360px'  // Reduced from 380px to prevent touching
     }
     if (windowWidth <= 1536) {
       // xl breakpoint: gap-8 (32px between cards = 64px total gap)

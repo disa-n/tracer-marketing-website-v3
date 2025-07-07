@@ -51,7 +51,7 @@ const DemoButton = ({
   const style = {
     '--mobile-height': `${mobileHeight}px`,
     '--desktop-height': `${desktopHeight}px`,
-    background: 'linear-gradient(to bottom, #2D2D2D 0%, #202020 100%)',
+    background: 'linear-gradient(to top right, #202020 0%, #2D2D2D 100%)',
     boxShadow: 'inset 0 0 0 0.5px #343434',
   } as React.CSSProperties;
 
