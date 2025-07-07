@@ -47,15 +47,22 @@ const useCardDimensions = (windowWidth: number) => {
     if (windowWidth <= 480) return 'calc(100vw - 32px)'  // Full width minus padding for very small screens
     if (windowWidth <= 768) return '320px'  // Smaller width for mobile
     if (windowWidth <= 960) return '350px'
-    if (windowWidth <= 1024) return '350px'
-    if (windowWidth <= 1280) return '380px'
-    if (windowWidth <= 1440) return '420px'
-    if (windowWidth <= 1536) return '450px'  // xl breakpoint
-    if (windowWidth <= 1920) return '540px'  // 2xl breakpoint - reduced to 540px
-    return '560px'  // larger screens - reduced to 560px
+    if (windowWidth <= 1024) return '350px'  // lg breakpoint starts at 1024px
+    if (windowWidth <= 1280) {return '360px'  // Reduced from 380px to prevent touching
+    }
+    if (windowWidth <= 1536) {
+      // xl breakpoint: gap-8 (32px between cards = 64px total gap)
+      // Available width ≈ 1280-1536px, minus padding ≈ 48px, minus gaps ≈ 64px
+      return '400px'  // Reduced from 450px to prevent touching
+    }
+    if (windowWidth <= 1920) {
+      // 2xl breakpoint: gap-10 (40px between cards = 80px total gap)
+      // Available width ≈ 1536-1920px, minus padding ≈ 48px, minus gaps ≈ 80px
+      return '520px'  // Increased from 480px to reduce excessive spacing
+    }
+    return '540px'  // Increased from 500px for larger screens
   }, [windowWidth])
 }
-
 // Reusable Culture Card Component
 const CultureCard: React.FC<CultureCardProps> = ({
   title,
@@ -153,7 +160,7 @@ const DesktopCards: React.FC<DesktopCardsProps> = ({
 }) => (
   <div className="hidden lg:block w-full">
     {/* 3x2 Grid for all desktop layouts */}
-    <div className="grid grid-cols-3 gap-6 lg:gap-8 xl:gap-10 2xl:gap-12 justify-items-center">
+    <div className="grid grid-cols-3 gap-6 lg:gap-8 xl:gap-10 2xl:gap-8 justify-items-center">
       {cultureValues.map((value) => (
         <div
           key={value.title}
