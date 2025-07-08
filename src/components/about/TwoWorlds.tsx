@@ -99,8 +99,8 @@ export default function FoundersSection() {
 
                 {/* Bio Card */}
                 {isFounderVisible('vincent') && (
-                  <div className="absolute bottom-full left-0 mb-2 w-64 bg-[#3D3D3D] text-white p-4 shadow-lg z-[100] transition-opacity duration-200">
-                    <p className="font-britti-sans text-sm leading-relaxed whitespace-pre-line">
+                  <div className="absolute bottom-full right-0 mb-2 w-56 max-w-[calc(100vw-2rem)] bg-[#3D3D3D] text-white p-3 shadow-lg z-[100] transition-opacity duration-200">
+                    <p className="font-britti-sans text-xs leading-relaxed whitespace-pre-line">
                       {founderBios.vincent}
                     </p>
                   </div>
@@ -142,8 +142,8 @@ export default function FoundersSection() {
 
                 {/* Bio Card */}
                 {isFounderVisible('laura') && (
-                  <div className="absolute bottom-full left-0 mb-2 w-64 bg-[#3D3D3D] text-white p-4 shadow-lg z-[100] transition-opacity duration-200">
-                    <p className="font-britti-sans text-sm leading-relaxed whitespace-pre-line">
+                  <div className="absolute bottom-full right-0 mb-2 w-56 max-w-[calc(100vw-2rem)] bg-[#3D3D3D] text-white p-3 shadow-lg z-[100] transition-opacity duration-200">
+                    <p className="font-britti-sans text-xs leading-relaxed whitespace-pre-line">
                       {founderBios.laura}
                     </p>
                   </div>
