@@ -178,7 +178,7 @@ export default function BlogPageClient() {
         <div className="mt-12">
           <BlogIntro />
         </div>
-        <div className="mt-12">
+        <div className="mt-6 relative z-20">
           <FilterBar showFilters={false} />
         </div>
         <div className="mt-16">

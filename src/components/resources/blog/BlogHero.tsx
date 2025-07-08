@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
-import Image from 'next/image';
 import { supabase } from '@/lib/supabaseClient';
+import Image from 'next/image';
+import { useState } from 'react';
 
 export default function BlogHero() {
   const [email, setEmail] = useState('');
@@ -65,7 +65,7 @@ export default function BlogHero() {
                   >
                     <input
                       type="email"
-                      placeholder="Enter your e-mail"
+                      placeholder="Enter your email"
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}

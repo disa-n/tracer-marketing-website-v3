@@ -37,7 +37,7 @@ export default function FilterBar({
   return (
     <>
       {/* Mobile Layout - Grid */}
-      <div className="w-full grid grid-cols-2 gap-3 sm:gap-[14px] md:hidden px-4 sm:px-0">
+      <div className="w-full grid grid-cols-2 gap-3 sm:gap-[14px] md:hidden px-4 sm:px-0 pb-8">
         {filters.map((filter) => {
           const isActive = selectedFilter === filter;
           const isAllResources = filter === 'All Resources';
@@ -78,7 +78,7 @@ export default function FilterBar({
       </div>
 
       {/* Desktop Layout - Original Inline Flex */}
-      <div className="w-full h-full justify-start items-center gap-[14px] hidden md:inline-flex">
+      <div className="w-full h-full justify-start items-center gap-[14px] hidden md:inline-flex pb-8">
         {filters.map((filter) => {
           const isActive = selectedFilter === filter;
           const isAllResources = filter === 'All Resources';

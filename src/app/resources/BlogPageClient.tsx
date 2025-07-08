@@ -111,7 +111,7 @@ export default function BlogPageClient() {
   return (
     <main className="w-full">
       {/* Hero Section - Responsive layout: image on top for mobile, side-by-side for desktop */}
-      <div className="relative overflow-visible min-h-[60vh] max-h-[75vh] pt-16 lg:pt-0 lg:-mt-32 pb-0">
+      <div className="relative overflow-visible min-h-[60vh] max-h-[75vh] pt-16 lg:pt-0 pb-0">
         <ReusableHero
           title="Resources"
           subtitle="The latest updates from Tracer. See our bi-weekly roundups for the latest company and product developments."
@@ -129,18 +129,69 @@ export default function BlogPageClient() {
         />
       </div>
 
-      {/* Section Navigation - Mobile-first design with staircase on larger screens */}
-      <Section showGridLines={true} padding="none" maxWidth="full" className="relative -mt-4 sm:-mt-6 lg:-mt-8">
-        {/* Staircase background - creates steps going down on the right side only */}
-        <div className="hidden md:block absolute top-0 left-0 w-[35%] md:w-[45%] lg:w-[45%] h-14 bg-[#202020]"></div>
-        <div className="hidden md:block absolute top-14 left-0 w-[55%] md:w-[65%] lg:w-[70%] h-14 bg-[#202020]"></div>
-        <div className="hidden md:block absolute top-28 left-0 w-full h-32 bg-[#202020]"></div>
-        {/* Mobile/tablet full black background */}
-        <div className="lg:hidden w-full h-full bg-[#202020] absolute top-0 left-0 py-8 sm:py-12"></div>
+      {/* Section Navigation - Consistent staircase design across all screen sizes */}
+      <Section showGridLines={false} padding="none" maxWidth="full" className="relative mt-8 sm:mt-12 lg:mt-16">
+        {/* Staircase background - 2 rectangles plus full-width main block */}
+        <div className="absolute top-0 left-0 w-[20%] xs:w-[22%] sm:w-[24%] md:w-[26%] lg:hidden xl:hidden 2xl:hidden h-12 sm:h-14 bg-[#202020] hidden"></div>
+        {/* Top black rectangle - hidden in stacked views (mobile/tablet), visible in unstacked views (desktop) */}
+        <div className="absolute top-0 left-0 w-[33.33%] h-12 sm:h-16 bg-[#202020] hidden lg:block"></div>
+        <div className="absolute top-12 sm:top-16 lg:top-12 xl:top-16 left-0 w-full h-24 sm:h-32 bg-[#202020]"></div>
 
         <div className="relative z-10">
-          <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-12 2xl:px-12 pt-8 sm:pt-12 lg:pt-16">
-            <div className="flex flex-col gap-4 sm:flex-row sm:gap-6 justify-center sm:justify-center lg:justify-start items-center sm:items-center lg:items-start max-w-4xl mx-auto lg:mx-0">
+          <div className="px-4 xs:px-6 sm:px-8 md:px-10 lg:px-12 xl:px-12 2xl:px-12 pt-18 xs:pt-20 sm:pt-22 md:pt-24 lg:pt-26 xl:pt-24 pb-6 xs:pb-8 sm:pb-12 md:pb-16">
+            {/* Mobile Layout - Spaced buttons with text along black strip */}
+            <div className="flex flex-row justify-between items-center sm:hidden px-4">
+              {/* Tools Card - Mobile */}
+              <button
+                onClick={() => {
+                  const toolsSection = document.getElementById('tools-section');
+                  if (toolsSection) {
+                    const yOffset = -120;
+                    const y = toolsSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                  }
+                }}
+                className="flex flex-col items-center justify-center bg-white border border-gray-200 rounded-none hover:bg-gray-50 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md p-2 min-w-0 flex-1 mx-1"
+              >
+                <Settings className="text-[#202020] mb-1" style={{ width: '16px', height: '16px' }} />
+                <span className="text-[10px] font-medium text-[#202020] font-chakra-petch leading-tight text-center">Tools</span>
+              </button>
+
+              {/* Tracer Blog Card - Mobile */}
+              <button
+                onClick={() => {
+                  const blogSection = document.getElementById('tracer-blog-section');
+                  if (blogSection) {
+                    const yOffset = -120;
+                    const y = blogSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                  }
+                }}
+                className="flex flex-col items-center justify-center bg-white border border-gray-200 rounded-none hover:bg-gray-50 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md p-2 min-w-0 flex-1 mx-1"
+              >
+                <Newspaper className="text-[#202020] mb-1" style={{ width: '16px', height: '16px' }} />
+                <span className="text-[10px] font-medium text-[#202020] font-chakra-petch leading-tight text-center">Blog</span>
+              </button>
+
+              {/* Articles Card - Mobile */}
+              <button
+                onClick={() => {
+                  const articlesSection = document.getElementById('articles-section');
+                  if (articlesSection) {
+                    const yOffset = -120;
+                    const y = articlesSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                  }
+                }}
+                className="flex flex-col items-center justify-center bg-white border border-gray-200 rounded-none hover:bg-gray-50 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md p-2 min-w-0 flex-1 mx-1"
+              >
+                <FileText className="text-[#202020] mb-1" style={{ width: '16px', height: '16px' }} />
+                <span className="text-[10px] font-medium text-[#202020] font-chakra-petch leading-tight text-center">Articles</span>
+              </button>
+            </div>
+
+            {/* Desktop Layout - Original buttons with text */}
+            <div className="hidden sm:flex sm:flex-row sm:gap-4 md:gap-6 justify-center sm:justify-center lg:justify-start items-center sm:items-center lg:items-start max-w-4xl mx-auto lg:mx-0">
               {/* Tools Card */}
               <button
                 onClick={() => {
@@ -151,17 +202,12 @@ export default function BlogPageClient() {
                     window.scrollTo({ top: y, behavior: 'smooth' });
                   }
                 }}
-                className="group w-full sm:w-40 bg-white border border-gray-200 rounded-none p-4 hover:bg-gray-50 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+                className="group w-full xs:w-32 sm:w-36 md:w-40 lg:w-44 xl:w-40 bg-white border border-gray-200 rounded-none p-3 xs:p-4 hover:bg-gray-50 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
               >
-                <div className="flex flex-col items-center text-center space-y-2">
+                <div className="flex items-center justify-center space-x-2">
                   {/* Tools Icon */}
-                  <div className="w-8 h-8 flex items-center justify-center">
-                    <Settings className="text-[#202020]" style={{ width: '25.2px', height: '25.2px' }} />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-medium text-[#202020] font-chakra-petch">Tools</h3>
-                    <p className="text-xs text-gray-600 mt-1">Explore our toolkit</p>
-                  </div>
+                  <Settings className="text-[#202020]" style={{ width: '20px', height: '20px' }} />
+                  <h3 className="text-sm font-medium text-[#202020] font-chakra-petch">Tools</h3>
                 </div>
               </button>
 
@@ -175,17 +221,12 @@ export default function BlogPageClient() {
                     window.scrollTo({ top: y, behavior: 'smooth' });
                   }
                 }}
-                className="group w-full sm:w-40 bg-white border border-gray-200 rounded-none p-4 hover:bg-gray-50 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+                className="group w-full xs:w-32 sm:w-36 md:w-40 lg:w-44 xl:w-40 bg-white border border-gray-200 rounded-none p-3 xs:p-4 hover:bg-gray-50 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
               >
-                <div className="flex flex-col items-center text-center space-y-2">
+                <div className="flex items-center justify-center space-x-2">
                   {/* Blog Icon */}
-                  <div className="w-8 h-8 flex items-center justify-center">
-                    <Newspaper className="w-6 h-6 text-[#202020]" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-medium text-[#202020] font-chakra-petch">Tracer Blog</h3>
-                    <p className="text-xs text-gray-600 mt-1">Team updates</p>
-                  </div>
+                  <Newspaper className="w-5 h-5 text-[#202020]" />
+                  <h3 className="text-sm font-medium text-[#202020] font-chakra-petch">Tracer Blog</h3>
                 </div>
               </button>
 
@@ -199,17 +240,12 @@ export default function BlogPageClient() {
                     window.scrollTo({ top: y, behavior: 'smooth' });
                   }
                 }}
-                className="group w-full sm:w-40 bg-white border border-gray-200 rounded-none p-4 hover:bg-gray-50 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+                className="group w-full xs:w-32 sm:w-36 md:w-40 lg:w-44 xl:w-40 bg-white border border-gray-200 rounded-none p-3 xs:p-4 hover:bg-gray-50 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
               >
-                <div className="flex flex-col items-center text-center space-y-2">
+                <div className="flex items-center justify-center space-x-2">
                   {/* Articles Icon */}
-                  <div className="w-8 h-8 flex items-center justify-center">
-                    <FileText className="w-6 h-6 text-[#202020]" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-medium text-[#202020] font-chakra-petch">Articles</h3>
-                    <p className="text-xs text-gray-600 mt-1">In-depth content</p>
-                  </div>
+                  <FileText className="w-5 h-5 text-[#202020]" />
+                  <h3 className="text-sm font-medium text-[#202020] font-chakra-petch">Articles</h3>
                 </div>
               </button>
             </div>
@@ -255,8 +291,8 @@ export default function BlogPageClient() {
               className="mb-12"
             />
 
-            <div className="mt-12">
-              <FilterBar showFilters={false} />
+            <div className="mt-6 relative z-20">
+              <FilterBar showFilters={true} />
             </div>
 
             {/* Directories Row */}

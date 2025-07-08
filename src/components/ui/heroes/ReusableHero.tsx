@@ -103,13 +103,13 @@ export default function ReusableHero({ title, subtitle, showEmailSignup = false,
               <>
                 {!submitted ? (
                   <form onSubmit={handleSubmit}>
-                    <div className="flex items-center">
+                    <div className="flex items-stretch">
                       <div
-                        className="flex-1 max-w-[250px] px-5 py-2 bg-[#F5F5F5] outline outline-[0.72px] outline-[#E8E8E8] outline-offset-[-0.72px] flex items-center"
+                        className="flex-1 max-w-[250px] px-5 py-2 bg-[#F5F5F5] outline outline-[0.72px] outline-[#E8E8E8] outline-offset-[-0.72px] flex items-center h-[44px]"
                       >
                         <input
                           type="email"
-                          placeholder="Enter your e-mail"
+                          placeholder="Enter your email"
                           required
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
@@ -119,7 +119,7 @@ export default function ReusableHero({ title, subtitle, showEmailSignup = false,
 
                       <button
                         type="submit"
-                        className="ml-1 px-5 py-2 bg-[#202020] text-[#FCFCFC] outline outline-[0.72px] outline-[#E8E8E8] outline-offset-[-0.72px] font-['Britti_Sans'] text-sm md:text-base whitespace-nowrap"
+                        className="px-5 py-2 bg-[#202020] text-[#FCFCFC] outline outline-[0.72px] outline-[#E8E8E8] outline-offset-[-0.72px] font-['Britti_Sans'] text-sm md:text-base whitespace-nowrap h-[44px] flex items-center justify-center"
                       >
                         Get Updates
                       </button>
@@ -140,11 +140,7 @@ export default function ReusableHero({ title, subtitle, showEmailSignup = false,
 
       </div>
 
-      {/* Bottom Rectangles - Only visible in non-stacked views */}
-      <div className="hidden lg:block absolute bottom-28 left-0 w-[27%] h-14 bg-[#202020]"></div>
-      <div className="hidden lg:block absolute bottom-14 left-0 w-1/3 h-14 bg-[#202020]"></div>
-      {/* Full-width bottom line */}
-      <div className="hidden lg:block absolute bottom-0 left-0 w-full h-14 bg-[#202020]"></div>
+
     </section>
   );
 }
