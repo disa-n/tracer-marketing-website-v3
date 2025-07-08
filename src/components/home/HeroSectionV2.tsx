@@ -224,16 +224,16 @@ export default function HeroSectionV2() {
           </div>
 
           {/* Image Column - Desktop and larger screens only */}
-          <div className="hidden lg:flex lg:absolute lg:right-0 lg:top-0 lg:w-full lg:h-full lg:items-center lg:justify-end lg:pointer-events-none lg:z-0">
+          <div className="lg:flex lg:absolute lg:right-0 lg:top-0 lg:w-full lg:h-full lg:items-center lg:justify-end lg:pointer-events-none lg:z-0">
             <motion.div
-              className="relative lg:w-[1800px] xl:w-[2100px] 2xl:w-[2400px] lg:h-[2200px] xl:h-[2500px] 2xl:h-[2800px] lg:translate-x-[150px] lg:translate-y-[100px] xl:translate-x-[200px] xl:translate-y-[120px] 2xl:translate-x-[250px] 2xl:translate-y-[150px]"
+              className="relative lg:w-[1400px] xl:w-[2100px] 2xl:w-[2400px] lg:h-[2200px] xl:h-[2500px] 2xl:h-[2800px] lg:translate-x-[150px] lg:translate-y-[100px] xl:translate-x-[200px] xl:translate-y-[120px] 2xl:translate-x-[250px] 2xl:translate-y-[150px]"
               animate={{
-                x: [-7, 7, -7],
-                y: [0, -7, 0],
+                x: [-8, 9, -7],
+                y: [0, -4, 0],
                 rotate: [0, 0.8, 0]
               }}
               transition={{
-                duration: 8,
+                duration: 12,
                 ease: "easeInOut",
                 repeat: Infinity,
                 repeatType: "loop"
