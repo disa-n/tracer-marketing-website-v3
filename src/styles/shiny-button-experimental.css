@@ -110,7 +110,7 @@ https://ryanmulligan.dev/blog/css-property-new-style/
 }
 /* Simple transition for hover effect */
 .shiny-cta-experimental {
-  transition: background-color 200ms ease;
+  transition: background-color 200ms ease, height 500ms ease-out, padding 500ms ease-out, font-size 500ms ease-out;
 }
 
 .shiny-cta-experimental:is(:hover, :focus-visible) {

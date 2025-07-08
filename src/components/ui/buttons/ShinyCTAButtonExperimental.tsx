@@ -25,10 +25,10 @@ export default function ShinyCTAButtonExperimental({
       href="https://sandbox.tracer.cloud/"
       target="_blank"
       rel="noopener noreferrer"
-      className={`shiny-cta-experimental flex items-center justify-center transition-all duration-200 ${wide ? 'sctebig-experimental' : 'sctesmall-experimental'} ${isScrolled !== undefined
+      className={`shiny-cta-experimental flex items-center justify-center transition-all duration-500 ease-out ${wide ? 'sctebig-experimental' : 'sctesmall-experimental'} ${isScrolled !== undefined
         ? (isScrolled
-          ? `${textSizeClasses} px-4 h-[35px]`
-          : `${textSizeClasses} px-6 h-[45px]`)
+          ? `${textSizeClasses} px-4`
+          : `${textSizeClasses} px-6`)
         : `px-6 sm:px-8 ${textSizeClasses}`
         }`}
       style={{

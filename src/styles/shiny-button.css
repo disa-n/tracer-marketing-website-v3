@@ -74,6 +74,7 @@ https://ryanmulligan.dev/blog/css-property-new-style/
 /* Demo button height matching */
 .demo-button-height {
   height: var(--mobile-height);
+  transition: height 500ms ease-out, padding 500ms ease-out, font-size 500ms ease-out;
 }
 
 @media (min-width: 640px) {
