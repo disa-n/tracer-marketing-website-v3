@@ -265,7 +265,7 @@ export default function BlogPageClient() {
             />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6 md:gap-8">
               {TOOLS.map((tool) => (
-                <ToolCard
+                <ToolCard 
                   key={tool.href}
                   href={tool.href}
                   title={tool.title}
